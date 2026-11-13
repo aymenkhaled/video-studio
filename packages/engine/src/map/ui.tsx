@@ -25,7 +25,7 @@ export const QuoteCard: React.FC<{text: string; by: string; p: number; at?: [num
   const a = easeInOutCubic(ramp(p, at[0], at[0] + 0.1)) * (1 - easeInOutCubic(ramp(p, at[1] - 0.05, at[1])));
   if (a <= 0) return null;
   return (
-    <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.62 * a})`, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: a}}>
+    <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.84 * a})`, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: a}}>
       <div style={{maxWidth: 1350, textAlign: 'center'}}>
         <div style={{fontFamily: CINZEL, fontWeight: 600, fontSize: 64, lineHeight: 1.25, color: '#f4ecd8', transform: `translateY(${(1 - a) * 16}px)`}}>“{text}”</div>
         <div style={{fontFamily: INTER, fontWeight: 600, fontSize: 30, color: '#d8b46a', marginTop: 28, letterSpacing: 2}}>— {by}</div>
@@ -38,7 +38,7 @@ export const QuoteCard: React.FC<{text: string; by: string; p: number; at?: [num
 export const ListCard: React.FC<{title: string; items: string[]; p: number; source?: string}> = ({title, items, p, source}) => {
   const a = easeInOutCubic(ramp(p, 0.02, 0.1));
   return (
-    <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.7 * a})`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: a}}>
+    <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.84 * a})`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: a}}>
       <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 62, color: '#f4ecd8', marginBottom: 40}}>{title}</div>
       {items.map((it, i) => {
         const b = easeInOutCubic(ramp(p, 0.12 + i * 0.17, 0.2 + i * 0.17));

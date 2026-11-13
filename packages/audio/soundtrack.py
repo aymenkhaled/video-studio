@@ -75,7 +75,24 @@ def _tts(kokoro, text, vcfg, speed):
     return smp[max(0, idx[0] - round(0.025 * sr)): idx[-1] + round(0.12 * sr)], sr
 
 
+TTS_CACHE = ROOT / ".cache" / "tts"
+
+
 def speak(kokoro, text, vcfg, speed):
+    """Cached TTS: identical (text, voice, speed, lang) lines are never synthesised twice across runs
+    (CI restores .cache/tts). Saves most of the ~1.7 s-per-second-of-audio Kokoro cost on re-renders."""
+    key = hashlib.sha1(f"v1|{text}|{vcfg.get('voice', 'am_michael')}|{speed:.4f}|{vcfg.get('language', 'en-us')}".encode()).hexdigest()
+    f = TTS_CACHE / f"{key}.npz"
+    if f.exists():
+        z = np.load(f)
+        return z["smp"], int(z["sr"])
+    smp, sr = _speak(kokoro, text, vcfg, speed)
+    TTS_CACHE.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(f, smp=smp.astype(np.float32), sr=sr)
+    return smp, sr
+
+
+def _speak(kokoro, text, vcfg, speed):
     """Kokoro TTS with silence/NaN guard (the int8 model intermittently returns silence).
     Retries with tiny speed jitter, then falls back to sentence-by-sentence synthesis."""
     for attempt, jitter in enumerate((1.0, 0.985, 1.015)):

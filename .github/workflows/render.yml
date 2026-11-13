@@ -83,6 +83,12 @@ jobs:
         with:
           path: .cache/kokoro-v1.0
           key: kokoro-v1.0-int8
+      - uses: actions/cache@v4
+        if: inputs.timeline != ''
+        with:
+          path: .cache/tts
+          key: tts-${{ hashFiles(inputs.timeline) }}
+          restore-keys: tts-
       - name: Soundtrack (voice + score + sfx) and caption timings
         if: inputs.timeline != ''
         run: |

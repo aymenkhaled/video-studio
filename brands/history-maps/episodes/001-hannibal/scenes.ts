@@ -36,8 +36,8 @@ const CANNAE: BattleSpec = {
       [7, 7, 6, 4.8],
       [0, 0.3, 0.6, 1],
     ),
-    {id: 'rcavL', side: 'b', kind: 'cav', label: 'Roman cavalry', keys: [{at: 0, x: 24, y: 15, w: 6, h: 3}, {at: 0.3, x: 24, y: 17}, {at: 0.45, x: 23, y: 25}, {at: 0.6, x: 12, y: 8, opacity: 0}]},
-    {id: 'rcavR', side: 'b', kind: 'cav', label: 'Allied cavalry', keys: [{at: 0, x: 76, y: 15, w: 6, h: 3}, {at: 0.3, x: 76, y: 17}, {at: 0.45, x: 77, y: 25}, {at: 0.8, x: 96, y: 18, opacity: 0}]},
+    {id: 'rcavL', side: 'b', kind: 'cav', label: 'Roman cavalry', labelUntil: 0.4, keys: [{at: 0, x: 24, y: 15, w: 6, h: 3}, {at: 0.3, x: 24, y: 17}, {at: 0.45, x: 23, y: 25}, {at: 0.6, x: 12, y: 8, opacity: 0}]},
+    {id: 'rcavR', side: 'b', kind: 'cav', label: 'Allied cavalry', labelUntil: 0.4, keys: [{at: 0, x: 76, y: 15, w: 6, h: 3}, {at: 0.3, x: 76, y: 17}, {at: 0.45, x: 77, y: 25}, {at: 0.8, x: 96, y: 18, opacity: 0}]},
     ...arcUnits('g', 'a', 7, [
       {at: 0, cx: 50, cy: 52, r: 22, a0: -2.25, a1: -0.89},
       {at: 0.3, cx: 50, cy: 52, r: 22, a0: -2.25, a1: -0.89},
@@ -46,8 +46,8 @@ const CANNAE: BattleSpec = {
     ], {w: 4, h: 2.6}),
     {id: 'afL', side: 'a', kind: 'inf', label: 'Africans', keys: [{at: 0, x: 31, y: 37, w: 5, h: 7}, {at: 0.62, x: 31, y: 36}, {at: 0.85, x: 37, y: 28, rot: 90}, {at: 1, x: 38.5, y: 28, rot: 90}]},
     {id: 'afR', side: 'a', kind: 'inf', label: 'Africans', keys: [{at: 0, x: 69, y: 37, w: 5, h: 7}, {at: 0.62, x: 69, y: 36}, {at: 0.85, x: 63, y: 28, rot: -90}, {at: 1, x: 61.5, y: 28, rot: -90}]},
-    {id: 'hcav', side: 'a', kind: 'cav', label: "Hasdrubal's cavalry", keys: [{at: 0, x: 22, y: 37, w: 6, h: 3}, {at: 0.3, x: 22, y: 33}, {at: 0.45, x: 23, y: 27}, {at: 0.66, x: 30, y: 7}, {at: 0.82, x: 58, y: 7}, {at: 1, x: 50, y: 20}]},
-    {id: 'ncav', side: 'a', kind: 'cav', label: 'Numidians', keys: [{at: 0, x: 78, y: 37, w: 6, h: 3}, {at: 0.3, x: 78, y: 33}, {at: 0.45, x: 77, y: 27}, {at: 0.8, x: 92, y: 18}, {at: 1, x: 66, y: 16}]},
+    {id: 'hcav', side: 'a', kind: 'cav', label: "Hasdrubal's cavalry", labelUntil: 0.4, keys: [{at: 0, x: 22, y: 37, w: 6, h: 3}, {at: 0.3, x: 22, y: 33}, {at: 0.45, x: 23, y: 27}, {at: 0.66, x: 30, y: 7}, {at: 0.82, x: 58, y: 7}, {at: 1, x: 50, y: 20}]},
+    {id: 'ncav', side: 'a', kind: 'cav', label: 'Numidians', labelUntil: 0.4, keys: [{at: 0, x: 78, y: 37, w: 6, h: 3}, {at: 0.3, x: 78, y: 33}, {at: 0.45, x: 77, y: 27}, {at: 0.8, x: 92, y: 18}, {at: 1, x: 66, y: 16}]},
   ],
   arrows: [
     {from: [50, 8], to: [50, 30], side: 'b', draw: [0.12, 0.5], width: 2.2},
@@ -70,20 +70,21 @@ const TREBIA: BattleSpec = {
   sides: SIDES,
   terrain: {river: [[52, -5], [49, 10], [53, 25], [48, 40], [51, 60]], hills: [{x: 62, y: 50, r: 6}]},
   units: [
-    {id: 'num', side: 'a', kind: 'cav', label: 'Numidian horse', keys: [{at: 0, x: 30, y: 28, w: 6, h: 3}, {at: 0.15, x: 72, y: 28}, {at: 0.35, x: 30, y: 31}, {at: 1, x: 27, y: 50}]},
-    ...[20, 28, 36].map((y, i): BUnit => ({id: `rt${i}`, side: 'b', kind: 'inf', label: i === 1 ? 'Roman army' : undefined, keys: [{at: 0, x: 82, y, w: 7, h: 5}, {at: 0.15, x: 80, y}, {at: 0.45, x: 52, y}, {at: 0.6, x: 40, y}, {at: 0.82, x: 37, y: y < 25 ? 22 : y, opacity: i === 0 ? 1 : 0.85}, {at: 1, x: i === 0 ? 20 : 38, y: i === 0 ? 12 : y, opacity: i === 0 ? 1 : 0.2}]})),
-    ...[18, 28, 38].map((y, i): BUnit => ({id: `ct${i}`, side: 'a', kind: 'inf', label: i === 1 ? 'Hannibal' : undefined, keys: [{at: 0, x: 24, y, w: 6, h: 5}, {at: 0.6, x: 26, y}, {at: 0.85, x: 31, y}]})),
+    {id: 'num', side: 'a', kind: 'cav', label: 'Numidian horse', labelUntil: 0.3, keys: [{at: 0, x: 30, y: 28, w: 6, h: 3}, {at: 0.15, x: 72, y: 28}, {at: 0.35, x: 30, y: 31}, {at: 1, x: 27, y: 50}]},
+    ...[20, 28, 36].map((y, i): BUnit => ({id: `rt${i}`, side: 'b', kind: 'inf', label: i === 1 ? 'Roman army' : undefined, labelUntil: 0.45, keys: [{at: 0, x: 82, y, w: 7, h: 5}, {at: 0.15, x: 80, y}, {at: 0.45, x: 52, y}, {at: 0.6, x: 40, y}, {at: 0.82, x: 37, y: y < 25 ? 22 : y, opacity: i === 0 ? 1 : 0.85}, {at: 1, x: i === 0 ? 20 : 38, y: i === 0 ? 12 : y, opacity: i === 0 ? 1 : 0.2}]})),
+    ...[18, 28, 38].map((y, i): BUnit => ({id: `ct${i}`, side: 'a', kind: 'inf', keys: [{at: 0, x: 24, y, w: 6, h: 5}, {at: 0.6, x: 26, y}, {at: 0.85, x: 31, y}]})),
     {id: 'eleN', side: 'a', kind: 'ele', keys: [{at: 0, x: 26, y: 10, w: 3, h: 2.6}, {at: 0.65, x: 28, y: 12}, {at: 0.85, x: 34, y: 16}]},
     {id: 'eleS', side: 'a', kind: 'ele', keys: [{at: 0, x: 26, y: 46, w: 3, h: 2.6}, {at: 0.65, x: 28, y: 44}, {at: 0.85, x: 34, y: 40}]},
     {id: 'cavN', side: 'a', kind: 'cav', keys: [{at: 0, x: 22, y: 4, w: 6, h: 3}, {at: 0.65, x: 30, y: 6}, {at: 0.85, x: 42, y: 14}]},
     {id: 'mago', side: 'a', kind: 'inf', label: 'Mago (2,000)', keys: [{at: 0, x: 62, y: 50, w: 6, h: 3, opacity: 0}, {at: 0.55, x: 62, y: 50, opacity: 0}, {at: 0.62, x: 62, y: 50, opacity: 1}, {at: 0.82, x: 45, y: 38}]},
   ],
   arrows: [
-    {from: [82, 28], to: [42, 28], side: 'b', draw: [0.15, 0.5], width: 2},
+    {from: [82, 28], to: [42, 28], side: 'b', draw: [0.15, 0.5], width: 1.2},
     {from: [62, 49], via: [56, 46], to: [46, 39], side: 'a', draw: [0.62, 0.8]},
     {from: [38, 22], via: [30, 14], to: [18, 9], side: 'b', draw: [0.86, 1]},
   ],
   notes: [
+    {text: "Hannibal's army", x: 22, y: 50, appear: 0.02, until: 0.5},
     {text: 'Icy river, no breakfast', x: 52, y: 12, appear: 0.3, until: 0.62},
     {text: 'Hidden in a stream bed', x: 62, y: 43, appear: 0.42, until: 0.7},
     {text: '≈10,000 break out', x: 20, y: 5, appear: 0.9},
@@ -127,7 +128,7 @@ const ZAMA: BattleSpec = {
       const lane = [38, 46, 54, 62][i % 4];
       const veer = i === 0 ? 18 : i === 7 ? 82 : null;
       return {
-        id: `el${i}`, side: 'a', kind: 'ele', label: i === 3 ? 'Elephants' : undefined,
+        id: `el${i}`, side: 'a', kind: 'ele', label: i === 3 ? 'Elephants' : undefined, labelUntil: 0.2,
         keys: veer
           ? [{at: 0, x: x0, y: 31, w: 3, h: 2.6}, {at: 0.1, x: x0, y: 31}, {at: 0.3, x: veer, y: 34}, {at: 0.42, x: veer, y: 38, opacity: 0}]
           : [{at: 0, x: x0, y: 31, w: 3, h: 2.6}, {at: 0.1, x: x0, y: 31}, {at: 0.28, x: lane, y: 24}, {at: 0.45, x: lane, y: 2, opacity: 0}],
@@ -197,16 +198,16 @@ export const SCENES: Record<string, SceneDef> = {
   },
   c2b: {
     kind: 'map', year: -218,
-    map: {camera: [{at: 0, center: [0.6, 41.2], zoom: 13}, {at: 1, center: [4.4, 43.6], zoom: 15}], territories: base, routes: [{id: 'm1', points: MARCH.slice(0, 9), color: COL.route, draw: [0.02, 0.6], unit: {label: '37 elephants', color: COL.carthage, kind: 'elephant'}}], cities: [{...C.massalia, appear: 0.45}, {...C.rhone, appear: 0.55}], regions: [{text: 'GAUL', at: [2.4, 45.0], appear: 0.2}]},
+    map: {camera: [{at: 0, center: [0.6, 41.2], zoom: 13}, {at: 1, center: [4.4, 43.6], zoom: 15}], territories: base, routes: [{id: 'm1', points: MARCH.slice(0, 9), color: COL.route, draw: [0.02, 0.6], unit: {label: '37 elephants', color: COL.carthage, kind: 'elephant'}}], cities: [{...C.massalia, appear: 0.45}, {...C.rhone, appear: 0.55}], regions: [{text: 'GAUL', at: [1.6, 45.9], appear: 0.2}]},
     overlays: [{type: 'citation', text: 'Rafts covered with earth (Polybius 3.46)', at: [0.55, 0.98]}],
   },
   c2c: {
     kind: 'map', year: -218,
-    map: {camera: [{at: 0, center: [4.8, 44.3], zoom: 18}, {at: 1, center: [6.6, 45.1], zoom: 26}], territories: base, routes: [{id: 'm2', points: MARCH, color: COL.route, draw: [0.62, 0.98], unit: HANNIBAL}], cities: [{...C.rhone}, {...C.pass, appear: 0.7}], regions: [{text: 'ALPS', at: [7.4, 46.0], appear: 0.1, size: 52}]},
+    map: {camera: [{at: 0, center: [4.8, 44.3], zoom: 18}, {at: 1, center: [6.6, 45.1], zoom: 26}], territories: base, routes: [{id: 'm2a', points: MARCH.slice(0, 9), color: COL.route, draw: [-1, 0]}, {id: 'm2', points: MARCH.slice(8), color: COL.route, draw: [0.05, 0.9], unit: HANNIBAL}], cities: [{...C.rhone}, {...C.pass, appear: 0.7}], regions: [{text: 'ALPS', at: [7.4, 46.0], appear: 0.1, size: 52}]},
   },
   c2d: {
     kind: 'map', year: -218,
-    map: {camera: [{at: 0, center: [7.4, 45.0], zoom: 30}, {at: 1, center: [8.4, 44.9], zoom: 24}], territories: base, routes: [{id: 'm3', points: MARCH, color: COL.route, draw: [-1, 0], unit: HANNIBAL}], cities: [{...C.turin, appear: 0.05}], regions: [{text: 'CISALPINE GAUL', at: [8.8, 45.5], appear: 0.15, size: 30}]},
+    map: {camera: [{at: 0, center: [7.4, 45.0], zoom: 30}, {at: 1, center: [8.4, 44.9], zoom: 24}], territories: base, routes: [{id: 'm3', points: MARCH, color: COL.route, draw: [-1, 0], unit: HANNIBAL}], cities: [{...C.turin, appear: 0.05}]},
     overlays: [
       {type: 'counter', label: 'INFANTRY LEFT', value: 20000, window: [0.12, 0.98]},
       {type: 'counter', label: 'CAVALRY LEFT', value: 6000, window: [0.2, 0.98], top: 560, color: '#f4ecd8'},
@@ -215,7 +216,7 @@ export const SCENES: Record<string, SceneDef> = {
   },
 
   c3: chapter(3, 'Three Disasters', '218 – 217 BC', {camera: italy(8, 8.6), territories: base}),
-  c3a: {kind: 'map', year: -218, map: {camera: [{at: 0, center: [8.4, 45.1], zoom: 30}, {at: 1, center: [9.3, 45.0], zoom: 36}], territories: base, routes: [{id: 'tr', points: TO_TREBIA, color: COL.route, draw: [0.05, 0.85], unit: HANNIBAL}], cities: [{...C.turin}, {...C.ticinus, appear: 0.2}, {...C.placentia, appear: 0.6}]}},
+  c3a: {kind: 'map', year: -218, map: {camera: [{at: 0, center: [8.4, 45.1], zoom: 30}, {at: 1, center: [9.3, 45.0], zoom: 36}], territories: base, routes: [{id: 'tr', points: TO_TREBIA, color: COL.route, draw: [0.05, 0.85], unit: HANNIBAL}], cities: [{...C.turin, align: 'left'}, {...C.ticinus, align: 'right', appear: 0.2}, {...C.placentia, appear: 0.6}]}},
   c3b: {kind: 'battle', battle: TREBIA, range: [0, 0.62]},
   c3c: {kind: 'battle', battle: TREBIA, range: [0.62, 1]},
   c3d: {kind: 'map', year: -217, map: {camera: [{at: 0, center: [9.8, 44.8], zoom: 26}, {at: 1, center: [11.4, 43.6], zoom: 30}], territories: base, routes: [{id: 'arno', points: TO_ARNO, color: COL.route, draw: [0.05, 0.9], unit: HANNIBAL}], cities: [{...C.arno, appear: 0.4}, {...C.trasimene, appear: 0.85}]}},
@@ -225,7 +226,7 @@ export const SCENES: Record<string, SceneDef> = {
   c4a: {
     kind: 'map', year: -217,
     map: {camera: italy(9, 10.5), territories: base, routes: [{id: 'ca', points: TO_CANNAE, color: COL.route, draw: [0.1, 0.95], unit: HANNIBAL}], cities: [C.rome, {...C.cannae, appear: 0.85}]},
-    overlays: [{type: 'quote', text: 'Cunctator — "the Delayer"', by: 'Nickname of Quintus Fabius Maximus', at: [0.45, 0.98]}],
+    overlays: [{type: 'quote', text: 'Cunctator: the Delayer', by: 'Nickname of Quintus Fabius Maximus', at: [0.45, 0.98]}],
   },
   c4b: {
     kind: 'map', year: -216,
@@ -252,13 +253,13 @@ export const SCENES: Record<string, SceneDef> = {
   c5d: {kind: 'map', year: -207, map: {camera: [{at: 0, center: [3, 42.5], zoom: 6.5}, {at: 1, center: [11, 43.6], zoom: 11}], territories: base, routes: [{id: 'hasd', points: HASDRUBAL, color: COL.route, draw: [0.02, 0.6], unit: {label: 'Hasdrubal', color: COL.carthage, kind: 'infantry'}}], cities: [{...C.metaurus, appear: 0.55, size: 1.3}]}},
 
   c6: chapter(6, 'Zama', '204 – 201 BC', {camera: [{at: 0, center: [10, 36.5], zoom: 12}, {at: 1, center: [10, 36.4], zoom: 13}], territories: base}),
-  c6a: {kind: 'map', year: -203, map: {camera: [{at: 0, center: [12.5, 37.8], zoom: 8}, {at: 1, center: [12.6, 37.6], zoom: 8.8}], territories: base, routes: [{id: 'scip', points: SCIPIO_AFRICA, color: COL.roman, draw: [0.05, 0.4], unit: {label: 'Scipio', color: COL.rome, kind: 'infantry'}}, {id: 'home', points: HANNIBAL_HOME, color: COL.route, draw: [0.55, 0.95], unit: HANNIBAL}], cities: [C.lilybaeum, C.utica, C.croton]}},
+  c6a: {kind: 'map', year: -203, map: {camera: [{at: 0, center: [12.5, 37.8], zoom: 8}, {at: 1, center: [12.6, 37.6], zoom: 8.8}], territories: base, routes: [{id: 'scip', points: SCIPIO_AFRICA, color: COL.roman, draw: [0.05, 0.4], unit: {label: 'Scipio', color: COL.rome, kind: 'infantry'}}, {id: 'home', points: HANNIBAL_HOME, color: COL.route, draw: [0.55, 0.95], unit: HANNIBAL}], cities: [C.utica, C.croton]}},
   c6b: {kind: 'battle', battle: ZAMA, range: [0, 0.5]},
   c6c: {kind: 'battle', battle: ZAMA, range: [0.5, 1]},
   c6d: {kind: 'map', year: -201, map: {camera: [{at: 0, center: [10.32, 36.85], zoom: 20}, {at: 1, center: [10.32, 36.85], zoom: 24}], territories: base, cities: [C.carthage]}, overlays: [{type: 'list', title: 'Peace of 201 BC', items: ['10,000 talents of silver over 50 years', 'All warships surrendered except 10', 'All war elephants surrendered', 'No war without Rome’s permission'], source: 'Polybius 15.18'}]},
 
   c7: chapter(7, 'The Last Years', '201 – 183 BC', {camera: [{at: 0, center: [20, 37], zoom: 4.2}, {at: 1, center: [22, 37.5], zoom: 4.6}], territories: base}),
-  c7a: {kind: 'map', year: -195, map: {camera: [{at: 0, center: [16, 36], zoom: 4.2}, {at: 1, center: [24, 37], zoom: 5}], territories: base, routes: [{id: 'exile', points: EXILE, color: COL.route, draw: [0.4, 0.95], dashed: false, unit: HANNIBAL}], cities: [C.carthage, {...C.tyre, appear: 0.65}, {...C.ephesus, appear: 0.85}]}},
-  c7b: {kind: 'map', year: -183, map: {camera: [{at: 0, center: [27.8, 39.0], zoom: 16}, {at: 1, center: [29.2, 40.6], zoom: 26}], territories: [], routes: [{id: 'bith', points: TO_BITHYNIA, color: COL.route, draw: [0.05, 0.6], unit: HANNIBAL}], cities: [C.ephesus, {...C.libyssa, appear: 0.5, size: 1.3}], regions: [{text: 'BITHYNIA', at: [30.6, 40.3], appear: 0.4, size: 36}]}},
-  c7c: {kind: 'map', year: -146, map: {camera: [{at: 0, center: [10.32, 36.85], zoom: 24}, {at: 1, center: [10, 38.5], zoom: 4.6}], territories: [ROME_ITALY, SARD_CORSICA, SICILY, {...CARTHAGE_AFRICA, fadeOut: [0.05, 0.25]}], cities: [C.carthage, C.rome]}, overlays: [{type: 'title', title: 'HANNIBAL', sub: 'WOULD HE HAVE WON IF HE HAD MARCHED ON ROME?'}]},
+  c7a: {kind: 'map', year: -195, map: {camera: [{at: 0, center: [16, 36], zoom: 4.2}, {at: 1, center: [24, 37], zoom: 5}], territories: base, routes: [{id: 'exile', points: EXILE, color: COL.route, draw: [0.08, 0.9], unit: HANNIBAL}], cities: [C.carthage, {...C.tyre, appear: 0.65}, {...C.ephesus, appear: 0.85}]}},
+  c7b: {kind: 'map', year: -183, map: {camera: [{at: 0, center: [27.8, 39.0], zoom: 16}, {at: 1, center: [29.2, 40.6], zoom: 26}], territories: [], routes: [{id: 'bith', points: TO_BITHYNIA, color: COL.route, draw: [0.05, 0.6], unit: HANNIBAL}], cities: [C.ephesus, {...C.libyssa, appear: 0.5, size: 1.3}], regions: [{text: 'BITHYNIA', at: [31.6, 39.7], appear: 0.4, size: 36}]}},
+  c7c: {kind: 'map', year: -146, map: {camera: [{at: 0, center: [10.32, 36.85], zoom: 24}, {at: 1, center: [10, 38.5], zoom: 4.6}], territories: [ROME_ITALY, SARD_CORSICA, SICILY, {...CARTHAGE_AFRICA, fadeOut: [0.05, 0.25]}]}, overlays: [{type: 'title', title: 'HANNIBAL', sub: 'WOULD HE HAVE WON IF HE HAD MARCHED ON ROME?'}]},
 };

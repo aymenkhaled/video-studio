@@ -7,7 +7,17 @@ import {CINZEL} from './map';
 // between keyframes, attack arrows and labels. Pure function of scene progress p (0..1).
 
 export type BKey = {at: number; x: number; y: number; w?: number; h?: number; rot?: number; opacity?: number};
-export type BUnit = {id: string; side: 'a' | 'b'; label?: string; kind?: 'inf' | 'cav' | 'ele' | 'light'; keys: BKey[]};
+export type BUnit = {id: string; side: 'a' | 'b'; label?: string; labelUntil?: number; kind?: 'inf' | 'cav' | 'ele' | 'light'; keys: BKey[]};
+
+/** Later keyframes inherit size/rotation/opacity from the previous key unless they set them. */
+const fillKeys = (keys: BKey[]): BKey[] => {
+  const out: BKey[] = [];
+  keys.forEach((k, i) => {
+    const prev = out[i - 1];
+    out.push({...k, w: k.w ?? prev?.w ?? 6, h: k.h ?? prev?.h ?? 3, rot: k.rot ?? prev?.rot ?? 0, opacity: k.opacity ?? prev?.opacity ?? 1});
+  });
+  return out;
+};
 export type BArrow = {from: [number, number]; via?: [number, number]; to: [number, number]; side: 'a' | 'b'; draw: [number, number]; width?: number};
 export type Terrain = {river?: [number, number][]; lake?: [number, number][]; hills?: {x: number; y: number; r: number}[]; fog?: [number, number]};
 export type BattleSpec = {
@@ -102,9 +112,8 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
           <rect x={-50 * S} y={-50 * S} width={200 * S} height={160 * S} fill="url(#bgrid)" />
           {(t.hills ?? []).map((h, i) => (
             <g key={i}>
-              <circle cx={h.x * S} cy={h.y * S} r={h.r * S} fill="#bfae83" />
-              <circle cx={h.x * S} cy={h.y * S} r={h.r * 0.62 * S} fill="#b3a176" />
-              <circle cx={h.x * S} cy={h.y * S} r={h.r * 0.3 * S} fill="#a8956a" />
+              <ellipse cx={h.x * S} cy={h.y * S} rx={h.r * 1.5 * S} ry={h.r * 0.75 * S} fill="#c4b284" />
+              <ellipse cx={(h.x - h.r * 0.2) * S} cy={(h.y - h.r * 0.1) * S} rx={h.r * 0.9 * S} ry={h.r * 0.42 * S} fill="#b8a578" />
             </g>
           ))}
           {t.lake ? <polygon points={pts(t.lake.map(([x, y]) => [x * S, y * S]))} fill="#2c4a5a" stroke="#1d3340" strokeWidth={4} /> : null}
@@ -132,7 +141,8 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
             );
           })}
           {spec.units.map((u) => {
-            const k = lerpKey(u.keys, p);
+            const k = lerpKey(fillKeys(u.keys), p);
+            const showLabel = u.label && (u.labelUntil === undefined || p < u.labelUntil);
             if ((k.opacity ?? 1) <= 0.01) return null;
             const w = (k.w ?? 6) * S;
             const h = (k.h ?? 3) * S;
@@ -152,7 +162,7 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
                     E
                   </text>
                 ) : null}
-                {u.label ? (
+                {showLabel ? (
                   <text y={-h / 2 - 0.8 * S} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={1.5 * S} fill="#2a2116" stroke="#efe4c8" strokeWidth={0.35 * S} paintOrder="stroke" transform={`rotate(${-(k.rot ?? 0)})`}>
                     {u.label}
                   </text>
@@ -173,9 +183,9 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
         {fog > 0 ? <rect width={width} height={height} fill="#e8e4da" opacity={0.75 * fog} /> : null}
         <rect width={width} height={height} fill="url(#bvig)" />
       </svg>
-      {/* title + legend */}
-      <div style={{position: 'absolute', left: 64, top: 48, fontFamily: CINZEL, fontWeight: 700, fontSize: 54, color: '#2a2116', textShadow: '0 2px 0 rgba(244,236,216,0.8)'}}>{spec.title}</div>
-      <div style={{position: 'absolute', right: 64, top: 56, display: 'flex', gap: 28, fontFamily: INTER, fontWeight: 700, fontSize: 28, color: '#2a2116'}}>
+      {/* title + legend on dark plates at the bottom (units live in the upper field) */}
+      <div style={{position: 'absolute', left: 56, bottom: 44, fontFamily: CINZEL, fontWeight: 700, fontSize: 46, color: '#f4ecd8', background: 'rgba(20,14,8,0.78)', padding: '10px 24px', borderRadius: 6}}>{spec.title}</div>
+      <div style={{position: 'absolute', right: 56, bottom: 50, display: 'flex', gap: 28, fontFamily: INTER, fontWeight: 700, fontSize: 26, color: '#f4ecd8', background: 'rgba(20,14,8,0.78)', padding: '10px 20px', borderRadius: 6}}>
         {(['a', 'b'] as const).map((s) => (
           <div key={s} style={{display: 'flex', alignItems: 'center', gap: 10}}>
             <div style={{width: 30, height: 20, background: spec.sides[s].color, border: '3px solid #f4ecd8'}} />
