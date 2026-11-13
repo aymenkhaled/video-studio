@@ -40,7 +40,8 @@ def intervals(log, start_key, end_key):
 
 
 def allowed(found, allow):
-    return [iv for iv in found if not any(a[0] - 0.1 <= iv[0] and (iv[1] or 1e9) <= a[1] + 0.1 for a in allow)]
+    # an open-ended interval (no end reported = runs to the end of the file) counts as ending at the file end
+    return [iv for iv in found if not any(a[0] - 0.1 <= iv[0] and (iv[1] if iv[1] is not None else a[1] - 0.5) <= a[1] + 0.1 for a in allow)]
 
 
 def main():
@@ -54,9 +55,13 @@ def main():
     ap.add_argument("--sheet")
     ap.add_argument("--sheet-count", type=int, default=12)
     ap.add_argument("--allow-intervals", help="json {black:[[a,b]], freeze:[[a,b]], silence:[[a,b]]}")
+    ap.add_argument("--allow-end-freeze", type=float, default=0.0, help="seconds at the end allowed to be static (end screen)")
     a = ap.parse_args()
 
     allow = json.loads(Path(a.allow_intervals).read_text()) if a.allow_intervals else {}
+    if a.allow_end_freeze:
+        end = a.frames / a.fps
+        allow.setdefault("freeze", []).append([end - a.allow_end_freeze, end + 1])
     checks, fail = [], False
 
     def check(name, ok, value):

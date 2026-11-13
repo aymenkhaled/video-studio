@@ -250,7 +250,7 @@ jobs:
         run: |
           python3 tools/qa_video.py out/final.mp4 --width ${{ needs.plan.outputs.width }} --height ${{ needs.plan.outputs.height }} \
             --fps ${{ needs.plan.outputs.fps }} --frames ${{ needs.plan.outputs.frames }} \
-            ${{ inputs.timeline == '' && '--no-audio' || '' }} --sheet out/contact_sheet.jpg --sheet-count 12
+            ${{ inputs.timeline == '' && '--no-audio' || '' }} ${{ inputs.episode != '' && '--allow-end-freeze 3' || '' }} --sheet out/contact_sheet.jpg --sheet-count 24
       - uses: actions/upload-artifact@v4
         if: always()
         with:

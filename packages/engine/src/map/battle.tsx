@@ -181,7 +181,19 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
             );
           })}
         </g>
-        {fog > 0 ? <rect width={width} height={height} fill="#e8e4da" opacity={0.75 * fog} /> : null}
+        {fog > 0 ? (
+          <>
+            <defs>
+              <linearGradient id="fogband" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stopColor="#e8e4da" stopOpacity={0.35} />
+                <stop offset="0.5" stopColor="#e8e4da" stopOpacity={0.8} />
+                <stop offset="1" stopColor="#e8e4da" stopOpacity={0.35} />
+              </linearGradient>
+            </defs>
+            {/* drifting fog band (moves even while the armies are hidden) */}
+            <rect x={-width + p * width * 1.6} y={0} width={width * 2} height={height} fill="url(#fogband)" opacity={0.85 * fog} />
+          </>
+        ) : null}
         <rect width={width} height={height} fill="url(#bvig)" />
       </svg>
       {/* title + legend on dark plates at the bottom (units live in the upper field) */}

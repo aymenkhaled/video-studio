@@ -94,7 +94,7 @@ export const HistoryEpisode: React.FC<EpisodeProps & {defs: Record<string, Scene
       {(def.overlays ?? []).map((o, k) =>
         o.type === 'quote' || o.type === 'list' || o.type === 'chapter' || o.type === 'title' ? (
           // Cards darken the moving map: give the card itself a slow scale-in so the frame never freezes.
-          <AbsoluteFill key={k} style={{transform: `scale(${1 + 0.05 * p})`}}>
+          <AbsoluteFill key={k} style={{transform: `scale(${1 + 0.09 * p})`}}>
             {renderOverlay(o, p, k)}
           </AbsoluteFill>
         ) : (

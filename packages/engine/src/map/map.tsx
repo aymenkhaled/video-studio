@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {geoArea, geoConicConformal, geoInterpolate, geoMercator, geoOrthographic, geoPath, GeoProjection, geoGraticule10} from 'd3-geo';
+import {geoArea, geoConicConformal, geoGraticule, geoInterpolate, geoMercator, geoOrthographic, geoPath, GeoProjection, geoGraticule10} from 'd3-geo';
 import {feature} from 'topojson-client';
 import type {Topology, GeometryCollection} from 'topojson-specification';
 import land50 from 'world-atlas/land-50m.json';
@@ -42,6 +42,7 @@ const toLand = (t: unknown) => {
   return feature(topo, topo.objects.land);
 };
 // Level of detail: 1:110m coastlines when zoomed out (cheap), 1:50m when zoomed in.
+const FINE_GRID = geoGraticule().step([2, 2])();
 const LAND_LO = toLand(land110);
 const LAND_HI = toLand(land50);
 
@@ -145,6 +146,8 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       {/* soft coastal halo, then land */}
       <path d={landD} fill="none" stroke="rgba(216,201,163,0.14)" strokeWidth={14} strokeLinejoin="round" />
       <path d={landD} fill={theme.land} stroke={theme.coast} strokeWidth={1.6} strokeLinejoin="round" />
+      {/* faint 2° survey grid over land: texture so slow camera moves stay visible on featureless zooms */}
+      <path d={path(FINE_GRID) ?? ''} fill="none" stroke="rgba(70,55,30,0.11)" strokeWidth={1.2} clipPath={`url(#${uid}-land)`} />
 
       {/* territories, clipped to land, optionally growing from an origin */}
       <g clipPath={`url(#${uid}-land)`}>
