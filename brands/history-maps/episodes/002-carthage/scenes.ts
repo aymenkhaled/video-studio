@@ -183,7 +183,7 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'citation', text: 'Appian, Punica 71–73 — most of the army lost', at: [0.4, 0.98]},
   ]),
   c3h: map(-150, {camera: cam([9.0, 36.2], 20, [9.1, 36.3], 24), territories: B150}, [
-    {type: 'character', name: 'Scipio Aemilianus', role: 'Young Roman officer', line: 'Watched this battle by chance. Remember him: he will end this war.', side: 'Rome'},
+    {type: 'character', name: 'Scipio Aemilianus', role: 'Young Roman officer', line: 'Not the same man as Scipio Nasica. Remember him: he will end this war.', side: 'Rome'},
     {type: 'citation', text: 'Appian, Punica 71–72', at: [0.5, 0.98]},
   ]),
   c3i: recap("Carthage fought a war without asking. In Rome's eyes, it had broken the treaty.", {camera: TUNISIA, territories: B150}, "Rome's answer would be a trap…"),
