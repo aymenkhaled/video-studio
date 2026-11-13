@@ -59,19 +59,21 @@
   },
   {
    "id": "coin-masinissa",
-   "source": "livius",
+   "source": "url",
    "page": "https://www.livius.org/pictures/a/carthaginian-art/coin-of-massinissa",
    "licence": "CC0 1.0",
    "credit": "Coin of Masinissa, Musée Cirta, Constantine — photo Jona Lendering / Livius.org, CC0",
-   "depth": false
+   "depth": false,
+   "url": "https://www.livius.org/site/assets/files/6152/coin_massinissa_2_mus_constantine.jpg"
   },
   {
    "id": "coin-tanit",
-   "source": "livius",
+   "source": "url",
    "page": "https://www.livius.org/pictures/a/carthaginian-art/carthaginian-coin",
    "licence": "CC0 1.0",
    "credit": "Tanit on a Carthaginian coin, Bode-Museum Berlin — photo Jona Lendering / Livius.org, CC0",
-   "depth": false
+   "depth": false,
+   "url": "https://www.livius.org/site/assets/files/16122/coin_carthage_350-270_bodemuseum.jpg"
   },
   {
    "id": "cato-16c",

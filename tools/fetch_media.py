@@ -85,7 +85,7 @@ def depth_layers(img, session):
     out = []
     for lo, hi in ((0.42, 0.58), (0.68, 0.82)):
         a = (smoothstep(lo, hi, d) * 255).astype(np.uint8)
-        out.append(Image.fromarray(np.dstack([rgb, a]), "RGBA"))
+        out.append(Image.fromarray(np.dstack([rgb, a])))
     return out
 
 
@@ -105,6 +105,8 @@ def main():
     for a in manifest["art"]:
         if a["source"] == "commons":
             url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"])  # original file: arbitrary-width thumbnails are throttled
+        elif a["source"] == "url":
+            url = a["url"]
         else:
             url = livius_image(a["page"])
         src = get(url, f"{a['id']}.src", pins)
@@ -137,7 +139,7 @@ def main():
         if lines:
             feats.append({"type": "Feature", "properties": {"name": f["properties"].get("name") or ""}, "geometry": {"type": "MultiLineString", "coordinates": lines}})
     (GEO / "rivers.json").write_text(json.dumps({"type": "FeatureCollection", "features": feats}), encoding="utf-8")
-    print(f"GEO rivers {len(feats)}")
+    print(f"GEO rivers {len(feats)}: " + ", ".join(sorted({f["properties"]["name"] for f in feats if f["properties"]["name"]})))
 
     relief = None
     for i, url in enumerate(g["relief"]):
