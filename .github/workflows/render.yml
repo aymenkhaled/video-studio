@@ -139,6 +139,7 @@ jobs:
           for b in out/stills/batch_*; do
             i=$((i+1)); args=""; n=0
             while read f; do args="$args -i $f"; n=$((n+1)); done < "$b"
+            if [ "$n" -eq 1 ]; then ffmpeg -v error -y $args -vf scale=640:-2 -frames:v 1 out/stills/sheet_$(printf '%02d' $i).jpg; continue; fi
             ffmpeg -v error -y $args -filter_complex "$(for k in $(seq 0 $((n-1))); do printf '[%d:v]scale=640:-2[v%d];' $k $k; done)$(for k in $(seq 0 $((n-1))); do printf '[v%d]' $k; done)xstack=inputs=$n:layout=$(python3 -c "n=$n;print('|'.join(f'{(k%3)*640}_{(k//3)*360}' for k in range(n)))"):fill=0x202020" -frames:v 1 out/stills/sheet_$(printf '%02d' $i).jpg
           done
           rm -f out/stills/batch_*
