@@ -110,15 +110,23 @@ if vcfg and vcfg.get("lines"):
     for line in vcfg["lines"]:
         speed = float(vcfg.get("speed", 1.0))
         slot = float(line["until"]) - float(line["t"])
-        for _ in range(3):
-            smp, sr = kokoro.create(line["text"], voice=vcfg.get("voice", "am_michael"), speed=speed, lang=vcfg.get("language", "en-us"))
+        text = line["text"]
+        for attempt in range(4):
+            smp, sr = kokoro.create(text, voice=vcfg.get("voice", "am_michael"), speed=speed, lang=vcfg.get("language", "en-us"))
             smp = np.asarray(smp, dtype=np.float64).reshape(-1)
             idx = np.flatnonzero(np.abs(smp) > 0.008)
+            if not len(idx):  # Kokoro occasionally returns silence for a phrase: retry with plain ASCII punctuation
+                print(f"WARN voice {line['id']} silent at speed {speed:.2f} (attempt {attempt + 1}); retrying")
+                text = text.replace("’", "'").replace("'", "")
+                speed = float(vcfg.get("speed", 1.0))
+                continue
             smp = smp[max(0, idx[0] - round(0.025 * sr)): idx[-1] + round(0.12 * sr)]
             dur = len(smp) / sr
             if dur <= slot:
                 break
             speed = min(1.35, speed * dur / slot * 1.03)
+        if not len(idx):
+            raise RuntimeError(f"voice line {line['id']} is silent after retries: {line['text']!r}")
         if dur > slot + 0.05:
             raise RuntimeError(f"voice line {line['id']} too long for its slot ({dur:.2f}s > {slot:.2f}s); shorten the text")
         smp = resample_poly(smp, RATE, sr)
