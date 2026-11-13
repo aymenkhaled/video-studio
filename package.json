@@ -6,7 +6,8 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "studio": "remotion studio src/index.ts",
-    "compositions": "remotion compositions src/index.ts"
+    "compositions": "remotion compositions src/index.ts",
+    "test": "node --experimental-strip-types --no-warnings --test \"packages/engine/test/**/*.test.ts\""
   },
   "dependencies": {
     "@react-three/fiber": "8.18.0",
