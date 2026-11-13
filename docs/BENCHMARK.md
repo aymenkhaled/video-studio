@@ -10,6 +10,9 @@ Run: benchmark 43448786029 (13 Nov 2026), 300 frames 1080×1920 each, one job pe
 | 2.5D displaced plane (`Bench25D`) | **2.0** | 150.3 s | 3 m 48 s | 117k-vertex displaced plane. Slow **and** smears edges → use 3–5 cut-out layer planes instead (to re-benchmark) |
 | Smoke 2D, 4 chunks (render 43447937883) | 14.8–18.4 | 90 frames | — | chunk split + concat + QA proven end to end |
 
+| StageDemo v1 (3D: T. rex + bus + person + 46 MegaKit alpha-leaf trees + HDRI + 2048 shadows), 4 tabs (run 43459588222) | **0.12–0.15** | 150 frames/chunk in 17–20 min | — | ~40× slower than the simple stage. Suspects: alpha foliage overdraw on software WebGL + 4 tabs thrashing 4 vCPU. Fix under test: low-poly vertex-colour trees, 2 tabs |
+| StageDemo v2 (same scene, low-poly vertex-colour trees), **2 tabs**, 10 chunks (run 43465248751) | **0.88 mean** (0.6–2.5) | 60 frames/chunk in ~1–2.5 min | whole run ≈ 5.5 min | **6.5× faster.** Rule: no alpha foliage in 3D; 2 tabs per job for 3D. 1 min of this 3D ≈ 1,800 frames ÷ (0.88 × 20 jobs) ≈ 1.7 min render + ~5 min overhead |
+
 Fixed overhead per render job ≈ **1.5–2 min** (checkout, npm ci, browser, bundle download). `plan` job (bundle) ≈ 1.5 min. Combine + QA ≈ 1–3 min depending on length.
 
 ## Formula
