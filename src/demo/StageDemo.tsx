@@ -1,0 +1,170 @@
+﻿import React, {useEffect, useState} from 'react';
+import type * as THREE from 'three';
+import {useThree} from '@react-three/fiber';
+import {ThreeCanvas} from '@remotion/three';
+import {AbsoluteFill, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import timeline from '../../brands/scale-power/episodes/000-stage-demo/timeline.json';
+import {Actor, PALETTES, useModel} from '../../packages/three/src/model';
+import {breathe, handheld, look, tailWave} from '../../packages/three/src/acting';
+import {Blob, EnvLight, Instances, scatter, Spec, useHDRI, useLib} from '../../packages/three/src/env';
+import {Bus, GridGround, Human} from '../../packages/three/src/stage';
+import {Bracket, Cam, Captions, Label, SeriesHud, TimedLine, linesFromTimeline, project} from '../../packages/engine/src/overlay';
+import {clamp01, easeInOutCubic, impulse, mix, ramp} from '../../packages/engine/src/motion';
+
+// Brand-A engine demo: "How big was T. rex next to you?" â€” person â†’ bus â†’ T. rex on a metre grid.
+
+const REX_LEN = 12.3; // Sue, Field Museum (see sources.md)
+const BUS = {x: 8, z: -1.8, len: 12, h: 3.2};
+const REX_Z = 3.2;
+const STOP = 12.1; // rex starts slowing here, stands beside the bus from STOP + 0.5
+const HUMAN_Z = 7;
+
+const ENV: Spec = {
+  pine1: ['assets/mega/Pine_1.gltf', {Leaves_Pine: '#6f9070'}],
+  pine2: ['assets/mega/Pine_2.gltf', {Leaves_Pine: '#6f9070'}],
+  tree1: ['assets/mega/CommonTree_1.gltf', {Leaves_NormalTree: '#9fae8c'}],
+  fern: ['assets/mega/Fern_1.gltf', {Leaves: '#8f9c78'}],
+  rock: ['assets/mega/Rock_Medium_1.gltf', {Rocks: '#b8b3a3'}],
+  bush: ['assets/mega/Bush_Common.gltf'],
+};
+
+const keepOut = (x: number, z: number) => z > -6 && z < 40 && x > -40 && x < 50; // keep lineup + camera corridor clear
+const TREES = scatter(46, 'trees', (r) => ({p: [-60 + r('x') * 140, 0, -10 - r('z') * 70], s: 2.4 + r('s') * 1.8, r: r('r') * 6.28}), keepOut);
+const SMALL = scatter(40, 'small', (r) => ({p: [-30 + r('x') * 80, 0, -5 - r('z') * 14], s: 1 + r('s') * 1.2, r: r('r') * 6.28}), (x, z) => z > -3.2);
+
+/** Loads voice/word timings produced by the soundtrack step; falls back to slot timings in local preview. */
+const useTiming = () => {
+  const [lines, setLines] = useState<TimedLine[] | null>(null);
+  const [h] = useState(() => delayRender('timing'));
+  useEffect(() => {
+    fetch(staticFile('generated/timing.json'))
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((j) => setLines(j.lines))
+      .catch(() => setLines(linesFromTimeline(timeline.voice.lines)))
+      .finally(() => continueRender(h));
+  }, [h]);
+  return lines;
+};
+
+const CameraRig: React.FC<{cam: Cam}> = ({cam}) => {
+  const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
+  camera.fov = cam.fov;
+  camera.position.set(...cam.pos);
+  camera.lookAt(...cam.target);
+  camera.updateProjectionMatrix();
+  return null;
+};
+
+type Pose = {x: number; clip: string; from?: string; blend: number; clipT: number};
+
+export const StageDemo: React.FC = () => {
+  const frame = useCurrentFrame();
+  const {fps, width, height} = useVideoConfig();
+  const t = frame / fps;
+  const rex = useModel('assets/dinos/Trex.fbx', {axis: 'length', metres: REX_LEN}, PALETTES.Trex);
+  const lib = useLib(ENV);
+  const hdri = useHDRI('assets/hdri/misty_pines.hdr');
+  const lines = useTiming();
+  if (!rex || !lib || !lines) return null;
+
+  const gait = rex.userData.gait.Walk || 1.6;
+  const v = Math.abs(gait);
+  const rotY = gait >= 0 ? Math.PI / 2 : -Math.PI / 2;
+  const xAt = (tt: number) => {
+    const xs = BUS.x - 0.25 * v;
+    if (tt <= STOP) return xs - v * (STOP - tt);
+    const d = Math.min(tt - STOP, 0.5);
+    return xs + v * (d - (d * d) / (2 * 0.5));
+  };
+  const xr = xAt(t);
+  const slow = clamp01((t - STOP) / 0.5);
+  const pose: Pose = slow <= 0 ? {x: xr, clip: 'Walk', blend: 1, clipT: t} : {x: xr, clip: 'Idle', from: 'Walk', blend: slow, clipT: t - STOP};
+  const hx = xAt(5) + 4;
+
+  // ---------- shots ----------
+  const [hxj, hyj] = handheld(t, 0.8);
+  const shake = impulse(t, 12.7, 6) * 0.12;
+  let cam: Cam;
+  let shot: string;
+  if (t < 5.4) {
+    shot = 'hook';
+    const k = easeInOutCubic(ramp(t, 0, 5.4));
+    cam = {pos: [hx + 2.6 - 0.8 * k + hxj, 1.05 + hyj, HUMAN_Z + 4.6 - 1.2 * k], target: [mix(xr + 1.5, hx - 1, 0.35), 2.7, mix(REX_Z, HUMAN_Z, 0.3)], fov: 52};
+  } else if (t < 9.2) {
+    shot = 'bus';
+    const k = easeInOutCubic(ramp(t, 5.4, 9.2));
+    cam = {pos: [BUS.x - 13 + 2.5 * k, 8.5 - 0.8 * k, 17.5 - 1.5 * k], target: [BUS.x, 1.3, BUS.z], fov: 46};
+  } else if (t < 13.8) {
+    shot = 'rex-pass';
+    cam = {pos: [xr - 8.5 + hxj, 6.2 + hyj + shake, 21], target: [xr + 0.8, 2.8, 0.6], fov: 47};
+  } else {
+    shot = 'wide';
+    const k = easeInOutCubic(ramp(t, 13.8, 20));
+    cam = {pos: [BUS.x - 3 - 3 * k, 12 + 7 * k, 30 + 5 * k], target: [BUS.x, 1.2, 1.2], fov: 45};
+  }
+  const st = (a: number) => t - a;
+
+  // ---------- acting ----------
+  const post = (o: THREE.Object3D) => {
+    tailWave(o, t, {amp: 1, flick: impulse(t, 12.7, 3)});
+    breathe(o, t);
+    if (shot === 'wide') look(o, 0.45 * easeInOutCubic(ramp(t, 15, 17)), 0);
+  };
+
+  // ---------- overlay geometry ----------
+  const P = (p: [number, number, number]) => project(cam, p, width, height);
+  const rexH = rex.userData.size.y;
+  const busA = P([BUS.x - BUS.len / 2, BUS.h + 0.6, BUS.z]);
+  const busB = P([BUS.x + BUS.len / 2, BUS.h + 0.6, BUS.z]);
+  const rexA = P([xr - REX_LEN / 2, rexH + 0.5, REX_Z]);
+  const rexB = P([xr + REX_LEN / 2, rexH + 0.5, REX_Z]);
+  const head = P([hx, 1.95, HUMAN_Z]);
+
+  return (
+    <AbsoluteFill style={{background: '#c4cdc9'}}>
+      <ThreeCanvas width={width} height={height} shadows camera={{fov: 50, near: 0.1, far: 600}} gl={{antialias: true}}>
+        <CameraRig cam={cam} />
+        <color attach="background" args={['#c4cdc9']} />
+        <fog attach="fog" args={['#c4cdc9', 45, 170]} />
+        <EnvLight tex={hdri} intensity={0.55} />
+        <hemisphereLight args={['#eef3f5', '#6b6248', 0.55]} />
+        <directionalLight
+          position={[BUS.x + 18, 30, 22]}
+          intensity={2.4}
+          castShadow
+          shadow-mapSize={[2048, 2048]}
+          shadow-camera-left={-30}
+          shadow-camera-right={30}
+          shadow-camera-top={30}
+          shadow-camera-bottom={-30}
+          shadow-camera-far={120}
+          shadow-bias={-0.0004}
+        />
+        <directionalLight position={[-20, 10, -25]} intensity={0.9} color="#ffe7c4" />
+        <GridGround />
+        <Instances parts={lib.pine1} items={TREES.filter((_, i) => i % 3 === 0)} t={t} sway={0.01} />
+        <Instances parts={lib.pine2} items={TREES.filter((_, i) => i % 3 === 1)} t={t} sway={0.01} />
+        <Instances parts={lib.tree1} items={TREES.filter((_, i) => i % 3 === 2)} t={t} sway={0.012} />
+        <Instances parts={lib.fern} items={SMALL.filter((_, i) => i % 3 === 0)} t={t} sway={0.03} />
+        <Instances parts={lib.rock} items={SMALL.filter((_, i) => i % 3 === 1)} />
+        <Instances parts={lib.bush} items={SMALL.filter((_, i) => i % 3 === 2)} t={t} sway={0.02} />
+        <Bus position={[BUS.x, 0, BUS.z]} length={BUS.len} />
+        <Blob x={BUS.x} z={BUS.z} rx={13.5} rz={4} opacity={0.35} />
+        <Human position={[hx, 0, HUMAN_Z]} rotationY={-0.6} />
+        <Blob x={hx} z={HUMAN_Z} rx={0.9} opacity={0.4} />
+        <Actor obj={rex} clip={pose.clip} from={pose.from} fromT={t} blend={pose.blend} t={pose.clipT} position={[xr, 0, REX_Z]} rotationY={rotY} post={post} />
+        <Blob x={xr} z={REX_Z} rx={10} rz={3.4} opacity={0.4} />
+      </ThreeCanvas>
+
+      {/* overlays */}
+      {shot === 'hook' && head.visible ? <Label x={head.x} y={head.y} text="1.75 m" sub="you" appear={ramp(t, 0.3, 0.9) - ramp(t, 4.9, 5.3)} /> : null}
+      {shot !== 'hook' ? <Bracket a={busA} b={busB} progress={shot === 'bus' ? ramp(t, 6.0, 7.8) : 1} value={12} decimals={shot === 'bus' ? 1 : 0} label="bus" color="#8fc1e8" /> : null}
+      {shot === 'rex-pass' || shot === 'wide' ? <Bracket a={rexA} b={rexB} progress={shot === 'rex-pass' ? ramp(t, 10.4, 12.6) : 1} value={REX_LEN} label="T. rex" /> : null}
+      <SeriesHud tag="SIZE CHECK" progress={t / 20} />
+      <Captions lines={lines} t={t} />
+      {/* soft cut flash between shots */}
+      <AbsoluteFill style={{background: '#fff', opacity: Math.max(0, ...[5.4, 9.2, 13.8].map((c) => 0.35 * (1 - Math.abs(st(c)) / 0.12))), pointerEvents: 'none'}} />
+    </AbsoluteFill>
+  );
+};
+

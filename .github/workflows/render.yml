@@ -20,8 +20,8 @@ on:
         description: Optional input-props JSON path in the repo
         required: false
         default: ''
-      audio:
-        description: Optional soundtrack command (run in CI, must write out/soundtrack.wav); empty = silent video
+      timeline:
+        description: Optional episode timeline.json (voice + music + sfx); empty = silent video
         required: false
         default: ''
       publish:
@@ -60,10 +60,27 @@ jobs:
       - id: hash
         name: Code + props hash (scene cache key)
         run: |
-          h=$(cat package-lock.json remotion.config.ts $(git ls-files src packages/engine packages/three brands | sort) ${{ inputs.props }} 2>/dev/null | sha256sum | cut -c1-16)
+          h=$(cat package-lock.json remotion.config.ts $(git ls-files src packages brands | sort) ${{ inputs.props }} 2>/dev/null | sha256sum | cut -c1-16)
           echo "codehash=$h" >> "$GITHUB_OUTPUT"
       - name: Fetch licensed assets (into public/, bundled below)
         run: python3 tools/fetch_assets.py
+      - uses: actions/setup-python@v5
+        if: inputs.timeline != ''
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: packages/audio/requirements.txt
+      - uses: actions/cache@v4
+        if: inputs.timeline != ''
+        with:
+          path: .cache/kokoro-v1.0
+          key: kokoro-v1.0-int8
+      - name: Soundtrack (voice + score + sfx) and caption timings
+        if: inputs.timeline != ''
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fluidsynth fluid-soundfont-gm espeak-ng
+          pip install -q -r packages/audio/requirements.txt
+          python packages/audio/soundtrack.py "${{ inputs.timeline }}"
       - id: plan
         run: node tools/plan.mjs "${{ inputs.comp }}" "${{ inputs.chunks }}" "${{ inputs.props }}"
       - uses: actions/upload-artifact@v4
@@ -162,25 +179,25 @@ jobs:
               print(f"render stats: {len(s)} chunks, {frames} frames, {secs:.0f} job-seconds, mean {frames/secs:.2f} fps/job on {s[0]['cpus']} CPUs")
               print("per chunk fps:", [round(x['fps'], 2) for x in s])
           EOF
-      - uses: actions/setup-python@v5
-        if: inputs.audio != ''
+      - uses: actions/download-artifact@v4
+        if: inputs.timeline != ''
         with:
-          python-version: '3.11'
-      - name: Soundtrack
-        if: inputs.audio != ''
+          name: bundle
+          path: out/plan/
+      - name: Mux soundtrack (already loudness-normalised in plan)
+        if: inputs.timeline != ''
         run: |
-          pip install -q -r packages/audio/requirements.txt
-          ${{ inputs.audio }}
-          ffmpeg -v error -y -i out/video.mp4 -i out/soundtrack.wav -map 0:v -map 1:a -c:v copy \
-            -af "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000" -ac 2 -c:a aac -b:a 192k -shortest -map_metadata -1 out/final.mp4
+          ffmpeg -v error -y -i out/video.mp4 -i out/plan/soundtrack.wav -map 0:v -map 1:a -c:v copy \
+            -ar 48000 -ac 2 -c:a aac -b:a 192k -shortest -map_metadata -1 out/final.mp4
+          cp out/plan/audio_report.json out/ || true
       - name: Silent final
-        if: inputs.audio == ''
+        if: inputs.timeline == ''
         run: cp out/video.mp4 out/final.mp4
       - name: QA
         run: |
           python3 tools/qa_video.py out/final.mp4 --width ${{ needs.plan.outputs.width }} --height ${{ needs.plan.outputs.height }} \
             --fps ${{ needs.plan.outputs.fps }} --frames ${{ needs.plan.outputs.frames }} \
-            ${{ inputs.audio == '' && '--no-audio' || '' }} --sheet out/contact_sheet.jpg --sheet-count 12
+            ${{ inputs.timeline == '' && '--no-audio' || '' }} --sheet out/contact_sheet.jpg --sheet-count 12
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -189,6 +206,7 @@ jobs:
             out/final.mp4
             out/final.mp4.qa.json
             out/contact_sheet.jpg
+            out/audio_report.json
           retention-days: 7
       - name: Release
         if: inputs.publish

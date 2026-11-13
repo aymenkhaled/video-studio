@@ -1,0 +1,51 @@
+{
+  "id": "000-stage-demo",
+  "comp": "StageDemo",
+  "fps": 30,
+  "duration": 20,
+  "seed": 12,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.0,
+    "language": "en-us",
+    "lines": [
+      {"id": "l1", "t": 0.25, "until": 2.6, "text": "This is you. One point seven five metres."},
+      {"id": "l2", "t": 2.8, "until": 5.2, "text": "Now look at what's walking up behind you."},
+      {"id": "l3", "t": 5.7, "until": 8.9, "text": "A standard city bus. About twelve metres."},
+      {"id": "l4", "t": 9.4, "until": 13.6, "text": "Sue, the biggest T. rex ever found: twelve point three metres."},
+      {"id": "l5", "t": 14.0, "until": 16.9, "text": "Nose to tail, longer than the bus."},
+      {"id": "l6", "t": 17.2, "until": 19.7, "text": "Would you stay standing there?"}
+    ]
+  },
+  "music": {
+    "key": "D",
+    "tempo": 84,
+    "sections": [
+      {"start": 0, "end": 5.4, "mood": "tension"},
+      {"start": 5.4, "end": 9.2, "mood": "build"},
+      {"start": 9.2, "end": 13.8, "mood": "reveal"},
+      {"start": 13.8, "end": 20, "mood": "wonder"}
+    ]
+  },
+  "ambience": {"type": "wind", "gain": 0.22},
+  "sfx": [
+    {"type": "footstep", "every": 0.69, "from": 0.1, "to": 5.3, "gain": 0.75, "duration": 0.6, "rampFrom": 0.4},
+    {"type": "breath", "t": 3.2, "duration": 1.4, "gain": 0.5},
+    {"type": "whoosh", "t": 5.15, "duration": 0.55, "gain": 0.5},
+    {"type": "counter", "t": 6.2, "duration": 1.6, "gain": 0.25},
+    {"type": "whoosh", "t": 8.95, "duration": 0.55, "gain": 0.5},
+    {"type": "footstep", "every": 0.69, "from": 9.2, "to": 12.4, "gain": 0.55, "duration": 0.6},
+    {"type": "counter", "t": 10.6, "duration": 2.0, "gain": 0.25},
+    {"type": "impact", "t": 12.7, "duration": 1.6, "gain": 0.8},
+    {"type": "whoosh", "t": 13.55, "duration": 0.55, "gain": 0.5},
+    {"type": "breath", "t": 14.3, "duration": 1.5, "gain": 0.45},
+    {"type": "rumble", "t": 15.2, "duration": 2.5, "gain": 0.35}
+  ],
+  "shots": [
+    {"id": "hook", "start": 0, "end": 5.4},
+    {"id": "bus", "start": 5.4, "end": 9.2},
+    {"id": "rex-pass", "start": 9.2, "end": 13.8},
+    {"id": "wide", "start": 13.8, "end": 20}
+  ]
+}

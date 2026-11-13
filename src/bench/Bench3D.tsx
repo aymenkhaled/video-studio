@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+﻿import React, {useMemo} from 'react';
 import {useThree} from '@react-three/fiber';
 import {ThreeCanvas} from '@remotion/three';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
@@ -24,7 +24,7 @@ export const Bench3D: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps, width, height} = useVideoConfig();
   const t = frame / fps;
-  const trex = useModel('assets/dinos/Trex.fbx', 4.6, PALETTES.Trex);
+  const trex = useModel('assets/dinos/Trex.fbx', {axis: 'height', metres: 4.6}, PALETTES.Trex);
   const grid = useMemo(() => new THREE.GridHelper(200, 100, '#efe6c8', '#7d7660'), []);
   const k = easeInOutCubic(ramp(t, 0, 10));
   const x = -6 + 12 * k;
@@ -56,7 +56,7 @@ export const Bench3D: React.FC = () => {
           <boxGeometry args={[0.45, 1.75, 0.25]} />
           <meshStandardMaterial color="#2b2f36" flatShading />
         </mesh>
-        <Actor obj={trex} clip="Walk" t={t} position={[x, 0, 0]} rotation={[0, Math.PI / 2, 0]} />
+        <Actor obj={trex} clip="Walk" t={t} position={[x, 0, 0]} rotationY={Math.PI / 2} />
       </ThreeCanvas>
     </AbsoluteFill>
   );
