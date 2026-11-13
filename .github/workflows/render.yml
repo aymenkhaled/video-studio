@@ -77,7 +77,6 @@ jobs:
       - name: Fetch licensed assets (into public/, bundled below)
         run: python3 tools/fetch_assets.py
       - uses: actions/setup-python@v5
-        if: inputs.timeline != ''
         with:
           python-version: '3.11'
           cache: pip
@@ -106,7 +105,7 @@ jobs:
           restore-keys: media-
       - name: Fetch licensed art + Natural Earth relief/rivers, derive 2.5D layers
         run: |
-          pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2 || pip install -q --break-system-packages numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
+          pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
           python3 tools/fetch_media.py
       - id: plan
         run: node tools/plan.mjs "${{ inputs.comp }}" "${{ inputs.chunks }}" "${{ inputs.props }}"

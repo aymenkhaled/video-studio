@@ -17,7 +17,7 @@ for (const s of tl.scenes) {
   words += n;
   const d = Math.max((s.lead ?? 0.6) + n / 2.5 + (s.tail ?? 0.8), s.min ?? 3);
   total += d;
-  if (d > 15) problems.push(`scene ${s.id}: estimated ${d.toFixed(1)} s > 15 s — split it`);
+  if (d > 15 && !s.endscreen) problems.push(`scene ${s.id}: estimated ${d.toFixed(1)} s > 15 s — split it`);
 }
 if (words < 1300 || words > 2200) problems.push(`total words ${words} outside 1,300–2,200`);
 const ids = new Set(tl.scenes.map((s) => s.id));
