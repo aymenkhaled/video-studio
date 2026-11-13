@@ -222,6 +222,11 @@ bell = pretty_midi.Instrument(8, name="Celesta")
 perc = pretty_midi.Instrument(0, is_drum=True, name="Perc")
 
 
+def note(vel, pitch, start, end):
+    """MIDI note that is never zero/negative length (short scenes can squeeze the patterns)."""
+    return pretty_midi.Note(int(vel), int(pitch), float(start), max(float(end), float(start) + 0.06))
+
+
 def deg(d, octave=0):
     return root + 12 * octave + SCALE_MINOR[d % 7] + 12 * (d // 7)
 
@@ -239,22 +244,22 @@ for sec in mcfg.get("sections", []):
         end = min(b - 0.05, t + bar)
         vel = {"tension": 34, "build": 40 + min(k * 4, 30), "reveal": 72, "wonder": 46, "outro": 36}.get(mood, 40)
         for d in (chord, chord + 2, chord + 4):
-            pad.notes.append(pretty_midi.Note(vel, deg(d, 1), t, end))
-        low.notes.append(pretty_midi.Note(vel + 6, deg(chord, -1), t, end))
+            pad.notes.append(note(vel, deg(d, 1), t, end))
+        low.notes.append(note(vel + 6, deg(chord, -1), t, end))
         if mood in ("build", "reveal"):
             n_hits = 4 if mood == "build" else 2
             for i in range(n_hits):
                 ht = t + i * bar / n_hits
                 if ht < end:
-                    perc.notes.append(pretty_midi.Note(min(110, vel + 20), 36 if i % 2 == 0 else 41, ht, ht + 0.15))
+                    perc.notes.append(note(min(110, vel + 20), 36 if i % 2 == 0 else 41, ht, ht + 0.15))
         if mood in ("reveal", "wonder"):
             motif = [(0, 4), (1, 3), (2, 2), (3, 0)] if mood == "reveal" else [(0, 7), (1.5, 9), (3, 8)]
             for off, d in motif:
                 nt = t + off * beat
                 if nt < end:
-                    (lead if mood == "reveal" else bell).notes.append(pretty_midi.Note(vel, deg(chord + d, 1 if mood == "reveal" else 2), nt, min(end, nt + beat * 1.4)))
+                    (lead if mood == "reveal" else bell).notes.append(note(vel, deg(chord + d, 1 if mood == "reveal" else 2), nt, min(end, nt + beat * 1.4)))
         if mood == "tension" and k % 2 == 0:
-            bell.notes.append(pretty_midi.Note(30, deg(chord + 7, 2), t + 2 * beat, min(end, t + 3 * beat)))
+            bell.notes.append(note(30, deg(chord + 7, 2), t + 2 * beat, min(end, t + 3 * beat)))
         t += bar
         k += 1
 midi.instruments.extend([pad, low, lead, bell, perc])
