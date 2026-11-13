@@ -66,17 +66,36 @@ def kokoro_engine():
     return Kokoro(str(mpath), str(vpath))
 
 
+def _tts(kokoro, text, vcfg, speed):
+    smp, sr = kokoro.create(text, voice=vcfg.get("voice", "am_michael"), speed=speed, lang=vcfg.get("language", "en-us"))
+    smp = np.nan_to_num(np.asarray(smp, dtype=np.float64).reshape(-1))
+    idx = np.flatnonzero(np.abs(smp) > 0.008)
+    if not len(idx):
+        return None, sr
+    return smp[max(0, idx[0] - round(0.025 * sr)): idx[-1] + round(0.12 * sr)], sr
+
+
 def speak(kokoro, text, vcfg, speed):
-    """Kokoro TTS with silence guard; returns trimmed mono samples and their rate."""
-    for attempt in range(4):
-        smp, sr = kokoro.create(text, voice=vcfg.get("voice", "am_michael"), speed=speed, lang=vcfg.get("language", "en-us"))
-        smp = np.asarray(smp, dtype=np.float64).reshape(-1)
-        idx = np.flatnonzero(np.abs(smp) > 0.008)
-        if len(idx):
-            return smp[max(0, idx[0] - round(0.025 * sr)): idx[-1] + round(0.12 * sr)], sr
+    """Kokoro TTS with silence/NaN guard (the int8 model intermittently returns silence).
+    Retries with tiny speed jitter, then falls back to sentence-by-sentence synthesis."""
+    for attempt, jitter in enumerate((1.0, 0.985, 1.015)):
+        smp, sr = _tts(kokoro, text, vcfg, speed * jitter)
+        if smp is not None:
+            return smp, sr
         print(f"WARN silent TTS output (attempt {attempt + 1}): {text!r}")
-        text = text.replace("’", "'").replace("'", "")
-    raise RuntimeError(f"TTS stayed silent: {text!r}")
+    parts = [p for p in re.split(r"(?<=[.!?,;:])\s+", text) if p.strip()]
+    pieces, sr = [], 24000
+    for part in parts:
+        for jitter in (1.0, 0.99, 1.01, 0.98):
+            smp, sr = _tts(kokoro, part, vcfg, speed * jitter)
+            if smp is not None:
+                pieces.append(smp)
+                pieces.append(np.zeros(round(0.12 * sr)))
+                break
+        else:
+            raise RuntimeError(f"TTS stayed silent for fragment {part!r} of {text!r}")
+    print(f"WARN used sentence-split synthesis for: {text!r}")
+    return np.concatenate(pieces[:-1]), sr
 
 
 # ---------- voice-first layout (long-form) ----------
