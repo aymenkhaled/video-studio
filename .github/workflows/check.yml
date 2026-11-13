@@ -26,6 +26,8 @@ jobs:
         run: npm run typecheck
       - name: Engine unit tests
         run: npm test
+      - name: Episode checks (Clarity rule 9)
+        run: node tools/check_episode.mjs brands/history-maps/episodes/002-carthage
       - name: Python syntax
         run: python -m compileall -q tools packages/audio
       - name: Guard against committed media or secrets

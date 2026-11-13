@@ -8,6 +8,8 @@ import {StageDemo} from './demo/StageDemo';
 import {HannibalDemo, calculateHannibalMetadata} from './history/HannibalDemo';
 import {HannibalEpisode, calculateHannibalEpisode} from './history/Hannibal';
 import {HannibalThumb} from './history/HannibalThumb';
+import {CarthageEpisode, calculateCarthageEpisode} from './history/Carthage';
+import {CarthageThumb} from './history/CarthageThumb';
 
 // Every brand registers its compositions here. Ids are stable: CI renders by id.
 const portrait = {fps: 30, width: 1080, height: 1920} as const;
@@ -41,6 +43,19 @@ export const Root: React.FC = () => (
     />
     {([1, 2, 3] as const).map((v) => (
       <Composition key={v} id={`HannibalThumb${v}`} component={HannibalThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
+    ))}
+    <Composition
+      id="Carthage"
+      component={CarthageEpisode}
+      durationInFrames={24 * 60 * 12}
+      fps={24}
+      width={1920}
+      height={1080}
+      defaultProps={{scenes: []}}
+      calculateMetadata={calculateCarthageEpisode}
+    />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={v} id={`CarthageThumb${v}`} component={CarthageThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
     ))}
   </>
 );
