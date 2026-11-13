@@ -1,18 +1,21 @@
 import React, {useMemo} from 'react';
 import {geoArea, geoConicConformal, geoGraticule, geoInterpolate, geoMercator, geoOrthographic, geoPath, GeoProjection, geoGraticule10} from 'd3-geo';
-import {feature} from 'topojson-client';
+import {feature, mesh} from 'topojson-client';
 import type {Topology, GeometryCollection} from 'topojson-specification';
 import land50 from 'world-atlas/land-50m.json';
 import land110 from 'world-atlas/land-110m.json';
+import countries50 from 'world-atlas/countries-50m.json';
+import countries110 from 'world-atlas/countries-110m.json';
 import {evolvePath, getLength, getPointAtLength, getTangentAtLength} from '@remotion/paths';
 import {loadFont as loadCinzel} from '@remotion/google-fonts/Cinzel';
 import {clamp01, easeInOutCubic, mix, ramp} from '../motion';
 import {INTER} from '../overlay';
+import {layoutLabels, type LabelBox} from './clarity-logic';
 
 // Map engine v1 (channels A "History in Maps" and C "Money & Maps").
 // Everything is a pure function of scene progress p (0..1) so scene length can follow the voice.
-// Coastlines: Natural Earth 1:50m via world-atlas (public domain data, ISC package). No modern borders:
-// historical territories are our own approximate polygons, clipped to land.
+// Coastlines + optional modern borders: Natural Earth 1:50m/1:110m via world-atlas (public domain data, ISC package).
+// Historical territories are our own approximate polygons, clipped to land.
 
 export const {fontFamily: CINZEL} = loadCinzel('normal', {weights: ['600', '700'], subsets: ['latin']});
 
@@ -21,7 +24,7 @@ export type CamKey = {at: number; center: LonLat; zoom: number};
 export type Territory = {id: string; rings: LonLat[][]; color: string; label?: string; labelAt?: LonLat; grow?: [number, number]; origin?: LonLat; opacity?: number; fadeOut?: [number, number]};
 export type Route = {id: string; points: LonLat[]; color: string; draw: [number, number]; width?: number; dashed?: boolean; unit?: Unit};
 export type Unit = {label: string; color: string; kind?: 'infantry' | 'cavalry' | 'elephant'};
-export type City = {name: string; at: LonLat; appear?: number; size?: number; align?: 'left' | 'right'};
+export type City = {name: string; at: LonLat; appear?: number; size?: number; align?: 'left' | 'right'; today?: string};
 export type RegionLabel = {text: string; at: LonLat; appear?: number; size?: number};
 export type MapTheme = {sea: string; land: string; coast: string; graticule: string; text: string};
 
@@ -35,6 +38,10 @@ export type MapSpec = {
   cities?: City[];
   regions?: RegionLabel[];
   theme?: MapTheme;
+  /** Clarity Kit: faint modern borders + modern country names, for orientation. */
+  modern?: {labels: RegionLabel[]; opacity?: number};
+  /** Clarity Kit: move labels so none overlap (units > cities > regions > modern names). */
+  avoidLabels?: boolean;
 };
 
 const toLand = (t: unknown) => {
@@ -45,6 +52,13 @@ const toLand = (t: unknown) => {
 const FINE_GRID = geoGraticule().step([2, 2])();
 const LAND_LO = toLand(land110);
 const LAND_HI = toLand(land50);
+// Modern borders (internal borders only, coastlines come from the land layer).
+const toBorders = (t: unknown) => {
+  const topo = t as Topology<{countries: GeometryCollection}>;
+  return mesh(topo, topo.objects.countries, (a, b) => a !== b);
+};
+const BORDERS_LO = toBorders(countries110);
+const BORDERS_HI = toBorders(countries50);
 
 /** d3 treats ring winding as meaningful: a ring with area > hemisphere means "everything but"; fix it. */
 const polygon = (rings: LonLat[][]) => {
@@ -134,6 +148,45 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
   const landD = path(cam.zoom < 9 ? LAND_LO : LAND_HI) ?? '';
   const px = (ll: LonLat) => proj(ll) ?? [-9999, -9999];
   const zoomS = Math.min(1.6, Math.max(0.75, Math.sqrt(cam.zoom / 6)));
+  const modernA = spec.modern ? spec.modern.opacity ?? 1 : 0;
+
+  // Label avoidance (opt-in): estimate boxes deterministically from text length, place greedily.
+  const shift = new Map<string, {dx: number; dy: number; hidden: boolean}>();
+  if (spec.avoidLabels) {
+    const boxes: LabelBox[] = [];
+    (spec.routes ?? []).forEach((r) => {
+      const pr = easeInOutCubic(ramp(p, r.draw[0], r.draw[1]));
+      if (!r.unit || pr <= 0) return;
+      const d = smoothPath(r.points.map((ll) => px(ll) as [number, number]));
+      const tip = getPointAtLength(d, getLength(d) * pr) ?? {x: -9999, y: -9999};
+      const w = Math.max(54, r.unit.label.length * 24 * 0.6) * zoomS;
+      boxes.push({id: `u:${r.id}`, x: tip.x - w / 2, y: tip.y - 96 * zoomS, w, h: 72 * zoomS, priority: 4});
+    });
+    (spec.cities ?? []).forEach((c) => {
+      if (ramp(p, c.appear ?? 0, (c.appear ?? 0) + 0.1) <= 0) return;
+      const [x, y] = px(c.at);
+      const s = (c.size ?? 1) * zoomS;
+      boxes.push({id: `d:${c.name}`, x: x - 12 * s, y: y - 12 * s, w: 24 * s, h: 24 * s, priority: 3.5});
+      const w = Math.max(c.name.length * 30 * 0.6, c.today ? (c.today.length + 7) * 20 * 0.58 : 0) * s;
+      const h = (c.today ? 62 : 36) * s;
+      const right = c.align !== 'left';
+      boxes.push({id: `c:${c.name}`, x: right ? x + 16 * s : x - 16 * s - w, y: y - 18 * s, w, h, priority: 3});
+    });
+    (spec.regions ?? []).forEach((r) => {
+      const [x, y] = px(r.at);
+      const fs = (r.size ?? 44) * zoomS;
+      const w = r.text.length * (fs * 0.78 + 8);
+      boxes.push({id: `r:${r.text}`, x: x - w / 2, y: y - fs * 0.85, w, h: fs, priority: 2});
+    });
+    (spec.modern?.labels ?? []).forEach((r) => {
+      const [x, y] = px(r.at);
+      const fs = (r.size ?? 22) * zoomS;
+      const w = r.text.length * fs * 0.8;
+      boxes.push({id: `m:${r.text}`, x: x - w / 2, y: y - fs * 0.85, w, h: fs, priority: 1});
+    });
+    for (const pl of layoutLabels(boxes, {w: width, h: height})) shift.set(pl.id, pl);
+  }
+  const off = (id: string) => shift.get(id) ?? {dx: 0, dy: 0, hidden: false};
 
   return (
     <svg width={width} height={height} style={{position: 'absolute', inset: 0, background: theme.sea}}>
@@ -179,10 +232,32 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
         })}
       </g>
 
+      {/* modern borders + names (Clarity Kit): faint, dashed, under historical labels */}
+      {modernA > 0 ? (
+        <g opacity={modernA}>
+          <path d={path(cam.zoom < 9 ? BORDERS_LO : BORDERS_HI) ?? ''} fill="none" stroke="rgba(42,33,22,0.38)" strokeWidth={1.4} strokeDasharray="6 5" clipPath={`url(#${uid}-land)`} />
+          {spec.modern!.labels.map((r) => {
+            const o = off(`m:${r.text}`);
+            if (o.hidden) return null;
+            const a = easeInOutCubic(ramp(p, r.appear ?? 0, (r.appear ?? 0) + 0.12));
+            const [x, y] = px(r.at);
+            return (
+              <text key={r.text} x={x + o.dx} y={y + o.dy} textAnchor="middle" fontFamily={INTER} fontWeight={600} fontSize={(r.size ?? 22) * zoomS} letterSpacing="0.12em" fill="rgba(42,33,22,0.6)" fillOpacity={a}>
+                {r.text.toUpperCase()}
+              </text>
+            );
+          })}
+        </g>
+      ) : null}
+
       {/* region labels */}
       {(spec.regions ?? []).map((r) => {
         const a = easeInOutCubic(ramp(p, r.appear ?? 0, (r.appear ?? 0) + 0.12));
-        const [x, y] = px(r.at);
+        const o = off(`r:${r.text}`);
+        if (o.hidden) return null;
+        const [x0, y0] = px(r.at);
+        const x = x0 + o.dx;
+        const y = y0 + o.dy;
         return (
           <text key={r.text} x={x} y={y} textAnchor="middle" fontFamily={CINZEL} fontWeight={700} fontSize={(r.size ?? 44) * zoomS} letterSpacing={8} fill="#f4ecd8" fillOpacity={0.92 * a} stroke="rgba(27,18,8,0.55)" strokeWidth={4} paintOrder="stroke">
             {r.text}
@@ -218,13 +293,27 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
         const [x, y] = px(c.at);
         const s = (c.size ?? 1) * zoomS;
         const right = c.align !== 'left';
+        const o = off(`c:${c.name}`);
+        const tx = x + (right ? 16 : -16) * s + o.dx;
+        const ty = y + 9 * s + o.dy;
+        const ta = easeInOutCubic(ramp(p, (c.appear ?? 0) + 0.04, (c.appear ?? 0) + 0.14));
         return (
           <g key={c.name} opacity={a}>
             <circle cx={x} cy={y} r={9 * s} fill="#f4ecd8" stroke="#1b1208" strokeWidth={3 * s} />
             <circle cx={x} cy={y} r={3.5 * s} fill="#1b1208" />
-            <text x={x + (right ? 16 : -16) * s} y={y + 9 * s} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontWeight={700} fontSize={30 * s} fill="#f4ecd8" stroke="#1b1208" strokeWidth={6 * s} paintOrder="stroke">
-              {c.name}
-            </text>
+            {o.hidden ? null : (
+              <>
+                {o.dx || o.dy ? <line x1={x} y1={y} x2={tx} y2={ty - 9 * s} stroke="#1b1208" strokeWidth={2 * s} opacity={0.7} /> : null}
+                <text x={tx} y={ty} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontWeight={700} fontSize={30 * s} fill="#f4ecd8" stroke="#1b1208" strokeWidth={6 * s} paintOrder="stroke">
+                  {c.name}
+                </text>
+                {c.today ? (
+                  <text x={tx} y={ty + 28 * s} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontStyle="italic" fontWeight={500} fontSize={20 * s} fill="#f4ecd8" fillOpacity={ta} stroke="#1b1208" strokeWidth={5 * s} paintOrder="stroke">
+                    today: {c.today}
+                  </text>
+                ) : null}
+              </>
+            )}
           </g>
         );
       })}
