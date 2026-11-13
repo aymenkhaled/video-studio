@@ -70,7 +70,7 @@ const Scene: React.FC<{def: SceneDef; p: number; uid: string; width: number; hei
   def.kind === 'map' ? (
     <MapShot spec={def.map} p={p} width={width} height={height} uid={uid} />
   ) : (
-    <BattleShot spec={def.battle} p={def.range ? def.range[0] + p * (def.range[1] - def.range[0]) : p} width={width} height={height} />
+    <BattleShot spec={def.battle} p={def.range ? def.range[0] + p * (def.range[1] - def.range[0]) : p} sceneP={p} width={width} height={height} />
   );
 
 const FADE = 0.45;
@@ -91,7 +91,16 @@ export const HistoryEpisode: React.FC<EpisodeProps & {defs: Record<string, Scene
   return (
     <AbsoluteFill style={{background: '#1b2f3a'}}>
       <Scene def={def} p={p} uid={`a${sc.id}`} width={width} height={height} />
-      {(def.overlays ?? []).map((o, k) => renderOverlay(o, p, k))}
+      {(def.overlays ?? []).map((o, k) =>
+        o.type === 'quote' || o.type === 'list' || o.type === 'chapter' || o.type === 'title' ? (
+          // Cards darken the moving map: give the card itself a slow scale-in so the frame never freezes.
+          <AbsoluteFill key={k} style={{transform: `scale(${1 + 0.05 * p})`}}>
+            {renderOverlay(o, p, k)}
+          </AbsoluteFill>
+        ) : (
+          renderOverlay(o, p, k)
+        ),
+      )}
       {def.year !== undefined && !isCard && def.kind === 'map' ? <TimelineBar from={timeline.from} to={timeline.to} year={def.year} /> : null}
       {next && fadeIn > 0 ? (
         <AbsoluteFill style={{opacity: fadeIn}}>

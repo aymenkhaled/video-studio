@@ -84,10 +84,11 @@ export const arcUnits = (
     }),
   }));
 
-export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; height: number}> = ({spec, p, width, height}) => {
+export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; height: number; sceneP?: number}> = ({spec, p, width, height, sceneP}) => {
   const S = width / 100; // px per field unit
   const z = zoomAt(spec.zoom, p * 1.0);
-  const push = 1 + 0.05 * p; // living camera
+  // Living camera tied to the SCENE (not battle) progress: a battle split over several scenes still moves in each.
+  const push = 1 + 0.07 * (sceneP ?? p);
   const scale = z.s * push;
   const tx = width / 2 - z.cx * S * scale;
   const ty = height / 2 - z.cy * S * scale;
