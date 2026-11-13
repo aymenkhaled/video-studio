@@ -52,7 +52,7 @@ export const C: Record<string, City> = {
   cannae: {name: 'Cannae', at: [16.13, 41.31]},
   capua: {name: 'Capua', at: [14.25, 41.08], align: 'left'},
   tarraco: {name: 'Tarraco', at: [1.25, 41.12]},
-  metaurus: {name: 'Metaurus', at: [13.0, 43.8]},
+  metaurus: {name: 'Metaurus', at: [13.0, 43.8], align: 'left'},
   utica: {name: 'Utica', at: [10.06, 37.06], align: 'left'},
   zama: {name: 'Zama (approx.)', at: [9.2, 36.1], align: 'left'},
   croton: {name: 'Croton', at: [17.13, 39.08]},

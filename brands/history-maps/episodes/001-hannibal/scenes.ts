@@ -84,7 +84,7 @@ const TREBIA: BattleSpec = {
     {from: [38, 22], via: [30, 14], to: [18, 9], side: 'b', draw: [0.86, 1]},
   ],
   notes: [
-    {text: "Hannibal's army", x: 22, y: 50, appear: 0.02, until: 0.5},
+    {text: "Hannibal's army", x: 24, y: 44, appear: 0.02, until: 0.5},
     {text: 'Icy river, no breakfast', x: 52, y: 12, appear: 0.3, until: 0.62},
     {text: 'Hidden in a stream bed', x: 62, y: 43, appear: 0.42, until: 0.7},
     {text: '≈10,000 break out', x: 20, y: 5, appear: 0.9},
