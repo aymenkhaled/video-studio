@@ -13,6 +13,9 @@ Run: benchmark 43448786029 (13 Nov 2026), 300 frames 1080×1920 each, one job pe
 | StageDemo v1 (3D: T. rex + bus + person + 46 MegaKit alpha-leaf trees + HDRI + 2048 shadows), 4 tabs (run 43459588222) | **0.12–0.15** | 150 frames/chunk in 17–20 min | — | ~40× slower than the simple stage. Suspects: alpha foliage overdraw on software WebGL + 4 tabs thrashing 4 vCPU. Fix under test: low-poly vertex-colour trees, 2 tabs |
 | StageDemo v2 (same scene, low-poly vertex-colour trees), **2 tabs**, 10 chunks (run 43465248751) | **0.88 mean** (0.6–2.5) | 60 frames/chunk in ~1–2.5 min | whole run ≈ 5.5 min | **6.5× faster.** Rule: no alpha foliage in 3D; 2 tabs per job for 3D. 1 min of this 3D ≈ 1,800 frames ÷ (0.88 × 20 jobs) ≈ 1.7 min render + ~5 min overhead |
 
+| HannibalDemo map v1 (1920×1080@24, land-50m always, territories clipped to land), 4 chunks (run 43486629547) | 1.64 | 1538 frames, 940 job-s | — | Full-world coastline traced every frame even when zoomed in |
+| HannibalDemo map v1.1 (+ clipExtent culling, 110m/50m LOD), 4 chunks (run 43488948171) | **15.8** | 1534 frames, 97 job-s | whole run ≈ 6 min | **10× faster.** Long-form estimate: 30 min @24 fps = 43,200 frames ÷ (15.8 × 20 jobs) ≈ 2.3 min render + ~8 min overhead (voice for 30 min ≈ +several min, to measure) |
+
 Fixed overhead per render job ≈ **1.5–2 min** (checkout, npm ci, browser, bundle download). `plan` job (bundle) ≈ 1.5 min. Combine + QA ≈ 1–3 min depending on length.
 
 ## Formula

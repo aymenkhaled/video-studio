@@ -24,8 +24,10 @@ _Updated 13 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
 - 2026-11-13 3D rules: no alpha-texture foliage (6.5× slower on software WebGL); 2 tabs per 4-vCPU job for 3D; 240 s first-frame timeout.
 - 2026-11-13 **Aymen: long-form only (8 min – 2 h), no Shorts; AI voice; test 3 categories on 3 channels** (A History in Maps, B Scale & Science, C Money & Maps). Synthetic narration alone is not what the inauthentic-content policy targets; mass-produced templated/stock/slideshow content is.
 
+- Map engine v1 done (camera keys + living push, territories clipped to land with growth, routes with unit markers, cities, region labels, timeline bar, chapter card, citations, counters) + voice-first scene timing. Hannibal demo: QA PASS, 15.8 fps/job, 6.5/10 (`brands/history-maps/episodes/000-hannibal-demo/review.md`).
+
 ## Next
-1. Map engine v1 (shared by channels A and C): projections + virtual camera, historical borders/territories, animated arrows, unit blocks, labels, timeline bar, chapter cards; benchmark it.
+1. Label collision avoidance; stronger cold-open template (first 5 s); sourced historical boundary data (licence check).
 2. Long-form pipeline: `script.md` with scene markers → timeline (voice lines, scenes, SFX) → voice-first timing → render → QA → package (chapters, 3 thumbnails, description, SRT).
 3. Evaluate best free commercial-licence TTS vs Kokoro (licence-checked).
 4. Pilot episodes: A (10–15 min) → C → B.
