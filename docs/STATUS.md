@@ -32,3 +32,19 @@ _Updated 13 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
 3. Evaluate best free commercial-licence TTS vs Kokoro (licence-checked).
 4. Pilot episodes: A (10–15 min) → C → B.
 5. Aymen: YouTube API key, create 3 channels, advanced features.
+
+## Episode 002 "Why Rome Destroyed Carthage" — branch `ep/002-carthage` (worktree `D:\studio-002`)
+Spec `docs/superpowers/specs/2026-11-13-002-carthage-design.md` · plan `docs/superpowers/plans/2026-11-13-002-carthage.md` · standard `docs/CLARITY_STANDARD.md` + Aymen's `docs/VIEWER_CLARITY_FEEDBACK.md` (main).
+
+New engine features (all opt-in; Hannibal renders unchanged without `clarity`):
+- `HistoryEpisode clarity={...}`: 54 px phrase captions (numerals, side colours, current word underlined, SRT built from the same cues by `tools/captions_srt.mjs`), chapter tracker, source chip, legend with colour-blind patterns + symbols, locator globe, km scale bar, years-ago timeline, character cards (PD portraits), ≤8-word glossary pop-ups, recap cards with open loops, image chapter cards with a question, end-screen layout.
+- Scene kind `art`: real PD/CC0/CC BY paintings, engravings, photos and coins with 2.5D parallax (Depth-Anything-V2-Small ONNX, Apache-2.0) — `tools/fetch_media.py`, `assets/media.json`.
+- `MapSpec`: `modern`, `avoidLabels`, `relief` (Natural Earth shaded relief), `rivers`, `minText`; `Route.km`; `Territory.pattern`; illustrated figure badges.
+- `BattleShot clarity`: illustrated figures (original drawings) instead of boxes, phase banners, arrows fade after the move, small plates; `Terrain.lakes/walls`.
+- Audio: march, hooves, crowd, fire, waves, clash, oars, forge, coin, page, elephant SFX; per-scene ambience and voice pacing.
+
+Decisions (Claude, Aymen asleep, told to take the recommended option):
+- 2026-11-14 Script ~1,500 words (~12 min) instead of 1,900–2,200: no padding with weakly sourced material.
+- 2026-11-14 Siege shown as a schematic city plan (labelled "schematic plan") + real engravings; 1:50m coastline too coarse at city zoom.
+- 2026-11-14 Wikimedia downloads: originals (not custom thumbnails, which are throttled), paced with backoff; generic User-Agent without personal details.
+- 2026-11-14 TTS: kept Kokoro for this episode (per-scene speed, pauses). Best candidate to evaluate next: Chatterbox (MIT, emotion control) — CPU cost must be benchmarked in CI first. Phone-speaker listening cannot be done by Claude; disclosed in review.md.
