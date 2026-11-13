@@ -8,11 +8,15 @@ const count = Number(process.argv[2] || 12);
 const plan = JSON.parse(fs.readFileSync('out/plan.json', 'utf8'));
 const explicit = process.argv[3] ? process.argv[3].split(',').map(Number) : null;
 const total = plan.durationInFrames;
-const frames = explicit ?? Array.from({length: count}, (_, i) => Math.min(total - 1, Math.round((i * (total - 1)) / Math.max(1, count - 1))));
 
 const serveUrl = path.resolve('out/bundle');
 const chromiumOptions = {gl: 'swangle'};
 const composition = await selectComposition({serveUrl, id: plan.compId, inputProps: plan.inputProps, chromiumOptions});
+// `scenes` mode: one still at 60 % of every scene (episode comps expose props.scenes from voice timing).
+const sceneFrames = process.argv[2] === 'scenes' && Array.isArray(composition.props?.scenes)
+  ? composition.props.scenes.map((s) => Math.min(total - 1, Math.round((s.start + 0.6 * (s.end - s.start)) * plan.fps)))
+  : null;
+const frames = sceneFrames ?? explicit ?? Array.from({length: count}, (_, i) => Math.min(total - 1, Math.round((i * (total - 1)) / Math.max(1, count - 1))));
 fs.mkdirSync('out/stills', {recursive: true});
 for (const frame of frames) {
   const t0 = Date.now();

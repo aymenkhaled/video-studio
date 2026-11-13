@@ -18,7 +18,7 @@ export const {fontFamily: CINZEL} = loadCinzel('normal', {weights: ['600', '700'
 
 export type LonLat = [number, number];
 export type CamKey = {at: number; center: LonLat; zoom: number};
-export type Territory = {id: string; rings: LonLat[][]; color: string; label?: string; labelAt?: LonLat; grow?: [number, number]; origin?: LonLat; opacity?: number};
+export type Territory = {id: string; rings: LonLat[][]; color: string; label?: string; labelAt?: LonLat; grow?: [number, number]; origin?: LonLat; opacity?: number; fadeOut?: [number, number]};
 export type Route = {id: string; points: LonLat[]; color: string; draw: [number, number]; width?: number; dashed?: boolean; unit?: Unit};
 export type Unit = {label: string; color: string; kind?: 'infantry' | 'cavalry' | 'elephant'};
 export type City = {name: string; at: LonLat; appear?: number; size?: number; align?: 'left' | 'right'};
@@ -158,7 +158,15 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
               <clipPath id={clipId}>
                 <circle cx={o[0]} cy={o[1]} r={g * Math.hypot(width, height) * 1.2} />
               </clipPath>
-              <path d={path(t.geo) ?? ''} fill={t.color} fillOpacity={t.opacity ?? 0.62} stroke={t.color} strokeWidth={3} clipPath={`url(#${clipId})`} />
+              <path
+                d={path(t.geo) ?? ''}
+                fill={t.color}
+                fillOpacity={(t.opacity ?? 0.62) * (t.fadeOut ? 1 - easeInOutCubic(ramp(p, t.fadeOut[0], t.fadeOut[1])) : 1)}
+                stroke={t.color}
+                strokeOpacity={t.fadeOut ? 1 - easeInOutCubic(ramp(p, t.fadeOut[0], t.fadeOut[1])) : 1}
+                strokeWidth={3}
+                clipPath={`url(#${clipId})`}
+              />
             </g>
           );
         })}

@@ -1,0 +1,152 @@
+{
+  "id": "001-hannibal",
+  "comp": "Hannibal",
+  "title": "Hannibal: The Man Who Nearly Destroyed Rome",
+  "fps": 24,
+  "seed": 247,
+  "voice": {"engine": "kokoro", "voice": "am_michael", "speed": 0.95, "language": "en-us", "gap": 0.42},
+  "music": {"key": "D", "tempo": 72},
+  "ambience": {"type": "wind", "gain": 0.1},
+  "scenes": [
+    {"id": "c0a", "music": "somber", "lead": 0.4, "lines": [
+      "On a summer morning in two hundred sixteen B C, the largest army Rome had ever sent into battle marched out to destroy one man.",
+      "By sunset, that army was gone."
+    ], "sfx": [{"type": "rumble", "at": 0.2, "duration": 3.0, "gain": 0.3}]},
+    {"id": "c0b", "music": "epic", "lead": 0.3, "lines": [
+      "The Greek historian Polybius says around seventy thousand Romans died. The Roman historian Livy says about fifty thousand.",
+      "Either way, it was one of the bloodiest single days in the history of war. And the man who did it was outnumbered almost two to one."
+    ], "sfx": [{"type": "impact", "at": 0.3, "duration": 1.6, "gain": 0.5}]},
+    {"id": "c0c", "music": "epic", "lead": 0.3, "tail": 1.2, "lines": [
+      "His name was Hannibal Barca. This is how he nearly destroyed Rome, and how Rome, finally, destroyed him."
+    ], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.4}]},
+
+    {"id": "c1", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c1a", "music": "calm", "lead": 0.4, "lines": [
+      "To understand Hannibal, start with his father, Hamilcar Barca.",
+      "Hamilcar fought Rome for years in Sicily during the First Punic War. Carthage lost that war in two hundred forty-one B C, and with it, Sicily."
+    ]},
+    {"id": "c1b", "music": "calm", "lead": 0.3, "lines": [
+      "A few years later, Rome also took Sardinia and Corsica, while Carthage was busy fighting a revolt of its own mercenaries.",
+      "So Hamilcar looked west, to Spain, rich in silver and soldiers."
+    ]},
+    {"id": "c1c", "music": "somber", "lead": 0.3, "lines": [
+      "Before he sailed, according to a story Hannibal himself later told, Hamilcar made his nine-year-old son swear an oath at an altar: never to be a friend of Rome.",
+      "We only have Hannibal's word for it. But he spent his whole life acting as if it were true."
+    ]},
+    {"id": "c1d", "music": "build", "lead": 0.3, "lines": [
+      "In Spain, the Barca family built a new empire. When Hamilcar died, his son-in-law Hasdrubal took over. When Hasdrubal was murdered in two hundred twenty-one B C, the army chose Hannibal. He was about twenty-five.",
+      "Two years later he besieged Saguntum, a Spanish city friendly to Rome. After eight months, it fell. Rome declared war."
+    ], "sfx": [{"type": "impact", "at": 20.0, "duration": 1.4, "gain": 0.35}]},
+
+    {"id": "c2", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c2a", "music": "build", "lead": 0.4, "lines": [
+      "Rome expected to fight in Spain and in Africa. Rome controlled the sea. Nobody expected Hannibal to walk to Italy.",
+      "In the spring of two hundred eighteen B C, he left New Carthage. Polybius says he crossed the Ebro with about ninety thousand infantry and twelve thousand cavalry. Historians think that number is inflated."
+    ]},
+    {"id": "c2b", "music": "march", "lead": 0.3, "lines": [
+      "He fought his way over the Pyrenees, then through southern Gaul to the river Rhône.",
+      "There, his men ferried thirty-seven war elephants across the river on giant rafts covered with earth, so the animals would think they were still on land."
+    ], "sfx": [{"type": "whoosh", "at": 0.2, "duration": 0.6, "gain": 0.25}]},
+    {"id": "c2c", "music": "somber", "lead": 0.3, "lines": [
+      "Then came the Alps. It was late in the year. Snow was already falling on the passes.",
+      "Mountain tribes ambushed the column. Pack animals and men slid off icy paths into ravines. Which pass he used is still argued about today."
+    ], "sfx": [{"type": "rumble", "at": 2.0, "duration": 4.0, "gain": 0.3}]},
+    {"id": "c2d", "music": "epic", "lead": 0.3, "lines": [
+      "About five months after leaving Spain, he came down into northern Italy. Polybius, quoting an inscription Hannibal set up himself, gives the number that was left: twenty thousand infantry and six thousand cavalry.",
+      "He had lost more than half his army before fighting a single major battle in Italy. And now he was in Rome's backyard."
+    ], "sfx": [{"type": "impact", "at": 9.0, "duration": 1.6, "gain": 0.4}]},
+
+    {"id": "c3", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c3a", "music": "build", "lead": 0.4, "lines": [
+      "Rome reacted fast. At the river Ticinus, Hannibal's cavalry beat a Roman force led by the consul Publius Scipio, who was badly wounded.",
+      "A few weeks later, in the freezing December of two hundred eighteen, came the river Trebia."
+    ]},
+    {"id": "c3b", "music": "tension", "lead": 0.3, "lines": [
+      "Hannibal sent his Numidian horsemen to provoke the Roman camp at dawn. The Romans chased them across the icy river, without breakfast, soaked to the chest.",
+      "On the far bank, Hannibal's army was waiting, fed and warm. And hidden in a stream bed behind the Roman lines were two thousand men under his brother Mago."
+    ], "sfx": [{"type": "whoosh", "at": 5.0, "duration": 0.6, "gain": 0.3}]},
+    {"id": "c3c", "music": "epic", "lead": 0.3, "lines": [
+      "When the trap closed, the Roman army broke. Only about ten thousand fought their way out to safety."
+    ], "sfx": [{"type": "impact", "at": 0.6, "duration": 1.4, "gain": 0.45}]},
+    {"id": "c3d", "music": "somber", "lead": 0.3, "lines": [
+      "In the spring, Hannibal took a route nobody watched: through flooded marshes. For days his men marched through water. Hannibal caught an eye infection there and lost the sight of one eye."
+    ]},
+    {"id": "c3e", "music": "tension", "lead": 0.3, "lines": [
+      "Then, at Lake Trasimene, he set the most complete ambush in ancient history. The consul Flaminius marched his army along a narrow strip between the lake and the hills, in morning fog.",
+      "Hannibal's men were waiting on the slopes above. When they charged, the Romans had nowhere to go but the water. Flaminius was killed, along with around fifteen thousand of his men."
+    ], "sfx": [{"type": "impact", "at": 13.5, "duration": 1.6, "gain": 0.45}]},
+
+    {"id": "c4", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c4a", "music": "calm", "lead": 0.4, "lines": [
+      "Rome turned to a dictator, Quintus Fabius Maximus. His strategy was simple and unpopular: do not fight Hannibal. Follow him, starve him, wait.",
+      "Romans mocked him as the Delayer. A year later, they wanted a decisive battle instead."
+    ]},
+    {"id": "c4b", "music": "build", "lead": 0.3, "lines": [
+      "In the summer of two hundred sixteen, two consuls, Paullus and Varro, led eight legions plus allies to Cannae, in southern Italy. Polybius counts eighty thousand infantry and about six thousand cavalry.",
+      "Hannibal had around forty thousand infantry, and ten thousand cavalry."
+    ]},
+    {"id": "c4c", "music": "tension", "lead": 0.3, "lines": [
+      "The Romans packed their infantry into an unusually deep formation, to smash through the Carthaginian center by sheer weight.",
+      "Hannibal did something strange. He pushed his center forward in a curve, toward the enemy. His best troops, African veterans, he placed behind the ends of the line. His cavalry he put on the wings."
+    ]},
+    {"id": "c4d", "music": "build", "lead": 0.3, "lines": [
+      "The Roman mass hit the curved center, and the center slowly gave way, bending backward, step by step, exactly as planned.",
+      "The deeper the Romans pushed, the more they crowded into a pocket."
+    ], "sfx": [{"type": "rumble", "at": 1.0, "duration": 5.0, "gain": 0.3}]},
+    {"id": "c4e", "music": "epic", "lead": 0.3, "lines": [
+      "Then the African veterans turned inward and struck both flanks. Meanwhile, Hannibal's heavy cavalry had routed the Roman horsemen, swung around behind the Roman army, and hit it from the rear.",
+      "The Romans were surrounded. So tightly packed that many could not even raise their weapons."
+    ], "sfx": [{"type": "impact", "at": 9.0, "duration": 1.8, "gain": 0.55}]},
+    {"id": "c4f", "music": "somber", "lead": 0.3, "lines": [
+      "Paullus died on the field, along with dozens of senators. Hannibal is said to have lost under six thousand men.",
+      "Military schools still study Cannae today, as the textbook double envelopment."
+    ]},
+
+    {"id": "c5", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c5a", "music": "tension", "lead": 0.4, "lines": [
+      "After Cannae, his cavalry commander Maharbal urged him to march on Rome at once. Hannibal refused. According to Livy, Maharbal told him: you know how to win a victory, but not how to use one.",
+      "Without siege engines, Rome's walls were too strong. Hannibal's plan was different: break Rome's alliances in Italy."
+    ]},
+    {"id": "c5b", "music": "calm", "lead": 0.3, "lines": [
+      "It partly worked. Capua, the second city of Italy, went over to him. So did much of the south.",
+      "But most of Rome's allies stayed loyal. And Rome simply refused to negotiate. It raised new legions, and avoided big battles."
+    ]},
+    {"id": "c5c", "music": "build", "lead": 0.3, "lines": [
+      "Meanwhile, Rome attacked where Hannibal was not. In Spain, the young Publius Cornelius Scipio, son of the consul wounded at Ticinus, captured New Carthage in two hundred nine B C."
+    ]},
+    {"id": "c5d", "music": "somber", "lead": 0.3, "lines": [
+      "In two hundred seven, Hannibal's brother Hasdrubal crossed the Alps with a second army to join him. At the river Metaurus, the Romans destroyed it.",
+      "According to Livy, Hannibal learned of it when his brother's head was thrown into his camp."
+    ], "sfx": [{"type": "impact", "at": 3.5, "duration": 1.4, "gain": 0.35}]},
+
+    {"id": "c6", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c6a", "music": "build", "lead": 0.4, "lines": [
+      "In two hundred four, Scipio did to Carthage what Hannibal had done to Rome. He landed in Africa.",
+      "Carthage recalled Hannibal. After fifteen years in Italy, undefeated in every major battle there, he sailed home."
+    ]},
+    {"id": "c6b", "music": "tension", "lead": 0.3, "lines": [
+      "In two hundred two B C, the two met near Zama. Hannibal opened with more than eighty war elephants.",
+      "Scipio had planned for them. He arranged his units in columns with open lanes. Trumpets panicked the elephants, and many ran straight through the lanes, or back into Carthage's own cavalry."
+    ], "sfx": [{"type": "rumble", "at": 4.0, "duration": 4.0, "gain": 0.35}]},
+    {"id": "c6c", "music": "epic", "lead": 0.3, "lines": [
+      "Now it was Rome that had the better cavalry, thanks to the Numidian prince Masinissa. The Roman horsemen chased Hannibal's cavalry off the field, then came back and struck his army from behind.",
+      "It was Cannae, in reverse."
+    ], "sfx": [{"type": "impact", "at": 9.5, "duration": 1.8, "gain": 0.5}]},
+    {"id": "c6d", "music": "somber", "lead": 0.3, "lines": [
+      "The peace terms were brutal. According to Polybius: ten thousand talents of silver over fifty years, all warships except ten, all war elephants surrendered, and no war at all without Rome's permission."
+    ]},
+
+    {"id": "c7", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c7a", "music": "calm", "lead": 0.4, "lines": [
+      "Hannibal was not finished. Back in Carthage, he was elected chief magistrate and reformed the city's finances.",
+      "His enemies reported him to Rome. Around one hundred ninety-five B C, he fled east, and spent years advising kings who were at war with Rome."
+    ]},
+    {"id": "c7b", "music": "somber", "lead": 0.3, "lines": [
+      "Finally, in Bithynia, in what is now Turkey, Roman agents closed in. Around one hundred eighty-three B C, rather than be handed over, Hannibal took poison."
+    ]},
+    {"id": "c7c", "music": "calm", "lead": 0.3, "tail": 2.4, "lines": [
+      "Thirty-seven years later, Rome destroyed Carthage itself.",
+      "Hannibal lost his war. But for fifteen years, one general, far from home, held the most powerful state in the Mediterranean at the edge of collapse. Which raises the question: if he had marched on Rome after Cannae, would history look different? Tell me what you think."
+    ]}
+  ]
+}

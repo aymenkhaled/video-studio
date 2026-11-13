@@ -20,6 +20,51 @@ export const ChapterCard: React.FC<{n: number; title: string; sub?: string; p: n
   );
 };
 
+/** Quote over a darkened background, with attribution. */
+export const QuoteCard: React.FC<{text: string; by: string; p: number; at?: [number, number]}> = ({text, by, p, at = [0.08, 0.96]}) => {
+  const a = easeInOutCubic(ramp(p, at[0], at[0] + 0.1)) * (1 - easeInOutCubic(ramp(p, at[1] - 0.05, at[1])));
+  if (a <= 0) return null;
+  return (
+    <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.62 * a})`, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: a}}>
+      <div style={{maxWidth: 1350, textAlign: 'center'}}>
+        <div style={{fontFamily: CINZEL, fontWeight: 600, fontSize: 64, lineHeight: 1.25, color: '#f4ecd8', transform: `translateY(${(1 - a) * 16}px)`}}>“{text}”</div>
+        <div style={{fontFamily: INTER, fontWeight: 600, fontSize: 30, color: '#d8b46a', marginTop: 28, letterSpacing: 2}}>— {by}</div>
+      </div>
+    </div>
+  );
+};
+
+/** Numbered list card (e.g. treaty terms), items appear one by one. */
+export const ListCard: React.FC<{title: string; items: string[]; p: number; source?: string}> = ({title, items, p, source}) => {
+  const a = easeInOutCubic(ramp(p, 0.02, 0.1));
+  return (
+    <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.7 * a})`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: a}}>
+      <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 62, color: '#f4ecd8', marginBottom: 40}}>{title}</div>
+      {items.map((it, i) => {
+        const b = easeInOutCubic(ramp(p, 0.12 + i * 0.17, 0.2 + i * 0.17));
+        return (
+          <div key={i} style={{display: 'flex', alignItems: 'center', gap: 24, width: 1200, marginBottom: 22, opacity: b, transform: `translateX(${(1 - b) * -30}px)`}}>
+            <div style={{width: 56, height: 56, borderRadius: 28, background: '#d8b46a', color: '#1b1208', fontFamily: INTER, fontWeight: 800, fontSize: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}>{i + 1}</div>
+            <div style={{fontFamily: INTER, fontWeight: 600, fontSize: 40, color: '#f4ecd8'}}>{it}</div>
+          </div>
+        );
+      })}
+      {source ? <div style={{fontFamily: INTER, fontWeight: 500, fontSize: 24, color: '#d9cdb0', marginTop: 20}}>Source: {source}</div> : null}
+    </div>
+  );
+};
+
+/** Big episode title card. */
+export const TitleCard: React.FC<{title: string; sub: string; p: number}> = ({title, sub, p}) => {
+  const a = easeInOutCubic(ramp(p, 0.15, 0.4));
+  return (
+    <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.55 * a})`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+      <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 170, letterSpacing: 18, color: '#f4ecd8', opacity: a, transform: `scale(${0.94 + 0.06 * a})`, textShadow: '0 6px 0 #000'}}>{title}</div>
+      <div style={{fontFamily: INTER, fontWeight: 600, fontSize: 38, letterSpacing: 6, color: '#d8b46a', opacity: easeInOutCubic(ramp(p, 0.35, 0.55))}}>{sub}</div>
+    </div>
+  );
+};
+
 /** Bottom timeline bar with a moving year marker. */
 export const TimelineBar: React.FC<{from: number; to: number; year: number; events?: {year: number; label: string}[]}> = ({from, to, year, events = []}) => {
   const x = (y: number) => clamp01((y - from) / (to - from)) * 100;

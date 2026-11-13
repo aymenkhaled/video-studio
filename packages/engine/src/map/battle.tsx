@@ -1,0 +1,188 @@
+import React from 'react';
+import {easeInOutCubic, mix, ramp} from '../motion';
+import {INTER} from '../overlay';
+import {CINZEL} from './map';
+
+// Battle diagram engine: a top-down field (100 × 56.25 units ≈ 16:9) with terrain, unit blocks that move
+// between keyframes, attack arrows and labels. Pure function of scene progress p (0..1).
+
+export type BKey = {at: number; x: number; y: number; w?: number; h?: number; rot?: number; opacity?: number};
+export type BUnit = {id: string; side: 'a' | 'b'; label?: string; kind?: 'inf' | 'cav' | 'ele' | 'light'; keys: BKey[]};
+export type BArrow = {from: [number, number]; via?: [number, number]; to: [number, number]; side: 'a' | 'b'; draw: [number, number]; width?: number};
+export type Terrain = {river?: [number, number][]; lake?: [number, number][]; hills?: {x: number; y: number; r: number}[]; fog?: [number, number]};
+export type BattleSpec = {
+  title: string;
+  sides: {a: {name: string; color: string}; b: {name: string; color: string}};
+  terrain?: Terrain;
+  units: BUnit[];
+  arrows?: BArrow[];
+  notes?: {text: string; x: number; y: number; appear: number; until?: number}[];
+  zoom?: {at: number; cx: number; cy: number; s: number}[];
+};
+
+const lerpKey = (keys: BKey[], p: number) => {
+  if (p <= keys[0].at) return keys[0];
+  for (let i = 0; i < keys.length - 1; i++) {
+    const a = keys[i];
+    const b = keys[i + 1];
+    if (p <= b.at) {
+      const k = easeInOutCubic((p - a.at) / Math.max(1e-6, b.at - a.at));
+      return {
+        at: p,
+        x: mix(a.x, b.x, k),
+        y: mix(a.y, b.y, k),
+        w: mix(a.w ?? 6, b.w ?? a.w ?? 6, k),
+        h: mix(a.h ?? 3, b.h ?? a.h ?? 3, k),
+        rot: mix(a.rot ?? 0, b.rot ?? a.rot ?? 0, k),
+        opacity: mix(a.opacity ?? 1, b.opacity ?? a.opacity ?? 1, k),
+      };
+    }
+  }
+  return keys[keys.length - 1];
+};
+
+const zoomAt = (z: BattleSpec['zoom'], p: number) => {
+  if (!z?.length) return {cx: 50, cy: 28.125, s: 1};
+  if (p <= z[0].at) return z[0];
+  for (let i = 0; i < z.length - 1; i++) {
+    if (p <= z[i + 1].at) {
+      const k = easeInOutCubic((p - z[i].at) / Math.max(1e-6, z[i + 1].at - z[i].at));
+      return {cx: mix(z[i].cx, z[i + 1].cx, k), cy: mix(z[i].cy, z[i + 1].cy, k), s: mix(z[i].s, z[i + 1].s, k)};
+    }
+  }
+  return z[z.length - 1];
+};
+
+const pts = (a: [number, number][]) => a.map((q) => q.join(',')).join(' ');
+
+/** Units along an arc (for crescents / curved lines). */
+export const arcUnits = (
+  prefix: string,
+  side: 'a' | 'b',
+  n: number,
+  phases: {at: number; cx: number; cy: number; r: number; a0: number; a1: number}[],
+  size: {w: number; h: number},
+  kind: BUnit['kind'] = 'inf',
+): BUnit[] =>
+  Array.from({length: n}, (_, i) => ({
+    id: `${prefix}${i}`,
+    side,
+    kind,
+    keys: phases.map((ph) => {
+      const ang = mix(ph.a0, ph.a1, n === 1 ? 0.5 : i / (n - 1));
+      return {at: ph.at, x: ph.cx + ph.r * Math.cos(ang), y: ph.cy + ph.r * Math.sin(ang), w: size.w, h: size.h, rot: (ang * 180) / Math.PI + 90};
+    }),
+  }));
+
+export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; height: number}> = ({spec, p, width, height}) => {
+  const S = width / 100; // px per field unit
+  const z = zoomAt(spec.zoom, p * 1.0);
+  const push = 1 + 0.05 * p; // living camera
+  const scale = z.s * push;
+  const tx = width / 2 - z.cx * S * scale;
+  const ty = height / 2 - z.cy * S * scale;
+  const t = spec.terrain ?? {};
+  const fog = t.fog ? 1 - easeInOutCubic(ramp(p, t.fog[0], t.fog[1])) : 0;
+  const color = (s: 'a' | 'b') => spec.sides[s].color;
+
+  return (
+    <div style={{position: 'absolute', inset: 0, background: '#cbbd94'}}>
+      <svg width={width} height={height} style={{position: 'absolute', inset: 0}}>
+        <defs>
+          <radialGradient id="bvig" cx="50%" cy="50%" r="75%">
+            <stop offset="55%" stopColor="rgba(0,0,0,0)" />
+            <stop offset="100%" stopColor="rgba(40,25,10,0.55)" />
+          </radialGradient>
+          <pattern id="bgrid" width={5 * S} height={5 * S} patternUnits="userSpaceOnUse">
+            <path d={`M ${5 * S} 0 L 0 0 0 ${5 * S}`} fill="none" stroke="rgba(90,70,40,0.12)" strokeWidth={1} />
+          </pattern>
+        </defs>
+        <g transform={`translate(${tx},${ty}) scale(${scale})`}>
+          <rect x={-50 * S} y={-50 * S} width={200 * S} height={160 * S} fill="#d8c9a3" />
+          <rect x={-50 * S} y={-50 * S} width={200 * S} height={160 * S} fill="url(#bgrid)" />
+          {(t.hills ?? []).map((h, i) => (
+            <g key={i}>
+              <circle cx={h.x * S} cy={h.y * S} r={h.r * S} fill="#bfae83" />
+              <circle cx={h.x * S} cy={h.y * S} r={h.r * 0.62 * S} fill="#b3a176" />
+              <circle cx={h.x * S} cy={h.y * S} r={h.r * 0.3 * S} fill="#a8956a" />
+            </g>
+          ))}
+          {t.lake ? <polygon points={pts(t.lake.map(([x, y]) => [x * S, y * S]))} fill="#2c4a5a" stroke="#1d3340" strokeWidth={4} /> : null}
+          {t.river ? <polyline points={pts(t.river.map(([x, y]) => [x * S, y * S]))} fill="none" stroke="#2c4a5a" strokeWidth={2.2 * S} strokeLinejoin="round" strokeLinecap="round" /> : null}
+          {(spec.arrows ?? []).map((a, i) => {
+            const pr = easeInOutCubic(ramp(p, a.draw[0], a.draw[1]));
+            if (pr <= 0) return null;
+            const via = a.via ?? [(a.from[0] + a.to[0]) / 2, (a.from[1] + a.to[1]) / 2];
+            const q = (u: number): [number, number] => {
+              const x = (1 - u) * (1 - u) * a.from[0] + 2 * (1 - u) * u * via[0] + u * u * a.to[0];
+              const y = (1 - u) * (1 - u) * a.from[1] + 2 * (1 - u) * u * via[1] + u * u * a.to[1];
+              return [x * S, y * S];
+            };
+            const N = 24;
+            const line = Array.from({length: N + 1}, (_, k) => q((pr * k) / N));
+            const tip = q(pr);
+            const prev = q(Math.max(0, pr - 0.03));
+            const ang = (Math.atan2(tip[1] - prev[1], tip[0] - prev[0]) * 180) / Math.PI;
+            const w = (a.width ?? 1.4) * S;
+            return (
+              <g key={i}>
+                <polyline points={pts(line)} fill="none" stroke={color(a.side)} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" opacity={0.9} />
+                <polygon points={`0,${-w * 1.5} ${w * 2.4},0 0,${w * 1.5}`} fill={color(a.side)} transform={`translate(${tip[0]},${tip[1]}) rotate(${ang})`} />
+              </g>
+            );
+          })}
+          {spec.units.map((u) => {
+            const k = lerpKey(u.keys, p);
+            if ((k.opacity ?? 1) <= 0.01) return null;
+            const w = (k.w ?? 6) * S;
+            const h = (k.h ?? 3) * S;
+            const c = color(u.side);
+            return (
+              <g key={u.id} transform={`translate(${k.x * S},${k.y * S}) rotate(${k.rot ?? 0})`} opacity={k.opacity ?? 1}>
+                <rect x={-w / 2} y={-h / 2} width={w} height={h} fill={c} stroke="#f4ecd8" strokeWidth={0.25 * S} rx={0.2 * S} />
+                {u.kind === 'cav' ? <line x1={-w / 2} y1={h / 2} x2={w / 2} y2={-h / 2} stroke="#f4ecd8" strokeWidth={0.22 * S} /> : null}
+                {u.kind === 'inf' || !u.kind ? (
+                  <>
+                    <line x1={-w / 2} y1={-h / 2} x2={w / 2} y2={h / 2} stroke="#f4ecd8" strokeWidth={0.22 * S} />
+                    <line x1={-w / 2} y1={h / 2} x2={w / 2} y2={-h / 2} stroke="#f4ecd8" strokeWidth={0.22 * S} />
+                  </>
+                ) : null}
+                {u.kind === 'ele' ? (
+                  <text y={h * 0.32} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={h * 0.9} fill="#f4ecd8">
+                    E
+                  </text>
+                ) : null}
+                {u.label ? (
+                  <text y={-h / 2 - 0.8 * S} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={1.5 * S} fill="#2a2116" stroke="#efe4c8" strokeWidth={0.35 * S} paintOrder="stroke" transform={`rotate(${-(k.rot ?? 0)})`}>
+                    {u.label}
+                  </text>
+                ) : null}
+              </g>
+            );
+          })}
+          {(spec.notes ?? []).map((n, i) => {
+            const a = easeInOutCubic(ramp(p, n.appear, n.appear + 0.06)) * (n.until ? 1 - easeInOutCubic(ramp(p, n.until - 0.05, n.until)) : 1);
+            if (a <= 0) return null;
+            return (
+              <text key={i} x={n.x * S} y={n.y * S} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={1.7 * S} fill="#2a2116" stroke="#efe4c8" strokeWidth={0.4 * S} paintOrder="stroke" opacity={a}>
+                {n.text}
+              </text>
+            );
+          })}
+        </g>
+        {fog > 0 ? <rect width={width} height={height} fill="#e8e4da" opacity={0.75 * fog} /> : null}
+        <rect width={width} height={height} fill="url(#bvig)" />
+      </svg>
+      {/* title + legend */}
+      <div style={{position: 'absolute', left: 64, top: 48, fontFamily: CINZEL, fontWeight: 700, fontSize: 54, color: '#2a2116', textShadow: '0 2px 0 rgba(244,236,216,0.8)'}}>{spec.title}</div>
+      <div style={{position: 'absolute', right: 64, top: 56, display: 'flex', gap: 28, fontFamily: INTER, fontWeight: 700, fontSize: 28, color: '#2a2116'}}>
+        {(['a', 'b'] as const).map((s) => (
+          <div key={s} style={{display: 'flex', alignItems: 'center', gap: 10}}>
+            <div style={{width: 30, height: 20, background: spec.sides[s].color, border: '3px solid #f4ecd8'}} />
+            {spec.sides[s].name}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
