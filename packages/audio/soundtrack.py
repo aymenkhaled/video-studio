@@ -385,9 +385,10 @@ mix *= 0.9 / peak
 sf.write(out / "premix.wav", mix, RATE, subtype="PCM_24")
 
 meas = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(out / "premix.wav"), "-af",
-                       "loudnorm=I=-14:TP=-1.8:LRA=9:print_format=json", "-f", "null", "-"], capture_output=True, text=True, check=True)
+                       "loudnorm=I=-14:TP=-2.5:LRA=9:print_format=json", "-f", "null", "-"], capture_output=True, text=True, check=True)
 vals = json.loads(re.search(r'\{\s*"input_i".*?\}', meas.stderr, re.DOTALL).group(0))
-ln = ("loudnorm=I=-14:TP=-1.8:LRA=9:" f"measured_I={vals['input_i']}:measured_TP={vals['input_tp']}:measured_LRA={vals['input_lra']}:"
+# TP −2.5 (not −1.5): AAC encoding adds ~0.4–0.8 dB of inter-sample peak; QA gate is ≤ −1.5 dBTP on the final file.
+ln = ("loudnorm=I=-14:TP=-2.5:LRA=9:" f"measured_I={vals['input_i']}:measured_TP={vals['input_tp']}:measured_LRA={vals['input_lra']}:"
       f"measured_thresh={vals['input_thresh']}:offset={vals['target_offset']}:linear=true")
 subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(out / "premix.wav"), "-af", ln,
                 "-ar", str(RATE), "-ac", "2", "-c:a", "pcm_s16le", "-map_metadata", "-1", str(out / "soundtrack.wav")], check=True)

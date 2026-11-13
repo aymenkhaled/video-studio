@@ -52,7 +52,7 @@ const unit = {label: 'Hannibal', color: '#c8812a', kind: 'infantry' as const};
 
 const SPECS: Record<string, MapSpec> = {
   s1: {
-    camera: [{at: 0, center: [9, 38.5], zoom: 4.6}, {at: 1, center: [7, 39.5], zoom: 5.6}],
+    camera: [{at: 0, center: [14, 40], zoom: 3.4}, {at: 0.45, center: [9, 39], zoom: 4.8}, {at: 1, center: [7, 39.5], zoom: 5.6}],
     territories: territories.map((t) => ({...t, grow: t.id === 'rome' ? [0.3, 0.65] : [0.55, 0.9]})),
     regions: [{text: 'ROME', at: [13.6, 42.6], appear: 0.4}, {text: 'CARTHAGE', at: [7.5, 33.6], appear: 0.65}],
     cities: [{name: 'Rome', at: [12.48, 41.9], appear: 0.35}, {name: 'Carthage', at: [10.32, 36.85], appear: 0.6}, {...NEW_CARTHAGE, appear: 0.85}],
@@ -76,7 +76,7 @@ const SPECS: Record<string, MapSpec> = {
     territories,
     routes: [{id: 'march', points: MARCH, color: '#f0c36a', draw: [-1, 0], unit}],
     cities: [{name: 'Taurini (Turin)', at: [7.68, 45.07], appear: 0.05}],
-    regions: [{text: 'CISALPINE GAUL', at: [9.6, 45.55], appear: 0.2, size: 34}],
+    regions: [{text: 'CISALPINE GAUL', at: [9.0, 45.4], appear: 0.2, size: 30}],
   },
   s5: {
     camera: [{at: 0, center: [8.6, 44.9], zoom: 26}, {at: 1, center: [10.5, 42.5], zoom: 7}],

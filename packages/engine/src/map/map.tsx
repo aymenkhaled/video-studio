@@ -3,6 +3,7 @@ import {geoArea, geoConicConformal, geoInterpolate, geoMercator, geoOrthographic
 import {feature} from 'topojson-client';
 import type {Topology, GeometryCollection} from 'topojson-specification';
 import land50 from 'world-atlas/land-50m.json';
+import land110 from 'world-atlas/land-110m.json';
 import {evolvePath, getLength, getPointAtLength, getTangentAtLength} from '@remotion/paths';
 import {loadFont as loadCinzel} from '@remotion/google-fonts/Cinzel';
 import {clamp01, easeInOutCubic, mix, ramp} from '../motion';
@@ -36,10 +37,13 @@ export type MapSpec = {
   theme?: MapTheme;
 };
 
-const LAND = (() => {
-  const topo = land50 as unknown as Topology<{land: GeometryCollection}>;
+const toLand = (t: unknown) => {
+  const topo = t as Topology<{land: GeometryCollection}>;
   return feature(topo, topo.objects.land);
-})();
+};
+// Level of detail: 1:110m coastlines when zoomed out (cheap), 1:50m when zoomed in.
+const LAND_LO = toLand(land110);
+const LAND_HI = toLand(land50);
 
 /** d3 treats ring winding as meaningful: a ring with area > hemisphere means "everything but"; fix it. */
 const polygon = (rings: LonLat[][]) => {
@@ -114,11 +118,15 @@ const UnitIcon: React.FC<{x: number; y: number; angle: number; unit: Unit; s?: n
 /** Renders one map shot at progress p (0..1). */
 export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height: number; uid?: string}> = ({spec, p, width, height, uid = 'm'}) => {
   const theme = spec.theme ?? PARCHMENT;
-  const cam = cameraAt(spec.camera, p);
+  const base = cameraAt(spec.camera, p);
+  // "Living camera": a constant slow push-in so no shot is ever static (freezedetect rule), on top of keyframes.
+  const cam = {center: base.center, zoom: base.zoom * (1 + 0.07 * p)};
   const proj = makeProjection(spec.projection, cam, width, height);
+  // Cull geometry outside the frame before building SVG paths (big win when zoomed in).
+  if (spec.projection !== 'globe') proj.clipExtent([[-40, -40], [width + 40, height + 40]]);
   const path = geoPath(proj);
   const polys = useMemo(() => (spec.territories ?? []).map((t) => ({...t, geo: polygon(t.rings)})), [spec.territories]);
-  const landD = path(LAND) ?? '';
+  const landD = path(cam.zoom < 9 ? LAND_LO : LAND_HI) ?? '';
   const px = (ll: LonLat) => proj(ll) ?? [-9999, -9999];
   const zoomS = Math.min(1.6, Math.max(0.75, Math.sqrt(cam.zoom / 6)));
 
