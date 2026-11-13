@@ -10,7 +10,11 @@ import {evolvePath, getLength, getPointAtLength, getTangentAtLength} from '@remo
 import {loadFont as loadCinzel} from '@remotion/google-fonts/Cinzel';
 import {clamp01, easeInOutCubic, mix, ramp} from '../motion';
 import {INTER} from '../overlay';
-import {layoutLabels, type LabelBox} from './clarity-logic';
+import {kmLabel, layoutLabels, type LabelBox} from './clarity-logic';
+import {usePublicJson} from './media';
+import {Figure} from './figures';
+import {staticFile} from 'remotion';
+import {geoLength} from 'd3-geo';
 
 // Map engine v1 (channels A "History in Maps" and C "Money & Maps").
 // Everything is a pure function of scene progress p (0..1) so scene length can follow the voice.
@@ -21,8 +25,8 @@ export const {fontFamily: CINZEL} = loadCinzel('normal', {weights: ['600', '700'
 
 export type LonLat = [number, number];
 export type CamKey = {at: number; center: LonLat; zoom: number};
-export type Territory = {id: string; rings: LonLat[][]; color: string; label?: string; labelAt?: LonLat; grow?: [number, number]; origin?: LonLat; opacity?: number; fadeOut?: [number, number]};
-export type Route = {id: string; points: LonLat[]; color: string; draw: [number, number]; width?: number; dashed?: boolean; unit?: Unit};
+export type Territory = {id: string; rings: LonLat[][]; color: string; label?: string; labelAt?: LonLat; grow?: [number, number]; origin?: LonLat; opacity?: number; fadeOut?: [number, number]; pattern?: 'hatch' | 'dots'};
+export type Route = {id: string; points: LonLat[]; color: string; draw: [number, number]; width?: number; dashed?: boolean; unit?: Unit; /** show "≈ N km" at the middle once drawn */ km?: boolean};
 export type Unit = {label: string; color: string; kind?: 'infantry' | 'cavalry' | 'elephant'};
 export type City = {name: string; at: LonLat; appear?: number; size?: number; align?: 'left' | 'right'; today?: string};
 export type RegionLabel = {text: string; at: LonLat; appear?: number; size?: number};
@@ -42,6 +46,12 @@ export type MapSpec = {
   modern?: {labels: RegionLabel[]; opacity?: number};
   /** Clarity Kit: move labels so none overlap (units > cities > regions > modern names). */
   avoidLabels?: boolean;
+  /** Clarity Kit: Natural Earth shaded relief under the land colour (Mercator only; needs fetch_media.py). */
+  relief?: boolean;
+  /** Clarity Kit: rivers to draw (Natural Earth names) + optional labels. */
+  rivers?: {name: string; label?: string; at?: LonLat}[];
+  /** Clarity Kit: minimum on-screen text size in px (phone readability). */
+  minText?: number;
 };
 
 const toLand = (t: unknown) => {
@@ -105,7 +115,21 @@ const smoothPath = (pts: [number, number][]) => {
   return d;
 };
 
-const UnitIcon: React.FC<{x: number; y: number; angle: number; unit: Unit; s?: number}> = ({x, y, unit, s = 1}) => {
+const UnitIcon: React.FC<{x: number; y: number; angle: number; unit: Unit; s?: number; mt?: number}> = ({x, y, unit, s = 1, mt = 0}) => {
+  if (mt) {
+    // Clarity Kit: illustrated figure badge instead of a NATO-style box
+    const r = 30 * s;
+    const kind = unit.kind === 'cavalry' ? 'cavalry' : unit.kind === 'elephant' ? 'elephant' : 'infantry';
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <circle r={r} fill="#f4ecd8" stroke={unit.color} strokeWidth={6 * s} />
+        <Figure kind={kind} x={0} y={2 * s} size={r * 1.45} color={unit.color} />
+        <text y={-r - 12} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={Math.max(mt, 24 * s)} fill="#f4ecd8" stroke="#1b1208" strokeWidth={7} paintOrder="stroke">
+          {unit.label}
+        </text>
+      </g>
+    );
+  }
   const w = 54 * s;
   const h = 36 * s;
   return (
@@ -148,6 +172,10 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
   const landD = path(cam.zoom < 9 ? LAND_LO : LAND_HI) ?? '';
   const px = (ll: LonLat) => proj(ll) ?? [-9999, -9999];
   const zoomS = Math.min(1.6, Math.max(0.75, Math.sqrt(cam.zoom / 6)));
+  const mt = spec.minText ?? 0;
+  const fs = (base: number) => Math.max(mt, base);
+  const relief = usePublicJson<{bounds: [number, number, number, number]; w: number; h: number}>('geo/relief.json', !!spec.relief);
+  const riversGeo = usePublicJson<{features: {properties: {name: string}; geometry: {type: 'MultiLineString'; coordinates: LonLat[][]}}[]}>('geo/rivers.json', !!spec.rivers?.length);
   const modernA = spec.modern ? spec.modern.opacity ?? 1 : 0;
 
   // Label avoidance (opt-in): estimate boxes deterministically from text length, place greedily.
@@ -167,22 +195,22 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       const [x, y] = px(c.at);
       const s = (c.size ?? 1) * zoomS;
       boxes.push({id: `d:${c.name}`, x: x - 12 * s, y: y - 12 * s, w: 24 * s, h: 24 * s, priority: 3.5});
-      const w = Math.max(c.name.length * 30 * 0.6, c.today ? (c.today.length + 7) * 20 * 0.58 : 0) * s;
-      const h = (c.today ? 62 : 36) * s;
+      const w = Math.max(c.name.length * fs(30 * s) * 0.6, c.today ? (c.today.length + 7) * fs(20 * s) * 0.55 : 0);
+      const h = c.today ? fs(30 * s) * 2.1 : fs(30 * s) * 1.2;
       const right = c.align !== 'left';
       boxes.push({id: `c:${c.name}`, x: right ? x + 16 * s : x - 16 * s - w, y: y - 18 * s, w, h, priority: 3});
     });
     (spec.regions ?? []).forEach((r) => {
       const [x, y] = px(r.at);
-      const fs = (r.size ?? 44) * zoomS;
-      const w = r.text.length * (fs * 0.78 + 8);
-      boxes.push({id: `r:${r.text}`, x: x - w / 2, y: y - fs * 0.85, w, h: fs, priority: 2});
+      const f = fs((r.size ?? 44) * zoomS);
+      const w = r.text.length * (f * 0.78 + 8);
+      boxes.push({id: `r:${r.text}`, x: x - w / 2, y: y - f * 0.85, w, h: f, priority: 2});
     });
     (spec.modern?.labels ?? []).forEach((r) => {
       const [x, y] = px(r.at);
-      const fs = (r.size ?? 22) * zoomS;
-      const w = r.text.length * fs * 0.8;
-      boxes.push({id: `m:${r.text}`, x: x - w / 2, y: y - fs * 0.85, w, h: fs, priority: 1});
+      const f = fs((r.size ?? 22) * zoomS);
+      const w = r.text.length * f * 0.82;
+      boxes.push({id: `m:${r.text}`, x: x - w / 2, y: y - f * 0.85, w, h: f, priority: 1});
     });
     for (const pl of layoutLabels(boxes, {w: width, h: height})) shift.set(pl.id, pl);
   }
@@ -203,6 +231,26 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       {/* soft coastal halo, then land */}
       <path d={landD} fill="none" stroke="rgba(216,201,163,0.14)" strokeWidth={14} strokeLinejoin="round" />
       <path d={landD} fill={theme.land} stroke={theme.coast} strokeWidth={1.6} strokeLinejoin="round" />
+      {relief && spec.projection !== 'globe' && spec.projection !== 'conic' ? (
+        <g clipPath={`url(#${uid}-land)`} opacity={0.42} style={{mixBlendMode: 'multiply'}}>
+          {Array.from({length: 40}, (_, k) => {
+            // equirectangular raster → Mercator: draw 40 latitude strips, each stretched to its projected height
+            const [x0, y0, x1, y1] = relief.bounds;
+            const la = y1 - ((y1 - y0) * k) / 40;
+            const lb = y1 - ((y1 - y0) * (k + 1)) / 40;
+            const tl = proj([x0, la]);
+            const br = proj([x1, lb]);
+            if (!tl || !br || br[1] < -50 || tl[1] > height + 50) return null;
+            const sy = (relief.h * k) / 40;
+            const sh = relief.h / 40;
+            return (
+              <svg key={k} x={tl[0]} y={tl[1]} width={br[0] - tl[0]} height={br[1] - tl[1] + 1} viewBox={`0 ${sy} ${relief.w} ${sh}`} preserveAspectRatio="none">
+                <image href={staticFile('geo/relief.webp')} width={relief.w} height={relief.h} />
+              </svg>
+            );
+          })}
+        </g>
+      ) : null}
       {/* faint 2° survey grid over land: texture so slow camera moves stay visible on featureless zooms */}
       <path d={path(FINE_GRID) ?? ''} fill="none" stroke="rgba(70,55,30,0.11)" strokeWidth={1.2} clipPath={`url(#${uid}-land)`} />
 
@@ -227,10 +275,37 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
                 strokeWidth={3}
                 clipPath={`url(#${clipId})`}
               />
+              {t.pattern ? (
+                <>
+                  <pattern id={`${uid}-tp-${t.id}`} width={16} height={16} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    {t.pattern === 'hatch' ? <line x1={0} y1={0} x2={0} y2={16} stroke="rgba(255,240,220,0.45)" strokeWidth={4} /> : <circle cx={8} cy={8} r={2.8} fill="rgba(255,240,220,0.5)" />}
+                  </pattern>
+                  <path d={path(t.geo) ?? ''} fill={`url(#${uid}-tp-${t.id})`} opacity={t.fadeOut ? 1 - easeInOutCubic(ramp(p, t.fadeOut[0], t.fadeOut[1])) : 1} clipPath={`url(#${clipId})`} />
+                </>
+              ) : null}
             </g>
           );
         })}
       </g>
+
+      {/* rivers (Clarity Kit) */}
+      {riversGeo && spec.rivers?.length ? (
+        <g>
+          {riversGeo.features
+            .filter((f) => spec.rivers!.some((r) => r.name === f.properties.name))
+            .map((f, k) => (
+              <path key={k} d={path(f.geometry) ?? ''} fill="none" stroke="#4f7fa3" strokeWidth={3.2 * zoomS} strokeLinecap="round" strokeLinejoin="round" opacity={0.9} />
+            ))}
+          {spec.rivers.filter((r) => r.label && r.at).map((r) => {
+            const [x, y] = px(r.at!);
+            return (
+              <text key={r.name} x={x} y={y} textAnchor="middle" fontFamily={INTER} fontStyle="italic" fontWeight={700} fontSize={fs(26 * zoomS)} fill="#2f5f86" stroke="rgba(244,236,216,0.85)" strokeWidth={5} paintOrder="stroke">
+                {r.label}
+              </text>
+            );
+          })}
+        </g>
+      ) : null}
 
       {/* modern borders + names (Clarity Kit): faint, dashed, under historical labels */}
       {modernA > 0 ? (
@@ -242,7 +317,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
             const a = easeInOutCubic(ramp(p, r.appear ?? 0, (r.appear ?? 0) + 0.12));
             const [x, y] = px(r.at);
             return (
-              <text key={r.text} x={x + o.dx} y={y + o.dy} textAnchor="middle" fontFamily={INTER} fontWeight={600} fontSize={(r.size ?? 22) * zoomS} letterSpacing="0.12em" fill="rgba(42,33,22,0.6)" fillOpacity={a}>
+              <text key={r.text} x={x + o.dx} y={y + o.dy} textAnchor="middle" fontFamily={INTER} fontWeight={700} fontSize={fs((r.size ?? 22) * zoomS)} letterSpacing="0.12em" fill="rgba(42,33,22,0.62)" fillOpacity={a}>
                 {r.text.toUpperCase()}
               </text>
             );
@@ -259,7 +334,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
         const x = x0 + o.dx;
         const y = y0 + o.dy;
         return (
-          <text key={r.text} x={x} y={y} textAnchor="middle" fontFamily={CINZEL} fontWeight={700} fontSize={(r.size ?? 44) * zoomS} letterSpacing={8} fill="#f4ecd8" fillOpacity={0.92 * a} stroke="rgba(27,18,8,0.55)" strokeWidth={4} paintOrder="stroke">
+          <text key={r.text} x={x} y={y} textAnchor="middle" fontFamily={CINZEL} fontWeight={700} fontSize={fs((r.size ?? 44) * zoomS)} letterSpacing={8} fill="#f4ecd8" fillOpacity={0.92 * a} stroke="rgba(27,18,8,0.55)" strokeWidth={4} paintOrder="stroke">
             {r.text}
           </text>
         );
@@ -281,7 +356,16 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
             <path d={d} fill="none" stroke="rgba(10,6,2,0.45)" strokeWidth={w + 6} strokeLinecap="round" strokeDasharray={ev.strokeDasharray} strokeDashoffset={ev.strokeDashoffset} />
             <path d={d} fill="none" stroke={r.color} strokeWidth={w} strokeLinecap="round" strokeDasharray={r.dashed ? `${w * 2} ${w * 1.4}` : ev.strokeDasharray} strokeDashoffset={r.dashed ? 0 : ev.strokeDashoffset} />
             <polygon points={`0,${-w * 1.6} ${w * 2.6},0 0,${w * 1.6}`} fill={r.color} stroke="rgba(10,6,2,0.6)" strokeWidth={2} transform={`translate(${tip.x},${tip.y}) rotate(${ang})`} />
-            {r.unit ? <UnitIcon x={tip.x} y={tip.y - 46 * zoomS} angle={ang} unit={r.unit} s={zoomS} /> : null}
+            {r.km && pr > 0.98 ? (() => {
+              const mid = getPointAtLength(d, len / 2) ?? {x: 0, y: 0};
+              const km = geoLength({type: 'LineString', coordinates: r.points}) * 6371;
+              return (
+                <text x={mid.x} y={mid.y - 18} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={fs(30 * zoomS)} fill="#f4ecd8" stroke="#1b1208" strokeWidth={6} paintOrder="stroke">
+                  {kmLabel(km)}
+                </text>
+              );
+            })() : null}
+            {r.unit ? <UnitIcon x={tip.x} y={tip.y - 46 * zoomS} angle={ang} unit={r.unit} s={zoomS} mt={mt} /> : null}
           </g>
         );
       })}
@@ -303,12 +387,12 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
             <circle cx={x} cy={y} r={3.5 * s} fill="#1b1208" />
             {o.hidden ? null : (
               <>
-                {o.dx || o.dy ? <line x1={x} y1={y} x2={tx} y2={ty - 9 * s} stroke="#1b1208" strokeWidth={2 * s} opacity={0.7} /> : null}
-                <text x={tx} y={ty} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontWeight={700} fontSize={30 * s} fill="#f4ecd8" stroke="#1b1208" strokeWidth={6 * s} paintOrder="stroke">
+                {(o.dx || o.dy) && Math.hypot(o.dx, o.dy) < 140 ? <line x1={x} y1={y} x2={tx} y2={ty - 9 * s} stroke="#1b1208" strokeWidth={2 * s} opacity={0.7} /> : null}
+                <text x={tx} y={ty} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontWeight={800} fontSize={fs(30 * s)} fill="#f4ecd8" stroke="#1b1208" strokeWidth={6 * s} paintOrder="stroke">
                   {c.name}
                 </text>
                 {c.today ? (
-                  <text x={tx} y={ty + 28 * s} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontStyle="italic" fontWeight={500} fontSize={20 * s} fill="#f4ecd8" fillOpacity={ta} stroke="#1b1208" strokeWidth={5 * s} paintOrder="stroke">
+                  <text x={tx} y={ty + Math.max(28 * s, mt * 0.95)} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontStyle="italic" fontWeight={600} fontSize={fs(20 * s) * (mt ? 0.88 : 1)} fill="#f4ecd8" fillOpacity={ta} stroke="#1b1208" strokeWidth={5 * s} paintOrder="stroke">
                     today: {c.today}
                   </text>
                 ) : null}

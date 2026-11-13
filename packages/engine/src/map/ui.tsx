@@ -1,4 +1,6 @@
 import React from 'react';
+import {Img} from 'remotion';
+import {artSrc} from './media';
 import {clamp01, easeInOutCubic, ramp} from '../motion';
 import {INTER} from '../overlay';
 import {CINZEL} from './map';
@@ -9,14 +11,21 @@ import {agoLabel} from './clarity-logic';
 export const yearLabel = (y: number) => (y < 0 ? `${-y} BC` : `AD ${y}`);
 
 /** Full-frame chapter card over a darkened map. `p` = progress within the card's on-screen time. */
-export const ChapterCard: React.FC<{n: number; title: string; sub?: string; p: number}> = ({n, title, sub, p}) => {
+export const ChapterCard: React.FC<{n: number; title: string; sub?: string; p: number; image?: string; question?: string}> = ({n, title, sub, p, image, question}) => {
   const a = easeInOutCubic(ramp(p, 0, 0.18)) * (1 - easeInOutCubic(ramp(p, 0.85, 1)));
   return (
     <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.72 * a})`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: a}}>
-      <div style={{fontFamily: INTER, fontWeight: 700, fontSize: 30, letterSpacing: 10, color: '#d8b46a'}}>CHAPTER {n}</div>
-      <div style={{width: 120 * a, height: 3, background: '#d8b46a', margin: '22px 0'}} />
-      <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 96, color: '#f4ecd8', transform: `translateY(${(1 - a) * 20}px)`}}>{title}</div>
-      {sub ? <div style={{fontFamily: INTER, fontWeight: 500, fontSize: 34, color: '#d9cdb0', marginTop: 16}}>{sub}</div> : null}
+      {image ? (
+        <>
+          <Img src={artSrc(image)} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${1.04 + 0.06 * p})`}} />
+          <div style={{position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(12,9,5,0.55) 0%, rgba(12,9,5,0.88) 100%)'}} />
+        </>
+      ) : null}
+      <div style={{position: 'relative', fontFamily: INTER, fontWeight: 700, fontSize: 34, letterSpacing: 10, color: '#d8b46a'}}>CHAPTER {n}</div>
+      <div style={{position: 'relative', width: 120 * a, height: 3, background: '#d8b46a', margin: '22px 0'}} />
+      <div style={{position: 'relative', fontFamily: CINZEL, fontWeight: 700, fontSize: 96, color: '#f4ecd8', transform: `translateY(${(1 - a) * 20}px)`}}>{title}</div>
+      {sub ? <div style={{position: 'relative', fontFamily: INTER, fontWeight: 600, fontSize: 38, color: '#d9cdb0', marginTop: 16}}>{sub}</div> : null}
+      {question ? <div style={{position: 'relative', maxWidth: 1300, textAlign: 'center', fontFamily: INTER, fontWeight: 700, fontStyle: 'italic', fontSize: 46, color: '#f2c14e', marginTop: 34}}>{question}</div> : null}
     </div>
   );
 };
@@ -79,12 +88,12 @@ export const TimelineBar: React.FC<{from: number; to: number; year: number; even
       <div style={{position: 'absolute', left: `${x(year)}%`, top: 16, transform: 'translateX(-50%)'}}>
         <div style={{width: 28, height: 28, borderRadius: 14, background: '#d8b46a', border: '4px solid #1b1208', margin: '0 auto'}} />
       </div>
-      <div style={{position: 'absolute', left: `${x(year)}%`, top: -30, transform: 'translateX(-50%)', color: '#f4ecd8', fontWeight: 800, fontSize: 30, textShadow: '0 2px 0 #000', whiteSpace: 'nowrap'}}>{yearLabel(Math.round(year))}</div>
+      <div style={{position: 'absolute', left: `${x(year)}%`, top: now !== undefined ? -44 : -30, transform: 'translateX(-50%)', color: '#f4ecd8', fontWeight: 800, fontSize: now !== undefined ? 40 : 30, textShadow: '0 2px 0 #000', whiteSpace: 'nowrap'}}>{yearLabel(Math.round(year))}</div>
       {now !== undefined ? (
-        <div style={{position: 'absolute', left: `${x(year)}%`, top: 40, transform: 'translateX(-50%)', color: '#e9dcc0', fontWeight: 500, fontSize: 18, textShadow: '0 2px 0 #000', whiteSpace: 'nowrap'}}>{agoLabel(Math.round(year), now)}</div>
+        <div style={{position: 'absolute', left: `${x(year)}%`, top: 38, transform: 'translateX(-50%)', color: '#f4ecd8', fontWeight: 700, fontSize: 34, textShadow: '0 2px 0 #000, 0 0 10px #000', whiteSpace: 'nowrap'}}>{agoLabel(Math.round(year), now)}</div>
       ) : null}
-      <div style={{position: 'absolute', left: 0, top: 40, color: 'rgba(244,236,216,0.7)', fontSize: 20}}>{yearLabel(from)}</div>
-      <div style={{position: 'absolute', right: 0, top: 40, color: 'rgba(244,236,216,0.7)', fontSize: 20}}>{yearLabel(to)}</div>
+      {now === undefined ? <div style={{position: 'absolute', left: 0, top: 40, color: 'rgba(244,236,216,0.7)', fontSize: 20}}>{yearLabel(from)}</div> : null}
+      {now === undefined ? <div style={{position: 'absolute', right: 0, top: 40, color: 'rgba(244,236,216,0.7)', fontSize: 20}}>{yearLabel(to)}</div> : null}
     </div>
   );
 };
@@ -101,17 +110,18 @@ export const Citation: React.FC<{text: string; p: number; at?: [number, number]}
 };
 
 /** Big number panel (right side), counting toward `value`. */
-export const BigCounter: React.FC<{label: string; value: number; p: number; window: [number, number]; color?: string; suffix?: string; top?: number}> = ({label, value, p, window, color = '#d8b46a', suffix = '', top = 300}) => {
+export const BigCounter: React.FC<{label: string; value: number; p: number; window: [number, number]; color?: string; suffix?: string; top?: number; context?: string; left?: boolean}> = ({label, value, p, window, color = '#d8b46a', suffix = '', top = 300, context, left}) => {
   const k = easeInOutCubic(ramp(p, window[0], window[0] + 0.25));
   const a = easeInOutCubic(ramp(p, window[0], window[0] + 0.08)) * (1 - easeInOutCubic(ramp(p, window[1] - 0.06, window[1])));
   if (a <= 0) return null;
   return (
-    <div style={{position: 'absolute', right: 90, top, textAlign: 'right', opacity: a, fontFamily: INTER, transform: `translateX(${(1 - a) * 30}px)`}}>
+    <div style={{position: 'absolute', ...(left ? {left: 40, background: 'rgba(10,14,18,0.72)', borderRadius: 14, padding: '10px 26px', textAlign: 'left' as const} : {right: 90, textAlign: 'right' as const}), top, opacity: a, fontFamily: INTER, transform: `translateX(${(1 - a) * (left ? -30 : 30)}px)`}}>
       <div style={{fontWeight: 800, fontSize: 112, color, fontVariantNumeric: 'tabular-nums', textShadow: '0 4px 0 rgba(0,0,0,0.6)'}}>
         {Math.round(value * k).toLocaleString('en-US')}
         {suffix}
       </div>
       <div style={{fontWeight: 700, fontSize: 34, letterSpacing: 4, color: '#f4ecd8', textShadow: '0 2px 0 #000'}}>{label}</div>
+      {context ? <div style={{fontWeight: 600, fontStyle: 'italic', fontSize: 34, color: '#e9dcc0', marginTop: 6, maxWidth: 640}}>{context}</div> : null}
     </div>
   );
 };

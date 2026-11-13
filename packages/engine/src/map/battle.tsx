@@ -2,12 +2,14 @@ import React from 'react';
 import {easeInOutCubic, mix, ramp} from '../motion';
 import {INTER} from '../overlay';
 import {CINZEL} from './map';
+import {Figure, FigureKind} from './figures';
+import {PhaseBanner} from './clarity';
 
 // Battle diagram engine: a top-down field (100 × 56.25 units ≈ 16:9) with terrain, unit blocks that move
 // between keyframes, attack arrows and labels. Pure function of scene progress p (0..1).
 
 export type BKey = {at: number; x: number; y: number; w?: number; h?: number; rot?: number; opacity?: number};
-export type BUnit = {id: string; side: 'a' | 'b'; label?: string; labelUntil?: number; kind?: 'inf' | 'cav' | 'ele' | 'light'; keys: BKey[]};
+export type BUnit = {id: string; side: 'a' | 'b'; label?: string; labelUntil?: number; kind?: 'inf' | 'cav' | 'ele' | 'light' | 'ship'; keys: BKey[]; /** e.g. "~25,000" shown under the label (Clarity Kit) */ count?: string};
 
 /** Later keyframes inherit size/rotation/opacity from the previous key unless they set them. */
 const fillKeys = (keys: BKey[]): BKey[] => {
@@ -27,6 +29,8 @@ export type BattleSpec = {
   units: BUnit[];
   arrows?: BArrow[];
   notes?: {text: string; x: number; y: number; appear: number; until?: number}[];
+  /** Clarity Kit: phase titles ("Phase 1 — The trap is set") with a one-line "what to watch". */
+  phases?: {at: number; title: string; sub?: string}[];
   zoom?: {at: number; cx: number; cy: number; s: number}[];
 };
 
@@ -84,7 +88,7 @@ export const arcUnits = (
     }),
   }));
 
-export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; height: number; sceneP?: number}> = ({spec, p, width, height, sceneP}) => {
+export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; height: number; sceneP?: number; clarity?: boolean}> = ({spec, p, width, height, sceneP, clarity}) => {
   const S = width / 100; // px per field unit
   const z = zoomAt(spec.zoom, p * 1.0);
   // Living camera tied to the SCENE (not battle) progress: a battle split over several scenes still moves in each.
@@ -130,7 +134,8 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
           {t.river ? <polyline points={pts(t.river.map(([x, y]) => [x * S, y * S]))} fill="none" stroke="#2c4a5a" strokeWidth={2.2 * S} strokeLinejoin="round" strokeLinecap="round" /> : null}
           {(spec.arrows ?? []).map((a, i) => {
             const pr = easeInOutCubic(ramp(p, a.draw[0], a.draw[1]));
-            if (pr <= 0) return null;
+            const fade = clarity ? 1 - easeInOutCubic(ramp(p, a.draw[1] + 0.12, a.draw[1] + 0.25)) : 1;
+            if (pr <= 0 || fade <= 0) return null;
             const via = a.via ?? [(a.from[0] + a.to[0]) / 2, (a.from[1] + a.to[1]) / 2];
             const q = (u: number): [number, number] => {
               const x = (1 - u) * (1 - u) * a.from[0] + 2 * (1 - u) * u * via[0] + u * u * a.to[0];
@@ -144,7 +149,7 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
             const ang = (Math.atan2(tip[1] - prev[1], tip[0] - prev[0]) * 180) / Math.PI;
             const w = (a.width ?? 1.4) * S;
             return (
-              <g key={i}>
+              <g key={i} opacity={fade}>
                 <polyline points={pts(line)} fill="none" stroke={color(a.side)} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" opacity={0.9} />
                 <polygon points={`0,${-w * 1.5} ${w * 2.4},0 0,${w * 1.5}`} fill={color(a.side)} transform={`translate(${tip[0]},${tip[1]}) rotate(${ang})`} />
               </g>
@@ -157,6 +162,32 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
             const w = (k.w ?? 6) * S;
             const h = (k.h ?? 3) * S;
             const c = color(u.side);
+            if (clarity) {
+              const fk: FigureKind = u.kind === 'cav' ? 'cavalry' : u.kind === 'ele' ? 'elephant' : u.kind === 'ship' ? 'ship' : 'infantry';
+              const size = (fk === 'ship' ? 3.2 : 2.6) * S;
+              const cols = Math.max(1, Math.round(w / (size * 0.95)));
+              const rows = Math.max(1, Math.round(h / (size * 0.95)));
+              const flip = u.side === 'b';
+              const lab = u.label && (u.labelUntil === undefined || p < u.labelUntil);
+              return (
+                <g key={u.id} opacity={k.opacity ?? 1}>
+                  <g transform={`translate(${k.x * S},${k.y * S}) rotate(${k.rot ?? 0})`}>
+                    <ellipse cx={0} cy={h / 2 + size * 0.15} rx={w / 2 + size * 0.3} ry={size * 0.35} fill="rgba(40,25,10,0.22)" />
+                    {Array.from({length: rows * cols}, (_, n) => {
+                      const cx = -w / 2 + (w * ((n % cols) + 0.5)) / cols;
+                      const cy = -h / 2 + (h * (Math.floor(n / cols) + 0.5)) / rows;
+                      return <Figure key={n} kind={fk} x={cx} y={cy} size={size} color={c} flip={flip} />;
+                    })}
+                  </g>
+                  {lab ? (
+                    <text x={k.x * S} y={k.y * S - h / 2 - size * 0.75} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={34 / scale} fill="#2a2116" stroke="#efe4c8" strokeWidth={8 / scale} paintOrder="stroke">
+                      {u.label}
+                      {u.count ? <tspan fill={c}>{` ${u.count}`}</tspan> : null}
+                    </text>
+                  ) : null}
+                </g>
+              );
+            }
             return (
               <g key={u.id} transform={`translate(${k.x * S},${k.y * S}) rotate(${k.rot ?? 0})`} opacity={k.opacity ?? 1}>
                 <rect x={-w / 2} y={-h / 2} width={w} height={h} fill={c} stroke="#f4ecd8" strokeWidth={0.25 * S} rx={0.2 * S} />
@@ -184,7 +215,7 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
             const a = easeInOutCubic(ramp(p, n.appear, n.appear + 0.06)) * (n.until ? 1 - easeInOutCubic(ramp(p, n.until - 0.05, n.until)) : 1);
             if (a <= 0) return null;
             return (
-              <text key={i} x={n.x * S} y={n.y * S} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={1.7 * S} fill="#2a2116" stroke="#efe4c8" strokeWidth={0.4 * S} paintOrder="stroke" opacity={a}>
+              <text key={i} x={n.x * S} y={n.y * S} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={clarity ? Math.max(1.7 * S, 36 / scale) : 1.7 * S} fill="#2a2116" stroke="#efe4c8" strokeWidth={0.4 * S} paintOrder="stroke" opacity={a}>
                 {n.text}
               </text>
             );
@@ -205,7 +236,24 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
         ) : null}
         <rect width={width} height={height} fill="url(#bvig)" />
       </svg>
+      {clarity && spec.phases?.length
+        ? (() => {
+            let cur = -1;
+            spec.phases!.forEach((ph, n) => {
+              if (p >= ph.at) cur = n;
+            });
+            if (cur < 0) return null;
+            const ph = spec.phases![cur];
+            const nextAt = spec.phases![cur + 1]?.at ?? 1.2;
+            const a = easeInOutCubic(ramp(p, ph.at, ph.at + 0.05)) * (1 - easeInOutCubic(ramp(p, nextAt - 0.04, nextAt)));
+            return <PhaseBanner title={ph.title} sub={ph.sub} a={a} />;
+          })()
+        : null}
+      {clarity ? (
+        <div style={{position: 'absolute', left: 40, bottom: 36, fontFamily: INTER, fontWeight: 800, fontSize: 34, color: '#f4ecd8', background: 'rgba(20,14,8,0.8)', padding: '6px 18px', borderRadius: 8}}>{spec.title}</div>
+      ) : null}
       {/* title + legend on dark plates at the bottom (units live in the upper field) */}
+      {clarity ? null : <>
       <div style={{position: 'absolute', left: 56, bottom: 44, fontFamily: CINZEL, fontWeight: 700, fontSize: 46, color: '#f4ecd8', background: 'rgba(20,14,8,0.78)', padding: '10px 24px', borderRadius: 6}}>{spec.title}</div>
       <div style={{position: 'absolute', right: 56, bottom: 50, display: 'flex', gap: 28, fontFamily: INTER, fontWeight: 700, fontSize: 26, color: '#f4ecd8', background: 'rgba(20,14,8,0.78)', padding: '10px 20px', borderRadius: 6}}>
         {(['a', 'b'] as const).map((s) => (
@@ -215,6 +263,7 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
           </div>
         ))}
       </div>
+      </>}
     </div>
   );
 };
