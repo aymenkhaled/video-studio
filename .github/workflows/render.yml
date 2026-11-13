@@ -14,7 +14,7 @@ on:
       mode:
         description: stills = storyboard frames only; full = video + QA
         type: choice
-        options: [full, stills]
+        options: [full, stills, media]
         default: full
       props:
         description: Optional input-props JSON path in the repo
@@ -53,6 +53,7 @@ env:
 
 jobs:
   plan:
+    if: inputs.mode != 'media'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     outputs:
@@ -277,3 +278,28 @@ jobs:
         run: |
           tag="render-${{ inputs.comp }}-${{ github.run_id }}"
           gh release create "$tag" out/final.mp4 out/contact_sheet.jpg out/final.mp4.qa.json --title "$tag" --notes "Render of ${{ inputs.comp }} at ${{ github.sha }}" --prerelease
+
+  media:
+    if: inputs.mode == 'media'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/cache@v4
+        with:
+          path: .cache/media
+          key: media-src-${{ hashFiles('assets/media.json') }}
+          restore-keys: media-src-
+      - run: pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
+      - run: python3 tools/fetch_media.py
+      - name: Publish media-v1/media.zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd public && zip -qr ../media.zip art geo && cd ..
+          ls -la media.zip
+          gh release view media-v1 >/dev/null 2>&1 || gh release create media-v1 --title "media-v1" --notes "Licensed art (PD / CC0 / CC BY, see docs/LICENSES.md), Natural Earth relief + rivers (PD), derived depth layers. Built by media.yml from assets/media.json."
+          gh release upload media-v1 media.zip --clobber
