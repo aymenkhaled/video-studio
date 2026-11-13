@@ -65,10 +65,10 @@ const Compare: React.FC<{t: number}> = ({t}) => {
       {rows.map((r, i) => {
         const p = easeInOutCubic(ramp(t, 0.2 + i * 0.35, 1.2 + i * 0.35));
         return (
-          <div key={r.label} style={{display: 'flex', alignItems: 'center', height: 64, opacity: p}}>
-            <div style={{width: 250, color: '#fff', fontWeight: 700, fontSize: 34, textShadow: '0 2px 0 rgba(0,0,0,.6)'}}>{r.label}</div>
-            <div style={{height: 34, width: (640 * r.value * p) / REX_LEN, background: r.color, borderRadius: 6, boxShadow: '0 3px 0 rgba(0,0,0,.35)'}} />
-            <div style={{marginLeft: 14, color: '#fff', fontWeight: 800, fontSize: 34, fontVariantNumeric: 'tabular-nums', textShadow: '0 2px 0 rgba(0,0,0,.6)'}}>{(r.value * p).toFixed(r.value < 10 ? 2 : 1)} m</div>
+          <div key={r.label} style={{display: 'flex', alignItems: 'center', height: 76, opacity: p, background: 'rgba(14,16,20,0.55)', borderRadius: 12, padding: '0 18px', marginBottom: 10}}>
+            <div style={{width: 270, color: '#fff', fontWeight: 800, fontSize: 40, textShadow: '0 2px 0 rgba(0,0,0,.6)'}}>{r.label}</div>
+            <div style={{height: 40, width: (420 * r.value * p) / REX_LEN, background: r.color, borderRadius: 6, boxShadow: '0 3px 0 rgba(0,0,0,.35)'}} />
+            <div style={{marginLeft: 16, color: '#fff', fontWeight: 800, fontSize: 40, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums', textShadow: '0 2px 0 rgba(0,0,0,.6)'}}>{(r.value * p).toFixed(r.value < 10 ? 2 : 1)} m</div>
           </div>
         );
       })}
@@ -110,11 +110,11 @@ export const StageDemo: React.FC = () => {
   if (t < 5.4) {
     shot = 'hook';
     const k = easeInOutCubic(ramp(t, 0, 5.4));
-    cam = {pos: [hx + 3 - 0.7 * k + hxj, 1.35 + hyj, HUMAN_Z + 2.6 - 0.4 * k], target: [mix(hx - 5, xr + 3, k), mix(2.0, 4.2, k), mix(5.6, REX_Z, k)], fov: 55};
+    cam = {pos: [hx + 4.6 - 1.0 * k + hxj, 1.5 + hyj, HUMAN_Z + 4.4 - 0.8 * k], target: [mix(hx - 4, xr + 3, k), mix(2.6, 4.0, k), mix(5.4, REX_Z, k)], fov: 60};
   } else if (t < 9.2) {
     shot = 'bus';
     const k = easeInOutCubic(ramp(t, 5.4, 9.2));
-    cam = {pos: [BUS.x + 13 - 2 * k, 6 - 0.6 * k, BUS.z + 13 - 1.5 * k], target: [BUS.x - 1.5, 1.4, BUS.z], fov: 50};
+    cam = {pos: [BUS.x + 16 - 2 * k, 6.5 - 0.6 * k, BUS.z + 16 - 1.5 * k], target: [BUS.x - 0.5, 1.2, BUS.z], fov: 50};
   } else if (t < 13.8) {
     shot = 'rex-pass';
     cam = {pos: [xr + 11 + hxj, 6.5 + hyj + shake, REX_Z + 14], target: [xr - 1, 2.6, 0.5], fov: 50};
@@ -178,8 +178,8 @@ export const StageDemo: React.FC = () => {
 
       {/* overlays */}
       {shot === 'hook' && head.visible ? <Label x={head.x} y={head.y} text="1.75 m" sub="you" appear={ramp(t, 0.3, 0.9) - ramp(t, 4.9, 5.3)} /> : null}
-      {shot !== 'hook' ? <Bracket a={busA} b={busB} progress={shot === 'bus' ? ramp(t, 6.0, 7.8) : 1} value={12} decimals={shot === 'bus' ? 1 : 0} label="bus" color="#8fc1e8" /> : null}
-      {shot === 'rex-pass' || shot === 'wide' ? <Bracket a={rexA} b={rexB} progress={shot === 'rex-pass' ? ramp(t, 10.4, 12.6) : 1} value={REX_LEN} label="T. rex" /> : null}
+      {shot === 'bus' || shot === 'rex-pass' ? <Bracket a={busA} b={busB} progress={shot === 'bus' ? ramp(t, 6.0, 7.8) : 1} value={12} decimals={shot === 'bus' ? 1 : 0} label="bus" color="#8fc1e8" /> : null}
+      {shot === 'rex-pass' ? <Bracket a={rexA} b={rexB} progress={shot === 'rex-pass' ? ramp(t, 10.4, 12.6) : 1} value={REX_LEN} label="T. rex" /> : null}
       <SeriesHud tag="SIZE CHECK" progress={t / 20} />
       {shot === 'wide' ? <Compare t={t - 14.2} /> : null}
       <Captions lines={lines} t={t} top={1290} />
