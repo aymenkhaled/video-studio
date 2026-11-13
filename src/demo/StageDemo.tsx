@@ -8,7 +8,7 @@ import {Actor, PALETTES, useModel} from '../../packages/three/src/model';
 import {breathe, handheld, look, tailWave} from '../../packages/three/src/acting';
 import {Blob, EnvLight, Instances, scatter, Spec, useHDRI, useLib} from '../../packages/three/src/env';
 import {Bus, GridGround, Human} from '../../packages/three/src/stage';
-import {Bracket, Cam, Captions, Label, SeriesHud, TimedLine, linesFromTimeline, project} from '../../packages/engine/src/overlay';
+import {Bracket, Cam, Captions, INTER, Label, SeriesHud, TimedLine, linesFromTimeline, project} from '../../packages/engine/src/overlay';
 import {clamp01, easeInOutCubic, impulse, mix, ramp} from '../../packages/engine/src/motion';
 
 // Brand-A engine demo: "How big was T. rex next to you?" â€” person â†’ bus â†’ T. rex on a metre grid.
@@ -24,13 +24,11 @@ const ENV: Spec = {
   pine2: ['assets/mega/Pine_2.gltf', {Leaves_Pine: '#6f9070'}],
   tree1: ['assets/mega/CommonTree_1.gltf', {Leaves_NormalTree: '#9fae8c'}],
   fern: ['assets/mega/Fern_1.gltf', {Leaves: '#8f9c78'}],
-  rock: ['assets/mega/Rock_Medium_1.gltf', {Rocks: '#b8b3a3'}],
-  bush: ['assets/mega/Bush_Common.gltf'],
 };
 
 const keepOut = (x: number, z: number) => z > -6 && z < 40 && x > -40 && x < 50; // keep lineup + camera corridor clear
 const TREES = scatter(46, 'trees', (r) => ({p: [-60 + r('x') * 140, 0, -10 - r('z') * 70], s: 2.4 + r('s') * 1.8, r: r('r') * 6.28}), keepOut);
-const SMALL = scatter(40, 'small', (r) => ({p: [-30 + r('x') * 80, 0, -5 - r('z') * 14], s: 1 + r('s') * 1.2, r: r('r') * 6.28}), (x, z) => z > -3.2);
+const SMALL = scatter(30, 'small', (r) => ({p: [-30 + r('x') * 80, 0, -12 - r('z') * 14], s: 1 + r('s') * 1.2, r: r('r') * 6.28}), (x, z) => z > -12);
 
 /** Loads voice/word timings produced by the soundtrack step; falls back to slot timings in local preview. */
 const useTiming = () => {
@@ -53,6 +51,29 @@ const CameraRig: React.FC<{cam: Cam}> = ({cam}) => {
   camera.lookAt(...cam.target);
   camera.updateProjectionMatrix();
   return null;
+};
+
+/** Tale-of-the-tape bars for the wide shot (uses the empty lower frame on purpose). */
+const Compare: React.FC<{t: number}> = ({t}) => {
+  const rows = [
+    {label: 'You', value: 1.75, color: '#e9e4d8'},
+    {label: 'City bus', value: 12, color: '#8fc1e8'},
+    {label: 'T. rex (Sue)', value: REX_LEN, color: '#f2c14e'},
+  ];
+  return (
+    <div style={{position: 'absolute', left: 70, right: 70, top: 990, fontFamily: INTER}}>
+      {rows.map((r, i) => {
+        const p = easeInOutCubic(ramp(t, 0.2 + i * 0.35, 1.2 + i * 0.35));
+        return (
+          <div key={r.label} style={{display: 'flex', alignItems: 'center', height: 64, opacity: p}}>
+            <div style={{width: 250, color: '#fff', fontWeight: 700, fontSize: 34, textShadow: '0 2px 0 rgba(0,0,0,.6)'}}>{r.label}</div>
+            <div style={{height: 34, width: (640 * r.value * p) / REX_LEN, background: r.color, borderRadius: 6, boxShadow: '0 3px 0 rgba(0,0,0,.35)'}} />
+            <div style={{marginLeft: 14, color: '#fff', fontWeight: 800, fontSize: 34, fontVariantNumeric: 'tabular-nums', textShadow: '0 2px 0 rgba(0,0,0,.6)'}}>{(r.value * p).toFixed(r.value < 10 ? 2 : 1)} m</div>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 type Pose = {x: number; clip: string; from?: string; blend: number; clipT: number};
@@ -79,7 +100,7 @@ export const StageDemo: React.FC = () => {
   const xr = xAt(t);
   const slow = clamp01((t - STOP) / 0.5);
   const pose: Pose = slow <= 0 ? {x: xr, clip: 'Walk', blend: 1, clipT: t} : {x: xr, clip: 'Idle', from: 'Walk', blend: slow, clipT: t - STOP};
-  const hx = xAt(5) + 4;
+  const hx = xAt(0) + 7; // person stands ~7 m ahead of the approaching rex at frame 0
 
   // ---------- shots ----------
   const [hxj, hyj] = handheld(t, 0.8);
@@ -89,18 +110,18 @@ export const StageDemo: React.FC = () => {
   if (t < 5.4) {
     shot = 'hook';
     const k = easeInOutCubic(ramp(t, 0, 5.4));
-    cam = {pos: [hx + 2.6 - 0.8 * k + hxj, 1.05 + hyj, HUMAN_Z + 4.6 - 1.2 * k], target: [mix(xr + 1.5, hx - 1, 0.35), 2.7, mix(REX_Z, HUMAN_Z, 0.3)], fov: 52};
+    cam = {pos: [hx + 3 - 0.7 * k + hxj, 1.35 + hyj, HUMAN_Z + 2.6 - 0.4 * k], target: [mix(hx - 5, xr + 3, k), mix(2.0, 4.2, k), mix(5.6, REX_Z, k)], fov: 55};
   } else if (t < 9.2) {
     shot = 'bus';
     const k = easeInOutCubic(ramp(t, 5.4, 9.2));
-    cam = {pos: [BUS.x - 13 + 2.5 * k, 8.5 - 0.8 * k, 17.5 - 1.5 * k], target: [BUS.x, 1.3, BUS.z], fov: 46};
+    cam = {pos: [BUS.x + 13 - 2 * k, 6 - 0.6 * k, BUS.z + 13 - 1.5 * k], target: [BUS.x - 1.5, 1.4, BUS.z], fov: 50};
   } else if (t < 13.8) {
     shot = 'rex-pass';
-    cam = {pos: [xr - 8.5 + hxj, 6.2 + hyj + shake, 21], target: [xr + 0.8, 2.8, 0.6], fov: 47};
+    cam = {pos: [xr + 11 + hxj, 6.5 + hyj + shake, REX_Z + 14], target: [xr - 1, 2.6, 0.5], fov: 50};
   } else {
     shot = 'wide';
     const k = easeInOutCubic(ramp(t, 13.8, 20));
-    cam = {pos: [BUS.x - 3 - 3 * k, 12 + 7 * k, 30 + 5 * k], target: [BUS.x, 1.2, 1.2], fov: 45};
+    cam = {pos: [BUS.x + 17 + 2 * k, 9 + 3 * k, 22 + 3 * k], target: [BUS.x - 1, 1.8, 0.5], fov: 46};
   }
   const st = (a: number) => t - a;
 
@@ -114,23 +135,24 @@ export const StageDemo: React.FC = () => {
   // ---------- overlay geometry ----------
   const P = (p: [number, number, number]) => project(cam, p, width, height);
   const rexH = rex.userData.size.y;
-  const busA = P([BUS.x - BUS.len / 2, BUS.h + 0.6, BUS.z]);
-  const busB = P([BUS.x + BUS.len / 2, BUS.h + 0.6, BUS.z]);
+  const busFrontZ = BUS.z + 1.275 + 0.7; // bus bracket on the ground in front of the bus, rex bracket above the rex
+  const busA = P([BUS.x - BUS.len / 2, 0.08, busFrontZ]);
+  const busB = P([BUS.x + BUS.len / 2, 0.08, busFrontZ]);
   const rexA = P([xr - REX_LEN / 2, rexH + 0.5, REX_Z]);
   const rexB = P([xr + REX_LEN / 2, rexH + 0.5, REX_Z]);
   const head = P([hx, 1.95, HUMAN_Z]);
 
   return (
-    <AbsoluteFill style={{background: '#c4cdc9'}}>
+    <AbsoluteFill style={{background: '#aeb9b6'}}>
       <ThreeCanvas width={width} height={height} shadows camera={{fov: 50, near: 0.1, far: 600}} gl={{antialias: true}}>
         <CameraRig cam={cam} />
-        <color attach="background" args={['#c4cdc9']} />
-        <fog attach="fog" args={['#c4cdc9', 45, 170]} />
-        <EnvLight tex={hdri} intensity={0.55} />
-        <hemisphereLight args={['#eef3f5', '#6b6248', 0.55]} />
+        <color attach="background" args={['#aeb9b6']} />
+        <fog attach="fog" args={['#aeb9b6', 50, 180]} />
+        <EnvLight tex={hdri} intensity={0.35} />
+        <hemisphereLight args={['#e6eef0', '#5d5540', 0.4]} />
         <directionalLight
           position={[BUS.x + 18, 30, 22]}
-          intensity={2.4}
+          intensity={2.0}
           castShadow
           shadow-mapSize={[2048, 2048]}
           shadow-camera-left={-30}
@@ -141,13 +163,11 @@ export const StageDemo: React.FC = () => {
           shadow-bias={-0.0004}
         />
         <directionalLight position={[-20, 10, -25]} intensity={0.9} color="#ffe7c4" />
-        <GridGround />
+        <GridGround base="#857d62" line="#766f57" bold="#5d5744" />
         <Instances parts={lib.pine1} items={TREES.filter((_, i) => i % 3 === 0)} t={t} sway={0.01} />
         <Instances parts={lib.pine2} items={TREES.filter((_, i) => i % 3 === 1)} t={t} sway={0.01} />
         <Instances parts={lib.tree1} items={TREES.filter((_, i) => i % 3 === 2)} t={t} sway={0.012} />
-        <Instances parts={lib.fern} items={SMALL.filter((_, i) => i % 3 === 0)} t={t} sway={0.03} />
-        <Instances parts={lib.rock} items={SMALL.filter((_, i) => i % 3 === 1)} />
-        <Instances parts={lib.bush} items={SMALL.filter((_, i) => i % 3 === 2)} t={t} sway={0.02} />
+        <Instances parts={lib.fern} items={SMALL} t={t} sway={0.03} />
         <Bus position={[BUS.x, 0, BUS.z]} length={BUS.len} />
         <Blob x={BUS.x} z={BUS.z} rx={13.5} rz={4} opacity={0.35} />
         <Human position={[hx, 0, HUMAN_Z]} rotationY={-0.6} />
@@ -161,7 +181,8 @@ export const StageDemo: React.FC = () => {
       {shot !== 'hook' ? <Bracket a={busA} b={busB} progress={shot === 'bus' ? ramp(t, 6.0, 7.8) : 1} value={12} decimals={shot === 'bus' ? 1 : 0} label="bus" color="#8fc1e8" /> : null}
       {shot === 'rex-pass' || shot === 'wide' ? <Bracket a={rexA} b={rexB} progress={shot === 'rex-pass' ? ramp(t, 10.4, 12.6) : 1} value={REX_LEN} label="T. rex" /> : null}
       <SeriesHud tag="SIZE CHECK" progress={t / 20} />
-      <Captions lines={lines} t={t} />
+      {shot === 'wide' ? <Compare t={t - 14.2} /> : null}
+      <Captions lines={lines} t={t} top={1290} />
       {/* soft cut flash between shots */}
       <AbsoluteFill style={{background: '#fff', opacity: Math.max(0, ...[5.4, 9.2, 13.8].map((c) => 0.35 * (1 - Math.abs(st(c)) / 0.12))), pointerEvents: 'none'}} />
     </AbsoluteFill>

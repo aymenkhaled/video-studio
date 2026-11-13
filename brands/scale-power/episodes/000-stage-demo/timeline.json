@@ -10,8 +10,8 @@
     "speed": 1.0,
     "language": "en-us",
     "lines": [
-      {"id": "l1", "t": 0.25, "until": 2.6, "text": "This is you. One point seven five metres."},
-      {"id": "l2", "t": 2.8, "until": 5.2, "text": "Now look at what's walking up behind you."},
+      {"id": "l1", "t": 0.2, "until": 3.2, "text": "This is you. One point seven five metres."},
+      {"id": "l2", "t": 3.3, "until": 5.35, "text": "Now look what's walking up behind you."},
       {"id": "l3", "t": 5.7, "until": 8.9, "text": "A standard city bus. About twelve metres."},
       {"id": "l4", "t": 9.4, "until": 13.6, "text": "Sue, the biggest T. rex ever found: twelve point three metres."},
       {"id": "l5", "t": 14.0, "until": 16.9, "text": "Nose to tail, longer than the bus."},
