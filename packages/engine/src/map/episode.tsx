@@ -66,9 +66,9 @@ const renderOverlay = (o: Overlay, p: number, i: number) => {
   }
 };
 
-const Scene: React.FC<{def: SceneDef; p: number; uid: string; width: number; height: number}> = ({def, p, uid, width, height}) =>
+const Scene: React.FC<{def: SceneDef; p: number; uid: string; width: number; height: number; elapsed: number}> = ({def, p, uid, width, height, elapsed}) =>
   def.kind === 'map' ? (
-    <MapShot spec={def.map} p={p} width={width} height={height} uid={uid} />
+    <MapShot spec={def.map} p={p} width={width} height={height} uid={uid} elapsed={elapsed} />
   ) : (
     <BattleShot spec={def.battle} p={def.range ? def.range[0] + p * (def.range[1] - def.range[0]) : p} sceneP={p} width={width} height={height} />
   );
@@ -90,7 +90,7 @@ export const HistoryEpisode: React.FC<EpisodeProps & {defs: Record<string, Scene
   const isCard = def.overlays?.some((o) => o.type === 'chapter' || o.type === 'title');
   return (
     <AbsoluteFill style={{background: '#1b2f3a'}}>
-      <Scene def={def} p={p} uid={`a${sc.id}`} width={width} height={height} />
+      <Scene def={def} p={p} uid={`a${sc.id}`} width={width} height={height} elapsed={t - sc.start} />
       {(def.overlays ?? []).map((o, k) =>
         o.type === 'quote' || o.type === 'list' || o.type === 'chapter' || o.type === 'title' ? (
           // Cards darken the moving map: give the card itself a slow scale-in so the frame never freezes.
@@ -104,7 +104,7 @@ export const HistoryEpisode: React.FC<EpisodeProps & {defs: Record<string, Scene
       {def.year !== undefined && !isCard && def.kind === 'map' ? <TimelineBar from={timeline.from} to={timeline.to} year={def.year} /> : null}
       {next && fadeIn > 0 ? (
         <AbsoluteFill style={{opacity: fadeIn}}>
-          <Scene def={defs[next.id]} p={0} uid={`b${next.id}`} width={width} height={height} />
+          <Scene def={defs[next.id]} p={0} uid={`b${next.id}`} width={width} height={height} elapsed={0} />
         </AbsoluteFill>
       ) : null}
     </AbsoluteFill>

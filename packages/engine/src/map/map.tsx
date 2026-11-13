@@ -117,13 +117,16 @@ const UnitIcon: React.FC<{x: number; y: number; angle: number; unit: Unit; s?: n
 };
 
 /** Renders one map shot at progress p (0..1). */
-export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height: number; uid?: string}> = ({spec, p, width, height, uid = 'm'}) => {
+export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height: number; uid?: string; elapsed?: number}> = ({spec, p, width, height, uid = 'm', elapsed = 0}) => {
   const theme = spec.theme ?? PARCHMENT;
   const base = cameraAt(spec.camera, p);
   // "Living camera": a constant slow push-in so no shot is ever static (freezedetect rule), on top of keyframes.
   // 12 % over the scene: keeps eased starts on close-ups above the freezedetect threshold.
   const cam = {center: base.center, zoom: base.zoom * (1 + 0.12 * p)};
   const proj = makeProjection(spec.projection, cam, width, height);
+  // Constant drift in ABSOLUTE time (6 px/s): eased keyframes start/end at zero speed, and a push measured in
+  // scene fractions is too slow in long scenes — this guarantees visible motion in every second.
+  if (spec.projection !== 'globe') proj.translate([width / 2 - 6 * elapsed, height / 2 - 2 * elapsed]);
   // Cull geometry outside the frame before building SVG paths (big win when zoomed in).
   if (spec.projection !== 'globe') proj.clipExtent([[-40, -40], [width + 40, height + 40]]);
   const path = geoPath(proj);
