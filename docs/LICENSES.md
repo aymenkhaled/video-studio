@@ -6,6 +6,19 @@ Binary assets are in the `assets-v1` Release; SHA256 per file in `assets/manifes
 ## Assets
 | Asset | Author | Licence | Source URL | Credit needed |
 |---|---|---|---|---|
+| J. M. W. Turner, *The Decline of the Carthaginian Empire* (1817, Tate) | J. M. W. Turner (d. 1851) | Public domain (PD-Art) | https://commons.wikimedia.org/wiki/File:Joseph_Mallord_William_Turner_-_The_Decline_of_the_Carthaginian_Empire_-_WGA23169.jpg | Courtesy credit |
+| J. M. W. Turner, *Dido Building Carthage* (1815, National Gallery) | J. M. W. Turner | Public domain (PD-Art) | https://commons.wikimedia.org/wiki/File:Turner_Dido_Building_Carthage.jpg | Courtesy credit |
+| *Scipio and Polybius at the ruins of Carthage* (engraving, 1797) | Jacobus Buys (d. 1801) | Public domain | https://commons.wikimedia.org/wiki/File:Scipion_Emilien_et_Polybe_devant_les_ruines_de_Carthage_après_la_destruction_de_la_ville.jpg | Courtesy credit |
+| *Final assault on Carthage, 146 BC* (engraving, 1885, NYPL) | Jones Brothers | Public domain (published 1885) | https://commons.wikimedia.org/wiki/File:Attaque_finale_de_Carthage_en_146_av_JC.jpg | Courtesy credit |
+| Punic harbours of Carthage, 1958 postcard | unknown (Tunisia) | Public domain (Tunisian pre-1984 photograph + PD-US) | https://commons.wikimedia.org/wiki/File:Carthage-1958-PortsPuniques.jpg | Courtesy credit |
+| Punic port, Carthage (photo) | Neil Rickards | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Carthage_-_Punic_port.jpg | **Yes** |
+| Byrsa archaeological site (photo) | Jean-Pierre Dalbéra | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Le_site_archéologique_de_Byrsa_(Carthage,_Tunisie)_(49787855963).jpg | **Yes** |
+| Coin of Massinissa (photo) | Jona Lendering / Livius.org | CC0 1.0 | https://www.livius.org/pictures/a/carthaginian-art/coin-of-massinissa | No (courtesy) |
+| Tanit on a Carthaginian coin (photo) | Jona Lendering / Livius.org | CC0 1.0 | https://www.livius.org/pictures/a/carthaginian-art/carthaginian-coin | No (courtesy) |
+| Cato the Elder, imagined portrait (16th c.) | unknown | Public domain (PD-old) | https://commons.wikimedia.org/wiki/File:Cato_der_Ältere.jpg | Courtesy credit |
+| Rivers 1:50m + Gray Earth shaded relief 1:50m | Natural Earth | Public domain | https://www.naturalearthdata.com/ | No (courtesy) |
+| Depth-Anything-V2-Small (ONNX export) | Depth Anything authors / onnx-community | Apache-2.0 | https://huggingface.co/onnx-community/depth-anything-v2-small | No |
+| Unit figures (infantry, cavalry, elephant, ship) — `packages/engine/src/map/figures.tsx` | original drawings for this studio | own work | — | No |
 | Animated LowPoly Dinosaurs (Apatosaurus, Parasaurolophus, Stegosaurus, Trex, Triceratops, Velociraptor) FBX | Quaternius | CC0 1.0 (License.txt in pack) | https://quaternius.com/packs/animateddinosaurs.html | No (credit as courtesy) |
 | Stylized Nature MegaKit (glTF + textures) | Quaternius | CC0 1.0 | https://quaternius.com/packs/stylizednaturemegakit.html | No |
 | Low-Poly Nature Starter Pack (40 GLB) | see pack LICENSE.txt | CC0 1.0 | (pack LICENSE.txt) | No |

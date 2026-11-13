@@ -1,7 +1,12 @@
 import type {City, RegionLabel, Territory} from '../../../packages/engine/src/map/map';
 import type {BattleSpec, Terrain} from '../../../packages/engine/src/map/battle';
-import {COL} from './punic';
-export {ROME_ITALY, SARD_CORSICA, SICILY, ROMAN_SPAIN} from './punic';
+import {COL, ROME_ITALY as R_ITALY, SARD_CORSICA as R_SARD, SICILY as R_SICILY, ROMAN_SPAIN as R_SPAIN} from './punic';
+
+// Colour-blind second cue: Rome = diagonal hatch, Numidia = dots, Carthage = plain (legend shows the same).
+export const ROME_ITALY: Territory = {...R_ITALY, pattern: 'hatch'};
+export const SARD_CORSICA: Territory = {...R_SARD, pattern: 'hatch'};
+export const SICILY: Territory = {...R_SICILY, pattern: 'hatch'};
+export const ROMAN_SPAIN: Territory = {...R_SPAIN, pattern: 'hatch'};
 
 // Episode 002 (Third Punic War) map data. All territories are approximate reconstructions (see 002-carthage/sources.md
 // "Map data"); they are clipped to Natural Earth land by the map engine.
@@ -15,12 +20,12 @@ export const CARTHAGE_201: Territory = {
 };
 /** Lost to Masinissa: the Emporia coast (Gulf of Gabès → Leptis). */
 export const EMPORIA: Territory = {
-  id: 'emporia', color: COL3.numidia, origin: [10.1, 33.9],
+  id: 'emporia', color: COL3.numidia, pattern: 'dots', origin: [10.1, 33.9],
   rings: [[[10.0, 34.2], [10.9, 34.7], [11.3, 33.6], [13.0, 33.0], [15.4, 32.2], [15.2, 31.6], [12.6, 32.2], [10.6, 32.9], [10.0, 33.6]]],
 };
 /** Lost to Masinissa: the "Tysca" region of about fifty towns (inland, location approximate). */
 export const TYSCA: Territory = {
-  id: 'tysca', color: COL3.numidia, origin: [9.3, 36.0],
+  id: 'tysca', color: COL3.numidia, pattern: 'dots', origin: [9.3, 36.0],
   rings: [[[8.6, 36.6], [9.9, 36.5], [10.1, 35.6], [9.1, 35.3], [8.6, 35.7]]],
 };
 /** What Carthage still held around 150 BC (north-east Tunisia). */
@@ -30,11 +35,11 @@ export const CARTHAGE_150: Territory = {
 };
 /** Numidia under Masinissa, before his land grabs (northern Algeria + western Tunisia). */
 export const NUMIDIA: Territory = {
-  id: 'numidia', color: COL3.numidia, origin: [6.61, 36.37],
+  id: 'numidia', color: COL3.numidia, pattern: 'dots', origin: [6.61, 36.37],
   rings: [[[-1.8, 35.2], [2.0, 36.9], [6.0, 37.2], [8.6, 37.2], [8.4, 36.4], [8.6, 35.4], [9.2, 34.6], [9.0, 33.6], [6.0, 33.8], [2.0, 34.4], [-1.8, 34.6]]],
 };
 /** Roman province of Africa, 146 BC (≈ Carthage's last territory). */
-export const AFRICA_146: Territory = {...CARTHAGE_150, id: 'africa-146', color: COL3.rome, origin: [10.32, 36.85]};
+export const AFRICA_146: Territory = {...CARTHAGE_150, id: 'africa-146', color: COL3.rome, origin: [10.32, 36.85], pattern: 'hatch'};
 /** Tyre's homeland (Phoenicia), for the founding story. */
 export const PHOENICIA: Territory = {
   id: 'phoenicia', color: COL3.carthage, origin: [35.2, 33.27], opacity: 0.5,

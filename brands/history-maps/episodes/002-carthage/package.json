@@ -17,11 +17,20 @@
   },
   "credits": [
     "Map data: Natural Earth (public domain) via world-atlas. Modern borders shown for orientation; ancient territories are approximate reconstructions.",
+    "Art: J. M. W. Turner (Tate, National Gallery; public domain); Jacobus Buys 1797 engraving (public domain); 1885 engraving, NYPL (public domain); 1958 postcard (public domain); 16th-century portrait of Cato, Bildarchiv Austria (public domain).",
+    "Photos: Neil Rickards (CC BY 2.0); Jean-Pierre Dalbéra (CC BY 2.0); coins by Jona Lendering / Livius.org (CC0).",
+    "Shaded relief and rivers: Natural Earth (public domain). 2.5D depth: Depth-Anything-V2-Small (Apache-2.0).",
     "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT).",
     "Narration: synthetic voice (Kokoro-82M, Apache-2.0).",
     "Fonts: Cinzel and Inter (SIL Open Font License).",
     "Ancient sources: Appian, Punica (Horace White translation), Plutarch, Life of Cato the Elder (Perrin translation), Polybius, Livy — public-domain translations. Salt myth: R. T. Ridley, Classical Philology 81 (1986)."
   ],
-  "hashtags": ["#Carthage", "#RomanHistory", "#AncientHistory", "#PunicWars", "#Tunisia"],
+  "hashtags": [
+    "#Carthage",
+    "#RomanHistory",
+    "#AncientHistory",
+    "#PunicWars",
+    "#Tunisia"
+  ],
   "pinned_comment": "Cato said Rome would only be safe once Carthage was gone. Scipio Nasica said Rome needed a rival to stay strong. Who was right?"
 }
