@@ -1,0 +1,27 @@
+{
+  "titles": [
+    "Why Rome Destroyed Carthage (Even After It Surrendered)",
+    "Carthage Gave Up Its Weapons. Rome Burned It Anyway.",
+    "The Fall of Carthage Explained in Maps"
+  ],
+  "hook": "Rome had already beaten Carthage. Carthage paid, obeyed, and even handed over its weapons. So why did Rome come back fifty years later and burn it to the ground? A fresh fig, a king who was almost ninety, one impossible order, and a myth about salt. Told with animated maps, modern borders, and the ancient sources on screen. Carthage stood next to today's Tunis, in Tunisia.",
+  "chapters": {
+    "c0a": "Why burn a city that already surrendered?",
+    "c1": "After Hannibal",
+    "c2": "The Fig",
+    "c3": "The Neighbour",
+    "c4": "The Trap",
+    "c5": "The Siege",
+    "c6": "Myth or Fact: The Salt",
+    "c7": "Then and Now"
+  },
+  "credits": [
+    "Map data: Natural Earth (public domain) via world-atlas. Modern borders shown for orientation; ancient territories are approximate reconstructions.",
+    "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT).",
+    "Narration: synthetic voice (Kokoro-82M, Apache-2.0).",
+    "Fonts: Cinzel and Inter (SIL Open Font License).",
+    "Ancient sources: Appian, Punica (Horace White translation), Plutarch, Life of Cato the Elder (Perrin translation), Polybius, Livy — public-domain translations. Salt myth: R. T. Ridley, Classical Philology 81 (1986)."
+  ],
+  "hashtags": ["#Carthage", "#RomanHistory", "#AncientHistory", "#PunicWars", "#Tunisia"],
+  "pinned_comment": "Cato said Rome would only be safe once Carthage was gone. Scipio Nasica said Rome needed a rival to stay strong. Who was right?"
+}

@@ -27,6 +27,12 @@ Primary texts: Appian, *Punica* (Horace White transl., PD) — livius.org number
 | 19 | Rome refounds Carthage: Caesar's plan, Augustus' colony (Colonia Julia Carthago), later a great Roman city. | VERIFIED (name without "Concordia") | Appian Pun. 136 · [Britannica: Carthage](https://www.britannica.com/place/Carthage-ancient-city-Tunisia) |
 | 20 | Today: ruins in the suburbs of Tunis, Tunisia; UNESCO World Heritage Site since 1979. | VERIFIED | [UNESCO WHC list 37](https://whc.unesco.org/en/list/37) · [worldheritagesite.org](https://www.worldheritagesite.org/list/id/37) |
 | 21 | Founded by Phoenicians from Tyre, traditionally 814 BC. | VERIFIED (as tradition) | Britannica above |
+| 22 | Circular naval harbour with an island; ship sheds for 220 warships (Appian); excavations suggest ~170. | VERIFIED (say "Appian says") | [Appian Pun. 96 (livius 20)](https://www.livius.org/sources/content/appian/appian-the-punic-wars/appian-the-punic-wars-20) · [Wikipedia: Carthage Punic Ports](https://en.wikipedia.org/wiki/Carthage_Punic_Ports) · [romanports.org](https://www.romanports.org/en/articles/ports-in-focus/754-carthage.html) |
+| 23 | A talent ≈ 26 kg, so 10,000 talents ≈ 260 tonnes of silver. | HEDGE ("about", "roughly"; Attic talent 25.8 kg; Carthage's own talent may differ) | [Britannica: Talent](https://www.britannica.com/science/talent-unit-of-weight) |
+| 24 | Rome then a republic: Senate + two consuls elected yearly. | VERIFIED | [Britannica: Roman Republic](https://www.britannica.com/place/Roman-Republic) |
+| 25 | Masinissa died during the siege (148 BC), at about ninety. | HEDGE ("around ninety") | Appian Pun. 105–106; Polybius 36.16 |
+| 26 | Scipio cursed anyone who would resettle the site. | HEDGE | Appian Pun. 135 · [WarHistory.org](https://warhistory.org/article/the-third-punic-war) |
+| 27 | Circular harbour still visible today as a lagoon with the admiral's island. | VERIFIED | [qart-hadasht.org: Cothon](https://qart-hadasht.org/places/cothon) · [ostia-antica.org](https://www.ostia-antica.org/dict/topics/origin/presentation/origin-carthago.htm) |
 | — | Population / wall-length figures | DROP | not sourced well enough |
 
 ## Map data

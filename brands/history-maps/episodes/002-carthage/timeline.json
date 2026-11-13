@@ -1,0 +1,238 @@
+{
+  "id": "002-carthage",
+  "comp": "Carthage",
+  "title": "Why Rome Destroyed Carthage",
+  "fps": 24,
+  "seed": 146,
+  "voice": {"engine": "kokoro", "voice": "am_michael", "speed": 0.95, "language": "en-us", "gap": 0.42},
+  "music": {"key": "D", "tempo": 70},
+  "ambience": {"type": "wind", "gain": 0.1},
+  "scenes": [
+    {"id": "c0a", "music": "somber", "lead": 0.4, "lines": [
+      "In one hundred forty-six B C, one of the richest cities in the Mediterranean burned for days.",
+      "Its people were sold as slaves. Its name became a warning."
+    ], "sfx": [{"type": "rumble", "at": 0.2, "duration": 3.0, "gain": 0.3}]},
+    {"id": "c0b", "music": "tension", "lead": 0.3, "lines": [
+      "But here is the strange part. Rome had already beaten this city, fifty years earlier.",
+      "And since then, Carthage had paid, obeyed, and asked Rome's permission for almost everything."
+    ]},
+    {"id": "c0c", "music": "tension", "lead": 0.3, "lines": [
+      "So why did Rome come back to finish it?",
+      "To answer that, we need a fresh fig, a king who was almost ninety, and one impossible order."
+    ], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c0d", "music": "epic", "lead": 0.3, "tail": 1.2, "lines": [
+      "This is how Rome destroyed Carthage, and where you can still walk through what is left of it today."
+    ], "sfx": [{"type": "impact", "at": 0.3, "duration": 1.4, "gain": 0.4}]},
+
+    {"id": "c1", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c1a", "music": "calm", "lead": 0.4, "lines": [
+      "First, where are we? Carthage stood on the coast of North Africa, right next to Tunis, the capital of Tunisia today."
+    ]},
+    {"id": "c1b", "music": "calm", "lead": 0.3, "lines": [
+      "By tradition, it was founded around eight hundred fourteen B C by sailors from Tyre, a city in today's Lebanon.",
+      "For centuries, Carthage lived from the sea."
+    ]},
+    {"id": "c1c", "music": "calm", "lead": 0.3, "lines": [
+      "Its most famous harbour was a perfect circle, with a small island in the middle.",
+      "Appian, an ancient historian, says it had sheds for two hundred twenty warships."
+    ]},
+    {"id": "c1d", "music": "calm", "lead": 0.3, "lines": [
+      "Across the sea was Rome. Not an empire yet, but a republic, run by a Senate of powerful families and two consuls elected every year."
+    ]},
+    {"id": "c1e", "music": "somber", "lead": 0.3, "lines": [
+      "The two cities fought two huge wars. In our last video, Hannibal crossed the Alps and nearly broke Rome.",
+      "But in two hundred two B C, he lost at Zama."
+    ]},
+    {"id": "c1f", "music": "somber", "lead": 0.3, "lines": [
+      "The peace treaty a year later was harsh. Carthage lost everything outside Africa and kept only a handful of warships."
+    ]},
+    {"id": "c1g", "music": "somber", "lead": 0.3, "lines": [
+      "It had to pay ten thousand talents of silver over fifty years. A talent was about twenty-six kilograms, so that is roughly two hundred sixty tonnes."
+    ]},
+    {"id": "c1h", "music": "tension", "lead": 0.3, "tail": 1.0, "lines": [
+      "And one more rule: Carthage could not fight any war without Rome's permission.",
+      "It sounds like a small detail. It will decide everything."
+    ]},
+    {"id": "c1i", "music": "build", "lead": 0.3, "lines": [
+      "Then Carthage did something nobody expected. It got rich again.",
+      "Trade came back, the city grew, and its farms were some of the best in the Mediterranean."
+    ]},
+    {"id": "c1j", "music": "build", "lead": 0.3, "lines": [
+      "In one hundred ninety-one B C, Carthage even offered to pay the whole debt at once.",
+      "Rome said no. A Carthage still paying was a Carthage still on a leash."
+    ]},
+    {"id": "c1k", "music": "build", "lead": 0.3, "tail": 1.4, "lines": [
+      "So, Carthage lost the war, but it won the peace. And in Rome, some people found that frightening."
+    ]},
+
+    {"id": "c2", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c2a", "music": "calm", "lead": 0.4, "lines": [
+      "One of those people was Marcus Porcius Cato, a tough old senator, famous for hating luxury, and for never changing his mind."
+    ]},
+    {"id": "c2b", "music": "calm", "lead": 0.3, "lines": [
+      "Around one hundred fifty-three B C, Cato visited Carthage. He expected a beaten city.",
+      "He found full markets, busy harbours, and a growing population."
+    ]},
+    {"id": "c2c", "music": "tension", "lead": 0.3, "lines": [
+      "Back in Rome, the story goes, he dropped a fresh fig in front of the Senate."
+    ], "sfx": [{"type": "impact", "at": 3.4, "duration": 0.8, "gain": 0.25}]},
+    {"id": "c2d", "music": "tension", "lead": 0.3, "lines": [
+      "This fig, he said, grew only three days' sail from here.",
+      "The message was simple. The enemy is close, and getting stronger."
+    ]},
+    {"id": "c2e", "music": "tension", "lead": 0.3, "lines": [
+      "From then on, ancient writers say, Cato ended every speech, on any subject, with the same words: Carthage must be destroyed."
+    ]},
+    {"id": "c2f", "music": "calm", "lead": 0.3, "lines": [
+      "Not everyone agreed. Another senator, Scipio Nasica, said the opposite: Carthage must be spared.",
+      "A dangerous rival, he argued, kept Rome disciplined."
+    ]},
+    {"id": "c2g", "music": "calm", "lead": 0.3, "lines": [
+      "Historians today think the fig story was polished over the centuries. But the fear behind it was very real."
+    ]},
+    {"id": "c2h", "music": "build", "lead": 0.3, "tail": 1.4, "lines": [
+      "So, Rome's most stubborn senator wanted Carthage gone. All he needed now was an excuse."
+    ]},
+
+    {"id": "c3", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c3a", "music": "calm", "lead": 0.4, "lines": [
+      "The excuse came from next door. West of Carthage lay Numidia, a kingdom covering much of today's Algeria and western Tunisia."
+    ]},
+    {"id": "c3b", "music": "calm", "lead": 0.3, "lines": [
+      "Its king, Masinissa, was Rome's loyal ally. He had fought for Rome at Zama, and Rome let him do almost anything."
+    ]},
+    {"id": "c3c", "music": "tension", "lead": 0.3, "lines": [
+      "For decades, he took bites out of Carthage's land. First the rich coast in the south. Then a whole region of about fifty towns."
+    ]},
+    {"id": "c3d", "music": "tension", "lead": 0.3, "lines": [
+      "Every time, Carthage complained to Rome. Every time, Roman envoys came, looked around, and sided with Masinissa."
+    ]},
+    {"id": "c3e", "music": "tension", "lead": 0.3, "lines": [
+      "Remember the treaty? No war without Rome's permission. So Carthage could only watch."
+    ]},
+    {"id": "c3f", "music": "march", "lead": 0.3, "lines": [
+      "In one hundred fifty B C, Masinissa besieged another Carthaginian town. This time, Carthage snapped.",
+      "It raised an army of about twenty-five thousand men, and marched."
+    ], "sfx": [{"type": "rumble", "at": 4.0, "duration": 2.5, "gain": 0.25}]},
+    {"id": "c3g", "music": "somber", "lead": 0.3, "lines": [
+      "Masinissa was about eighty-eight years old. He still won. Trapped and starving, most of that army never came home."
+    ]},
+    {"id": "c3h", "music": "calm", "lead": 0.3, "lines": [
+      "And watching that battle, by pure chance, was a young Roman officer named Scipio Aemilianus. Remember that name."
+    ]},
+    {"id": "c3i", "music": "build", "lead": 0.3, "tail": 1.4, "lines": [
+      "So, Carthage had fought a war without asking. In Rome's eyes, it had just broken the treaty."
+    ]},
+
+    {"id": "c4", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c4a", "music": "tension", "lead": 0.4, "lines": [
+      "Rome declared war in one hundred forty-nine B C. Even Utica, Carthage's big neighbour up the coast, switched to Rome's side."
+    ], "sfx": [{"type": "impact", "at": 0.6, "duration": 1.2, "gain": 0.35}]},
+    {"id": "c4b", "music": "march", "lead": 0.3, "lines": [
+      "A huge Roman army, about eighty thousand men by one ancient count, gathered in Sicily, a short sail from Carthage."
+    ]},
+    {"id": "c4c", "music": "tension", "lead": 0.3, "lines": [
+      "Carthage tried everything to avoid a war it knew it could not win.",
+      "First, Rome asked for hostages: three hundred children from its noblest families. Carthage sent them."
+    ]},
+    {"id": "c4d", "music": "tension", "lead": 0.3, "lines": [
+      "Then the Roman army landed in Africa anyway. Next order: hand over all your weapons. Carthage did."
+    ]},
+    {"id": "c4e", "music": "tension", "lead": 0.3, "lines": [
+      "According to Appian, Roman officers collected armour for two hundred thousand men, and two thousand catapults."
+    ]},
+    {"id": "c4f", "music": "somber", "lead": 0.3, "lines": [
+      "Now Carthage was a rich city with no army, no fleet, and no weapons. Then the consul Censorinus gave the final order."
+    ]},
+    {"id": "c4g", "music": "somber", "lead": 0.3, "tail": 1.0, "lines": [
+      "Leave your city. Rebuild it at least ten miles inland, about fifteen kilometres from the sea. Carthage itself will be torn down."
+    ], "sfx": [{"type": "impact", "at": 0.4, "duration": 1.6, "gain": 0.45}]},
+    {"id": "c4h", "music": "somber", "lead": 0.3, "lines": [
+      "For a city that lived from fishing, trade, and harbours, this was a death sentence. Just a slower one."
+    ]},
+    {"id": "c4i", "music": "build", "lead": 0.3, "tail": 1.4, "lines": [
+      "So, Carthage gave up its children and its weapons. Then Rome asked for the city itself. And Carthage said no."
+    ]},
+
+    {"id": "c5", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c5a", "music": "build", "lead": 0.4, "lines": [
+      "With almost nothing left, Carthage rearmed. People worked day and night, making swords, spears, and catapult bolts."
+    ]},
+    {"id": "c5b", "music": "build", "lead": 0.3, "lines": [
+      "The story goes that women even cut off their hair, to twist into ropes for the new catapults."
+    ]},
+    {"id": "c5c", "music": "march", "lead": 0.3, "lines": [
+      "And at first, it worked. Massive walls blocked the land side of the city, and the Roman attacks of the first two years failed."
+    ], "sfx": [{"type": "rumble", "at": 1.0, "duration": 3.0, "gain": 0.3}]},
+    {"id": "c5d", "music": "tension", "lead": 0.3, "lines": [
+      "During the siege, old Masinissa died, at around ninety. Rome's ally was gone, but the war went on."
+    ]},
+    {"id": "c5e", "music": "tension", "lead": 0.3, "lines": [
+      "When the Romans blocked the harbour entrance, Carthage secretly dug a brand-new channel to the sea,",
+      "and sailed out a fleet of about fifty warships it had built in hiding."
+    ], "sfx": [{"type": "whoosh", "at": 6.0, "duration": 0.9, "gain": 0.3}]},
+    {"id": "c5f", "music": "tension", "lead": 0.3, "lines": [
+      "Rome changed commanders. In one hundred forty-seven B C, the man in charge became Scipio Aemilianus, the young officer who had watched Masinissa's battle."
+    ]},
+    {"id": "c5g", "music": "somber", "lead": 0.3, "lines": [
+      "He sealed the city off by land and by sea. Hunger did the rest."
+    ]},
+    {"id": "c5h", "music": "epic", "lead": 0.3, "lines": [
+      "In the spring of one hundred forty-six B C, the Romans broke into the harbour, then fought street by street for six days and nights."
+    ], "sfx": [{"type": "impact", "at": 0.5, "duration": 1.6, "gain": 0.45}]},
+    {"id": "c5i", "music": "somber", "lead": 0.3, "lines": [
+      "On the citadel hill, called the Byrsa, the last defenders gave up. About fifty thousand men and women walked out, and were sold into slavery."
+    ]},
+    {"id": "c5j", "music": "somber", "lead": 0.3, "lines": [
+      "Scipio ordered the city burned. And then his friend, the historian Polybius, saw something unexpected. Scipio was crying."
+    ]},
+    {"id": "c5k", "music": "somber", "lead": 0.3, "lines": [
+      "He quoted Homer's lines about the fall of Troy, and said he feared that one day, the same would happen to Rome."
+    ]},
+    {"id": "c5l", "music": "calm", "lead": 0.3, "tail": 1.4, "lines": [
+      "So, after three years of siege, Carthage fell. More than six hundred years of history ended in a few days."
+    ]},
+
+    {"id": "c6", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c6a", "music": "calm", "lead": 0.4, "lines": [
+      "You may have heard that the Romans then plowed the ruins and covered the ground with salt, so nothing would ever grow there again."
+    ]},
+    {"id": "c6b", "music": "calm", "lead": 0.3, "lines": [
+      "It is a great story. But no ancient writer tells it. Not Polybius, who was there. Not Appian. Nobody."
+    ], "sfx": [{"type": "whoosh", "at": 2.0, "duration": 0.6, "gain": 0.3}]},
+    {"id": "c6c", "music": "calm", "lead": 0.3, "lines": [
+      "Historians traced the salt story to modern history books, from the early twentieth century. It probably got mixed up with salt curses in other ancient stories."
+    ]},
+    {"id": "c6d", "music": "calm", "lead": 0.3, "lines": [
+      "What Rome really did is simpler. Carthage's land became a Roman province, called Africa, and Scipio cursed anyone who would rebuild the city."
+    ]},
+    {"id": "c6e", "music": "build", "lead": 0.3, "tail": 1.4, "lines": [
+      "So, the city burned and the land became Roman. But the salt is a modern myth."
+    ]},
+
+    {"id": "c7", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
+    {"id": "c7a", "music": "calm", "lead": 0.4, "lines": [
+      "The curse did not last. About a hundred years later, Julius Caesar planned a new Roman city on the very same spot, and Augustus built it."
+    ]},
+    {"id": "c7b", "music": "calm", "lead": 0.3, "lines": [
+      "Roman Carthage became one of the great cities of the Roman world. The place Rome tried to erase came back, as Rome."
+    ]},
+    {"id": "c7c", "music": "calm", "lead": 0.3, "lines": [
+      "Today, the ruins lie in a quiet suburb of Tunis, beside the sea, between houses and gardens.",
+      "Since nineteen seventy-nine, they have been a UNESCO World Heritage Site."
+    ]},
+    {"id": "c7d", "music": "build", "lead": 0.3, "lines": [
+      "You can stand on the Byrsa hill where the last defenders surrendered, and look down at the round harbour that once hid a fleet."
+    ]},
+    {"id": "c7e", "music": "somber", "lead": 0.3, "lines": [
+      "Carthage paid its debt, obeyed the treaty, and handed over its weapons. It still was not enough.",
+      "For Rome, the problem was never what Carthage did. It was that Carthage existed."
+    ]},
+    {"id": "c7f", "music": "calm", "lead": 0.3, "lines": [
+      "So, was Cato right, and Rome was only safe once Carthage was gone?"
+    ]},
+    {"id": "c7g", "music": "calm", "lead": 0.3, "tail": 2.4, "lines": [
+      "Or was Scipio Nasica right, that Rome lost something when it lost its rival? Tell me what you think in the comments."
+    ]}
+  ]
+}
