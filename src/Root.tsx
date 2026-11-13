@@ -7,6 +7,7 @@ import {Bench25D} from './bench/Bench25D';
 import {StageDemo} from './demo/StageDemo';
 import {HannibalDemo, calculateHannibalMetadata} from './history/HannibalDemo';
 import {HannibalEpisode, calculateHannibalEpisode} from './history/Hannibal';
+import {HannibalThumb} from './history/HannibalThumb';
 
 // Every brand registers its compositions here. Ids are stable: CI renders by id.
 const portrait = {fps: 30, width: 1080, height: 1920} as const;
@@ -38,5 +39,8 @@ export const Root: React.FC = () => (
       defaultProps={{scenes: []}}
       calculateMetadata={calculateHannibalEpisode}
     />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={v} id={`HannibalThumb${v}`} component={HannibalThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
+    ))}
   </>
 );

@@ -1,0 +1,26 @@
+{
+  "titles": [
+    "Hannibal: The Man Who Nearly Destroyed Rome",
+    "How Hannibal Destroyed a Roman Army Twice His Size",
+    "Hannibal vs Rome: The Whole War in Maps"
+  ],
+  "hook": "In 216 BC, Rome sent the largest army in its history to destroy one man. By sunset it was gone. This is the full story of Hannibal Barca: the oath, the march over the Alps, Trebia, Trasimene, Cannae, fifteen years in Italy, and the final battle at Zama — told with animated maps and the ancient sources on screen.",
+  "chapters": {
+    "c0a": "The day Rome lost an army",
+    "c1": "The Oath",
+    "c2": "The March over the Alps",
+    "c3": "Three Disasters: Ticinus, Trebia, Trasimene",
+    "c4": "Cannae",
+    "c5": "The Long War",
+    "c6": "Zama",
+    "c7": "The Last Years"
+  },
+  "credits": [
+    "Map data: Natural Earth (public domain) via world-atlas. Territories are approximate reconstructions.",
+    "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT).",
+    "Narration: synthetic voice (Kokoro-82M, Apache-2.0).",
+    "Ancient quotes: Polybius (Paton translation) and Livy, public-domain translations."
+  ],
+  "hashtags": ["#Hannibal", "#RomanHistory", "#AncientHistory", "#Cannae", "#PunicWars"],
+  "pinned_comment": "If Hannibal had marched on Rome right after Cannae, could he have taken it? Maharbal thought so. What do you think?"
+}

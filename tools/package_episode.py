@@ -1,0 +1,77 @@
+"""Build upload package files from the episode timeline + generated voice timing.
+
+Usage: python tools/package_episode.py <timeline.json> <timing.json> <episode_dir> <out_dir>
+Writes <out_dir>/UPLOAD.md and <out_dir>/captions.srt. Reads <episode_dir>/package.json (titles, hook,
+hashtags, credits) and <episode_dir>/sources.md (primary-source lines).
+"""
+
+import json
+import re
+import sys
+from pathlib import Path
+
+tl_path, timing_path, ep_dir, out_dir = map(Path, sys.argv[1:5])
+tl = json.loads(tl_path.read_text(encoding="utf-8"))
+timing = json.loads(timing_path.read_text(encoding="utf-8"))
+pkg = json.loads((ep_dir / "package.json").read_text(encoding="utf-8"))
+out_dir.mkdir(parents=True, exist_ok=True)
+
+
+def ts(sec, srt=False):
+    h, rem = divmod(max(0.0, sec), 3600)
+    m, s = divmod(rem, 60)
+    if srt:
+        return f"{int(h):02d}:{int(m):02d}:{int(s):02d},{int(round((s - int(s)) * 1000)):03d}"
+    return f"{int(h)}:{int(m):02d}:{int(s):02d}" if h else f"{int(m):02d}:{int(s):02d}"
+
+
+# ---------- chapters (YouTube: first at 00:00, ≥3 chapters, each ≥10 s) ----------
+starts = {s["id"]: s["start"] for s in timing["scenes"]}
+chapters = [(0.0 if i == 0 else starts[sid], title) for i, (sid, title) in enumerate(pkg["chapters"].items())]
+chapters.sort()
+for (a, _), (b, t) in zip(chapters, chapters[1:]):
+    if b - a < 10:
+        raise SystemExit(f"chapter '{t}' starts {b - a:.1f}s after the previous one (<10 s)")
+
+# ---------- captions ----------
+cues = []
+for line in timing["lines"]:
+    words = line["words"]
+    text = line["text"]
+    if len(text) <= 84:
+        cues.append((line["t"], line["t"] + line["duration"], text))
+        continue
+    # split long lines at sentence/comma boundaries into chunks of ≤ ~84 chars using word timings
+    chunk = []
+    for w in words:
+        chunk.append(w)
+        joined = " ".join(x["w"] for x in chunk)
+        if len(joined) >= 60 and (re.search(r"[.,;:?!]$", w["w"]) or len(joined) > 84):
+            cues.append((chunk[0]["t"], chunk[-1]["end"], joined))
+            chunk = []
+    if chunk:
+        cues.append((chunk[0]["t"], chunk[-1]["end"], " ".join(x["w"] for x in chunk)))
+srt = "\n".join(f"{i + 1}\n{ts(a, True)} --> {ts(b, True)}\n{t}\n" for i, (a, b, t) in enumerate(cues))
+(out_dir / "captions.srt").write_text(srt, encoding="utf-8")
+
+# ---------- sources from sources.md ----------
+src_lines = [l.strip("- ").strip() for l in (ep_dir / "sources.md").read_text(encoding="utf-8").splitlines() if l.startswith("- ")]
+
+dur = timing["duration"]
+md = [f"# UPLOAD — {pkg['titles'][0]}", "", f"Length: {ts(dur)} · Render: see release / artifact `final.mp4` · Thumbnails: `thumb_1..3.jpg`", "",
+      "## Titles (Test & Compare — add all 3)", *[f"{i + 1}. {t}" for i, t in enumerate(pkg["titles"])], "",
+      "## Description (copy everything in the box)", "```", pkg["hook"], "", "Chapters:",
+      *[f"{ts(a)} {t}" for a, t in chapters], "", "Sources:", *[f"- {s}" for s in src_lines], "",
+      "Credits:", *[f"- {c}" for c in pkg["credits"]], "", " ".join(pkg["hashtags"]), "```", "",
+      "## Settings checklist",
+      "- [ ] Audience: **No, it's not made for kids**",
+      "- [ ] Altered or synthetic content: **No** (no realistic people or events are depicted; narration voice is synthetic but this label is for realistic content)",
+      "- [ ] Category: **Education** · Language: **English** · Caption certification: none needed",
+      "- [ ] Upload subtitles: `captions.srt` (English)",
+      "- [ ] Test & Compare: upload thumbnails 1–3",
+      "- [ ] Auto-dubbing: enable, then review the dubs before publishing",
+      "- [ ] End screen: subscribe + next video / playlist (from 20 s before the end)",
+      f"- [ ] Pinned comment: {pkg['pinned_comment']}",
+      "- [ ] After 48 h: record CTR, average % viewed, 30-s retention in docs/LESSONS.md", ""]
+(out_dir / "UPLOAD.md").write_text("\n".join(md), encoding="utf-8")
+print(f"packaged: {len(chapters)} chapters, {len(cues)} caption cues, duration {ts(dur)}")
