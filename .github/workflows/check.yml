@@ -1,0 +1,35 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Python syntax
+        run: python -m compileall -q tools packages/audio
+      - name: Guard against committed media or secrets
+        run: |
+          bad=$(git ls-files | grep -Ei '\.(mp4|mov|wav|flac|mp3|fbx|glb|gltf|bin|hdr|blend|onnx|zip)$|(^|/)\.env$|^_import/' || true)
+          if [ -n "$bad" ]; then echo "Forbidden files tracked:"; echo "$bad"; exit 1; fi
+          if git grep -nE 'AIza[0-9A-Za-z_-]{35}|ghp_[0-9A-Za-z]{36}|gho_[0-9A-Za-z]{36}' -- . ':!*.md'; then echo "Possible secret committed"; exit 1; fi
+      - name: List compositions
+        run: npx remotion compositions src/index.ts

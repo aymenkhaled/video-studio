@@ -1,0 +1,197 @@
+name: render
+
+on:
+  workflow_dispatch:
+    inputs:
+      comp:
+        description: Composition id
+        required: true
+        default: Smoke
+      chunks:
+        description: Parallel chunks (1-256; max 20 run at once)
+        required: true
+        default: '1'
+      mode:
+        description: stills = storyboard frames only; full = video + QA
+        type: choice
+        options: [full, stills]
+        default: full
+      props:
+        description: Optional input-props JSON path in the repo
+        required: false
+        default: ''
+      audio:
+        description: Optional soundtrack command (run in CI, must write out/soundtrack.wav); empty = silent video
+        required: false
+        default: ''
+      publish:
+        description: Upload final.mp4 to a GitHub Release
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-${{ inputs.comp }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: 22
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      frames: ${{ steps.plan.outputs.frames }}
+      fps: ${{ steps.plan.outputs.fps }}
+      width: ${{ steps.plan.outputs.width }}
+      height: ${{ steps.plan.outputs.height }}
+      codehash: ${{ steps.hash.outputs.codehash }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - id: hash
+        name: Code + props hash (scene cache key)
+        run: |
+          h=$(cat package-lock.json remotion.config.ts $(git ls-files src packages/engine packages/three brands | sort) ${{ inputs.props }} 2>/dev/null | sha256sum | cut -c1-16)
+          echo "codehash=$h" >> "$GITHUB_OUTPUT"
+      - id: plan
+        run: node tools/plan.mjs "${{ inputs.comp }}" "${{ inputs.chunks }}" "${{ inputs.props }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bundle
+          path: out/
+          retention-days: 1
+          include-hidden-files: true
+
+  stills:
+    if: inputs.mode == 'stills'
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci && npx remotion browser ensure
+      - uses: actions/download-artifact@v4
+        with:
+          name: bundle
+          path: out/
+      - run: node tools/render_stills.mjs 12
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Contact sheet
+        run: ffmpeg -v error -y -pattern_type glob -i 'out/stills/*.jpg' -vf "scale=270:-2,tile=6x2:padding=6:color=0x202020" -frames:v 1 out/stills/contact_sheet.jpg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stills-${{ inputs.comp }}
+          path: out/stills/
+          retention-days: 14
+
+  render:
+    if: inputs.mode == 'full'
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: true
+      max-parallel: 20
+      matrix:
+        chunk: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: out/chunks
+          key: chunk-${{ inputs.comp }}-${{ needs.plan.outputs.codehash }}-${{ inputs.chunks }}-${{ matrix.chunk }}
+      - uses: actions/setup-node@v4
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci && npx remotion browser ensure
+      - if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: bundle
+          path: out/
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: node tools/render_chunk.mjs ${{ matrix.chunk }}
+      - if: steps.cache.outputs.cache-hit == 'true'
+        run: echo "chunk ${{ matrix.chunk }} reused from cache (code + props unchanged)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chunk-${{ matrix.chunk }}
+          path: out/chunks/
+          retention-days: 1
+
+  combine:
+    needs: [plan, render]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fluidsynth fluid-soundfont-gm
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: chunk-*
+          path: out/chunks/
+          merge-multiple: true
+      - name: Join chunks (lossless stream copy)
+        run: |
+          ls out/chunks/*.ts | sort | sed "s|^|file '$PWD/|; s|$|'|" > out/list.txt
+          ffmpeg -v error -y -f concat -safe 0 -i out/list.txt -c copy -map_metadata -1 out/video.mp4
+          python3 - <<'EOF'
+          import glob, json
+          s = [json.load(open(f)) for f in sorted(glob.glob('out/chunks/*.json'))]
+          if s:
+              frames = sum(x['frames'] for x in s); secs = sum(x['seconds'] for x in s)
+              print(f"render stats: {len(s)} chunks, {frames} frames, {secs:.0f} job-seconds, mean {frames/secs:.2f} fps/job on {s[0]['cpus']} CPUs")
+              print("per chunk fps:", [round(x['fps'], 2) for x in s])
+          EOF
+      - uses: actions/setup-python@v5
+        if: inputs.audio != ''
+        with:
+          python-version: '3.11'
+      - name: Soundtrack
+        if: inputs.audio != ''
+        run: |
+          pip install -q -r packages/audio/requirements.txt
+          ${{ inputs.audio }}
+          ffmpeg -v error -y -i out/video.mp4 -i out/soundtrack.wav -map 0:v -map 1:a -c:v copy \
+            -af "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000" -ac 2 -c:a aac -b:a 192k -shortest -map_metadata -1 out/final.mp4
+      - name: Silent final
+        if: inputs.audio == ''
+        run: cp out/video.mp4 out/final.mp4
+      - name: QA
+        run: |
+          python3 tools/qa_video.py out/final.mp4 --width ${{ needs.plan.outputs.width }} --height ${{ needs.plan.outputs.height }} \
+            --fps ${{ needs.plan.outputs.fps }} --frames ${{ needs.plan.outputs.frames }} \
+            ${{ inputs.audio == '' && '--no-audio' || '' }} --sheet out/contact_sheet.jpg --sheet-count 12
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: final-${{ inputs.comp }}
+          path: |
+            out/final.mp4
+            out/final.mp4.qa.json
+            out/contact_sheet.jpg
+          retention-days: 7
+      - name: Release
+        if: inputs.publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="render-${{ inputs.comp }}-${{ github.run_id }}"
+          gh release create "$tag" out/final.mp4 out/contact_sheet.jpg out/final.mp4.qa.json --title "$tag" --notes "Render of ${{ inputs.comp }} at ${{ github.sha }}" --prerelease
