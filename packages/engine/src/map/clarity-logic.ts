@@ -70,3 +70,55 @@ export const layoutLabels = (boxes: LabelBox[], frame: {w: number; h: number}, p
   }
   return boxes.map((b) => result.get(b.id)!);
 };
+
+const UNITS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+const TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+const bare = (w: string) => w.toLowerCase().replace(/[^a-z-]/g, '');
+const isNumWord = (w: string) => {
+  const parts = bare(w).split('-').filter(Boolean);
+  return parts.length > 0 && parts.every((p) => UNITS.includes(p) || TENS.includes(p) || p === 'hundred' || p === 'thousand');
+};
+const numValue = (ws: string[]) => {
+  let total = 0;
+  let cur = 0;
+  for (const p of ws.flatMap((w) => bare(w).split('-').filter(Boolean))) {
+    if (UNITS.includes(p)) cur += UNITS.indexOf(p);
+    else if (TENS.includes(p)) cur += TENS.indexOf(p) * 10;
+    else if (p === 'hundred') cur *= 100;
+    else if (p === 'thousand') {
+      total += cur * 1000;
+      cur = 0;
+    }
+  }
+  return total + cur;
+};
+
+/** Caption display: spoken numbers ("one hundred forty-six B C") → numerals ("146 BC"), merged words keep their span. */
+export const numeralize = (words: CueWord[]): CueWord[] => {
+  const out: CueWord[] = [];
+  let i = 0;
+  while (i < words.length) {
+    let j = i;
+    while (j < words.length && isNumWord(words[j].w) && (j === i || !/[.,;:?!]$/.test(words[j - 1].w))) j++;
+    const run = words.slice(i, j);
+    const clean = run.map((w) => bare(w.w));
+    const bc = j + 1 < words.length && words[j].w === 'B' && /^C\b/.test(words[j + 1].w);
+    const big = clean.some((c) => c === 'hundred' || c === 'thousand');
+    const year = run.length === 2 && UNITS.indexOf(clean[0]) >= 11 && numValue([clean[1]]) >= 20 && numValue([clean[1]]) < 100;
+    if (run.length && (bc || big || year)) {
+      const v = year ? UNITS.indexOf(clean[0]) * 100 + numValue([clean[1]]) : numValue(clean);
+      const trail = run[run.length - 1].w.replace(/^[A-Za-z-]+/, '');
+      if (bc) {
+        out.push({w: `${v} BC${words[j + 1].w.replace(/^C/, '')}`, t: run[0].t, end: words[j + 1].end});
+        i = j + 2;
+      } else {
+        out.push({w: (year ? String(v) : v.toLocaleString('en-US')) + trail, t: run[0].t, end: run[run.length - 1].end});
+        i = j;
+      }
+      continue;
+    }
+    out.push(words[i]);
+    i++;
+  }
+  return out;
+};

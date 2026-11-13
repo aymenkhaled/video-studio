@@ -2,6 +2,7 @@ import React from 'react';
 import {clamp01, easeInOutCubic, ramp} from '../motion';
 import {INTER} from '../overlay';
 import {CINZEL} from './map';
+import {agoLabel} from './clarity-logic';
 
 // Long-form (16:9) documentary UI: chapter cards, timeline bar, citation lower-thirds, big counters.
 
@@ -66,7 +67,7 @@ export const TitleCard: React.FC<{title: string; sub: string; p: number}> = ({ti
 };
 
 /** Bottom timeline bar with a moving year marker. */
-export const TimelineBar: React.FC<{from: number; to: number; year: number; events?: {year: number; label: string}[]}> = ({from, to, year, events = []}) => {
+export const TimelineBar: React.FC<{from: number; to: number; year: number; events?: {year: number; label: string}[]; now?: number}> = ({from, to, year, events = [], now}) => {
   const x = (y: number) => clamp01((y - from) / (to - from)) * 100;
   return (
     <div style={{position: 'absolute', left: 120, right: 120, bottom: 54, height: 60, fontFamily: INTER}}>
@@ -79,6 +80,9 @@ export const TimelineBar: React.FC<{from: number; to: number; year: number; even
         <div style={{width: 28, height: 28, borderRadius: 14, background: '#d8b46a', border: '4px solid #1b1208', margin: '0 auto'}} />
       </div>
       <div style={{position: 'absolute', left: `${x(year)}%`, top: -30, transform: 'translateX(-50%)', color: '#f4ecd8', fontWeight: 800, fontSize: 30, textShadow: '0 2px 0 #000', whiteSpace: 'nowrap'}}>{yearLabel(Math.round(year))}</div>
+      {now !== undefined ? (
+        <div style={{position: 'absolute', left: `${x(year)}%`, top: 40, transform: 'translateX(-50%)', color: '#e9dcc0', fontWeight: 500, fontSize: 18, textShadow: '0 2px 0 #000', whiteSpace: 'nowrap'}}>{agoLabel(Math.round(year), now)}</div>
+      ) : null}
       <div style={{position: 'absolute', left: 0, top: 40, color: 'rgba(244,236,216,0.7)', fontSize: 20}}>{yearLabel(from)}</div>
       <div style={{position: 'absolute', right: 0, top: 40, color: 'rgba(244,236,216,0.7)', fontSize: 20}}>{yearLabel(to)}</div>
     </div>

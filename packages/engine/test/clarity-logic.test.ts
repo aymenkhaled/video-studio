@@ -47,3 +47,14 @@ test('labels: no overlaps, inside frame, top priority never moves', () => {
     for (const b of shown)
       if (a !== b) assert.ok(a.x + a.w <= b.x || b.x + b.w <= a.x || a.y + a.h <= b.y || b.y + b.h <= a.y, `${a.id}/${b.id}`);
 });
+
+import {numeralize} from '../src/map/clarity-logic.ts';
+const W = (s: string) => s.split(' ').map((w, i) => ({w, t: i, end: i + 0.9}));
+test('numeralize spoken numbers for captions, keeping timings', () => {
+  const out = numeralize(W('In one hundred forty-six B C, the city burned.'));
+  assert.deepEqual(out.map((w) => w.w), ['In', '146 BC,', 'the', 'city', 'burned.']);
+  assert.deepEqual([out[1].t, out[1].end], [1, 5.9]);
+  assert.equal(numeralize(W('armour for two hundred thousand men')).map((w) => w.w).join(' '), 'armour for 200,000 men');
+  assert.equal(numeralize(W('Since nineteen seventy-nine, they')).map((w) => w.w).join(' '), 'Since 1979, they');
+  assert.equal(numeralize(W('over fifty years. Ten thousand talents')).map((w) => w.w).join(' '), 'over fifty years. 10,000 talents');
+});
