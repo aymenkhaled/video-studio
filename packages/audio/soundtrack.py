@@ -42,6 +42,7 @@ FOLEY = {  # files from the assets-v1 "freesound-dino-foley.zip" (see docs/LICEN
 tl = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
 PRE = {}  # line id -> (samples, source_rate) generated in the voice-first pre-pass
 SCENES = []
+SCENE_AMB = []  # per-scene ambience beds: {start, end, type, gain}
 
 
 def _download(url, target, size, sha):
@@ -129,7 +130,8 @@ if "scenes" in tl:
         t += float(sc.get("lead", 0.6))
         for li, text in enumerate(sc.get("lines", [])):
             lid = f"{sc['id']}-{li + 1}"
-            smp, sr = speak(kokoro, text, vcfg, float(vcfg.get("speed", 1.0)))
+            # per-scene pacing (e.g. slower for sombre beats, a touch faster for action)
+            smp, sr = speak(kokoro, text, vcfg, float(sc.get("speed", vcfg.get("speed", 1.0))))
             PRE[lid] = (smp, sr)
             d = len(smp) / sr
             lines.append({"id": lid, "t": round(t, 3), "until": round(t + d + 0.05, 3), "text": text})
@@ -141,6 +143,8 @@ if "scenes" in tl:
             sections.append({"start": start, "end": end, "mood": sc["music"]})
         for ev in sc.get("sfx", []):
             sfx.append({**ev, "t": start + float(ev.get("at", 0))})
+        if sc.get("ambience"):
+            SCENE_AMB.append({"start": start, "end": end, **sc["ambience"]})
     del kokoro
     tl["voice"]["lines"] = lines
     tl.setdefault("music", {})["sections"] = sections
@@ -356,6 +360,77 @@ def effect(kind, n, v):
             m = min(n - i, round(0.03 * RATE))
             x[i: i + m] += np.sin(2 * np.pi * 2200 * t[:m]) * np.exp(-t[:m] * 90)
         return x
+    dur = n / RATE
+    if kind == "march":  # many feet + kit jingle, ~2 steps/s
+        x = np.zeros(n)
+        for k, st in enumerate(np.arange(0, dur, 0.26)):
+            i = round(st * RATE)
+            m = min(n - i, round(0.12 * RATE))
+            if m <= 0:
+                break
+            tt = t[:m]
+            x[i: i + m] += (np.sin(2 * np.pi * (55 + 6 * (k % 3)) * tt) * np.exp(-tt * 28) + filt(rng.normal(0, 1, m), 900) * 0.5 * np.exp(-tt * 40))
+            if k % 2 == 0:
+                x[i: i + m] += np.sin(2 * np.pi * 3100 * tt) * np.exp(-tt * 60) * 0.12
+        return norm(x) * env(n, 0.3, 0.4)
+    if kind == "hooves":  # gallop triplets
+        x = np.zeros(n)
+        for k, st in enumerate(np.arange(0, dur, 0.42)):
+            for off in (0, 0.07, 0.15):
+                i = round((st + off) * RATE)
+                m = min(n - i, round(0.08 * RATE))
+                if m <= 0:
+                    continue
+                tt = t[:m]
+                x[i: i + m] += np.sin(2 * np.pi * 140 * tt) * np.exp(-tt * 55) + filt(rng.normal(0, 1, m), 2500) * 0.35 * np.exp(-tt * 70)
+        return norm(x) * env(n, 0.25, 0.35)
+    if kind == "crowd":  # murmur: band-passed noise with syllable-rate modulation
+        base = filt(filt(noise, 250, "highpass"), 1600)
+        mod = 0.6 + 0.4 * np.sin(2 * np.pi * 3.1 * t + 2 * np.sin(2 * np.pi * 0.7 * t))
+        return norm(base * mod) * env(n, 0.6, 0.8)
+    if kind == "fire":  # low roar + crackles
+        roar = filt(noise, 380) * (0.7 + 0.3 * np.sin(2 * np.pi * 0.4 * t))
+        cr = np.zeros(n)
+        idx = rng.choice(n, size=max(1, int(dur * 14)), replace=False)
+        for i in idx:
+            m = min(n - i, 240)
+            cr[i: i + m] += rng.normal(0, 1, m) * np.exp(-np.arange(m) / 30)
+        return norm(roar * 0.8 + filt(cr, 1500, "highpass") * 0.6) * env(n, 0.5, 0.8)
+    if kind == "waves":  # slow surf swells
+        swell = 0.25 + 0.75 * np.clip(np.sin(2 * np.pi * 0.11 * t) ** 2, 0, 1)
+        return norm(filt(filt(noise, 120, "highpass"), 1300) * swell) * env(n, 0.8, 0.8)
+    if kind == "clash":  # metal on metal
+        tone = sum(np.sin(2 * np.pi * f * t) * np.exp(-t * d) for f, d in ((1270, 9), (1873, 12), (2641, 15), (3390, 20)))
+        return norm(tone * 0.6 + filt(noise, 3000, "highpass") * np.exp(-t * 40)) * env(n, 0.001, 0.2)
+    if kind == "oars":  # rhythmic splash/swish
+        x = np.zeros(n)
+        for st in np.arange(0, dur, 0.9):
+            i = round(st * RATE)
+            m = min(n - i, round(0.5 * RATE))
+            if m <= 0:
+                break
+            tt = t[:m]
+            x[i: i + m] += filt(rng.normal(0, 1, m), 2200) * np.sin(np.pi * tt / 0.5) ** 2
+        return norm(x) * env(n, 0.2, 0.3)
+    if kind == "forge":  # hammer on anvil
+        x = np.zeros(n)
+        for st in np.arange(0, dur, 0.55):
+            i = round(st * RATE)
+            m = min(n - i, round(0.4 * RATE))
+            if m <= 0:
+                break
+            tt = t[:m]
+            x[i: i + m] += sum(np.sin(2 * np.pi * f * tt) * np.exp(-tt * 14) for f in (880, 1410, 2290))
+        return norm(x) * env(n, 0.01, 0.2)
+    if kind == "coin":
+        return norm(sum(np.sin(2 * np.pi * f * t) * np.exp(-t * 6) for f in (2637, 3520, 4186))) * env(n, 0.001, 0.2)
+    if kind == "page":  # card turn
+        return norm(filt(filt(noise, 900, "highpass"), 6000) * np.exp(-((t - 0.12) ** 2) / 0.004)) * env(n, 0.005, 0.05)
+    if kind == "elephant":  # trumpet: brassy saw with upward glide
+        f = 340 + 260 * np.clip(t / max(0.3, dur * 0.6), 0, 1)
+        ph = 2 * np.pi * np.cumsum(f) / RATE
+        saw = sum(np.sin(k * ph) / k for k in range(1, 9))
+        return norm(filt(saw * (1 + 0.2 * np.sin(2 * np.pi * 7 * t)), 3200)) * env(n, 0.05, 0.35)
     raise RuntimeError(f"unknown sfx type: {kind}")
 
 
@@ -382,6 +457,16 @@ if amb:
     for ch in range(2):
         air = norm(filt(filt(rng.normal(0, 1, N), 110, "highpass"), 1800))
         ambience[:, ch] = air * float(amb.get("gain", 0.25)) * (0.5 + 0.15 * np.sin(2 * np.pi * 0.07 * tt + ch))
+
+AMB_KIND = {"sea": "waves", "city": "crowd", "fire": "fire", "camp": "crowd", "march": "march"}
+for a in SCENE_AMB:  # per-scene beds, 0.8 s fades, ducked under the voice like the global ambience
+    s0, s1 = round(float(a["start"]) * RATE), min(N, round(float(a["end"]) * RATE))
+    if s1 - s0 < RATE // 2:
+        continue
+    bed = effect(AMB_KIND.get(a["type"], "waves"), s1 - s0, s0)
+    fade = np.minimum(1, np.minimum(np.arange(s1 - s0) / (0.8 * RATE), (s1 - s0 - np.arange(s1 - s0)) / (0.8 * RATE)))
+    for ch in range(2):
+        ambience[s0:s1, ch] += bed * fade * float(a.get("gain", 0.3)) * (1 if ch == 0 else 0.92)
 
 # ---------- mix ----------
 for ch, offs in enumerate(((0.085, 0.185, 0.33), (0.11, 0.215, 0.365))):  # small-room reflections on foley
