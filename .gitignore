@@ -28,3 +28,4 @@ __pycache__/
 .venv/
 docs/review/
 public/assets/
+assets-cache/

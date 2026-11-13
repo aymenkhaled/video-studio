@@ -1,0 +1,11 @@
+{
+  "release": "assets-v1",
+  "repo": "aymenkhaled/video-studio",
+  "files": [
+    {"name": "quaternius-dinosaurs-fbx.zip", "sha256": "d13166577adff45579b7444d249b4a70b753a73ee2bf54f8a5421f70d4ac828d", "dest": "public/assets/dinos", "licence": "CC0-1.0", "contents": "Apatosaurus, Parasaurolophus, Stegosaurus, Trex, Triceratops, Velociraptor (animated FBX)"},
+    {"name": "quaternius-nature-megakit.zip", "sha256": "2fa9aa7d52f3b05bfa62b024adcc34b3a50eb501bb016c6272d1c970b90b1c2e", "dest": "public/assets/mega", "licence": "CC0-1.0", "contents": "Stylized Nature MegaKit subset (trees, pines, ferns, grass, rocks, plants, textures)"},
+    {"name": "lowpoly-nature-starter.zip", "sha256": "10a0e50cd2b582bf32331f531615b6bdbfd4dbab28cd00a399d30e7c006ec9a7", "dest": "public/assets/lpn", "licence": "CC0-1.0", "contents": "40 GLB bushes, trees, rocks, logs, terrain"},
+    {"name": "polyhaven-hdri-1k.zip", "sha256": "217d6f14a4448026e7189d32cc53cc419b00e7ec89aa7182d1689e411c39e664", "dest": "public/assets/hdri", "licence": "CC0-1.0", "contents": "misty_pines, spruit_sunrise, kloofendal_43d_clear, kloofendal_misty_morning (1k .hdr)"},
+    {"name": "freesound-dino-foley.zip", "sha256": "2ccf222bf7b6628b0c356a0cac13685bbbaff2cbf0cd602f570ced7d7c61feeb", "dest": "assets-cache/sfx", "licence": "CC-BY-4.0 (3 files, credit required) + CC0-1.0 (2 files)", "contents": "410609, 427414, 132149 (CC BY 4.0); 507066, 529462 (CC0)"}
+  ]
+}
