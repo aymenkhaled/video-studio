@@ -24,6 +24,10 @@ on:
         description: Optional episode timeline.json (voice + music + sfx); empty = silent video
         required: false
         default: ''
+      concurrency:
+        description: Browser tabs per render job (empty = CPU count; use 2 for 3D scenes)
+        required: false
+        default: ''
       publish:
         description: Upload final.mp4 to a GitHub Release
         type: boolean
@@ -147,6 +151,8 @@ jobs:
           path: out/
       - if: steps.cache.outputs.cache-hit != 'true'
         run: node tools/render_chunk.mjs ${{ matrix.chunk }}
+        env:
+          RENDER_CONCURRENCY: ${{ inputs.concurrency }}
       - if: steps.cache.outputs.cache-hit == 'true'
         run: echo "chunk ${{ matrix.chunk }} reused from cache (code + props unchanged)"
       - uses: actions/upload-artifact@v4

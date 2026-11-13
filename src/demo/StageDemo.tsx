@@ -20,13 +20,13 @@ const STOP = 12.1; // rex starts slowing here, stands beside the bus from STOP +
 const HUMAN_Z = 7;
 
 const ENV: Spec = {
-  pine1: ['assets/mega/Pine_1.gltf', {Leaves_Pine: '#6f9070'}],
-  pine2: ['assets/mega/Pine_2.gltf', {Leaves_Pine: '#6f9070'}],
-  tree1: ['assets/mega/CommonTree_1.gltf', {Leaves_NormalTree: '#9fae8c'}],
-  fern: ['assets/mega/Fern_1.gltf', {Leaves: '#8f9c78'}],
+  pine1: ['assets/lpn/nature_tree_pine_01.glb', {'*': '#5f7f5c'}],
+  pine2: ['assets/lpn/nature_tree_pine_02.glb', {'*': '#6b8a63'}],
+  tree1: ['assets/lpn/nature_tree_deciduous_02.glb', {'*': '#7f9a68'}],
+  fern: ['assets/lpn/nature_bush_01.glb', {'*': '#71875a'}],
 };
 
-const keepOut = (x: number, z: number) => z > -6 && z < 40 && x > -40 && x < 50; // keep lineup + camera corridor clear
+const keepOut = (x: number, z: number) => z > -6 && z < 40 && x > -40 && x < 50; // keep lineup + camera corridor clear (low-poly vertex-colour trees: no alpha leaves, cheap on software WebGL)
 const TREES = scatter(46, 'trees', (r) => ({p: [-60 + r('x') * 140, 0, -10 - r('z') * 70], s: 2.4 + r('s') * 1.8, r: r('r') * 6.28}), keepOut);
 const SMALL = scatter(30, 'small', (r) => ({p: [-30 + r('x') * 80, 0, -12 - r('z') * 14], s: 1 + r('s') * 1.2, r: r('r') * 6.28}), (x, z) => z > -12);
 

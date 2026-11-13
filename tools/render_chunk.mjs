@@ -29,7 +29,8 @@ await renderMedia({
   muted: true,
   chromiumOptions,
   timeoutInMilliseconds: 240000, // first frame per tab loads 3D models/HDRI on software WebGL
-  concurrency: os.cpus().length,
+  // Software WebGL is itself multi-threaded: >2 tabs thrash a 4-vCPU runner on 3D scenes. Override via RENDER_CONCURRENCY.
+  concurrency: Number(process.env.RENDER_CONCURRENCY || os.cpus().length),
   imageFormat: 'jpeg',
   jpegQuality: 90,
   onProgress: ({progress}) => {
@@ -41,6 +42,6 @@ await renderMedia({
   },
 });
 const seconds = (Date.now() - t0) / 1000;
-const stats = {index, frames, seconds, fps: frames / seconds, cpus: os.cpus().length};
+const stats = {index, frames, seconds, fps: frames / seconds, cpus: os.cpus().length, concurrency: Number(process.env.RENDER_CONCURRENCY || os.cpus().length)};
 fs.writeFileSync(outputLocation.replace(/\.ts$/, '.json'), JSON.stringify(stats));
 console.log(`chunk ${index}: ${frames} frames in ${seconds.toFixed(1)} s = ${stats.fps.toFixed(2)} fps on ${stats.cpus} CPUs`);
