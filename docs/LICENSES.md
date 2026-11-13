@@ -16,7 +16,9 @@ Binary assets are in the `assets-v1` Release; SHA256 per file in `assets/manifes
 | "Alien or Dinosaur Sounds" (507066) | swinning | CC0 1.0 | https://freesound.org/people/swinning/sounds/507066/ | No |
 | bellow (529462) | CaveboyTup | CC0 1.0 (per backup README; re-verify on page before use) | https://freesound.org/s/529462/ | No |
 
-Pending verification (not usable yet): Gobkit Free Dinosaur Pack (claims CC0; inner LICENSE unread), `kay/` models (no licence file).
+| Gobkit Free Dinosaur Pack (10 GLB) | Gobkit | CC0 1.0 (LICENSE.txt in pack, read 2026-11-13) | https://gobkit.com/api/free | No |
+
+Not usable: `kay/` models (no licence file).
 Banned: Freesound 559296, 810951; anything from Jurassic Park.
 
 ## Software / models
