@@ -62,6 +62,8 @@ jobs:
         run: |
           h=$(cat package-lock.json remotion.config.ts $(git ls-files src packages/engine packages/three brands | sort) ${{ inputs.props }} 2>/dev/null | sha256sum | cut -c1-16)
           echo "codehash=$h" >> "$GITHUB_OUTPUT"
+      - name: Fetch licensed assets (into public/, bundled below)
+        run: python3 tools/fetch_assets.py
       - id: plan
         run: node tools/plan.mjs "${{ inputs.comp }}" "${{ inputs.chunks }}" "${{ inputs.props }}"
       - uses: actions/upload-artifact@v4
