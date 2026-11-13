@@ -1,4 +1,4 @@
-// Storyboard stills: N evenly spaced frames (or explicit frames) from the prebuilt bundle.
+﻿// Storyboard stills: N evenly spaced frames (or explicit frames) from the prebuilt bundle.
 // Usage: node tools/render_stills.mjs [count=12] [frame,frame,...]
 import {renderStill, selectComposition} from '@remotion/renderer';
 import fs from 'node:fs';
@@ -17,6 +17,6 @@ fs.mkdirSync('out/stills', {recursive: true});
 for (const frame of frames) {
   const t0 = Date.now();
   const output = `out/stills/${plan.compId}_f${String(frame).padStart(6, '0')}.jpg`;
-  await renderStill({composition, serveUrl, frame, output, inputProps: plan.inputProps, chromiumOptions, imageFormat: 'jpeg', jpegQuality: 88});
+  await renderStill({composition, serveUrl, frame, output, inputProps: plan.inputProps, chromiumOptions, imageFormat: 'jpeg', jpegQuality: 88, timeoutInMilliseconds: 240000});
   console.log(`still ${frame} (${(frame / plan.fps).toFixed(2)} s) in ${((Date.now() - t0) / 1000).toFixed(1)} s`);
 }
