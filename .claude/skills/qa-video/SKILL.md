@@ -15,7 +15,7 @@ Automated part runs in CI (`tools/qa_video.py`, job `qa`); any failure fails the
 - Contact sheet: 12 frames (Shorts) / 24 frames (long), labelled with timecodes.
 
 ## Visual (you, every time)
-Open the contact sheet and frames 0, 15, 30. Check: subject readable on a phone at frame 0; nothing key in the bottom 420 px / right 120 px (Shorts); no broken layer edges, empty corners, or text overlaps; motion rules (nothing static > 3 s, eased moves, parallax). Write findings with timecodes.
+Open the contact sheet and frames 0, 15, 30. For history/map episodes also check every rule in `docs/CLARITY_STANDARD.md`. Check: subject readable on a phone at frame 0; nothing key in the bottom 420 px / right 120 px (Shorts); no broken layer edges, empty corners, or text overlaps; motion rules (nothing static > 3 s, eased moves, parallax). Write findings with timecodes.
 
 ## Independent review
 Spawn one reviewer subagent that did not build the video. Give it the contact sheet path, `script.md`, `sources.md`, `docs/LICENSES.md`. Ask for PASS/FAIL with reasons on: facts vs sources, licences, policy (violence, first 7 s, AI people, copyrighted media), readability.

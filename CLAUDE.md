@@ -29,6 +29,7 @@ Faceless YouTube studio for Aymen (Tunisia). Goal: views → YPP. Brand A "Scale
 - Technical: ffprobe res/fps/duration; ebur128 −14 ±1 LUFS, true peak ≤ −1.5; blackdetect, freezedetect (>2 s), silencedetect clean; metadata stripped. Any failed check fails the CI job.
 - Visual: 12–24-frame contact sheet that you actually look at. Subject readable on a phone on frame 1; Shorts safe zone (nothing key in bottom 420 px / right 120 px); no broken edges, empty frame areas, text overlaps; motion rules (nothing static >3 s, eased moves, 2–3 parallax layers, change every 4–8 s Shorts / 6–15 s long).
 - Independent review: a reviewer subagent that did not build it checks contact sheet, facts vs `sources.md`, licences → PASS/FAIL.
+- Clarity: history/map episodes must pass `docs/CLARITY_STANDARD.md` (zero-background viewer test).
 - Packaging per video: `UPLOAD.md` (3 titles, 3 thumbnails, description with chapters/sources/credits, 3–5 hashtags, SRT, not-for-kids, category Education, pinned question, Shorts links, cross-post captions).
 
 ## Layout
