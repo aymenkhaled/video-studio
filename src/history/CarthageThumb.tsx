@@ -36,9 +36,9 @@ export const CarthageThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
       <Img src={artSrc('cato-16c')} style={{position: 'absolute', left: 0, top: 0, width: 640, height: 720, objectFit: 'cover', filter: 'contrast(1.2)'}} />
       <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(18,12,6,0) 35%, rgba(18,12,6,1) 52%)'}} />
       <div style={{position: 'absolute', right: 60, top: 190, width: 600, textAlign: 'right', fontFamily: INTER, fontWeight: 900, fontSize: 130, lineHeight: 1.05, color: '#fff', textShadow: stroke}}>
-        ONE <span style={{color: '#b07ad8'}}>FIG</span>
+        THE <span style={{color: '#b07ad8'}}>FIG</span>
         <br />
-        STARTED IT
+        WAR
       </div>
     </AbsoluteFill>
   );
