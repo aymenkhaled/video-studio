@@ -1,4 +1,4 @@
-﻿import React, {useEffect, useState} from 'react';
+?import React, {useEffect, useState} from 'react';
 import type * as THREE from 'three';
 import {useThree} from '@react-three/fiber';
 import {ThreeCanvas} from '@remotion/three';
@@ -11,7 +11,7 @@ import {Bus, GridGround, Human} from '../../packages/three/src/stage';
 import {Bracket, Cam, Captions, INTER, Label, SeriesHud, TimedLine, linesFromTimeline, project} from '../../packages/engine/src/overlay';
 import {clamp01, easeInOutCubic, impulse, mix, ramp} from '../../packages/engine/src/motion';
 
-// Brand-A engine demo: "How big was T. rex next to you?" â€” person â†’ bus â†’ T. rex on a metre grid.
+// Brand-A engine demo: "How big was T. rex next to you?" — person → bus → T. rex on a metre grid.
 
 const REX_LEN = 12.3; // Sue, Field Museum (see sources.md)
 const BUS = {x: 8, z: -1.8, len: 12, h: 3.2};
