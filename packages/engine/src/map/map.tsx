@@ -232,7 +232,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       <path d={landD} fill="none" stroke="rgba(216,201,163,0.14)" strokeWidth={14} strokeLinejoin="round" />
       <path d={landD} fill={theme.land} stroke={theme.coast} strokeWidth={1.6} strokeLinejoin="round" />
       {relief && spec.projection !== 'globe' && spec.projection !== 'conic' ? (
-        <g clipPath={`url(#${uid}-land)`} opacity={0.42} style={{mixBlendMode: 'multiply'}}>
+        <g clipPath={`url(#${uid}-land)`} opacity={Math.max(0, 0.5 - 0.016 * Math.max(0, cam.zoom - 6))} style={{mixBlendMode: 'multiply'}}>
           {Array.from({length: 40}, (_, k) => {
             // equirectangular raster → Mercator: draw 40 latitude strips, each stretched to its projected height
             const [x0, y0, x1, y1] = relief.bounds;
