@@ -99,6 +99,15 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fluidsynth fluid-soundfont-gm espeak-ng
           pip install -q -r packages/audio/requirements.txt
           python packages/audio/soundtrack.py "${{ inputs.timeline }}"
+      - uses: actions/cache@v4
+        with:
+          path: .cache/media
+          key: media-${{ hashFiles('assets/media.json') }}
+          restore-keys: media-
+      - name: Fetch licensed art + Natural Earth relief/rivers, derive 2.5D layers
+        run: |
+          pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2 || pip install -q --break-system-packages numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
+          python3 tools/fetch_media.py
       - id: plan
         run: node tools/plan.mjs "${{ inputs.comp }}" "${{ inputs.chunks }}" "${{ inputs.props }}"
       - uses: actions/upload-artifact@v4
@@ -160,7 +169,10 @@ jobs:
       - name: Thumbnails (3 variants)
         run: node tools/render_thumbs.mjs "${{ inputs.comp }}Thumb" 3
       - name: Chapters, captions, UPLOAD.md
-        run: python3 tools/package_episode.py "${{ inputs.timeline }}" out/bundle/public/generated/timing.json "${{ inputs.episode }}" out/package
+        run: |
+          python3 tools/package_episode.py "${{ inputs.timeline }}" out/bundle/public/generated/timing.json "${{ inputs.episode }}" out/package
+          # burned-in captions and SRT must match: regenerate the SRT from the same cue logic as the video
+          node --experimental-strip-types --no-warnings tools/captions_srt.mjs out/bundle/public/generated/timing.json out/package/captions.srt
       - uses: actions/upload-artifact@v4
         with:
           name: package-${{ inputs.comp }}
