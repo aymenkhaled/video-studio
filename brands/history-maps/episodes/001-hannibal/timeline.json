@@ -44,7 +44,7 @@
       "In the spring of two hundred eighteen B C, he left New Carthage. Polybius says he crossed the Ebro with about ninety thousand infantry and twelve thousand cavalry. Historians think that number is inflated."
     ]},
     {"id": "c2b", "music": "march", "lead": 0.3, "lines": [
-      "He fought his way over the Pyrenees, then through southern Gaul to the river Rhône.",
+      "He fought his way through the land north of the Ebro, crossed the Pyrenees, then marched through southern Gaul to the river Rhône.",
       "There, his men ferried thirty-seven war elephants across the river on giant rafts covered with earth, so the animals would think they were still on land."
     ], "sfx": [{"type": "whoosh", "at": 0.2, "duration": 0.6, "gain": 0.25}]},
     {"id": "c2c", "music": "somber", "lead": 0.3, "lines": [
@@ -72,7 +72,7 @@
       "In the spring, Hannibal took a route nobody watched: through flooded marshes. For days his men marched through water. Hannibal caught an eye infection there and lost the sight of one eye."
     ]},
     {"id": "c3e", "music": "tension", "lead": 0.3, "lines": [
-      "Then, at Lake Trasimene, he set the most complete ambush in ancient history. The consul Flaminius marched his army along a narrow strip between the lake and the hills, in morning fog.",
+      "Then, at Lake Trasimene, he set one of the largest ambushes in ancient history. The consul Flaminius marched his army along a narrow strip between the lake and the hills, in morning fog.",
       "Hannibal's men were waiting on the slopes above. When they charged, the Romans had nowhere to go but the water. Flaminius was killed, along with around fifteen thousand of his men."
     ], "sfx": [{"type": "impact", "at": 13.5, "duration": 1.6, "gain": 0.45}]},
 
@@ -98,14 +98,14 @@
       "The Romans were surrounded. So tightly packed that many could not even raise their weapons."
     ], "sfx": [{"type": "impact", "at": 9.0, "duration": 1.8, "gain": 0.55}]},
     {"id": "c4f", "music": "somber", "lead": 0.3, "lines": [
-      "Paullus died on the field, along with dozens of senators. Hannibal is said to have lost under six thousand men.",
+      "Paullus died on the field, along with dozens of senators. According to Polybius, Hannibal lost under six thousand men.",
       "Military schools still study Cannae today, as the textbook double envelopment."
     ]},
 
     {"id": "c5", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
     {"id": "c5a", "music": "tension", "lead": 0.4, "lines": [
       "After Cannae, his cavalry commander Maharbal urged him to march on Rome at once. Hannibal refused. According to Livy, Maharbal told him: you know how to win a victory, but not how to use one.",
-      "Without siege engines, Rome's walls were too strong. Hannibal's plan was different: break Rome's alliances in Italy."
+      "Many historians think that without siege engines, Rome's walls were simply too strong. Hannibal's plan was different: break Rome's alliances in Italy."
     ]},
     {"id": "c5b", "music": "calm", "lead": 0.3, "lines": [
       "It partly worked. Capua, the second city of Italy, went over to him. So did much of the south.",
@@ -133,7 +133,7 @@
       "It was Cannae, in reverse."
     ], "sfx": [{"type": "impact", "at": 9.5, "duration": 1.8, "gain": 0.5}]},
     {"id": "c6d", "music": "somber", "lead": 0.3, "lines": [
-      "The peace terms were brutal. According to Polybius: ten thousand talents of silver over fifty years, all warships except ten, all war elephants surrendered, and no war at all without Rome's permission."
+      "The peace terms were brutal. According to Polybius: ten thousand talents of silver over fifty years, all warships except ten, all war elephants surrendered, no war at all outside Africa, and none inside Africa without Rome's consent."
     ]},
 
     {"id": "c7", "lead": 0.2, "tail": 0.6, "min": 3.4, "lines": [], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.7, "gain": 0.35}]},
@@ -146,7 +146,7 @@
     ]},
     {"id": "c7c", "music": "calm", "lead": 0.3, "tail": 2.4, "lines": [
       "Thirty-seven years later, Rome destroyed Carthage itself.",
-      "Hannibal lost his war. But for fifteen years, one general, far from home, held the most powerful state in the Mediterranean at the edge of collapse. Which raises the question: if he had marched on Rome after Cannae, would history look different? Tell me what you think."
+      "Hannibal lost his war. But for fifteen years, one general, far from home, brought Rome closer to defeat than any enemy of its age. Which raises the question: if he had marched on Rome after Cannae, would history look different? Tell me what you think."
     ]}
   ]
 }

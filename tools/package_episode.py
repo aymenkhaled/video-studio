@@ -33,6 +33,53 @@ for (a, _), (b, t) in zip(chapters, chapters[1:]):
     if b - a < 10:
         raise SystemExit(f"chapter '{t}' starts {b - a:.1f}s after the previous one (<10 s)")
 
+# ---------- spoken-form numbers → numerals in captions ("two hundred sixteen B C" → "216 BC") ----------
+UNITS = {w: i for i, w in enumerate("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split())}
+TENS = {w: 10 * (i + 2) for i, w in enumerate("twenty thirty forty fifty sixty seventy eighty ninety".split())}
+
+
+def _num_value(words):
+    total, cur = 0, 0
+    for w in words:
+        for part in w.split("-"):
+            if part in UNITS:
+                cur += UNITS[part]
+            elif part in TENS:
+                cur += TENS[part]
+            elif part == "hundred":
+                cur *= 100
+            elif part == "thousand":
+                total += cur * 1000
+                cur = 0
+    return total + cur
+
+
+def numerals(text):
+    toks = text.split(" ")
+    out, i = [], 0
+    is_num = lambda t: all(p in UNITS or p in TENS or p in ("hundred", "thousand") for p in re.sub(r"[^a-z\-]", "", t.lower()).split("-") if p)
+    while i < len(toks):
+        j = i
+        while j < len(toks) and re.sub(r"[^a-z\-]", "", toks[j].lower()) and is_num(toks[j]) and (j == i or not re.search(r"[.,;:?!]$", toks[j - 1])):
+            j += 1
+        run = toks[i:j]
+        bc = j + 1 < len(toks) + 1 and j < len(toks) and toks[j] == "B" and j + 1 < len(toks) and re.match(r"^C\b", toks[j + 1])
+        clean = [re.sub(r"[^a-z\-]", "", t.lower()) for t in run]
+        if run and (bc or any(c in ("hundred", "thousand") for c in clean)):
+            trail = re.sub(r"^[A-Za-z\-]+", "", run[-1])
+            val = f"{_num_value(clean):,}" if not bc else str(_num_value(clean))
+            if bc:
+                out.append(f"{val} BC{re.sub(r'^C', '', toks[j + 1])}")
+                i = j + 2
+            else:
+                out.append(val + trail)
+                i = j
+            continue
+        out.append(toks[i])
+        i += 1
+    return " ".join(out)
+
+
 # ---------- captions ----------
 cues = []
 for line in timing["lines"]:
@@ -51,7 +98,7 @@ for line in timing["lines"]:
             chunk = []
     if chunk:
         cues.append((chunk[0]["t"], chunk[-1]["end"], " ".join(x["w"] for x in chunk)))
-srt = "\n".join(f"{i + 1}\n{ts(a, True)} --> {ts(b, True)}\n{t}\n" for i, (a, b, t) in enumerate(cues))
+srt = "\n".join(f"{i + 1}\n{ts(a, True)} --> {ts(b, True)}\n{numerals(t)}\n" for i, (a, b, t) in enumerate(cues))
 (out_dir / "captions.srt").write_text(srt, encoding="utf-8")
 
 # ---------- sources from sources.md ----------

@@ -18,6 +18,10 @@ Binary assets are in the `assets-v1` Release; SHA256 per file in `assets/manifes
 
 | Gobkit Free Dinosaur Pack (10 GLB) | Gobkit | CC0 1.0 (LICENSE.txt in pack, read 2026-11-13) | https://gobkit.com/api/free | No |
 
+| Natural Earth coastlines 1:50m / 1:110m | Natural Earth | Public domain | https://www.naturalearthdata.com/about/terms-of-use/ | No (credited anyway) |
+| world-atlas (TopoJSON packaging of Natural Earth) | Mike Bostock | ISC | https://github.com/topojson/world-atlas | No |
+| Cinzel font (titles, map labels) via `@remotion/google-fonts` | Natasha Raissa / Google Fonts | OFL 1.1 | https://fonts.google.com/specimen/Cinzel/license | No |
+
 Not usable: `kay/` models (no licence file).
 Banned: Freesound 559296, 810951; anything from Jurassic Park.
 
@@ -26,6 +30,7 @@ Banned: Freesound 559296, 810951; anything from Jurassic Park.
 |---|---|---|
 | Remotion | Remotion License — free for individuals and companies ≤3 people | https://www.remotion.dev/license |
 | three.js | MIT | https://github.com/mrdoob/three.js |
+| d3-geo, topojson-client | ISC | https://github.com/d3/d3-geo · https://github.com/topojson/topojson-client |
 | FluidR3 GM SoundFont | MIT | https://packages.debian.org/stable/sound/fluid-soundfont-gm |
 | Kokoro-82M v1.0 | Apache-2.0 | https://huggingface.co/hexgrad/Kokoro-82M |
 | kokoro-onnx | MIT | https://github.com/thewh1teagle/kokoro-onnx |

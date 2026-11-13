@@ -121,7 +121,8 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
   const theme = spec.theme ?? PARCHMENT;
   const base = cameraAt(spec.camera, p);
   // "Living camera": a constant slow push-in so no shot is ever static (freezedetect rule), on top of keyframes.
-  const cam = {center: base.center, zoom: base.zoom * (1 + 0.07 * p)};
+  // 12 % over the scene: keeps eased starts on close-ups above the freezedetect threshold.
+  const cam = {center: base.center, zoom: base.zoom * (1 + 0.12 * p)};
   const proj = makeProjection(spec.projection, cam, width, height);
   // Cull geometry outside the frame before building SVG paths (big win when zoomed in).
   if (spec.projection !== 'globe') proj.clipExtent([[-40, -40], [width + 40, height + 40]]);

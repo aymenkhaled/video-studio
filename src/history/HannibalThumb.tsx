@@ -20,7 +20,7 @@ export const HannibalThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
           height={H}
           p={1}
           uid="t1"
-          spec={{camera: [{at: 0, center: [6.5, 42.2], zoom: 9}], territories: [ROME_ITALY, SARD_CORSICA, SICILY, CARTHAGE_AFRICA, BARCID_SPAIN], routes: [{id: 'm', points: MARCH, color: COL.route, draw: [0, 0.01], width: 16, unit: {label: '', color: COL.carthage, kind: 'elephant'}}]}}
+          spec={{camera: [{at: 0, center: [6.5, 42.2], zoom: 9}], territories: [ROME_ITALY, SARD_CORSICA, SICILY, CARTHAGE_AFRICA, BARCID_SPAIN], routes: [{id: 'm', points: MARCH, color: COL.route, draw: [0, 0.01], width: 16}]}}
         />
         <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(10,6,2,0.85) 0%, rgba(10,6,2,0.2) 60%, rgba(0,0,0,0) 100%)'}} />
         <div style={{position: 'absolute', left: 50, top: 170, fontFamily: CINZEL, fontWeight: 700, fontSize: 150, color: '#f4ecd8', textShadow: stroke, lineHeight: 1}}>HANNIBAL</div>
@@ -31,16 +31,17 @@ export const HannibalThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
   if (variant === 2) {
     const side = (label: string, n: string, color: string, left: boolean) => (
       <div style={{position: 'absolute', top: 0, bottom: 0, [left ? 'left' : 'right']: 0, width: W / 2, background: color, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-        <div style={{fontFamily: INTER, fontWeight: 900, fontSize: 150, color: '#fff', textShadow: stroke}}>{n}</div>
         <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 64, color: '#fff', textShadow: stroke}}>{label}</div>
+        <div style={{fontFamily: INTER, fontWeight: 900, fontSize: 118, color: '#fff', textShadow: stroke}}>{n}</div>
+        <div style={{fontFamily: INTER, fontWeight: 700, fontSize: 30, letterSpacing: 4, color: '#fff', opacity: 0.9, textShadow: stroke}}>SOLDIERS</div>
       </div>
     );
     return (
       <AbsoluteFill style={{background: '#000'}}>
         {side('ROME', '86,000', '#8f2620', true)}
         {side('HANNIBAL', '50,000', '#b56f1f', false)}
-        <div style={{position: 'absolute', left: W / 2 - 90, top: H / 2 - 90, width: 180, height: 180, borderRadius: 90, background: '#111', border: '8px solid #f4ecd8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 80, color: '#f4ecd8'}}>VS</div>
-        <div style={{position: 'absolute', left: 0, right: 0, bottom: 40, textAlign: 'center', fontFamily: INTER, fontWeight: 800, fontSize: 46, color: '#fff', textShadow: stroke}}>WHO WON?</div>
+        <div style={{position: 'absolute', left: W / 2 - 70, top: 40, width: 140, height: 140, borderRadius: 70, background: '#111', border: '8px solid #f4ecd8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 64, color: '#f4ecd8'}}>VS</div>
+        <div style={{position: 'absolute', left: 0, right: 0, bottom: 40, textAlign: 'center', fontFamily: INTER, fontWeight: 800, fontSize: 46, color: '#fff', textShadow: stroke}}>CANNAE · WHO WON?</div>
       </AbsoluteFill>
     );
   }

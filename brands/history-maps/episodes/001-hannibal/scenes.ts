@@ -173,13 +173,13 @@ export const SCENES: Record<string, SceneDef> = {
   c1a: {
     kind: 'map', year: -241,
     map: {camera: [{at: 0, center: [13.5, 38.0], zoom: 14}, {at: 1, center: [12.5, 38.4], zoom: 11}], territories: [ROME_ITALY, CARTHAGE_AFRICA, {...SICILY_CARTHAGE, fadeOut: [0.55, 0.75]}, {...SICILY, grow: [0.65, 0.9]}], cities: [{...C.carthage, appear: 0.05}, {...C.rome, appear: 0.05}], regions: [{text: 'SICILY', at: [14.2, 37.2], appear: 0.15, size: 38}]},
-    overlays: [{type: 'citation', text: 'First Punic War, 264–241 BC', at: [0.05, 0.95]}],
+    overlays: [{type: 'citation', text: 'Polybius 1.62–63: Sicily ceded to Rome, 241 BC', at: [0.05, 0.95]}],
   },
   c1b: {
     kind: 'map', year: -237,
     map: {camera: [{at: 0, center: [8, 39.5], zoom: 6.5}, {at: 1, center: [2, 38.5], zoom: 7}], territories: [ROME_ITALY, SICILY, CARTHAGE_AFRICA, {...SARD_CORSICA, grow: [0.05, 0.35]}], routes: [{id: 'hamilcar', points: [[10.32, 36.85], [5.0, 36.4], [0.0, 36.3], [-6.29, 36.53]], color: COL.route, draw: [0.5, 0.92], unit: {label: 'Hamilcar', color: COL.carthage, kind: 'infantry'}}], cities: [C.carthage, {...C.gades, appear: 0.85}], regions: [{text: 'IBERIA', at: [-4.0, 40.2], appear: 0.6, size: 48}]},
   },
-  c1c: {kind: 'map', year: -237, map: {camera: [{at: 0, center: [10.32, 36.85], zoom: 30}, {at: 1, center: [10.32, 36.85], zoom: 36}], territories: [CARTHAGE_AFRICA], cities: [{...C.carthage, size: 1.4}]}, overlays: [{type: 'quote', text: 'Never to be a friend of Rome', by: "Hannibal's oath at age nine, as he told it (Polybius 3.11)", at: [0.06, 0.97]}]},
+  c1c: {kind: 'map', year: -237, map: {camera: [{at: 0, center: [10.32, 36.85], zoom: 30}, {at: 1, center: [10.32, 36.85], zoom: 36}], territories: [CARTHAGE_AFRICA], cities: [{...C.carthage, size: 1.4}]}, overlays: [{type: 'quote', text: 'Never to be a friend of Rome', by: "Paraphrase of Hannibal's oath at age nine, as he told it (Polybius 3.11)", at: [0.06, 0.97]}]},
   c1d: {
     kind: 'map', year: -219,
     map: {camera: [{at: 0, center: [-3, 39.5], zoom: 11}, {at: 1, center: [-1.2, 39.4], zoom: 15}], territories: [{...BARCID_SPAIN, grow: [0.02, 0.4]}, CARTHAGE_AFRICA], cities: [{...C.newCarthage, appear: 0.15}, {...C.saguntum, appear: 0.6, size: 1.3}], regions: [{text: 'BARCID SPAIN', at: [-3.6, 38.4], appear: 0.25, size: 40}]},
@@ -198,7 +198,7 @@ export const SCENES: Record<string, SceneDef> = {
   },
   c2b: {
     kind: 'map', year: -218,
-    map: {camera: [{at: 0, center: [0.6, 41.2], zoom: 13}, {at: 1, center: [4.4, 43.6], zoom: 15}], territories: base, routes: [{id: 'm1', points: MARCH.slice(0, 9), color: COL.route, draw: [0.02, 0.6], unit: {label: '37 elephants', color: COL.carthage, kind: 'elephant'}}], cities: [{...C.massalia, appear: 0.45}, {...C.rhone, appear: 0.55}], regions: [{text: 'GAUL', at: [1.6, 45.9], appear: 0.2}]},
+    map: {camera: [{at: 0, center: [0.6, 41.2], zoom: 13}, {at: 1, center: [4.4, 43.6], zoom: 15}], territories: base, routes: [{id: 'm1', points: MARCH.slice(0, 9), color: COL.route, draw: [0.02, 0.6], unit: {label: '37 elephants (Appian)', color: COL.carthage, kind: 'elephant'}}], cities: [{...C.massalia, appear: 0.45}, {...C.rhone, appear: 0.55}], regions: [{text: 'GAUL', at: [1.6, 45.9], appear: 0.2}]},
     overlays: [{type: 'citation', text: 'Rafts covered with earth (Polybius 3.46)', at: [0.55, 0.98]}],
   },
   c2c: {
@@ -256,7 +256,7 @@ export const SCENES: Record<string, SceneDef> = {
   c6a: {kind: 'map', year: -203, map: {camera: [{at: 0, center: [12.5, 37.8], zoom: 8}, {at: 1, center: [12.6, 37.6], zoom: 8.8}], territories: base, routes: [{id: 'scip', points: SCIPIO_AFRICA, color: COL.roman, draw: [0.05, 0.4], unit: {label: 'Scipio', color: COL.rome, kind: 'infantry'}}, {id: 'home', points: HANNIBAL_HOME, color: COL.route, draw: [0.55, 0.95], unit: HANNIBAL}], cities: [C.utica, C.croton]}},
   c6b: {kind: 'battle', battle: ZAMA, range: [0, 0.5]},
   c6c: {kind: 'battle', battle: ZAMA, range: [0.5, 1]},
-  c6d: {kind: 'map', year: -201, map: {camera: [{at: 0, center: [10.32, 36.85], zoom: 20}, {at: 1, center: [10.32, 36.85], zoom: 24}], territories: base, cities: [C.carthage]}, overlays: [{type: 'list', title: 'Peace of 201 BC', items: ['10,000 talents of silver over 50 years', 'All warships surrendered except 10', 'All war elephants surrendered', 'No war without Rome’s permission'], source: 'Polybius 15.18'}]},
+  c6d: {kind: 'map', year: -201, map: {camera: [{at: 0, center: [10.32, 36.85], zoom: 20}, {at: 1, center: [10.32, 36.85], zoom: 24}], territories: base, cities: [C.carthage]}, overlays: [{type: 'list', title: 'Peace of 201 BC', items: ['10,000 talents of silver over 50 years', 'All warships surrendered except 10', 'All war elephants surrendered', 'No war outside Africa; inside Africa only with Rome’s consent'], source: 'Polybius 15.18'}]},
 
   c7: chapter(7, 'The Last Years', '201 – 183 BC', {camera: [{at: 0, center: [20, 37], zoom: 4.2}, {at: 1, center: [22, 37.5], zoom: 4.6}], territories: base}),
   c7a: {kind: 'map', year: -195, map: {camera: [{at: 0, center: [16, 36], zoom: 4.2}, {at: 1, center: [24, 37], zoom: 5}], territories: base, routes: [{id: 'exile', points: EXILE, color: COL.route, draw: [0.08, 0.9], unit: HANNIBAL}], cities: [C.carthage, {...C.tyre, appear: 0.65}, {...C.ephesus, appear: 0.85}]}},

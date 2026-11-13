@@ -6,7 +6,8 @@ Primary texts (public-domain translations):
 
 | # | Claim in script | Source | Status / hedge |
 |---|---|---|---|
-| 1 | Cannae 216 BC; Roman dead ~70,000 (Polybius) vs ~50,000 (Livy) | Polybius 3.117; Livy 22.49 | Both figures given; modern debate noted (Goldsworthy 2001; Daly 2002). Livy chapter not re-read this session (fetch 404) — figures from secondary summaries; re-verify before upload |
+| 1 | Cannae 216 BC; Roman dead ~70,000 (Polybius) vs ~50,000 (Livy: 45,500 infantry + 2,700 cavalry) | Polybius 3.117; Livy 22.49 | Both figures given; confirmed by independent review 2026-11-13 |
+| 1b | "the largest army Rome had ever sent into battle" | Polybius 3.107 (eight legions, never done before) | |
 | 2 | "outnumbered almost two to one" | Polybius 3.113–114 (80,000 inf + ~6,000 cav vs 40,000 inf + 10,000 cav) | Infantry ratio 2:1; total ~86k vs 50k ≈ 1.7:1 → "almost" |
 | 3 | Hamilcar in Sicily; First Punic War lost 241 BC | Polybius 1.56–63 | Standard |
 | 4 | Rome took Sardinia/Corsica during Mercenary War | Polybius 1.88, 3.10 | Standard (238/237 BC) |
@@ -14,16 +15,16 @@ Primary texts (public-domain translations):
 | 6 | Hasdrubal (son-in-law) murdered 221 BC; Hannibal chosen, ~25 | Polybius 2.36, 3.13 | Age hedged "about" |
 | 7 | Saguntum besieged 219, fell after 8 months | Polybius 3.17 | |
 | 8 | 90,000 inf / 12,000 cav crossing the Ebro | Polybius 3.35 | Hedged as likely inflated |
-| 9 | 37 elephants; rafts covered with earth at the Rhône | Polybius 3.42, 3.46 | |
+| 9 | 37 elephants; rafts covered with earth at the Rhône | Elephant count: Appian, *Hannibalic War* (Polybius gives no number); rafts: Polybius 3.46 | Count attributed to Appian on screen |
 | 10 | Late season snow, tribal ambushes, losses on icy paths; pass disputed | Polybius 3.50–56 | |
 | 11 | ~5 months; 20,000 inf + 6,000 cav from Hannibal's Lacinian inscription | Polybius 3.56 | |
 | 12 | Ticinus; Publius Scipio wounded | Polybius 3.65–66 | |
 | 13 | Trebia Dec 218: Numidian provocation, river crossing unfed, Mago's 2,000 in ambush; ~10,000 Romans broke through | Polybius 3.71–74 | |
 | 14 | Arno marshes; eye infection, lost sight of one eye | Polybius 3.78–79 | |
-| 15 | Trasimene ambush, fog, Flaminius killed, ~15,000 Roman dead | Polybius 3.82–84; Livy 22.4–7 | "around" |
+| 15 | Trasimene "one of the largest ambushes in ancient history", fog, Flaminius killed, ~15,000 Roman dead | Polybius 3.82–84; Livy 22.4–7 | Superlative softened after review |
 | 16 | Fabius Maximus dictator, delaying strategy, "Cunctator" | Polybius 3.87–90; Livy 22.8–18 | |
 | 17 | Cannae: deep Roman formation; crescent center; Africans on flanks; cavalry wings; double envelopment | Polybius 3.113–116 | Formation simplified in diagram |
-| 18 | Paullus killed with many senators; Hannibal's losses <6,000 (Polybius ~5,700) | Polybius 3.116–117; Livy 22.49 | "dozens of senators" — Livy lists 80 senators/ex-magistrates; "dozens" is safe |
+| 18 | Paullus killed with many senators; Hannibal's losses <6,000 | Polybius 3.116–117 (~5,700); Livy 22.52 gives ~8,000 | Attributed to Polybius in narration; "dozens of senators" — Livy lists 80 |
 | 19 | Maharbal quote | Livy 22.51 | Attributed to Livy |
 | 20 | Capua defects; much of south | Livy 23.2–10 | |
 | 21 | Scipio takes New Carthage 209 BC | Polybius 10.9–15 | Date 209 (some 210) |

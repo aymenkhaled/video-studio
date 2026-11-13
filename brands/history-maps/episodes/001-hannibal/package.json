@@ -1,10 +1,10 @@
 {
   "titles": [
     "Hannibal: The Man Who Nearly Destroyed Rome",
-    "How Hannibal Destroyed a Roman Army Twice His Size",
+    "Outnumbered Almost 2 to 1: How Hannibal Destroyed a Roman Army",
     "Hannibal vs Rome: The Whole War in Maps"
   ],
-  "hook": "In 216 BC, Rome sent the largest army in its history to destroy one man. By sunset it was gone. This is the full story of Hannibal Barca: the oath, the march over the Alps, Trebia, Trasimene, Cannae, fifteen years in Italy, and the final battle at Zama — told with animated maps and the ancient sources on screen.",
+  "hook": "In 216 BC, Rome sent the largest army it had ever fielded to destroy one man. By sunset it was gone. This is the full story of Hannibal Barca: the oath, the march over the Alps, Trebia, Trasimene, Cannae, fifteen years in Italy, and the final battle at Zama — told with animated maps and the ancient sources on screen.",
   "chapters": {
     "c0a": "The day Rome lost an army",
     "c1": "The Oath",
@@ -19,6 +19,7 @@
     "Map data: Natural Earth (public domain) via world-atlas. Territories are approximate reconstructions.",
     "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT).",
     "Narration: synthetic voice (Kokoro-82M, Apache-2.0).",
+    "Fonts: Cinzel and Inter (SIL Open Font License).",
     "Ancient quotes: Polybius (Paton translation) and Livy, public-domain translations."
   ],
   "hashtags": ["#Hannibal", "#RomanHistory", "#AncientHistory", "#Cannae", "#PunicWars"],
