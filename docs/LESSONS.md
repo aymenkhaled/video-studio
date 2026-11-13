@@ -12,6 +12,13 @@
 9. Fog flattens low-poly. Use contrast and rim light, not haze, for depth.
 10. 2–600 views on the dinosaur Shorts: topic and hook were weak, there was no seed audience, and no title/thumbnail testing.
 
+## From production of episode 001 (Hannibal, 13 Nov 2026)
+11. Superlatives ("most complete", "largest in history") slip into scripts; the independent reviewer must check every one against a source.
+12. Every on-screen number needs an attribution in-frame ("Polybius 3.35"), and contested numbers need both sources.
+13. Motion: eased camera keyframes start at zero speed — always add absolute-time drift; dark cards over moving maps read as frozen.
+14. Kokoro int8 occasionally returns silence; the cache + jitter + sentence-split fallback handles it. Cache TTS lines: first run ~1.7× real time, re-runs ~free.
+15. Captions must show numerals ("216 BC"), not TTS spelling.
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|

@@ -3,6 +3,7 @@
 Primary texts (public-domain translations):
 - Polybius, *Histories*, Paton transl. (LacusCurtius): Book 3 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/3*.html · Book 15 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/15*.html
 - Livy, *History of Rome*, Books 21–30 and 39 (Roberts / Foster translations; Perseus / Project Gutenberg).
+- Appian, *Hannibalic War* (count of 37 elephants).
 
 | # | Claim in script | Source | Status / hedge |
 |---|---|---|---|
