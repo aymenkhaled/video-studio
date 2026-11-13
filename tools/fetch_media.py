@@ -11,6 +11,8 @@ Downloads are cached in .cache/media. sha256 values in the manifest are enforced
 as `PIN <name> <sha>` so they can be pinned.
 """
 import hashlib
+import time
+import urllib.error
 import io
 import json
 import re
@@ -35,9 +37,19 @@ def get(url, name, pins):
     CACHE.mkdir(parents=True, exist_ok=True)
     path = CACHE / name
     if not path.exists():
-        req = urllib.request.Request(url, headers=UA)
-        with urllib.request.urlopen(req, timeout=180) as r:
-            path.write_bytes(r.read())
+        for attempt in range(7):  # polite retries with backoff (Wikimedia answers 429 when busy)
+            try:
+                req = urllib.request.Request(url, headers=UA)
+                with urllib.request.urlopen(req, timeout=180) as r:
+                    path.write_bytes(r.read())
+                break
+            except urllib.error.HTTPError as e:
+                if e.code not in (429, 503) or attempt == 6:
+                    raise
+                wait = int(e.headers.get("Retry-After") or 0) or 10 * 2 ** attempt
+                print(f"  {e.code} on {name}, retry in {min(wait, 120)} s")
+                time.sleep(min(wait, 120))
+        time.sleep(2)  # pace requests
     sha = hashlib.sha256(path.read_bytes()).hexdigest()
     if name in pins and pins[name] != sha:
         raise SystemExit(f"sha256 mismatch for {name}: {sha} != pinned {pins[name]}")
@@ -92,7 +104,7 @@ def main():
     index = {}
     for a in manifest["art"]:
         if a["source"] == "commons":
-            url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"]) + "?width=2000"
+            url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"])  # original file: arbitrary-width thumbnails are throttled
         else:
             url = livius_image(a["page"])
         src = get(url, f"{a['id']}.src", pins)
