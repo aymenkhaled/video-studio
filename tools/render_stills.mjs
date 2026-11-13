@@ -1,4 +1,4 @@
-﻿// Storyboard stills: N evenly spaced frames (or explicit frames) from the prebuilt bundle.
+// Storyboard stills: N evenly spaced frames (or explicit frames) from the prebuilt bundle.
 // Usage: node tools/render_stills.mjs [count=12] [frame,frame,...]
 import {renderStill, selectComposition} from '@remotion/renderer';
 import fs from 'node:fs';

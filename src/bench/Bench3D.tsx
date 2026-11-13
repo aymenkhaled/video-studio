@@ -1,4 +1,4 @@
-﻿import React, {useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {useThree} from '@react-three/fiber';
 import {ThreeCanvas} from '@remotion/three';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';

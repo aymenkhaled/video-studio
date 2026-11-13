@@ -1,4 +1,4 @@
-?import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import type * as THREE from 'three';
 import {useThree} from '@react-three/fiber';
 import {ThreeCanvas} from '@remotion/three';

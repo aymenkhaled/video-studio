@@ -1,4 +1,4 @@
-﻿// Render one frame-range chunk from the prebuilt bundle (muted; audio is muxed later).
+// Render one frame-range chunk from the prebuilt bundle (muted; audio is muxed later).
 // Usage: node tools/render_chunk.mjs <index>   (needs out/plan.json + out/bundle)
 import {renderMedia, selectComposition} from '@remotion/renderer';
 import fs from 'node:fs';

@@ -1,0 +1,31 @@
+{
+  "id": "000-hannibal-demo",
+  "comp": "HannibalDemo",
+  "fps": 24,
+  "seed": 218,
+  "voice": {"engine": "kokoro", "voice": "am_michael", "speed": 0.96, "language": "en-us", "gap": 0.42},
+  "music": {"key": "D", "tempo": 76},
+  "ambience": {"type": "wind", "gain": 0.12},
+  "scenes": [
+    {"id": "s1", "music": "somber", "lead": 0.5, "lines": [
+      "In the spring of two hundred and eighteen B C, two powers held the western Mediterranean.",
+      "Rome, master of Italy. And Carthage, a trading empire stretching from Africa into Spain."
+    ], "sfx": [{"type": "whoosh", "at": 0.1, "duration": 0.6, "gain": 0.35}]},
+    {"id": "s2", "music": "build", "lead": 0.4, "lines": [
+      "From New Carthage, in Spain, a twenty-nine-year-old general named Hannibal set out to invade Italy by land.",
+      "According to the Greek historian Polybius, he crossed the Ebro with about ninety thousand infantry and twelve thousand cavalry.",
+      "Many historians think those numbers are inflated."
+    ], "sfx": [{"type": "counter", "at": 9.0, "duration": 1.6, "gain": 0.18}]},
+    {"id": "s3", "music": "march", "lead": 0.3, "lines": [
+      "His route ran north along the coast, over the Pyrenees, across the Rhône,",
+      "and into the Alps, by a pass that historians still argue about today."
+    ], "sfx": [{"type": "whoosh", "at": 0.05, "duration": 0.6, "gain": 0.3}, {"type": "rumble", "at": 6.0, "duration": 3.0, "gain": 0.25}]},
+    {"id": "s4", "music": "epic", "lead": 0.4, "lines": [
+      "When he came down into northern Italy, Polybius counts about twenty thousand infantry and six thousand cavalry.",
+      "He had lost more than half his army before fighting a single major battle in Italy."
+    ], "sfx": [{"type": "impact", "at": 6.5, "duration": 1.8, "gain": 0.5}]},
+    {"id": "s5", "music": "calm", "lead": 0.4, "tail": 1.6, "lines": [
+      "So how did he win anyway?"
+    ]}
+  ]
+}

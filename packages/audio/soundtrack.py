@@ -40,6 +40,78 @@ FOLEY = {  # files from the assets-v1 "freesound-dino-foley.zip" (see docs/LICEN
 }
 
 tl = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+PRE = {}  # line id -> (samples, source_rate) generated in the voice-first pre-pass
+SCENES = []
+
+
+def _download(url, target, size, sha):
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if not (target.is_file() and target.stat().st_size == size):
+        with requests.get(url, stream=True, timeout=180) as r:
+            r.raise_for_status()
+            with target.open("wb") as f:
+                for chunk in r.iter_content(1 << 20):
+                    f.write(chunk)
+    if hashlib.sha256(target.read_bytes()).hexdigest() != sha:
+        raise RuntimeError(f"checksum mismatch: {target}")
+
+
+def kokoro_engine():
+    from kokoro_onnx import Kokoro
+
+    cache = ROOT / ".cache" / "kokoro-v1.0"
+    mpath, vpath = cache / "kokoro-v1.0.int8.onnx", cache / "voices-v1.0.bin"
+    _download(KOKORO["model"][0], mpath, KOKORO["model"][1], KOKORO["model"][2])
+    _download(KOKORO["voices"][0], vpath, KOKORO["voices"][1], KOKORO["voices"][2])
+    return Kokoro(str(mpath), str(vpath))
+
+
+def speak(kokoro, text, vcfg, speed):
+    """Kokoro TTS with silence guard; returns trimmed mono samples and their rate."""
+    for attempt in range(4):
+        smp, sr = kokoro.create(text, voice=vcfg.get("voice", "am_michael"), speed=speed, lang=vcfg.get("language", "en-us"))
+        smp = np.asarray(smp, dtype=np.float64).reshape(-1)
+        idx = np.flatnonzero(np.abs(smp) > 0.008)
+        if len(idx):
+            return smp[max(0, idx[0] - round(0.025 * sr)): idx[-1] + round(0.12 * sr)], sr
+        print(f"WARN silent TTS output (attempt {attempt + 1}): {text!r}")
+        text = text.replace("’", "'").replace("'", "")
+    raise RuntimeError(f"TTS stayed silent: {text!r}")
+
+
+# ---------- voice-first layout (long-form) ----------
+# Timeline with "scenes": each scene lists narration lines; scene lengths follow the generated voice,
+# so nobody hand-times a 30-minute script. Converted here into the fixed schema used below.
+if "scenes" in tl:
+    vcfg = tl["voice"]
+    kokoro = kokoro_engine()
+    lines, sections, sfx = [], [], list(tl.get("sfx", []))
+    t = 0.0
+    gap = float(vcfg.get("gap", 0.38))
+    for si, sc in enumerate(tl["scenes"]):
+        start = t
+        t += float(sc.get("lead", 0.6))
+        for li, text in enumerate(sc.get("lines", [])):
+            lid = f"{sc['id']}-{li + 1}"
+            smp, sr = speak(kokoro, text, vcfg, float(vcfg.get("speed", 1.0)))
+            PRE[lid] = (smp, sr)
+            d = len(smp) / sr
+            lines.append({"id": lid, "t": round(t, 3), "until": round(t + d + 0.05, 3), "text": text})
+            t += d + gap
+        end = max(t - gap + float(sc.get("tail", 0.8)), start + float(sc.get("min", 3.0)))
+        t = end
+        SCENES.append({"id": sc["id"], "start": round(start, 3), "end": round(end, 3)})
+        if sc.get("music"):
+            sections.append({"start": start, "end": end, "mood": sc["music"]})
+        for ev in sc.get("sfx", []):
+            sfx.append({**ev, "t": start + float(ev.get("at", 0))})
+    del kokoro
+    tl["voice"]["lines"] = lines
+    tl.setdefault("music", {})["sections"] = sections
+    tl["sfx"] = sfx
+    tl["duration"] = round(t, 3)
+    print(f"voice-first layout: {len(SCENES)} scenes, {len(lines)} lines, {t:.1f}s")
+
 duration = float(tl["duration"])
 fps = int(tl.get("fps", 30))
 N = round(duration * RATE)
@@ -100,33 +172,20 @@ vcfg = tl.get("voice")
 if vcfg and vcfg.get("lines"):
     if vcfg.get("engine", "kokoro") != "kokoro":
         raise RuntimeError("only kokoro is wired; recorded voice comes in a later step")
-    from kokoro_onnx import Kokoro
-
-    cache = ROOT / ".cache" / "kokoro-v1.0"
-    mpath, vpath = cache / "kokoro-v1.0.int8.onnx", cache / "voices-v1.0.bin"
-    download(KOKORO["model"][0], mpath, KOKORO["model"][1], KOKORO["model"][2])
-    download(KOKORO["voices"][0], vpath, KOKORO["voices"][1], KOKORO["voices"][2])
-    kokoro = Kokoro(str(mpath), str(vpath))
+    kokoro = None if all(l["id"] in PRE for l in vcfg["lines"]) else kokoro_engine()
     for line in vcfg["lines"]:
         speed = float(vcfg.get("speed", 1.0))
         slot = float(line["until"]) - float(line["t"])
-        text = line["text"]
-        for attempt in range(4):
-            smp, sr = kokoro.create(text, voice=vcfg.get("voice", "am_michael"), speed=speed, lang=vcfg.get("language", "en-us"))
-            smp = np.asarray(smp, dtype=np.float64).reshape(-1)
-            idx = np.flatnonzero(np.abs(smp) > 0.008)
-            if not len(idx):  # Kokoro occasionally returns silence for a phrase: retry with plain ASCII punctuation
-                print(f"WARN voice {line['id']} silent at speed {speed:.2f} (attempt {attempt + 1}); retrying")
-                text = text.replace("’", "'").replace("'", "")
-                speed = float(vcfg.get("speed", 1.0))
-                continue
-            smp = smp[max(0, idx[0] - round(0.025 * sr)): idx[-1] + round(0.12 * sr)]
+        if line["id"] in PRE:
+            smp, sr = PRE[line["id"]]
             dur = len(smp) / sr
-            if dur <= slot:
-                break
-            speed = min(1.35, speed * dur / slot * 1.03)
-        if not len(idx):
-            raise RuntimeError(f"voice line {line['id']} is silent after retries: {line['text']!r}")
+        else:
+            for _ in range(3):
+                smp, sr = speak(kokoro, line["text"], vcfg, speed)
+                dur = len(smp) / sr
+                if dur <= slot:
+                    break
+                speed = min(1.35, speed * dur / slot * 1.03)
         if dur > slot + 0.05:
             raise RuntimeError(f"voice line {line['id']} too long for its slot ({dur:.2f}s > {slot:.2f}s); shorten the text")
         smp = resample_poly(smp, RATE, sr)
@@ -170,6 +229,7 @@ def deg(d, octave=0):
 PROG = [0, 5, 3, 4]  # i – VI – iv – v (minor)
 for sec in mcfg.get("sections", []):
     a, b, mood = float(sec["start"]), float(sec["end"]), sec["mood"]
+    mood = {"march": "build", "somber": "tension", "epic": "reveal", "calm": "wonder"}.get(mood, mood)
     if mood == "silence":
         continue
     bar = 4 * beat
@@ -312,7 +372,7 @@ final, _ = sf.read(out / "soundtrack.wav", always_2d=True)
 win = RATE // fps
 levels = np.array([np.sqrt(np.mean(final[i: i + win] ** 2)) for i in range(0, min(N, len(final)), win)])
 levels /= max(float(np.quantile(levels, 0.98)), 1e-8)
-timing = {"fps": fps, "duration": duration, "lines": lines_out, "level": np.clip(levels, 0, 1).round(3).tolist()}
+timing = {"fps": fps, "duration": duration, "lines": lines_out, "scenes": SCENES, "level": np.clip(levels, 0, 1).round(3).tolist()}
 gen = ROOT / "public" / "generated"
 gen.mkdir(parents=True, exist_ok=True)
 (gen / "timing.json").write_text(json.dumps(timing), encoding="utf-8")
