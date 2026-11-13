@@ -98,15 +98,13 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fluidsynth fluid-soundfont-gm espeak-ng
           pip install -q -r packages/audio/requirements.txt
           python packages/audio/soundtrack.py "${{ inputs.timeline }}"
-      - uses: actions/cache@v4
-        with:
-          path: .cache/media
-          key: media-${{ hashFiles('assets/media.json') }}
-          restore-keys: media-
-      - name: Fetch licensed art + Natural Earth relief/rivers, derive 2.5D layers
+      - name: Licensed art + relief/rivers + depth layers (release media-v1, built by media.yml)
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
-          python3 tools/fetch_media.py
+          gh release download media-v1 -p media.zip -D .cache --clobber
+          unzip -qo .cache/media.zip -d public
+          ls public/art | head -40
       - id: plan
         run: node tools/plan.mjs "${{ inputs.comp }}" "${{ inputs.chunks }}" "${{ inputs.props }}"
       - uses: actions/upload-artifact@v4

@@ -46,10 +46,10 @@ def get(url, name, pins):
             except urllib.error.HTTPError as e:
                 if e.code not in (429, 503) or attempt == 6:
                     raise
-                wait = int(e.headers.get("Retry-After") or 0) or 10 * 2 ** attempt
+                wait = max(15, int(e.headers.get("Retry-After") or 0), 10 * 2 ** attempt)
                 print(f"  {e.code} on {name}, retry in {min(wait, 120)} s")
                 time.sleep(min(wait, 120))
-        time.sleep(2)  # pace requests
+        time.sleep(4)  # pace requests
     sha = hashlib.sha256(path.read_bytes()).hexdigest()
     if name in pins and pins[name] != sha:
         raise SystemExit(f"sha256 mismatch for {name}: {sha} != pinned {pins[name]}")

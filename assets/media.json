@@ -103,6 +103,13 @@
   "credit": "2.5D depth: Depth-Anything-V2-Small (Apache-2.0)"
  },
  "sha256": {
-  "depth-anything-v2-small.onnx": "afb6a5c28f3b6bf1618c6e43f02073ef9dfdc70e937502d51603e57b0a1df10c"
+  "depth-anything-v2-small.onnx": "afb6a5c28f3b6bf1618c6e43f02073ef9dfdc70e937502d51603e57b0a1df10c",
+  "turner-decline.src": "00e4d498fdc234ac880776ba8630fa53af62c13ccecc4ba4bbdcbdcfac24df39",
+  "turner-dido.src": "e81c02722324711af3bfcc581e72c49e86c5f26158febcc8957612a050589e0b",
+  "buys-scipio.src": "80ea480c5759daabdcbe399b31ab70bd7505434680de5e9b1833d34f652adfd9",
+  "assault-1885.src": "379d4770212fcdaf0d8048ad6cb5fecfdda42b27a2aff1bc8c0061fcc437b296",
+  "ports-1958.src": "3d421843dea6a00c1333be9094336726d232372e41e94428fc21c11cde82fc54",
+  "port-photo.src": "b14d167a8a6f2e37d9c836b443251aa338a7a31deb0ed0faf00f1deb891a466a",
+  "byrsa-photo.src": "e5fd6185b1c3215293ea2f731a5a34c886492ed1bc581192bf656c54847959bf"
  }
 }
