@@ -35,6 +35,12 @@ export const captionCues = (words: CueWord[], maxChars = 42, maxLines = 2): Cue[
     line = line ? `${line} ${word.w}` : word.w;
     cw.push(word);
     if (/[.?!]["')\]]?$/.test(word.w)) close();
+    else if (/[,;:]$/.test(word.w) && line.length >= 14) {
+      // prefer phrase breaks: a comma ends the line (and the cue once it has maxLines lines)
+      lines.push(line);
+      line = '';
+      if (lines.length >= maxLines) close();
+    }
   }
   close();
   return cues;
@@ -121,4 +127,21 @@ export const numeralize = (words: CueWord[]): CueWord[] => {
     i++;
   }
   return out;
+};
+
+/** "≈ 600 km": 1 km steps under 20, 5 under 100, 50 under 1,000, then 100. */
+export const kmLabel = (km: number): string => {
+  const step = km < 20 ? 1 : km < 100 ? 5 : km < 1000 ? 50 : 100;
+  return `≈ ${(Math.round(km / step) * step).toLocaleString('en-US')} km`;
+};
+
+/** Largest 1/2/5 × 10^k km bar that fits in maxPx at pxPerKm. */
+export const niceScale = (pxPerKm: number, maxPx: number): {km: number; px: number} => {
+  let best = {km: 1, px: pxPerKm};
+  for (let e = -1; e <= 5; e++)
+    for (const m of [1, 2, 5]) {
+      const km = m * 10 ** e;
+      if (km * pxPerKm <= maxPx && km >= best.km) best = {km, px: Math.round(km * pxPerKm)};
+    }
+  return best;
 };

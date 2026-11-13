@@ -1,0 +1,28 @@
+{
+  "_doc": "Licence-checked media fetched in CI by tools/fetch_media.py (never committed). Every item has a row in docs/LICENSES.md. sha256 is pinned after the first fetch; a mismatch fails the build.",
+  "art": [
+    {"id": "turner-decline", "source": "commons", "file": "Joseph_Mallord_William_Turner_-_The_Decline_of_the_Carthaginian_Empire_-_WGA23169.jpg", "licence": "Public domain (PD-Art, artist d. 1851)", "credit": "J. M. W. Turner, The Decline of the Carthaginian Empire, 1817, Tate (public domain)", "depth": true},
+    {"id": "turner-dido", "source": "commons", "file": "Turner_Dido_Building_Carthage.jpg", "licence": "Public domain (PD-Art, artist d. 1851)", "credit": "J. M. W. Turner, Dido Building Carthage, 1815, National Gallery London (public domain)", "depth": true},
+    {"id": "buys-scipio", "source": "commons", "file": "Scipion_Emilien_et_Polybe_devant_les_ruines_de_Carthage_après_la_destruction_de_la_ville.jpg", "licence": "Public domain (engraving 1797, artist d. 1801)", "credit": "Jacobus Buys, Scipio and Polybius at the ruins of Carthage, 1797 (public domain)", "depth": true},
+    {"id": "assault-1885", "source": "commons", "file": "Attaque_finale_de_Carthage_en_146_av_JC.jpg", "licence": "Public domain (published 1885)", "credit": "Final assault on Carthage, 146 BC, engraving 1885, NYPL (public domain)", "depth": true},
+    {"id": "ports-1958", "source": "commons", "file": "Carthage-1958-PortsPuniques.jpg", "licence": "Public domain (Tunisia, pre-1984 photograph)", "credit": "The Punic harbours of Carthage, 1958 postcard (public domain)", "depth": false},
+    {"id": "port-photo", "source": "commons", "file": "Carthage_-_Punic_port.jpg", "licence": "CC BY 2.0", "credit": "Punic port, Carthage — photo Neil Rickards, CC BY 2.0", "depth": true},
+    {"id": "byrsa-photo", "source": "commons", "file": "Le_site_archéologique_de_Byrsa_(Carthage,_Tunisie)_(49787855963).jpg", "licence": "CC BY 2.0", "credit": "Byrsa archaeological site — photo Jean-Pierre Dalbéra, CC BY 2.0", "depth": true},
+    {"id": "coin-masinissa", "source": "livius", "page": "https://www.livius.org/pictures/a/carthaginian-art/coin-of-massinissa", "licence": "CC0 1.0", "credit": "Coin of Masinissa, Musée Cirta, Constantine — photo Jona Lendering / Livius.org, CC0", "depth": false},
+    {"id": "coin-tanit", "source": "livius", "page": "https://www.livius.org/pictures/a/carthaginian-art/carthaginian-coin", "licence": "CC0 1.0", "credit": "Tanit on a Carthaginian coin, Bode-Museum Berlin — photo Jona Lendering / Livius.org, CC0", "depth": false},
+    {"id": "cato-16c", "source": "commons", "file": "Cato_der_Ältere.jpg", "licence": "Public domain (16th century)", "credit": "Cato the Elder, imagined portrait, 16th century, Bildarchiv Austria (public domain)", "depth": false}
+  ],
+  "geo": {
+    "bbox": [-12, 24, 42, 50],
+    "rivers": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_rivers_lake_centerlines.geojson",
+    "relief": ["https://naciscdn.org/naturalearth/50m/raster/GRAY_50M_SR.zip", "https://naciscdn.org/naturalearth/50m/raster/GRAY_50M_SR_W.zip"],
+    "licence": "Natural Earth — public domain",
+    "credit": "Rivers and shaded relief: Natural Earth (public domain)"
+  },
+  "depth_model": {
+    "url": "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model.onnx",
+    "licence": "Apache-2.0 (Depth-Anything-V2-Small)",
+    "credit": "2.5D depth: Depth-Anything-V2-Small (Apache-2.0)"
+  },
+  "sha256": {}
+}

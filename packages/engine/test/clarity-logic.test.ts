@@ -58,3 +58,19 @@ test('numeralize spoken numbers for captions, keeping timings', () => {
   assert.equal(numeralize(W('Since nineteen seventy-nine, they')).map((w) => w.w).join(' '), 'Since 1979, they');
   assert.equal(numeralize(W('over fifty years. Ten thousand talents')).map((w) => w.w).join(' '), 'over fifty years. 10,000 talents');
 });
+
+import {kmLabel, niceScale} from '../src/map/clarity-logic.ts';
+test('km labels and scale bar', () => {
+  assert.equal(kmLabel(587), '≈ 600 km');
+  assert.equal(kmLabel(14.6), '≈ 15 km');
+  assert.equal(kmLabel(1480), '≈ 1,500 km');
+  const s = niceScale(0.9, 240); // 0.9 px per km, bar at most 240 px
+  assert.deepEqual(s, {km: 200, px: 180});
+  assert.equal(niceScale(40, 240).km, 5);
+});
+test('captions prefer to break after a comma', () => {
+  const t = 'And since then, Carthage had paid, obeyed, and asked permission for almost everything.';
+  const cues = captionCues(t.split(' ').map((w, i) => ({w, t: i, end: i + 0.9})));
+  assert.ok(cues.every((c) => c.lines.every((l) => l.length <= 42)));
+  assert.ok(cues[0].lines[0].endsWith(','), cues[0].lines[0]);
+});

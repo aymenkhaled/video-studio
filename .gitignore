@@ -29,3 +29,8 @@ __pycache__/
 docs/review/
 public/assets/
 assets-cache/
+
+# CI-fetched media (tools/fetch_media.py)
+public/art/
+public/geo/
+.cache/
