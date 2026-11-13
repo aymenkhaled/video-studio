@@ -19,7 +19,7 @@ const fillKeys = (keys: BKey[]): BKey[] => {
   return out;
 };
 export type BArrow = {from: [number, number]; via?: [number, number]; to: [number, number]; side: 'a' | 'b'; draw: [number, number]; width?: number};
-export type Terrain = {river?: [number, number][]; lake?: [number, number][]; hills?: {x: number; y: number; r: number}[]; fog?: [number, number]};
+export type Terrain = {river?: [number, number][]; lake?: [number, number][]; hills?: {x: number; y: number; r: number}[]; fog?: [number, number]; lakes?: [number, number][][]; walls?: [number, number][][]};
 export type BattleSpec = {
   title: string;
   sides: {a: {name: string; color: string}; b: {name: string; color: string}};
@@ -118,6 +118,15 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
             </g>
           ))}
           {t.lake ? <polygon points={pts(t.lake.map(([x, y]) => [x * S, y * S]))} fill="#2c4a5a" stroke="#1d3340" strokeWidth={4} /> : null}
+          {(t.lakes ?? []).map((l, i) => (
+            <polygon key={`lk${i}`} points={pts(l.map(([x, y]) => [x * S, y * S]))} fill="#2c4a5a" stroke="#1d3340" strokeWidth={4} strokeLinejoin="round" />
+          ))}
+          {(t.walls ?? []).map((w, i) => (
+            <g key={`wl${i}`}>
+              <polyline points={pts(w.map(([x, y]) => [x * S, y * S]))} fill="none" stroke="#5a4a32" strokeWidth={1.1 * S} strokeLinejoin="round" strokeLinecap="round" />
+              <polyline points={pts(w.map(([x, y]) => [x * S, y * S]))} fill="none" stroke="#efe4c8" strokeWidth={0.35 * S} strokeDasharray={`${0.6 * S} ${0.5 * S}`} />
+            </g>
+          ))}
           {t.river ? <polyline points={pts(t.river.map(([x, y]) => [x * S, y * S]))} fill="none" stroke="#2c4a5a" strokeWidth={2.2 * S} strokeLinejoin="round" strokeLinecap="round" /> : null}
           {(spec.arrows ?? []).map((a, i) => {
             const pr = easeInOutCubic(ramp(p, a.draw[0], a.draw[1]));
