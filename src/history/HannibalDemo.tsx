@@ -38,13 +38,14 @@ const ROME: Territory = {
 };
 const CARTHAGE_AFRICA: Territory = {
   id: 'carthage-africa', color: '#c8812a', origin: [10.32, 36.85],
-  rings: [[[8.0, 37.6], [11.4, 37.6], [11.6, 35.5], [11.2, 33.2], [15.5, 31.0], [19.5, 30.4], [19.5, 29.0], [10.0, 31.6], [8.0, 34.4], [2.0, 35.4], [-1.5, 34.8], [-1.5, 36.2], [3.0, 37.4], [8.0, 37.6]]],
+  rings: [[[8.0, 37.6], [11.4, 37.6], [11.6, 35.5], [11.0, 33.6], [12.6, 32.6], [15.2, 31.9], [19.6, 30.8], [19.6, 29.9], [15.0, 30.9], [12.4, 31.9], [10.2, 32.9], [9.6, 34.6], [8.2, 35.6], [5.0, 35.9], [2.0, 35.9], [-1.5, 35.0], [-1.5, 36.2], [3.0, 37.4], [8.0, 37.6]]],
 };
 const CARTHAGE_IBERIA: Territory = {
   id: 'carthage-iberia', color: '#c8812a', origin: [-0.99, 37.6],
   rings: [[[0.9, 40.8], [-0.5, 41.3], [-3.0, 40.1], [-5.0, 38.7], [-7.5, 37.7], [-6.3, 35.9], [-2.0, 36.2], [1.5, 38.6], [0.9, 40.8]]],
 };
-const MARCH: LonLat[] = [[-0.99, 37.6], [-0.3, 39.5], [0.6, 40.8], [2.0, 41.6], [2.86, 42.46], [3.7, 43.45], [4.78, 44.05], [5.7, 45.2], [6.95, 45.22], [7.68, 45.07]];
+// Inland waypoints (the smoothed curve must not bulge over the sea).
+const MARCH: LonLat[] = [[-0.99, 37.6], [-1.0, 38.6], [-0.75, 39.7], [0.2, 40.95], [1.3, 41.85], [2.3, 42.45], [2.9, 43.25], [4.0, 43.85], [4.78, 44.1], [5.5, 44.9], [6.3, 45.3], [6.95, 45.22], [7.68, 45.07]];
 const NEW_CARTHAGE: City = {name: 'New Carthage', at: [-0.99, 37.6], align: 'left'};
 const territories = [ROME, CARTHAGE_AFRICA, CARTHAGE_IBERIA];
 const unit = {label: 'Hannibal', color: '#c8812a', kind: 'infantry' as const};
@@ -60,25 +61,25 @@ const SPECS: Record<string, MapSpec> = {
     camera: [{at: 0, center: [3, 39.5], zoom: 6}, {at: 0.35, center: [-1.6, 39.2], zoom: 14}, {at: 1, center: [-1.2, 39.6], zoom: 15.5}],
     territories,
     cities: [{...NEW_CARTHAGE, appear: 0.1, size: 1.3}, {name: 'Saguntum', at: [-0.27, 39.68], appear: 0.4}],
-    routes: [{id: 'ebro', points: MARCH.slice(0, 3), color: '#f0c36a', draw: [0.45, 0.9], unit}],
+    routes: [{id: 'ebro', points: MARCH.slice(0, 4), color: '#f0c36a', draw: [0.45, 0.9], unit}],
     regions: [{text: 'IBERIA', at: [-4.2, 40.3], appear: 0.3, size: 52}],
   },
   s3: {
-    camera: [{at: 0, center: [0.5, 40.5], zoom: 9}, {at: 0.5, center: [3.4, 43.2], zoom: 9.5}, {at: 1, center: [6.6, 45.0], zoom: 12}],
+    camera: [{at: 0, center: [0.4, 40.6], zoom: 11}, {at: 0.5, center: [3.4, 43.4], zoom: 12}, {at: 1, center: [6.4, 45.0], zoom: 18}],
     territories,
     routes: [{id: 'march', points: MARCH, color: '#f0c36a', draw: [0.02, 0.92], unit}],
-    cities: [{name: 'Massalia (Roman ally)', at: [5.37, 43.3], appear: 0.45}, {name: 'Rhône crossing', at: [4.78, 44.05], appear: 0.5, align: 'left'}, {name: 'Alpine pass (debated)', at: [6.95, 45.22], appear: 0.8}],
+    cities: [{name: 'Massalia', at: [5.37, 43.3], appear: 0.45}, {name: 'Rhône crossing', at: [4.78, 44.05], appear: 0.5, align: 'left'}, {name: 'Alpine pass (debated)', at: [6.95, 45.22], appear: 0.8}],
     regions: [{text: 'GAUL', at: [2.6, 45.6], appear: 0.25}, {text: 'ALPS', at: [7.6, 46.2], appear: 0.65, size: 40}],
   },
   s4: {
-    camera: [{at: 0, center: [7.6, 45.0], zoom: 14}, {at: 1, center: [9.6, 44.6], zoom: 12}],
+    camera: [{at: 0, center: [7.4, 45.0], zoom: 34}, {at: 1, center: [8.6, 44.9], zoom: 26}],
     territories,
     routes: [{id: 'march', points: MARCH, color: '#f0c36a', draw: [-1, 0], unit}],
     cities: [{name: 'Taurini (Turin)', at: [7.68, 45.07], appear: 0.05}],
-    regions: [{text: 'CISALPINE GAUL', at: [10.2, 45.6], appear: 0.2, size: 36}],
+    regions: [{text: 'CISALPINE GAUL', at: [9.6, 45.55], appear: 0.2, size: 34}],
   },
   s5: {
-    camera: [{at: 0, center: [9.6, 44.0], zoom: 9}, {at: 1, center: [11.5, 42.5], zoom: 6.5}],
+    camera: [{at: 0, center: [8.6, 44.9], zoom: 26}, {at: 1, center: [10.5, 42.5], zoom: 7}],
     territories,
     routes: [{id: 'march', points: MARCH, color: '#f0c36a', draw: [-1, 0], unit}],
     cities: [{name: 'Rome', at: [12.48, 41.9]}],
@@ -127,7 +128,7 @@ export const HannibalDemo: React.FC<Props> = ({scenes}) => {
           <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 92, color: '#f4ecd8', opacity: easeInOutCubic(ramp(p, 0.15, 0.4)), textShadow: '0 4px 0 #000'}}>So how did he win anyway?</div>
         </AbsoluteFill>
       ) : null}
-      <TimelineBar from={-264} to={-146} year={-218 + (sc.id === 's4' || sc.id === 's5' ? 0.5 : 0)} events={[{year: -264, label: 'First Punic War'}, {year: -218, label: 'Hannibal marches'}, {year: -146, label: 'Carthage destroyed'}]} />
+      <TimelineBar from={-264} to={-146} year={-218} events={[{year: -264, label: 'First Punic War'}, {year: -218, label: 'Hannibal marches'}, {year: -146, label: 'Carthage destroyed'}]} />
     </AbsoluteFill>
   );
 };
