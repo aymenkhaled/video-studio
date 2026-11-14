@@ -11,3 +11,5 @@
 ## 2026-11-14 — Episode 002 Carthage + Clarity Kit (branch ep/002-carthage)
 - Clarity Kit in the engine (captions, legend, tracker, globe, scale, cards, glossary, recaps, end screen, figures, phases, PD art with 2.5D parallax, relief, patterns), media pipeline (release media-v1), new SFX/ambience.
 - Final render 43536415513 QA PASS; independent review fixes applied; score 7/10.
+
+- 2026-11-14 Channel B "Scale & Science" episode 001 "How Big Was the Biggest Animal Ever?" (branch ep/b001-biggest-animal): new opt-in scale/compare/deeptime/custom scene kinds, original silhouettes, 3D Apatosaurus hero shot, media release media-b001, 4 stills rounds, independent review (FAIL 7/10 → all Critical/Important fixed), channel art.

@@ -34,6 +34,15 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 
 11. Inspiration (optional, not a rule): Aymen liked a Storyhub-style reel ("you" framing, continuous camera, living backgrounds, micro-animation, comment-question ending). Use only what suits a given video.
 
+## From Scale & Science 001 (biggest animal, 14 Nov 2026)
+1. Size-comparison stages need label rules, not hand placement: labels avoid the title, chips, tracker AND other animals' bodies; fall back inside their own body; hide when the subject's top is off-frame; leader line when lifted. Without this a label landed on the wrong animal (reviewer Critical).
+2. Log-space pull-backs (krill → whale, you → whale) spend most of their time zoomed in: add a mid key so the big subject is in frame by ~50 % of the scene, or the payoff line plays over empty sea.
+3. Never show mid-animation numbers ("22.3 m") while an estimate grows; show the sourced range. Never round a sourced value to a "nicer" one (114 → 115 slipped in once); round only conversions.
+4. Narration and on-screen units must match exactly ("each line is one metre" vs a 50 cm grid; "33 m" vs "33.5 m"; tons vs tonnes) — the reviewer catches all of them.
+5. Discovery stories need the paper, not the press: Ichthyotitan was found first by a collector, then by a girl and her father.
+6. Per-channel media releases (`media_release` input) so one channel's media rebuild never breaks another's renders.
+7. Fat silhouettes read as sunfish: check proportions on the first stills (shark depth ≈ 0.2 × length).
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|
