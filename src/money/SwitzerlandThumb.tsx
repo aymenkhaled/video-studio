@@ -15,12 +15,10 @@ export const SwitzerlandThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
       <AbsoluteFill style={{background: '#000'}}>
         <Img src={artSrc('alps-modis')} style={{...cover, objectPosition: '42% 50%', transform: 'scale(1.25)', filter: 'contrast(1.2) saturate(1.15)'}} />
         <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0) 100%)'}} />
-        <div style={{position: 'absolute', left: 56, top: 150, fontFamily: INTER, fontWeight: 900, fontSize: 132, lineHeight: 1.02, color: '#fff', textShadow: stroke}}>
+        <div style={{position: 'absolute', left: 56, top: 190, fontFamily: INTER, fontWeight: 900, fontSize: 150, lineHeight: 1.02, color: '#fff', textShadow: stroke}}>
           NO SEA.
           <br />
-          NO OIL.
-          <br />
-          <span style={{color: RED}}>RICH?</span>
+          <span style={{color: RED}}>SO RICH?</span>
         </div>
       </AbsoluteFill>
     );
@@ -40,7 +38,7 @@ export const SwitzerlandThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
   // hungry 1817 village photochrom → "WHY SO RICH?"
   return (
     <AbsoluteFill style={{background: '#000'}}>
-      <Img src={artSrc('village-alps')} style={{...cover, objectPosition: '50% 45%', filter: 'contrast(1.25) saturate(1.1)'}} />
+      <Img src={artSrc('village-alps')} style={{...cover, objectPosition: '50% 45%', transform: 'scale(1.12)', filter: 'contrast(1.25) saturate(1.1)'}} />
       <AbsoluteFill style={{background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%)'}} />
       <div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 124, color: '#fff', textShadow: stroke}}>
         WHY SO <span style={{color: RED}}>RICH?</span>
