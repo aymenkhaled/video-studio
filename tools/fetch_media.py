@@ -105,6 +105,10 @@ def main():
     for a in manifest["art"]:
         if a["source"] == "commons":
             url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"])  # original file: arbitrary-width thumbnails are throttled
+        elif a["source"] == "artic":  # Art Institute of Chicago open access (CC0): API -> IIIF image
+            req = urllib.request.Request(f"https://api.artic.edu/api/v1/artworks/{a['artwork']}?fields=image_id", headers=UA)
+            image_id = json.loads(urllib.request.urlopen(req, timeout=60).read())["data"]["image_id"]
+            url = f"https://www.artic.edu/iiif/2/{image_id}/full/843,/0/default.jpg"
         elif a["source"] == "url":
             url = a["url"]
         else:

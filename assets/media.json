@@ -82,6 +82,54 @@
    "licence": "Public domain (16th century)",
    "credit": "Cato the Elder, imagined portrait, 16th century, Bildarchiv Austria (public domain)",
    "depth": false
+  },
+  {
+   "id": "turner-hannibal",
+   "source": "commons",
+   "file": "Joseph_Mallord_William_Turner_-_Snow_Storm,_Hannibal_and_his_Army_Crossing_the_Alps_-_WGA23167.jpg",
+   "licence": "Public domain (PD-Art, artist d. 1851)",
+   "credit": "J. M. W. Turner, Snow Storm: Hannibal and his Army Crossing the Alps, 1812, Tate (public domain)",
+   "depth": true
+  },
+  {
+   "id": "trumbull-cannae",
+   "source": "commons",
+   "file": "The_Death_of_Paulus_Aemilius_at_the_Battle_of_Cannae_(Yale_University_Art_Gallery_scan).jpg",
+   "licence": "Public domain (PD-Art, artist d. 1843)",
+   "credit": "John Trumbull, The Death of Paulus Aemilius at the Battle of Cannae, 1773, Yale University Art Gallery (public domain)",
+   "depth": true
+  },
+  {
+   "id": "west-oath",
+   "source": "commons",
+   "file": "Benjamin_West_(1738-1820)_-_The_Oath_of_Hannibal_-_RCIN_405417_-_Royal_Collection.jpg",
+   "licence": "Public domain (PD-Art, artist d. 1820)",
+   "credit": "Benjamin West, The Oath of Hannibal, 1770, Royal Collection (public domain)",
+   "depth": true
+  },
+  {
+   "id": "leutemann-alps",
+   "source": "commons",
+   "file": "Leutemann,_Heinrich_-_Hannibal's_crossing_of_the_Alps.jpg",
+   "licence": "Public domain (artist d. 1905)",
+   "credit": "Heinrich Leutemann, Hannibal's crossing of the Alps, woodcut, Münchener Bilderbogen (public domain)",
+   "depth": true
+  },
+  {
+   "id": "zama-loc",
+   "source": "commons",
+   "file": "The_battle_of_Zama_LCCN2012645609.jpg",
+   "licence": "Public domain (engraving after Cornelis Cort, d. 1578; Library of Congress: no known restrictions)",
+   "credit": "The Battle of Zama, engraving after Cornelis Cort, Library of Congress (public domain)",
+   "depth": true
+  },
+  {
+   "id": "coin-scipio",
+   "source": "artic",
+   "artwork": 5578,
+   "licence": "CC0 (Art Institute of Chicago open access)",
+   "credit": "Denarius depicting Scipio Africanus, 112–111 BC, Art Institute of Chicago (CC0)",
+   "depth": false
   }
  ],
  "geo": {
