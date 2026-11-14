@@ -55,7 +55,7 @@ sc("c2g", ["Megalodon estimates range from about sixteen metres to as much as tw
 sc("c2g2", ["The best clue is a row of megalodon backbones found in Belgium, about eleven metres long.", "But the head and the tail are missing, so scientists must estimate them."], "build", "ocean")
 sc("c2g3", ["Some scientists think megalodon was chunky, like a great white.", "Others think it was slimmer and longer, more like a lemon shark."], "build", "ocean")
 sc("c2h", ["Even at its largest estimate, megalodon was shorter than the biggest blue whales."], "reveal", "ocean", [W])
-sc("c2i", ["And it was lighter. A megalodon sixteen metres long may have weighed about sixty tonnes.", "Even one twenty-four metres long was probably under one hundred tonnes."], "reveal", None, [("counter", 1.0, 2.0, 0.3)])
+sc("c2i", ["And it was lighter. A megalodon sixteen metres long may have weighed about sixty tonnes.", "Even at twenty-four metres long, it was probably under one hundred tonnes."], "reveal", None, [("counter", 1.0, 2.0, 0.3)])
 sc("c2r", ["So far: megalodon was a true giant, but shorter and lighter than the biggest blue whales.", "On land, though, some animals grew even longer."], "tension", None, PAGE)
 # ---------- 3 sauropods ----------
 sc("c3", ["Chapter three. Titans on land."], "build", "land", PAGE, min=4.5)
