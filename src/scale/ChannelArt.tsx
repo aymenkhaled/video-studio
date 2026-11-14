@@ -18,8 +18,8 @@ const Sil: React.FC<{shape: ShapeKey; x: number; y: number; len: number; color: 
 export const ScaleChannel1: React.FC = () => (
   <AbsoluteFill style={{background: 'radial-gradient(circle at 50% 40%, #1f6d8f 0%, #08263a 70%)'}}>
     {/* a whale too big for the frame, and you */}
-    <Sil shape="blueWhale" x={-260} y={430} len={1300} color="#7fa7c4" w={800} h={800} />
-    <Sil shape="human" x={560} y={640} len={120} color={GOLD} w={800} h={800} />
+    <Sil shape="blueWhale" x={90} y={470} len={620} color="#8fb6d2" w={800} h={800} />
+    <Sil shape="human" x={600} y={640} len={95} color={GOLD} w={800} h={800} />
     <div style={{position: 'absolute', left: 0, right: 0, top: 120, textAlign: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 190, letterSpacing: -4, color: PAPER, textShadow: '0 8px 0 #000'}}>
       S<span style={{color: GOLD}}>&</span>S
     </div>

@@ -30,8 +30,6 @@ export const BiggestAnimalThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) =>
       <AbsoluteFill style={{background: '#04121c'}}>
         <Img src={artSrc('bw-aerial')} style={{...cover, objectPosition: '45% 55%', transform: 'scale(1.18)', filter: 'contrast(1.2) saturate(1.3)'}} />
         <AbsoluteFill style={{background: 'linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 45%)'}} />
-        <Person x={1110} y={470} h={70} />
-        <div style={{position: 'absolute', left: 1080, top: 380, fontFamily: INTER, fontWeight: 900, fontSize: 40, color: '#ffd166', textShadow: stroke}}>YOU</div>
         <div style={{position: 'absolute', left: 0, right: 0, bottom: 30, textAlign: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 132, color: '#fff', textShadow: stroke}}>
           BIGGEST <span style={{color: '#ffd166'}}>EVER?</span>
         </div>
@@ -51,7 +49,7 @@ export const BiggestAnimalThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) =>
   }
   return (
     <AbsoluteFill style={{background: '#000'}}>
-      <Img src={artSrc('fernbank')} style={{...cover, objectPosition: '50% 55%', filter: 'contrast(1.2) saturate(1.1)'}} />
+      <Img src={artSrc('fernbank')} style={{...cover, objectPosition: '62% 62%', transform: 'scale(1.6)', transformOrigin: '62% 62%', filter: 'contrast(1.2) saturate(1.1)'}} />
       <AbsoluteFill style={{background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%)'}} />
       <div style={{position: 'absolute', left: 0, right: 0, bottom: 34, textAlign: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 120, color: '#fff', textShadow: stroke}}>
         BEAT THE <span style={{color: '#8fc3e8'}}>WHALE?</span>
