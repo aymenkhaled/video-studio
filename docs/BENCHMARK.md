@@ -16,6 +16,8 @@ Run: benchmark 43448786029 (13 Nov 2026), 300 frames 1080×1920 each, one job pe
 | HannibalDemo map v1 (1920×1080@24, land-50m always, territories clipped to land), 4 chunks (run 43486629547) | 1.64 | 1538 frames, 940 job-s | — | Full-world coastline traced every frame even when zoomed in |
 | HannibalDemo map v1.1 (+ clipExtent culling, 110m/50m LOD), 4 chunks (run 43488948171) | **15.8** | 1534 frames, 97 job-s | whole run ≈ 6 min | **10× faster.** Long-form estimate: 30 min @24 fps = 43,200 frames ÷ (15.8 × 20 jobs) ≈ 2.3 min render + ~8 min overhead (voice for 30 min ≈ +several min, to measure) |
 
+| **Episode 001 Hannibal** (10:30, 1920×1080@24, maps + battle diagrams + cards), 20 chunks (run 43517087620) | **12.3** | 15,128 frames, 1,228 job-s | **≈ 10–12 min wall** (plan 4 min with cached TTS) | First TTS of 10.5 min narration ≈ 17 min (Kokoro int8, 4 vCPU); cached afterwards |
+
 Fixed overhead per render job ≈ **1.5–2 min** (checkout, npm ci, browser, bundle download). `plan` job (bundle) ≈ 1.5 min. Combine + QA ≈ 1–3 min depending on length.
 
 ## Formula

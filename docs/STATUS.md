@@ -26,9 +26,12 @@ _Updated 13 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
 
 - Map engine v1 done (camera keys + living push, territories clipped to land with growth, routes with unit markers, cities, region labels, timeline bar, chapter card, citations, counters) + voice-first scene timing. Hannibal demo: QA PASS, 15.8 fps/job, 6.5/10 (`brands/history-maps/episodes/000-hannibal-demo/review.md`).
 
+- **Episode 001 "Hannibal: The Man Who Nearly Destroyed Rome" DELIVERED** (10:30, QA PASS, independent review fixes applied, 6.5/10): `brands/history-maps/episodes/001-hannibal/` (script, sources, scenes, package.json, review.md). Video + thumbnails + captions + UPLOAD.md copied to `D:\deep-time-fables\hannibal-episode-001\` (videos never committed). Waiting on Aymen: channel creation + upload.
+
 ## Next
-1. Label collision avoidance; stronger cold-open template (first 5 s); sourced historical boundary data (licence check).
-2. Long-form pipeline: `script.md` with scene markers → timeline (voice lines, scenes, SFX) → voice-first timing → render → QA → package (chapters, 3 thumbnails, description, SRT).
+1. Better free TTS evaluation (licence-checked) vs Kokoro; then a third visual layer (period art / relief / portrait cards).
+2. Label collision avoidance; stronger cold-open template; sourced historical boundary data.
+3. Long-form pipeline: `script.md` with scene markers → timeline (voice lines, scenes, SFX) → voice-first timing → render → QA → package (chapters, 3 thumbnails, description, SRT).
 3. Evaluate best free commercial-licence TTS vs Kokoro (licence-checked).
 4. Pilot episodes: A (10–15 min) → C → B.
 5. Aymen: YouTube API key, create 3 channels, advanced features.

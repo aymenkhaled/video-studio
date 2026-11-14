@@ -102,7 +102,8 @@ srt = "\n".join(f"{i + 1}\n{ts(a, True)} --> {ts(b, True)}\n{numerals(t)}\n" for
 (out_dir / "captions.srt").write_text(srt, encoding="utf-8")
 
 # ---------- sources from sources.md ----------
-src_lines = [l.strip("- ").strip() for l in (ep_dir / "sources.md").read_text(encoding="utf-8").splitlines() if l.startswith("- ")]
+# YouTube descriptions are plain text: drop markdown emphasis (*Title*) but keep '*' inside URLs.
+src_lines = [re.sub(r"\*([A-Za-z][^*]*?)\*", r"\1", l.strip("- ").strip()) for l in (ep_dir / "sources.md").read_text(encoding="utf-8").splitlines() if l.startswith("- ")]
 
 dur = timing["duration"]
 md = [f"# UPLOAD — {pkg['titles'][0]}", "", f"Length: {ts(dur)} · Render: see release / artifact `final.mp4` · Thumbnails: `thumb_1..3.jpg`", "",
