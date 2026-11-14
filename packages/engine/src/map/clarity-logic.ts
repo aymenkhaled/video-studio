@@ -6,6 +6,9 @@ export const yearsAgo = (year: number, now = 2026): number => (year < 0 ? now - 
 /** "about 2,170 years ago" — rounded to 10 from 100 years on. */
 export const agoLabel = (year: number, now = 2026): string => {
   const n = yearsAgo(year, now);
+  if (n <= 0) return 'today';
+  if (n === 1) return 'last year';
+  if (n < 10) return `${n} years ago`;
   const r = n >= 100 ? Math.round(n / 10) * 10 : n < 10 ? n : Math.round(n / 10) * 10;
   return `about ${r.toLocaleString('en-US')} years ago`;
 };
