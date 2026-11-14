@@ -450,7 +450,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
         const lx = 40;
         const ly = height - 620;
         const fmt = c.legend?.fmt ?? {};
-        const rows = c.colors.map((col, k) => ({col, text: c.legend?.labels?.[k] ?? (k === 0 ? `under ${fmtValue(c.breaks[0], fmt)}` : k === c.colors.length - 1 ? `${fmtValue(c.breaks[k - 1], fmt)} +` : `${fmtValue(c.breaks[k - 1], fmt)} – ${fmtValue(c.breaks[k], fmt)}`)}));
+        const rows = !c.legend ? [] : c.colors.map((col, k) => ({col, text: c.legend?.labels?.[k] ?? (c.breaks.length === 0 ? "" : k === 0 ? `under ${fmtValue(c.breaks[0], fmt)}` : k === c.colors.length - 1 ? `${fmtValue(c.breaks[k - 1], fmt)} +` : `${fmtValue(c.breaks[k - 1], fmt)} – ${fmtValue(c.breaks[k], fmt)}`)}));
         return (
           <g opacity={a}>
             {(c.labels ?? []).map((l) => {
