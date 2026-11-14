@@ -59,8 +59,8 @@ const shark = (depth: number, dorsal: number, tail: number): Shape => ({
 });
 
 /** Great white: deep body, tall dorsal. Megalodon (one hypothesis): slimmer, longer, smaller dorsal, bigger head. */
-const GREAT_WHITE = shark(2.1, 1.0, 1.0);
-const MEGALODON = shark(1.75, 0.8, 0.9);
+const GREAT_WHITE = shark(1.15, 1.0, 1.0);
+const MEGALODON = shark(0.95, 0.75, 0.9);
 
 const PERUCETUS: Shape = {
   motion: 'whale',
@@ -102,7 +102,7 @@ const SAUROPOD: Shape = {
   ],
   // far-side legs, a step out of phase
   fins: [
-    [[0.635, 0.16], [0.632, 0.0], [0.6, 0.0], [0.598, 0.14]],
+    [[0.64, 0.16], [0.645, 0.0], [0.615, 0.0], [0.61, 0.14]],
     [[0.42, 0.13], [0.415, 0.0], [0.38, 0.0], [0.385, 0.13]],
   ],
   extras: [{kind: 'eye', u: 0.975, v: 0.392, r: 0.0035}],
@@ -148,8 +148,8 @@ const ELEPHANT: Shape = {
 const COURT: Shape = {
   motion: 'none',
   measure: 'length',
-  pts: [[0, 0], [0, 0.012], [1, 0.012], [1, 0]],
-  extras: [{kind: 'rect', u: 0.497, v: 0.0, w: 0.006, h: 0.012, tone: 'light'}],
+  pts: [[0, 0], [0, 0.04], [1, 0.04], [1, 0]],
+  extras: [{kind: 'rect', u: 0.497, v: 0.0, w: 0.006, h: 0.04, tone: 'light'}],
   tension: 0,
 };
 

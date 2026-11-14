@@ -88,7 +88,10 @@ export const CompareShot: React.FC<{spec: CompareSpec; p: number; elapsed: numbe
                   whiteSpace: 'nowrap',
                   fontWeight: 900,
                   fontSize: 34,
-                  color: labelInside ? '#0b1824' : GOLD,
+                  color: GOLD,
+                  background: labelInside ? 'rgba(10,14,18,0.85)' : undefined,
+                  borderRadius: 8,
+                  padding: labelInside ? '0 10px' : undefined,
                   opacity: ramp(p, a0 + 0.1, a0 + 0.16),
                 }}
               >

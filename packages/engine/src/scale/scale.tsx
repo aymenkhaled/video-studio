@@ -34,6 +34,8 @@ export type ScaleSubject = {
   mystery?: boolean;
   /** swims / walks forward at this speed (m/s) */
   speed?: number;
+  /** paint the label on the body (buses, courts) instead of above it */
+  labelInside?: boolean;
   /** dashed outline only (a reference shape from another scene, e.g. "blue whale length") */
   outline?: boolean;
   /** grows from `size` to `range[1]` over this window (estimates growing on screen) */
@@ -218,7 +220,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
 
   const subs = [...spec.subjects].sort((a, b) => (b.range?.[1] ?? b.size) - (a.range?.[1] ?? a.size));
   const shapes: React.ReactNode[] = [];
-  const labels: {node: React.ReactNode; box: Box; prio: number}[] = [];
+  const labels: {node: React.ReactNode; box: Box; prio: number; anchor?: {x: number; y: number}; inside?: {x: number; y: number}; fixed?: boolean}[] = [];
   subs.forEach((sub, i) => {
     const shape = SHAPES[sub.shape];
     const a = easeInOutCubic(ramp(p, sub.appear ?? 0, (sub.appear ?? 0) + 0.06)) * (1 - easeInOutCubic(ramp(p, sub.vanish ?? 2, (sub.vanish ?? 2) + 0.05)));
@@ -293,20 +295,34 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       const cx = Math.min(W - 40 - tw / 2, Math.max(40 + tw / 2, x0 + maxLen / 2));
       labels.push({
         prio: 1,
+        anchor: {x: x0 + maxLen / 2, y: by},
         box: {x: cx - tw / 2, y: by - 58, w: tw, h: 46},
         node: (
           <div style={{opacity: a * bA, background: 'rgba(10,14,18,0.78)', borderRadius: 10, padding: '4px 14px', fontFamily: INTER, fontWeight: 800, fontSize: 32, color: GOLD, whiteSpace: 'nowrap'}}>{text}</div>
         ),
       });
     }
-    if (sub.label || sub.you) {
-      const lw = Math.max((sub.label ?? "").length * 22, (sub.sub ?? '').length * 15.5) + 34;
+    const bodyH = (topOf(shape) - Math.min(0, bottomOf(shape))) * maxLen;
+    const centre = {x: x0 + maxLen * widthOf(shape) * 0.5, y: pl.y - ((topOf(shape) + Math.min(0, bottomOf(shape))) / 2) * maxLen};
+    if (sub.labelInside && sub.label) {
+      // text painted on the body (buses, courts): never collides with other labels
+      const lw = sub.label.length * 19 + 30;
+      labels.push({
+        prio: 0,
+        fixed: true,
+        box: {x: centre.x - lw / 2, y: centre.y - 24, w: lw, h: 48},
+        node: <div style={{opacity: a, background: 'rgba(10,14,18,0.82)', borderRadius: 8, padding: '2px 12px', fontFamily: INTER, fontWeight: 900, fontSize: 32, color: PAPER, whiteSpace: 'nowrap'}}>{sub.label}</div>,
+      });
+    } else if (sub.label || sub.you) {
+      const lw = Math.max((sub.label ?? '').length * 22 + (sub.you ? 110 : 0), (sub.sub ?? '').length * 15.5, sub.you ? 250 : 0) + 34;
       const lh = sub.sub ? 86 : 54;
       const anchorX = shape.measure === 'height' ? x0 + maxLen * 0.13 : x0 + maxLen * 0.5;
       const bracketTop = shape.measure === 'length' && maxLen > 40 && sub.bracket !== false ? topY - 26 - 62 : topY - 12;
       const cx = Math.min(W - 30 - lw / 2, Math.max(30 + lw / 2, anchorX));
       labels.push({
         prio: 2,
+        anchor: {x: anchorX, y: topY},
+        inside: bodyH > 150 && maxLen > lw ? {x: centre.x, y: centre.y} : undefined,
         box: {x: cx - lw / 2, y: bracketTop - lh, w: lw, h: lh},
         node: (
           <div style={{opacity: a, textAlign: 'center', fontFamily: INTER, color: PAPER, textShadow: '0 2px 0 rgba(0,0,0,0.65)'}}>
@@ -322,18 +338,31 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
     }
   });
 
-  // place labels: keep each above its subject, push up (never sideways) until it clears the ones already placed
-  const placed: Box[] = [];
+  // place labels: fixed ones first; others above their subject, pushed up until clear of placed labels, the title,
+  // the top-right chip and the chapter tracker; if no room above, inside the body (big subjects); leader line when lifted.
+  const obstacles: Box[] = [{x: 1300, y: 0, w: 620, h: 84}, {x: 0, y: 0, w: 520, h: 76}];
+  if (spec.title) obstacles.push({x: 360, y: 86, w: 1200, h: 76});
+  const placed: Box[] = [...obstacles];
+  const leaders: React.ReactNode[] = [];
   const nodes = labels
     .sort((a, b) => a.prio - b.prio)
     .map((l, k) => {
       const box = {...l.box, h: l.box.h + (l.prio === 2 && l.node ? 34 : 0)};
-      let dy = 0;
-      for (let guard = 0; guard < 12 && placed.some((q) => overlaps({...box, y: box.y + dy}, q)); guard++) dy -= 52;
-      const y = Math.max(96, box.y + dy);
-      placed.push({...box, y});
+      const clear = (b: Box) => b.y >= 70 && !placed.some((q) => overlaps(b, q));
+      let pos: Box = box;
+      if (!l.fixed) {
+        const cands: Box[] = [];
+        for (let i = 0; i < 8; i++) cands.push({...box, y: box.y - i * 52});
+        if (l.inside) cands.push({...box, x: l.inside.x - box.w / 2, y: l.inside.y - box.h / 2});
+        pos = cands.find(clear) ?? box;
+        pos = {...pos, y: Math.max(70, pos.y)};
+      }
+      placed.push(pos);
+      if (l.anchor && pos.y + pos.h < l.anchor.y - 70 && !(l.inside && pos.x === l.inside.x - box.w / 2)) {
+        leaders.push(<line key={`ld${k}`} x1={pos.x + pos.w / 2} y1={pos.y + pos.h - 4} x2={l.anchor.x} y2={l.anchor.y - 6} stroke="rgba(246,241,228,0.7)" strokeWidth={2} strokeDasharray="4 5" />);
+      }
       return (
-        <div key={k} style={{position: 'absolute', left: box.x, top: y, width: box.w, display: 'flex', justifyContent: 'center'}}>
+        <div key={k} style={{position: 'absolute', left: pos.x, top: pos.y, width: pos.w, display: 'flex', justifyContent: 'center'}}>
           {l.node}
         </div>
       );
@@ -346,6 +375,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       <Ruler camX={camX} s={s} ground={ground} env={spec.env} />
       <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
         {shapes}
+        {leaders}
       </svg>
       {nodes}
       <div style={{position: 'absolute', right: 36, top: 32, background: 'rgba(10,14,18,0.7)', borderRadius: 10, padding: '6px 16px', fontFamily: INTER, fontWeight: 800, fontSize: 30, color: PAPER}}>

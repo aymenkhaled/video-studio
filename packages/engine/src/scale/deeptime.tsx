@@ -7,7 +7,7 @@ import {pathFor, SHAPES, ShapeKey, topOf, widthOf, bottomOf} from './shapes';
 // "Millions of years ago" made visible: a horizontal time line with TODAY on the right, geological periods as
 // coloured bands (named), animals pinned at their time, and the tiny sliver of time humans have existed.
 
-export type DeepMarker = {label: string; at?: number; range?: [number, number]; color: string; shape?: ShapeKey; sub?: string; appear?: number; row?: 0 | 1};
+export type DeepMarker = {label: string; at?: number; range?: [number, number]; color: string; shape?: ShapeKey; sub?: string; appear?: number; row?: 0 | 1; /** horizontal label nudge, px */ dx?: number};
 export type DeepTimeSpec = {
   title?: string;
   /** visible window in millions of years ago [oldest, youngest] at the start and end of the scene */
@@ -99,8 +99,8 @@ export const DeepTimeShot: React.FC<{spec: DeepTimeSpec; p: number; elapsed: num
         const a = easeInOutCubic(ramp(p, mk.appear ?? 0.1 + i * 0.15, (mk.appear ?? 0.1 + i * 0.15) + 0.08));
         if (a <= 0) return null;
         const c = mk.range ? (mk.range[0] + mk.range[1]) / 2 : mk.at ?? 0;
-        const x = Math.min(R - 160, Math.max(L + 160, X(c)));
-        const rowY = mk.row === 1 ? 150 : 250;
+        const x = Math.min(R - 180, Math.max(L + 180, X(c) + (mk.dx ?? 0)));
+        const rowY = mk.row === 1 ? 130 : 320;
         const s = mk.shape ? SHAPES[mk.shape] : null;
         const iconW = 220;
         const len = s ? Math.min(iconW / widthOf(s), 90 / (topOf(s) - Math.min(0, bottomOf(s)))) : 0;

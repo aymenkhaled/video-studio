@@ -18,7 +18,8 @@ export const lengthLabel = (m: number | [number, number]): string => {
     const [a, b] = m;
     return `${fmt(a)}–${fmt(b)} m · ${fmt(a * FT_PER_M)}–${fmt(b * FT_PER_M)} ft`;
   }
-  return `${m < 10 && m !== Math.round(m) ? m : fmt(m)} m · ${fmt(m * FT_PER_M)} ft`;
+  // the sourced value is shown as given (e.g. 33.5); only the conversion is rounded
+  return `${m !== Math.round(m) ? Math.round(m * 100) / 100 : fmt(m)} m · ${fmt(m * FT_PER_M)} ft`;
 };
 
 /** "150 t · 165 US tons"; ranges "60–114 t · 66–126 US tons". */

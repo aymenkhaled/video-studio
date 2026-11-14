@@ -16,8 +16,8 @@ import type {CustomShotProps} from '../../packages/engine/src/map/episode';
 // rim light for silhouette, no post-processing. Two camera parts so each scene stays <= 15 s.
 
 const LEN = 22; // Apatosaurus louisae, ~21-23 m (see sources.md)
-const BUS = {x: 6, z: -7, len: 12};
-const HUMAN: [number, number, number] = [14, 0, 5];
+const BUS = {x: -10, z: -8, len: 12};
+const HUMAN: [number, number, number] = [6, 0, 7];
 const PART_A = 11.5; // seconds of part A, so part B continues the walk
 
 const CameraRig: React.FC<{cam: Cam}> = ({cam}) => {
@@ -50,17 +50,17 @@ const Walk: React.FC<CustomShotProps & {part: 'a' | 'b'}> = ({p, elapsed, width,
   const gait = dino.userData.gait.Walk || 1.2;
   const v = Math.abs(gait);
   const rotY = gait >= 0 ? Math.PI / 2 : -Math.PI / 2;
-  const xd = -26 + v * t; // walks along +x past the bus
+  const xd = 2 + v * (t - PART_A); // walks along +x; reaches the person's side at the end of part A
   const [hx, hy] = handheld(t, 0.6);
   let cam: Cam;
   if (part === 'a') {
     // from the person's eye level, looking up at the passing giant, then craning back
     const k = easeInOutCubic(ramp(p, 0, 1));
-    cam = {pos: [mix(HUMAN[0] + 3, HUMAN[0] + 9, k) + hx, mix(1.7, 7, k) + hy, mix(HUMAN[2] + 6, HUMAN[2] + 22, k)], target: [mix(xd + 4, xd, k), mix(5, 4, k), 0], fov: mix(62, 50, k)};
+    cam = {pos: [mix(HUMAN[0] + 2, HUMAN[0] + 6, k) + hx, mix(1.6, 6, k) + hy, mix(HUMAN[2] + 4, HUMAN[2] + 26, k)], target: [mix(xd + LEN * 0.25, xd, k), mix(6.5, 4, k), 0], fov: mix(66, 52, k)};
   } else {
     // wide side view: the whole animal, the bus and the person in one frame
     const k = easeInOutCubic(ramp(p, 0, 1));
-    cam = {pos: [mix(4, 16, k) + hx, 9 + hy, 52], target: [mix(4, 14, k), 4.5, -2], fov: 50};
+    cam = {pos: [mix(-2, 10, k) + hx, 9 + hy, 56], target: [mix(-2, 10, k), 4.5, -2], fov: 50};
   }
   const P = (q: [number, number, number]) => project(cam, q, width, height);
   const head = P([HUMAN[0], 2.2, HUMAN[2]]);
