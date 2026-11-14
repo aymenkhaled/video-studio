@@ -86,10 +86,10 @@
  ],
  "geo": {
   "bbox": [
-   -12,
-   24,
-   42,
-   50
+   -20,
+   15,
+   50,
+   56
   ],
   "rivers": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_rivers_lake_centerlines.geojson",
   "relief": [

@@ -88,9 +88,9 @@ export const TimelineBar: React.FC<{from: number; to: number; year: number; even
       <div style={{position: 'absolute', left: `${x(year)}%`, top: 16, transform: 'translateX(-50%)'}}>
         <div style={{width: 28, height: 28, borderRadius: 14, background: '#d8b46a', border: '4px solid #1b1208', margin: '0 auto'}} />
       </div>
-      <div style={{position: 'absolute', left: `${x(year)}%`, top: now !== undefined ? -44 : -30, transform: 'translateX(-50%)', color: '#f4ecd8', fontWeight: 800, fontSize: now !== undefined ? 40 : 30, textShadow: '0 2px 0 #000', whiteSpace: 'nowrap'}}>{yearLabel(Math.round(year))}</div>
+      <div style={{position: 'absolute', left: `${now !== undefined ? Math.min(92, Math.max(6, x(year))) : x(year)}%`, top: now !== undefined ? -44 : -30, transform: 'translateX(-50%)', color: '#f4ecd8', fontWeight: 800, fontSize: now !== undefined ? 40 : 30, textShadow: '0 2px 0 #000', whiteSpace: 'nowrap'}}>{yearLabel(Math.round(year))}</div>
       {now !== undefined ? (
-        <div style={{position: 'absolute', left: `${x(year)}%`, top: 38, transform: 'translateX(-50%)', color: '#f4ecd8', fontWeight: 700, fontSize: 34, textShadow: '0 2px 0 #000, 0 0 10px #000', whiteSpace: 'nowrap'}}>{agoLabel(Math.round(year), now)}</div>
+        <div style={{position: 'absolute', left: `${Math.min(88, Math.max(12, x(year)))}%`, top: 38, transform: 'translateX(-50%)', color: '#f4ecd8', fontWeight: 700, fontSize: 34, textShadow: '0 2px 0 #000, 0 0 10px #000', whiteSpace: 'nowrap'}}>{agoLabel(Math.round(year), now)}</div>
       ) : null}
       {now === undefined ? <div style={{position: 'absolute', left: 0, top: 40, color: 'rgba(244,236,216,0.7)', fontSize: 20}}>{yearLabel(from)}</div> : null}
       {now === undefined ? <div style={{position: 'absolute', right: 0, top: 40, color: 'rgba(244,236,216,0.7)', fontSize: 20}}>{yearLabel(to)}</div> : null}

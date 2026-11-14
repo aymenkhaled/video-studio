@@ -220,7 +220,7 @@ export const SCENES: Record<string, SceneDef> = {
   // 5 — The Siege (schematic city plan)
   c5: chapter(5, 'The Siege', '149 – 146 BC', {camera: CLOSE, territories: B149}, 'assault-1885', 'Can a city with no weapons hold off Rome?'),
   c5a: {kind: 'battle', battle: PLAN('Carthage rearms, 149 BC (schematic plan)', {phases: [{at: 0, title: 'Rearming', sub: 'The whole city makes weapons, day and night'}], units: DEFENDERS, notes: [n('byrsa'), n('walls', 0.3)], zoom: [{at: 0, cx: 46, cy: 28, s: 1.3}, {at: 1, cx: 44, cy: 28, s: 1.45}]}), overlays: [{type: 'citation', text: 'Appian, Punica 93', at: [0.05, 0.95]}]},
-  c5b: {kind: 'battle', battle: PLAN('Carthage rearms, 149 BC (schematic plan)', {units: DEFENDERS, notes: [n('byrsa'), {text: 'hair → catapult ropes (the story goes)', x: 46, y: 40, appear: 0.25}], zoom: [{at: 0, cx: 44, cy: 30, s: 1.45}, {at: 1, cx: 44, cy: 32, s: 1.6}]}), overlays: [{type: 'citation', text: 'Appian, Punica 93', at: [0.05, 0.95]}]},
+  c5b: {kind: 'battle', battle: PLAN('Carthage rearms, 149 BC (schematic plan)', {units: DEFENDERS, notes: [n('byrsa'), {text: 'hair → catapult ropes (the story goes)', x: 46, y: 9, appear: 0.25}], zoom: [{at: 0, cx: 44, cy: 30, s: 1.45}, {at: 1, cx: 44, cy: 32, s: 1.6}]}), overlays: [{type: 'citation', text: 'Appian, Punica 93', at: [0.05, 0.95]}]},
   c5c: {kind: 'battle', battle: SIEGE_HOLD},
   c5d: map(-148, {camera: cam([7.0, 36.2], 9, [7.2, 36.3], 10.5), territories: B149, cities: [{...C3.cirta, size: 1.3}], regions: [{text: 'MASINISSA DIES, ≈ 90', at: [5.6, 35.5], appear: 0.15, size: 30}]}, [
     {type: 'citation', text: 'Appian, Punica 105–106 (age approximate)', at: [0.3, 0.98]},
@@ -233,7 +233,7 @@ export const SCENES: Record<string, SceneDef> = {
       blk('f2', 'a', [{at: 0, x: 64, y: 41, w: 3, h: 1.4, opacity: 0}, {at: 0.6, x: 71, y: 39.5, opacity: 1}, {at: 1, x: 82, y: 38}], undefined, 'ship'),
     ],
     arrows: [{from: [65, 39], via: [70, 37], to: [76, 35], side: 'a', draw: [0.35, 0.65], width: 1.1}],
-    notes: [n('war'), n('trade'), n('sea', 0.1)],
+    notes: [n('war'), n('sea', 0.1)],
     zoom: [{at: 0, cx: 64, cy: 42, s: 2.0}, {at: 1, cx: 68, cy: 40, s: 1.7}],
   }), overlays: [{type: 'citation', text: 'Appian, Punica 121 — "about fifty" ships', at: [0.4, 0.98]}]},
   c5f: map(-147, {camera: cam([11.6, 39.6], 6.5, [10.8, 37.6], 10), territories: B149, cities: [C3.romePlain, C3.carthagePlain], routes: [route('scipio', SEA_TO_ROME.slice().reverse(), [0.1, 0.7], {color: COL3.rome, unit: {label: 'Scipio Aemilianus', color: COL3.rome}})]}, [
@@ -247,7 +247,7 @@ export const SCENES: Record<string, SceneDef> = {
       {from: [62, 50], via: [63, 46], to: [62, 42], side: 'b', draw: [0.05, 0.35]},
       {from: [62, 42], via: [60, 37], to: [56, 33], side: 'b', draw: [0.4, 0.8]},
     ],
-    notes: [n('byrsa'), n('war', 0.05, 0.5), {text: '6 days and nights of street fighting', x: 48, y: 44, appear: 0.55}],
+    notes: [n('byrsa'), n('war', 0.05, 0.5), {text: '6 days and nights of street fighting', x: 52, y: 22, appear: 0.55}],
     zoom: [{at: 0, cx: 60, cy: 40, s: 1.8}, {at: 1, cx: 56, cy: 34, s: 2.0}],
   }), overlays: [{type: 'citation', text: 'Appian, Punica 127–129', at: [0.3, 0.98]}]},
   c5i: {kind: 'art', art: {id: 'assault-1885', title: 'Final assault on Carthage, 146 BC — engraving, 1885', from: {x: 0.5, y: 0.35, zoom: 1.0}, to: {x: 0.5, y: 0.55, zoom: 1.12}}, overlays: [

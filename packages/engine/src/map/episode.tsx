@@ -122,7 +122,7 @@ const MapTools: React.FC<{m: MapSpec; p: number; clarity: ClarityConfig; width: 
   const symbols = symbolsFor(m);
   const cam = cameraAt(m.camera, p);
   const zoom = cam.zoom * (1 + 0.12 * p);
-  const legendH = 24 + (clarity.factions.length + symbols.length) * 42;
+  const legendH = 24 + (clarity.factions.length + symbols.length) * 47;
   const globeTop = 32 + legendH + 16;
   const lat = (cam.center[1] * Math.PI) / 180;
   const pxPerRad = m.projection === 'globe' ? (height / 2.3) * zoom : (width / (2 * Math.PI)) * zoom;

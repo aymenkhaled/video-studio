@@ -157,6 +157,10 @@ def main():
     W, H = full.size  # whole world, equirectangular, -180..180 / 90..-90
     box = (int((x0 + 180) / 360 * W), int((90 - y1) / 180 * H), int((x1 + 180) / 360 * W), int((90 - y0) / 180 * H))
     crop = full.convert("L").crop(box)
+    # shade only: flat terrain (>= 75th percentile) becomes white, so 'multiply' leaves no visible raster edge
+    arr = np.asarray(crop, dtype=np.float32)
+    hi = float(np.percentile(arr, 75))
+    crop = Image.fromarray(np.clip(arr / max(1.0, hi) * 255, 0, 255).astype(np.uint8))
     crop.save(GEO / "relief.webp", quality=90)
     (GEO / "relief.json").write_text(json.dumps({"bounds": [x0, y0, x1, y1], "w": crop.width, "h": crop.height}), encoding="utf-8")
     print(f"GEO relief {crop.width}x{crop.height}")

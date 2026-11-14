@@ -120,7 +120,7 @@ export const Legend: React.FC<{factions: Faction[]; p: number; symbols?: LegendS
       {symbols.map((s) => (
         <div key={s} style={{display: 'flex', alignItems: 'center', gap: 14, margin: '3px 0'}}>
           {sym(s)}
-          <div style={{fontWeight: 600, fontSize: MIN_TEXT - 4, color: '#e9dcc0'}}>{SYMBOL_TEXT[s]}</div>
+          <div style={{fontWeight: 600, fontSize: MIN_TEXT, color: '#e9dcc0'}}>{SYMBOL_TEXT[s]}</div>
         </div>
       ))}
     </div>
@@ -139,7 +139,7 @@ export const SourceChip: React.FC<{text: string; p: number; at?: [number, number
   const a = easeInOutCubic(ramp(p, at[0], at[0] + 0.06)) * (1 - easeInOutCubic(ramp(p, at[1] - 0.05, at[1])));
   if (a <= 0) return null;
   return (
-    <div style={{position: 'absolute', left: 40, top: 100, maxWidth: 900, opacity: a, background: INK, borderLeft: `5px solid ${GOLD}`, padding: '6px 16px', fontFamily: INTER, fontWeight: 600, fontSize: MIN_TEXT - 4, color: PAPER}}>
+    <div style={{position: 'absolute', left: 40, top: 100, maxWidth: 400, opacity: a, background: INK, borderLeft: `5px solid ${GOLD}`, padding: '6px 16px', fontFamily: INTER, fontWeight: 600, fontSize: MIN_TEXT - 4, lineHeight: 1.25, color: PAPER}}>
       Source: {text}
     </div>
   );
@@ -172,7 +172,7 @@ export const LocatorGlobe: React.FC<{center: LonLat; zoom: number; top: number}>
 
 /** km scale bar (right column). */
 export const ScaleBar: React.FC<{km: number; px: number; top: number}> = ({km, px, top}) => (
-  <div style={{position: 'absolute', right: 40, top, background: INK, borderRadius: 10, padding: '8px 16px', fontFamily: INTER, fontWeight: 700, fontSize: MIN_TEXT - 4, color: PAPER, display: 'flex', alignItems: 'center', gap: 12}}>
+  <div style={{position: 'absolute', right: 40, top, background: INK, borderRadius: 10, padding: '8px 16px', fontFamily: INTER, fontWeight: 700, fontSize: MIN_TEXT, color: PAPER, display: 'flex', alignItems: 'center', gap: 12}}>
     <div style={{width: px, height: 12, border: `3px solid ${PAPER}`, borderTop: 'none'}} />
     {km.toLocaleString('en-US')} km
   </div>
@@ -183,7 +183,7 @@ export const CharacterCard: React.FC<{name: string; role: string; line: string; 
   const a = easeInOutCubic(ramp(p, window[0], window[0] + 0.06)) * (1 - easeInOutCubic(ramp(p, window[1] - 0.05, window[1])));
   if (a <= 0) return null;
   return (
-    <div style={{position: 'absolute', left: 40, top: 170, width: 640, opacity: a, transform: `translateX(${(1 - a) * -40}px)`, background: 'rgba(18,13,8,0.9)', borderLeft: `10px solid ${color}`, borderRadius: 14, padding: '26px 30px', fontFamily: INTER}}>
+    <div style={{position: 'absolute', left: 40, top: 270, width: 640, opacity: a, transform: `translateX(${(1 - a) * -40}px)`, background: 'rgba(18,13,8,0.9)', borderLeft: `10px solid ${color}`, borderRadius: 14, padding: '26px 30px', fontFamily: INTER}}>
       <div style={{display: 'flex', alignItems: 'center', gap: 24}}>
         <div style={{width: 128, height: 128, borderRadius: 64, background: color, border: `5px solid ${PAPER}`, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: CINZEL, fontWeight: 700, fontSize: 64, color: PAPER, flexShrink: 0}}>
           {image ? <Img src={artSrc(image)} style={{width: '100%', height: '100%', objectFit: 'cover'}} /> : name[0]}
