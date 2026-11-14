@@ -7,7 +7,7 @@ import {ArtShot, ArtSpec} from './art';
 import {BigCounter, ChapterCard, Citation, ListCard, QuoteCard, TimelineBar, TitleCard} from './ui';
 import type {TimedLine} from '../overlay';
 import {
-  assertCardLimits, ChapterTracker, CharacterCard, ClarityConfig, EndScreen, GlossaryPop, Legend, LegendSymbol, LocatorGlobe, MapCaptions,
+  assertCardLimits, ChapterTracker, FamilyTree, FamilyPerson, CharacterCard, ClarityConfig, EndScreen, GlossaryPop, Legend, LegendSymbol, LocatorGlobe, MapCaptions,
   RecapCard, ScaleBar, SourceChip,
 } from './clarity';
 import {niceScale} from './clarity-logic';
@@ -25,7 +25,8 @@ export type Overlay =
   | {type: 'character'; name: string; role: string; line: string; side?: string; image?: string; window?: [number, number]}
   | {type: 'glossary'; term: string; meaning: string; window?: [number, number]}
   | {type: 'recap'; text: string; next?: string}
-  | {type: 'endscreen'; teaser: string};
+  | {type: 'endscreen'; teaser: string}
+  | {type: 'family'; title: string; parent: FamilyPerson; children: FamilyPerson[]; inLaw?: FamilyPerson; side?: string; window?: [number, number]};
 
 type Common = {overlays?: Overlay[]; year?: number; /** move captions up (px) when a key element sits low */ captionsRaise?: number};
 export type SceneDef =
@@ -95,6 +96,8 @@ const renderOverlay = (o: Overlay, p: number, i: number, clarity?: ClarityConfig
       return <RecapCard key={i} text={o.text} next={o.next} p={p} />;
     case 'endscreen':
       return <EndScreen key={i} teaser={o.teaser} p={p} />;
+    case 'family':
+      return <FamilyTree key={i} title={o.title} parent={o.parent} children={o.children} inLaw={o.inLaw} color={side(o.side)} p={p} window={o.window} />;
   }
 };
 

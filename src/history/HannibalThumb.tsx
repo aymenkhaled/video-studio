@@ -1,56 +1,44 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
-import {MapShot, CINZEL} from '../../packages/engine/src/map/map';
-import {BattleShot} from '../../packages/engine/src/map/battle';
+import {AbsoluteFill, Img} from 'remotion';
+import {CINZEL} from '../../packages/engine/src/map/map';
 import {INTER} from '../../packages/engine/src/overlay';
-import {SCENES} from '../../brands/history-maps/episodes/001-hannibal/scenes';
-import {BARCID_SPAIN, CARTHAGE_AFRICA, COL, MARCH, ROME_ITALY, SARD_CORSICA, SICILY} from '../../brands/history-maps/data/punic';
+import {artSrc} from '../../packages/engine/src/map/media';
 
-// Thumbnails 1280×720 for Test & Compare: one subject, ≤3 words, high contrast.
-const W = 1280;
-const H = 720;
-const stroke = '0 6px 0 #000, 0 0 30px rgba(0,0,0,0.7)';
+// Thumbnails 1280×720 for Test & Compare: real PD paintings with figures, ≤ 3 words, very high contrast.
+const stroke = '0 6px 0 #000, 0 0 34px rgba(0,0,0,0.85)';
+const cover = {position: 'absolute' as const, inset: 0, width: '100%', height: '100%', objectFit: 'cover' as const};
 
 export const HannibalThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
   if (variant === 1) {
     return (
-      <AbsoluteFill>
-        <MapShot
-          width={W}
-          height={H}
-          p={1}
-          uid="t1"
-          spec={{camera: [{at: 0, center: [6.5, 42.2], zoom: 9}], territories: [ROME_ITALY, SARD_CORSICA, SICILY, CARTHAGE_AFRICA, BARCID_SPAIN], routes: [{id: 'm', points: MARCH, color: COL.route, draw: [0, 0.01], width: 16}]}}
-        />
-        <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(10,6,2,0.85) 0%, rgba(10,6,2,0.2) 60%, rgba(0,0,0,0) 100%)'}} />
-        <div style={{position: 'absolute', left: 50, top: 170, fontFamily: CINZEL, fontWeight: 700, fontSize: 150, color: '#f4ecd8', textShadow: stroke, lineHeight: 1}}>HANNIBAL</div>
-        <div style={{position: 'absolute', left: 56, top: 350, fontFamily: INTER, fontWeight: 800, fontSize: 70, color: '#f2c14e', textShadow: stroke}}>vs ROME</div>
+      <AbsoluteFill style={{background: '#000'}}>
+        <Img src={artSrc('turner-hannibal')} style={{...cover, filter: 'contrast(1.25) saturate(1.2) brightness(1.1)'}} />
+        <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)'}} />
+        <div style={{position: 'absolute', left: 50, top: 170, fontFamily: CINZEL, fontWeight: 700, fontSize: 150, lineHeight: 1, color: '#fff', textShadow: stroke}}>HANNIBAL</div>
+        <div style={{position: 'absolute', left: 56, top: 345, fontFamily: INTER, fontWeight: 900, fontSize: 100, color: '#ff5a3c', textShadow: stroke}}>VS ROME</div>
       </AbsoluteFill>
     );
   }
   if (variant === 2) {
-    const side = (label: string, n: string, color: string, left: boolean) => (
-      <div style={{position: 'absolute', top: 0, bottom: 0, [left ? 'left' : 'right']: 0, width: W / 2, background: color, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-        <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 64, color: '#fff', textShadow: stroke}}>{label}</div>
-        <div style={{fontFamily: INTER, fontWeight: 900, fontSize: 118, color: '#fff', textShadow: stroke}}>{n}</div>
-        <div style={{fontFamily: INTER, fontWeight: 700, fontSize: 30, letterSpacing: 4, color: '#fff', opacity: 0.9, textShadow: stroke}}>SOLDIERS</div>
-      </div>
-    );
     return (
       <AbsoluteFill style={{background: '#000'}}>
-        {side('ROME', '86,000', '#8f2620', true)}
-        {side('HANNIBAL', '50,000', '#b56f1f', false)}
-        <div style={{position: 'absolute', left: W / 2 - 70, top: 40, width: 140, height: 140, borderRadius: 70, background: '#111', border: '8px solid #f4ecd8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 64, color: '#f4ecd8'}}>VS</div>
-        <div style={{position: 'absolute', left: 0, right: 0, bottom: 40, textAlign: 'center', fontFamily: INTER, fontWeight: 800, fontSize: 46, color: '#fff', textShadow: stroke}}>CANNAE · WHO WON?</div>
+        <Img src={artSrc('trumbull-cannae')} style={{...cover, objectPosition: '50% 40%', filter: 'contrast(1.2) saturate(1.15)'}} />
+        <AbsoluteFill style={{background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 55%)'}} />
+        <div style={{position: 'absolute', left: 0, right: 0, bottom: 40, textAlign: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 120, color: '#fff', textShadow: stroke}}>
+          ROME’S <span style={{color: '#ff5a3c'}}>WORST</span> DAY
+        </div>
       </AbsoluteFill>
     );
   }
-  const cannae = SCENES.c4e;
   return (
-    <AbsoluteFill>
-      {cannae.kind === 'battle' ? <BattleShot spec={{...cannae.battle, title: 'Cannae, 216 BC'}} p={1} width={W} height={H} /> : null}
-      <AbsoluteFill style={{background: 'linear-gradient(0deg, rgba(10,6,2,0.0) 40%, rgba(10,6,2,0.75) 100%)'}} />
-      <div style={{position: 'absolute', left: 0, right: 0, top: 26, textAlign: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 130, color: '#fff', textShadow: stroke}}>THE PERFECT TRAP</div>
+    <AbsoluteFill style={{background: '#000'}}>
+      <Img src={artSrc('west-oath')} style={{...cover, objectPosition: '45% 40%', filter: 'contrast(1.2) saturate(1.1)'}} />
+      <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.88) 75%)'}} />
+      <div style={{position: 'absolute', right: 60, top: 220, textAlign: 'right', fontFamily: CINZEL, fontWeight: 700, fontSize: 120, lineHeight: 1.05, color: '#fff', textShadow: stroke}}>
+        THE
+        <br />
+        <span style={{color: '#f2c14e'}}>OATH</span>
+      </div>
     </AbsoluteFill>
   );
 };

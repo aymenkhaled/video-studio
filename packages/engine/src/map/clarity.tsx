@@ -262,3 +262,30 @@ export const assertCardLimits = (sceneId: string, overlays: {type: string; meani
     if (o.type === 'recap' && (o.text ?? '').length > 120) throw new Error(`scene ${sceneId}: recap text > 120 chars`);
   }
 };
+
+export type FamilyPerson = {name: string; note: string; highlight?: boolean};
+/** Family tree card (e.g. the Barcas): one parent, children row, optional in-law, with "not the same person" notes. */
+export const FamilyTree: React.FC<{title: string; parent: FamilyPerson; children: FamilyPerson[]; inLaw?: FamilyPerson; color: string; p: number; window?: [number, number]}> = ({title, parent, children, inLaw, color, p, window = [0.02, 0.98]}) => {
+  const a = easeInOutCubic(ramp(p, window[0], window[0] + 0.06)) * (1 - easeInOutCubic(ramp(p, window[1] - 0.05, window[1])));
+  if (a <= 0) return null;
+  const box = (q: FamilyPerson, k: number | string) => (
+    <div key={k} style={{background: q.highlight ? color : 'rgba(244,236,216,0.08)', border: `2px solid ${q.highlight ? PAPER : color}`, borderRadius: 10, padding: '8px 14px', minWidth: 170, textAlign: 'center'}}>
+      <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 30, color: PAPER}}>{q.name}</div>
+      <div style={{fontFamily: INTER, fontWeight: 600, fontSize: 22, color: '#e9dcc0'}}>{q.note}</div>
+    </div>
+  );
+  return (
+    <div style={{position: 'absolute', left: 40, top: 210, opacity: a, transform: `translateX(${(1 - a) * -40}px)`, background: 'rgba(18,13,8,0.9)', borderLeft: `8px solid ${color}`, borderRadius: 12, padding: '16px 22px', fontFamily: INTER}}>
+      <div style={{fontWeight: 800, fontSize: 24, letterSpacing: 4, color: GOLD, marginBottom: 10}}>{title.toUpperCase()}</div>
+      <div style={{display: 'flex', justifyContent: 'center'}}>{box(parent, 'p')}</div>
+      <div style={{width: 3, height: 18, background: color, margin: '0 auto'}} />
+      <div style={{display: 'flex', gap: 10}}>{children.map(box)}</div>
+      {inLaw ? (
+        <div style={{marginTop: 12, display: 'flex', alignItems: 'center', gap: 10}}>
+          <div style={{fontFamily: INTER, fontWeight: 700, fontSize: 22, color: GOLD}}>son-in-law →</div>
+          {box(inLaw, 'l')}
+        </div>
+      ) : null}
+    </div>
+  );
+};

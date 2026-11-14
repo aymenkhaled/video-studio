@@ -18,6 +18,12 @@ Binary assets are in the `assets-v1` Release; SHA256 per file in `assets/manifes
 | Cato the Elder, imagined portrait (16th c.) | unknown | Public domain (PD-old) | https://commons.wikimedia.org/wiki/File:Cato_der_Ältere.jpg | Courtesy credit |
 | Rivers 1:50m + Gray Earth shaded relief 1:50m | Natural Earth | Public domain | https://www.naturalearthdata.com/ | No (courtesy) |
 | Depth-Anything-V2-Small (ONNX export) | Depth Anything authors / onnx-community | Apache-2.0 | https://huggingface.co/onnx-community/depth-anything-v2-small | No |
+| J. M. W. Turner, *Snow Storm: Hannibal and his Army Crossing the Alps* (1812, Tate) | J. M. W. Turner | Public domain (PD-Art) | https://commons.wikimedia.org/wiki/File:Joseph_Mallord_William_Turner_-_Snow_Storm,_Hannibal_and_his_Army_Crossing_the_Alps_-_WGA23167.jpg | Courtesy credit |
+| John Trumbull, *The Death of Paulus Aemilius at the Battle of Cannae* (1773, Yale) | John Trumbull (d. 1843) | Public domain (PD-Art) | https://commons.wikimedia.org/wiki/File:The_Death_of_Paulus_Aemilius_at_the_Battle_of_Cannae_(Yale_University_Art_Gallery_scan).jpg | Courtesy credit |
+| Benjamin West, *The Oath of Hannibal* (1770, Royal Collection) | Benjamin West (d. 1820) | Public domain (PD-Art) | https://commons.wikimedia.org/wiki/File:Benjamin_West_(1738-1820)_-_The_Oath_of_Hannibal_-_RCIN_405417_-_Royal_Collection.jpg | Courtesy credit |
+| Heinrich Leutemann, *Hannibal's crossing of the Alps* (woodcut) | Heinrich Leutemann (d. 1905) | Public domain | https://commons.wikimedia.org/wiki/File:Leutemann,_Heinrich_-_Hannibal's_crossing_of_the_Alps.jpg | Courtesy credit |
+| *The Battle of Zama*, engraving after Cornelis Cort | after Cornelis Cort (d. 1578) | Public domain (Library of Congress: no known restrictions) | https://commons.wikimedia.org/wiki/File:The_battle_of_Zama_LCCN2012645609.jpg | Courtesy credit |
+| Denarius depicting Scipio Africanus (112–111 BC) | Art Institute of Chicago | CC0 | https://www.artic.edu/artworks/5578 | No (courtesy) |
 | Unit figures (infantry, cavalry, elephant, ship) — `packages/engine/src/map/figures.tsx` | original drawings for this studio | own work | — | No |
 | Animated LowPoly Dinosaurs (Apatosaurus, Parasaurolophus, Stegosaurus, Trex, Triceratops, Velociraptor) FBX | Quaternius | CC0 1.0 (License.txt in pack) | https://quaternius.com/packs/animateddinosaurs.html | No (credit as courtesy) |
 | Stylized Nature MegaKit (glTF + textures) | Quaternius | CC0 1.0 | https://quaternius.com/packs/stylizednaturemegakit.html | No |

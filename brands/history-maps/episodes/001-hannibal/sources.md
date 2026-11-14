@@ -38,4 +38,16 @@ Primary texts (public-domain translations):
 | 28 | Carthage destroyed 146 BC ("thirty-seven years later") | Polybius 38–39 (fragmentary); Appian | 183 − 146 = 37 ✔ |
 | 29 | Cannae studied in military schools | e.g. Schlieffen's study "Cannae"; Goldsworthy, *Cannae* (2001) | General claim |
 
+| 30 | Then → now names: Cannae → Puglia (Apulia), Italy; New Carthage → Cartagena; Saguntum → Sagunto; Gades → Cádiz; Massalia → Marseille; Taurini → Turin; Placentia → Piacenza; Lake Trasimene → Umbria; Capua → Campania; Tarraco → Tarragona; Metaurus → Marche; Croton → Crotone; Utica → Utique; Ephesus → near Selçuk; Libyssa → near Gebze; Tyre → Sour | [Livius: Carthago Nova](https://www.livius.org/articles/place/carthago-nova-cartagena) · Britannica place articles (Cannae, Saguntum, Cádiz, Marseille, Piacenza, Capua, Tarragona, Crotone, Ephesus, Tyre) · [Wikipedia: Libyssa](https://en.wikipedia.org/wiki/Libyssa) | Libyssa/Gebze and the Rhône crossing point are approximate → "near" |
+| 31 | Zama site uncertain | [Britannica: Battle of Zama](https://www.britannica.com/event/Battle-of-Zama) | "site debated" on screen |
+| 32 | Glossary: legion ≈ 4,200–5,000 men in the Republic; dictator = single magistrate with full power for up to 6 months; consuls = two annual chief magistrates; Punic = Carthaginian; Numidians = peoples of today's Algeria/Tunisia; Gaul = Celtic lands, mostly today's France; Iberia = Spain + Portugal; sufete = Carthage's chief magistrate | Britannica: Legion, Dictator, Consul, Punic Wars, Numidia, Gaul, Iberia; [Livius: Hannibal](https://www.livius.org/articles/person/hannibal-3-barca/) | "about 5,000" |
+| 33 | Barca family: Hamilcar's sons Hannibal, Hasdrubal, Mago; son-in-law Hasdrubal the Fair (a different man) | [Livius: Hannibal](https://www.livius.org/articles/person/hannibal-3-barca/) ("not to be confused with Hannibal's brother-in-law"); Polybius 2.1, 3.12 | ✔ |
+| 34 | 10,000 talents ≈ 260 tonnes of silver (Attic talent ≈ 25.8 kg) | [Britannica: Talent](https://www.britannica.com/science/talent-unit-of-weight) | "≈" |
+| 35 | Counter context: 70,000 ≈ a sold-out 70,000-seat stadium; Cannae cavalry ~6,000 (Rome) / ~10,000 (Hannibal) | Polybius 3.113–114, 3.117 (numbers); comparison is arithmetic | hedged |
+
 Maps: coastlines Natural Earth (public domain) via `world-atlas`; territories are our own approximate drawings → say "approximate" in the description.
+
+## For the description (packager reads these bullets)
+- Livius.org, Hannibal Barca: https://www.livius.org/articles/person/hannibal-3-barca/
+- Britannica, Second Punic War: https://www.britannica.com/event/Second-Punic-War
+- Maps: modern borders and relief from Natural Earth; ancient territories are approximate reconstructions.
