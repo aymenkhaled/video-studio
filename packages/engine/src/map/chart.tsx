@@ -99,8 +99,8 @@ const Frame: React.FC<{spec: ChartSpec; p: number; width: number; height: number
   return (
     <svg width={width} height={height} style={{position: 'absolute', inset: 0, background: BG}}>
       <defs>
-        <pattern id="chart-grid" width={60} height={60} patternUnits="userSpaceOnUse" patternTransform={`translate(${-8 * elapsed} ${-3 * elapsed})`}>
-          <path d="M60 0 L0 0 0 60" fill="none" stroke="rgba(244,239,228,0.05)" strokeWidth={1.5} />
+        <pattern id="chart-grid" width={60} height={60} patternUnits="userSpaceOnUse" patternTransform={`translate(${-14 * elapsed} ${-5 * elapsed})`}>
+          <path d="M60 0 L0 0 0 60" fill="none" stroke="rgba(244,239,228,0.08)" strokeWidth={1.5} />
         </pattern>
         <radialGradient id="chart-vig" cx="50%" cy="45%" r="75%">
           <stop offset="55%" stopColor="rgba(0,0,0,0)" />
@@ -128,7 +128,8 @@ const Frame: React.FC<{spec: ChartSpec; p: number; width: number; height: number
           </g>
         ) : null}
       </g>
-      {children}
+      {/* living camera (freezedetect rule): slow push-in about the panel centre + absolute-time drift, like the maps */}
+      <g transform={`translate(${960 - 4 * elapsed} ${470 - 1.5 * elapsed}) scale(${1 + 0.08 * p}) translate(-960 -470)`}>{children}</g>
       <rect width={width} height={height} fill="url(#chart-vig)" pointerEvents="none" />
     </svg>
   );
