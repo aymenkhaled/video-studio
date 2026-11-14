@@ -38,7 +38,7 @@ const CLOSE = cam([10.2, 36.75], 30, [10.3, 36.82], 38);
 const ROME_CLOSE = cam([12.6, 42.0], 12, [12.5, 41.9], 15);
 
 /** Every map in this episode gets the modern layer + label avoidance (Clarity rules 1, 10). */
-const M = (spec: Omit<MapSpec, 'modern' | 'avoidLabels'>): MapSpec => ({...spec, modern: {labels: MODERN}, avoidLabels: true, relief: true, minText: 34});
+const M = (spec: Omit<MapSpec, 'modern' | 'avoidLabels'>): MapSpec => ({...spec, modern: {labels: MODERN}, avoidLabels: true, relief: true, minText: 30});
 const map = (year: number | undefined, spec: Omit<MapSpec, 'modern' | 'avoidLabels'>, overlays?: Overlay[]): SceneDef => ({kind: 'map', year, map: M(spec), overlays});
 const chapter = (n: number, title: string, sub: string, spec: Omit<MapSpec, 'modern' | 'avoidLabels'>, image?: string, question?: string): SceneDef => ({kind: 'map', map: M(spec), overlays: [{type: 'chapter', n, title, sub, image, question}]});
 const recap = (text: string, spec: Omit<MapSpec, 'modern' | 'avoidLabels'>, next?: string): SceneDef => ({kind: 'map', map: M(spec), overlays: [{type: 'recap', text, next}]});

@@ -122,7 +122,7 @@ const MapTools: React.FC<{m: MapSpec; p: number; clarity: ClarityConfig; width: 
   const symbols = symbolsFor(m);
   const cam = cameraAt(m.camera, p);
   const zoom = cam.zoom * (1 + 0.12 * p);
-  const legendH = 24 + (clarity.factions.length + symbols.length) * 47;
+  const legendH = 18 + (clarity.factions.length + symbols.length) * 38;
   const globeTop = 32 + legendH + 16;
   const lat = (cam.center[1] * Math.PI) / 180;
   const pxPerRad = m.projection === 'globe' ? (height / 2.3) * zoom : (width / (2 * Math.PI)) * zoom;
@@ -132,7 +132,7 @@ const MapTools: React.FC<{m: MapSpec; p: number; clarity: ClarityConfig; width: 
     <>
       <Legend factions={clarity.factions} p={p} symbols={symbols} />
       {m.projection !== 'globe' ? <LocatorGlobe center={cam.center} zoom={zoom} top={globeTop} /> : null}
-      <ScaleBar km={sc.km} px={sc.px} top={m.projection !== 'globe' ? globeTop + 186 : globeTop} />
+      <ScaleBar km={sc.km} px={sc.px} top={m.projection !== 'globe' ? globeTop + 152 : globeTop} />
     </>
   );
 };

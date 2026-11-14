@@ -180,7 +180,7 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
                     })}
                   </g>
                   {lab ? (
-                    <text x={k.x * S} y={k.y * S - h / 2 - size * 0.75} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={34 / scale} fill="#2a2116" stroke="#efe4c8" strokeWidth={8 / scale} paintOrder="stroke">
+                    <text x={k.x * S} y={k.y * S - h / 2 - size * 0.75} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={30 / scale} fill="#2a2116" stroke="#efe4c8" strokeWidth={8 / scale} paintOrder="stroke">
                       {u.label}
                       {u.count ? <tspan fill={c}>{` ${u.count}`}</tspan> : null}
                     </text>
@@ -215,7 +215,7 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
             const a = easeInOutCubic(ramp(p, n.appear, n.appear + 0.06)) * (n.until ? 1 - easeInOutCubic(ramp(p, n.until - 0.05, n.until)) : 1);
             if (a <= 0) return null;
             return (
-              <text key={i} x={n.x * S} y={n.y * S} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={clarity ? Math.max(1.7 * S, 36 / scale) : 1.7 * S} fill="#2a2116" stroke="#efe4c8" strokeWidth={0.4 * S} paintOrder="stroke" opacity={a}>
+              <text key={i} x={n.x * S} y={n.y * S} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={clarity ? Math.max(1.7 * S, 30 / scale) : 1.7 * S} fill="#2a2116" stroke="#efe4c8" strokeWidth={0.4 * S} paintOrder="stroke" opacity={a}>
                 {n.text}
               </text>
             );
@@ -250,7 +250,7 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
           })()
         : null}
       {clarity ? (
-        <div style={{position: 'absolute', left: 40, bottom: 36, fontFamily: INTER, fontWeight: 800, fontSize: 34, color: '#f4ecd8', background: 'rgba(20,14,8,0.8)', padding: '6px 18px', borderRadius: 8}}>{spec.title}</div>
+        <div style={{position: 'absolute', left: 40, bottom: 36, fontFamily: INTER, fontWeight: 800, fontSize: 28, color: '#f4ecd8', background: 'rgba(20,14,8,0.8)', padding: '6px 18px', borderRadius: 8}}>{spec.title}</div>
       ) : null}
       {/* title + legend on dark plates at the bottom (units live in the upper field) */}
       {clarity ? null : <>

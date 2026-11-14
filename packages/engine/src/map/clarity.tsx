@@ -28,7 +28,9 @@ export type ClarityConfig = {
 const INK = 'rgba(10,14,18,0.72)';
 const PAPER = '#f4ecd8';
 const GOLD = '#d8b46a';
-export const MIN_TEXT = 34;
+// Sizes tuned after Aymen's review of episode 002 ("captions and pop-ups too big"): ~15 % smaller than the
+// first Clarity Kit, still readable on a phone at 1080p.
+export const MIN_TEXT = 30;
 
 const key = (w: string) => w.replace(/[^A-Za-z']/g, '').replace(/'s$/, '');
 
@@ -48,13 +50,13 @@ export const MapCaptions: React.FC<{lines: TimedLine[]; t: number; highlight?: R
   });
   return (
     <div style={{position: 'absolute', left: 0, right: 0, bottom: 176 + raise, display: 'flex', justifyContent: 'center', opacity: a}}>
-      <div style={{maxWidth: 1560, background: INK, borderRadius: 16, padding: '12px 34px', textAlign: 'center', fontFamily: INTER, fontWeight: 800, fontSize: 54, lineHeight: 1.22, color: '#fff'}}>
+      <div style={{maxWidth: 1400, background: INK, borderRadius: 14, padding: '8px 28px', textAlign: 'center', fontFamily: INTER, fontWeight: 800, fontSize: 46, lineHeight: 1.22, color: '#fff'}}>
         {rows.map((ws, r) => (
           <div key={r}>
             {ws.map((w, i) => {
               const now = t >= w.t && t < w.end + 0.08;
               return (
-                <span key={i} style={{color: highlight[key(w.w)] ?? '#fff', borderBottom: now ? `5px solid ${GOLD}` : '5px solid transparent'}}>
+                <span key={i} style={{color: highlight[key(w.w)] ?? '#fff', borderBottom: now ? `4px solid ${GOLD}` : '4px solid transparent'}}>
                   {w.w}
                   {i < ws.length - 1 ? ' ' : ''}
                 </span>
@@ -95,8 +97,8 @@ export const Legend: React.FC<{factions: Faction[]; p: number; symbols?: LegendS
   const sw = (f: Faction) => (
     <svg width={30} height={30}>
       <PatternDefs factions={[f]} uid="lg" />
-      <rect x={1} y={1} width={28} height={28} rx={4} fill={f.color} stroke={PAPER} strokeWidth={2} />
-      {f.pattern ? <rect x={1} y={1} width={28} height={28} rx={4} fill={`url(#lg-pat-${f.name})`} /> : null}
+      <rect x={1} y={1} width={24} height={24} rx={4} fill={f.color} stroke={PAPER} strokeWidth={2} />
+      {f.pattern ? <rect x={1} y={1} width={24} height={24} rx={4} fill={`url(#lg-pat-${f.name})`} /> : null}
     </svg>
   );
   const sym = (s: LegendSymbol) => (
@@ -110,17 +112,17 @@ export const Legend: React.FC<{factions: Faction[]; p: number; symbols?: LegendS
     </svg>
   );
   return (
-    <div style={{position: 'absolute', right: 40, top: 32, opacity: a, background: INK, borderRadius: 12, padding: '12px 20px', fontFamily: INTER}}>
+    <div style={{position: 'absolute', right: 40, top: 32, opacity: a, background: INK, borderRadius: 12, padding: '8px 16px', fontFamily: INTER}}>
       {factions.map((f) => (
         <div key={f.name} style={{display: 'flex', alignItems: 'center', gap: 14, margin: '3px 0'}}>
           {sw(f)}
-          <div style={{fontWeight: 700, fontSize: MIN_TEXT, color: PAPER}}>{f.name}</div>
+          <div style={{fontWeight: 700, fontSize: MIN_TEXT - 2, color: PAPER}}>{f.name}</div>
         </div>
       ))}
       {symbols.map((s) => (
         <div key={s} style={{display: 'flex', alignItems: 'center', gap: 14, margin: '3px 0'}}>
           {sym(s)}
-          <div style={{fontWeight: 600, fontSize: MIN_TEXT, color: '#e9dcc0'}}>{SYMBOL_TEXT[s]}</div>
+          <div style={{fontWeight: 600, fontSize: MIN_TEXT - 4, color: '#e9dcc0'}}>{SYMBOL_TEXT[s]}</div>
         </div>
       ))}
     </div>
@@ -129,7 +131,7 @@ export const Legend: React.FC<{factions: Faction[]; p: number; symbols?: LegendS
 
 /** "CH 3 · THE NEIGHBOUR" — where are we in the story. */
 export const ChapterTracker: React.FC<{n: number; title: string}> = ({n, title}) => (
-  <div style={{position: 'absolute', left: 40, top: 32, background: INK, borderRadius: 10, padding: '6px 18px', fontFamily: INTER, fontWeight: 800, fontSize: MIN_TEXT, color: PAPER, letterSpacing: 1}}>
+  <div style={{position: 'absolute', left: 40, top: 32, background: INK, borderRadius: 10, padding: '5px 14px', fontFamily: INTER, fontWeight: 800, fontSize: MIN_TEXT - 4, color: PAPER, letterSpacing: 1}}>
     <span style={{color: GOLD}}>CH {n}</span> · {title.toUpperCase()}
   </div>
 );
@@ -152,7 +154,7 @@ const LAND = (() => {
 
 /** Small globe showing where the map is on Earth (right column). */
 export const LocatorGlobe: React.FC<{center: LonLat; zoom: number; top: number}> = ({center, zoom, top}) => {
-  const size = 170;
+  const size = 140;
   const proj = geoOrthographic().rotate([-center[0], -Math.max(-60, Math.min(60, center[1]))]).scale(size / 2 - 4).translate([size / 2, size / 2]).clipAngle(90);
   const path = geoPath(proj);
   const c = proj(center) ?? [size / 2, size / 2];
@@ -172,7 +174,7 @@ export const LocatorGlobe: React.FC<{center: LonLat; zoom: number; top: number}>
 
 /** km scale bar (right column). */
 export const ScaleBar: React.FC<{km: number; px: number; top: number}> = ({km, px, top}) => (
-  <div style={{position: 'absolute', right: 40, top, background: INK, borderRadius: 10, padding: '8px 16px', fontFamily: INTER, fontWeight: 700, fontSize: MIN_TEXT, color: PAPER, display: 'flex', alignItems: 'center', gap: 12}}>
+  <div style={{position: 'absolute', right: 40, top, background: INK, borderRadius: 10, padding: '8px 16px', fontFamily: INTER, fontWeight: 700, fontSize: MIN_TEXT - 4, color: PAPER, display: 'flex', alignItems: 'center', gap: 12}}>
     <div style={{width: px, height: 12, border: `3px solid ${PAPER}`, borderTop: 'none'}} />
     {km.toLocaleString('en-US')} km
   </div>
@@ -183,13 +185,13 @@ export const CharacterCard: React.FC<{name: string; role: string; line: string; 
   const a = easeInOutCubic(ramp(p, window[0], window[0] + 0.06)) * (1 - easeInOutCubic(ramp(p, window[1] - 0.05, window[1])));
   if (a <= 0) return null;
   return (
-    <div style={{position: 'absolute', left: 40, top: 270, width: 640, opacity: a, transform: `translateX(${(1 - a) * -40}px)`, background: 'rgba(18,13,8,0.9)', borderLeft: `10px solid ${color}`, borderRadius: 14, padding: '26px 30px', fontFamily: INTER}}>
+    <div style={{position: 'absolute', left: 40, top: 250, width: 540, opacity: a, transform: `translateX(${(1 - a) * -40}px)`, background: 'rgba(18,13,8,0.9)', borderLeft: `10px solid ${color}`, borderRadius: 12, padding: '18px 24px', fontFamily: INTER}}>
       <div style={{display: 'flex', alignItems: 'center', gap: 24}}>
-        <div style={{width: 128, height: 128, borderRadius: 64, background: color, border: `5px solid ${PAPER}`, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: CINZEL, fontWeight: 700, fontSize: 64, color: PAPER, flexShrink: 0}}>
+        <div style={{width: 100, height: 100, borderRadius: 50, background: color, border: `5px solid ${PAPER}`, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: CINZEL, fontWeight: 700, fontSize: 52, color: PAPER, flexShrink: 0}}>
           {image ? <Img src={artSrc(image)} style={{width: '100%', height: '100%', objectFit: 'cover'}} /> : name[0]}
         </div>
         <div>
-          <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 50, lineHeight: 1.1, color: PAPER}}>{name}</div>
+          <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 40, lineHeight: 1.1, color: PAPER}}>{name}</div>
           <div style={{fontWeight: 800, fontSize: MIN_TEXT - 4, letterSpacing: 2, color, marginTop: 8, filter: 'brightness(1.35)'}}>{role.toUpperCase()}</div>
         </div>
       </div>
@@ -204,7 +206,7 @@ export const GlossaryPop: React.FC<{term: string; meaning: string; p: number; wi
   if (a <= 0) return null;
   return (
     <div style={{position: 'absolute', left: 0, right: 0, top: 170, display: 'flex', justifyContent: 'center', opacity: a, transform: `translateY(${(1 - a) * -16}px)`}}>
-      <div style={{maxWidth: 940, textAlign: 'center', background: 'rgba(18,13,8,0.92)', border: `3px solid ${GOLD}`, borderRadius: 34, padding: '10px 30px', fontFamily: INTER, fontSize: 38, lineHeight: 1.25, color: PAPER}}>
+      <div style={{maxWidth: 940, textAlign: 'center', background: 'rgba(18,13,8,0.92)', border: `2px solid ${GOLD}`, borderRadius: 28, padding: '8px 24px', fontFamily: INTER, fontSize: 32, lineHeight: 1.25, color: PAPER}}>
         <span style={{fontWeight: 900, color: GOLD, letterSpacing: 1}}>{term.toUpperCase()}</span>
         <span style={{fontWeight: 600}}> = {meaning}</span>
       </div>
@@ -217,7 +219,7 @@ export const PhaseBanner: React.FC<{title: string; sub?: string; a: number}> = (
   a <= 0 ? null : (
     <div style={{position: 'absolute', left: 0, right: 0, top: 32, display: 'flex', justifyContent: 'center', opacity: a}}>
       <div style={{background: 'rgba(18,13,8,0.9)', borderBottom: `4px solid ${GOLD}`, borderRadius: 10, padding: '10px 30px', textAlign: 'center', fontFamily: INTER, maxWidth: 980}}>
-        <div style={{fontWeight: 900, fontSize: 44, color: PAPER}}>{title}</div>
+        <div style={{fontWeight: 900, fontSize: 38, color: PAPER}}>{title}</div>
         {sub ? <div style={{fontWeight: 600, fontSize: MIN_TEXT, color: '#e9dcc0'}}>{sub}</div> : null}
       </div>
     </div>
@@ -231,8 +233,8 @@ export const RecapCard: React.FC<{text: string; next?: string; p: number}> = ({t
     <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.8 * a})`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: a, paddingBottom: 160}}>
       <div style={{fontFamily: INTER, fontWeight: 800, fontSize: MIN_TEXT, letterSpacing: 10, color: GOLD}}>SO FAR</div>
       <div style={{width: 120 * a, height: 3, background: GOLD, margin: '20px 0'}} />
-      <div style={{maxWidth: 1400, textAlign: 'center', fontFamily: CINZEL, fontWeight: 700, fontSize: 62, lineHeight: 1.25, color: PAPER}}>{text}</div>
-      {next ? <div style={{marginTop: 30, opacity: b, fontFamily: INTER, fontWeight: 700, fontStyle: 'italic', fontSize: 40, color: GOLD}}>{next}</div> : null}
+      <div style={{maxWidth: 1300, textAlign: 'center', fontFamily: CINZEL, fontWeight: 700, fontSize: 54, lineHeight: 1.25, color: PAPER}}>{text}</div>
+      {next ? <div style={{marginTop: 30, opacity: b, fontFamily: INTER, fontWeight: 700, fontStyle: 'italic', fontSize: 36, color: GOLD}}>{next}</div> : null}
     </div>
   );
 };
