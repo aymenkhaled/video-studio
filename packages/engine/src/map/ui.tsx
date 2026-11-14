@@ -18,7 +18,7 @@ export const ChapterCard: React.FC<{n: number; title: string; sub?: string; p: n
       {image ? (
         <>
           <Img src={artSrc(image)} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${1.04 + 0.06 * p})`}} />
-          <div style={{position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(12,9,5,0.55) 0%, rgba(12,9,5,0.88) 100%)'}} />
+          <div style={{position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(12,9,5,0.5) 0%, rgba(12,9,5,0.72) 100%)'}} />
         </>
       ) : null}
       <div style={{position: 'relative', fontFamily: INTER, fontWeight: 700, fontSize: 34, letterSpacing: 10, color: '#d8b46a'}}>CHAPTER {n}</div>

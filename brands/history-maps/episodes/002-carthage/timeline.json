@@ -232,7 +232,7 @@
    "lead": 0.3,
    "lines": [
     "Then Carthage did something nobody expected. It got rich again.",
-    "Trade came back, the city grew, and its farms were some of the best in the Mediterranean."
+    "Trade came back, and the city grew."
    ],
    "sfx": [
     {
@@ -530,7 +530,7 @@
    "music": "tension",
    "lead": 0.4,
    "lines": [
-    "Rome declared war in one hundred forty-nine B C. Even Utica, Carthage's big neighbour up the coast, switched to Rome's side."
+    "First, Utica, Carthage's big neighbour up the coast, switched to Rome's side. Then, in one hundred forty-nine B C, Rome declared war."
    ],
    "sfx": [
     {
@@ -759,11 +759,19 @@
    ]
   },
   {
+   "id": "c5f",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Rome changed commanders. In one hundred forty-seven B C, the man in charge became Scipio Aemilianus, the young officer who had watched Masinissa's battle."
+   ]
+  },
+  {
    "id": "c5e",
    "music": "tension",
    "lead": 0.3,
    "lines": [
-    "When the Romans blocked the harbour entrance, Carthage secretly dug a brand-new channel to the sea,",
+    "Scipio blocked the harbour entrance with a huge dam. So Carthage secretly dug a brand-new channel to the sea,",
     "and sailed out a fleet of about fifty warships it had built in hiding."
    ],
    "sfx": [
@@ -784,14 +792,6 @@
     "type": "sea",
     "gain": 0.3
    }
-  },
-  {
-   "id": "c5f",
-   "music": "tension",
-   "lead": 0.3,
-   "lines": [
-    "Rome changed commanders. In one hundred forty-seven B C, the man in charge became Scipio Aemilianus, the young officer who had watched Masinissa's battle."
-   ]
   },
   {
    "id": "c5g",
@@ -904,8 +904,8 @@
    "lead": 0.3,
    "tail": 1.4,
    "lines": [
-    "So, after three years of siege, Carthage fell. More than six hundred years of history ended in a few days.",
-    "But one famous detail of this story is probably false."
+    "So, after three years of siege, Carthage fell. A city that, by tradition, was over six hundred years old, gone in days.",
+    "But one famous detail is probably false."
    ]
   },
   {
@@ -986,7 +986,7 @@
    "music": "calm",
    "lead": 0.3,
    "lines": [
-    "What Rome really did is simpler. Carthage's land became a Roman province, called Africa, and Scipio cursed anyone who would rebuild the city."
+    "What Rome really did is simpler. Carthage's land became a Roman province, called Africa. And according to Appian, Scipio cursed anyone who would rebuild the city."
    ]
   },
   {

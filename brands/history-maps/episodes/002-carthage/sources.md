@@ -18,7 +18,7 @@ Primary texts: Appian, *Punica* (Horace White transl., PD) — livius.org number
 | 10 | Then hands over armour for 200,000 men and 2,000 catapults. | VERIFIED (as Appian's figure; say "Appian says") | Appian Pun. 80 · [Wikipedia: Third Punic War](https://en.wikipedia.org/wiki/Third_Punic_War) |
 | 11 | Consul Censorinus: abandon the city, rebuild at least ten (Roman) miles ≈ 15 km from the sea. Carthage refuses. | VERIFIED | [Appian Pun. 81 (Perseus)](https://cts.perseids.org/read/greekLit/tlg0551/tlg009/perseus-eng2/12.81-12.87); livius §81 outline |
 | 12 | Carthage re-arms: forges weapons day and night (women's hair for catapult ropes — HEDGE "the story goes"). | HEDGE | Appian Pun. 93 |
-| 13 | Siege 149–146 BC; Carthage secretly digs a new harbour exit and builds a fleet of ~50 triremes. | HEDGE — "about fifty" | Appian Pun. 121 · [Kosmos Society](https://kosmossociety.org/the-punic-wars-part-iii-delenda-cartago-est) |
+| 13 | Under Scipio (147 BC) Rome blocks the harbour mouth with a mole/dam; Carthage secretly digs a new harbour exit and builds a fleet of ~50 triremes. | HEDGE — "about fifty"; narrated after Scipio takes command | Appian Pun. 121 · [Kosmos Society](https://kosmossociety.org/the-punic-wars-part-iii-delenda-cartago-est) |
 | 14 | Scipio Aemilianus consul 147 BC, takes command; Polybius with him. | VERIFIED | Appian Pun. 112; [WarHistory.org](https://warhistory.org/article/the-third-punic-war) |
 | 15 | Spring 146 BC: Cothon harbour taken, six days and nights of street fighting, Byrsa surrenders; 50,000 men and women come out (enslaved). | VERIFIED (Appian's figure) | [Appian Pun. 127–130 (livius 26)](https://www.livius.org/sources/content/appian/appian-the-punic-wars/appian-the-punic-wars-26/) |
 | 16 | Scipio weeps watching the city burn, quotes Homer on the fall of Troy, fears the same for Rome — Polybius was beside him. | VERIFIED | Appian Pun. 132; Polybius 38.21–22 · [Fordham sourcebook](https://sourcebooks.web.fordham.edu/ancient/polybius-punic3.asp) |
@@ -33,6 +33,16 @@ Primary texts: Appian, *Punica* (Horace White transl., PD) — livius.org number
 | 25 | Masinissa died during the siege (148 BC), at about ninety. | HEDGE ("around ninety") | Appian Pun. 105–106; Polybius 36.16 |
 | 26 | Scipio cursed anyone who would resettle the site. | HEDGE | Appian Pun. 135 · [WarHistory.org](https://warhistory.org/article/the-third-punic-war) |
 | 27 | Circular harbour still visible today as a lagoon with the admiral's island. | VERIFIED | [qart-hadasht.org: Cothon](https://qart-hadasht.org/places/cothon) · [ostia-antica.org](https://www.ostia-antica.org/dict/topics/origin/presentation/origin-carthago.htm) |
+| 28 | Battle of Zama, 202 BC: Hannibal defeated; Masinissa's Numidian cavalry fought on Rome's side; site location debated. | VERIFIED | Polybius 15.9–14; Livy 30.29–35 · [Britannica: Battle of Zama](https://www.britannica.com/event/Battle-of-Zama) |
+| 29 | Masinissa's land grabs began by 193 BC (Emporia dispute) and continued for decades. | VERIFIED (say "for decades", not "50 years") | Livy 34.62 · [J. Philosophy & Culture 5.1 (2014)](https://academicjournals.org/journal/JPC/article-full-text-pdf/C5315F656966) |
+| 30 | Cato's embassy to Carthage, about 153–152 BC. | HEDGE ("about 153 BC") | Plutarch, Cato 26; Livy Periochae 47 · [Wikipedia: Cato the Elder](https://en.wikipedia.org/wiki/Cato_the_Elder) |
+| 31 | First Roman assaults on the walls (149–148 BC) failed. | VERIFIED | Appian Pun. 97–99, 113 · [WarHistory.org](https://warhistory.org/article/the-third-punic-war) |
+| 32 | Ridley: the salting story was probably conflated with ancient salting curses (e.g. Shechem, Judges 9:45). | HEDGE ("probably") | Ridley 1986 (row 18) · [Wikipedia: Salting the earth](https://en.wikipedia.org/wiki/Salting_the_earth) |
+| 33 | Appian of Alexandria, Greek historian, c. AD 95–165 (~300 years after 146 BC). | VERIFIED | [Britannica: Appian](https://www.britannica.com/biography/Appian) |
+| 34 | Julius Caesar: Roman general and dictator, killed 44 BC; Augustus: first Roman emperor (27 BC – AD 14). | VERIFIED | [Britannica: Julius Caesar](https://www.britannica.com/biography/Julius-Caesar-Roman-ruler) · [Britannica: Augustus](https://www.britannica.com/biography/Augustus-Roman-emperor) |
+| 35 | Homer: ancient Greek poet of the Iliad (the Trojan War). | VERIFIED | [Britannica: Homer](https://www.britannica.com/biography/Homer-Greek-poet) |
+| 36 | Utica went over to Rome before Rome's declaration of war (149 BC). | VERIFIED | Appian Pun. 75 |
+| — | Stadium comparison for 50,000 people ("≈ a sold-out 50,000-seat stadium") is arithmetic, not a historical claim; the 84,000 comparison uses row 6 (Carthage's ~25,000 army). | n/a | — |
 | — | Population / wall-length figures | DROP | not sourced well enough |
 
 ## Map data

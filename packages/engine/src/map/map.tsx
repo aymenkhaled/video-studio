@@ -182,6 +182,15 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
   const shift = new Map<string, {dx: number; dy: number; hidden: boolean}>();
   if (spec.avoidLabels) {
     const boxes: LabelBox[] = [];
+    const onScreen = (x: number, y: number) => x > 40 && x < width - 40 && y > 40 && y < height - 40;
+    if (mt) {
+      // Clarity overlays are fixed obstacles: chapter tracker + source (top-left), legend/globe/scale (right),
+      // captions (bottom centre) and the timeline bar (bottom).
+      boxes.push({id: 'o:tl', x: 0, y: 0, w: 470, h: 210, priority: 9});
+      boxes.push({id: 'o:right', x: width - 400, y: 0, w: 400, h: 700, priority: 9});
+      boxes.push({id: 'o:cap', x: 170, y: height - 360, w: width - 340, h: 200, priority: 9});
+      boxes.push({id: 'o:time', x: 0, y: height - 150, w: width, h: 150, priority: 9});
+    }
     (spec.routes ?? []).forEach((r) => {
       const pr = easeInOutCubic(ramp(p, r.draw[0], r.draw[1]));
       if (!r.unit || pr <= 0) return;
@@ -202,19 +211,22 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
     });
     (spec.regions ?? []).forEach((r) => {
       const [x, y] = px(r.at);
+      if (!onScreen(x, y)) return;
       const f = fs((r.size ?? 44) * zoomS);
-      const w = r.text.length * (f * 0.78 + 8);
+      const w = r.text.length * (f * 0.95 + 10);
       boxes.push({id: `r:${r.text}`, x: x - w / 2, y: y - f * 0.85, w, h: f, priority: 2});
     });
     (spec.modern?.labels ?? []).forEach((r) => {
       const [x, y] = px(r.at);
+      if (!onScreen(x, y)) return;
       const f = fs((r.size ?? 22) * zoomS);
       const w = r.text.length * f * 0.82;
       boxes.push({id: `m:${r.text}`, x: x - w / 2, y: y - f * 0.85, w, h: f, priority: 1});
     });
     for (const pl of layoutLabels(boxes, {w: width, h: height})) shift.set(pl.id, pl);
   }
-  const off = (id: string) => shift.get(id) ?? {dx: 0, dy: 0, hidden: false};
+  // with avoidance on, a label that was not placed (anchor off-screen) is hidden instead of drawn at the edge
+  const off = (id: string) => shift.get(id) ?? {dx: 0, dy: 0, hidden: !!spec.avoidLabels && (id.startsWith('m:') || id.startsWith('r:'))};
 
   return (
     <svg width={width} height={height} style={{position: 'absolute', inset: 0, background: theme.sea}}>

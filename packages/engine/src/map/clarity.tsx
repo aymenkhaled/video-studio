@@ -47,7 +47,7 @@ export const MapCaptions: React.FC<{lines: TimedLine[]; t: number; highlight?: R
     return ws;
   });
   return (
-    <div style={{position: 'absolute', left: 0, right: 0, bottom: 160 + raise, display: 'flex', justifyContent: 'center', opacity: a}}>
+    <div style={{position: 'absolute', left: 0, right: 0, bottom: 176 + raise, display: 'flex', justifyContent: 'center', opacity: a}}>
       <div style={{maxWidth: 1560, background: INK, borderRadius: 16, padding: '12px 34px', textAlign: 'center', fontFamily: INTER, fontWeight: 800, fontSize: 54, lineHeight: 1.22, color: '#fff'}}>
         {rows.map((ws, r) => (
           <div key={r}>
@@ -204,7 +204,7 @@ export const GlossaryPop: React.FC<{term: string; meaning: string; p: number; wi
   if (a <= 0) return null;
   return (
     <div style={{position: 'absolute', left: 0, right: 0, top: 170, display: 'flex', justifyContent: 'center', opacity: a, transform: `translateY(${(1 - a) * -16}px)`}}>
-      <div style={{background: 'rgba(18,13,8,0.92)', border: `3px solid ${GOLD}`, borderRadius: 44, padding: '12px 32px', fontFamily: INTER, fontSize: 40, color: PAPER, whiteSpace: 'nowrap'}}>
+      <div style={{maxWidth: 940, textAlign: 'center', background: 'rgba(18,13,8,0.92)', border: `3px solid ${GOLD}`, borderRadius: 34, padding: '10px 30px', fontFamily: INTER, fontSize: 38, lineHeight: 1.25, color: PAPER}}>
         <span style={{fontWeight: 900, color: GOLD, letterSpacing: 1}}>{term.toUpperCase()}</span>
         <span style={{fontWeight: 600}}> = {meaning}</span>
       </div>
