@@ -21,13 +21,13 @@ export const ChannelAvatar: React.FC = () => (
 
 export const ChannelBanner: React.FC = () => (
   <AbsoluteFill style={{background: '#000'}}>
-    <Img src={artSrc('turner-hannibal')} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.55) contrast(1.15)'}} />
-    <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 70%)'}} />
+    <Img src={artSrc('turner-hannibal')} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8) contrast(1.15) saturate(1.1)'}} />
+    <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0.6) 100%)'}} />
     {/* safe area: 1546 × 423 centred */}
     <div style={{position: 'absolute', left: (2560 - 1546) / 2, top: (1440 - 423) / 2, width: 1546, height: 423, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 150, letterSpacing: 14, color: PAPER, textShadow: '0 6px 0 #000'}}>HISTORY IN MAPS</div>
+      <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 128, letterSpacing: 10, color: PAPER, textShadow: '0 6px 0 #000', whiteSpace: 'nowrap', textAlign: 'center'}}>HISTORY IN MAPS</div>
       <div style={{width: 260, height: 4, background: GOLD, margin: '18px 0 22px'}} />
-      <div style={{fontFamily: INTER, fontWeight: 700, fontSize: 52, color: GOLD, textShadow: '0 3px 0 #000'}}>Ancient history, explained with maps. No background needed.</div>
+      <div style={{fontFamily: INTER, fontWeight: 700, fontSize: 46, color: GOLD, textShadow: '0 3px 0 #000', whiteSpace: 'nowrap', textAlign: 'center'}}>Ancient history, explained with maps. No background needed.</div>
     </div>
   </AbsoluteFill>
 );
