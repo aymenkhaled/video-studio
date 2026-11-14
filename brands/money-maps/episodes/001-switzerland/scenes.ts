@@ -343,7 +343,7 @@ export const SCENES: Record<string, SceneDef> = {
     segments: [{label: 'Taxes + health insurance (about a third)', value: 33, color: CB.orange}, {label: 'Rent, food, transport, savings…', value: 67, color: CB.grey}],
   }, [{type: 'glossary', term: 'Compulsory', meaning: 'required by law', window: [0.3, 0.9]}]),
   c7f: chart({
-    type: 'bar', title: 'How expensive is everyday life?', unit: 'Price level of household spending, 2025 (EU average = 100)', source: 'Eurostat via Statistics Norway, June 2026 (preliminary)',
+    type: 'bar', title: 'How expensive is everyday life?', unit: 'Household price level, 2025 (EU = 100)', source: 'Eurostat (prelim., June 2026)',
     howTo: '100 = EU average price', num: {},
     bars: [{label: 'EU average', value: 100, color: CB.grey}, {label: 'Germany', value: 108.3, color: CB.blue}, {label: 'Austria', value: 113.0, color: CB.sky}, {label: 'Switzerland', value: 171.3, highlight: true, note: '≈ 70% above the EU average'}],
   }),
