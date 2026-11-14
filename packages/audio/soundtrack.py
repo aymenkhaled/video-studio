@@ -491,7 +491,10 @@ meas = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(out / "premix.wav"), 
 vals = json.loads(re.search(r'\{\s*"input_i".*?\}', meas.stderr, re.DOTALL).group(0))
 # TP −2.5 (not −1.5): AAC encoding adds ~0.4–0.8 dB of inter-sample peak; QA gate is ≤ −1.5 dBTP on the final file.
 ln = ("loudnorm=I=-14:TP=-2.5:LRA=9:" f"measured_I={vals['input_i']}:measured_TP={vals['input_tp']}:measured_LRA={vals['input_lra']}:"
-      f"measured_thresh={vals['input_thresh']}:offset={vals['target_offset']}:linear=true")
+      f"measured_thresh={vals['input_thresh']}:offset={vals['target_offset']}:linear=true,"
+      # brick-wall safety limiter at −3 dBFS: sharp SFX transients (elephant, clash) can survive linear loudnorm;
+      # AAC then adds ~0.5–0.8 dB, which keeps the final file under the −1.5 dBTP gate.
+      "alimiter=limit=0.708:attack=3:release=60:level=disabled")
 subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(out / "premix.wav"), "-af", ln,
                 "-ar", str(RATE), "-ac", "2", "-c:a", "pcm_s16le", "-map_metadata", "-1", str(out / "soundtrack.wav")], check=True)
 
