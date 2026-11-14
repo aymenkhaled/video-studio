@@ -104,12 +104,12 @@ export const SCENES: Record<string, SceneDef> = {
 
   // 1 — A Country With Nothing
   c1: chapter(1, 'A Country With Nothing', 'Geography', {camera: EUROPE, choropleth: SWISS_ONLY}, 'alps-modis', 'What does Switzerland NOT have?'),
-  c1a: {kind: 'map', year: 2026, map: M({projection: 'globe', camera: cam([10, 30], 1.15, [8.3, 46.8], 9), choropleth: SWISS_ONLY, cities: [city('Bern (capital)', P.bern, 0.6)]})},
+  c1a: {kind: 'map', year: 2026, map: M({projection: 'globe', camera: cam([10, 30], 1.15, [8.3, 46.8], 9), choropleth: SWISS_ONLY, cities: [city('Bern (capital)', P.bern, 0.6), city('Liechtenstein', [9.55, 47.15], 0.75, {size: 0.8})]})},
   c1b: map(2024, {camera: cam([6.8, 49.3], 8.5, [7.0, 49.0], 9.5), choropleth: SWISS_NL}, [
     {type: 'glossary', term: 'km²', meaning: 'a square 1 km long on each side', window: [0.05, 0.5]},
     {type: 'counter', label: 'PEOPLE (END OF 2024)', value: 9048900, window: [0.55, 0.98], color: '#ff7a68', context: 'Federal Statistical Office', top: 260},
   ]),
-  c1c: map(2026, {camera: ALPS, choropleth: {...SWISS_ONLY, appear: [0, 0.01], values: {'756': 1}, colors: ['rgba(214,64,47,0.25)']}, regions: [{text: 'THE ALPS', at: [8.6, 46.45], appear: 0.15, size: 50}], cities: [city('Zurich', P.zurich, 0.5), city('Geneva', P.geneva, 0.5), city('Bern', P.bern, 0.5)]}, [
+  c1c: map(2026, {camera: ALPS, choropleth: {...SWISS_ONLY, appear: [0, 0.01], values: {'756': 1}, colors: ['rgba(214,64,47,0.25)']}, regions: [{text: 'THE ALPS', at: [8.9, 46.35], appear: 0.15, size: 40}], cities: [city('Zurich', P.zurich, 0.5), city('Geneva', P.geneva, 0.5), city('Bern', P.bern, 0.5)]}, [
     {type: 'citation', text: 'Swiss government (EDA): Alps ≈ 58–60% of the land', at: [0.05, 0.95]},
   ]),
   c1d: map(2026, {camera: cam([7.2, 49.5], 8.5, [6.2, 50.3], 8.0), rivers: [{name: 'Rhine', label: 'Rhine', at: [7.75, 49.2]}], cities: [city('Basel', P.basel, 0.05), city('Rotterdam', P.rotterdam, 0.6, {align: 'left'})], routes: [route('rhine', [P.basel, [7.75, 48.58], [8.47, 49.49], [8.27, 50.0], [7.6, 50.36], [6.96, 50.94], [6.76, 51.43], [5.86, 51.84], P.rotterdam], [0.15, 0.75], {dashed: true, km: true, color: CB.blue})], regions: [{text: 'NORTH SEA', at: [3.2, 53.4], appear: 0.6, size: 34}]}, [
@@ -128,7 +128,7 @@ export const SCENES: Record<string, SceneDef> = {
   c2a: art('hodler-marignano', 'Ferdinand Hodler, Retreat from Marignano (study), about 1897', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.5, zoom: 1.2}, [
     {type: 'glossary', term: 'Mercenary', meaning: 'a soldier who fights for pay', window: [0.35, 0.98]},
   ]),
-  c2a2: map(1515, {camera: cam([9.0, 46.2], 12, [9.1, 45.9], 14), choropleth: SWISS_ONLY, cities: [city('Marignano', [9.33, 45.36], 0.1, {today: 'Melegnano, near Milan, Italy'}), city('Milan', P.milan, 0.05, {align: 'left'})]}, [
+  c2a2: map(1515, {camera: cam([9.0, 46.2], 12, [9.1, 45.9], 14), choropleth: SWISS_ONLY, cities: [city('Marignano', [9.33, 45.36], 0.1, {today: 'Melegnano, near Milan, Italy'})]}, [
     {type: 'citation', text: 'Swiss government (EDA): neutrality dates back to Marignano 1515', at: [0.05, 0.95]},
   ]),
   c2b: art('lion-lucerne', 'The Lion Monument, Lucerne (photochrom, about 1890–1900). It honours Swiss Guards killed in Paris in 1792.', {x: 0.5, y: 0.55, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.25}, [
@@ -220,7 +220,7 @@ export const SCENES: Record<string, SceneDef> = {
   c4f2: map(2026, {camera: EU_WIDE, choropleth: EU_MEMBERS}, [
     {type: 'glossary', term: 'European Union', meaning: 'a group of 27 European countries', window: [0.05, 0.6]},
   ]),
-  c4g: map(1945, {camera: EUROPE, choropleth: SWISS_ONLY, regions: [{text: 'NEUTRAL', at: [8.2, 45.4], appear: 0.2, size: 36}]}, [
+  c4g: map(1945, {camera: EUROPE, choropleth: SWISS_ONLY, regions: [{text: 'NEUTRAL', at: [8.0, 44.4], appear: 0.2, size: 36}]}, [
     {type: 'citation', text: 'Federal Council: Switzerland’s policy of neutrality', at: [0.1, 0.98]},
   ]),
   c4h: art('lion-lucerne', 'Lucerne (photochrom, about 1890–1900)', {x: 0.5, y: 0.5, zoom: 1.25}, {x: 0.5, y: 0.5, zoom: 1.05}, [
@@ -269,7 +269,7 @@ export const SCENES: Record<string, SceneDef> = {
 
   // 6 — Medicine From Basel
   c6: chapter(6, 'Medicine From Basel', '1859 – today', {camera: cam([7.6, 47.56], 26, [7.6, 47.56], 30), choropleth: SWISS_ONLY}, 'basel-gate', 'How did a dye town become a medicine giant?'),
-  c6a: map(1880, {camera: cam([7.6, 47.6], 26, [7.59, 47.56], 32), choropleth: SWISS_ONLY, rivers: [{name: 'Rhine', label: 'Rhine', at: [7.75, 47.6]}], cities: [city('Basel', P.basel, 0.05), city('Mulhouse', [7.34, 47.75], 0.3, {align: 'left', today: 'France'}), city('Lörrach', [7.66, 47.61], 0.35, {today: 'Germany'})]}),
+  c6a: map(1880, {camera: cam([7.6, 47.6], 26, [7.59, 47.56], 32), choropleth: SWISS_ONLY, rivers: [{name: 'Rhine', label: 'Rhine', at: [7.75, 47.6]}], cities: [city('Basel', P.basel, 0.05, {size: 1.3}), city('Mulhouse', [7.34, 47.75], 0.3, {align: 'left', today: 'France'})], regions: [{text: 'GERMANY', at: [7.85, 47.75], appear: 0.3, size: 30}, {text: 'FRANCE', at: [7.2, 47.45], appear: 0.3, size: 30}]}),
   c6b: art('basel-gate', 'The Spalentor, Basel (photochrom, about 1890–1900)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.4, zoom: 1.2}, [
     {type: 'glossary', term: 'Patent', meaning: 'a legal right to stop others copying', window: [0.1, 0.7]},
     {type: 'citation', text: 'Historical Dictionary of Switzerland (HLS): Chemische Industrie', at: [0.4, 0.98]},
@@ -321,16 +321,14 @@ export const SCENES: Record<string, SceneDef> = {
   ]),
   c7d: chart({
     type: 'bar', title: 'YOU: a full-time Swiss wage', unit: 'Gross wage per month, 2024, Swiss francs', source: 'Federal Statistical Office (FSO), 2025', num: {suffix: ' CHF'},
-    howTo: 'the middle bar is the median',
-    bars: [{label: 'Lowest 10% earn under', value: 4635, color: CB.grey}, {label: 'Median (middle)', value: 7024, highlight: true}, {label: 'Top 10% earn over', value: 12526, color: CB.blue}],
+        bars: [{label: 'Lowest 10% earn under', value: 4635, color: CB.grey}, {label: 'Median (middle)', value: 7024, highlight: true}, {label: 'Top 10% earn over', value: 12526, color: CB.blue}],
   }, [{type: 'glossary', term: 'Median', meaning: 'the middle: half earn more, half less', window: [0.35, 0.98]}]),
   c7d2: map(2024, {camera: CH, choropleth: SWISS_ONLY}, [
     {type: 'counter', label: 'MEDIAN WAGE PER YEAR (×12)', value: 84288, suffix: ' CHF', window: [0.1, 0.98], color: '#ff7a68', context: 'before tax; FSO 2024, our math', top: 260},
   ]),
   c7e: chart({
     type: 'share', title: 'Where a household’s income goes', unit: 'Share of gross household income, Switzerland', source: 'Swiss government (EDA), household budget',
-    howTo: 'the whole bar = all income',
-    segments: [{label: 'Taxes + compulsory health insurance', value: 33, color: CB.orange}, {label: 'Rent, food, transport, savings…', value: 67, color: CB.grey}],
+    segments: [{label: 'Taxes + health insurance', value: 33, color: CB.orange}, {label: 'Rent, food, transport, savings…', value: 67, color: CB.grey}],
   }, [{type: 'glossary', term: 'Compulsory', meaning: 'required by law', window: [0.3, 0.9]}]),
   c7f: chart({
     type: 'bar', title: 'How expensive is everyday life?', unit: 'Price level of household spending, 2025 (EU average = 100)', source: 'Eurostat via Statistics Norway, June 2026 (preliminary)',

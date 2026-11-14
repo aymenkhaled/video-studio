@@ -45,3 +45,15 @@ test('chart helpers', () => {
   assert.equal(lay.cells.length, 119);
   assert.ok(Math.max(...lay.cells.map((c) => c.y)) <= 200);
 });
+
+import {layoutLabels} from '../src/map/clarity-logic.ts';
+test('labels with drop hide instead of overlapping or drifting far', () => {
+  const r = layoutLabels(
+    [
+      {id: 'big', x: 0, y: 0, w: 400, h: 400, priority: 9},
+      {id: 'name', x: 100, y: 100, w: 80, h: 20, priority: 1, maxShift: 60, drop: true},
+    ],
+    {w: 1920, h: 1080},
+  );
+  assert.equal(r[1].hidden, true);
+});

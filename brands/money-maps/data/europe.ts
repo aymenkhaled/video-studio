@@ -72,7 +72,6 @@ export const MODERN_EU: RegionLabel[] = [
   {text: 'Slovenia', at: [14.8, 46.1]},
   {text: 'Croatia', at: [16.2, 45.4]},
   {text: 'Denmark', at: [9.3, 56.0]},
-  {text: 'Liechtenstein', at: [9.55, 47.17], size: 16},
 ];
 
 export const PLACES: Record<string, LonLat> = {

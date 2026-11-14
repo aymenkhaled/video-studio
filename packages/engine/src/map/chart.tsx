@@ -252,7 +252,8 @@ const Share: React.FC<{spec: Extract<ChartSpec, {type: 'share'}>; p: number}> = 
                 {Math.round(s.value * g)}%
               </text>
             ) : null}
-            <text x={big ? x + 24 : x + w / 2} textAnchor={big ? 'start' : 'middle'} y={y + h + 54 + (big ? 0 : 50)} fontFamily={INTER} fontWeight={700} fontSize={34} fill={s.color} opacity={g}>
+            {/* labels under their segment; odd segments drop one line so neighbours never overlap; small ones start at the segment edge */}
+            <text x={big ? x + 24 : Math.max(L, x)} textAnchor="start" y={y + h + 54 + (i % 2 ? 46 : 0)} fontFamily={INTER} fontWeight={700} fontSize={34} fill={s.color} opacity={g}>
               {big ? s.label : `${s.label} ${s.value}%`}
             </text>
           </g>

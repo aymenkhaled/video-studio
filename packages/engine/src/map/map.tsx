@@ -260,7 +260,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       if (!onScreen(x, y)) return;
       const f = fs((r.size ?? 22) * zoomS);
       const w = r.text.length * f * 0.82;
-      boxes.push({id: `m:${r.text}`, x: x - w / 2, y: y - f * 0.85, w, h: f, priority: 1});
+      boxes.push({id: `m:${r.text}`, x: x - w / 2, y: y - f * 0.85, w, h: f, priority: 1, maxShift: 60, drop: true});
     });
     for (const pl of layoutLabels(boxes, {w: width, h: height})) shift.set(pl.id, pl);
   }

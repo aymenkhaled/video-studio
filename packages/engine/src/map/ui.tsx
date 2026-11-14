@@ -8,7 +8,7 @@ import {agoLabel} from './clarity-logic';
 
 // Long-form (16:9) documentary UI: chapter cards, timeline bar, citation lower-thirds, big counters.
 
-export const yearLabel = (y: number) => (y < 0 ? `${-y} BC` : `AD ${y}`);
+export const yearLabel = (y: number) => (y < 0 ? `${-y} BC` : y < 1000 ? `AD ${y}` : String(y));
 
 /** Full-frame chapter card over a darkened map. `p` = progress within the card's on-screen time. */
 export const ChapterCard: React.FC<{n: number; title: string; sub?: string; p: number; image?: string; question?: string}> = ({n, title, sub, p, image, question}) => {

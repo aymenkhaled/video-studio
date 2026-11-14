@@ -49,7 +49,7 @@ export const captionCues = (words: CueWord[], maxChars = 42, maxLines = 2): Cue[
   return cues;
 };
 
-export type LabelBox = {id: string; x: number; y: number; w: number; h: number; priority: number; /** px; beyond this the label stays at its anchor (never next to another dot) */ maxShift?: number};
+export type LabelBox = {id: string; x: number; y: number; w: number; h: number; priority: number; /** px; beyond this the label stays at its anchor (never next to another dot) */ maxShift?: number; /** with maxShift: hide instead of overlapping when no nearby spot is free */ drop?: boolean};
 export type Placed = {id: string; dx: number; dy: number; hidden: boolean};
 
 /** Greedy label placement: highest priority first, clamp into frame, try nearby offsets, else hide. */
@@ -69,7 +69,7 @@ export const layoutLabels = (boxes: LabelBox[], frame: {w: number; h: number}, p
     for (const k of [0, -1, 1, -2, 2, -3, 3]) for (const j of [0, -1, 1]) offsets.push([j * sx, k * sy]);
     const near = (ox: number, oy: number) => b.maxShift === undefined || Math.hypot(bx + ox - b.x, by + oy - b.y) <= b.maxShift;
     let hit = offsets.find(([ox, oy]) => near(ox, oy) && inside(bx + ox, by + oy, b.w, b.h) && !hits(bx + ox, by + oy, b.w, b.h));
-    if (!hit && b.maxShift !== undefined) hit = [0, 0]; // stay at the anchor rather than drift to another dot
+    if (!hit && b.maxShift !== undefined && !b.drop) hit = [0, 0]; // stay at the anchor rather than drift to another dot
     if (!hit) {
       result.set(b.id, {id: b.id, dx: 0, dy: 0, hidden: true});
       continue;
