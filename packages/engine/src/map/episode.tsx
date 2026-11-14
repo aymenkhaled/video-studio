@@ -11,6 +11,9 @@ import {
   RecapCard, ScaleBar, SourceChip,
 } from './clarity';
 import {niceScale} from './clarity-logic';
+import {ScaleShot, ScaleSpec} from '../scale/scale';
+import {CompareShot, CompareSpec} from '../scale/compare';
+import {DeepTimeShot, DeepTimeSpec} from '../scale/deeptime';
 
 // Generic long-form history episode player. An episode = timeline.json (voice-first narration per scene)
 // + a SceneDef per scene id. Scene timing comes from the generated voice (timing.json).
@@ -32,7 +35,13 @@ type Common = {overlays?: Overlay[]; year?: number; /** move captions up (px) wh
 export type SceneDef =
   | ({kind: 'map'; map: MapSpec} & Common)
   | ({kind: 'battle'; battle: BattleSpec; range?: [number, number]} & Common)
-  | ({kind: 'art'; art: ArtSpec} & Common);
+  | ({kind: 'art'; art: ArtSpec} & Common)
+  // Scale & Science kinds (opt-in, reusable): size line-up, weight bars, deep-time line, any custom shot (e.g. 3D)
+  | ({kind: 'scale'; scale: ScaleSpec} & Common)
+  | ({kind: 'compare'; compare: CompareSpec} & Common)
+  | ({kind: 'deeptime'; deeptime: DeepTimeSpec} & Common)
+  | ({kind: 'custom'; render: React.FC<CustomShotProps>} & Common);
+export type CustomShotProps = {p: number; elapsed: number; width: number; height: number};
 
 export type SceneTime = {id: string; start: number; end: number};
 export type EpisodeProps = {scenes: SceneTime[]; lines?: TimedLine[]};
@@ -102,7 +111,15 @@ const renderOverlay = (o: Overlay, p: number, i: number, clarity?: ClarityConfig
 };
 
 const Scene: React.FC<{def: SceneDef; p: number; uid: string; width: number; height: number; elapsed: number; clarity: boolean}> = ({def, p, uid, width, height, elapsed, clarity}) =>
-  def.kind === 'map' ? (
+  def.kind === 'scale' ? (
+    <ScaleShot spec={def.scale} p={p} elapsed={elapsed} width={width} height={height} />
+  ) : def.kind === 'compare' ? (
+    <CompareShot spec={def.compare} p={p} elapsed={elapsed} />
+  ) : def.kind === 'deeptime' ? (
+    <DeepTimeShot spec={def.deeptime} p={p} elapsed={elapsed} />
+  ) : def.kind === 'custom' ? (
+    <def.render p={p} elapsed={elapsed} width={width} height={height} />
+  ) : def.kind === 'map' ? (
     <MapShot spec={def.map} p={p} width={width} height={height} uid={uid} elapsed={elapsed} />
   ) : def.kind === 'art' ? (
     <ArtShot art={def.art} p={p} width={width} height={height} />

@@ -82,6 +82,8 @@ export const layoutLabels = (boxes: LabelBox[], frame: {w: number; h: number}, p
 const UNITS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 const TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 const bare = (w: string) => w.toLowerCase().replace(/[^a-z-]/g, '');
+/** Measurement words after which even a small number is shown as a numeral ("6 tonnes", "3.6 million"). */
+const UNIT_WORD = /^(metres?|meters?|feet|foot|inches|centimetres?|kilometres?|km|tonnes?|tons?|kilograms?|kg|pounds|million|billion|percent|degrees)$/;
 const isNumWord = (w: string) => {
   const parts = bare(w).split('-').filter(Boolean);
   return parts.length > 0 && parts.every((p) => UNITS.includes(p) || TENS.includes(p) || p === 'hundred' || p === 'thousand');
@@ -116,16 +118,40 @@ export const numeralize = (words: CueWord[]): CueWord[] => {
     const clean = numRun.map((w) => bare(w.w));
     const bc = j + 1 < words.length && words[j].w === 'B' && /^C\b/.test(words[j + 1].w);
     const big = clean.some((c) => c === 'hundred' || c === 'thousand');
-    const year = numRun.length === 2 && UNITS.indexOf(clean[0]) >= 11 && numValue([clean[1]]) >= 20 && numValue([clean[1]]) < 100;
+    const year =
+      numRun.length === 2 && (UNITS.indexOf(clean[0]) >= 11 || clean[0] === 'twenty') && numValue([clean[1]]) >= 10 && numValue([clean[1]]) < 100;
     const ten = !bc && !big && !year && numRun.length > 0 && numValue(clean) >= 10;
+    // decimals: "one point seven five" → "1.75" (digits after "point" are single number words)
+    let k = j;
+    let decimals = '';
+    if (numRun.length && !year && k + 1 < words.length && bare(words[k].w) === 'point' && !/[.,;:?!]$/.test(words[k - 1].w)) {
+      let d = k + 1;
+      while (d < words.length && UNITS.indexOf(bare(words[d].w)) >= 0 && UNITS.indexOf(bare(words[d].w)) <= 9 && (d === k + 1 || !/[.,;:?!]$/.test(words[d - 1].w))) {
+        decimals += String(UNITS.indexOf(bare(words[d].w)));
+        d++;
+      }
+      if (decimals) k = d;
+    }
+    // small numbers before a unit: "six tonnes" → "6 tonnes", "two buses" stays words
+    const unit = numRun.length > 0 && k < words.length && UNIT_WORD.test(bare(words[k].w)) && !/[.,;:?!]$/.test(words[k - 1].w);
+    if (numRun.length && (decimals || (unit && !bc && !year))) {
+      const v = numValue(clean);
+      const last = decimals ? words[k - 1] : run[run.length - 1];
+      const trail = last.w.replace(/^[A-Za-z-]+/, '');
+      out.push({w: (decimals ? `${v}.${decimals}` : v.toLocaleString('en-US')) + trail, t: run[0].t, end: last.end});
+      i = k;
+      continue;
+    }
     if (run.length && (bc || big || year || ten)) {
-      const v = year ? UNITS.indexOf(clean[0]) * 100 + numValue([clean[1]]) : numValue(clean);
+      const v = year ? (clean[0] === 'twenty' ? 20 : UNITS.indexOf(clean[0])) * 100 + numValue([clean[1]]) : numValue(clean);
+      // "two thousand twenty-three" is a year (no thousands comma) unless a unit follows
+      const thousandYear = !year && clean.includes('thousand') && v >= 1900 && v <= 2100;
       const trail = run[run.length - 1].w.replace(/^[A-Za-z-]+/, '');
       if (bc) {
         out.push({w: `${v} BC${words[j + 1].w.replace(/^C/, '')}`, t: run[0].t, end: words[j + 1].end});
         i = j + 2;
       } else {
-        out.push({w: (year ? String(v) : v.toLocaleString('en-US')) + trail, t: run[0].t, end: run[run.length - 1].end});
+        out.push({w: (year || thousandYear ? String(v) : v.toLocaleString('en-US')) + trail, t: run[0].t, end: run[run.length - 1].end});
         i = j;
       }
       continue;
