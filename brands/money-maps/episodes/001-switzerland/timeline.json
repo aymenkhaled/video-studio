@@ -1,0 +1,1213 @@
+{
+ "id": "001-switzerland",
+ "comp": "Switzerland",
+ "title": "Why Is Switzerland So Rich?",
+ "fps": 24,
+ "seed": 756,
+ "voice": {
+  "engine": "kokoro",
+  "voice": "af_heart",
+  "speed": 0.96,
+  "language": "en-us",
+  "gap": 0.4
+ },
+ "music": {
+  "key": "A",
+  "tempo": 76
+ },
+ "ambience": {
+  "type": "wind",
+  "gain": 0.08
+ },
+ "scenes": [
+  {
+   "id": "o1",
+   "music": "calm",
+   "lead": 0.5,
+   "lines": [
+    "This is Switzerland, seen from space.",
+    "A small country in the middle of Europe, with no coast, almost no oil or coal, and mountains almost everywhere."
+   ],
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.2,
+     "duration": 3,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "o2",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Yet it is one of the richest countries on Earth.",
+    "In twenty twenty-four, it produced about one hundred seven thousand dollars of goods and services for every person living there."
+   ],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "o3",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "That is about eight times the world average, and almost twice as much as its big neighbour, Germany."
+   ],
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.0,
+     "duration": 0.3,
+     "gain": 0.25
+    },
+    {
+     "type": "pop",
+     "at": 2.2,
+     "duration": 0.3,
+     "gain": 0.25
+    },
+    {
+     "type": "pop",
+     "at": 3.4,
+     "duration": 0.3,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "o4",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "But two hundred years ago, this was a poor country.",
+    "In the hungry year of eighteen seventeen, some people here ate grass to survive."
+   ]
+  },
+  {
+   "id": "o5",
+   "music": "epic",
+   "lead": 0.3,
+   "tail": 1.2,
+   "lines": [
+    "So how does a mountain country with almost nothing become this rich?",
+    "The short answer: it learned to sell things that weigh almost nothing."
+   ],
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 0.2,
+     "duration": 1.4,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c1a",
+   "music": "calm",
+   "lead": 0.4,
+   "lines": [
+    "First, where is it?",
+    "Switzerland sits in the heart of Europe, between Germany, France, Italy, Austria, and tiny Liechtenstein."
+   ]
+  },
+  {
+   "id": "c1b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "It covers about forty-one thousand square kilometres, roughly the size of the Netherlands.",
+    "About nine million people live there."
+   ]
+  },
+  {
+   "id": "c1c",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Almost sixty percent of the country is the Alps: steep slopes, long winters, and little flat land to farm.",
+    "Only about a quarter of the Swiss live up there."
+   ],
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.3,
+     "duration": 2.5,
+     "gain": 0.15
+    }
+   ]
+  },
+  {
+   "id": "c1d",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "It also has no sea.",
+    "Ships can reach it only by sailing up the river Rhine, hundreds of kilometres from the North Sea."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.2
+   }
+  },
+  {
+   "id": "c1e",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Underground, there is no oil field, no gas, and no coal mine worth mentioning.",
+    "Today, Switzerland imports almost all the oil and gas it uses."
+   ]
+  },
+  {
+   "id": "c1f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "What it does have is water.",
+    "Rain and snow feed rivers and dams, and hydropower makes about fifty-eight percent of its electricity."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.15
+   }
+  },
+  {
+   "id": "c1g",
+   "music": "somber",
+   "lead": 0.3,
+   "tail": 1.0,
+   "min": 6.5,
+   "lines": [
+    "Small, landlocked, mountainous, and no fuel. On paper, that is a recipe for staying poor."
+   ],
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.1,
+     "duration": 0.4,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c2a",
+   "music": "somber",
+   "lead": 0.4,
+   "lines": [
+    "For centuries, one of the things Switzerland sold abroad was its young men.",
+    "Swiss soldiers fought in foreign armies, for foreign kings, for money."
+   ],
+   "sfx": [
+    {
+     "type": "march",
+     "at": 0.5,
+     "duration": 5,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c2a2",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "After a heavy defeat at Marignano, in fifteen fifteen, the Swiss slowly stopped fighting wars of conquest of their own."
+   ]
+  },
+  {
+   "id": "c2b",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "This stone lion in Lucerne honours Swiss guards who died defending the king of France, in Paris, in seventeen ninety-two."
+   ]
+  },
+  {
+   "id": "c2c",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Then, in eighteen fifteen, a volcano called Tambora erupted in Indonesia, on the other side of the world."
+   ],
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.5,
+     "duration": 3,
+     "gain": 0.35
+    },
+    {
+     "type": "impact",
+     "at": 2.5,
+     "duration": 1.4,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c2d",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Its ash and gas cooled the climate.",
+    "In Switzerland, the summer of eighteen sixteen was about two and a half degrees colder than normal."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c2e",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Between May and July, it rained on fifty days out of ninety.",
+    "Harvests failed."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c2f",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "Food prices exploded.",
+    "A painted price board from eastern Switzerland shows a sack of grain at about fourteen gulden in eighteen eleven."
+   ],
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 1.5,
+     "duration": 0.6,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c2g",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "By June eighteen seventeen, the same sack cost one hundred six gulden.",
+    "That is more than seven times as much."
+   ],
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 0.8,
+     "duration": 1.6,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c2h",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "In the east of the country, people ate grass.",
+    "In parts of Appenzell, deaths almost tripled in eighteen seventeen."
+   ]
+  },
+  {
+   "id": "c2i",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Many families sold everything and left for America.",
+    "It was the first big wave of Swiss emigration in that century."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.25
+   }
+  },
+  {
+   "id": "c2j",
+   "music": "somber",
+   "lead": 0.3,
+   "tail": 1.0,
+   "min": 6.5,
+   "lines": [
+    "So far: a poor mountain country that exported soldiers and emigrants."
+   ],
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.1,
+     "duration": 0.4,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "clock",
+     "at": 0.1,
+     "duration": 3,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c3a",
+   "music": "calm",
+   "lead": 0.4,
+   "lines": [
+    "But one city had already found a better export.",
+    "In the fifteen hundreds, the reformer John Calvin made Geneva a strict Protestant city that frowned on luxury, including jewellery."
+   ]
+  },
+  {
+   "id": "c3b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "So Geneva's goldsmiths turned to making watches instead, helped by Protestant refugees from France who knew the craft."
+   ],
+   "sfx": [
+    {
+     "type": "clock",
+     "at": 0.5,
+     "duration": 4,
+     "gain": 0.15
+    }
+   ]
+  },
+  {
+   "id": "c3c",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "This watch was made in Geneva around sixteen fifty, by Jean Rousseau.",
+    "Its case is cut from rock crystal. Small enough for a pocket, and made to be precious."
+   ],
+   "sfx": [
+    {
+     "type": "clock",
+     "at": 0.3,
+     "duration": 5,
+     "gain": 0.15
+    }
+   ]
+  },
+  {
+   "id": "c3c2",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "By around seventeen eighty-five, about twenty thousand people worked in watchmaking in Geneva, making eighty-five thousand watches a year."
+   ],
+   "sfx": [
+    {
+     "type": "clock",
+     "at": 0.3,
+     "duration": 4,
+     "gain": 0.12
+    }
+   ]
+  },
+  {
+   "id": "c3d",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Watchmaking spread into the Jura mountains.",
+    "By tradition, farmers there worked on watch parts during their long, snowy winters."
+   ]
+  },
+  {
+   "id": "c3e",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "Here is why that matters.",
+    "In twenty twenty-four, the average Swiss watch was exported for about eighteen hundred dollars. The average Chinese watch, for about four dollars."
+   ],
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 3.0,
+     "duration": 0.3,
+     "gain": 0.25
+    },
+    {
+     "type": "pop",
+     "at": 4.0,
+     "duration": 0.3,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c3f",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "China exported almost forty times more watches.",
+    "But Switzerland earned more than ten times as much money from its watches."
+   ],
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 1.0,
+     "duration": 2.5,
+     "gain": 0.15
+    }
+   ]
+  },
+  {
+   "id": "c3g",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "That is the trick.",
+    "If your country is hard to reach, sell things that are small, light, and expensive. Then transport costs barely matter."
+   ],
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 0.3,
+     "duration": 1.2,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c3h",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Swiss watch exports were worth about twenty-six billion francs in twenty twenty-four.",
+    "That is roughly two thousand nine hundred francs for every person in the country."
+   ],
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 1.5,
+     "duration": 1.8,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c3i",
+   "music": "somber",
+   "lead": 0.3,
+   "tail": 1.0,
+   "min": 6.5,
+   "lines": [
+    "So far: Switzerland got richer by exporting small, valuable things that are cheap to move."
+   ],
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.1,
+     "duration": 0.4,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c4a",
+   "music": "calm",
+   "lead": 0.4,
+   "lines": [
+    "But to sell anything, you need a way through the mountains.",
+    "Already in the thirteenth century, mules carried goods over the Gotthard Pass, between northern Europe and Italy."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c4b",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "In eighteen eighty-two, a railway tunnel opened under the pass, fifteen kilometres long."
+   ],
+   "sfx": [
+    {
+     "type": "train",
+     "at": 1.5,
+     "duration": 5,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c4c",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "Workers spent about ten years digging it through solid rock.",
+    "In its first full year, about three hundred thousand tonnes of goods went through."
+   ],
+   "sfx": [
+    {
+     "type": "forge",
+     "at": 0.5,
+     "duration": 3,
+     "gain": 0.15
+    },
+    {
+     "type": "counter",
+     "at": 4.5,
+     "duration": 1.6,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c4d",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "Trade that once went around the Alps could now go straight through Switzerland."
+   ],
+   "ambience": {
+    "type": "train",
+    "gain": 0.35
+   }
+  },
+  {
+   "id": "c4e",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "In twenty sixteen, a new tunnel opened deep below the old one: fifty-seven kilometres long, the longest railway tunnel in the world."
+   ],
+   "sfx": [
+    {
+     "type": "train",
+     "at": 0.5,
+     "duration": 6,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c4f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Switzerland had one more advantage: peace.",
+    "In eighteen fifteen, after Napoleon's wars, Europe's great powers recognised it as permanently neutral."
+   ]
+  },
+  {
+   "id": "c4f2",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Even today, Switzerland is not a member of the European Union, or of any military alliance."
+   ]
+  },
+  {
+   "id": "c4g",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Switzerland stayed out of both world wars and was not invaded, while much of Europe was left in ruins."
+   ],
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 1.0,
+     "duration": 3,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c4h",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "And peace is good for money.",
+    "If you were rich and worried about war, where would you keep your savings?"
+   ]
+  },
+  {
+   "id": "c4i",
+   "music": "somber",
+   "lead": 0.3,
+   "tail": 1.0,
+   "min": 6.5,
+   "lines": [
+    "So far: tunnels connected Switzerland to Europe, and neutrality kept it out of war."
+   ],
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.1,
+     "duration": 0.4,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 0.3,
+     "duration": 0.6,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c5a",
+   "music": "calm",
+   "lead": 0.4,
+   "lines": [
+    "Swiss banks offered stability and a strong currency.",
+    "And in nineteen thirty-four, a new law made it a crime for bankers to reveal their clients' secrets."
+   ]
+  },
+  {
+   "id": "c5b",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "That attracted honest savers, but also people hiding money from the tax offices of their own countries."
+   ]
+  },
+  {
+   "id": "c5c",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Under pressure from abroad, that changed.",
+    "Since twenty eighteen, Switzerland automatically shares foreign clients' bank data with their home tax offices."
+   ],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 3.0,
+     "duration": 0.7,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c5d",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "In twenty twenty-three, Credit Suisse, one of Switzerland's two biggest banks, lost the trust of its clients."
+   ],
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 1.0,
+     "duration": 2.5,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c5e",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "It was taken over by its rival, UBS, with guarantees from the Swiss government."
+   ]
+  },
+  {
+   "id": "c5f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Still, Switzerland is the world leader in managing money for private clients from abroad: about two thousand four hundred billion francs in twenty twenty-four."
+   ],
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 4.0,
+     "duration": 2.0,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c5g",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "But here is the surprise.",
+    "Banks and insurance together make only about nine percent of the Swiss economy."
+   ],
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 1.6,
+     "duration": 1.2,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c5h",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "So banks matter, but they are not the main reason.",
+    "The biggest Swiss export is something you can swallow."
+   ]
+  },
+  {
+   "id": "c5i",
+   "music": "somber",
+   "lead": 0.3,
+   "tail": 1.0,
+   "min": 6.5,
+   "lines": [
+    "So far: Swiss banks are famous, but finance is only about a tenth of the economy."
+   ],
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.1,
+     "duration": 0.4,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c6a",
+   "music": "calm",
+   "lead": 0.4,
+   "lines": [
+    "This is Basel, on the Rhine, where Switzerland meets France and Germany.",
+    "In the nineteenth century, its factories made artificial dyes to colour silk and cloth."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.12
+   }
+  },
+  {
+   "id": "c6b",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "A surprising detail: until nineteen hundred seven, Switzerland had no patent law.",
+    "So Basel firms could legally copy dyes invented abroad."
+   ]
+  },
+  {
+   "id": "c6c",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "The chemists who knew how to make colours learned to make medicines.",
+    "In eighteen ninety-six, Roche was founded in Basel, making medicines only."
+   ]
+  },
+  {
+   "id": "c6c2",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "At Sandoz, another Basel dye maker, medicines were only ten percent of sales in nineteen fourteen. By nineteen fifty-two, they were the biggest part."
+   ]
+  },
+  {
+   "id": "c6d",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "Today, Basel is home to two global drug companies, Roche and Novartis.",
+    "And chemicals and medicines are by far Switzerland's biggest export."
+   ],
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 3.5,
+     "duration": 0.3,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c6e",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "In twenty twenty-four, they made up about fifty-three percent of all Swiss exports: about one hundred forty-nine billion francs."
+   ],
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 2.0,
+     "duration": 2.0,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c6f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "That is roughly sixteen thousand five hundred francs for every person in Switzerland, from chemicals and medicines alone."
+   ],
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 2.0,
+     "duration": 0.3,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c6g",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "And medicine follows the same rule as watches: small, light, valuable packages, easy to ship from the middle of a continent."
+   ]
+  },
+  {
+   "id": "c6h",
+   "music": "somber",
+   "lead": 0.3,
+   "tail": 1.0,
+   "min": 6.5,
+   "lines": [
+    "So far: Basel turned dye chemistry into medicine, now over half of Swiss exports."
+   ],
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.1,
+     "duration": 0.4,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c7a",
+   "music": "calm",
+   "lead": 0.4,
+   "lines": [
+    "The last ingredient is people.",
+    "About two thirds of young people in Switzerland choose an apprenticeship: part school, part paid training inside a real company."
+   ]
+  },
+  {
+   "id": "c7b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "There are about two hundred fifty trades to choose from.",
+    "And youth unemployment is lower than the averages of the European Union and of rich countries."
+   ],
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 3.0,
+     "duration": 0.3,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c7c",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Skilled workers can make expensive products, and expensive products can pay high wages."
+   ]
+  },
+  {
+   "id": "c7d",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "Now imagine you live there, with a full-time job and the median wage: about seven thousand francs a month before tax, in twenty twenty-four."
+   ],
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 3.5,
+     "duration": 0.6,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c7d2",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "That is more than eighty-four thousand francs a year."
+   ],
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 0.8,
+     "duration": 1.5,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c7e",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Sounds great. But roughly a third of household income goes to taxes and compulsory health insurance."
+   ]
+  },
+  {
+   "id": "c7f",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "And prices are high.",
+    "In twenty twenty-five, everyday household spending cost about seventy percent more than the European Union average."
+   ],
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 3.0,
+     "duration": 0.3,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c7g",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Still, after paying for everything, the average household saves about seventeen hundred francs a month."
+   ],
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 3.0,
+     "duration": 0.6,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c7h",
+   "music": "somber",
+   "lead": 0.3,
+   "tail": 1.0,
+   "min": 6.5,
+   "lines": [
+    "So far: Swiss wages are high, but so are taxes, insurance, and prices."
+   ],
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.1,
+     "duration": 0.4,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c8",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c8a",
+   "music": "build",
+   "lead": 0.4,
+   "lines": [
+    "Over fifty years, the gap between Switzerland and the world average grew and grew."
+   ]
+  },
+  {
+   "id": "c8a2",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "The line jumps up and down partly because exchange rates move. But the direction is clear."
+   ]
+  },
+  {
+   "id": "c8b",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "So, why is Switzerland so rich? There is no single secret.",
+    "Mountains made it poor, so it learned to sell small, valuable things."
+   ]
+  },
+  {
+   "id": "c8c",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "Tunnels connected it to Europe. Peace kept its factories and savings safe. And skilled people keep the value high."
+   ],
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.0,
+     "duration": 0.3,
+     "gain": 0.2
+    },
+    {
+     "type": "pop",
+     "at": 3.0,
+     "duration": 0.3,
+     "gain": 0.2
+    },
+    {
+     "type": "pop",
+     "at": 5.0,
+     "duration": 0.3,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c8d",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "There is a price too: life is expensive, and the country depends heavily on a few industries, above all medicine."
+   ]
+  },
+  {
+   "id": "c8e",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Here is my question for you: which country should we explain next?",
+    "Tell us in the comments."
+   ]
+  },
+  {
+   "id": "c8f",
+   "music": "calm",
+   "lead": 0.5,
+   "tail": 2.0,
+   "min": 20,
+   "endscreen": true,
+   "lines": [
+    "Next time: why is Russia so big, but so empty? See you there."
+   ]
+  }
+ ]
+}

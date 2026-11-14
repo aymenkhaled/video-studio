@@ -1,0 +1,30 @@
+{
+  "titles": [
+    "Why Is Switzerland So Rich? (No Sea, No Oil, Mostly Mountains)",
+    "Switzerland Had Nothing. Now It's One of the Richest Countries on Earth",
+    "How Switzerland Got Rich Selling Things That Weigh Almost Nothing"
+  ],
+  "hook": "Switzerland has no sea, almost no oil, gas or coal, and mountains almost everywhere. In 1817 some Swiss people ate grass to survive. Today it produces about $107,700 per person a year (World Bank, 2024), about eight times the world average. How? Watches, tunnels through the Alps, neutrality, banks, medicine from Basel and apprenticeships, explained with maps, charts and real numbers. No background needed.",
+  "chapters": {
+    "o1": "No sea, no oil, so why so rich?",
+    "c1": "A country with nothing",
+    "c2": "The hungry years (1816–1817)",
+    "c3": "Small, light, valuable: watches",
+    "c4": "The road through the Alps",
+    "c5": "Safe money: the banks",
+    "c6": "Medicine from Basel",
+    "c7": "You, in Switzerland: wages and prices",
+    "c8": "The formula"
+  },
+  "credits": [
+    "Map data: Natural Earth (public domain) via world-atlas. Shaded relief and rivers: Natural Earth (public domain).",
+    "Data: World Bank (CC BY 4.0), Swiss Federal Statistical Office, BAZG, FH, SIF, SFOE, Eurostat. Per-person and comparison numbers are our own arithmetic from these sources.",
+    "Images: NASA (public domain); Library of Congress Photochrom Print Collection (public domain); Ferdinand Hodler, Kunsthaus Zürich (public domain); J. M. W. Turner (public domain); portrait of John Calvin, Museum Catharijneconvent (public domain); watch by Jean Rousseau, The Metropolitan Museum of Art (CC0); Gotthard tunnel workers, c. 1880 (public domain).",
+    "2.5D depth: Depth-Anything-V2-Small (Apache-2.0).",
+    "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT).",
+    "Narration: synthetic voice (Kokoro-82M, Apache-2.0).",
+    "Fonts: Cinzel and Inter (SIL Open Font License)."
+  ],
+  "hashtags": ["#Switzerland", "#Economics", "#Geography", "#Maps", "#MoneyAndMaps"],
+  "pinned_comment": "Switzerland got rich by selling small, valuable things it could carry over mountains. Which country should we explain next?"
+}

@@ -116,14 +116,28 @@ export const numeralize = (words: CueWord[]): CueWord[] => {
     const clean = numRun.map((w) => bare(w.w));
     const bc = j + 1 < words.length && words[j].w === 'B' && /^C\b/.test(words[j + 1].w);
     const big = clean.some((c) => c === 'hundred' || c === 'thousand');
-    const year = numRun.length === 2 && UNITS.indexOf(clean[0]) >= 11 && numValue([clean[1]]) >= 20 && numValue([clean[1]]) < 100;
+    // years: "eighteen seventeen" → 1817, "twenty twenty-four" → 2024, "nineteen hundred seven" → 1907 (no comma)
+    const second = clean.length > 1 ? numValue(clean.slice(1)) : 0;
+    const teenYear = numRun.length === 2 && UNITS.indexOf(clean[0]) >= 11 && second >= 10 && second < 100;
+    const modernYear = numRun.length === 2 && clean[0] === 'twenty' && second >= 10 && second < 100;
+    const hundredYear = clean.length >= 3 && UNITS.indexOf(clean[0]) >= 11 && clean[1] === 'hundred' && !clean.includes('thousand');
+    const year = teenYear || modernYear || hundredYear;
+    // units that force numerals even under 10: "nine percent" → 9%, "nine million" → 9 million, "four dollars" → $4
+    const open = numRun.length > 0 && j < words.length && !/[.,;:?!]$/.test(numRun[numRun.length - 1].w);
+    const nextBare = open ? bare(words[j].w) : '';
+    const unit = nextBare === 'percent' ? 'percent' : nextBare === 'dollars' || nextBare === 'dollar' ? 'dollars' : ['million', 'billion', 'trillion'].includes(nextBare) ? 'scale' : '';
     const ten = !bc && !big && !year && numRun.length > 0 && numValue(clean) >= 10;
-    if (run.length && (bc || big || year || ten)) {
-      const v = year ? UNITS.indexOf(clean[0]) * 100 + numValue([clean[1]]) : numValue(clean);
+    if (run.length && (bc || big || year || ten || unit)) {
+      const v = teenYear ? UNITS.indexOf(clean[0]) * 100 + second : modernYear ? 2000 + second : numValue(clean);
       const trail = run[run.length - 1].w.replace(/^[A-Za-z-]+/, '');
       if (bc) {
         out.push({w: `${v} BC${words[j + 1].w.replace(/^C/, '')}`, t: run[0].t, end: words[j + 1].end});
         i = j + 2;
+      } else if (unit === 'percent' || unit === 'dollars') {
+        const tail = words[j].w.replace(/^[A-Za-z-]+/, '');
+        const shown = v.toLocaleString('en-US');
+        out.push({w: (unit === 'percent' ? `${shown}%` : `$${shown}`) + tail, t: run[0].t, end: words[j].end});
+        i = j + 1;
       } else {
         out.push({w: (year ? String(v) : v.toLocaleString('en-US')) + trail, t: run[0].t, end: run[run.length - 1].end});
         i = j;

@@ -431,6 +431,32 @@ def effect(kind, n, v):
         ph = 2 * np.pi * np.cumsum(f) / RATE
         saw = sum(np.sin(k * ph) / k for k in range(1, 9))
         return norm(filt(saw * (1 + 0.2 * np.sin(2 * np.pi * 7 * t)), 3200)) * env(n, 0.05, 0.35)
+    if kind == "train":  # rail clatter: paired wheel knocks over a low rumble (Money & Maps)
+        x = filt(noise, 260) * 0.35
+        for st in np.arange(0, dur, 0.78):
+            for off in (0, 0.13):
+                i = round((st + off) * RATE)
+                m = min(n - i, round(0.09 * RATE))
+                if m <= 0:
+                    continue
+                tt = t[:m]
+                x[i: i + m] += np.sin(2 * np.pi * 95 * tt) * np.exp(-tt * 45) + filt(rng.normal(0, 1, m), 1800) * 0.4 * np.exp(-tt * 60)
+        return norm(x) * env(n, 0.4, 0.5)
+    if kind == "clock":  # watch ticking, ~5 ticks/s alternating pitch
+        x = np.zeros(n)
+        for k, st in enumerate(np.arange(0, dur, 0.2)):
+            i = round(st * RATE)
+            m = min(n - i, round(0.03 * RATE))
+            if m <= 0:
+                break
+            x[i: i + m] += np.sin(2 * np.pi * (3400 if k % 2 else 2900) * t[:m]) * np.exp(-t[:m] * 160)
+        return norm(x) * env(n, 0.05, 0.1)
+    if kind == "wind":  # gusty mountain wind: band-passed noise with slow swells
+        gust = 0.35 + 0.65 * np.clip(np.sin(2 * np.pi * 0.09 * t + 1.3) * 0.5 + 0.5 + 0.2 * np.sin(2 * np.pi * 0.23 * t), 0, 1)
+        return norm(filt(filt(noise, 180, "highpass"), 1100) * gust) * env(n, 0.8, 0.8)
+    if kind == "pop":  # soft UI pop for icons / bars appearing
+        f = 520 + 380 * np.exp(-t * 30)
+        return norm(np.sin(2 * np.pi * np.cumsum(f) / RATE) * np.exp(-t * 22)) * env(n, 0.002, 0.08)
     raise RuntimeError(f"unknown sfx type: {kind}")
 
 
@@ -458,7 +484,7 @@ if amb:
         air = norm(filt(filt(rng.normal(0, 1, N), 110, "highpass"), 1800))
         ambience[:, ch] = air * float(amb.get("gain", 0.25)) * (0.5 + 0.15 * np.sin(2 * np.pi * 0.07 * tt + ch))
 
-AMB_KIND = {"sea": "waves", "city": "crowd", "fire": "fire", "camp": "crowd", "march": "march"}
+AMB_KIND = {"sea": "waves", "city": "crowd", "fire": "fire", "camp": "crowd", "march": "march", "train": "train", "wind": "wind"}
 for a in SCENE_AMB:  # per-scene beds, 0.8 s fades, ducked under the voice like the global ambience
     s0, s1 = round(float(a["start"]) * RATE), min(N, round(float(a["end"]) * RATE))
     if s1 - s0 < RATE // 2:

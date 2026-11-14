@@ -11,6 +11,7 @@ import {loadFont as loadCinzel} from '@remotion/google-fonts/Cinzel';
 import {clamp01, easeInOutCubic, mix, ramp} from '../motion';
 import {INTER} from '../overlay';
 import {kmLabel, layoutLabels, type LabelBox} from './clarity-logic';
+import {classify, fmtValue, type NumFmt} from './chart-logic';
 import {usePublicJson} from './media';
 import {Figure} from './figures';
 import {staticFile} from 'remotion';
@@ -52,6 +53,22 @@ export type MapSpec = {
   rivers?: {name: string; label?: string; at?: LonLat}[];
   /** Clarity Kit: minimum on-screen text size in px (phone readability). */
   minText?: number;
+  /** Money & Maps: countries coloured by a sourced value (Natural Earth ids = ISO 3166-1 numeric), legend bottom-left. */
+  choropleth?: Choropleth;
+};
+
+export type Choropleth = {
+  /** ISO 3166-1 numeric id ("756" = Switzerland) → value */
+  values: Record<string, number>;
+  /** ascending class breaks; colors.length = breaks.length + 1 (sequential, colour-blind safe) */
+  breaks: number[];
+  colors: string[];
+  appear?: [number, number];
+  /** outlined + labelled (second cue besides colour) */
+  highlight?: string[];
+  /** value labels on countries (second cue) */
+  labels?: {id: string; text: string; at: LonLat}[];
+  legend?: {title: string; source: string; fmt?: NumFmt; labels?: string[]};
 };
 
 const toLand = (t: unknown) => {
@@ -69,6 +86,12 @@ const toBorders = (t: unknown) => {
 };
 const BORDERS_LO = toBorders(countries110);
 const BORDERS_HI = toBorders(countries50);
+// Country shapes for choropleths (1:50m), keyed by ISO numeric id.
+const COUNTRIES = (() => {
+  const topo = countries50 as unknown as Topology<{countries: GeometryCollection}>;
+  const fc = feature(topo, topo.objects.countries) as unknown as {features: {id?: string; geometry: unknown}[]};
+  return fc.features.filter((f) => f.id !== undefined);
+})();
 
 /** d3 treats ring winding as meaningful: a ring with area > hemisphere means "everything but"; fix it. */
 const polygon = (rings: LonLat[][]) => {
@@ -190,7 +213,15 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       boxes.push({id: 'o:right', x: width - 400, y: 0, w: 400, h: 700, priority: 9});
       boxes.push({id: 'o:cap', x: 170, y: height - 360, w: width - 340, h: 200, priority: 9});
       boxes.push({id: 'o:time', x: 0, y: height - 150, w: width, h: 150, priority: 9});
+      if (spec.choropleth?.legend) boxes.push({id: 'o:choro', x: 0, y: height - 640, w: 430, h: 300, priority: 9});
     }
+    (spec.choropleth?.labels ?? []).forEach((l) => {
+      const [x, y] = px(l.at);
+      if (!onScreen(x, y)) return;
+      const f = fs(30 * Math.min(1.2, zoomS));
+      const w = l.text.length * f * 0.6;
+      boxes.push({id: `k:${l.id}`, x: x - w / 2, y: y - f * 0.85, w, h: f * 1.1, priority: 5, maxShift: 60});
+    });
     (spec.routes ?? []).forEach((r) => {
       const pr = easeInOutCubic(ramp(p, r.draw[0], r.draw[1]));
       if (!r.unit || pr <= 0) return;
@@ -308,6 +339,24 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
         })}
       </g>
 
+      {/* choropleth (Money & Maps): countries by value, clipped to land; outline + label as second cue */}
+      {spec.choropleth ? (() => {
+        const c = spec.choropleth;
+        const a = c.appear ? easeInOutCubic(ramp(p, c.appear[0], c.appear[1])) : 1;
+        return (
+          <g clipPath={`url(#${uid}-land)`}>
+            {COUNTRIES.map((f) => {
+              const v = c.values[f.id!];
+              if (v === undefined) return null;
+              return <path key={f.id} d={path(f.geometry as never) ?? ''} fill={c.colors[classify(v, c.breaks)]} fillOpacity={0.9 * a} stroke="rgba(20,30,40,0.55)" strokeWidth={1.2} />;
+            })}
+            {COUNTRIES.filter((f) => c.highlight?.includes(f.id!)).map((f) => (
+              <path key={`h${f.id}`} d={path(f.geometry as never) ?? ''} fill="none" stroke="#ffffff" strokeWidth={5 * zoomS} strokeLinejoin="round" opacity={a} />
+            ))}
+          </g>
+        );
+      })() : null}
+
       {/* rivers (Clarity Kit) */}
       {riversGeo && spec.rivers?.length ? (
         <g>
@@ -393,6 +442,50 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
           </g>
         );
       })}
+
+      {/* choropleth value labels + legend scale (second cue: numbers, not colour alone) */}
+      {spec.choropleth ? (() => {
+        const c = spec.choropleth;
+        const a = c.appear ? easeInOutCubic(ramp(p, c.appear[0], c.appear[1])) : 1;
+        const lx = 40;
+        const ly = height - 620;
+        const fmt = c.legend?.fmt ?? {};
+        const rows = c.colors.map((col, k) => ({col, text: c.legend?.labels?.[k] ?? (k === 0 ? `under ${fmtValue(c.breaks[0], fmt)}` : k === c.colors.length - 1 ? `${fmtValue(c.breaks[k - 1], fmt)} +` : `${fmtValue(c.breaks[k - 1], fmt)} – ${fmtValue(c.breaks[k], fmt)}`)}));
+        return (
+          <g opacity={a}>
+            {(c.labels ?? []).map((l) => {
+              const o = off(`k:${l.id}`);
+              if (o.hidden || (spec.avoidLabels && !shift.has(`k:${l.id}`))) return null;
+              const [x, y] = px(l.at);
+              const hl = c.highlight?.includes(l.id);
+              return (
+                <text key={l.id} x={x + o.dx} y={y + o.dy} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={fs((hl ? 34 : 28) * Math.min(1.2, zoomS))} fill={hl ? '#ffffff' : '#f4efe4'} stroke="#101820" strokeWidth={6} paintOrder="stroke">
+                  {l.text}
+                </text>
+              );
+            })}
+            {c.legend ? (
+              <>
+            <rect x={lx - 14} y={ly - 50} width={410} height={rows.length * 40 + 100} rx={12} fill="rgba(10,14,18,0.78)" />
+            <text x={lx} y={ly - 14} fontFamily={INTER} fontWeight={800} fontSize={28} fill="#f4ecd8">
+              {c.legend.title}
+            </text>
+            {rows.map((r, k) => (
+              <g key={k}>
+                <rect x={lx} y={ly + 4 + k * 40} width={44} height={30} fill={r.col} stroke="rgba(255,255,255,0.5)" />
+                <text x={lx + 60} y={ly + 29 + k * 40} fontFamily={INTER} fontWeight={600} fontSize={26} fill="#f4ecd8">
+                  {r.text}
+                </text>
+              </g>
+            ))}
+            <text x={lx} y={ly + 30 + rows.length * 40} fontFamily={INTER} fontWeight={600} fontSize={22} fill="rgba(244,236,216,0.75)">
+              Source: {c.legend.source}
+            </text>
+              </>
+            ) : null}
+          </g>
+        );
+      })() : null}
 
       {/* cities */}
       {(spec.cities ?? []).map((c) => {

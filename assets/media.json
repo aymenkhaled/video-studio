@@ -130,6 +130,102 @@
    "licence": "CC0 1.0",
    "credit": "Bust traditionally identified as Scipio Africanus, Capitoline Museums — photo Jona Lendering / Livius.org, CC0",
    "depth": false
+  },
+  {
+   "id": "alps-modis",
+   "source": "commons",
+   "licence": "Public domain (NASA)",
+   "credit": "The Alps seen from space, NASA MODIS image by Jeff Schmaltz, NASA GSFC, 2016 (public domain)",
+   "depth": false,
+   "file": "The Alps (MODIS 2016-04-01).jpg"
+  },
+  {
+   "id": "village-alps",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "Village and Alps, Bernese Oberland — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "Village and Alps, Bernese Oberland, Switzerland-LCCN2001702412.jpg"
+  },
+  {
+   "id": "hodler-marignano",
+   "source": "commons",
+   "licence": "Public domain (artist d. 1918)",
+   "credit": "Ferdinand Hodler, Retreat from Marignano (cartoon III), Kunsthaus Zürich (public domain)",
+   "depth": true,
+   "file": "Ferdinand Hodler - Rückzug von Marignano. Karton III - 1584 - Kunsthaus Zürich.jpg"
+  },
+  {
+   "id": "lion-lucerne",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "Lion Monument, Lucerne — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "Lion Monument, Lucerne, Switzerland-LCCN2001703124.jpg"
+  },
+  {
+   "id": "tambora-iss",
+   "source": "commons",
+   "licence": "Public domain (NASA)",
+   "credit": "Mount Tambora, Indonesia, photographed from the ISS by the NASA Expedition 20 crew, 2009 (public domain)",
+   "depth": false,
+   "file": "Mount Tambora Volcano, Sumbawa Island, Indonesia.jpg"
+  },
+  {
+   "id": "calvin",
+   "source": "commons",
+   "licence": "Public domain (c. 1550)",
+   "credit": "Portrait of John Calvin, anonymous, c. 1550, Museum Catharijneconvent (public domain)",
+   "depth": false,
+   "file": "Portrait of John Calvin (1509–1564), by anonymous - Museum Catharijneconvent.jpg"
+  },
+  {
+   "id": "met-watch",
+   "source": "url",
+   "licence": "CC0 (The Met Open Access)",
+   "credit": "Watch by Jean Rousseau the Younger, Geneva, c. 1650–60, The Metropolitan Museum of Art, Gift of J. Pierpont Morgan, 1917 (CC0)",
+   "depth": false,
+   "url": "https://images.metmuseum.org/CRDImages/es/original/DP168578.jpg"
+  },
+  {
+   "id": "turner-gotthard",
+   "source": "commons",
+   "licence": "Public domain (artist d. 1851)",
+   "credit": "J. M. W. Turner, The Pass of St Gotthard, near Faido, 1843 (public domain)",
+   "depth": true,
+   "file": "The Pass of St. Gotthard, near Faido by J. M. W. Turner, 1843, watercolor.jpg"
+  },
+  {
+   "id": "gotthard-workers",
+   "source": "commons",
+   "licence": "Public domain (photo 1880)",
+   "credit": "Gotthard tunnel workers, photograph c. 1880, unknown photographer (public domain)",
+   "depth": true,
+   "file": "Gotthardtunnel Bauarbeiter.jpg"
+  },
+  {
+   "id": "wassen-rail",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "Wassen, St Gotthard Railway — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "Wassen, the tunnels, St. Gotthard Railway, Switzerland-LCCN2001703203.jpg"
+  },
+  {
+   "id": "basel-gate",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "The Spalentor, Basel — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "The Spalenthor, Basle, Switzerland-LCCN2001701103.jpg"
+  },
+  {
+   "id": "zurich-poly",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "The Limmatquai and the Polytechnic (today ETH), Zurich — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "The Limmatquay, with Polytechnic, Zurich, Switzerland-LCCN2001703376.jpg"
   }
  ],
  "geo": {

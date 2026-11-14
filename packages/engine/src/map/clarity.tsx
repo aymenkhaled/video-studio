@@ -201,11 +201,11 @@ export const CharacterCard: React.FC<{name: string; role: string; line: string; 
 };
 
 /** Word pop-up: a hard term and its plain meaning (≤ 8 words), top-centre. */
-export const GlossaryPop: React.FC<{term: string; meaning: string; p: number; window?: [number, number]}> = ({term, meaning, p, window = [0.1, 0.8]}) => {
+export const GlossaryPop: React.FC<{term: string; meaning: string; p: number; window?: [number, number]; top?: number}> = ({term, meaning, p, window = [0.1, 0.8], top = 170}) => {
   const a = easeInOutCubic(ramp(p, window[0], window[0] + 0.05)) * (1 - easeInOutCubic(ramp(p, window[1] - 0.05, window[1])));
   if (a <= 0) return null;
   return (
-    <div style={{position: 'absolute', left: 0, right: 0, top: 170, display: 'flex', justifyContent: 'center', opacity: a, transform: `translateY(${(1 - a) * -16}px)`}}>
+    <div style={{position: 'absolute', left: 0, right: 0, top, display: 'flex', justifyContent: 'center', opacity: a, transform: `translateY(${(1 - a) * -16}px)`}}>
       <div style={{maxWidth: 940, textAlign: 'center', background: 'rgba(18,13,8,0.92)', border: `2px solid ${GOLD}`, borderRadius: 28, padding: '8px 24px', fontFamily: INTER, fontSize: 32, lineHeight: 1.25, color: PAPER}}>
         <span style={{fontWeight: 900, color: GOLD, letterSpacing: 1}}>{term.toUpperCase()}</span>
         <span style={{fontWeight: 600}}> = {meaning}</span>

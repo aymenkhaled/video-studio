@@ -40,6 +40,15 @@ Binary assets are in the `assets-v1` Release; SHA256 per file in `assets/manifes
 | Natural Earth coastlines 1:50m / 1:110m | Natural Earth | Public domain | https://www.naturalearthdata.com/about/terms-of-use/ | No (credited anyway) |
 | world-atlas (TopoJSON packaging of Natural Earth) | Mike Bostock | ISC | https://github.com/topojson/world-atlas | No |
 | Cinzel font (titles, map labels) via `@remotion/google-fonts` | Natasha Raissa / Google Fonts | OFL 1.1 | https://fonts.google.com/specimen/Cinzel/license | No |
+| Money & Maps 001: The Alps (MODIS 2016-04-01) | Jeff Schmaltz, NASA GSFC | Public domain (NASA) | https://commons.wikimedia.org/wiki/File:The_Alps_(MODIS_2016-04-01).jpg | Credit NASA (courtesy) |
+| Money & Maps 001: Mount Tambora from the ISS (2009) | NASA Expedition 20 crew | Public domain (NASA) | https://commons.wikimedia.org/wiki/File:Mount_Tambora_Volcano,_Sumbawa_Island,_Indonesia.jpg | Credit NASA (courtesy) |
+| Money & Maps 001: 5 photochroms (Bernese Oberland village; Lion Monument Lucerne; Wassen, Gotthard railway; Spalentor Basel; Limmatquai Zurich), c. 1890–1900 | Photochrom Print Collection, Library of Congress | Public domain | https://commons.wikimedia.org/wiki/File:Village_and_Alps,_Bernese_Oberland,_Switzerland-LCCN2001702412.jpg (+ LCCN2001703124, 2001703203, 2001701103, 2001703376) | Courtesy credit |
+| Money & Maps 001: Hodler, Rückzug von Marignano, Karton III | Ferdinand Hodler (d. 1918), Kunsthaus Zürich | Public domain | https://commons.wikimedia.org/wiki/File:Ferdinand_Hodler_-_R%C3%BCckzug_von_Marignano._Karton_III_-_1584_-_Kunsthaus_Z%C3%BCrich.jpg | Courtesy credit |
+| Money & Maps 001: Portrait of John Calvin, c. 1550 | Anonymous (France), Museum Catharijneconvent | Public domain | https://commons.wikimedia.org/wiki/File:Portrait_of_John_Calvin_(1509%E2%80%931564),_by_anonymous_-_Museum_Catharijneconvent.jpg | Courtesy credit |
+| Money & Maps 001: The Pass of St. Gotthard, near Faido (1843) | J. M. W. Turner (d. 1851) | Public domain | https://commons.wikimedia.org/wiki/File:The_Pass_of_St._Gotthard,_near_Faido_by_J._M._W._Turner,_1843,_watercolor.jpg | Courtesy credit |
+| Money & Maps 001: Gotthardtunnel Bauarbeiter (c. 1880) | Unknown photographer | Public domain | https://commons.wikimedia.org/wiki/File:Gotthardtunnel_Bauarbeiter.jpg | Courtesy credit |
+| Money & Maps 001: Watch, Jean Rousseau the Younger, Geneva c. 1650–60 (obj. 193726) | The Metropolitan Museum of Art | CC0 (Open Access) | https://www.metmuseum.org/art/collection/search/193726 | Courtesy credit |
+| Money & Maps data: GDP per capita (NY.GDP.PCAP.CD) | World Bank | CC BY 4.0 | https://data.worldbank.org/indicator/NY.GDP.PCAP.CD | Yes: "World Bank" on screen + description |
 
 Not usable: `kay/` models (no licence file).
 Banned: Freesound 559296, 810951; anything from Jurassic Park.

@@ -11,6 +11,9 @@ import {HannibalThumb} from './history/HannibalThumb';
 import {CarthageEpisode, calculateCarthageEpisode} from './history/Carthage';
 import {CarthageThumb} from './history/CarthageThumb';
 import {ChannelAvatar, ChannelBanner} from './channel/ChannelArt';
+import {SwitzerlandEpisode, calculateSwitzerlandEpisode} from './money/Switzerland';
+import {SwitzerlandThumb} from './money/SwitzerlandThumb';
+import {MoneyAvatar, MoneyBanner} from './channel/MoneyArt';
 
 // Every brand registers its compositions here. Ids are stable: CI renders by id.
 const portrait = {fps: 30, width: 1080, height: 1920} as const;
@@ -58,6 +61,21 @@ export const Root: React.FC = () => (
     {([1, 2, 3] as const).map((v) => (
       <Composition key={v} id={`CarthageThumb${v}`} component={CarthageThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
     ))}
+    <Composition
+      id="Switzerland"
+      component={SwitzerlandEpisode}
+      durationInFrames={24 * 60 * 13}
+      fps={24}
+      width={1920}
+      height={1080}
+      defaultProps={{scenes: []}}
+      calculateMetadata={calculateSwitzerlandEpisode}
+    />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={`sw${v}`} id={`SwitzerlandThumb${v}`} component={SwitzerlandThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
+    ))}
+    <Composition id="MoneyAvatar" component={MoneyAvatar} durationInFrames={1} fps={24} width={800} height={800} />
+    <Composition id="MoneyBanner" component={MoneyBanner} durationInFrames={1} fps={24} width={2560} height={1440} />
     <Composition id="ChannelAvatar" component={ChannelAvatar} durationInFrames={1} fps={24} width={800} height={800} />
     <Composition id="ChannelBanner" component={ChannelBanner} durationInFrames={1} fps={24} width={2560} height={1440} />
   </>
