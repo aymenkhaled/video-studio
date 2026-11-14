@@ -66,7 +66,7 @@ const court = (x: number, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({
 const ROW = {
   whale: {label: 'Blue whale', note: 'largest ones', value: 150, color: C.whale, shape: 'blueWhale'} as CompareRow,
   elephant: {label: 'African elephant', note: 'adult male, average', value: 6, color: C.elephant, shape: 'elephant'} as CompareRow,
-  meg: {label: 'Megalodon', note: '16 m model → slim 24 m model', range: [61, 94], color: C.meg, shape: 'megalodon'} as CompareRow,
+  meg: {label: 'Megalodon', note: '16–24 m models', range: [61, 94], color: C.meg, shape: 'megalodon'} as CompareRow,
   argento: {label: 'Argentinosaurus', note: 'estimates vary', range: [65, 96], color: C.argento, shape: 'sauropod'} as CompareRow,
   patago: {label: 'Patagotitan', note: 'estimates vary', range: [50, 69], color: C.patago, shape: 'sauropod'} as CompareRow,
   peru23: {label: 'Perucetus (2023)', note: 'first estimate', range: [85, 340], color: C.peru, shape: 'perucetus'} as CompareRow,
@@ -86,7 +86,7 @@ const DT = {
 };
 
 const LINEUP: ScaleSubject[] = [
-  you(-6),
+  you(-7),
   bus(-4, 'bus', {label: 'Bus'}),
   white(10, 2.5, {sub: undefined}),
   meg(18, 4, {sub: undefined, label: 'Megalodon'}),
@@ -123,7 +123,7 @@ export const SCENES: Record<string, SceneDef> = {
     13,
   ),
   o5: deep({title: 'Three challengers from the past', from: [120, 0], to: [110, 0], markers: [{...DT.argento, appear: 0.05, sub: 'dinosaurs · ~95 million years ago'}, {...DT.meg, appear: 0.25, row: 1}, {...DT.peru, appear: 0.5}, {...DT.whale, appear: 0.7}]}),
-  o6: scale('ocean', [you(0), bus(3), whale(17, 3, {appear: 0.2})], cam(6, 18, 24, 52), undefined, 'PERSON · BUS · GIANT', 14),
+  o6: scale('ocean', [you(-1.5), bus(3), whale(17, 3, {appear: 0.2})], cam(6, 18, 24, 52), undefined, 'PERSON · BUS · GIANT', 14),
 
   // ---------- chapter 1: the blue whale ----------
   c1: art('bw-two', '', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.45, zoom: 1.12}, [{type: 'chapter', n: 1, title: 'The Blue Whale', sub: 'alive today · every ocean', question: 'How big is big?', image: 'bw-two'}]),
@@ -160,7 +160,7 @@ export const SCENES: Record<string, SceneDef> = {
   c3b: {kind: 'custom', render: SauropodWalkA, overlays: [gloss('Sauropod', 'long-necked, plant-eating dinosaur on four legs', [0.12, 0.9])]},
   c3c: {kind: 'custom', render: SauropodWalkB, overlays: [src('Apatosaurus ~21–23 m: estimates for Carnegie Museum specimen CM 3018')]},
   c3d: deep({title: 'The true giants: about 100 million years ago', from: [140, 0], to: [125, 0], markers: [{...DT.argento, appear: 0.15, dx: 170}, {...DT.patago, appear: 0.3, dx: -170}, {...DT.meg, appear: 0.55, row: 0}]}),
-  c3d2: deep({title: 'The Cretaceous: the last age of dinosaurs', from: [160, 0], to: [150, 0], markers: [{...DT.argento, appear: 0.05}, {...DT.asteroid, appear: 0.4}]}),
+  c3d2: deep({title: 'The Cretaceous: the last age of dinosaurs', from: [160, 0], to: [150, 0], markers: [{...DT.argento, appear: 0.05, dx: -170}, {...DT.asteroid, appear: 0.4, row: 0, dx: 170}]}),
   c3e: art('fernbank', 'Argentinosaurus skeleton cast, Fernbank Museum · reconstruction · photo Daderot, CC0', {x: 0.5, y: 0.45, zoom: 1.0}, {x: 0.45, y: 0.5, zoom: 1.2}, [gloss('Cast', 'a full-size copy of fossil bones', [0.15, 0.6])]),
   c3f: scale('land', [you(-2), bus(1), argento(14, {grow: [0.2, 0.6], sub: 'estimates: 30 → 35 m'}), whaleOutline(14, {appear: 0.65})], cam(18, 60, 22, 66), [src('Bonaparte & Coria 1993; Paul 2019')], undefined, 28),
   c3g: scale('land', [you(-2), bus(1), {id: 'patago', shape: 'sauropod', size: 31, range: [31, 37], x: 14, color: C.patago, label: 'Patagotitan', sub: 'first 37 m → later studies ~31 m'}], cam(20, 62, 22, 66), [src('Carballido et al. 2017; Paul 2019')], undefined, 29),
@@ -214,5 +214,5 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'character', name: 'Blue whale', role: 'biggest animal ever (as far as we know)', line: 'Alive today, in every ocean.', side: 'Blue whale', image: 'bw-aerial', window: [0.05, 0.6]},
   ]),
   c6f: scale('ocean', LINEUP.map((s) => ({...s, bracket: false})), cam(60, 150, 55, 160), undefined, 'WHICH GIANT WOULD YOU WANT TO SEE ALIVE?', 47),
-  end: scale('ocean', [whale(0, 5, {bracket: false, speed: 0.5})], cam(20, 50, 28, 50), [{type: 'endscreen', teaser: 'The deadliest animals on Earth, ranked'}], undefined, 48),
+  end: scale('ocean', [whale(0, 5, {bracket: false, speed: 0.5, label: undefined, sub: undefined})], cam(20, 50, 28, 50), [{type: 'endscreen', teaser: 'The deadliest animals on Earth, ranked'}], undefined, 48),
 };

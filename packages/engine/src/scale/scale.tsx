@@ -220,7 +220,8 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
 
   const subs = [...spec.subjects].sort((a, b) => (b.range?.[1] ?? b.size) - (a.range?.[1] ?? a.size));
   const shapes: React.ReactNode[] = [];
-  const labels: {node: React.ReactNode; box: Box; prio: number; anchor?: {x: number; y: number}; inside?: {x: number; y: number}; fixed?: boolean}[] = [];
+  const labels: {node: React.ReactNode; box: Box; prio: number; owner: string; anchor?: {x: number; y: number}; inside?: {x: number; y: number}; fixed?: boolean}[] = [];
+  const bodies: {owner: string; box: Box}[] = [];
   subs.forEach((sub, i) => {
     const shape = SHAPES[sub.shape];
     const a = easeInOutCubic(ramp(p, sub.appear ?? 0, (sub.appear ?? 0) + 0.06)) * (1 - easeInOutCubic(ramp(p, sub.vanish ?? 2, (sub.vanish ?? 2) + 0.05)));
@@ -275,6 +276,13 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       </g>,
     );
     if (sub.mystery) return;
+    {
+      const bw = len * widthOf(shape);
+      const top = pl.y - topOf(shape) * len;
+      const bot = pl.y - Math.min(0, bottomOf(shape)) * len;
+      bodies.push({owner: sub.id, box: {x: pl.x + bw * 0.06, y: top + (bot - top) * 0.15, w: bw * 0.88, h: (bot - top) * 0.75}});
+    }
+    if (pl.y - (shape.measure === 'height' ? 1 : topOf(shape)) * len < 110 || pl.x > W || pl.x + len * widthOf(shape) < 0) return; // subject's top off-frame mid pull-back: no floating labels
     // bracket above the subject (horizontal for length, vertical for height)
     const maxLen = (sub.range && !sub.grow ? sub.range[1] : grown) * s;
     const topY = pl.y - (shape.measure === 'height' ? 1 : topOf(shape)) * maxLen;
@@ -295,6 +303,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       const cx = Math.min(W - 40 - tw / 2, Math.max(40 + tw / 2, x0 + maxLen / 2));
       labels.push({
         prio: 1,
+        owner: sub.id,
         anchor: {x: x0 + maxLen / 2, y: by},
         box: {x: cx - tw / 2, y: by - 58, w: tw, h: 46},
         node: (
@@ -309,6 +318,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       const lw = sub.label.length * 19 + 30;
       labels.push({
         prio: 0,
+        owner: sub.id,
         fixed: true,
         box: {x: centre.x - lw / 2, y: centre.y - 24, w: lw, h: 48},
         node: <div style={{opacity: a, background: 'rgba(10,14,18,0.82)', borderRadius: 8, padding: '2px 12px', fontFamily: INTER, fontWeight: 900, fontSize: 32, color: PAPER, whiteSpace: 'nowrap'}}>{sub.label}</div>,
@@ -321,11 +331,12 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       const cx = Math.min(W - 30 - lw / 2, Math.max(30 + lw / 2, anchorX));
       labels.push({
         prio: 2,
+        owner: sub.id,
         anchor: {x: anchorX, y: topY},
         inside: bodyH > 150 && maxLen > lw ? {x: centre.x, y: centre.y} : undefined,
         box: {x: cx - lw / 2, y: bracketTop - lh, w: lw, h: lh},
         node: (
-          <div style={{opacity: a, textAlign: 'center', fontFamily: INTER, color: PAPER, textShadow: '0 2px 0 rgba(0,0,0,0.65)'}}>
+          <div style={{opacity: a, textAlign: 'center', fontFamily: INTER, color: PAPER, textShadow: '0 2px 0 rgba(0,0,0,0.65)', background: 'rgba(10,14,18,0.5)', borderRadius: 12, padding: '4px 14px'}}>
             <div style={{fontWeight: 900, fontSize: 40, lineHeight: 1.05, whiteSpace: 'nowrap'}}>
               {sub.you ? <span style={{background: GOLD, color: '#1a1408', borderRadius: 8, padding: '0 10px', marginRight: 10, textShadow: 'none'}}>YOU</span> : null}
               {sub.label}
@@ -348,7 +359,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
     .sort((a, b) => a.prio - b.prio)
     .map((l, k) => {
       const box = {...l.box, h: l.box.h + (l.prio === 2 && l.node ? 34 : 0)};
-      const clear = (b: Box) => b.y >= 70 && !placed.some((q) => overlaps(b, q));
+      const clear = (b: Box) => b.y >= 70 && !placed.some((q) => overlaps(b, q)) && !bodies.some((q) => q.owner !== l.owner && overlaps(b, q.box));
       let pos: Box = box;
       if (!l.fixed) {
         const cands: Box[] = [];
