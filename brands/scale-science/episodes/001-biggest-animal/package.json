@@ -1,0 +1,31 @@
+{
+  "titles": [
+    "How Big Was the Biggest Animal Ever? (Blue Whale vs Megalodon vs Dinosaurs)",
+    "Megalodon, Dinosaurs or the Blue Whale: Who Was Really the Biggest?",
+    "The Biggest Animal Ever Is Alive Right Now"
+  ],
+  "hook": "Is the blue whale really the biggest animal that has ever lived? We measure it against megalodon, the giant dinosaurs Argentinosaurus and Patagotitan, the fossil whale Perucetus and the sea reptile Ichthyotitan, side by side on a metre grid next to a person and a bus, with every number in metres AND feet and every estimate sourced. Spoiler: the length race is close. The weight race is not.",
+  "chapters": {
+    "o1": "Is the blue whale the biggest ever?",
+    "c1": "The Blue Whale",
+    "c2": "Megalodon",
+    "c3": "Titans on Land (sauropods)",
+    "c4": "The Challengers: Perucetus & Ichthyotitan",
+    "c5": "Why Now?",
+    "c6": "The Final Line-up"
+  },
+  "credits": [
+    "Photos: NOAA Photo Library, NOAA Fisheries, NOAA Channel Islands National Marine Sanctuary, Christin Khan / NOAA NEFSC (public domain, US government works).",
+    "Photo: Megalodon jaw reproduction at the NC Aquarium by Di (they-them), CC0, https://commons.wikimedia.org/wiki/File:Megalodon_jaw_reproduction_at_NC_Aquarium.jpg",
+    "Photo: \"Carcharodon megalodon fossil shark jaw (reconstruction) (late Cenozoic) 3\" by James St. John, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), https://commons.wikimedia.org/wiki/File:Carcharodon_megalodon_fossil_shark_jaw_(reconstruction)_(late_Cenozoic)_3.jpg",
+    "Photo: Argentinosaurus cast, Fernbank Museum of Natural History, by Daderot, CC0, https://commons.wikimedia.org/wiki/File:Interior_-_Fernbank_Museum_of_Natural_History_-_DSC00133.JPG",
+    "Figure: Ichthyotitan severnensis holotype, Lomax, de la Salle, Perillo, Reynolds, Reynolds & Waldron (2024), PLOS ONE 19(4): e0300289, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).",
+    "3D model: Apatosaurus by Quaternius (CC0). Animal silhouettes, scale stage and charts: original artwork made for this channel. Reconstructions of extinct animals are approximate.",
+    "2.5D depth: Depth-Anything-V2-Small (Apache-2.0).",
+    "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT). Sound effects synthesised for this channel.",
+    "Narration: synthetic voice (Kokoro-82M, Apache-2.0).",
+    "Fonts: Inter (SIL Open Font License)."
+  ],
+  "hashtags": ["#BlueWhale", "#Megalodon", "#Dinosaurs", "#SizeComparison", "#Science"],
+  "pinned_comment": "Which giant would you most like to see alive, up close: the blue whale, megalodon, Argentinosaurus, Perucetus or Ichthyotitan? And what should we measure next?"
+}

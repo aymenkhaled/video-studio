@@ -34,6 +34,8 @@ export type ScaleSubject = {
   mystery?: boolean;
   /** swims / walks forward at this speed (m/s) */
   speed?: number;
+  /** dashed outline only (a reference shape from another scene, e.g. "blue whale length") */
+  outline?: boolean;
   /** grows from `size` to `range[1]` over this window (estimates growing on screen) */
   grow?: [number, number];
 };
@@ -181,15 +183,16 @@ const Ruler: React.FC<{camX: number; s: number; ground: number; env: ScaleEnv}> 
   const step = gridStep(s, 22);
   const left = camX - W / 2 / s;
   const right = camX + W / 2 / s;
-  const first = Math.floor(left / step) * step;
+  const firstI = Math.floor(left / step);
   const items: React.ReactNode[] = [];
   const line = env === 'ocean' ? 'rgba(210,240,255,' : 'rgba(40,34,20,';
-  for (let m = first; m <= right + step; m += step) {
+  for (let i = firstI; i * step <= right + step; i++) {
+    const m = Math.round(i * step * 1000) / 1000;
     const x = (m - camX) * s + W / 2;
-    const bold = Math.round(m / step) % 5 === 0;
+    const bold = i % 5 === 0;
     items.push(<line key={`v${m}`} x1={x} x2={x} y1={ground - 360} y2={ground} stroke={`${line}${bold ? 0.16 : 0.07})`} strokeWidth={bold ? 2 : 1} />);
     items.push(<line key={`t${m}`} x1={x} x2={x} y1={ground} y2={ground + (bold ? 18 : 9)} stroke={`${line}0.8)`} strokeWidth={bold ? 3 : 2} />);
-    if (bold && m >= 0) items.push(<text key={`l${m}`} x={x + 6} y={ground + 46} fontFamily={INTER} fontWeight={700} fontSize={30} fill={env === 'ocean' ? '#d8eef8' : '#2e2616'}>{`${m} m`}</text>);
+    if (bold && m >= 0) items.push(<text key={`l${m}`} x={x + 6} y={ground + 46} fontFamily={INTER} fontWeight={700} fontSize={30} fill={env === 'ocean' ? '#d8eef8' : '#2e2616'}>{m >= 1 || m === 0 ? `${m} m` : `${Math.round(m * 100)} cm`}</text>);
   }
   return (
     <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
@@ -241,12 +244,13 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
         {sub.range && !sub.grow ? (
           <path d={pathFor(shape, {...pl, len: sub.range[1] * s})} fill="rgba(255,255,255,0.06)" stroke={GOLD} strokeWidth={3} strokeDasharray="14 10" />
         ) : null}
-        {(shape.fins ?? []).map((f, k) => (
+        {sub.outline ? <path d={pathFor(shape, pl)} fill="rgba(255,255,255,0.08)" stroke={color} strokeWidth={4} strokeDasharray="16 10" /> : null}
+        {!sub.outline && (shape.fins ?? []).map((f, k) => (
           <path key={k} d={pathFor(shape, {...pl, phase: pl.phase + 0.8}, f)} fill={darken(color, 0.72)} />
         ))}
-        <path d={pathFor(shape, pl)} fill={color} stroke="rgba(255,255,255,0.5)" strokeWidth={2} />
-        {!sub.mystery ? <path d={pathFor(shape, pl)} fill={`url(#${gid})`} opacity={0.55} /> : null}
-        {!sub.mystery
+        {!sub.outline ? <path d={pathFor(shape, pl)} fill={color} stroke="rgba(255,255,255,0.5)" strokeWidth={2} /> : null}
+        {!sub.mystery && !sub.outline ? <path d={pathFor(shape, pl)} fill={`url(#${gid})`} opacity={0.55} /> : null}
+        {!sub.mystery && !sub.outline
           ? (shape.extras ?? []).map((e, k) => {
               if (e.kind === 'eye' || e.kind === 'disc') {
                 const [cx, cy] = toPx(shape, e.u, e.v, pl);
@@ -295,8 +299,8 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
         ),
       });
     }
-    if (sub.label) {
-      const lw = Math.max(sub.label.length * 22, (sub.sub ?? '').length * 15.5) + 34;
+    if (sub.label || sub.you) {
+      const lw = Math.max((sub.label ?? "").length * 22, (sub.sub ?? '').length * 15.5) + 34;
       const lh = sub.sub ? 86 : 54;
       const anchorX = shape.measure === 'height' ? x0 + maxLen * 0.13 : x0 + maxLen * 0.5;
       const bracketTop = shape.measure === 'length' && maxLen > 40 && sub.bracket !== false ? topY - 26 - 62 : topY - 12;
@@ -345,7 +349,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       </svg>
       {nodes}
       <div style={{position: 'absolute', right: 36, top: 32, background: 'rgba(10,14,18,0.7)', borderRadius: 10, padding: '6px 16px', fontFamily: INTER, fontWeight: 800, fontSize: 30, color: PAPER}}>
-        TO SCALE <span style={{color: GOLD}}>· grid lines every {gridStep(s, 22)} m</span>
+        TO SCALE <span style={{color: GOLD}}>· grid lines every {gridStep(s, 22) >= 1 ? `${gridStep(s, 22)} m` : `${Math.round(gridStep(s, 22) * 100)} cm`}</span>
       </div>
       {titleA > 0 ? (
         <div style={{position: 'absolute', left: 0, right: 0, top: 96, display: 'flex', justifyContent: 'center', opacity: titleA}}>

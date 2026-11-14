@@ -13,6 +13,7 @@ const fmt = (v: number) => {
 
 /** "30 m · 98 ft", "1.75 m · 5.7 ft"; ranges "16–24 m · 52–79 ft". */
 export const lengthLabel = (m: number | [number, number]): string => {
+  if (!Array.isArray(m) && m < 1) return `${Math.round(m * 1000) / 10} cm · ${Math.round(m * 39.37 * 10) / 10} in`;
   if (Array.isArray(m)) {
     const [a, b] = m;
     return `${fmt(a)}–${fmt(b)} m · ${fmt(a * FT_PER_M)}–${fmt(b * FT_PER_M)} ft`;
@@ -28,7 +29,7 @@ export const massLabel = (t: number | [number, number]): string => {
 
 /** Metre-grid spacing for a zoom level: thin lines never closer than `minPx`, bold lines every 5 steps. */
 export const gridStep = (pxPerM: number, minPx = 18): number => {
-  for (const s of [1, 2, 5, 10, 20, 50, 100]) if (s * pxPerM >= minPx) return s;
+  for (const s of [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100]) if (s * pxPerM >= minPx) return s;
   return 200;
 };
 

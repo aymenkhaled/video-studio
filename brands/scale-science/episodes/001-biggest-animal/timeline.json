@@ -1,0 +1,1155 @@
+{
+ "id": "001-biggest-animal",
+ "comp": "BiggestAnimal",
+ "title": "How Big Was the Biggest Animal Ever?",
+ "fps": 24,
+ "seed": 33,
+ "voice": {
+  "engine": "kokoro",
+  "voice": "bm_george",
+  "speed": 0.95,
+  "language": "en-gb",
+  "gap": 0.42
+ },
+ "music": {
+  "key": "C",
+  "tempo": 66
+ },
+ "ambience": {
+  "type": "air",
+  "gain": 0.08
+ },
+ "scenes": [
+  {
+   "id": "o1",
+   "lines": [
+    "This is a blue whale, the biggest animal alive today.",
+    "The largest ones can grow to about thirty-three metres. That is one hundred ten feet."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whale",
+     "at": 1.0,
+     "duration": 4.0,
+     "gain": 0.35
+    }
+   ],
+   "lead": 0.4
+  },
+  {
+   "id": "o2",
+   "lines": [
+    "Imagine you are swimming right next to one.",
+    "You would need about nineteen people, lying head to toe, to match its length."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "bubbles",
+     "at": 0.5,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "o3",
+   "lines": [
+    "It is longer than two city buses parked end to end,",
+    "and longer than a basketball court."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "o4",
+   "lines": [
+    "But is it the biggest animal that has ever lived?",
+    "Three giants from the past have challenged it."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.5,
+     "duration": 3.0,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "o5",
+   "lines": [
+    "A monster shark. Dinosaurs that may have been even longer.",
+    "And a fossil whale from Peru that scientists once thought was even heavier."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 0.3,
+     "duration": 1.2,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "o6",
+   "lines": [
+    "Today we measure every one of them, side by side,",
+    "next to a person and a bus, to find the true champion."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "lines": [
+    "Chapter one. The blue whale."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c1b",
+   "lines": [
+    "Blue whales live in every ocean on Earth.",
+    "They are mammals, like us. They breathe air, and they feed their babies milk."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c1c",
+   "lines": [
+    "Let's measure. On our grid, each line is one metre.",
+    "Here is a person, one point seven five metres tall. And a city bus, twelve metres long."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "tick",
+     "at": 2.0,
+     "duration": 0.2,
+     "gain": 0.4
+    },
+    {
+     "type": "tick",
+     "at": 5.0,
+     "duration": 0.2,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "c1d",
+   "lines": [
+    "And here is the blue whale.",
+    "The very largest, in the cold seas around Antarctica, reach about thirty-three metres. Most are a bit smaller."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whale",
+     "at": 0.8,
+     "duration": 3.5,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c1b2",
+   "lines": [
+    "Blue whales may live for eighty to ninety years.",
+    "And they are not monsters. They eat almost nothing but tiny animals."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whale",
+     "at": 1.5,
+     "duration": 3.0,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c1e",
+   "lines": [
+    "But length is only half the story.",
+    "To know who is truly biggest, we also have to weigh them."
+   ],
+   "music": "wonder",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1e2",
+   "lines": [
+    "We measure weight in tonnes. One tonne is one thousand kilograms.",
+    "An adult male African elephant weighs about six tonnes."
+   ],
+   "music": "wonder",
+   "sfx": [
+    {
+     "type": "tick",
+     "at": 1.0,
+     "duration": 0.2,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "c1f",
+   "lines": [
+    "The largest blue whales can weigh about one hundred fifty tonnes.",
+    "That is roughly as heavy as twenty-five adult male African elephants."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 1.0,
+     "duration": 2.5,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c1g",
+   "lines": [
+    "How does an animal get that heavy?",
+    "By eating some of the smallest animals in the sea: krill."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "bubbles",
+     "at": 1.0,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c1g2",
+   "lines": [
+    "Krill are small, shrimp-like animals, up to about six centimetres long.",
+    "Alone they are tiny. But they gather in huge swarms, and that is a feast."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "bubbles",
+     "at": 0.5,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c1h",
+   "lines": [
+    "A blue whale takes a giant gulp of water full of krill.",
+    "Then it pushes the water out through bristly plates called baleen, and swallows the food."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "bubbles",
+     "at": 0.4,
+     "duration": 3.0,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1i",
+   "lines": [
+    "The biggest blue whales may eat up to six tons of krill in a single day,",
+    "about the weight of a large elephant, every day."
+   ],
+   "music": "wonder",
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 0.8,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c1r",
+   "lines": [
+    "So far: the blue whale can reach thirty-three metres and one hundred fifty tonnes.",
+    "But twenty million years ago, something with much bigger teeth ruled the sea."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "lines": [
+    "Chapter two. Megalodon."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c2b",
+   "lines": [
+    "Megalodon was a giant shark.",
+    "It lived from about twenty-three million years ago until about three point six million years ago."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c2c",
+   "lines": [
+    "To feel how long ago that is:",
+    "people like us have existed for only about three hundred thousand years. Megalodon vanished more than ten times earlier."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c2d",
+   "lines": [
+    "We know megalodon mostly from its teeth.",
+    "A shark's skeleton is made of cartilage, the bendy material in your ears and nose, and it rarely becomes a fossil."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c2e",
+   "lines": [
+    "The largest megalodon teeth are about eighteen centimetres long, roughly the length of a hand.",
+    "This jaw is a modern model, sized from teeth like these."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c2e2",
+   "lines": [
+    "Megalodon was a hunter.",
+    "One study suggests an adult could eat prey as large as a killer whale."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c2f",
+   "lines": [
+    "Now, the size. Here is a great white shark, the biggest hunting shark alive today.",
+    "It reaches about six metres."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "bubbles",
+     "at": 0.5,
+     "duration": 1.5,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c2g",
+   "lines": [
+    "Megalodon estimates range from about sixteen metres to as much as twenty-four.",
+    "Scientists still argue, because only teeth and a few backbones survive."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.3,
+     "duration": 2.5,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c2g2",
+   "lines": [
+    "The best clue is a row of megalodon backbones found in Belgium, about eleven metres long.",
+    "But the head and the tail are missing, so scientists must estimate them."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c2g3",
+   "lines": [
+    "Some scientists think megalodon was chunky, like a great white.",
+    "Others think it was slimmer and longer, more like a lemon shark."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c2h",
+   "lines": [
+    "Even at its largest estimate, megalodon was shorter than the biggest blue whales."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c2i",
+   "lines": [
+    "And it was lighter. A sixteen-metre megalodon may have weighed about sixty tonnes.",
+    "Even a twenty-four-metre one was probably under one hundred."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 1.0,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c2r",
+   "lines": [
+    "So far: megalodon was a true giant, but shorter and lighter than the biggest blue whales.",
+    "On land, though, some animals grew even longer."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "lines": [
+    "Chapter three. Titans on land."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "land",
+    "gain": 0.22
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c3b",
+   "lines": [
+    "These are sauropods: plant-eating dinosaurs with long necks and long tails, walking on four legs.",
+    "This one is Apatosaurus."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "land",
+    "gain": 0.22
+   },
+   "sfx": [
+    {
+     "type": "footstep",
+     "at": 1.0,
+     "duration": 0.6,
+     "gain": 0.6
+    }
+   ]
+  },
+  {
+   "id": "c3c",
+   "lines": [
+    "Apatosaurus was about twenty-two metres long, nearly two buses.",
+    "And it was not even one of the biggest."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "land",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c3d",
+   "lines": [
+    "The true giants came later, in what is now Argentina,",
+    "about one hundred million years ago, in the Cretaceous period."
+   ],
+   "music": "build"
+  },
+  {
+   "id": "c3d2",
+   "lines": [
+    "The Cretaceous was the last period of the dinosaurs.",
+    "It ended sixty-six million years ago, when a huge asteroid hit the Earth."
+   ],
+   "music": "build"
+  },
+  {
+   "id": "c3e",
+   "lines": [
+    "Meet Argentinosaurus. This skeleton is a full-size cast, a copy.",
+    "It was rebuilt from just a handful of real bones: some backbones, ribs and a leg bone."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "land",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c3f",
+   "lines": [
+    "Because so few bones survive, its length is uncertain: about thirty to thirty-five metres.",
+    "That may match, or even beat, the blue whale."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "land",
+    "gain": 0.22
+   },
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.3,
+     "duration": 2.5,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c3g",
+   "lines": [
+    "Its relative Patagotitan was first estimated at thirty-seven metres.",
+    "Later studies shrank it to about thirty-one."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "land",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c3h",
+   "lines": [
+    "But on the scale, the dinosaurs lose.",
+    "Most estimates put them between about fifty and ninety-six tonnes, well below a big blue whale."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 1.0,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c3i",
+   "lines": [
+    "Why not heavier? On land, every kilogram must be carried by legs.",
+    "Sauropods had pillar-like legs and bones filled with air pockets. But gravity still sets a limit."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "land",
+    "gain": 0.22
+   },
+   "sfx": [
+    {
+     "type": "footstep",
+     "at": 0.5,
+     "duration": 0.6,
+     "gain": 0.5
+    },
+    {
+     "type": "footstep",
+     "at": 2.0,
+     "duration": 0.6,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3r",
+   "lines": [
+    "So far: the longest dinosaurs may have matched the blue whale for length, but weighed far less.",
+    "Then, in twenty twenty-three, a fossil whale claimed the crown."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "lines": [
+    "Chapter four. The challengers."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c4b",
+   "lines": [
+    "In twenty twenty-three, scientists described Perucetus colossus,",
+    "an ancient whale that lived about thirty-nine million years ago, in what is now Peru."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c4c",
+   "lines": [
+    "Its bones were incredibly thick and heavy.",
+    "From them, the team estimated a weight of eighty-five to three hundred forty tonnes."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 1.0,
+     "duration": 1.2,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c4c2",
+   "lines": [
+    "Only a few of its bones have been found: thirteen backbones, four ribs and part of a hip.",
+    "No skull. So its shape and size are partly a guess."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c4d",
+   "lines": [
+    "In the middle of that range, it would beat the largest blue whale.",
+    "Headlines called it a contender for the heaviest animal ever."
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.3,
+     "duration": 2.5,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c4e",
+   "lines": [
+    "But a year later, two other scientists checked the math again.",
+    "Heavy bones, they argued, do not mean a heavy body. Their estimate: sixty to one hundred fourteen tonnes."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 1.5,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c4f",
+   "lines": [
+    "Huge, but lighter than the biggest blue whales.",
+    "The crown stayed where it was."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c4g",
+   "lines": [
+    "One more challenger. In England, a girl and her father found pieces of a giant jawbone on a beach.",
+    "It belonged to Ichthyotitan, a sea reptile from two hundred two million years ago."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c4g2",
+   "lines": [
+    "Ichthyosaurs were sea reptiles shaped a bit like dolphins.",
+    "They breathed air, but they never came onto land."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c4h",
+   "lines": [
+    "From two jawbones, scientists estimate it was up to about twenty-five metres long.",
+    "With so few bones, nobody knows its weight. And it still falls short of the blue whale."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "bubbles",
+     "at": 0.5,
+     "duration": 1.5,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c4r",
+   "lines": [
+    "So far: no fossil challenger has beaten the blue whale on weight.",
+    "So why is the biggest animal ever alive right now, and not in the past?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "lines": [
+    "Chapter five. Why now?"
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c5b",
+   "lines": [
+    "First, water. In the sea, water pushes up on a body and supports its weight.",
+    "So a whale does not need legs to carry one hundred fifty tonnes."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "bubbles",
+     "at": 0.5,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c5c",
+   "lines": [
+    "Second, food. About three million years ago, ocean currents changed.",
+    "Cold water rising from the deep fed huge, packed swarms of krill in some seasons."
+   ],
+   "music": "wonder"
+  },
+  {
+   "id": "c5d",
+   "lines": [
+    "Bigger whales could swim farther between these feasts, and take in more food with every gulp.",
+    "Over time, whales grew into giants."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whale",
+     "at": 1.0,
+     "duration": 3.0,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c5d2",
+   "lines": [
+    "Could whales grow even bigger one day?",
+    "Studies of feeding whales suggest the biggest are close to the limit of how much food they can gather."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c5e",
+   "lines": [
+    "So the giant whales are recent.",
+    "For most of their history, baleen whales were much smaller."
+   ],
+   "music": "wonder"
+  },
+  {
+   "id": "c5f",
+   "lines": [
+    "Which means something surprising.",
+    "You live at the same time as the biggest animal that has ever lived. Not in the past. Right now."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whale",
+     "at": 2.0,
+     "duration": 3.5,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c5g",
+   "lines": [
+    "But in the last century, whalers hunted blue whales almost to extinction.",
+    "Today they are protected, and slowly coming back."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c5r",
+   "lines": [
+    "So far: water carries the whale's weight, and seasonal krill feasts feed it.",
+    "Now, let's put every giant side by side."
+   ],
+   "music": "wonder",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "lines": [
+    "Chapter six. The final line-up."
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c6b",
+   "lines": [
+    "Here they all are, to the same scale.",
+    "A person. A bus. A great white shark. Megalodon. Ichthyotitan. Perucetus."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c6c",
+   "lines": [
+    "And on land, Argentinosaurus.",
+    "Some may have been as long as the blue whale. As far as we know, none was as heavy."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "land",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c6c2",
+   "lines": [
+    "On length, it is close. Argentinosaurus, maybe thirty-five metres. The blue whale, about thirty-three.",
+    "Patagotitan, about thirty-one. Ichthyotitan, up to twenty-five. Megalodon, up to twenty-four."
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "tick",
+     "at": 1.0,
+     "duration": 0.2,
+     "gain": 0.4
+    },
+    {
+     "type": "tick",
+     "at": 4.0,
+     "duration": 0.2,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "c6d",
+   "lines": [
+    "On the scale: the blue whale, up to about one hundred fifty tonnes.",
+    "Every challenger lands below it."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 0.8,
+     "duration": 2.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c6e",
+   "lines": [
+    "The biggest animal that has ever lived is alive today: the blue whale.",
+    "But fossils keep surprising us. One new bone could change this ranking."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "whale",
+     "at": 1.5,
+     "duration": 4.0,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c6f",
+   "lines": [
+    "So here is my question for you:",
+    "which of these giants would you most like to see alive, up close? Tell me in the comments."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "end",
+   "lines": [
+    "Next: the deadliest animals on Earth, ranked by how many people they really kill."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   },
+   "min": 20,
+   "endscreen": true
+  }
+ ]
+}

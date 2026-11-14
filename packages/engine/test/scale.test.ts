@@ -13,7 +13,9 @@ test('metric + imperial labels', () => {
 });
 
 test('grid step keeps lines readable at every zoom', () => {
-  assert.equal(gridStep(100), 1);
+  assert.equal(gridStep(100), 0.2);
+  assert.equal(gridStep(4800), 0.01);
+  assert.equal(lengthLabel(0.06), "6 cm · 2.4 in");
   assert.equal(gridStep(10), 2);
   assert.equal(gridStep(2), 10);
   assert.ok(gridStep(0.05) >= 200);

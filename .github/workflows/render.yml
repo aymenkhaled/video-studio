@@ -36,6 +36,10 @@ on:
         description: Browser tabs per render job (empty = CPU count; use 2 for 3D scenes)
         required: false
         default: ''
+      media_release:
+        description: Release holding media.zip (media mode publishes to it; renders download it)
+        required: false
+        default: media-v1
       publish:
         description: Upload final.mp4 to a GitHub Release
         type: boolean
@@ -99,11 +103,11 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fluidsynth fluid-soundfont-gm espeak-ng
           pip install -q -r packages/audio/requirements.txt
           python packages/audio/soundtrack.py "${{ inputs.timeline }}"
-      - name: Licensed art + relief/rivers + depth layers (release media-v1, built by media.yml)
+      - name: Licensed art + relief/rivers + depth layers (media release, built by mode=media)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release download media-v1 -p media.zip -D .cache --clobber
+          gh release download "${{ inputs.media_release || 'media-v1' }}" -p media.zip -D .cache --clobber
           unzip -qo .cache/media.zip -d public
           ls public/art | head -40
       - id: plan
@@ -296,11 +300,12 @@ jobs:
           restore-keys: media-src-
       - run: pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
       - run: python3 tools/fetch_media.py
-      - name: Publish media-v1/media.zip
+      - name: Publish <media_release>/media.zip
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.media_release || 'media-v1' }}
         run: |
           cd public && zip -qr ../media.zip art geo && cd ..
           ls -la media.zip
-          gh release view media-v1 >/dev/null 2>&1 || gh release create media-v1 --title "media-v1" --notes "Licensed art (PD / CC0 / CC BY, see docs/LICENSES.md), Natural Earth relief + rivers (PD), derived depth layers. Built by media.yml from assets/media.json."
-          gh release upload media-v1 media.zip --clobber
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "$TAG" --notes "Licensed art (PD / CC0 / CC BY, see docs/LICENSES.md), Natural Earth relief + rivers (PD), derived depth layers. Built by render.yml mode=media from assets/media.json."
+          gh release upload "$TAG" media.zip --clobber

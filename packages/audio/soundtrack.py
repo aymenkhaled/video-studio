@@ -431,6 +431,29 @@ def effect(kind, n, v):
         ph = 2 * np.pi * np.cumsum(f) / RATE
         saw = sum(np.sin(k * ph) / k for k in range(1, 9))
         return norm(filt(saw * (1 + 0.2 * np.sin(2 * np.pi * 7 * t)), 3200)) * env(n, 0.05, 0.35)
+    if kind == "underwater":  # deep muffled bed with slow swell and sparse bubble ticks
+        swell = 0.55 + 0.45 * np.sin(2 * np.pi * 0.05 * t) ** 2
+        bed = filt(filt(noise, 40, "highpass"), 380) * swell
+        return norm(bed) * env(n, 1.0, 1.0)
+    if kind == "bubbles":  # short rising chirps
+        x = np.zeros(n)
+        for st in np.sort(rng.uniform(0, max(0.05, dur - 0.1), max(3, int(dur * 9)))):
+            i = round(st * RATE)
+            m = min(n - i, round(0.05 * RATE))
+            if m <= 0:
+                continue
+            tt = t[:m]
+            f0 = rng.uniform(500, 1400)
+            x[i: i + m] += np.sin(2 * np.pi * np.cumsum(f0 * (1 + 3 * tt / 0.05)) / RATE) * np.exp(-tt * 70)
+        return norm(x) * env(n, 0.01, 0.1)
+    if kind == "whale":  # original synthesised moan (low glide + harmonics + slow vibrato), not a recording
+        f = 150 - 55 * np.sin(np.pi * np.clip(t / dur, 0, 1)) + 3 * np.sin(2 * np.pi * 4.5 * t)
+        ph = 2 * np.pi * np.cumsum(f) / RATE
+        tone = np.sin(ph) + 0.45 * np.sin(2 * ph) + 0.2 * np.sin(3 * ph)
+        return norm(filt(tone, 900)) * np.sin(np.pi * np.clip(t / dur, 0, 1)) ** 1.5
+    if kind == "wind":  # land ambience: gusty filtered noise
+        gust = 0.4 + 0.6 * np.sin(2 * np.pi * 0.07 * t + 1) ** 2
+        return norm(filt(filt(noise, 150, "highpass"), 1100) * gust) * env(n, 0.8, 0.8)
     raise RuntimeError(f"unknown sfx type: {kind}")
 
 
@@ -458,7 +481,7 @@ if amb:
         air = norm(filt(filt(rng.normal(0, 1, N), 110, "highpass"), 1800))
         ambience[:, ch] = air * float(amb.get("gain", 0.25)) * (0.5 + 0.15 * np.sin(2 * np.pi * 0.07 * tt + ch))
 
-AMB_KIND = {"sea": "waves", "city": "crowd", "fire": "fire", "camp": "crowd", "march": "march"}
+AMB_KIND = {"ocean": "underwater", "land": "wind", "sea": "waves", "city": "crowd", "fire": "fire", "camp": "crowd", "march": "march"}
 for a in SCENE_AMB:  # per-scene beds, 0.8 s fades, ducked under the voice like the global ambience
     s0, s1 = round(float(a["start"]) * RATE), min(N, round(float(a["end"]) * RATE))
     if s1 - s0 < RATE // 2:

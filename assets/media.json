@@ -130,6 +130,70 @@
    "licence": "CC0 1.0",
    "credit": "Bust traditionally identified as Scipio Africanus, Capitoline Museums — photo Jona Lendering / Livius.org, CC0",
    "depth": false
+  },
+  {
+   "id": "bw-aerial",
+   "source": "commons",
+   "file": "Anim1754 - Flickr - NOAA Photo Library.jpg",
+   "licence": "Public domain (NOAA, US federal government work)",
+   "credit": "Blue whale, aerial view. NOAA Photo Library (public domain)",
+   "depth": true
+  },
+  {
+   "id": "bw-two",
+   "source": "commons",
+   "file": "CINMS - Two Blue Whales Aerial Photo (27877575362).jpg",
+   "licence": "Public domain (NOAA Channel Islands National Marine Sanctuary, US federal government work)",
+   "credit": "Two blue whales, Channel Islands NMS. NOAA (public domain)",
+   "depth": true
+  },
+  {
+   "id": "bw-dorsal",
+   "source": "commons",
+   "file": "Blue Whale 001 body bw.jpg",
+   "licence": "Public domain (NOAA Fisheries, US federal government work)",
+   "credit": "Blue whale. NOAA Fisheries (public domain)",
+   "depth": true
+  },
+  {
+   "id": "humpback-feed",
+   "source": "commons",
+   "file": "Humpback whale bubble net feeding Christin Khan NOAA.jpg",
+   "licence": "Public domain (Christin Khan, NOAA/NEFSC, US federal government work)",
+   "credit": "Humpback whales bubble-net feeding. Christin Khan, NOAA/NEFSC (public domain)",
+   "depth": true
+  },
+  {
+   "id": "meg-jaw",
+   "source": "commons",
+   "file": "Megalodon jaw reproduction at NC Aquarium.jpg",
+   "licence": "CC0 1.0",
+   "credit": "Megalodon jaw reproduction at the North Carolina Aquarium. Photo: Di (they-them), CC0",
+   "depth": true
+  },
+  {
+   "id": "meg-teeth",
+   "source": "commons",
+   "file": "Carcharodon megalodon fossil shark jaw (reconstruction) (late Cenozoic) 3.jpg",
+   "licence": "CC BY 2.0 (credit: James St. John)",
+   "credit": "\"Carcharodon megalodon fossil shark jaw (reconstruction)\" by James St. John, CC BY 2.0",
+   "depth": true
+  },
+  {
+   "id": "fernbank",
+   "source": "commons",
+   "file": "Interior - Fernbank Museum of Natural History - DSC00133.JPG",
+   "licence": "CC0 1.0",
+   "credit": "Argentinosaurus skeleton cast, Fernbank Museum of Natural History. Photo: Daderot, CC0",
+   "depth": true
+  },
+  {
+   "id": "ichthy-jaw",
+   "source": "commons",
+   "file": "Ichthyotitan holotype (BRSMG Cg3178).png",
+   "licence": "CC BY 4.0 (credit: Lomax et al. 2024, PLOS ONE)",
+   "credit": "Ichthyotitan severnensis holotype jawbone. D. R. Lomax, P. de la Salle, M. Perillo, J. Reynolds, R. Reynolds, J. F. Waldron (2024), PLOS ONE, CC BY 4.0",
+   "depth": false
   }
  ],
  "geo": {

@@ -153,7 +153,34 @@ const COURT: Shape = {
   tension: 0,
 };
 
+const KRILL: Shape = {
+  motion: 'fish',
+  measure: 'length',
+  pts: [
+    [0.0, 0.03], [0.08, 0.07], [0.25, 0.11], [0.45, 0.14], [0.65, 0.15], [0.82, 0.13], [0.95, 0.08], [1.0, 0.03], [0.96, -0.02],
+    [0.8, -0.05], [0.6, -0.07], [0.4, -0.07], [0.2, -0.05], [0.06, -0.03], [0.0, -0.05],
+  ],
+  fins: [[[0.55, -0.06], [0.52, -0.16], [0.5, -0.06], [0.45, -0.06], [0.42, -0.17], [0.4, -0.06]]],
+  extras: [
+    {kind: 'eye', u: 0.9, v: 0.06, r: 0.035},
+    {kind: 'line', pts: [[0.97, 0.06], [1.15, 0.2], [1.35, 0.26]], w: 0.008, tone: 'dark'},
+    {kind: 'line', pts: [[0.97, 0.03], [1.2, 0.08], [1.4, 0.05]], w: 0.008, tone: 'dark'},
+  ],
+  tension: 0.5,
+};
+
+/** A row of fossil vertebrae (backbone discs), e.g. the ~11 m megalodon column. */
+const SPINE: Shape = {
+  motion: 'none',
+  measure: 'length',
+  pts: [[0, -0.012], [0, 0.012], [1, 0.012], [1, -0.012]],
+  extras: Array.from({length: 24}, (_, i): Extra => ({kind: 'disc', u: 0.02 + i * 0.0417, v: 0, r: 0.017, tone: 'light'})),
+  tension: 0,
+};
+
 export const SHAPES = {
+  krill: KRILL,
+  spine: SPINE,
   blueWhale: BLUE_WHALE,
   greatWhite: GREAT_WHITE,
   megalodon: MEGALODON,

@@ -58,3 +58,12 @@ Banned: Freesound 559296, 810951; anything from Jurassic Park.
 
 ## Description credit block (paste when CC BY sounds are used)
 Sounds (Freesound.org): "Pas de dinosaure" by ComputerHotline (CC BY 4.0) · "Dinosaur Dragon Growls" by Mega-X-stream (CC BY 4.0) · "hiccups of a dinosaur" by Setuniman (CC BY 4.0). 3D models: Quaternius (CC0). HDRI: Poly Haven (CC0).
+| bw-aerial — Anim1754, NOAA Photo Library (blue whale aerial) | Wikimedia Commons | Public domain (US federal work) | Scale & Science 001 | https://commons.wikimedia.org/wiki/File:Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg |
+| bw-two — Two blue whales, CINMS (NOAA) | Wikimedia Commons | Public domain (US federal work) | Scale & Science 001 | https://commons.wikimedia.org/wiki/File:CINMS_-_Two_Blue_Whales_Aerial_Photo_(27877575362).jpg |
+| bw-dorsal — Blue Whale 001 body bw (NOAA Fisheries) | Wikimedia Commons | Public domain (US federal work) | Scale & Science 001 | https://commons.wikimedia.org/wiki/File:Blue_Whale_001_body_bw.jpg |
+| humpback-feed — Humpback bubble-net feeding, Christin Khan NOAA | Wikimedia Commons | Public domain (US federal work) | Scale & Science 001 | https://commons.wikimedia.org/wiki/File:Humpback_whale_bubble_net_feeding_Christin_Khan_NOAA.jpg |
+| meg-jaw — Megalodon jaw reproduction at NC Aquarium (Di) | Wikimedia Commons | CC0 1.0 | Scale & Science 001 | https://commons.wikimedia.org/wiki/File:Megalodon_jaw_reproduction_at_NC_Aquarium.jpg |
+| meg-teeth — Carcharodon megalodon fossil shark jaw (reconstruction) 3 (James St. John) | Wikimedia Commons / Flickr | CC BY 2.0 — credit in description | Scale & Science 001 | https://commons.wikimedia.org/wiki/File:Carcharodon_megalodon_fossil_shark_jaw_(reconstruction)_(late_Cenozoic)_3.jpg |
+| fernbank — Argentinosaurus cast, Fernbank Museum (Daderot) | Wikimedia Commons | CC0 1.0 | Scale & Science 001 | https://commons.wikimedia.org/wiki/File:Interior_-_Fernbank_Museum_of_Natural_History_-_DSC00133.JPG |
+| ichthy-jaw — Ichthyotitan holotype figure (Lomax et al. 2024, PLOS ONE) | Wikimedia Commons | CC BY 4.0 — credit in description | Scale & Science 001 | https://commons.wikimedia.org/wiki/File:Ichthyotitan_holotype_(BRSMG_Cg3178).png |
+| Animal silhouettes (blue whale, sharks, Perucetus, ichthyosaur, sauropod, krill, elephant, person, bus) | original, packages/engine/src/scale/shapes.ts | Studio original | Scale & Science | — |
