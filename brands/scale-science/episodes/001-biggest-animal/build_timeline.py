@@ -41,7 +41,7 @@ sc("c1f", ["The largest blue whales can weigh about one hundred fifty tonnes.", 
 sc("c1g", ["How does an animal get that heavy?", "By eating some of the smallest animals in the sea: krill."], "wonder", "ocean", [("bubbles", 1.0, 2.0, 0.3)])
 sc("c1g2", ["Krill are small, shrimp-like animals, up to about six centimetres long.", "Alone they are tiny. But they gather in huge swarms, and that is a feast."], "wonder", "ocean", [("bubbles", 0.5, 2.0, 0.3)])
 sc("c1h", ["A blue whale takes a giant gulp of water full of krill.", "Then it pushes the water out through bristly plates called baleen, and swallows the food."], "wonder", "ocean", [("bubbles", 0.4, 3.0, 0.35)])
-sc("c1i", ["The biggest blue whales may eat up to about five and a half tonnes of krill in a single day,", "nearly the weight of an adult male elephant, every day."], "wonder", None, [("counter", 0.8, 2.0, 0.3)])
+sc("c1i", ["The biggest blue whales may eat up to about five point five tonnes of krill in a single day,", "nearly the weight of an adult male elephant, every day."], "wonder", None, [("counter", 0.8, 2.0, 0.3)])
 sc("c1r", ["So far: the blue whale can reach thirty-three metres and one hundred fifty tonnes.", "But twenty million years ago, something with much bigger teeth ruled the sea."], "tension", None, PAGE)
 # ---------- 2 megalodon ----------
 sc("c2", ["Chapter two. Megalodon."], "tension", None, PAGE, min=4.5)
@@ -55,7 +55,7 @@ sc("c2g", ["Megalodon estimates range from about sixteen metres to as much as tw
 sc("c2g2", ["The best clue is a row of megalodon backbones found in Belgium, about eleven metres long.", "But the head and the tail are missing, so scientists must estimate them."], "build", "ocean")
 sc("c2g3", ["Some scientists think megalodon was chunky, like a great white.", "Others think it was slimmer and longer, more like a lemon shark."], "build", "ocean")
 sc("c2h", ["Even at its largest estimate, megalodon was shorter than the biggest blue whales."], "reveal", "ocean", [W])
-sc("c2i", ["And it was lighter. A sixteen-metre megalodon may have weighed about sixty tonnes.", "Even a twenty-four-metre one was probably under one hundred."], "reveal", None, [("counter", 1.0, 2.0, 0.3)])
+sc("c2i", ["And it was lighter. A megalodon sixteen metres long may have weighed about sixty tonnes.", "Even one twenty-four metres long was probably under one hundred tonnes."], "reveal", None, [("counter", 1.0, 2.0, 0.3)])
 sc("c2r", ["So far: megalodon was a true giant, but shorter and lighter than the biggest blue whales.", "On land, though, some animals grew even longer."], "tension", None, PAGE)
 # ---------- 3 sauropods ----------
 sc("c3", ["Chapter three. Titans on land."], "build", "land", PAGE, min=4.5)

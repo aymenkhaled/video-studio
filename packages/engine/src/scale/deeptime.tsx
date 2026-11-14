@@ -50,6 +50,7 @@ export const DeepTimeShot: React.FC<{spec: DeepTimeSpec; p: number; elapsed: num
   });
   return (
     <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 40%, #2a2a3a 0%, #111018 75%)', fontFamily: INTER}}>
+      <AbsoluteFill style={{transform: `scale(${1 + 0.04 * p}) translateX(${8 * Math.sin(elapsed / 3.4)}px)`, transformOrigin: '50% 45%'}}>
       <svg width={1920} height={1080} style={{position: 'absolute'}}>
         {motes}
         {PERIODS.map((pd) => {
@@ -126,6 +127,7 @@ export const DeepTimeShot: React.FC<{spec: DeepTimeSpec; p: number; elapsed: num
       {spec.title ? (
         <div style={{position: 'absolute', left: 0, right: 0, top: 40, textAlign: 'center', fontWeight: 900, fontSize: 46, color: PAPER, opacity: easeInOutCubic(ramp(p, 0, 0.08))}}>{spec.title}</div>
       ) : null}
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };

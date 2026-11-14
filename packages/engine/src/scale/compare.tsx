@@ -51,6 +51,8 @@ export const CompareShot: React.FC<{spec: CompareSpec; p: number; elapsed: numbe
   });
   return (
     <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 30%, #18384d 0%, #0b1824 70%)', fontFamily: INTER}}>
+      {/* constant slow push + drift: the frame never freezes once the bars have grown (QA freezedetect) */}
+      <AbsoluteFill style={{transform: `scale(${1 + 0.05 * p}) translateX(${10 * Math.sin(t / 3.2)}px)`, transformOrigin: '50% 40%'}}>
       <svg width={1920} height={1080} style={{position: 'absolute'}}>
         {motes}
       </svg>
@@ -133,6 +135,7 @@ export const CompareShot: React.FC<{spec: CompareSpec; p: number; elapsed: numbe
       {spec.source ? (
         <div style={{position: 'absolute', right: 40, top: 40, maxWidth: 760, textAlign: 'right', fontWeight: 600, fontSize: 30, color: '#9fb4c2'}}>Source: {spec.source}</div>
       ) : null}
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
