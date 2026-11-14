@@ -52,8 +52,8 @@ const GDP: Choropleth = {
   labels: [
     {id: '756', text: k(GDP_PC_2024['756']), at: [8.2, 46.75]},
     {id: '276', text: k(GDP_PC_2024['276']), at: [10.3, 51.6]},
-    {id: '250', text: k(GDP_PC_2024['250']), at: [2.4, 47.2]},
-    {id: '380', text: k(GDP_PC_2024['380']), at: [12.8, 43.3]},
+    {id: '250', text: k(GDP_PC_2024['250']), at: [1.8, 46.2]},
+    {id: '380', text: k(GDP_PC_2024['380']), at: [11.6, 44.3]},
     {id: '040', text: k(GDP_PC_2024['040']), at: [14.6, 47.4]},
     {id: '442', text: k(GDP_PC_2024['442']), at: [6.1, 49.75]},
     {id: '616', text: k(GDP_PC_2024['616']), at: [19.3, 52.2]},
@@ -112,10 +112,10 @@ export const SCENES: Record<string, SceneDef> = {
   c1c: map(2026, {camera: ALPS, choropleth: {...SWISS_ONLY, appear: [0, 0.01], values: {'756': 1}, colors: ['rgba(214,64,47,0.25)']}, regions: [{text: 'THE ALPS', at: [8.9, 46.35], appear: 0.15, size: 40}], cities: [city('Zurich', P.zurich, 0.5), city('Geneva', P.geneva, 0.5), city('Bern', P.bern, 0.5)]}, [
     {type: 'citation', text: 'Swiss government (EDA): Alps ≈ 58–60% of the land', at: [0.05, 0.95]},
   ]),
-  c1d: map(2026, {camera: cam([7.2, 49.5], 8.5, [6.2, 50.3], 8.0), rivers: [{name: 'Rhine', label: 'Rhine', at: [7.75, 49.2]}], cities: [city('Basel', P.basel, 0.05), city('Rotterdam', P.rotterdam, 0.6, {align: 'left'})], routes: [route('rhine', [P.basel, [7.75, 48.58], [8.47, 49.49], [8.27, 50.0], [7.6, 50.36], [6.96, 50.94], [6.76, 51.43], [5.86, 51.84], P.rotterdam], [0.15, 0.75], {dashed: true, km: true, color: CB.blue})], regions: [{text: 'NORTH SEA', at: [3.2, 53.4], appear: 0.6, size: 34}]}, [
+  c1d: map(2026, {camera: cam([7.2, 49.5], 8.5, [6.2, 50.3], 8.0), rivers: [{name: 'Rhine', label: 'Rhine', at: [7.75, 49.2]}], cities: [city('Basel', P.basel, 0.05), city('Rotterdam', P.rotterdam, 0.6, {align: 'left'})], routes: [route('rhine', [P.basel, [7.75, 48.58], [8.47, 49.49], [8.27, 50.0], [7.6, 50.36], [6.96, 50.94], [6.76, 51.43], [5.86, 51.84], P.rotterdam], [0.15, 0.75], {km: true, color: CB.blue})], regions: [{text: 'NORTH SEA', at: [3.2, 53.4], appear: 0.6, size: 34}]}, [
     {type: 'glossary', term: 'Landlocked', meaning: 'a country with no coast of its own', window: [0.04, 0.5]},
   ]),
-  c1e: map(2026, {camera: CH, choropleth: SWISS_ONLY}, [{type: 'list', title: 'Under Swiss ground', items: ['Oil field: none', 'Gas: almost none', 'Coal mine: none worth mentioning', 'Oil & gas: almost all imported'], source: 'Swiss government (EDA), energy'}]),
+  c1e: map(2026, {camera: CH, choropleth: SWISS_ONLY}, [{type: 'glossary', term: 'Import', meaning: 'to buy goods from another country', window: [0.45, 0.98]}, {type: 'list', title: 'Under Swiss ground', items: ['Oil field: none', 'Gas: almost none', 'Coal mine: none worth mentioning', 'Oil & gas: almost all imported'], source: 'Swiss government (EDA), energy'}]),
   c1f: chart({
     type: 'share', title: 'Where Swiss electricity comes from', unit: 'Share of domestic electricity production, 10-year average', source: 'Swiss Federal Office of Energy',
     howTo: 'the whole bar = all electricity made in Switzerland',
@@ -126,18 +126,20 @@ export const SCENES: Record<string, SceneDef> = {
   // 2 — The Hungry Years
   c2: chapter(2, 'The Hungry Years', '1515 – 1817', {camera: CH, choropleth: SWISS_ONLY}, 'village-alps', 'How poor was Switzerland 200 years ago?'),
   c2a: art('hodler-marignano', 'Ferdinand Hodler, Retreat from Marignano (study), about 1897', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.5, zoom: 1.2}, [
+    {type: 'glossary', term: 'Export', meaning: 'to sell goods or services abroad', window: [0.02, 0.33]},
     {type: 'glossary', term: 'Mercenary', meaning: 'a soldier who fights for pay', window: [0.35, 0.98]},
   ]),
   c2a2: map(1515, {camera: cam([9.0, 46.2], 12, [9.1, 45.9], 14), choropleth: SWISS_ONLY, cities: [city('Marignano', [9.33, 45.36], 0.1, {today: 'Melegnano, near Milan, Italy'})]}, [
     {type: 'citation', text: 'Swiss government (EDA): neutrality dates back to Marignano 1515', at: [0.05, 0.95]},
   ]),
   c2b: art('lion-lucerne', 'The Lion Monument, Lucerne (photochrom, about 1890–1900). It honours Swiss Guards killed in Paris in 1792.', {x: 0.5, y: 0.55, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.25}, [
+    {type: 'glossary', term: 'Lucerne', meaning: 'a city in central Switzerland', window: [0.05, 0.45]},
     {type: 'citation', text: 'Lucerne Tourism · swissinfo.ch', at: [0.4, 0.98]},
   ]),
   c2c: art('tambora-iss', 'Mount Tambora, Sumbawa island, Indonesia — photo from space (NASA, 2009)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.35}, [
     {type: 'glossary', term: 'Volcano', meaning: 'a mountain that erupts hot rock and ash', window: [0.2, 0.7]},
   ]),
-  c2d: {kind: 'map', year: 1816, map: M({projection: 'globe', camera: cam([110, 5], 1.2, [20, 40], 1.25), cities: [city('Tambora', P.tambora, 0.02, {today: 'Indonesia'}), city('Switzerland', P.bern, 0.55)], routes: [route('ash', [P.tambora, [80, 20], [50, 35], P.bern], [0.1, 0.7], {dashed: true, color: CB.grey})]}), overlays: [
+  c2d: {kind: 'map', year: 1816, map: M({projection: 'globe', camera: cam([110, 5], 1.2, [20, 40], 1.25), cities: [city('Tambora', P.tambora, 0.02, {today: 'Indonesia'}), city('Switzerland', P.bern, 0.55)], regions: [{text: 'COOLER SUMMERS WORLDWIDE', at: [60, 25], appear: 0.3, size: 30}]}), overlays: [
     {type: 'citation', text: 'SCNAT: summer 1816 ≈ 2.5 °C colder', at: [0.5, 0.98]},
   ]},
   c2e: chart({
@@ -153,10 +155,11 @@ export const SCENES: Record<string, SceneDef> = {
     bars: [{label: '1811', value: 14, color: CB.grey}, {label: 'June 1817', value: 106, highlight: true, note: 'more than 7 × as much'}],
   }),
   c2h: art('village-alps', 'Bernese Oberland (photochrom). The worst hunger was in the east, around Appenzell.', {x: 0.6, y: 0.4, zoom: 1.2}, {x: 0.5, y: 0.5, zoom: 1.05}, [
+    {type: 'glossary', term: 'Appenzell', meaning: 'a region in north-east Switzerland', window: [0.05, 0.45]},
     {type: 'counter', label: 'DEATHS, PART OF APPENZELL, 1817', value: 1754, window: [0.45, 0.98], color: '#ff7a68', context: 'usually about 640 a year', top: 260},
     {type: 'citation', text: 'Zollikofer 1817 via sozialgeschichte.ch · SCNAT', at: [0.45, 0.98]},
   ]),
-  c2i: map(1817, {camera: cam([-20, 46], 2.6, [-35, 44], 2.4), cities: [city('Switzerland', P.bern, 0.02), city('Le Havre', P.lehavre, 0.2, {align: 'left', today: 'France'}), city('New York', P.newyork, 0.7)], routes: [route('emig', [P.bern, P.lehavre], [0.05, 0.3]), route('sea', [P.lehavre, [-20, 47], [-50, 43], P.newyork], [0.3, 0.8], {dashed: true})], regions: [{text: 'ATLANTIC OCEAN', at: [-38, 38], appear: 0.4, size: 34}]}, [
+  c2i: map(undefined, {camera: cam([-20, 46], 2.6, [-35, 44], 2.4), cities: [city('Switzerland', P.bern, 0.02, {align: 'left'}), city('Le Havre', P.lehavre, 0.2, {align: 'left', today: 'France'}), city('New York', P.newyork, 0.7)], routes: [route('emig', [P.bern, P.lehavre], [0.05, 0.3]), route('sea', [P.lehavre, [-20, 47], [-50, 43], P.newyork], [0.3, 0.8], {dashed: true})], regions: [{text: 'ATLANTIC OCEAN', at: [-38, 38], appear: 0.4, size: 34}]}, [
     {type: 'glossary', term: 'Emigrate', meaning: 'to leave your country to live elsewhere', window: [0.1, 0.6]},
   ]),
   c2j: recap('A poor mountain country that exported soldiers and emigrants.', {camera: CH, choropleth: SWISS_ONLY}, 'But one city had already found a better export…'),
@@ -168,6 +171,7 @@ export const SCENES: Record<string, SceneDef> = {
   ], false),
   c3b: map(1600, {camera: cam([5.6, 46.0], 13, [5.9, 46.1], 15), cities: [city('Geneva', P.geneva, 0.05), city('Lyon', [4.84, 45.76], 0.1, {align: 'left', today: 'France'})], routes: [route('huguenots', [[4.84, 45.76], [5.5, 46.0], P.geneva], [0.3, 0.7], {color: CB.blue})]}, [
     {type: 'glossary', term: 'Protestants', meaning: 'Christians who broke from the Catholic Church', window: [0.05, 0.5]},
+    {type: 'citation', text: 'Geneva joined Switzerland only in 1815 (Swiss Federal Archives)', at: [0.05, 0.48]},
     {type: 'citation', text: 'Fondation de la Haute Horlogerie · Swiss government (EDA)', at: [0.5, 0.98]},
   ]),
   c3c: art('met-watch', 'Watch by Jean Rousseau, Geneva, about 1650–60 — The Met, New York (CC0)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.2}, undefined, true),
@@ -190,6 +194,9 @@ export const SCENES: Record<string, SceneDef> = {
     howTo: 'bigger square = more money', num: {prefix: '$', suffix: ' bn', decimals: 1},
     items: [{label: 'China', value: 2.4, color: CB.sky, note: '595 million watches'}, {label: 'Switzerland', value: 28.1, color: SWISS, note: '15 million watches'}],
   }),
+  c3g2: art('met-watch', 'Geneva watch, about 1650–60 — The Met (CC0)', {x: 0.5, y: 0.45, zoom: 1.5}, {x: 0.5, y: 0.5, zoom: 1.2}, [
+    {type: 'list', title: 'The mountain-country trick', items: ['Small', 'Light', 'Expensive'], source: 'Transport costs barely matter'},
+  ], true),
   c3h: map(2024, {camera: CH, choropleth: SWISS_ONLY}, [
     {type: 'glossary', term: 'Franc', meaning: 'Swiss money: 1 franc ≈ $1.1 (2024)', window: [0.05, 0.5]},
     {type: 'counter', label: 'WATCH EXPORTS PER PERSON, 2024', value: 2900, window: [0.45, 0.98], color: '#ff7a68', context: 'francs (26 billion ÷ 9 million people)', top: 260},
@@ -212,7 +219,7 @@ export const SCENES: Record<string, SceneDef> = {
   c4e: map(2016, {camera: cam([8.8, 46.6], 20, [8.78, 46.6], 24), cities: [city('Erstfeld', P.erstfeld, 0.1), city('Bodio', P.bodio, 0.1)], routes: [route('base', [P.erstfeld, [8.75, 46.65], [8.82, 46.5], P.bodio], [0.15, 0.6], {color: CB.orange})], regions: [{text: '57 KM', at: [9.15, 46.62], appear: 0.6, size: 40}]}, [
     {type: 'citation', text: 'Swiss transport ministry (UVEK): Gotthard Base Tunnel, 2016', at: [0.4, 0.98]},
   ]),
-  c4f: map(1815, {camera: EU_WIDE, choropleth: SWISS_ONLY, cities: [city('Vienna', P.vienna, 0.05), city('Paris', P.paris, 0.05, {align: 'left'})]}, [
+  c4f: map(1815, {camera: EU_WIDE, choropleth: SWISS_ONLY, cities: [city('Vienna', P.vienna, 0.05)]}, [
     {type: 'character', name: 'Napoleon', role: 'French emperor', line: 'Conquered much of Europe. Defeated in 1815.', window: [0.05, 0.5]},
     {type: 'glossary', term: 'Neutral', meaning: "takes no side in other countries' wars", window: [0.5, 0.98]},
     {type: 'citation', text: 'Treaty of Paris, 20 Nov 1815 (Swiss government)', at: [0.5, 0.98]},
@@ -222,6 +229,10 @@ export const SCENES: Record<string, SceneDef> = {
   ]),
   c4g: map(1945, {camera: EUROPE, choropleth: SWISS_ONLY, regions: [{text: 'NEUTRAL', at: [8.0, 44.4], appear: 0.2, size: 36}]}, [
     {type: 'citation', text: 'Federal Council: Switzerland’s policy of neutrality', at: [0.1, 0.98]},
+  ]),
+  c4g2: map(1945, {camera: EUROPE, choropleth: SWISS_ONLY}, [
+    {type: 'glossary', term: 'Nazi Germany', meaning: 'Germany under Hitler, 1933–1945', window: [0.3, 0.98]},
+    {type: 'citation', text: 'Bergier Commission (ICE), Final Report, 2002', at: [0.3, 0.98]},
   ]),
   c4h: art('lion-lucerne', 'Lucerne (photochrom, about 1890–1900)', {x: 0.5, y: 0.5, zoom: 1.25}, {x: 0.5, y: 0.5, zoom: 1.05}, [
     {type: 'list', title: 'Where would you keep your savings?', items: ['In a country at war?', 'Or in a quiet, neutral one?']},
@@ -253,10 +264,11 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'citation', text: 'FINMA, 19 March 2023', at: [0.3, 0.98]},
   ]),
   c5e: map(2023, {camera: cam([8.54, 47.37], 30, [8.54, 47.37], 36), choropleth: SWISS_ONLY, cities: [city('Zurich', P.zurich, 0.02)], regions: [{text: 'CREDIT SUISSE → UBS', at: [8.54, 47.2], appear: 0.2, size: 34}]}, [
-    {type: 'citation', text: 'Federal Department of Finance: UBS takeover of Credit Suisse', at: [0.2, 0.98]},
+    {type: 'glossary', term: 'Guarantee', meaning: 'a promise to cover losses if needed', window: [0.3, 0.98]},
+    {type: 'citation', text: 'Federal Department of Finance: UBS takeover of Credit Suisse', at: [0.05, 0.3]},
   ]),
   c5f: map(2024, {camera: CH, choropleth: SWISS_ONLY}, [
-    {type: 'counter', label: 'FOREIGN PRIVATE MONEY MANAGED, 2024', value: 2427, suffix: ' bn CHF', window: [0.3, 0.98], color: '#ff7a68', context: '≈ 268,000 francs per Swiss resident (our math)', top: 260},
+    {type: 'counter', label: 'FOREIGN PRIVATE MONEY MANAGED, 2024', value: 2427, suffix: ' bn CHF', window: [0.3, 0.98], color: '#ff7a68', context: 'figure from the Swiss Bankers Association', top: 260},
     {type: 'citation', text: 'Swiss Bankers Association, Banking Barometer 2025', at: [0.3, 0.98]},
   ]),
   c5g: chart({
@@ -281,7 +293,7 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'list', title: 'Sandoz, a Basel dye maker', items: ['1914: medicines = 10% of sales', '1952: medicines = the biggest part'], source: 'swissinfo.ch / Novartis archives'},
   ]),
   c6d: chart({
-    type: 'bar', title: "Switzerland's biggest exports", unit: '2024, billion Swiss francs', source: 'Federal Office for Customs (BAZG), 2025',
+    type: 'bar', title: "Switzerland's biggest exports", unit: '2024, billion Swiss francs (not counting gold)', source: 'Federal Office for Customs (BAZG), 2025',
     howTo: 'longer bar = more money from abroad', num: {suffix: ' bn'},
     bars: [
       {label: 'Chemicals + medicines', value: 149.1, highlight: true},
@@ -291,7 +303,7 @@ export const SCENES: Record<string, SceneDef> = {
     ],
   }),
   c6e: chart({
-    type: 'share', title: 'All Swiss exports, 2024', unit: 'Share of total exports (CHF 283 billion)', source: 'BAZG, Swiss foreign trade 2024',
+    type: 'share', title: 'All Swiss exports, 2024', unit: 'Share of total exports (CHF 283 billion, not counting gold)', source: 'BAZG, Swiss foreign trade 2024',
     segments: [{label: 'Chemicals + medicines', value: 53, color: CB.green}, {label: 'Everything else', value: 47, color: CB.grey}],
   }),
   c6f: chart({
@@ -312,7 +324,7 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'glossary', term: 'Apprenticeship', meaning: 'learning a job while working, with pay', window: [0.25, 0.98]},
   ]),
   c7b: chart({
-    type: 'bar', title: 'Young people without a job', unit: 'Youth unemployment rate, end of 2025', source: 'Swiss government (admin.ch), 2026', num: {suffix: '%', decimals: 1},
+    type: 'bar', title: 'Young people without a job', unit: 'Youth unemployment rate (ages 15–24), end of 2025', source: 'Swiss government (admin.ch), 2026', num: {suffix: '%', decimals: 1},
     howTo: 'shorter bar = better',
     bars: [{label: 'Switzerland', value: 9.3, highlight: true}, {label: 'Rich countries (OECD)', value: 11.2, color: CB.blue}, {label: 'European Union', value: 14.7, color: CB.sky}],
   }),
@@ -328,7 +340,7 @@ export const SCENES: Record<string, SceneDef> = {
   ]),
   c7e: chart({
     type: 'share', title: 'Where a household’s income goes', unit: 'Share of gross household income, Switzerland', source: 'Swiss government (EDA), household budget',
-    segments: [{label: 'Taxes + health insurance', value: 33, color: CB.orange}, {label: 'Rent, food, transport, savings…', value: 67, color: CB.grey}],
+    segments: [{label: 'Taxes + health insurance (about a third)', value: 33, color: CB.orange}, {label: 'Rent, food, transport, savings…', value: 67, color: CB.grey}],
   }, [{type: 'glossary', term: 'Compulsory', meaning: 'required by law', window: [0.3, 0.9]}]),
   c7f: chart({
     type: 'bar', title: 'How expensive is everyday life?', unit: 'Price level of household spending, 2025 (EU average = 100)', source: 'Eurostat via Statistics Norway, June 2026 (preliminary)',
@@ -336,7 +348,7 @@ export const SCENES: Record<string, SceneDef> = {
     bars: [{label: 'EU average', value: 100, color: CB.grey}, {label: 'Germany', value: 108.3, color: CB.blue}, {label: 'Austria', value: 113.0, color: CB.sky}, {label: 'Switzerland', value: 171.3, highlight: true, note: '≈ 70% above the EU average'}],
   }),
   c7g: map(2024, {camera: CH, choropleth: SWISS_ONLY}, [
-    {type: 'counter', label: 'AVERAGE HOUSEHOLD SAVES', value: 1700, suffix: ' CHF / month', window: [0.1, 0.98], color: '#ff7a68', context: 'after all spending (Swiss government, EDA)', top: 260},
+    {type: 'list', title: 'After all spending', items: ['The average household can still save every month'], source: 'Swiss government (EDA), household income and spending'},
   ]),
   c7h: recap('Swiss wages are high, but so are taxes, insurance, and prices.', {camera: CH, choropleth: SWISS_ONLY}, "So what is the real secret? Let's put it together…"),
 
@@ -346,15 +358,13 @@ export const SCENES: Record<string, SceneDef> = {
     type: 'line', title: 'Switzerland vs the world, 1970–2024', unit: 'GDP per person, current US$', source: 'World Bank, 2026', howTo: 'higher line = richer per person', num: {prefix: '$'},
     x: [1970, 2024], series: [{name: 'Switzerland', color: SWISS, points: GDP_LINE.swiss, highlight: true}, {name: 'World', color: CB.sky, points: GDP_LINE.world}],
   }),
-  c8a2: map(2024, {camera: EUROPE, choropleth: GDP}, [
-    {type: 'citation', text: 'Current US$: exchange rates move these numbers', at: [0.05, 0.95]},
-  ]),
+  c8a2: chart({
+    type: 'line', full: true, title: 'Switzerland vs the world, 1970–2024', unit: 'GDP per person, current US$ (dips in 1985 and 2000: partly exchange rates)', source: 'World Bank, 2026', num: {prefix: '$'},
+    x: [1970, 2024], events: [{x: 1985, label: '1985'}, {x: 2000, label: '2000'}], series: [{name: 'Switzerland', color: SWISS, points: GDP_LINE.swiss, highlight: true}, {name: 'World', color: CB.sky, points: GDP_LINE.world}],
+  }, [{type: 'glossary', term: 'Exchange rate', meaning: 'the price of one currency in another', window: [0.05, 0.95]}]),
   c8b: map(2024, {camera: ALPS, choropleth: SWISS_ONLY}, [{type: 'list', title: 'Why Switzerland is rich', items: ['Mountains → sell small, valuable things']}]),
-  c8c: map(2024, {camera: CH, choropleth: SWISS_ONLY}, [{type: 'list', title: 'Why Switzerland is rich', items: ['Mountains → sell small, valuable things', 'Tunnels → connected to Europe', 'Peace → factories and savings stayed safe', 'Skills → high value, high wages']}]),
-  c8d: chart({
-    type: 'share', title: 'The risk: one big basket', unit: 'Share of Swiss exports, 2024', source: 'BAZG, 2025',
-    segments: [{label: 'Chemicals + medicines', value: 53, color: CB.green}, {label: 'Everything else', value: 47, color: CB.grey}],
-  }),
+  c8c: map(2024, {camera: CH, choropleth: SWISS_ONLY}, [{type: 'list', title: 'Why Switzerland is rich', items: ['Mountains → sell small, valuable things (watches, medicine)', 'Tunnels → connected to Europe', 'Peace → factories and savings stayed safe', 'Skills → high value, high wages']}]),
+  c8d: map(2026, {camera: CH, choropleth: SWISS_ONLY}, [{type: 'list', title: 'The price of success', items: ['Life is very expensive', 'Over half of exports: chemicals + medicines'], source: 'Eurostat 2025 · BAZG 2024'}]),
   c8e: map(2026, {camera: EU_WIDE, choropleth: GDP, regions: [{text: 'WHICH COUNTRY NEXT?', at: [10, 55.5], appear: 0.2, size: 44}]}),
   c8f: art('alps-modis', '', {x: 0.45, y: 0.5, zoom: 1.15}, {x: 0.5, y: 0.5, zoom: 1.0}, [{type: 'endscreen', teaser: 'Why is Russia so big, but so empty?'}]),
 };

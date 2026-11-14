@@ -41,7 +41,7 @@ export type ChartSpec = {
   num?: Num;
 } & (
   | {type: 'bar'; bars: BarDatum[]; max?: number}
-  | {type: 'line'; series: LineSeries[]; x: [number, number]; y?: [number, number]; events?: {x: number; label: string}[]}
+  | {type: 'line'; full?: boolean; series: LineSeries[]; x: [number, number]; y?: [number, number]; events?: {x: number; label: string}[]}
   | {type: 'share'; segments: ShareSeg[]; total?: string}
   | {type: 'area'; items: AreaDatum[]}
   | {type: 'pictogram'; icon: PictoIcon; per: string; groups: PictoGroup[]}
@@ -116,13 +116,13 @@ const Frame: React.FC<{spec: ChartSpec; p: number; width: number; height: number
         <text x={PANEL.left} y={196} fontFamily={INTER} fontWeight={600} fontSize={30} fill="rgba(244,239,228,0.72)">
           {spec.unit}
         </text>
-        <text x={width - 60} y={196} textAnchor="end" fontFamily={INTER} fontWeight={600} fontSize={26} fill="rgba(244,239,228,0.6)">
+        <text x={width - 60} y={196} textAnchor="end" fontFamily={INTER} fontWeight={600} fontSize={28} fill="rgba(244,239,228,0.7)">
           Source: {spec.source}
         </text>
         {spec.howTo ? (
           <g opacity={easeInOutCubic(ramp(p, 0.04, 0.12))}>
-            <rect x={width - 60 - Math.min(760, spec.howTo.length * 15.5 + 40)} y={52} width={Math.min(760, spec.howTo.length * 15.5 + 40)} height={52} rx={10} fill="rgba(240,228,66,0.14)" stroke="rgba(240,228,66,0.6)" />
-            <text x={width - 80} y={87} textAnchor="end" fontFamily={INTER} fontWeight={700} fontSize={27} fill={CB.yellow}>
+            <rect x={width - 60 - Math.min(760, spec.howTo.length * 17 + 40)} y={52} width={Math.min(760, spec.howTo.length * 17 + 40)} height={52} rx={10} fill="rgba(240,228,66,0.14)" stroke="rgba(240,228,66,0.6)" />
+            <text x={width - 80} y={87} textAnchor="end" fontFamily={INTER} fontWeight={700} fontSize={30} fill={CB.yellow}>
               How to read: {spec.howTo}
             </text>
           </g>
@@ -159,7 +159,7 @@ const Bars: React.FC<{spec: Extract<ChartSpec, {type: 'bar'}>; p: number}> = ({s
               {fmtValue(b.value * g, spec.num)}
             </text>
             {b.note ? (
-              <text x={x0 + 4} y={y + rowH * 0.7 + 30} fontFamily={INTER} fontWeight={600} fontSize={26} fill="rgba(244,239,228,0.66)" opacity={easeInOutCubic(ramp(p, 0.5, 0.6))}>
+              <text x={x0 + 4} y={y + rowH * 0.7 + 30} fontFamily={INTER} fontWeight={600} fontSize={30} fill="rgba(244,239,228,0.75)" opacity={easeInOutCubic(ramp(p, 0.5, 0.6))}>
                 {b.note}
               </text>
             ) : null}
@@ -180,7 +180,7 @@ const Lines: React.FC<{spec: Extract<ChartSpec, {type: 'line'}>; p: number}> = (
   const B = PANEL.bottom + 10;
   const sx = (x: number) => L + ((x - spec.x[0]) / (spec.x[1] - spec.x[0])) * (R - L);
   const sy = (y: number) => B - (y / ymax) * (B - T);
-  const reveal = easeInOutCubic(ramp(p, 0.08, 0.75));
+  const reveal = spec.full ? 1 : easeInOutCubic(ramp(p, 0.08, 0.75));
   const xNow = mix(spec.x[0], spec.x[1], reveal);
   const years = niceTicks(spec.x[0], spec.x[1], 6).filter((x) => x >= spec.x[0] && x <= spec.x[1]);
   return (
@@ -201,7 +201,7 @@ const Lines: React.FC<{spec: Extract<ChartSpec, {type: 'line'}>; p: number}> = (
       {(spec.events ?? []).map((e) => (
         <g key={e.label} opacity={xNow >= e.x ? 1 : 0}>
           <line x1={sx(e.x)} x2={sx(e.x)} y1={T} y2={B} stroke="rgba(240,228,66,0.5)" strokeDasharray="6 8" strokeWidth={2} />
-          <text x={sx(e.x) + 10} y={T + 30} fontFamily={INTER} fontWeight={700} fontSize={27} fill={CB.yellow}>
+          <text x={sx(e.x) + 10} y={T + 30} fontFamily={INTER} fontWeight={700} fontSize={30} fill={CB.yellow}>
             {e.label}
           </text>
         </g>
@@ -293,7 +293,7 @@ const Areas: React.FC<{spec: Extract<ChartSpec, {type: 'area'}>; p: number}> = (
               {it.label}
             </text>
             {it.note ? (
-              <text x={cx} y={base + 40} textAnchor="middle" fontFamily={INTER} fontWeight={600} fontSize={26} fill="rgba(244,239,228,0.7)" opacity={g}>
+              <text x={cx} y={base + 40} textAnchor="middle" fontFamily={INTER} fontWeight={600} fontSize={30} fill="rgba(244,239,228,0.75)" opacity={g}>
                 {it.note}
               </text>
             ) : null}

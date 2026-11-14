@@ -26,7 +26,7 @@
    "lead": 0.5,
    "lines": [
     "This is Switzerland, seen from space.",
-    "A small country in the middle of Europe, with no coast, almost no oil or coal, and mountains almost everywhere."
+    "A small country in the middle of Europe, with no coast, almost no oil or coal, and mostly mountains."
    ],
    "sfx": [
     {
@@ -43,7 +43,7 @@
    "lead": 0.3,
    "lines": [
     "Yet it is one of the richest countries on Earth.",
-    "In twenty twenty-four, it produced about one hundred seven thousand dollars of goods and services for every person living there."
+    "In twenty twenty-four, it produced about one hundred eight thousand dollars of goods and services for every person living there."
    ],
    "sfx": [
     {
@@ -88,7 +88,7 @@
    "lead": 0.3,
    "lines": [
     "But two hundred years ago, this was a poor country.",
-    "In the hungry year of eighteen seventeen, some people here ate grass to survive."
+    "In the hungry year of eighteen seventeen, some people in Switzerland ate grass to survive."
    ]
   },
   {
@@ -148,7 +148,7 @@
    "lead": 0.3,
    "lines": [
     "Almost sixty percent of the country is the Alps: steep slopes, long winters, and little flat land to farm.",
-    "Only about a quarter of the Swiss live up there."
+    "Only about a quarter of the Swiss live in the mountains."
    ],
    "sfx": [
     {
@@ -492,8 +492,7 @@
    "music": "build",
    "lead": 0.3,
    "lines": [
-    "China exported almost forty times more watches.",
-    "But Switzerland earned more than ten times as much money from its watches."
+    "China exported almost forty times more watches than Switzerland."
    ],
    "sfx": [
     {
@@ -506,6 +505,22 @@
   },
   {
    "id": "c3g",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "But Switzerland earned more than ten times as much money from its watches."
+   ],
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 0.3,
+     "duration": 1.2,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c3g2",
    "music": "epic",
    "lead": 0.3,
    "lines": [
@@ -605,7 +620,7 @@
    "music": "build",
    "lead": 0.3,
    "lines": [
-    "Workers spent about ten years digging it through solid rock.",
+    "Workers spent nearly ten years building it through solid rock.",
     "In its first full year, about three hundred thousand tonnes of goods went through."
    ],
    "sfx": [
@@ -685,6 +700,15 @@
    ]
   },
   {
+   "id": "c4g2",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "Neutrality was not spotless.",
+    "Decades later, an official Swiss inquiry, the Bergier Commission, criticised Swiss trade and banking with Nazi Germany during the war."
+   ]
+  },
+  {
    "id": "c4h",
    "music": "tension",
    "lead": 0.3,
@@ -749,7 +773,7 @@
    "lead": 0.3,
    "lines": [
     "Under pressure from abroad, that changed.",
-    "Since twenty eighteen, Switzerland automatically shares foreign clients' bank data with their home tax offices."
+    "Since twenty eighteen, Switzerland automatically shares foreign clients' bank data with the tax offices of partner countries."
    ],
    "sfx": [
     {
@@ -789,7 +813,7 @@
    "music": "calm",
    "lead": 0.3,
    "lines": [
-    "Still, Switzerland is the world leader in managing money for private clients from abroad: about two thousand four hundred billion francs in twenty twenty-four."
+    "Still, according to the Swiss Bankers Association, Switzerland leads the world in managing money for private clients from abroad: about two thousand four hundred billion francs in twenty twenty-four."
    ],
    "sfx": [
     {
@@ -877,7 +901,7 @@
    "music": "tension",
    "lead": 0.3,
    "lines": [
-    "A surprising detail: until nineteen hundred seven, Switzerland had no patent law.",
+    "A surprising detail: until nineteen hundred seven, Swiss patents did not protect chemical inventions.",
     "So Basel firms could legally copy dyes invented abroad."
    ]
   },
@@ -1084,7 +1108,7 @@
    "music": "calm",
    "lead": 0.3,
    "lines": [
-    "Still, after paying for everything, the average household saves about seventeen hundred francs a month."
+    "Still, on average, Swiss households earn enough to put some money aside every month."
    ],
    "sfx": [
     {
@@ -1158,7 +1182,7 @@
    "music": "epic",
    "lead": 0.3,
    "lines": [
-    "Tunnels connected it to Europe. Peace kept its factories and savings safe. And skilled people keep the value high."
+    "Tunnels connected it to Europe. Peace kept its factories and savings safe. And skilled people keep the value high, from watches to medicine."
    ],
    "sfx": [
     {
@@ -1186,7 +1210,7 @@
    "music": "calm",
    "lead": 0.3,
    "lines": [
-    "There is a price too: life is expensive, and the country depends heavily on a few industries, above all medicine."
+    "There is a price too: life is expensive, and over half of all exports depend on one industry, chemicals and medicines."
    ]
   },
   {
@@ -1194,7 +1218,7 @@
    "music": "calm",
    "lead": 0.3,
    "lines": [
-    "Here is my question for you: which country should we explain next?",
+    "Here is our question for you: which country should we explain next?",
     "Tell us in the comments."
    ]
   },

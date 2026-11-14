@@ -220,7 +220,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       if (!onScreen(x, y)) return;
       const f = fs(30 * Math.min(1.2, zoomS));
       const w = l.text.length * f * 0.6;
-      boxes.push({id: `k:${l.id}`, x: x - w / 2, y: y - f * 0.85, w, h: f * 1.1, priority: 5, maxShift: 60});
+      boxes.push({id: `k:${l.id}`, x: x - w / 2, y: y - f * 0.85, w, h: f * 1.1, priority: 5, maxShift: 40, drop: true});
     });
     (spec.routes ?? []).forEach((r) => {
       const pr = easeInOutCubic(ramp(p, r.draw[0], r.draw[1]));
