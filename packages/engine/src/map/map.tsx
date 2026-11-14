@@ -207,7 +207,15 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       const w = Math.max(c.name.length * fs(30 * s) * 0.6, c.today ? (c.today.length + 7) * fs(20 * s) * 0.55 : 0);
       const h = c.today ? fs(30 * s) * 2.1 : fs(30 * s) * 1.2;
       const right = c.align !== 'left';
-      boxes.push({id: `c:${c.name}`, x: right ? x + 16 * s : x - 16 * s - w, y: y - 18 * s, w, h, priority: 3});
+      boxes.push({id: `c:${c.name}`, x: right ? x + 16 * s : x - 16 * s - w, y: y - 18 * s, w, h, priority: 3, maxShift: 70});
+    });
+    (spec.rivers ?? []).forEach((r) => {
+      if (!r.label || !r.at) return;
+      const [x, y] = px(r.at);
+      if (!onScreen(x, y)) return;
+      const f = fs(26 * zoomS);
+      const w = r.label.length * f * 0.55;
+      boxes.push({id: `v:${r.name}`, x: x - w / 2, y: y - f * 0.85, w, h: f, priority: 2});
     });
     (spec.regions ?? []).forEach((r) => {
       const [x, y] = px(r.at);
@@ -309,7 +317,11 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
               <path key={k} d={path(f.geometry) ?? ''} fill="none" stroke="#4f7fa3" strokeWidth={3.2 * zoomS} strokeLinecap="round" strokeLinejoin="round" opacity={0.9} />
             ))}
           {spec.rivers.filter((r) => r.label && r.at).map((r) => {
-            const [x, y] = px(r.at!);
+            const o = off(`v:${r.name}`);
+            if (o.hidden || (spec.avoidLabels && !shift.has(`v:${r.name}`))) return null;
+            const [x0, y0] = px(r.at!);
+            const x = x0 + o.dx;
+            const y = y0 + o.dy;
             return (
               <text key={r.name} x={x} y={y} textAnchor="middle" fontFamily={INTER} fontStyle="italic" fontWeight={700} fontSize={fs(26 * zoomS)} fill="#2f5f86" stroke="rgba(244,236,216,0.85)" strokeWidth={5} paintOrder="stroke">
                 {r.label}

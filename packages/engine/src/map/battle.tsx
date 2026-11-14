@@ -96,7 +96,7 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
   // Clarity: shrink the field a little and lift it, so captions (bottom centre) never cover units.
   const scale = z.s * push * (clarity ? 0.84 : 1);
   const tx = width / 2 - z.cx * S * scale;
-  const ty = height / 2 - z.cy * S * scale - (clarity ? 95 : 0);
+  const ty = height / 2 - z.cy * S * scale - (clarity ? 75 : 0);
   const t = spec.terrain ?? {};
   const fog = t.fog ? 1 - easeInOutCubic(ramp(p, t.fog[0], t.fog[1])) : 0;
   const color = (s: 'a' | 'b') => spec.sides[s].color;

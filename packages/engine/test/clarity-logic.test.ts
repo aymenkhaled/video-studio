@@ -79,3 +79,14 @@ test('"a hundred" becomes 100 (no "a 0")', () => {
   assert.equal(numeralize(W('About a hundred years later, Caesar')).map((w) => w.w).join(' '), 'About 100 years later, Caesar');
   assert.equal(numeralize(W('more than six hundred years')).map((w) => w.w).join(' '), 'more than 600 years');
 });
+
+test('labels with maxShift never wander to another dot; they stay put instead', () => {
+  const boxes = [
+    {id: 'blocker', x: 100, y: 100, w: 400, h: 400, priority: 9},
+    {id: 'city', x: 200, y: 200, w: 120, h: 30, priority: 3, maxShift: 60},
+  ];
+  const out = layoutLabels(boxes, {w: 1920, h: 1080});
+  const c = out.find((p) => p.id === 'city')!;
+  assert.ok(Math.hypot(c.dx, c.dy) <= 60, `moved ${c.dx},${c.dy}`);
+  assert.equal(c.hidden, false);
+});

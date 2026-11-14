@@ -75,7 +75,7 @@
    "lead": 0.2,
    "tail": 0.8,
    "lines": [
-    "Either way, it was one of the bloodiest single days in the history of war. And the man who did it was outnumbered almost two to one."
+    "Either way, historians count it among the bloodiest single days of battle ever recorded. And the man who did it was outnumbered almost two to one."
    ]
   },
   {
@@ -527,7 +527,7 @@
    "lead": 0.3,
    "tail": 1.4,
    "lines": [
-    "So, three Roman armies, three disasters. Rome decided to try something new: not fighting at all."
+    "So, three battles, three Roman disasters. Rome decided to try something new: not fighting at all."
    ],
    "sfx": [
     {
@@ -755,7 +755,7 @@
    "music": "calm",
    "lead": 0.3,
    "lines": [
-    "It partly worked. Capua, the second city of Italy, went over to him. So did much of the south."
+    "It partly worked. Capua, one of the biggest cities in Italy, went over to him. So did much of the south."
    ],
    "tail": 0.3
   },
@@ -859,7 +859,7 @@
    "lead": 0.2,
    "tail": 0.8,
    "lines": [
-    "Carthage recalled Hannibal. After fifteen years in Italy, undefeated in every major battle there, he sailed home."
+    "Carthage recalled Hannibal. After fifteen years in Italy, he sailed home."
    ]
   },
   {
@@ -1042,7 +1042,7 @@
    "min": 20.0,
    "endscreen": true,
    "lines": [
-    "Thirty-seven years later, Rome came back for Carthage itself. That story is right here on screen.",
+    "What happened to Carthage itself? That story is right here on screen.",
     "Thanks for watching."
    ]
   }
