@@ -54,3 +54,15 @@ Decisions (Claude, Aymen asleep, told to take the recommended option):
 - 2026-11-14 **Episode 002 delivered on the branch:** render 43536415513 QA PASS (11:43, −14.6 LUFS, −2.1 dBTP); independent review findings fixed and verified on stills; 7/10 (`brands/history-maps/episodes/002-carthage/review.md`). Media for renders comes from release `media-v1` (`render.yml mode=media` rebuilds it from `assets/media.json`).
 - **Branch `ep/002-carthage` is ready to merge** into main (typecheck clean, 8/8 engine tests, episode validator PASS, Hannibal stills unchanged). After merging, episode 001 can opt in with `clarity={...}` plus `MapSpec.modern/avoidLabels/relief/minText` and `art` scenes.
 - 2026-11-14 **Episode 001 Hannibal v2** (branch `ep/001-hannibal-v2`): full Clarity Kit upgrade, independent review fixes, see `brands/history-maps/episodes/001-hannibal/review-v2.md`. Engine: captions/pop-ups ~15 % smaller (Aymen: "too big"), bounded label shifts, battle field lifted above captions with the battle name in the phase banner, family-tree card, −3 dBFS limiter after loudnorm. Episode 002 re-rendered with the smaller UI (run 43566364600, QA PASS).
+
+## Channel B "Scale & Science" — episode 001 "How Big Was the Biggest Animal Ever?" — branch `ep/b001-biggest-animal` (worktree `D:\studio-b001`)
+Folder `brands/scale-science/episodes/001-biggest-animal/` (build_timeline.py → timeline.json, scenes.ts, sources.md, package.json). Composition `BiggestAnimal` (1920×1080@24), thumbs `BiggestAnimalThumb1-3`, channel art `BiggestAnimalChannel1` (800×800) / `2` (2560×1440).
+
+New reusable engine (opt-in SceneDef kinds, `packages/engine/src/scale/`): `scale` (2D measuring stage: original silhouettes, metre/cm grid, person/bus/court references, brackets in m + ft, ranges as solid + dashed ghost, growing estimates, living ocean/land backgrounds, label stacking, eased camera + drift), `compare` (weight/length bars with ranges + icon tally), `deeptime` (millions-of-years line with periods, markers, humans sliver), `custom` (any component, e.g. the 3D `SauropodWalk`). Captions: decimals and small numbers before units now become numerals.
+
+Decisions (Claude; Aymen away, "don't ask"):
+- 2026-11-14 Topic: biggest animal ever (blue whale vs megalodon vs sauropods + Perucetus/Ichthyotitan) — evergreen size-comparison demand, core of the channel, non-graphic, PD NOAA photos. Semrush had no API units; demand judged from the many competing videos and articles on the topic.
+- 2026-11-14 Hybrid render: 2 short 3D scenes (licensed CC0 Apatosaurus walking past bus + person), everything else 2D. No 3D clip library yet (logged as next step).
+- 2026-11-14 Own media release `media-b001` (new `media_release` input) so channel B never overwrites `media-v1` that channels A/C use.
+- 2026-11-14 Voice: Kokoro `bm_george` (en-gb) to give channel B its own voice; Chatterbox evaluation still pending.
+- 2026-11-14 Blue whale size shown as NOAA's "largest ones" (~33 m / 150 t), not typical size; all fossil sizes as ranges.
