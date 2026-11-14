@@ -90,9 +90,9 @@ const numValue = (ws: string[]) => {
   for (const p of ws.flatMap((w) => bare(w).split('-').filter(Boolean))) {
     if (UNITS.includes(p)) cur += UNITS.indexOf(p);
     else if (TENS.includes(p)) cur += TENS.indexOf(p) * 10;
-    else if (p === 'hundred') cur *= 100;
+    else if (p === 'hundred') cur = (cur || 1) * 100;
     else if (p === 'thousand') {
-      total += cur * 1000;
+      total += (cur || 1) * 1000;
       cur = 0;
     }
   }
@@ -106,12 +106,17 @@ export const numeralize = (words: CueWord[]): CueWord[] => {
   while (i < words.length) {
     let j = i;
     while (j < words.length && isNumWord(words[j].w) && (j === i || !/[.,;:?!]$/.test(words[j - 1].w))) j++;
-    const run = words.slice(i, j);
-    const clean = run.map((w) => bare(w.w));
+    // "a hundred" / "a thousand": swallow the article into the number
+    const article = j > i && i > 0 && /^an?$/i.test(words[i - 1].w) && /^(hundred|thousand)/.test(bare(words[i].w)) && out[out.length - 1] === words[i - 1];
+    if (article) out.pop();
+    const numRun = words.slice(i, j);
+    const run = article ? [words[i - 1], ...numRun] : numRun;
+    const clean = numRun.map((w) => bare(w.w));
     const bc = j + 1 < words.length && words[j].w === 'B' && /^C\b/.test(words[j + 1].w);
     const big = clean.some((c) => c === 'hundred' || c === 'thousand');
-    const year = run.length === 2 && UNITS.indexOf(clean[0]) >= 11 && numValue([clean[1]]) >= 20 && numValue([clean[1]]) < 100;
-    if (run.length && (bc || big || year)) {
+    const year = numRun.length === 2 && UNITS.indexOf(clean[0]) >= 11 && numValue([clean[1]]) >= 20 && numValue([clean[1]]) < 100;
+    const ten = !bc && !big && !year && numRun.length > 0 && numValue(clean) >= 10;
+    if (run.length && (bc || big || year || ten)) {
       const v = year ? UNITS.indexOf(clean[0]) * 100 + numValue([clean[1]]) : numValue(clean);
       const trail = run[run.length - 1].w.replace(/^[A-Za-z-]+/, '');
       if (bc) {

@@ -56,7 +56,7 @@ test('numeralize spoken numbers for captions, keeping timings', () => {
   assert.deepEqual([out[1].t, out[1].end], [1, 5.9]);
   assert.equal(numeralize(W('armour for two hundred thousand men')).map((w) => w.w).join(' '), 'armour for 200,000 men');
   assert.equal(numeralize(W('Since nineteen seventy-nine, they')).map((w) => w.w).join(' '), 'Since 1979, they');
-  assert.equal(numeralize(W('over fifty years. Ten thousand talents')).map((w) => w.w).join(' '), 'over fifty years. 10,000 talents');
+  assert.equal(numeralize(W('over fifty years. Ten thousand talents')).map((w) => w.w).join(' '), 'over 50 years. 10,000 talents');
 });
 
 import {kmLabel, niceScale} from '../src/map/clarity-logic.ts';
@@ -73,4 +73,9 @@ test('captions prefer to break after a comma', () => {
   const cues = captionCues(t.split(' ').map((w, i) => ({w, t: i, end: i + 0.9})));
   assert.ok(cues.every((c) => c.lines.every((l) => l.length <= 42)));
   assert.ok(cues[0].lines[0].endsWith(','), cues[0].lines[0]);
+});
+
+test('"a hundred" becomes 100 (no "a 0")', () => {
+  assert.equal(numeralize(W('About a hundred years later, Caesar')).map((w) => w.w).join(' '), 'About 100 years later, Caesar');
+  assert.equal(numeralize(W('more than six hundred years')).map((w) => w.w).join(' '), 'more than 600 years');
 });

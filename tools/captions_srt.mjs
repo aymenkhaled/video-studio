@@ -14,6 +14,6 @@ const ts = (s) => {
   return `${h}:${m}:${sec},${String(ms % 1000).padStart(3, '0')}`;
 };
 const cues = timing.lines.flatMap((l) => captionCues(numeralize(l.words)));
-const srt = cues.map((c, i) => `${i + 1}\n${ts(c.t)} --> ${ts(c.end + 0.3)}\n${c.lines.join('\n')}\n`).join('\n');
+const srt = cues.map((c, i) => `${i + 1}\n${ts(c.t)} --> ${ts(Math.min(c.end + 0.3, cues[i + 1]?.t ?? Infinity))}\n${c.lines.join('\n')}\n`).join('\n');
 fs.writeFileSync(outPath, srt, 'utf8');
 console.log(`captions.srt: ${cues.length} cues (identical to burned-in captions)`);
