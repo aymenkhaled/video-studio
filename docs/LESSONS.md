@@ -51,6 +51,13 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 5. Discovery stories need the paper, not the press: Ichthyotitan was found first by a collector, then by a girl and her father.
 6. Per-channel media releases (`media_release` input) so one channel's media rebuild never breaks another's renders.
 7. Fat silhouettes read as sunfish: check proportions on the first stills (shark depth ≈ 0.2 × length).
+8. Caption numerals can be WRONG, not just ugly: "Even one twenty-four metres long" was captioned "25 metres" (one + twenty-four merged). Never put two number words next to each other in the script, and run `tools/caption_numbers.mjs <timeline.json>` before every render and read every line against sources.md. Also check the final contact sheet captions — this was caught only there.
+9. QA freezedetect fails on finished 2D charts: bars/timelines that stop animating for > 2 s froze 12 times in the first full render. Every scene kind needs constant motion (slow push + drift); compare/deeptime now have it built in.
+10. Parallel sessions merge to main while you work (Money & Maps 001 landed mid-episode). Merge `origin/main` INTO your branch inside your own worktree, resolve, typecheck + test, then `git push origin HEAD:main`. Never run a conflicting merge in the shared `D:\studio` checkout.
+11. Start the independent reviewer subagent while the next stills round renders (they don't depend on each other) — saves ~30 min. Its first verdict was FAIL 7/10 on fixable things, again.
+12. Semrush MCP had no API units: check demand with web search / competing videos instead; don't block on it.
+13. Big patch edits: write a Python fix script to a file and run it; shell heredocs broke twice on quotes/newlines.
+14. Channel B start pattern: copy `brands/scale-science/episodes/001-biggest-animal/` (build_timeline.py → timeline.json, scenes.ts helpers for you/bus/whale/court, ROW/DT tables), render with `media_release=media-b001` (or a new per-episode release) and `concurrency=2` when a 3D custom scene is in it.
 
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
