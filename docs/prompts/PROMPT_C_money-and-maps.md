@@ -40,3 +40,15 @@ Also make simple channel art (profile 800×800, banner 2560×1440 with text insi
 - Higher-resolution PD art sources (museum originals instead of small Wikimedia copies).
 - Reusable chart + choropleth templates so the next Money & Maps video is faster.
 - Track CTR / average % viewed / 30-s retention after 48 h in docs/LESSONS.md.
+
+## 6. Motion & storytelling ideas from a reference reel Aymen liked (Storyhub-style animated reel, Nov 2026)
+Observed: a simple stick-figure character, the story told to the viewer ("YOU are chased off the pier…"), the camera follows the character continuously (dive down, swim across) instead of cutting, layered backgrounds with light rays, drifting particles, bubbles and a school of fish, simple limb animation (swimming kicks), big bold word-by-word captions with the key word highlighted, a new visual beat every 1–2 s, and an ending choice that drives comments ("Call the boat, or go up alone? Comment").
+Borrow the TECHNIQUES, never their characters, look or scenes (original work only):
+1. **A guide character**: one simple original figure (our own vector drawing, like figures.tsx) who walks/travels through the maps, charts and size comparisons, so the viewer follows a person instead of abstract shapes.
+2. **"You" moments**: put the viewer in the scene for key beats ("You are standing next to a blue whale…", "You earn the average Swiss salary…").
+3. **Continuous camera**: prefer long tracking moves and zoom-throughs between scenes over hard cuts; the camera follows the action (a route, a falling object, a descending diver).
+4. **Living backgrounds**: 3–5 parallax layers + ambient motion (light rays, particles, clouds, water, birds, moving traffic) so no frame is ever still.
+5. **Micro-animation on every element**: icons pop with a small bounce, numbers count up, figures have simple walk/swim cycles, arrows draw, labels slide in.
+6. **Faster visual rhythm**: something new on screen every 2–4 s inside each scene (the ≤ 15 s scene rule is a maximum, not the target).
+7. **Caption emphasis**: keep our phrase captions but highlight the key word of each phrase (colour + slight scale pop).
+8. **End with a choice or a question that invites comments**, and pin it.
