@@ -6,6 +6,9 @@ export const yearsAgo = (year: number, now = 2026): number => (year < 0 ? now - 
 /** "about 2,170 years ago" — rounded to 10 from 100 years on. */
 export const agoLabel = (year: number, now = 2026): string => {
   const n = yearsAgo(year, now);
+  if (n <= 0) return 'today';
+  if (n === 1) return 'last year';
+  if (n < 10) return `${n} years ago`;
   const r = n >= 100 ? Math.round(n / 10) * 10 : n < 10 ? n : Math.round(n / 10) * 10;
   return `about ${r.toLocaleString('en-US')} years ago`;
 };
@@ -46,7 +49,7 @@ export const captionCues = (words: CueWord[], maxChars = 42, maxLines = 2): Cue[
   return cues;
 };
 
-export type LabelBox = {id: string; x: number; y: number; w: number; h: number; priority: number; /** px; beyond this the label stays at its anchor (never next to another dot) */ maxShift?: number};
+export type LabelBox = {id: string; x: number; y: number; w: number; h: number; priority: number; /** px; beyond this the label stays at its anchor (never next to another dot) */ maxShift?: number; /** with maxShift: hide instead of overlapping when no nearby spot is free */ drop?: boolean};
 export type Placed = {id: string; dx: number; dy: number; hidden: boolean};
 
 /** Greedy label placement: highest priority first, clamp into frame, try nearby offsets, else hide. */
@@ -66,7 +69,7 @@ export const layoutLabels = (boxes: LabelBox[], frame: {w: number; h: number}, p
     for (const k of [0, -1, 1, -2, 2, -3, 3]) for (const j of [0, -1, 1]) offsets.push([j * sx, k * sy]);
     const near = (ox: number, oy: number) => b.maxShift === undefined || Math.hypot(bx + ox - b.x, by + oy - b.y) <= b.maxShift;
     let hit = offsets.find(([ox, oy]) => near(ox, oy) && inside(bx + ox, by + oy, b.w, b.h) && !hits(bx + ox, by + oy, b.w, b.h));
-    if (!hit && b.maxShift !== undefined) hit = [0, 0]; // stay at the anchor rather than drift to another dot
+    if (!hit && b.maxShift !== undefined && !b.drop) hit = [0, 0]; // stay at the anchor rather than drift to another dot
     if (!hit) {
       result.set(b.id, {id: b.id, dx: 0, dy: 0, hidden: true});
       continue;
@@ -118,10 +121,18 @@ export const numeralize = (words: CueWord[]): CueWord[] => {
     const clean = numRun.map((w) => bare(w.w));
     const bc = j + 1 < words.length && words[j].w === 'B' && /^C\b/.test(words[j + 1].w);
     const big = clean.some((c) => c === 'hundred' || c === 'thousand');
-    const year =
-      numRun.length === 2 && (UNITS.indexOf(clean[0]) >= 11 || clean[0] === 'twenty') && numValue([clean[1]]) >= 10 && numValue([clean[1]]) < 100;
+    // years: "eighteen seventeen" → 1817, "twenty twenty-four" → 2024, "nineteen hundred seven" → 1907 (no comma)
+    const second = clean.length > 1 ? numValue(clean.slice(1)) : 0;
+    const teenYear = numRun.length === 2 && UNITS.indexOf(clean[0]) >= 11 && second >= 10 && second < 100;
+    const modernYear = numRun.length === 2 && clean[0] === 'twenty' && second >= 10 && second < 100;
+    const hundredYear = clean.length >= 3 && UNITS.indexOf(clean[0]) >= 11 && clean[1] === 'hundred' && !clean.includes('thousand');
+    const year = teenYear || modernYear || hundredYear;
+    // units that force numerals even under 10: "nine percent" → 9%, "nine million" → 9 million, "four dollars" → $4
+    const open = numRun.length > 0 && j < words.length && !/[.,;:?!]$/.test(numRun[numRun.length - 1].w);
+    const nextBare = open ? bare(words[j].w) : '';
+    const unit = nextBare === 'percent' ? 'percent' : nextBare === 'dollars' || nextBare === 'dollar' ? 'dollars' : ['million', 'billion', 'trillion'].includes(nextBare) ? 'scale' : '';
     const ten = !bc && !big && !year && numRun.length > 0 && numValue(clean) >= 10;
-    // decimals: "one point seven five" → "1.75" (digits after "point" are single number words)
+    // decimals: "one point seven five" → "1.75"; measurements: "six tonnes" → "6 tonnes", "two buses" stays words
     let k = j;
     let decimals = '';
     if (numRun.length && !year && k + 1 < words.length && bare(words[k].w) === 'point' && !/[.,;:?!]$/.test(words[k - 1].w)) {
@@ -132,9 +143,8 @@ export const numeralize = (words: CueWord[]): CueWord[] => {
       }
       if (decimals) k = d;
     }
-    // small numbers before a unit: "six tonnes" → "6 tonnes", "two buses" stays words
-    const unit = numRun.length > 0 && k < words.length && UNIT_WORD.test(bare(words[k].w)) && !/[.,;:?!]$/.test(words[k - 1].w);
-    if (numRun.length && (decimals || (unit && !bc && !year))) {
+    const measure = numRun.length > 0 && k < words.length && UNIT_WORD.test(bare(words[k].w)) && !/[.,;:?!]$/.test(words[k - 1].w) && unit !== 'percent' && unit !== 'dollars';
+    if (numRun.length && (decimals || (measure && !bc && !year))) {
       const v = numValue(clean);
       const last = decimals ? words[k - 1] : run[run.length - 1];
       const trail = last.w.replace(/^[A-Za-z-]+/, '');
@@ -142,14 +152,19 @@ export const numeralize = (words: CueWord[]): CueWord[] => {
       i = k;
       continue;
     }
-    if (run.length && (bc || big || year || ten)) {
-      const v = year ? (clean[0] === 'twenty' ? 20 : UNITS.indexOf(clean[0])) * 100 + numValue([clean[1]]) : numValue(clean);
-      // "two thousand twenty-three" is a year (no thousands comma) unless a unit follows
+    if (run.length && (bc || big || year || ten || unit)) {
+      const v = teenYear ? UNITS.indexOf(clean[0]) * 100 + second : modernYear ? 2000 + second : numValue(clean);
+      // "two thousand twenty-three" is a year (no thousands comma)
       const thousandYear = !year && clean.includes('thousand') && v >= 1900 && v <= 2100;
       const trail = run[run.length - 1].w.replace(/^[A-Za-z-]+/, '');
       if (bc) {
         out.push({w: `${v} BC${words[j + 1].w.replace(/^C/, '')}`, t: run[0].t, end: words[j + 1].end});
         i = j + 2;
+      } else if (unit === 'percent' || unit === 'dollars') {
+        const tail = words[j].w.replace(/^[A-Za-z-]+/, '');
+        const shown = v.toLocaleString('en-US');
+        out.push({w: (unit === 'percent' ? `${shown}%` : `$${shown}`) + tail, t: run[0].t, end: words[j].end});
+        i = j + 1;
       } else {
         out.push({w: (year || thousandYear ? String(v) : v.toLocaleString('en-US')) + trail, t: run[0].t, end: run[run.length - 1].end});
         i = j;

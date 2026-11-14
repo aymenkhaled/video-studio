@@ -55,6 +55,12 @@ Decisions (Claude, Aymen asleep, told to take the recommended option):
 - **Branch `ep/002-carthage` is ready to merge** into main (typecheck clean, 8/8 engine tests, episode validator PASS, Hannibal stills unchanged). After merging, episode 001 can opt in with `clarity={...}` plus `MapSpec.modern/avoidLabels/relief/minText` and `art` scenes.
 - 2026-11-14 **Episode 001 Hannibal v2** (branch `ep/001-hannibal-v2`): full Clarity Kit upgrade, independent review fixes, see `brands/history-maps/episodes/001-hannibal/review-v2.md`. Engine: captions/pop-ups ~15 % smaller (Aymen: "too big"), bounded label shifts, battle field lifted above captions with the battle name in the phase banner, family-tree card, −3 dBFS limiter after loudnorm. Episode 002 re-rendered with the smaller UI (run 43566364600, QA PASS).
 
+## Money & Maps 001 "Why Is Switzerland So Rich?" — branch `ep/c001-money-maps` (worktree `D:\studio-c001`)
+- 2026-11-14 Decision: topic Switzerland (strongest proven demand). Voice Kokoro `af_heart` (distinct from the history channel). Channel look: light paper land on navy sea, Okabe–Ito/viridis colour-blind-safe palette.
+- 2026-11-14 Engine (opt-in, reusable for the next Money & Maps video): `kind: 'chart'` (bar/line/share/area/pictogram), `MapSpec.choropleth`, money captions, label `drop`, timeline "today / N years ago", SFX train/clock/pop/wind; `src/channel/MoneyArt.tsx` (MoneyAvatar, MoneyBanner).
+- 2026-11-14 **Delivered:** render 43616583892 QA PASS (11:58), independent review fixes applied, 7.5/10 (`brands/money-maps/episodes/001-switzerland/review.md`). Files in `D:\deep-time-fables\money-maps-episode-001\`. Merged into main.
+- Waiting on Aymen: phone-speaker listen, create the Money & Maps channel (profile + banner ready), upload with UPLOAD.md. Next Money & Maps video: "Why is Russia so big but so empty?" (teased in the end screen).
+- Logged for later: Chatterbox voice benchmark; modern PD/CC0 photos (most modern Swiss photos are CC BY-SA); stronger relief on the light map theme; Swiss border overlay on satellite images.
 ## Channel B "Scale & Science" — episode 001 "How Big Was the Biggest Animal Ever?" — branch `ep/b001-biggest-animal` (worktree `D:\studio-b001`)
 Folder `brands/scale-science/episodes/001-biggest-animal/` (build_timeline.py → timeline.json, scenes.ts, sources.md, package.json). Composition `BiggestAnimal` (1920×1080@24), thumbs `BiggestAnimalThumb1-3`, channel art `BiggestAnimalChannel1` (800×800) / `2` (2560×1440).
 

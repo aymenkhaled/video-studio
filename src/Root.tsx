@@ -10,6 +10,10 @@ import {HannibalEpisode, calculateHannibalEpisode} from './history/Hannibal';
 import {HannibalThumb} from './history/HannibalThumb';
 import {CarthageEpisode, calculateCarthageEpisode} from './history/Carthage';
 import {CarthageThumb} from './history/CarthageThumb';
+import {ChannelAvatar, ChannelBanner} from './channel/ChannelArt';
+import {SwitzerlandEpisode, calculateSwitzerlandEpisode} from './money/Switzerland';
+import {SwitzerlandThumb} from './money/SwitzerlandThumb';
+import {MoneyAvatar, MoneyBanner} from './channel/MoneyArt';
 import {ScaleChannel1, ScaleChannel2} from './scale/ChannelArt';
 import {BiggestAnimal, BiggestAnimalThumb, calculateBiggestAnimal} from './scale/BiggestAnimal';
 
@@ -60,6 +64,23 @@ export const Root: React.FC = () => (
       <Composition key={v} id={`CarthageThumb${v}`} component={CarthageThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
     ))}
     <Composition
+      id="Switzerland"
+      component={SwitzerlandEpisode}
+      durationInFrames={24 * 60 * 13}
+      fps={24}
+      width={1920}
+      height={1080}
+      defaultProps={{scenes: []}}
+      calculateMetadata={calculateSwitzerlandEpisode}
+    />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={`sw${v}`} id={`SwitzerlandThumb${v}`} component={SwitzerlandThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
+    ))}
+    <Composition id="MoneyAvatar" component={MoneyAvatar} durationInFrames={1} fps={24} width={800} height={800} />
+    <Composition id="MoneyBanner" component={MoneyBanner} durationInFrames={1} fps={24} width={2560} height={1440} />
+    <Composition id="ChannelAvatar" component={ChannelAvatar} durationInFrames={1} fps={24} width={800} height={800} />
+    <Composition id="ChannelBanner" component={ChannelBanner} durationInFrames={1} fps={24} width={2560} height={1440} />
+    <Composition
       id="BiggestAnimal"
       component={BiggestAnimal}
       durationInFrames={24 * 60 * 12}
@@ -70,7 +91,7 @@ export const Root: React.FC = () => (
       calculateMetadata={calculateBiggestAnimal}
     />
     {([1, 2, 3] as const).map((v) => (
-      <Composition key={v} id={`BiggestAnimalThumb${v}`} component={BiggestAnimalThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
+      <Composition key={`ba${v}`} id={`BiggestAnimalThumb${v}`} component={BiggestAnimalThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
     ))}
     <Composition id="BiggestAnimalChannel1" component={ScaleChannel1} durationInFrames={1} fps={24} width={800} height={800} />
     <Composition id="BiggestAnimalChannel2" component={ScaleChannel2} durationInFrames={1} fps={24} width={2560} height={1440} />
