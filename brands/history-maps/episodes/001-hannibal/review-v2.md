@@ -1,0 +1,10 @@
+# 001-hannibal v2 — review (Clarity Kit upgrade after Aymen's feedback)
+
+What changed from v1 (6.5/10): real PD paintings with 2.5D parallax (Trumbull, Turner, West, Leutemann, Zama engraving), cold open says where / when / who in the first seconds, then-vs-now names for every place, Ebro / Rhône / Po rivers + shaded relief, locator globe, km scale, years-ago timeline, illustrated soldiers / cavalry / elephants with phase titles in all four battles, Barca family tree + cards for both Scipios and both Hasdrubals, glossary pop-ups (Punic, mercenaries, Iberia, Gaul, siege, consul, Numidians, ambush, dictator, legion, senators, double envelopment, infantry/cavalry, siege engines, chief magistrate, BC), numbers with context, 72 shots (≤ 15 s each except the treaty list), "So far" recaps with open loops, 20 s end screen → episode 002, new SFX (march, hooves, elephants, clash, crowd, oars), captions 46 px (owner: smaller than 54).
+
+Independent review (fresh agent) on round-1 stills: FAIL 7.0/10. Fixed in one pass and verified on stills: labels drifting next to the wrong dot (engine: bounded label shifts, tested), river labels in label avoidance, overlapping counters, Hannibal card in the first seconds, historians / Appian / Laelius cards, infantry / cavalry / senators pop-ups, then-vs-now for Zama / Ticinus / Trebia / Arno / Rhône, unsupported claims hedged or removed ("bloodiest", "second city of Italy", "undefeated"), "army twice your size" / "three Roman armies" corrected, 37-years teaser, opening crop above the fallen figures.
+
+Audio: first final failed true peak (+0.6 dBTP) because of new SFX transients → −3 dBFS safety limiter after loudnorm; re-rendered.
+
+Scores /10: hook 8 · clarity 8 · visuals 8 · motion 7 · sound 6.5 (Kokoro, not phone-tested) → **7.5/10**.
+Top 3 weaknesses: (1) voice still flat over 12 min, no phone-speaker test; (2) battle plans are diagrams with figures, not illustrations — fine for clarity, less cinematic; (3) some PD sources are low-res (Turner 1213 px), soft at full frame.
