@@ -115,7 +115,7 @@ export const SCENES: Record<string, SceneDef> = {
   ]),
   c1e: map(-202, {camera: cam([4, 41], 4.6, [8, 38.5], 5.2), territories: B201, routes: [route('march', MARCH, [0.05, 0.5], {km: true, unit: {label: 'Hannibal', color: COL3.carthage}})], cities: [at(C3.zama, 0.7)]}, [
     {type: 'character', name: 'Hannibal', role: 'Carthaginian general', line: 'Crossed the Alps, nearly beat Rome. Lost at Zama, 202 BC.', side: 'Carthage'},
-    {type: 'glossary', term: 'Punic Wars', meaning: "Rome's 3 wars with Carthage (Punic = Carthaginian)", window: [0.55, 0.98]},
+    {type: 'glossary', term: 'Punic Wars', meaning: 'Rome vs Carthage (Punic = Carthaginian)', window: [0.55, 0.98]},
   ]),
   c1f: map(-201, {camera: WEST_MED, territories: [ROME_ITALY, SICILY, SARD_CORSICA, NUMIDIA, CARTHAGE_201, {...ROMAN_SPAIN, grow: [0.1, 0.5]}], regions: [{text: 'LOST', at: [-3.5, 39.6], appear: 0.45, size: 40}]}, [
     {type: 'citation', text: 'Polybius 15.18; Livy 30.37', at: [0.05, 0.95]},
@@ -234,7 +234,7 @@ export const SCENES: Record<string, SceneDef> = {
     ],
     arrows: [{from: [65, 39], via: [70, 37], to: [76, 35], side: 'a', draw: [0.35, 0.65], width: 1.1}],
     notes: [n('war'), n('sea', 0.1)],
-    zoom: [{at: 0, cx: 64, cy: 42, s: 2.0}, {at: 1, cx: 68, cy: 40, s: 1.7}],
+    zoom: [{at: 0, cx: 64, cy: 47, s: 2.0}, {at: 1, cx: 68, cy: 44, s: 1.7}],
   }), overlays: [{type: 'citation', text: 'Appian, Punica 121 — "about fifty" ships', at: [0.4, 0.98]}]},
   c5f: map(-147, {camera: cam([11.6, 39.6], 6.5, [10.8, 37.6], 10), territories: B149, cities: [C3.romePlain, C3.carthagePlain], routes: [route('scipio', SEA_TO_ROME.slice().reverse(), [0.1, 0.7], {color: COL3.rome, unit: {label: 'Scipio Aemilianus', color: COL3.rome}})]}, [
     {type: 'citation', text: 'Appian, Punica 112: consul for 147 BC', at: [0.4, 0.98]},
@@ -247,7 +247,7 @@ export const SCENES: Record<string, SceneDef> = {
       {from: [62, 50], via: [63, 46], to: [62, 42], side: 'b', draw: [0.05, 0.35]},
       {from: [62, 42], via: [60, 37], to: [56, 33], side: 'b', draw: [0.4, 0.8]},
     ],
-    notes: [n('byrsa'), n('war', 0.05, 0.5), {text: '6 days and nights of street fighting', x: 52, y: 22, appear: 0.55}],
+    notes: [n('byrsa'), n('war', 0.05, 0.5), {text: '6 days and nights of street fighting', x: 50, y: 27, appear: 0.55}],
     zoom: [{at: 0, cx: 60, cy: 40, s: 1.8}, {at: 1, cx: 56, cy: 34, s: 2.0}],
   }), overlays: [{type: 'citation', text: 'Appian, Punica 127–129', at: [0.3, 0.98]}]},
   c5i: {kind: 'art', art: {id: 'assault-1885', title: 'Final assault on Carthage, 146 BC — engraving, 1885', from: {x: 0.5, y: 0.35, zoom: 1.0}, to: {x: 0.5, y: 0.55, zoom: 1.12}}, overlays: [
