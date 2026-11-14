@@ -1,3 +1,5 @@
+> **Update 2026-11-14:** episode 001 (Switzerland) is done. For the next video, use `brands/money-maps/episodes/001-switzerland/` as the working pattern (charts, choropleths, money captions) instead of Carthage, and read LESSONS.md section "From Money & Maps 001" first.
+
 Work in D:\studio (repo aymenkhaled/video-studio). You are making the FIRST long-form video for a NEW channel: **Channel C — "Money & Maps"** (economics and geography explained: why countries are rich or poor, trade routes, borders, resources). This is a test of a new category, so it must be our best video yet.
 
 ## 0. Read first (mandatory, before anything else)
