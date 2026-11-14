@@ -313,7 +313,7 @@ const BASE_SCENES: Record<string, SceneDef> = {
 
   c4: chapter(4, 'Cannae', '216 BC', {camera: [{at: 0, center: [15, 41.5], zoom: 14}, {at: 1, center: [15.6, 41.4], zoom: 16}], territories: base}, 'trumbull-cannae', 'How did 50,000 men surround 86,000?'),
   c4a: map(-217, {camera: italy(9, 10.5), territories: base, routes: [{id: 'ca', points: TO_CANNAE, color: COL.route, draw: [0.1, 0.95], unit: HANNIBAL}], cities: [CT.rome, {...CT.cannae, appear: 0.85}]}, [
-    G('Dictator', 'one leader with full power, up to 6 months', [0.05, 0.45]),
+    G('Dictator', 'one leader with full power, max 6 months', [0.05, 0.45]),
     who('Fabius Maximus', 'Roman dictator, 217 BC', 'Strategy: follow Hannibal, never fight him.', 'Rome', undefined, [0.45, 0.98]),
   ]),
   c4a_2: map(-217, {camera: italy(10.5, 11), territories: base, cities: [CT.rome, CT.cannae]}, [{type: 'quote', text: 'Cunctator: the Delayer', by: 'Nickname of Quintus Fabius Maximus', at: [0.05, 0.98]}]),
