@@ -32,7 +32,7 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 9. Work fast and report early: Aymen wants short answers and simple work when he asks for something small; long silent runs frustrate him.
 10. Upload rhythm: schedule episodes ~3 days apart, pinned question comment, reply to all comments in 48 h; end screens link the episodes both ways.
 
-11. Motion reference Aymen liked (Storyhub-style reel): guide character, "you" framing, continuous tracking camera instead of cuts, living parallax backgrounds, micro-animation on every element, a new beat every 2–4 s, key-word caption pop, end on a choice/question. Borrow techniques only, never their characters or look. Details in docs/prompts/*.md section 6.
+11. Inspiration (optional, not a rule): Aymen liked a Storyhub-style reel ("you" framing, continuous camera, living backgrounds, micro-animation, comment-question ending). Use only what suits a given video.
 
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
