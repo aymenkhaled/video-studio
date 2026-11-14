@@ -130,6 +130,102 @@
    "licence": "CC0 1.0",
    "credit": "Bust traditionally identified as Scipio Africanus, Capitoline Museums — photo Jona Lendering / Livius.org, CC0",
    "depth": false
+  },
+  {
+   "id": "alps-modis",
+   "source": "commons",
+   "licence": "Public domain (NASA)",
+   "credit": "The Alps seen from space, NASA MODIS image by Jeff Schmaltz, NASA GSFC, 2016 (public domain)",
+   "depth": false,
+   "file": "The Alps (MODIS 2016-04-01).jpg"
+  },
+  {
+   "id": "village-alps",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "Village and Alps, Bernese Oberland — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "Village and Alps, Bernese Oberland, Switzerland-LCCN2001702412.jpg"
+  },
+  {
+   "id": "hodler-marignano",
+   "source": "commons",
+   "licence": "Public domain (artist d. 1918)",
+   "credit": "Ferdinand Hodler, Retreat from Marignano (cartoon III), Kunsthaus Zürich (public domain)",
+   "depth": true,
+   "file": "Ferdinand Hodler - Rückzug von Marignano. Karton III - 1584 - Kunsthaus Zürich.jpg"
+  },
+  {
+   "id": "lion-lucerne",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "Lion Monument, Lucerne — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "Lion Monument, Lucerne, Switzerland-LCCN2001703124.jpg"
+  },
+  {
+   "id": "tambora-iss",
+   "source": "commons",
+   "licence": "Public domain (NASA)",
+   "credit": "Mount Tambora, Indonesia, photographed from the ISS by the NASA Expedition 20 crew, 2009 (public domain)",
+   "depth": false,
+   "file": "Mount Tambora Volcano, Sumbawa Island, Indonesia.jpg"
+  },
+  {
+   "id": "calvin",
+   "source": "commons",
+   "licence": "Public domain (c. 1550)",
+   "credit": "Portrait of John Calvin, anonymous, c. 1550, Museum Catharijneconvent (public domain)",
+   "depth": false,
+   "file": "Portrait of John Calvin (1509–1564), by anonymous - Museum Catharijneconvent.jpg"
+  },
+  {
+   "id": "met-watch",
+   "source": "url",
+   "licence": "CC0 (The Met Open Access)",
+   "credit": "Watch by Jean Rousseau the Younger, Geneva, c. 1650–60, The Metropolitan Museum of Art, Gift of J. Pierpont Morgan, 1917 (CC0)",
+   "depth": false,
+   "url": "https://images.metmuseum.org/CRDImages/es/original/DP168578.jpg"
+  },
+  {
+   "id": "turner-gotthard",
+   "source": "commons",
+   "licence": "Public domain (artist d. 1851)",
+   "credit": "J. M. W. Turner, The Pass of St Gotthard, near Faido, 1843 (public domain)",
+   "depth": true,
+   "file": "The Pass of St. Gotthard, near Faido by J. M. W. Turner, 1843, watercolor.jpg"
+  },
+  {
+   "id": "gotthard-workers",
+   "source": "commons",
+   "licence": "Public domain (photo 1880)",
+   "credit": "Gotthard tunnel workers, photograph c. 1880, unknown photographer (public domain)",
+   "depth": true,
+   "file": "Gotthardtunnel Bauarbeiter.jpg"
+  },
+  {
+   "id": "wassen-rail",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "Wassen, St Gotthard Railway — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "Wassen, the tunnels, St. Gotthard Railway, Switzerland-LCCN2001703203.jpg"
+  },
+  {
+   "id": "basel-gate",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "The Spalentor, Basel — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "The Spalenthor, Basle, Switzerland-LCCN2001701103.jpg"
+  },
+  {
+   "id": "zurich-poly",
+   "source": "commons",
+   "licence": "Public domain (photochrom c. 1890–1900)",
+   "credit": "The Limmatquai and the Polytechnic (today ETH), Zurich — Library of Congress Photochrom Print Collection, c. 1890–1900 (public domain)",
+   "depth": true,
+   "file": "The Limmatquay, with Polytechnic, Zurich, Switzerland-LCCN2001703376.jpg"
   }
  ],
  "geo": {
@@ -165,6 +261,24 @@
   "coin-masinissa.src": "c2bf0afe9e48a9ecfaf42aa1eb9ebb82f6f13aeaf37736e5b4043c28cde73ad0",
   "coin-tanit.src": "1b69fbff5a8112527838a0854cc447b5e454fcfd897223ce9f20e9f4b9182c00",
   "ne_50m_rivers.geojson": "f286e0ce978fde999ca2d7a78c764be08542e19b63cded52b05c12d5173ccc51",
-  "relief0.zip": "4e6ff23dec315c00c018c030250ea3157630f83cabb0ff4bee0ebade8647bd6d"
+  "relief0.zip": "4e6ff23dec315c00c018c030250ea3157630f83cabb0ff4bee0ebade8647bd6d",
+  "turner-hannibal.src": "da75077e27691d4cfacf0c3b656e69c40e4c225a409da61f4ffbd3c5e4d4c522",
+  "trumbull-cannae.src": "7336de24b6201e170658b54a76faf24ec4d5a14148d37384eba669615d46905a",
+  "west-oath.src": "6e665c3a8bc6caed2a06e34b3cbab2d8648970c3f6b43b7203e5b0b686b63242",
+  "leutemann-alps.src": "1636e5002177c302f8f30c3c2bc75f5bdb4b5969863fb6c119189923fb407f03",
+  "zama-loc.src": "3f271102af074f96f58830cb431cfc19dd584711382f50112db1baa76c45e632",
+  "scipio-bust.src": "5628ca1d4fdc6ea021d7e98982d50a3d785e56bddf9bd6262a6e673bcad70fc2",
+  "alps-modis.src": "5ff3fad8c73f5f63dedd612ec572613f03958f3983cc871b12c409ef1e5fa95f",
+  "village-alps.src": "0ce332733f80b9dddad2bc390aa0666cf0b35dd74186cd7fcbdbeb46db3b881b",
+  "hodler-marignano.src": "1abc47872f0f6eb891982a389c51745ecf2404e9a49ed313865d9c8ff032ad3e",
+  "lion-lucerne.src": "61dfbefc08fb4a7c5f83dce39cdd4e90331ac1924cb2522b3f769826d3e82c78",
+  "tambora-iss.src": "20a50ca030f609ce0b28e2ecd3ddc1e04721a57227a501ca73836fbb01e03dd3",
+  "calvin.src": "f602b9363414b4b1f77f39aa82439ad181440d8a222c50f684a7e99fa601c7bb",
+  "met-watch.src": "d5b9ab250dbe75bb2053e645369bc5df60d6b41bf61f40ac4f42c168c704b525",
+  "turner-gotthard.src": "ebbc8bf5fda3570b645aaa8a08fff8767f04b846e2a920acf00b0d2d60583004",
+  "gotthard-workers.src": "96a2eb667e78a1943d2b6574fd3ecb9ba0c635f441a792c85d98c275046d34b4",
+  "wassen-rail.src": "18b53f744b38cd48e053ec73e88d63c150b7a9d9560bab52d910975b076dbe8b",
+  "basel-gate.src": "b18c259252e273be0bac21d5df6a456aa1b019070c69e53f275381363209cc15",
+  "zurich-poly.src": "1f68d21f89efaeadb4630afa6eb98192e70a6d798973b45546eb74a9795aa01c"
  }
 }

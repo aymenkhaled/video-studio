@@ -4,6 +4,7 @@ import {easeInOutCubic, ramp} from '../motion';
 import {cameraAt, MapShot, MapSpec} from './map';
 import {BattleShot, BattleSpec} from './battle';
 import {ArtShot, ArtSpec} from './art';
+import {ChartShot, ChartSpec} from './chart';
 import {BigCounter, ChapterCard, Citation, ListCard, QuoteCard, TimelineBar, TitleCard} from './ui';
 import type {TimedLine} from '../overlay';
 import {
@@ -32,7 +33,8 @@ type Common = {overlays?: Overlay[]; year?: number; /** move captions up (px) wh
 export type SceneDef =
   | ({kind: 'map'; map: MapSpec} & Common)
   | ({kind: 'battle'; battle: BattleSpec; range?: [number, number]} & Common)
-  | ({kind: 'art'; art: ArtSpec} & Common);
+  | ({kind: 'art'; art: ArtSpec} & Common)
+  | ({kind: 'chart'; chart: ChartSpec} & Common);
 
 export type SceneTime = {id: string; start: number; end: number};
 export type EpisodeProps = {scenes: SceneTime[]; lines?: TimedLine[]};
@@ -73,7 +75,7 @@ export const makeEpisodeMetadata =
 
 const CARDS = new Set(['quote', 'list', 'chapter', 'title', 'recap', 'endscreen']);
 
-const renderOverlay = (o: Overlay, p: number, i: number, clarity?: ClarityConfig) => {
+const renderOverlay = (o: Overlay, p: number, i: number, clarity?: ClarityConfig, chart = false) => {
   const side = (name?: string) => clarity?.factions.find((f) => f.name === name)?.color ?? '#d8b46a';
   switch (o.type) {
     case 'citation':
@@ -91,7 +93,7 @@ const renderOverlay = (o: Overlay, p: number, i: number, clarity?: ClarityConfig
     case 'character':
       return <CharacterCard key={i} name={o.name} role={o.role} line={o.line} color={side(o.side)} image={o.image} window={o.window} p={p} />;
     case 'glossary':
-      return <GlossaryPop key={i} term={o.term} meaning={o.meaning} window={o.window} p={p} />;
+      return <GlossaryPop key={i} term={o.term} meaning={o.meaning} window={o.window} p={p} top={chart ? 26 : undefined} />;
     case 'recap':
       return <RecapCard key={i} text={o.text} next={o.next} p={p} />;
     case 'endscreen':
@@ -106,6 +108,8 @@ const Scene: React.FC<{def: SceneDef; p: number; uid: string; width: number; hei
     <MapShot spec={def.map} p={p} width={width} height={height} uid={uid} elapsed={elapsed} />
   ) : def.kind === 'art' ? (
     <ArtShot art={def.art} p={p} width={width} height={height} />
+  ) : def.kind === 'chart' ? (
+    <ChartShot spec={def.chart} p={p} width={width} height={height} elapsed={elapsed} />
   ) : (
     <BattleShot spec={def.battle} p={def.range ? def.range[0] + p * (def.range[1] - def.range[0]) : p} sceneP={p} width={width} height={height} clarity={clarity} />
   );
@@ -176,10 +180,10 @@ export const HistoryEpisode: React.FC<EpisodeProps & {defs: Record<string, Scene
         CARDS.has(o.type) ? (
           // Cards darken the moving map: give the card itself a slow scale-in so the frame never freezes.
           <AbsoluteFill key={k} style={{transform: `scale(${1 + 0.09 * p})`}}>
-            {renderOverlay(o, p, k, clarity)}
+            {renderOverlay(o, p, k, clarity, def.kind === 'chart')}
           </AbsoluteFill>
         ) : (
-          renderOverlay(o, p, k, clarity)
+          renderOverlay(o, p, k, clarity, def.kind === 'chart')
         ),
       )}
       {def.year !== undefined && !isCard && def.kind === 'map' ? <TimelineBar from={timeline.from} to={timeline.to} year={def.year} now={clarity ? clarity.now ?? 2026 : undefined} /> : null}

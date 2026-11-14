@@ -34,6 +34,14 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 
 11. Inspiration (optional, not a rule): Aymen liked a Storyhub-style reel ("you" framing, continuous camera, living backgrounds, micro-animation, comment-question ending). Use only what suits a given video.
 
+## From Money & Maps 001 Switzerland (14 Nov 2026)
+1. Charts freeze: an animation that finishes at 60 % of a 12 s scene leaves > 2 s of static frame → freezedetect FAIL. Every scene kind needs a living camera (push-in + absolute-time drift), not only maps.
+2. Country-name labels must never be relocated far: give them `maxShift` + `drop` so a blocked label hides. Tiny countries (Liechtenstein) get a city marker in the one scene that needs them, not a permanent modern label.
+3. Money captions: TTS lines spell numbers; the caption converter now handles "$", "%", million/billion, "twenty twenty-four" and "nineteen hundred seven". Avoid "point" decimals and "oh" years in narration; the converter cannot show them.
+4. Economic facts need the definition behind the number: export totals exclude gold (BAZG business-cycle total), industry-body superlatives must be attributed ("according to the Swiss Bankers Association"), a money number without a year is dropped rather than shown.
+5. The reviewer caught a real fact error (Swiss patents existed from 1888 but excluded chemicals until 1907). Always check "had no X law" claims against a primary or academic source.
+6. Balance on neutral/banking stories: one sourced line on the critical record (Bergier Commission 2002) keeps the tone factual, not promotional.
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|
