@@ -45,10 +45,20 @@ Primary texts: Appian, *Punica* (Horace White transl., PD) — livius.org number
 | — | Stadium comparison for 50,000 people ("≈ a sold-out 50,000-seat stadium") is arithmetic, not a historical claim; the 84,000 comparison uses row 6 (Carthage's ~25,000 army). | n/a | — |
 | — | Population / wall-length figures | DROP | not sourced well enough |
 
+## For the description (packager reads these bullets)
+- Appian, The Punic Wars (Punica), transl. Horace White: https://www.livius.org/sources/content/appian/appian-the-punic-wars/
+- Plutarch, Life of Cato the Elder 26–27, transl. Perrin: https://cts.perseids.org/read/greekLit/tlg0007/tlg025/perseus-eng2/27.1-27.5
+- Polybius, Histories 15.18 and 38.21–22; Livy 30.37, 34.62, 36.4
+- R. T. Ridley, "To Be Taken with a Pinch of Salt: The Destruction of Carthage", Classical Philology 81 (1986): https://www.journals.uchicago.edu/doi/10.1086/366973
+- UNESCO World Heritage List, Archaeological Site of Carthage (1979): https://whc.unesco.org/en/list/37
+- Britannica, Carthage: https://www.britannica.com/place/Carthage-ancient-city-Tunisia
+- Wikipedia, Third Punic War (overview): https://en.wikipedia.org/wiki/Third_Punic_War
+- Maps: modern borders from Natural Earth; ancient territories and the city plan are approximate reconstructions.
+
 ## Map data
-- Coastlines and modern borders: Natural Earth 1:50m/1:110m via `world-atlas` 2.0.2 (public domain data, ISC package).
-- Ancient territories are approximate reconstructions, labelled as such in the description:
-  - Carthaginian territory 201–150 BC ≈ north-east Tunisia (Fossa Regia line as commonly mapped), shrinking as Masinissa takes Emporia (Gulf of Gabès coast) and the Tysca region (Appian Pun. 68).
-  - Numidia under Masinissa ≈ northern Algeria + western Tunisia (capital Cirta = Constantine, Algeria).
-  - Province of Africa 146 BC ≈ former Carthaginian territory.
-- City plan of Carthage (Byrsa hill, Cothon circular + rectangular harbours, triple land wall across the isthmus) drawn schematically from Appian Pun. 95–96 and modern site plans; not to scale.
+* Coastlines and modern borders: Natural Earth 1:50m/1:110m via `world-atlas` 2.0.2 (public domain data, ISC package).
+* Ancient territories are approximate reconstructions, labelled as such in the description:
+  * Carthaginian territory 201–150 BC ≈ north-east Tunisia (Fossa Regia line as commonly mapped), shrinking as Masinissa takes Emporia (Gulf of Gabès coast) and the Tysca region (Appian Pun. 68).
+  * Numidia under Masinissa ≈ northern Algeria + western Tunisia (capital Cirta = Constantine, Algeria).
+  * Province of Africa 146 BC ≈ former Carthaginian territory.
+* City plan of Carthage (Byrsa hill, Cothon circular + rectangular harbours, triple land wall across the isthmus) drawn schematically from Appian Pun. 95–96 and modern site plans; not to scale.
