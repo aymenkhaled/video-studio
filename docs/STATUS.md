@@ -1,6 +1,6 @@
 # STUDIO STATUS
 
-_Updated 13 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
+_Updated 14 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
 
 ## Done
 - Phase 0: environment check, `INVENTORY.md`, `REUSE_PLAN.md`, 8 old videos reviewed (frames in `docs/review/`, gitignored).
@@ -66,3 +66,4 @@ Decisions (Claude; Aymen away, "don't ask"):
 - 2026-11-14 Own media release `media-b001` (new `media_release` input) so channel B never overwrites `media-v1` that channels A/C use.
 - 2026-11-14 Voice: Kokoro `bm_george` (en-gb) to give channel B its own voice; Chatterbox evaluation still pending.
 - 2026-11-14 Blue whale size shown as NOAA's "largest ones" (~33 m / 150 t), not typical size; all fossil sizes as ranges.
+- 2026-11-14 **Episode delivered:** render (final) QA PASS — 12:25, −14.2 LUFS, −1.9 dBTP, black/freeze/silence clean; 4 stills rounds; independent review FAIL 7/10 → all Critical/Important fixed and verified; self-score 7.5/10 (`brands/scale-science/episodes/001-biggest-animal/review.md`). Files in `D:deep-time-fablesscale-science-episode-001` (video never committed). Waiting on Aymen: phone-speaker listen, create channel B, upload with UPLOAD.md.
