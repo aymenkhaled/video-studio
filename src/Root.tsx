@@ -10,6 +10,7 @@ import {HannibalEpisode, calculateHannibalEpisode} from './history/Hannibal';
 import {HannibalThumb} from './history/HannibalThumb';
 import {CarthageEpisode, calculateCarthageEpisode} from './history/Carthage';
 import {CarthageThumb} from './history/CarthageThumb';
+import {ScaleChannel1, ScaleChannel2} from './scale/ChannelArt';
 import {BiggestAnimal, BiggestAnimalThumb, calculateBiggestAnimal} from './scale/BiggestAnimal';
 
 // Every brand registers its compositions here. Ids are stable: CI renders by id.
@@ -71,5 +72,7 @@ export const Root: React.FC = () => (
     {([1, 2, 3] as const).map((v) => (
       <Composition key={v} id={`BiggestAnimalThumb${v}`} component={BiggestAnimalThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
     ))}
+    <Composition id="BiggestAnimalChannel1" component={ScaleChannel1} durationInFrames={1} fps={24} width={800} height={800} />
+    <Composition id="BiggestAnimalChannel2" component={ScaleChannel2} durationInFrames={1} fps={24} width={2560} height={1440} />
   </>
 );

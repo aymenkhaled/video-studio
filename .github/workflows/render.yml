@@ -170,7 +170,10 @@ jobs:
           name: bundle
           path: out/
       - name: Thumbnails (3 variants)
-        run: node tools/render_thumbs.mjs "${{ inputs.comp }}Thumb" 3
+        run: |
+          node tools/render_thumbs.mjs "${{ inputs.comp }}Thumb" 3
+          # optional channel art (profile picture + banner) registered as <comp>Channel1/2
+          node tools/render_thumbs.mjs "${{ inputs.comp }}Channel" 2 channel || echo "no channel art for ${{ inputs.comp }}"
       - name: Chapters, captions, UPLOAD.md
         run: |
           python3 tools/package_episode.py "${{ inputs.timeline }}" out/bundle/public/generated/timing.json "${{ inputs.episode }}" out/package
