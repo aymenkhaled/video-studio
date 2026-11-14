@@ -73,3 +73,13 @@ Decisions (Claude; Aymen away, "don't ask"):
 - 2026-11-14 Voice: Kokoro `bm_george` (en-gb) to give channel B its own voice; Chatterbox evaluation still pending.
 - 2026-11-14 Blue whale size shown as NOAA's "largest ones" (~33 m / 150 t), not typical size; all fossil sizes as ranges.
 - 2026-11-14 **Episode delivered:** render (final) QA PASS — 12:25, −14.2 LUFS, −1.9 dBTP, black/freeze/silence clean; 4 stills rounds; independent review FAIL 7/10 → all Critical/Important fixed and verified; self-score 7.5/10 (`brands/scale-science/episodes/001-biggest-animal/review.md`). Files in `D:deep-time-fablesscale-science-episode-001` (video never committed). Waiting on Aymen: phone-speaker listen, create channel B, upload with UPLOAD.md.
+
+## Master playbook — branch `research/master-playbook` (2026-11-14)
+- 5 parallel research passes (hooks/retention, packaging, visuals/motion, voice/sound, channel growth; ~230 sources) → `docs/research/*.md`; merged with all LESSONS into **`docs/PLAYBOOK.md`** (single source of truth, top-20 missing tricks). CLAUDE.md now requires reading it before every new script/video.
+- Key finding (verified on the official page 2026-11-14): from 1 Feb 2027 new YPP applicants need 1,000 subs + **8,000 watch hours / 365 d**. Plan for it.
+Decisions (Claude; Aymen away, "don't ask"):
+- 2026-11-14 Plan against the 8,000-h bar: 6-week discovery on all 3 channels, then ~60 % of capacity to the lead channel at day 42 (others ≥ 2 long videos / 90 d). Aymen can overrule.
+- 2026-11-14 Next episode on any channel follows the playbook skeleton: promise in ≤ 7 s, second hook by 0:30, context at 0:20–0:50, `promises.json` ledger checked by the reviewer, packaging (3 titles + 3 thumbnails + outlier check) before the script.
+- 2026-11-14 Before the next render: audio quick wins (18–24 dB ducking, phone voice chain), then CI TTS benchmark Pocket TTS vs Chatterbox vs Kokoro.
+- 2026-11-14 Licence rejections recorded in the playbook: Unsplash/Pexels/ESA/Google Earth Studio, Pixabay music, MusicGen, Stable Audio Open, BBC RemArc, NC TTS weights; only EOX Sentinel-2 cloudless 2016 (CC BY) for satellite; Depth-Anything-V2 Small only.
+- Waiting on Aymen: Copernicus terms? Unsplash/Pexels? Sonniss GDC? advanced features on all 3 channels (Test & Compare).

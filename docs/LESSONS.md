@@ -1,5 +1,7 @@
 # LESSONS — read before every new script
 
+> Raw lesson log. Every lesson below is merged into **[`docs/PLAYBOOK.md`](PLAYBOOK.md)** (the single source of truth, with research evidence and status). Read the playbook first; add new raw notes here and a row there.
+
 ## From the old work (Phase 0 review of 8 films, all ≤5/10; details in INVENTORY.md and REFERENCE_AUDIT_dtf.md)
 1. Frame 1 must show a readable subject on a phone. The Sound opened on a dark belly close-up; Whip opened on an empty landscape.
 2. No black end cards. They kill the loop and the replay signal. End on motion that matches frame 1.

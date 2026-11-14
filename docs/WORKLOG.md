@@ -17,3 +17,7 @@
 - Engine: chart scene kind (bar/line/share/area/pictogram), choropleths, money captions, label drop, SFX train/clock/pop/wind. Tests 14/14.
 - 3 stills rounds; independent review FAIL 6.5 → all Critical/Important fixed; full render 1 failed freezedetect on static charts → living camera on charts; render 43616583892 QA PASS (11:58, −14.5 LUFS, −2.2 dBTP). Channel art rendered. Score 7.5/10. Delivered to D:\deep-time-fables\money-maps-episode-001\.
 - 2026-11-14 Channel B "Scale & Science" episode 001 "How Big Was the Biggest Animal Ever?" (branch ep/b001-biggest-animal): new opt-in scale/compare/deeptime/custom scene kinds, original silhouettes, 3D Apatosaurus hero shot, media release media-b001, 4 stills rounds, independent review (FAIL 7/10 → all Critical/Important fixed), channel art.
+
+## 2026-11-14 — Master playbook (branch research/master-playbook)
+- 5 research subagents in parallel → `docs/research/{hooks-retention,packaging,visuals-motion,voice-sound,channel-growth}.md` (all sources dated 2026-11-14).
+- `docs/PLAYBOOK.md`: every trick/rule by area with evidence, impact, effort, channels, DOING/PARTIAL/MISSING; top-20 missing; LESSONS merged; CLAUDE.md rule added.

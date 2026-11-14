@@ -10,6 +10,7 @@ Faceless YouTube studio for Aymen (Tunisia). Goal: views → YPP. Brand A "Scale
 - Quota is limited: read files in sections, keep chat short, long notes go to files.
 - After two identical failures: record the blocker in STATUS and stop retrying.
 - Update `docs/STATUS.md` after every step; append milestones to `docs/WORKLOG.md`. Read `docs/LESSONS.md` before every new script.
+- **Read `docs/PLAYBOOK.md` before every new script, video or packaging job** — the single source of truth (all research + lessons, top-20 missing tricks). Add new lessons there as rows.
 
 ## Repo rules (public repo)
 - Never commit secrets, videos, `.env`, Mixamo files, or anything under `_import/`.
