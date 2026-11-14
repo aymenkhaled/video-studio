@@ -273,7 +273,7 @@ const BASE_SCENES: Record<string, SceneDef> = {
   c2a: map(-218, {camera: [{at: 0, center: [6, 39], zoom: 5}, {at: 0.45, center: [-1.2, 39.0], zoom: 11}, {at: 1, center: [-0.6, 39.6], zoom: 12.5}], territories: base, cities: [{...CT.newCarthage, appear: 0.4}]}),
   c2a_2: map(-218, {camera: [{at: 0, center: [-0.6, 39.6], zoom: 12.5}, {at: 1, center: [0.2, 40.6], zoom: 13}], territories: base, rivers: [RIVER.ebro], cities: [CT.newCarthage], routes: [{id: 'ebro', points: MARCH.slice(0, 4), color: COL.route, draw: [0.05, 0.6], unit: HANNIBAL}]}, [
     {type: 'counter', label: 'INFANTRY (CLAIMED)', value: 90000, window: [0.05, 0.98], context: 'Polybius — likely inflated'},
-    {type: 'counter', label: 'CAVALRY (CLAIMED)', value: 12000, window: [0.15, 0.98], top: 520, color: '#f4ecd8'},
+    {type: 'counter', label: 'CAVALRY (CLAIMED)', value: 12000, window: [0.15, 0.98], top: 600, color: '#f4ecd8'},
   ]),
   c2b: map(-218, {camera: [{at: 0, center: [0.6, 41.2], zoom: 11}, {at: 1, center: [3.4, 43.0], zoom: 12}], territories: base, rivers: [RIVER.rhone], routes: [{id: 'm1', points: MARCH.slice(0, 9), color: COL.route, draw: [0.02, 0.9], km: true, unit: HANNIBAL}], regions: [{text: 'PYRENEES', at: [1.0, 42.9], appear: 0.4, size: 30}, {text: 'GAUL', at: [2.6, 45.6], appear: 0.2}]}, [
     G('Gaul', "today's France, home of Celtic tribes", [0.2, 0.95]),
@@ -285,7 +285,7 @@ const BASE_SCENES: Record<string, SceneDef> = {
   c2c_2: map(-218, {camera: [{at: 0, center: [4.8, 44.3], zoom: 18}, {at: 1, center: [6.6, 45.1], zoom: 24}], territories: base, rivers: [RIVER.rhone], routes: [{id: 'm2a', points: MARCH.slice(0, 9), color: COL.route, draw: [-1, 0]}, {id: 'm2', points: MARCH.slice(8), color: COL.route, draw: [0.05, 0.9], unit: HANNIBAL}], cities: [{...C.rhone}, {...C.pass, appear: 0.6}], regions: [{text: 'ALPS', at: [7.4, 46.0], appear: 0.1, size: 48}]}),
   c2d: map(-218, {camera: [{at: 0, center: [7.4, 45.0], zoom: 30}, {at: 1, center: [8.4, 44.9], zoom: 24}], territories: base, rivers: [RIVER.po], routes: [{id: 'm3', points: MARCH, color: COL.route, draw: [-1, 0], unit: HANNIBAL}], cities: [{...CT.turin, appear: 0.05}]}, [
     {type: 'counter', label: 'INFANTRY LEFT', value: 20000, window: [0.25, 0.98], context: 'from about 90,000 claimed'},
-    {type: 'counter', label: 'CAVALRY LEFT', value: 6000, window: [0.35, 0.98], top: 520, color: '#f4ecd8'},
+    {type: 'counter', label: 'CAVALRY LEFT', value: 6000, window: [0.35, 0.98], top: 600, color: '#f4ecd8'},
     {type: 'citation', text: "Polybius 3.56, from Hannibal's own inscription", at: [0.1, 0.98]},
   ]),
   c2d_2: map(-218, {camera: [{at: 0, center: [8.4, 44.9], zoom: 24}, {at: 1, center: [11, 43.5], zoom: 9}], territories: base, rivers: [RIVER.po], routes: [{id: 'm3', points: MARCH, color: COL.route, draw: [-1, 0], unit: HANNIBAL}], cities: [CT.turin, {...CT.rome, appear: 0.5}]}),
@@ -361,7 +361,7 @@ const BASE_SCENES: Record<string, SceneDef> = {
   c6z: recap('Carthage lost the war, its fleet and its elephants.', 'But Hannibal’s own story was not over…', {camera: WEST_MED, territories: base}),
 
   c7: chapter(7, 'The Last Years', '201 – 183 BC', {camera: [{at: 0, center: [20, 37], zoom: 4.2}, {at: 1, center: [22, 37.5], zoom: 4.6}], territories: base}, 'turner-decline', 'What happens to a defeated hero?'),
-  c7a: map(-196, {camera: [{at: 0, center: [10.32, 36.85], zoom: 20}, {at: 1, center: [11, 36.8], zoom: 14}], territories: base, cities: [CT.carthage]}, [G('Chief magistrate', "Carthage's top elected official (a 'sufete')", [0.1, 0.9])]),
+  c7a: map(-196, {camera: [{at: 0, center: [10.32, 36.85], zoom: 20}, {at: 1, center: [11, 36.8], zoom: 14}], territories: base, cities: [CT.carthage]}, [G('Chief magistrate', "Carthage's top elected official", [0.1, 0.9])]),
   c7a_2: map(-195, {camera: [{at: 0, center: [16, 36], zoom: 4.2}, {at: 1, center: [24, 37], zoom: 5}], territories: base, routes: [{id: 'exile', points: EXILE, color: COL.route, draw: [0.08, 0.9], dashed: true, unit: HANNIBAL}], cities: [CT.carthage, {...CT.tyre, appear: 0.65}, {...CT.ephesus, appear: 0.85}]}),
   c7b: map(-183, {camera: [{at: 0, center: [27.8, 39.0], zoom: 16}, {at: 1, center: [29.2, 40.6], zoom: 26}], territories: [], routes: [{id: 'bith', points: TO_BITHYNIA, color: COL.route, draw: [0.05, 0.6], unit: HANNIBAL}], cities: [CT.ephesus, {...CT.libyssa, appear: 0.5, size: 1.3}], regions: [{text: 'BITHYNIA', at: [31.6, 39.7], appear: 0.4, size: 34}]}),
   c7c: map(-146, {camera: [{at: 0, center: [10.32, 36.85], zoom: 24}, {at: 1, center: [10, 38.5], zoom: 6}], territories: [ROME_ITALY, SARD_CORSICA, SICILY, {...CARTHAGE_AFRICA, fadeOut: [0.05, 0.4]}], cities: [CT.carthage]}),

@@ -215,10 +215,11 @@ export const GlossaryPop: React.FC<{term: string; meaning: string; p: number; wi
 };
 
 /** Battle / siege phase title, top-centre: "Phase 1 — The trap is set" + what to watch. */
-export const PhaseBanner: React.FC<{title: string; sub?: string; a: number}> = ({title, sub, a}) =>
+export const PhaseBanner: React.FC<{title: string; sub?: string; a: number; kicker?: string}> = ({title, sub, a, kicker}) =>
   a <= 0 ? null : (
     <div style={{position: 'absolute', left: 0, right: 0, top: 32, display: 'flex', justifyContent: 'center', opacity: a}}>
       <div style={{background: 'rgba(18,13,8,0.9)', borderBottom: `4px solid ${GOLD}`, borderRadius: 10, padding: '10px 30px', textAlign: 'center', fontFamily: INTER, maxWidth: 980}}>
+        {kicker ? <div style={{fontWeight: 800, fontSize: 22, letterSpacing: 3, color: GOLD}}>{kicker.toUpperCase()}</div> : null}
         <div style={{fontWeight: 900, fontSize: 38, color: PAPER}}>{title}</div>
         {sub ? <div style={{fontWeight: 600, fontSize: MIN_TEXT, color: '#e9dcc0'}}>{sub}</div> : null}
       </div>

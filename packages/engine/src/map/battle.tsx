@@ -93,9 +93,10 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
   const z = zoomAt(spec.zoom, p * 1.0);
   // Living camera tied to the SCENE (not battle) progress: a battle split over several scenes still moves in each.
   const push = 1 + 0.07 * (sceneP ?? p);
-  const scale = z.s * push;
+  // Clarity: shrink the field a little and lift it, so captions (bottom centre) never cover units.
+  const scale = z.s * push * (clarity ? 0.84 : 1);
   const tx = width / 2 - z.cx * S * scale;
-  const ty = height / 2 - z.cy * S * scale;
+  const ty = height / 2 - z.cy * S * scale - (clarity ? 95 : 0);
   const t = spec.terrain ?? {};
   const fog = t.fog ? 1 - easeInOutCubic(ramp(p, t.fog[0], t.fog[1])) : 0;
   const color = (s: 'a' | 'b') => spec.sides[s].color;
@@ -246,11 +247,11 @@ export const BattleShot: React.FC<{spec: BattleSpec; p: number; width: number; h
             const ph = spec.phases![cur];
             const nextAt = spec.phases![cur + 1]?.at ?? 1.2;
             const a = easeInOutCubic(ramp(p, ph.at, ph.at + 0.05)) * (1 - easeInOutCubic(ramp(p, nextAt - 0.04, nextAt)));
-            return <PhaseBanner title={ph.title} sub={ph.sub} a={a} />;
+            return <PhaseBanner title={ph.title} sub={ph.sub} a={a} kicker={spec.title} />;
           })()
         : null}
-      {clarity ? (
-        <div style={{position: 'absolute', left: 40, bottom: 36, fontFamily: INTER, fontWeight: 800, fontSize: 28, color: '#f4ecd8', background: 'rgba(20,14,8,0.8)', padding: '6px 18px', borderRadius: 8}}>{spec.title}</div>
+      {clarity && !spec.phases?.length ? (
+        <div style={{position: 'absolute', left: 40, top: 80, fontFamily: INTER, fontWeight: 800, fontSize: 26, color: '#f4ecd8', background: 'rgba(20,14,8,0.8)', padding: '6px 18px', borderRadius: 8}}>{spec.title}</div>
       ) : null}
       {/* title + legend on dark plates at the bottom (units live in the upper field) */}
       {clarity ? null : <>
