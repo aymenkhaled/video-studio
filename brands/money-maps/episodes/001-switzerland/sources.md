@@ -65,7 +65,7 @@ NASA MODIS Alps (2016) · NASA ISS Tambora (2009) · Library of Congress photoch
 - Federation of the Swiss Watch Industry (FH), World watchmaking industry 2024: https://www.fhs.swiss/documents/statistics/eng/world-watchmaking-2024.pdf
 - SCNAT, the 1816–17 famine after Tambora; sozialgeschichte.ch (Hungertafel, Appenzell deaths, emigration)
 - Swiss government (EDA, admin.ch): geography, energy, neutrality, Gotthard, watchmaking history, households, apprenticeships
-- Historical Dictionary of Switzerland (HLS): Chemische Industrie (no patent law until 1907)
+- Historical Dictionary of Switzerland (HLS): Chemische Industrie (chemical inventions not patentable until 1907)
 - SIF key figures 2026 (finance = 9.0% of GDP); Swiss Bankers Association, Banking Barometer 2025
 - FINMA and Federal Department of Finance on the UBS–Credit Suisse takeover (2023)
 - Eurostat price level indices 2025 (preliminary)
