@@ -32,3 +32,5 @@ Fixed overhead per render job ≈ **1.5–2 min** (checkout, npm ci, browser, bu
 | 3 h | 324,000 | ~11 min → ~18 min wall | ~44 min → ~51 min wall (single job would be 14.5 h → over the 6 h limit) |
 
 Visual check of the benchmark frames: 3D model, walk clip and shadows render correctly (camera framing cuts the head — framing fix belongs to the Brand-A stage); 2D map correct (bar labels wrap, bars overlap map — layout only); 2.5D shows displacement smearing.
+
+| **Scale & Science 001** (12:24, 1920×1080@24, 2D scale stage + compare + deep time + art, 2 short 3D scenes), 20 chunks × 2 tabs (run 43617922127) | **14.1** mean (3D chunk 5.6) | 17,846 frames, 1,263 job-s | **≈ 9 min wall** with cached TTS | Hybrid plan works: 3D only in ~25 s costs one slow chunk; no clip library needed at this length |
