@@ -34,6 +34,8 @@ export type ScaleSubject = {
   mystery?: boolean;
   /** swims / walks forward at this speed (m/s) */
   speed?: number;
+  /** bracket text override, e.g. '~33 m · 110 ft' when the drawn size is 33.5 m */
+  sizeLabel?: string;
   /** paint the label on the body (buses, courts) instead of above it */
   labelInside?: boolean;
   /** dashed outline only (a reference shape from another scene, e.g. "blue whale length") */
@@ -182,7 +184,7 @@ const Land: React.FC<{camX: number; s: number; t: number; ground: number; seed: 
 
 /** Metre ruler along the ground: ticks every grid step, bold + labelled every 5 steps; faint vertical lines above. */
 const Ruler: React.FC<{camX: number; s: number; ground: number; env: ScaleEnv}> = ({camX, s, ground, env}) => {
-  const step = gridStep(s, 22);
+  const step = gridStep(s, 46);
   const left = camX - W / 2 / s;
   const right = camX + W / 2 / s;
   const firstI = Math.floor(left / step);
@@ -288,7 +290,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
     const topY = pl.y - (shape.measure === 'height' ? 1 : topOf(shape)) * maxLen;
     const bA = sub.bracket === false ? 0 : easeInOutCubic(ramp(p, sub.bracketAt ?? (sub.appear ?? 0) + 0.05, (sub.bracketAt ?? (sub.appear ?? 0) + 0.05) + 0.12));
     const value = sub.range ? sub.range : grown;
-    const text = lengthLabel(sub.grow ? Math.round(grown * 10) / 10 : value) + (sub.range ? ' (estimates vary)' : '');
+    const text = sub.sizeLabel ?? lengthLabel(value) + (sub.range ? ' (estimates vary)' : '');
     const x0 = pl.x;
     if (bA > 0 && shape.measure === 'length' && maxLen > 40) {
       const by = topY - 26;
@@ -390,7 +392,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       </svg>
       {nodes}
       <div style={{position: 'absolute', right: 36, top: 32, background: 'rgba(10,14,18,0.7)', borderRadius: 10, padding: '6px 16px', fontFamily: INTER, fontWeight: 800, fontSize: 30, color: PAPER}}>
-        TO SCALE <span style={{color: GOLD}}>· grid lines every {gridStep(s, 22) >= 1 ? `${gridStep(s, 22)} m` : `${Math.round(gridStep(s, 22) * 100)} cm`}</span>
+        TO SCALE <span style={{color: GOLD}}>· grid lines every {gridStep(s, 46) >= 1 ? `${gridStep(s, 46)} m` : `${Math.round(gridStep(s, 46) * 100)} cm`}</span>
       </div>
       {titleA > 0 ? (
         <div style={{position: 'absolute', left: 0, right: 0, top: 96, display: 'flex', justifyContent: 'center', opacity: titleA}}>

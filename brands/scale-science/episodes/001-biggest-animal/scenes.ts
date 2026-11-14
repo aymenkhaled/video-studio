@@ -53,13 +53,13 @@ const src = (text: string): Overlay => ({type: 'citation', text});
 // subjects (x = tail / left end in metres; y = height of a swimmer's centre line above the seabed)
 const you = (x = 0, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'you', shape: 'human', size: 1.75, x, color: C.you, label: '', you: true, ...extra});
 const bus = (x: number, id = 'bus', extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id, shape: 'bus', size: 12, x, color: C.bus, label: 'Bus · 12 m · 39 ft', labelInside: true, bracket: false, ...extra});
-const whale = (x: number, y = 3, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'whale', shape: 'blueWhale', size: 33.5, x, y, color: C.whale, label: 'Blue whale', sub: 'largest ones', ...extra});
+const whale = (x: number, y = 3, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'whale', shape: 'blueWhale', size: 33.5, x, y, color: C.whale, label: 'Blue whale', sub: 'largest ones', sizeLabel: '~33 m · 110 ft', ...extra});
 const white = (x: number, y = 1.4, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'white', shape: 'greatWhite', size: 6, x, y, color: C.white, label: 'Great white shark', sub: 'alive today', ...extra});
 const meg = (x: number, y = 2.6, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'meg', shape: 'megalodon', size: 16, range: [16, 24], x, y, color: C.meg, label: 'Megalodon', sub: 'reconstruction', ...extra});
 const peru = (x: number, y = 2.6, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'peru', shape: 'perucetus', size: 17, range: [17, 20], x, y, color: C.peru, label: 'Perucetus', sub: 'reconstruction, shape uncertain', ...extra});
-const ichthy = (x: number, y = 2.4, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'ichthy', shape: 'ichthyosaur', size: 25, x, y, color: C.ichthy, label: 'Ichthyotitan', sub: 'up to ~25 m (estimate from 2 jawbones)', ...extra});
+const ichthy = (x: number, y = 2.4, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'ichthy', shape: 'ichthyosaur', size: 22, range: [22, 26], x, y, color: C.ichthy, label: 'Ichthyotitan', sub: 'estimate from 2 jawbones', ...extra});
 const argento = (x: number, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'argento', shape: 'sauropod', size: 30, range: [30, 35], x, color: C.argento, label: 'Argentinosaurus', sub: 'reconstruction', ...extra});
-const whaleOutline = (x: number, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'whale-ghost', shape: 'blueWhale', size: 33.5, x, y: 3, color: '#cfe6f5', outline: true, label: 'Blue whale length', sub: 'for comparison', ...extra});
+const whaleOutline = (x: number, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'whale-ghost', shape: 'blueWhale', size: 33.5, sizeLabel: '~33 m · 110 ft', x, y: 3, color: '#cfe6f5', outline: true, label: 'Blue whale length', sub: 'for comparison', ...extra});
 const court = (x: number, extra: Partial<ScaleSubject> = {}): ScaleSubject => ({id: 'court', shape: 'court', size: 28, x, color: C.court, label: 'Basketball court · 28 m · 92 ft', labelInside: true, bracket: false, ...extra});
 
 // mass rows
@@ -67,12 +67,12 @@ const ROW = {
   whale: {label: 'Blue whale', note: 'largest ones', value: 150, color: C.whale, shape: 'blueWhale'} as CompareRow,
   elephant: {label: 'African elephant', note: 'adult male, average', value: 6, color: C.elephant, shape: 'elephant'} as CompareRow,
   meg: {label: 'Megalodon', note: '16–24 m models', range: [61, 94], color: C.meg, shape: 'megalodon'} as CompareRow,
-  argento: {label: 'Argentinosaurus', note: 'estimates vary', range: [65, 96], color: C.argento, shape: 'sauropod'} as CompareRow,
+  argento: {label: 'Argentinosaurus', note: 'estimates vary', range: [65, 83], color: C.argento, shape: 'sauropod'} as CompareRow,
   patago: {label: 'Patagotitan', note: 'estimates vary', range: [50, 69], color: C.patago, shape: 'sauropod'} as CompareRow,
   peru23: {label: 'Perucetus (2023)', note: 'first estimate', range: [85, 340], color: C.peru, shape: 'perucetus'} as CompareRow,
   peru24: {label: 'Perucetus (2024)', note: 're-check', range: [60, 114], color: C.peru, shape: 'perucetus'} as CompareRow,
 };
-const MASS_SRC = 'NOAA; Cooper 2022; Shimada 2025; Paul 2019; Otero & Carballido; Bianucci 2023; Motani & Pyenson 2024';
+const MASS_SRC = 'NOAA; Cooper 2022; Shimada 2025; Paul 2019; Sellers 2013; Motani & Pyenson 2024';
 
 // deep-time markers
 const DT = {
@@ -112,7 +112,7 @@ export const SCENES: Record<string, SceneDef> = {
   o1: art('bw-aerial', 'Blue whale seen from above · NOAA photo', {x: 0.42, y: 0.55, zoom: 1.05}, {x: 0.5, y: 0.5, zoom: 1.22}, [
     {type: 'character', name: 'Blue whale', role: 'biggest animal alive today', line: 'Largest ones: about 33 m (110 ft) long and 150 tonnes.', side: 'Blue whale', image: 'bw-aerial', window: [0.08, 0.97]},
   ]),
-  o2: scale('ocean', [you(0), whale(3, 5.5, {appear: 0.12, sub: 'swimming next to you'})], [{at: 0, x: 1.2, width: 7}, {at: 0.25, x: 1.5, width: 9}, {at: 1, x: 17, width: 44}], undefined, undefined, 11),
+  o2: scale('ocean', [you(0), whale(3, 5.5, {appear: 0.12, sub: 'swimming next to you'})], [{at: 0, x: 1.2, width: 7}, {at: 0.15, x: 1.5, width: 9}, {at: 0.55, x: 17, width: 44}, {at: 1, x: 18, width: 46}], undefined, undefined, 11),
   o3: scale('ocean', [bus(0, 'bus1', {vanish: 0.52}), bus(12, 'bus2', {appear: 0.08, vanish: 0.52}), court(0, {appear: 0.56}), whale(-2.5, 7, {bracketAt: 0.1})], cam(15, 42, 15, 46), undefined, undefined, 12),
   o4: scale(
     'ocean',
@@ -128,14 +128,14 @@ export const SCENES: Record<string, SceneDef> = {
   // ---------- chapter 1: the blue whale ----------
   c1: art('bw-two', '', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.45, zoom: 1.12}, [{type: 'chapter', n: 1, title: 'The Blue Whale', sub: 'alive today · every ocean', question: 'How big is big?', image: 'bw-two'}]),
   c1b: art('bw-two', 'Two blue whales, California · NOAA photo', {x: 0.4, y: 0.4, zoom: 1.1}, {x: 0.6, y: 0.6, zoom: 1.3}, [gloss('Mammal', 'breathes air, feeds its babies milk', [0.3, 0.95])]),
-  c1b2: art('bw-dorsal', 'Blue whale · NOAA Fisheries photo', {x: 0.5, y: 0.3, zoom: 1.0}, {x: 0.5, y: 0.6, zoom: 1.12}, [src('Lifespan 80–90 years (estimate): NOAA Fisheries')]),
+  c1b2: art('bw-two', 'Two blue whales surfacing · NOAA photo', {x: 0.62, y: 0.62, zoom: 1.35}, {x: 0.55, y: 0.5, zoom: 1.15}, [src('Lifespan 80–90 years (estimate): NOAA Fisheries')]),
   c1c: scale('ocean', [you(0, {bracketAt: 0.15}), bus(4, 'bus', {appear: 0.45, sub: '12 m · 39 ft'})], cam(4, 14, 9, 22), undefined, undefined, 15),
   c1d: scale('ocean', [you(0), bus(4), whale(-8, 7, {appear: 0.15, bracketAt: 0.4, sub: 'largest ones, Antarctic'})], cam(9, 22, 9, 46), [src('NOAA Fisheries: up to ~110 ft (33 m), 330,000 lb')], undefined, 16),
   c1e: scale('ocean', [whale(0, 4, {bracket: false, speed: 0.6, sub: undefined})], [{at: 0, x: 26, width: 18}, {at: 1, x: 18, width: 30}], undefined, 'LENGTH IS ONLY HALF THE STORY', 17),
   c1e2: compare({title: 'Weight: 1 tonne = 1,000 kilograms', unit: 'mass', max: 8, rows: [{...ROW.elephant, appear: 0.25}], source: 'San Diego Zoo Wildlife Alliance'}, [gloss('Tonne', '1,000 kilograms (2,205 pounds)', [0.05, 0.6])]),
   c1f: compare({title: 'How heavy is the largest blue whale?', unit: 'mass', max: 160, rows: [ROW.elephant, {...ROW.whale, appear: 0.18}], tally: {row: 1, shape: 'elephant', each: 6, label: 'adult male African elephants (~6 t each)', appear: 0.42}, source: 'NOAA Fisheries; San Diego Zoo Wildlife Alliance'}),
   c1g: scale('ocean', [...KRILL_SWARM, {id: 'krill', shape: 'krill', size: 0.06, x: 0.02, y: 0.07, color: C.krill, label: 'Antarctic krill', sub: 'up to ~6 cm', speed: 0.004}], cam(0.06, 0.42, 0.08, 0.5), [gloss('Krill', 'small shrimp-like animal, up to 6 cm', [0.45, 0.95])], undefined, 18),
-  c1g2: scale('ocean', [...KRILL_SWARM, you(1.2, {appear: 0.3}), whale(4, 7, {appear: 0.45, sub: 'eats krill by the tonne'})], [{at: 0, x: 0.06, width: 0.5}, {at: 1, x: 18, width: 44}], [src('Antarctic krill: up to ~6 cm (Australian Antarctic Division)')], undefined, 19),
+  c1g2: scale('ocean', [...KRILL_SWARM, you(1.2, {appear: 0.3}), whale(4, 7, {appear: 0.45, sub: 'eats krill by the tonne'})], [{at: 0, x: 0.06, width: 0.5}, {at: 0.5, x: 18, width: 44}, {at: 1, x: 19, width: 46}], [src('Antarctic krill: up to ~6 cm (Australian Antarctic Division)')], undefined, 19),
   c1h: art('humpback-feed', 'Humpback whale feeding, a baleen whale like the blue whale · NOAA photo', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.48, y: 0.5, zoom: 1.25}, [gloss('Baleen', 'bristly mouth plates that sieve out food', [0.4, 0.95])]),
   c1i: compare({title: 'Krill eaten in one day', unit: 'mass', max: 8, rows: [{label: 'Krill per day', note: 'biggest whales, up to ~6 US tons', value: 5.4, color: C.krill, shape: 'krill'}, ROW.elephant], source: 'NOAA Fisheries'}),
   c1r: scale('ocean', [whale(0, 5, {bracket: false})], cam(16, 40, 18, 44), [{type: 'recap', text: 'The blue whale: up to ~33 m and ~150 tonnes. Longer than 2 buses.', next: 'But 20 million years ago, something with bigger teeth ruled the sea…'}], undefined, 20),
@@ -163,8 +163,8 @@ export const SCENES: Record<string, SceneDef> = {
   c3d2: deep({title: 'The Cretaceous: the last age of dinosaurs', from: [160, 0], to: [150, 0], markers: [{...DT.argento, appear: 0.05, dx: -170}, {...DT.asteroid, appear: 0.4, row: 0, dx: 170}]}),
   c3e: art('fernbank', 'Argentinosaurus skeleton cast, Fernbank Museum · reconstruction · photo Daderot, CC0', {x: 0.5, y: 0.45, zoom: 1.0}, {x: 0.45, y: 0.5, zoom: 1.2}, [gloss('Cast', 'a full-size copy of fossil bones', [0.15, 0.6])]),
   c3f: scale('land', [you(-2), bus(1), argento(14, {grow: [0.2, 0.6], sub: 'estimates: 30 → 35 m'}), whaleOutline(14, {appear: 0.65})], cam(18, 60, 22, 66), [src('Bonaparte & Coria 1993; Paul 2019')], undefined, 28),
-  c3g: scale('land', [you(-2), bus(1), {id: 'patago', shape: 'sauropod', size: 31, range: [31, 37], x: 14, color: C.patago, label: 'Patagotitan', sub: 'first 37 m → later studies ~31 m'}], cam(20, 62, 22, 66), [src('Carballido et al. 2017; Paul 2019')], undefined, 29),
-  c3h: compare({title: 'But on the scale, the dinosaurs lose', unit: 'mass', max: 160, rows: [ROW.patago, ROW.argento, {...ROW.whale, appear: 0.4}], source: 'Carballido 2017; Paul 2019; Otero & Carballido; NOAA'}),
+  c3g: scale('land', [you(-2), bus(1), {id: 'patago', shape: 'sauropod', size: 31, range: [31, 37], x: 14, color: C.patago, label: 'Patagotitan', sub: 'first 37 m → later studies ~31 m'}], cam(20, 62, 22, 66), [src('AMNH cast 37 m; Paul 2019 (~31 m)')], undefined, 29),
+  c3h: compare({title: 'But on the scale, the dinosaurs lose', unit: 'mass', max: 160, rows: [ROW.patago, ROW.argento, {...ROW.whale, appear: 0.4}], source: 'Carballido 2017; Paul 2019; Sellers 2013; NOAA'}),
   c3i: scale('land', [you(-2), bus(1), argento(16, {bracket: false, sub: 'pillar legs · air-filled bones'})], cam(22, 58, 24, 64), [src('Air-filled (pneumatic) bones: Wedel 2005; Sander et al. 2011')], 'ON LAND, LEGS CARRY EVERY KILOGRAM', 30),
   c3r: scale('land', [argento(0, {bracket: false}), whaleOutline(0, {label: undefined, sub: undefined})], cam(17, 62), [{type: 'recap', text: 'The longest dinosaurs may have matched the blue whale for length, but weighed far less.', next: 'Then, in 2023, a fossil whale claimed the crown…'}], undefined, 31),
 
@@ -177,19 +177,20 @@ export const SCENES: Record<string, SceneDef> = {
   c4e: compare({title: 'A year later: the re-check', unit: 'mass', max: 350, rows: [ROW.peru23, {...ROW.peru24, appear: 0.25}, {...ROW.whale, appear: 0.45}], source: 'Motani & Pyenson 2024, PeerJ'}),
   c4f: scale('ocean', [you(-3), peru(1, 3.5, {range: [17, 20]}), whale(-4, 9, {appear: 0.1})], cam(13, 44, 14, 48), undefined, 'THE CROWN STAYS', 35),
   c4g: art('ichthy-jaw', 'Ichthyotitan jawbone · Lomax et al. 2024, CC BY 4.0', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.45, zoom: 1.1}, [src('Lomax et al. 2024, PLOS ONE')], true),
+  c4g1: deep({title: 'Ichthyotitan: a giant sea reptile', from: [230, 0], to: [215, 0], markers: [{...DT.ichthy, appear: 0.1, row: 0}, {...DT.argento, appear: 0.4, row: 1, dx: 60}, {...DT.whale, appear: 0.6, row: 0}]}),
   c4g2: scale('ocean', [you(-2), ichthy(1, 4)], cam(12, 32, 13, 34), [gloss('Ichthyosaur', 'dolphin-shaped sea reptile from dinosaur times', [0.1, 0.9])], undefined, 36),
-  c4h: scale('ocean', [you(-3), ichthy(0, 2.4, {sub: 'up to ~25 m · weight unknown'}), whale(-4, 9, {appear: 0.1})], cam(13, 44, 14, 48), [src('Lomax et al. 2024, PLOS ONE')], undefined, 37),
+  c4h: scale('ocean', [you(-3), ichthy(0, 2.4, {sub: 'estimate · weight unknown'}), whale(-4, 9, {appear: 0.1})], cam(13, 44, 14, 48), [src('Lomax et al. 2024, PLOS ONE')], undefined, 37),
   c4r: scale('ocean', [whale(0, 5, {bracket: false})], cam(16, 44), [{type: 'recap', text: 'No fossil challenger has beaten the blue whale on weight.', next: 'So why is the biggest animal ever alive right now?'}], undefined, 38),
 
   // ---------- chapter 5: why now ----------
   c5: art('bw-two', '', {x: 0.5, y: 0.5, zoom: 1.1}, {x: 0.45, y: 0.55, zoom: 1.2}, [{type: 'chapter', n: 5, title: 'Why Now?', sub: 'water, food and time', question: 'Why is the biggest animal ever alive today?', image: 'bw-two'}]),
   c5b: scale('ocean', [you(0), whale(3, 6, {bracket: false})], cam(14, 40, 18, 44), [gloss('Buoyancy', 'water pushing up, holding a body', [0.1, 0.9])], 'WATER CARRIES THE WEIGHT', 39),
-  c5c: deep({title: 'Giant whales appear: about 3 million years ago', from: [12, 0], to: [8, 0], humans: true, markers: [{label: 'Giant baleen whales', at: 3, color: '#8fc3e8', shape: 'blueWhale', sub: 'after ocean currents changed', appear: 0.2}, {...DT.meg, appear: 0.05, row: 1, sub: 'gone 3.6 million years ago'}]}, [src('Slater, Goldbogen & Pyenson 2017, Proc. R. Soc. B')]),
+  c5c: deep({title: 'Giant whales appear: about 3 million years ago', from: [12, 0], to: [8, 0], humans: true, markers: [{label: 'Giant baleen whales', at: 3, color: '#8fc3e8', shape: 'blueWhale', sub: 'after ocean currents changed', appear: 0.2}, {...DT.meg, appear: 0.05, row: 1, sub: 'gone 3.6 million years ago'}]}),
   c5d: art('humpback-feed', 'Whales feeding where krill gather · NOAA photo', {x: 0.4, y: 0.45, zoom: 1.2}, {x: 0.55, y: 0.5, zoom: 1.0}),
   c5d2: scale('ocean', [you(0), whale(3, 6, {bracket: false, sub: 'near the feeding limit?'})], cam(18, 44, 16, 38), [src('Goldbogen et al. 2019, Science')], undefined, 40),
   c5e: scale('ocean', [{...whale(0, 6), id: 'grow', size: 10, range: [10, 33], grow: [0.25, 0.85], bracket: false, label: 'Baleen whales', sub: 'mostly much smaller, until recently'}], cam(14, 40, 16, 42), [src('Slater, Goldbogen & Pyenson 2017')], undefined, 41),
-  c5f: scale('ocean', [you(0), whale(3, 5.5, {appear: 0.2, sub: 'alive today, with you'})], [{at: 0, x: 0.9, width: 5}, {at: 0.3, x: 1.2, width: 7}, {at: 1, x: 18, width: 44}], undefined, undefined, 42),
-  c5g: art('bw-dorsal', 'Blue whale · endangered, protected · NOAA Fisheries photo', {x: 0.5, y: 0.6, zoom: 1.15}, {x: 0.5, y: 0.35, zoom: 1.0}, [src('NOAA Fisheries: endangered; protected from whaling since 1966')]),
+  c5f: scale('ocean', [you(0), whale(3, 5.5, {appear: 0.2, sub: 'alive today, with you'})], [{at: 0, x: 0.9, width: 5}, {at: 0.15, x: 1.2, width: 7}, {at: 0.55, x: 18, width: 44}, {at: 1, x: 19, width: 46}], undefined, undefined, 42),
+  c5g: art('bw-aerial', 'Blue whale · endangered, protected · NOAA photo', {x: 0.35, y: 0.6, zoom: 1.3}, {x: 0.5, y: 0.5, zoom: 1.1}, [src('NOAA Fisheries: endangered; protected from whaling since 1966')]),
   c5r: scale('ocean', [whale(0, 5, {bracket: false})], cam(16, 44), [{type: 'recap', text: 'Water carries the whale’s weight, and seasonal krill feasts feed it.', next: 'Now, every giant side by side…'}], undefined, 43),
 
   // ---------- chapter 6: final line-up ----------
@@ -202,12 +203,12 @@ export const SCENES: Record<string, SceneDef> = {
     max: 40,
     rows: [
       {label: 'Argentinosaurus', note: 'estimate', range: [30, 35], color: C.argento, shape: 'sauropod'},
-      {label: 'Blue whale', note: 'largest ones', value: 33.5, color: C.whale, shape: 'blueWhale', appear: 0.2},
+      {label: 'Blue whale', note: 'largest ones', value: 33.5, text: '~33 m · 110 ft', color: C.whale, shape: 'blueWhale', appear: 0.2},
       {label: 'Patagotitan', note: 'later estimate', value: 31, color: C.patago, shape: 'sauropod', appear: 0.35},
-      {label: 'Ichthyotitan', note: 'estimate', value: 25, color: C.ichthy, shape: 'ichthyosaur', appear: 0.5},
+      {label: 'Ichthyotitan', note: 'estimate', range: [22, 26], color: C.ichthy, shape: 'ichthyosaur', appear: 0.5},
       {label: 'Megalodon', note: 'estimates', range: [16, 24], color: C.meg, shape: 'megalodon', appear: 0.65},
     ],
-    source: 'see description',
+    source: 'Paul 2019; NOAA; AMNH; Lomax 2024; Cooper 2022; Shimada 2025',
   }),
   c6d: compare({title: 'Weight: no contest', unit: 'mass', max: 160, rows: [ROW.whale, {...ROW.peru24, appear: 0.25}, {...ROW.argento, appear: 0.4}, {...ROW.meg, appear: 0.55}], source: MASS_SRC}),
   c6e: art('bw-aerial', 'The blue whale · NOAA photo', {x: 0.5, y: 0.5, zoom: 1.25}, {x: 0.45, y: 0.55, zoom: 1.0}, [

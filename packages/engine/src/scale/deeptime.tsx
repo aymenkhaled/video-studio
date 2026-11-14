@@ -22,8 +22,8 @@ const PERIODS: {name: string; from: number; to: number; color: string}[] = [
   {name: 'Triassic', from: 252, to: 201, color: '#8e5a8c'},
   {name: 'Jurassic', from: 201, to: 145, color: '#3f8fb0'},
   {name: 'Cretaceous', from: 145, to: 66, color: '#6fa35a'},
-  {name: 'Paleogene', from: 66, to: 23, color: '#d08a3c'},
-  {name: 'Neogene', from: 23, to: 2.6, color: '#d7b43c'},
+  {name: 'Age of mammals', from: 66, to: 23, color: '#d08a3c'},
+  {name: 'Age of mammals', from: 23, to: 2.6, color: '#d7b43c'},
   {name: 'Ice ages', from: 2.6, to: 0, color: '#c9d6de'},
 ];
 

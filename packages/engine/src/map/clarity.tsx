@@ -122,7 +122,7 @@ export const Legend: React.FC<{factions: Faction[]; p: number; symbols?: LegendS
       {symbols.map((s) => (
         <div key={s} style={{display: 'flex', alignItems: 'center', gap: 14, margin: '3px 0'}}>
           {sym(s)}
-          <div style={{fontWeight: 600, fontSize: MIN_TEXT - 4, color: '#e9dcc0'}}>{SYMBOL_TEXT[s]}</div>
+          <div style={{fontWeight: 600, fontSize: MIN_TEXT, color: '#e9dcc0'}}>{SYMBOL_TEXT[s]}</div>
         </div>
       ))}
     </div>
@@ -131,7 +131,7 @@ export const Legend: React.FC<{factions: Faction[]; p: number; symbols?: LegendS
 
 /** "CH 3 · THE NEIGHBOUR" — where are we in the story. */
 export const ChapterTracker: React.FC<{n: number; title: string}> = ({n, title}) => (
-  <div style={{position: 'absolute', left: 40, top: 32, background: INK, borderRadius: 10, padding: '5px 14px', fontFamily: INTER, fontWeight: 800, fontSize: MIN_TEXT - 4, color: PAPER, letterSpacing: 1}}>
+  <div style={{position: 'absolute', left: 40, top: 32, background: INK, borderRadius: 10, padding: '5px 14px', fontFamily: INTER, fontWeight: 800, fontSize: MIN_TEXT, color: PAPER, letterSpacing: 1}}>
     <span style={{color: GOLD}}>CH {n}</span> · {title.toUpperCase()}
   </div>
 );
@@ -141,7 +141,7 @@ export const SourceChip: React.FC<{text: string; p: number; at?: [number, number
   const a = easeInOutCubic(ramp(p, at[0], at[0] + 0.06)) * (1 - easeInOutCubic(ramp(p, at[1] - 0.05, at[1])));
   if (a <= 0) return null;
   return (
-    <div style={{position: 'absolute', left: 40, top: 100, maxWidth: 400, opacity: a, background: INK, borderLeft: `5px solid ${GOLD}`, padding: '6px 16px', fontFamily: INTER, fontWeight: 600, fontSize: MIN_TEXT - 4, lineHeight: 1.25, color: PAPER}}>
+    <div style={{position: 'absolute', left: 40, top: 100, maxWidth: 400, opacity: a, background: INK, borderLeft: `5px solid ${GOLD}`, padding: '6px 16px', fontFamily: INTER, fontWeight: 600, fontSize: MIN_TEXT, lineHeight: 1.25, color: PAPER}}>
       Source: {text}
     </div>
   );
@@ -174,7 +174,7 @@ export const LocatorGlobe: React.FC<{center: LonLat; zoom: number; top: number}>
 
 /** km scale bar (right column). */
 export const ScaleBar: React.FC<{km: number; px: number; top: number}> = ({km, px, top}) => (
-  <div style={{position: 'absolute', right: 40, top, background: INK, borderRadius: 10, padding: '8px 16px', fontFamily: INTER, fontWeight: 700, fontSize: MIN_TEXT - 4, color: PAPER, display: 'flex', alignItems: 'center', gap: 12}}>
+  <div style={{position: 'absolute', right: 40, top, background: INK, borderRadius: 10, padding: '8px 16px', fontFamily: INTER, fontWeight: 700, fontSize: MIN_TEXT, color: PAPER, display: 'flex', alignItems: 'center', gap: 12}}>
     <div style={{width: px, height: 12, border: `3px solid ${PAPER}`, borderTop: 'none'}} />
     {km.toLocaleString('en-US')} km
   </div>
@@ -192,7 +192,7 @@ export const CharacterCard: React.FC<{name: string; role: string; line: string; 
         </div>
         <div>
           <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 40, lineHeight: 1.1, color: PAPER}}>{name}</div>
-          <div style={{fontWeight: 800, fontSize: MIN_TEXT - 4, letterSpacing: 2, color, marginTop: 8, filter: 'brightness(1.35)'}}>{role.toUpperCase()}</div>
+          <div style={{fontWeight: 800, fontSize: MIN_TEXT, letterSpacing: 2, color, marginTop: 8, filter: 'brightness(1.35)'}}>{role.toUpperCase()}</div>
         </div>
       </div>
       <div style={{fontWeight: 600, fontSize: MIN_TEXT, lineHeight: 1.3, color: '#e9dcc0', marginTop: 18}}>{line}</div>

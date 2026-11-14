@@ -85,7 +85,7 @@
    "id": "o4",
    "lines": [
     "But is it the biggest animal that has ever lived?",
-    "Three giants from the past have challenged it."
+    "Several giants from the past have challenged it."
    ],
    "music": "tension",
    "ambience": {
@@ -342,8 +342,8 @@
   {
    "id": "c1i",
    "lines": [
-    "The biggest blue whales may eat up to six tons of krill in a single day,",
-    "about the weight of a large elephant, every day."
+    "The biggest blue whales may eat up to about five and a half tonnes of krill in a single day,",
+    "nearly the weight of an adult male elephant, every day."
    ],
    "music": "wonder",
    "sfx": [
@@ -670,7 +670,7 @@
    "id": "c3h",
    "lines": [
     "But on the scale, the dinosaurs lose.",
-    "Most estimates put them between about fifty and ninety-six tonnes, well below a big blue whale."
+    "Most estimates put them between about fifty and eighty-three tonnes, well below a big blue whale."
    ],
    "music": "reveal",
    "sfx": [
@@ -827,8 +827,20 @@
   {
    "id": "c4g",
    "lines": [
-    "One more challenger. In England, a girl and her father found pieces of a giant jawbone on a beach.",
-    "It belonged to Ichthyotitan, a sea reptile from two hundred two million years ago."
+    "One more challenger. On a beach in England, a fossil collector,",
+    "and later a girl and her father, found pieces of a giant jawbone."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "ocean",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c4g1",
+   "lines": [
+    "It belonged to Ichthyotitan, a giant sea reptile",
+    "that lived two hundred two million years ago."
    ],
    "music": "wonder",
    "ambience": {
@@ -851,7 +863,7 @@
   {
    "id": "c4h",
    "lines": [
-    "From two jawbones, scientists estimate it was up to about twenty-five metres long.",
+    "From two jawbones, scientists estimate it was roughly twenty-two to twenty-six metres long.",
     "With so few bones, nobody knows its weight. And it still falls short of the blue whale."
    ],
    "music": "wonder",
@@ -1072,7 +1084,7 @@
    "id": "c6c2",
    "lines": [
     "On length, it is close. Argentinosaurus, maybe thirty-five metres. The blue whale, about thirty-three.",
-    "Patagotitan, about thirty-one. Ichthyotitan, up to twenty-five. Megalodon, up to twenty-four."
+    "Patagotitan, about thirty-one. Ichthyotitan, around twenty-five. Megalodon, up to twenty-four."
    ],
    "music": "build",
    "sfx": [
@@ -1094,7 +1106,7 @@
    "id": "c6d",
    "lines": [
     "On the scale: the blue whale, up to about one hundred fifty tonnes.",
-    "Every challenger lands below it."
+    "Every challenger's latest estimate lands below it."
    ],
    "music": "reveal",
    "sfx": [

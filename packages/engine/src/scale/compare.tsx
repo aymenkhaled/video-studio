@@ -8,7 +8,7 @@ import {lengthLabel, massLabel} from './units';
 // Tale-of-the-tape bars for weights (or lengths): each row = mini silhouette + name + bar (ranges: solid to the low
 // estimate, striped to the high one) + metric/imperial value; optional "= N elephants" icon row for human context.
 
-export type CompareRow = {label: string; value?: number; range?: [number, number]; color: string; shape?: ShapeKey; note?: string; appear?: number};
+export type CompareRow = {label: string; value?: number; range?: [number, number]; color: string; shape?: ShapeKey; note?: string; appear?: number; /** value text override */ text?: string};
 export type CompareSpec = {
   title: string;
   unit: 'mass' | 'length';
@@ -63,7 +63,7 @@ export const CompareShot: React.FC<{spec: CompareSpec; p: number; elapsed: numbe
         const hi = r.range ? r.range[1] : lo;
         const wLo = (barW * Math.min(lo, spec.max) * g) / spec.max;
         const wHi = (barW * Math.min(hi, spec.max) * g) / spec.max;
-        const label = r.range ? fmt(r.range) : fmt(lo);
+        const label = r.text ?? (r.range ? fmt(r.range) : fmt(lo));
         const y = top + i * rowH;
         const labelInside = wHi > barW * 0.62;
         return (
