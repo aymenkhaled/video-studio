@@ -124,11 +124,11 @@
    "depth": true
   },
   {
-   "id": "coin-scipio",
-   "source": "artic",
-   "artwork": 5578,
-   "licence": "CC0 (Art Institute of Chicago open access)",
-   "credit": "Denarius depicting Scipio Africanus, 112–111 BC, Art Institute of Chicago (CC0)",
+   "id": "scipio-bust",
+   "source": "url",
+   "url": "https://www.livius.org/site/assets/files/5994/scipio_africanus_cm2.jpg",
+   "licence": "CC0 1.0",
+   "credit": "Bust traditionally identified as Scipio Africanus, Capitoline Museums — photo Jona Lendering / Livius.org, CC0",
    "depth": false
   }
  ],

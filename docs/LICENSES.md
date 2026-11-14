@@ -23,7 +23,7 @@ Binary assets are in the `assets-v1` Release; SHA256 per file in `assets/manifes
 | Benjamin West, *The Oath of Hannibal* (1770, Royal Collection) | Benjamin West (d. 1820) | Public domain (PD-Art) | https://commons.wikimedia.org/wiki/File:Benjamin_West_(1738-1820)_-_The_Oath_of_Hannibal_-_RCIN_405417_-_Royal_Collection.jpg | Courtesy credit |
 | Heinrich Leutemann, *Hannibal's crossing of the Alps* (woodcut) | Heinrich Leutemann (d. 1905) | Public domain | https://commons.wikimedia.org/wiki/File:Leutemann,_Heinrich_-_Hannibal's_crossing_of_the_Alps.jpg | Courtesy credit |
 | *The Battle of Zama*, engraving after Cornelis Cort | after Cornelis Cort (d. 1578) | Public domain (Library of Congress: no known restrictions) | https://commons.wikimedia.org/wiki/File:The_battle_of_Zama_LCCN2012645609.jpg | Courtesy credit |
-| Denarius depicting Scipio Africanus (112–111 BC) | Art Institute of Chicago | CC0 | https://www.artic.edu/artworks/5578 | No (courtesy) |
+| Bust traditionally identified as Scipio Africanus (Capitoline Museums), photo | Jona Lendering / Livius.org | CC0 1.0 | https://www.livius.org/pictures/a/roman-portraits/scipio-africanus/ | No (courtesy) |
 | Unit figures (infantry, cavalry, elephant, ship) — `packages/engine/src/map/figures.tsx` | original drawings for this studio | own work | — | No |
 | Animated LowPoly Dinosaurs (Apatosaurus, Parasaurolophus, Stegosaurus, Trex, Triceratops, Velociraptor) FBX | Quaternius | CC0 1.0 (License.txt in pack) | https://quaternius.com/packs/animateddinosaurs.html | No (credit as courtesy) |
 | Stylized Nature MegaKit (glTF + textures) | Quaternius | CC0 1.0 | https://quaternius.com/packs/stylizednaturemegakit.html | No |

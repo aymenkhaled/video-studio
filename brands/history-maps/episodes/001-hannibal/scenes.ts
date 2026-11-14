@@ -331,7 +331,7 @@ const BASE_SCENES: Record<string, SceneDef> = {
   ]),
   c4z: recap('The worst day in Rome’s history.', 'Everyone expected Hannibal to march on Rome next. He did not…', {camera: italy(10, 10.6), territories: base}),
 
-  c5: chapter(5, 'The Long War', '216 – 207 BC', {camera: italy(8, 8.6), territories: base}, 'coin-scipio', 'Can you win every battle and still lose the war?'),
+  c5: chapter(5, 'The Long War', '216 – 207 BC', {camera: italy(8, 8.6), territories: base}, 'scipio-bust', 'Can you win every battle and still lose the war?'),
   c5a: map(-216, {camera: italy(10, 11), territories: base, cities: [CT.rome, CT.cannae], routes: [{id: 'notrome', points: [[16.13, 41.31], [14.8, 41.8], [12.48, 41.9]], color: '#f4ecd8', draw: [0.05, 0.4], dashed: true, km: true}]}, [
     who('Maharbal', "Hannibal's cavalry commander", 'Wanted to attack Rome at once.', 'Carthage', undefined, [0.03, 0.4]),
     {type: 'quote', text: 'You know how to win a victory, Hannibal; you do not know how to use one.', by: 'Maharbal, according to Livy 22.51', at: [0.45, 0.98]},
@@ -340,7 +340,7 @@ const BASE_SCENES: Record<string, SceneDef> = {
   c5b: map(-215, {camera: italy(10, 11.5), territories: [...base, {...DEFECTORS, grow: [0.1, 0.5]}], cities: [CT.rome, {...CT.capua, appear: 0.1, size: 1.3}]}),
   c5b_2: map(-212, {camera: italy(11.5, 12), territories: [...base, DEFECTORS], cities: [CT.rome, CT.capua]}),
   c5c: map(-209, {camera: [{at: 0, center: [0.5, 40.0], zoom: 14}, {at: 1, center: [-0.6, 38.8], zoom: 18}], territories: [CARTHAGE_AFRICA, BARCID_SPAIN, {...ROMAN_SPAIN, grow: [0.5, 0.95]}], routes: [{id: 'scipio', points: SCIPIO_SPAIN, color: COL.roman, draw: [0.1, 0.6], unit: {label: 'Scipio', color: COL.rome, kind: 'infantry'}}], cities: [CT.tarraco, {...CT.newCarthage, size: 1.3}]}, [
-    who('Scipio (the son)', 'Roman general, later "Africanus"', 'Son of the consul from Ticinus. Will face Hannibal.', 'Rome', 'coin-scipio', [0.03, 0.98]),
+    who('Scipio (the son)', 'Roman general, later "Africanus"', 'Son of the consul from Ticinus. Will face Hannibal.', 'Rome', 'scipio-bust', [0.03, 0.98]),
   ]),
   c5d: map(-207, {camera: [{at: 0, center: [3, 42.5], zoom: 6.5}, {at: 1, center: [11, 43.6], zoom: 11}], territories: base, routes: [{id: 'hasd', points: HASDRUBAL, color: COL.route, draw: [0.02, 0.6], unit: {label: 'Hasdrubal', color: COL.carthage, kind: 'infantry'}}], cities: [{...CT.metaurus, appear: 0.55, size: 1.3}]}, [
     who('Hasdrubal', "Hannibal's brother", 'NOT Hasdrubal the Fair, the brother-in-law.', 'Carthage', undefined, [0.03, 0.6]),
