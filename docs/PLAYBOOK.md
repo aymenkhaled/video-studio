@@ -238,6 +238,7 @@ Runners-up: "follow-up to your best video" within 2–4 weeks of a ≥ 3× hit (
 |---|---|---|---|---|---|
 | Burned-in captions 46 px (Aymen: 54 too big), pop-ups ~32 px, numerals not spelled numbers, max 2 lines | L Aymen #4, 001 #15 [OWN] | H | — | ABC | DOING |
 | Avoid narration that the caption converter can't render ("point" decimals, "oh" years) | L C001 #3 [OWN] | M | S | ABC | DOING |
+| Never put two number words next to each other ("one twenty-four" became "25"); run `tools/caption_numbers.mjs <timeline.json>` before every render and read every line against sources.md | L B001 #8 [OWN] | H | S | ABC | DOING |
 | Signaling: highlight the few key words/numbers | Mayer, d ≈ 0.69 [E] (HR T24) | M | S | ABC | DOING |
 | Later A/B: full captions vs keyword captions (redundancy principle) once data exists | HR T25 [E mixed] | M | S | ABC | MISSING (deliberately deferred) |
 | Shorts safe zone if Shorts ever return: nothing key in bottom 420 px / right 120 px | CLAUDE.md | — | — | — | n/a |
@@ -312,6 +313,10 @@ All DOING via the Clarity Kit — keep them; they are our differentiator: charac
 | Stills rounds, every sheet looked at; QA fails the job (no warnings with exit 0) | L old #6 [OWN] | H | DOING |
 | Fresh independent reviewer before final render (facts vs sources, licences, policy, clarity, **promise ledger**, variety cadence) — every episode so far failed the first review (6.5–7.0) on fixable things | L Aymen #7 [OWN] | H | DOING (add ledger + cadence) |
 | Run a second independent review after fixes when time allows (never done yet) | 002/C001 reviews [OWN] | M | MISSING |
+| Start the reviewer subagent while the next stills round renders (saves ~30 min) | L B001 #11 [OWN] | M | DOING |
+| Parallel sessions: merge `origin/main` into your branch inside your own worktree, typecheck + test, then push; never a conflicting merge in the shared `D:\studio` checkout | L B001 #10 [OWN] | M | DOING |
+| Demand check without Semrush: web search + competing videos' outlier ratios; don't block on API units | L B001 #12 [OWN] | M | DOING |
+| Big patch edits via a Python script file, not shell heredocs | L B001 #13 [OWN] | L | DOING |
 | Work fast, report early, short answers | L Aymen #9 [OWN] | M | DOING |
 
 ---
