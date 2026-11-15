@@ -290,6 +290,136 @@
    "licence": "CC BY 4.0 (credit: Lomax et al. 2024, PLOS ONE)",
    "credit": "Ichthyotitan severnensis holotype jawbone. D. R. Lomax, P. de la Salle, M. Perillo, J. Reynolds, R. Reynolds, J. F. Waldron (2024), PLOS ONE, CC BY 4.0",
    "depth": false
+  },
+  {
+   "id": "ta-runup",
+   "source": "commons",
+   "file": "Tracy Arm megatsunami runup.jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Tracy Arm megatsunami run-up, Aug 2025. USGS Landslide Hazards Program (public domain)",
+   "depth": true
+  },
+  {
+   "id": "ta-scar",
+   "source": "commons",
+   "file": "Tracy Arm landslide and megatsunami (5).jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Tracy Arm landslide scar. USGS (public domain)",
+   "depth": true
+  },
+  {
+   "id": "ta-wide",
+   "source": "commons",
+   "file": "Tracy Arm landslide and megatsunami (1).jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Tracy Arm landslide and fjord. USGS (public domain)",
+   "depth": true
+  },
+  {
+   "id": "ta-sawyer",
+   "source": "commons",
+   "file": "Sawyer Island after the Tracy Arm megatsunami.jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Sawyer Island after the Tracy Arm megatsunami. USGS (public domain)",
+   "depth": true
+  },
+  {
+   "id": "ta-williams",
+   "source": "commons",
+   "file": "Williams Cove after the Tracy Arm megatsunami.jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Williams Cove after the Tracy Arm megatsunami. USGS (public domain)",
+   "depth": true
+  },
+  {
+   "id": "ta-sat",
+   "source": "commons",
+   "file": "Tracy Arm’s Post-Tsunami Landscape (1218007 - alaskatracyarm oli2 20250819).jpg",
+   "licence": "Public domain (NASA Earth Observatory / Landsat)",
+   "credit": "Tracy Arm, 19 Aug 2025. NASA Earth Observatory, Landsat OLI-2 (public domain)",
+   "depth": false
+  },
+  {
+   "id": "lituya-overview",
+   "source": "commons",
+   "file": "Lituya Bay overview.jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Lituya Bay after the 1958 wave. D. J. Miller, USGS (public domain)",
+   "depth": false
+  },
+  {
+   "id": "lituya-trim",
+   "source": "commons",
+   "file": "Lituya Bay trimline.jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Lituya Bay trimline, 1958. D. J. Miller, USGS (public domain)",
+   "depth": false
+  },
+  {
+   "id": "lituya-damage",
+   "source": "commons",
+   "file": "Lituya Bay damage detail.jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Lituya Bay damage detail, 1958. D. J. Miller, USGS (public domain)",
+   "depth": false
+  },
+  {
+   "id": "lituya-rockslide",
+   "source": "commons",
+   "file": "Lituya Bay rockslide 1.jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Lituya Bay rockslide, 1958. D. J. Miller, USGS (public domain)",
+   "depth": false
+  },
+  {
+   "id": "taan-survey",
+   "source": "commons",
+   "file": "Survey of megatsunami runup damage Taan Fiord 9 August 2016.PNG",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Survey of megatsunami run-up damage, Taan Fiord, 2016. Peter Haeussler, USGS (public domain)",
+   "depth": true
+  },
+  {
+   "id": "spirit-1982",
+   "source": "commons",
+   "file": "MSH82 st helens spirit lake reflection 05-19-82.jpg",
+   "licence": "Public domain (USGS, US federal government work)",
+   "credit": "Spirit Lake and Mount St. Helens, 1982. Lyn Topinka, USGS (public domain)",
+   "depth": true
+  },
+  {
+   "id": "barry-arm",
+   "source": "commons",
+   "file": "BarryArm-AK.jpg",
+   "licence": "Public domain (State of Alaska DGGS release on Commons; author Gabe Wolken)",
+   "credit": "Barry Arm landslide, Prince William Sound. Gabe Wolken, Alaska DGGS (public domain)",
+   "depth": true
+  },
+  {
+   "id": "nazare",
+   "source": "commons",
+   "file": "Big waves (23929226275).jpg",
+   "licence": "CC BY 2.0 (credit: Luis Ascenso)",
+   "credit": "\"Big waves\" by Luis Ascenso, CC BY 2.0",
+   "depth": true
+  },
+  {
+   "id": "eiffel-cut",
+   "source": "commons",
+   "file": "Tour Eiffel vue du Champ-de-Mars.jpg",
+   "licence": "CC0 1.0 (Jebulon)",
+   "credit": "Eiffel Tower from the Champ-de-Mars. Jebulon, CC0 (background removed)",
+   "depth": false,
+   "cutout": true
+  },
+  {
+   "id": "liberty-cut",
+   "source": "commons",
+   "file": "Front view of Statue of Liberty with pedestal and base 2024.jpg",
+   "licence": "CC0 1.0 (AskALotl)",
+   "credit": "Statue of Liberty with pedestal and base. AskALotl, CC0 (background removed)",
+   "depth": false,
+   "cutout": true
   }
  ],
  "geo": {

@@ -89,6 +89,25 @@ def depth_layers(img, session):
     return out
 
 
+U2NET_URL = "https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx"  # U-2-Net weights, Apache-2.0
+
+
+def cutout(img, session):
+    """Remove the background (U-2-Net salient-object mask), crop to the object: landmarks / animals placed at exact scale."""
+    w, h = img.size
+    x = np.asarray(img.convert("RGB").resize((320, 320), Image.LANCZOS), dtype=np.float32) / 255.0
+    x = (x - np.array([0.485, 0.456, 0.406], np.float32)) / np.array([0.229, 0.224, 0.225], np.float32)
+    m = session.run(None, {session.get_inputs()[0].name: x.transpose(2, 0, 1)[None]})[0][0, 0]
+    m = (m - m.min()) / max(1e-6, m.max() - m.min())
+    a = np.asarray(Image.fromarray((m * 255).astype(np.uint8)).resize((w, h), Image.LANCZOS), dtype=np.float32)
+    a = np.clip((a - 40) * (255 / 175), 0, 255).astype(np.uint8)  # firm edge, no grey halo
+    rgba = Image.fromarray(np.dstack([np.asarray(img.convert("RGB")), a]))
+    ys, xs = np.nonzero(a > 24)
+    if len(xs) == 0:
+        raise SystemExit("cutout found no object")
+    return rgba.crop((int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1))
+
+
 def main():
     manifest = json.loads((ROOT / (sys.argv[1] if len(sys.argv) > 1 else "assets/media.json")).read_text(encoding="utf-8"))
     pins = manifest.get("sha256", {})
@@ -100,6 +119,11 @@ def main():
         import onnxruntime as ort
         model = get(manifest["depth_model"]["url"], "depth-anything-v2-small.onnx", pins)
         session = ort.InferenceSession(str(model), providers=["CPUExecutionProvider"])
+
+    cut_session = None
+    if any(a.get("cutout") for a in manifest["art"]):
+        import onnxruntime as ort
+        cut_session = ort.InferenceSession(str(get(U2NET_URL, "u2net.onnx", pins)), providers=["CPUExecutionProvider"])
 
     index = {}
     for a in manifest["art"]:
@@ -118,6 +142,12 @@ def main():
         img.load()
         img = img.convert("RGB")
         img.thumbnail((2000, 2000), Image.LANCZOS)
+        if a.get("cutout"):
+            img = cutout(img, cut_session)
+            img.save(ART / f"{a['id']}.webp", quality=90)  # RGBA, cropped to the object
+            index[a["id"]] = {"w": img.width, "h": img.height, "layers": 0, "credit": a["credit"], "cutout": True}
+            print(f"CUT {a['id']} {img.width}x{img.height}")
+            continue
         img.save(ART / f"{a['id']}.webp", quality=88)
         layers = 0
         if a.get("depth") and session is not None:

@@ -178,7 +178,60 @@ const SPINE: Shape = {
   tension: 0,
 };
 
+/** Empire State Building side profile (setbacks + mast), measured by height (443 m to the tip). */
+const ESB: Shape = {
+  motion: 'none',
+  measure: 'height',
+  pts: [
+    [0, 0], [0.14, 0], [0.14, 0.13], [0.125, 0.13], [0.125, 0.2], [0.115, 0.2], [0.115, 0.62], [0.105, 0.62], [0.105, 0.7], [0.095, 0.7],
+    [0.095, 0.78], [0.085, 0.78], [0.085, 0.86], [0.076, 0.86], [0.072, 0.95], [0.07, 1.0], [0.068, 0.95], [0.064, 0.86], [0.055, 0.86],
+    [0.055, 0.78], [0.045, 0.78], [0.045, 0.7], [0.035, 0.7], [0.035, 0.62], [0.025, 0.62], [0.025, 0.2], [0.015, 0.2], [0.015, 0.13], [0, 0.13],
+  ],
+  extras: Array.from({length: 7}, (_, i): Extra => ({kind: 'line', pts: [[0.032 + i * 0.012, 0.22], [0.032 + i * 0.012, 0.6]], w: 0.002, tone: 'light'})),
+  tension: 0,
+};
+
+/** Burj Khalifa side profile (stepped taper + spire), measured by height (828 m). */
+const BURJ: Shape = {
+  motion: 'none',
+  measure: 'height',
+  pts: [
+    [0, 0], [0.1, 0], [0.093, 0.15], [0.083, 0.3], [0.075, 0.45], [0.068, 0.6], [0.061, 0.72], [0.056, 0.82], [0.053, 0.9], [0.051, 1.0],
+    [0.049, 1.0], [0.047, 0.9], [0.044, 0.82], [0.039, 0.72], [0.032, 0.6], [0.025, 0.45], [0.017, 0.3], [0.007, 0.15],
+  ],
+  extras: [{kind: 'line', pts: [[0.05, 0.02], [0.05, 0.86]], w: 0.002, tone: 'light'}],
+  tension: 0,
+};
+
+/** A cube of rock (volume comparisons), measured by edge length. */
+const BLOCK: Shape = {
+  motion: 'none',
+  measure: 'length',
+  pts: [[0, 0], [0, 1], [1, 1], [1, 0]],
+  extras: [
+    {kind: 'line', pts: [[0.1, 0.8], [0.35, 0.62], [0.55, 0.7], [0.9, 0.45]], w: 0.006, tone: 'dark'},
+    {kind: 'line', pts: [[0.05, 0.3], [0.3, 0.38], [0.6, 0.22], [0.95, 0.3]], w: 0.006, tone: 'dark'},
+    {kind: 'line', pts: [[0.5, 1], [0.45, 0.7], [0.5, 0.38], [0.42, 0]], w: 0.005, tone: 'dark'},
+  ],
+  tension: 0,
+};
+
+/** Small fishing boat (hull + wheelhouse + mast), measured by length. */
+const BOAT: Shape = {
+  motion: 'none',
+  measure: 'length',
+  pts: [
+    [0.0, 0.16], [0.05, 0.02], [0.85, 0.0], [1.0, 0.18], [0.62, 0.18], [0.62, 0.34], [0.36, 0.34], [0.36, 0.18], [0.2, 0.18], [0.2, 0.62], [0.18, 0.62], [0.18, 0.18],
+  ],
+  extras: [{kind: 'rect', u: 0.4, v: 0.22, w: 0.18, h: 0.08, tone: 'dark'}],
+  tension: 0,
+};
+
 export const SHAPES = {
+  block: BLOCK,
+  boat: BOAT,
+  esb: ESB,
+  burj: BURJ,
   krill: KRILL,
   spine: SPINE,
   blueWhale: BLUE_WHALE,
