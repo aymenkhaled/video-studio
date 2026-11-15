@@ -59,6 +59,11 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 13. Big patch edits: write a Python fix script to a file and run it; shell heredocs broke twice on quotes/newlines.
 14. Channel B start pattern: copy `brands/scale-science/episodes/001-biggest-animal/` (build_timeline.py → timeline.json, scenes.ts helpers for you/bus/whale/court, ROW/DT tables), render with `media_release=media-b001` (or a new per-episode release) and `concurrency=2` when a 3D custom scene is in it.
 
+## From Aymen's feedback on Scale & Science 001 (15 Nov 2026) — CRITICAL
+1. **Flat silhouettes kill interest.** Aymen: "big fish, small fish, medium fish — 0 realistic images, why would anyone watch?" Size videos need REAL-looking animals on the scale stage, not shapes. Silhouettes are allowed only as a "?" mystery or a tiny legend icon.
+2. Fix (to build): scale stage shows licensed realistic art as cut-outs at exact scale — PD NOAA/Smithsonian illustrations and CC BY / CC0 paleoart (e.g. megalodon: Mary Parrish/Smithsonian PD, O. Demuth CC BY 4.0, H. Salais CC BY 4.0; Argentinosaurus: Nobu Tamura CC BY 3.0; Ichthyotitan: CC0 lateral view) — background removed in CI, gentle swim/sway motion, real photo/footage b-roll (NOAA PD video) between scale shots, realistic 3D (licensed models) for hero shots.
+3. Judge a stage by a phone thumbnail test: would a stranger stop scrolling for this frame? If it looks like an infographic, it fails.
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|
