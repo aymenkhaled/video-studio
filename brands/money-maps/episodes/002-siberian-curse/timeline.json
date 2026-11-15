@@ -1,0 +1,991 @@
+{
+ "id": "002-siberian-curse",
+ "comp": "SiberianCurse",
+ "title": "Russia Built Cities Where No Economy Should Exist",
+ "fps": 24,
+ "seed": 643,
+ "voice": {
+  "engine": "kokoro",
+  "voice": "af_heart",
+  "speed": 0.96,
+  "language": "en-us",
+  "gap": 0.4,
+  "prosody": true,
+  "chain": true
+ },
+ "music": {
+  "key": "D",
+  "tempo": 72
+ },
+ "mix": {
+  "duck_db": 20
+ },
+ "ambience": {
+  "type": "wind",
+  "gain": 0.06
+ },
+ "scenes": [
+  {
+   "id": "o1",
+   "lead": 0.4,
+   "lines": [
+    "This is Russia at night, seen from space.",
+    "Most of the lights are in the west. But far out here, in the dark, there are cities."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.2,
+     "duration": 3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "o2",
+   "lead": 0.3,
+   "lines": [
+    "Like Norilsk: about one hundred seventy-four thousand people, far above the Arctic Circle.",
+    "No road and no railway connect it to the rest of Russia."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
+  },
+  {
+   "id": "o3",
+   "lead": 0.3,
+   "lines": [
+    "Or Yakutsk, where the average January day is about minus thirty-seven degrees."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 0.8,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "o4",
+   "lead": 0.3,
+   "lines": [
+    "Most people think Russia is empty simply because it is cold.",
+    "The strange part is the opposite. Russia has more large cities in cold places than any other country."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 2.6,
+     "duration": 1.4,
+     "gain": 0.32
+    }
+   ]
+  },
+  {
+   "id": "o5",
+   "lead": 0.3,
+   "lines": [
+    "So why build cities where no market ever would?",
+    "What does it cost to keep them alive, every winter?",
+    "And when the World Bank helped pay people to leave, why did most of them stay?"
+   ],
+   "music": "epic",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 0.2,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 2.6,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 5.4,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "o6",
+   "lead": 0.3,
+   "lines": [
+    "By the end, you will see Russia's map the way an economist does.",
+    "And it starts with a name: the Siberian curse."
+   ],
+   "music": "epic",
+   "tail": 1.2,
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 3.2,
+     "duration": 1.4,
+     "gain": 0.32
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "lead": 0.2,
+   "lines": [],
+   "tail": 0.6,
+   "min": 3.4,
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
+  },
+  {
+   "id": "c1a",
+   "lead": 0.3,
+   "lines": [
+    "Russia is the largest country on Earth, about seventeen million square kilometres.",
+    "More than one hundred forty-three million people live there, according to the World Bank."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c1b",
+   "lead": 0.3,
+   "lines": [
+    "Siberia and the Russian Far East make up about two thirds of that land.",
+    "But only about one Russian in six lives there."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 2.8,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c1c",
+   "lead": 0.3,
+   "lines": [
+    "Canada has the same cold north, and a very different map.",
+    "Two in three Canadians live within one hundred kilometres of the United States border, the warmest strip of the country."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
+  },
+  {
+   "id": "c1d",
+   "lead": 0.3,
+   "lines": [
+    "Canada's three northern territories hold less than one percent of Canadians."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c1e",
+   "lead": 0.3,
+   "lines": [
+    "Russia went the other way.",
+    "Novosibirsk, in Siberia, had about eight thousand people in eighteen ninety-seven.",
+    "In twenty twenty-one, it had about two hundred times as many."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 3.0,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 6.2,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c1f",
+   "lead": 0.3,
+   "lines": [
+    "In January, Novosibirsk is about as cold as Winnipeg, Canada's coldest big city: around minus seventeen degrees.",
+    "The difference is not one cold city. It is how many big cities Russia built in places like this."
+   ],
+   "music": "calm",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c1r",
+   "lead": 0.3,
+   "lines": [
+    "So far: most Russians live in the west, yet Siberia is full of big cities. Why build them there?"
+   ],
+   "music": "calm",
+   "tail": 1.0
+  },
+  {
+   "id": "c2",
+   "lead": 0.2,
+   "lines": [],
+   "tail": 0.6,
+   "min": 3.4,
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
+  },
+  {
+   "id": "c2a",
+   "lead": 0.3,
+   "lines": [
+    "It started with a railway.",
+    "The Trans-Siberian was begun in eighteen ninety-one and finished in nineteen sixteen."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "train",
+     "at": 0.3,
+     "duration": 4,
+     "gain": 0.18
+    }
+   ]
+  },
+  {
+   "id": "c2b",
+   "lead": 0.3,
+   "lines": [
+    "It runs about nine thousand three hundred kilometres, from Moscow to Vladivostok.",
+    "Even today, the fastest train takes about a week."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "train",
+     "at": 0.1,
+     "duration": 4,
+     "gain": 0.18
+    }
+   ]
+  },
+  {
+   "id": "c2c",
+   "lead": 0.3,
+   "lines": [
+    "The tsars placed forts, villages and towns along it.",
+    "Then, in the words of Brookings researchers Fiona Hill and Clifford Gaddy, the Soviets built cities of over a million."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c2d",
+   "lead": 0.3,
+   "lines": [
+    "In their book, The Siberian Curse, they argue that communist planners put factories, machines and people in the wrong places."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c2e",
+   "lead": 0.3,
+   "lines": [
+    "Under Stalin, the state did not ask where people wanted to live. It decided.",
+    "Factories followed the coal, the metals and the gold."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c2f",
+   "lead": 0.3,
+   "lines": [
+    "Much of the first work was done by prisoners.",
+    "Some eighteen to twenty million people passed through the Gulag camps in just over two decades, Hill and Gaddy write."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c2g",
+   "lead": 0.3,
+   "lines": [
+    "Norilsk began in nineteen thirty-five, when prisoners of the Norillag camp started building its mines and metal plant.",
+    "At its peak, the camp held tens of thousands of people."
+   ],
+   "music": "somber",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c2h",
+   "lead": 0.3,
+   "lines": [
+    "Far to the east, a trust called Dalstroy mined gold in Kolyma and built the port of Magadan.",
+    "In nineteen fifty-two, it held nearly two hundred thousand prisoners."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c2i",
+   "lead": 0.3,
+   "lines": [
+    "At their height, the camps produced an estimated fifteen to eighteen percent of Russian industrial output."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c2j",
+   "lead": 0.3,
+   "lines": [
+    "When the camps were shut down after Stalin's death in nineteen fifty-three, the cities stayed.",
+    "Now the state needed free workers in the cold, and it had to pay them to come."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 3.4,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c2r",
+   "lead": 0.3,
+   "lines": [
+    "So far: a railway, a plan and prison labour put big cities in the coldest places. But what does keeping them alive cost?"
+   ],
+   "music": "calm",
+   "tail": 1.0
+  },
+  {
+   "id": "c3",
+   "lead": 0.2,
+   "lines": [],
+   "tail": 0.6,
+   "min": 3.4,
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
+  },
+  {
+   "id": "c3a",
+   "lead": 0.3,
+   "lines": [
+    "Hill and Gaddy measure the problem with one simple idea: temperature per capita.",
+    "Take the January temperature where each person lives, and average it over everyone."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c3b",
+   "lead": 0.3,
+   "lines": [
+    "On their charts, the average Russian lives at around minus eleven to minus twelve degrees in January.",
+    "The average Canadian, between minus nine degrees and minus ten."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 2.0,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 5.0,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c3c",
+   "lead": 0.3,
+   "lines": [
+    "And it moved the wrong way.",
+    "From nineteen twenty-six to nineteen ninety, Russia's number fell by almost one full degree, while Canada's rose by even more."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c3d",
+   "lead": 0.3,
+   "lines": [
+    "Cold is not just uncomfortable. It is expensive.",
+    "Buildings need heat for much of the year, and almost everything travels thousands of kilometres to arrive."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c3e",
+   "lead": 0.3,
+   "lines": [
+    "In the coldest big cities, Hill and Gaddy found living costs up to four times higher than in the rest of Russia."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 2.4,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c3f",
+   "lead": 0.3,
+   "lines": [
+    "So Russia still pays people to live there.",
+    "By law, northern jobs earn a regional bonus on top of the salary: eighty percent extra in Norilsk, seventy percent in Magadan."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 3.0,
+     "duration": 0.4,
+     "gain": 0.25
+    },
+    {
+     "type": "coin",
+     "at": 6.0,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c3g",
+   "lead": 0.3,
+   "lines": [
+    "Years of service add a northern allowance that can reach another hundred percent.",
+    "Together, a salary can double, or more than double."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 1.6,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c3h",
+   "lead": 0.3,
+   "lines": [
+    "Every summer, before the rivers and seas freeze, Russia runs the northern delivery.",
+    "In twenty twenty-four, it shipped more than three million tonnes of cargo north, about seventy percent of it fuel."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c3i",
+   "lead": 0.3,
+   "lines": [
+    "In the early two thousands, winter fuel for the coldest regions cost the state at least seven hundred million dollars a year."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 3.0,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c3j",
+   "lead": 0.3,
+   "lines": [
+    "And in Yakutsk, built on frozen ground, many buildings stand on concrete piles, so their heat does not thaw the earth below."
+   ],
+   "music": "calm",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c3r",
+   "lead": 0.3,
+   "lines": [
+    "So far: the cold costs Russia every single year, in heat, wages and shipping. So why not just move people out?"
+   ],
+   "music": "calm",
+   "tail": 1.0
+  },
+  {
+   "id": "c4",
+   "lead": 0.2,
+   "lines": [],
+   "tail": 0.6,
+   "min": 3.4,
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
+  },
+  {
+   "id": "c4a",
+   "lead": 0.3,
+   "lines": [
+    "In nineteen ninety-one, the Soviet Union collapsed, and so did the money that kept many northern towns alive.",
+    "People began to leave on their own."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c4b",
+   "lead": 0.3,
+   "lines": [
+    "Magadan region had more than three hundred eighty-five thousand people in nineteen eighty-nine.",
+    "By twenty twenty-one, only about one hundred thirty-six thousand remained."
+   ],
+   "music": "somber",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 2.6,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 6.0,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c4c",
+   "lead": 0.3,
+   "lines": [
+    "Next door, Chukotka fell from more than one hundred fifty-seven thousand people to under fifty thousand.",
+    "Nearly seventy percent of the people left."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c4d",
+   "lead": 0.3,
+   "lines": [
+    "Across the whole Far East, about a quarter of the people have gone since nineteen eighty-nine."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c4e",
+   "lead": 0.3,
+   "lines": [
+    "Then, in two thousand one, the World Bank lent Russia eighty million dollars to test a bold idea:",
+    "help people move out of the far north."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 2.0,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c4f",
+   "lead": 0.3,
+   "lines": [
+    "The pilot chose three places: Norilsk, Vorkuta and Susuman."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.6,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 2.4,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 3.2,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c4g",
+   "lead": 0.3,
+   "lines": [
+    "Planners expected about ten thousand four hundred households to leave.",
+    "Only about four thousand five hundred did."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 3.2,
+     "duration": 1.4,
+     "gain": 0.32
+    }
+   ]
+  },
+  {
+   "id": "c4h",
+   "lead": 0.3,
+   "lines": [
+    "In Norilsk, only about one in seven of the planned families went."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c4i",
+   "lead": 0.3,
+   "lines": [
+    "More than half of the loan was never spent. About forty-five million dollars was cancelled,",
+    "and the World Bank's own evaluators rated the project moderately unsatisfactory."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c4j",
+   "lead": 0.3,
+   "lines": [
+    "Why would people stay somewhere that expensive?",
+    "Because for many of them, it paid. In Norilsk, the evaluators noted, living standards were relatively high."
+   ],
+   "music": "epic",
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 2.4,
+     "duration": 1.4,
+     "gain": 0.32
+    }
+   ]
+  },
+  {
+   "id": "c4k",
+   "lead": 0.3,
+   "lines": [
+    "Everything so far assumed the cold is only a cost.",
+    "But the cold is also where Russia keeps its money."
+   ],
+   "music": "epic",
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.2,
+     "duration": 4,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c4r",
+   "lead": 0.3,
+   "lines": [
+    "So far: people left the far north on their own, but paying them to leave mostly failed. Is the curse really a curse?"
+   ],
+   "music": "calm",
+   "tail": 1.0
+  },
+  {
+   "id": "c5",
+   "lead": 0.2,
+   "lines": [],
+   "tail": 0.6,
+   "min": 3.4,
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
+  },
+  {
+   "id": "c5a",
+   "lead": 0.3,
+   "lines": [
+    "Look at Norilsk again.",
+    "In twenty twenty-four, Russia mined about thirty-nine percent of the world's palladium, a metal used in car exhaust cleaners, much of it from this area."
+   ],
+   "music": "epic",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 3.0,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c5b",
+   "lead": 0.3,
+   "lines": [
+    "Western Siberia produced about eighty-seven percent of Russia's crude oil in twenty twenty-three, according to Rystad Energy data.",
+    "The Khanty-Mansi region alone pumps about forty percent."
+   ],
+   "music": "epic",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.0,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 4.4,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c5c",
+   "lead": 0.3,
+   "lines": [
+    "And Yamal, in the Arctic, produces the large majority of Russia's natural gas."
+   ],
+   "music": "epic",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.22
+   }
+  },
+  {
+   "id": "c5d",
+   "lead": 0.3,
+   "lines": [
+    "In twenty twenty-four, oil and gas brought Russia's federal budget more than eleven trillion rubles.",
+    "That was about thirty percent of all its revenue."
+   ],
+   "music": "epic",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 1.4,
+     "duration": 0.4,
+     "gain": 0.25
+    },
+    {
+     "type": "coin",
+     "at": 4.6,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c5e",
+   "lead": 0.3,
+   "lines": [
+    "So the curse is also the treasure chest, and some cold cities are growing.",
+    "Surgut, an oil city, grew from about two hundred eighty-five thousand people in two thousand two to almost four hundred thousand."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c5f",
+   "lead": 0.3,
+   "lines": [
+    "And Yakutsk, at minus thirty-seven in January, grew by more than half."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 2.4,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c5g",
+   "lead": 0.3,
+   "lines": [
+    "Not everyone agrees with the curse idea.",
+    "Critics say it is overstated: January temperature is only one way to measure cost, and Canada's people also hug their warm south."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c5h",
+   "lead": 0.3,
+   "lines": [
+    "Hill and Gaddy's own answer was that Russia should shrink.",
+    "Not its territory, but its economic geography: fewer people in the coldest places, more in the warmer west."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c5r",
+   "lead": 0.3,
+   "lines": [
+    "So far: the cold north costs Russia a fortune, and also earns much of it. So what is the real answer?"
+   ],
+   "music": "calm",
+   "tail": 1.0
+  },
+  {
+   "id": "c6",
+   "lead": 0.2,
+   "lines": [],
+   "tail": 0.6,
+   "min": 3.4,
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
+  },
+  {
+   "id": "c6a",
+   "lead": 0.3,
+   "lines": [
+    "So why is Russia so big, but so empty?",
+    "Because its land, its people and its money sit in three different places."
+   ],
+   "music": "epic",
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 3.0,
+     "duration": 1.4,
+     "gain": 0.32
+    }
+   ]
+  },
+  {
+   "id": "c6b",
+   "lead": 0.3,
+   "lines": [
+    "Soviet planners pushed millions of people into the cold.",
+    "Left to markets, Hill and Gaddy argue, most would have stayed closer to the warm west, the way Canadians hug their southern border."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c6c",
+   "lead": 0.3,
+   "lines": [
+    "Today Russia pays twice: once to keep people warm in the cold, and once to pull its riches out of it."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 2.0,
+     "duration": 0.4,
+     "gain": 0.25
+    },
+    {
+     "type": "coin",
+     "at": 4.4,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c6d",
+   "lead": 0.3,
+   "lines": [
+    "Look at the night map one last time.",
+    "Those few lights in the dark are not an accident of nature. They were a plan, and the bill still arrives every winter."
+   ],
+   "music": "epic",
+   "tail": 1.6,
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.4,
+     "duration": 4,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "lead": 0.3,
+   "lines": [
+    "Next on Money and Maps: borders that disappeared a hundred years ago, and still decide who is rich.",
+    "Which cold city would you never leave, even for a bonus? Tell us in the comments."
+   ],
+   "music": "calm",
+   "tail": 2.0,
+   "min": 20.0
+  }
+ ]
+}

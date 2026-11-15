@@ -11,6 +11,7 @@ import {loadFont as loadCinzel} from '@remotion/google-fonts/Cinzel';
 import {clamp01, easeInOutCubic, mix, ramp} from '../motion';
 import {INTER} from '../overlay';
 import {kmLabel, layoutLabels, type LabelBox} from './clarity-logic';
+import {flyCamera} from './camera-logic';
 import {classify, fmtValue, type NumFmt} from './chart-logic';
 import {usePublicJson} from './media';
 import {Figure} from './figures';
@@ -25,11 +26,13 @@ import {geoLength} from 'd3-geo';
 export const {fontFamily: CINZEL} = loadCinzel('normal', {weights: ['600', '700'], subsets: ['latin']});
 
 export type LonLat = [number, number];
-export type CamKey = {at: number; center: LonLat; zoom: number};
+/** fly: reach this key on a van Wijk zoom-out-then-in arc (one continuous move between far-apart places). */
+export type CamKey = {at: number; center: LonLat; zoom: number; fly?: boolean};
 export type Territory = {id: string; rings: LonLat[][]; color: string; label?: string; labelAt?: LonLat; grow?: [number, number]; origin?: LonLat; opacity?: number; fadeOut?: [number, number]; pattern?: 'hatch' | 'dots'};
 export type Route = {id: string; points: LonLat[]; color: string; draw: [number, number]; width?: number; dashed?: boolean; unit?: Unit; /** show "≈ N km" at the middle once drawn */ km?: boolean};
 export type Unit = {label: string; color: string; kind?: 'infantry' | 'cavalry' | 'elephant'};
-export type City = {name: string; at: LonLat; appear?: number; size?: number; align?: 'left' | 'right'; today?: string};
+/** dot: data marker (fill colour + radius scale) for value maps; note: second line without the "today:" prefix (e.g. "−39 °C in January"). */
+export type City = {name: string; at: LonLat; appear?: number; size?: number; align?: 'left' | 'right'; today?: string; note?: string; dot?: {color: string; r?: number}};
 export type RegionLabel = {text: string; at: LonLat; appear?: number; size?: number};
 export type MapTheme = {sea: string; land: string; coast: string; graticule: string; text: string};
 
@@ -108,6 +111,7 @@ export const cameraAt = (keys: CamKey[], p: number): {center: LonLat; zoom: numb
     const b = keys[i + 1];
     if (p <= b.at) {
       const k = easeInOutCubic((p - a.at) / Math.max(1e-6, b.at - a.at));
+      if (b.fly) return flyCamera(a, b, k);
       const center = geoInterpolate(a.center, b.center)(k) as LonLat;
       return {center, zoom: Math.exp(mix(Math.log(a.zoom), Math.log(b.zoom), k))};
     }
@@ -235,8 +239,11 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       const [x, y] = px(c.at);
       const s = (c.size ?? 1) * zoomS;
       boxes.push({id: `d:${c.name}`, x: x - 12 * s, y: y - 12 * s, w: 24 * s, h: 24 * s, priority: 3.5});
-      const w = Math.max(c.name.length * fs(30 * s) * 0.6, c.today ? (c.today.length + 7) * fs(20 * s) * 0.55 : 0);
-      const h = c.today ? fs(30 * s) * 2.1 : fs(30 * s) * 1.2;
+      const sub = c.today ? `today: ${c.today}` : c.note;
+      const dr = c.dot ? (c.dot.r ?? 1) : 1;
+      boxes[boxes.length - 1] = {id: `d:${c.name}`, x: x - 12 * s * dr, y: y - 12 * s * dr, w: 24 * s * dr, h: 24 * s * dr, priority: 3.5};
+      const w = Math.max(c.name.length * fs(30 * s) * 0.6, sub ? sub.length * fs(20 * s) * 0.55 : 0);
+      const h = sub ? fs(30 * s) * 2.1 : fs(30 * s) * 1.2;
       const right = c.align !== 'left';
       boxes.push({id: `c:${c.name}`, x: right ? x + 16 * s : x - 16 * s - w, y: y - 18 * s, w, h, priority: 3, maxShift: 70});
     });
@@ -495,22 +502,30 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
         const s = (c.size ?? 1) * zoomS;
         const right = c.align !== 'left';
         const o = off(`c:${c.name}`);
-        const tx = x + (right ? 16 : -16) * s + o.dx;
+        const dr = c.dot ? (c.dot.r ?? 1) : 1;
+        const sub = c.today ? `today: ${c.today}` : c.note;
+        const tx = x + (right ? 16 : -16) * s * Math.max(1, dr * 0.8) + o.dx;
         const ty = y + 9 * s + o.dy;
         const ta = easeInOutCubic(ramp(p, (c.appear ?? 0) + 0.04, (c.appear ?? 0) + 0.14));
         return (
           <g key={c.name} opacity={a}>
-            <circle cx={x} cy={y} r={9 * s} fill="#f4ecd8" stroke="#1b1208" strokeWidth={3 * s} />
-            <circle cx={x} cy={y} r={3.5 * s} fill="#1b1208" />
+            {c.dot ? (
+              <circle cx={x} cy={y} r={11 * s * dr * (0.6 + 0.4 * a)} fill={c.dot.color} stroke="#101820" strokeWidth={2.5 * s} />
+            ) : (
+              <>
+                <circle cx={x} cy={y} r={9 * s} fill="#f4ecd8" stroke="#1b1208" strokeWidth={3 * s} />
+                <circle cx={x} cy={y} r={3.5 * s} fill="#1b1208" />
+              </>
+            )}
             {o.hidden ? null : (
               <>
                 {(o.dx || o.dy) && Math.hypot(o.dx, o.dy) < 140 ? <line x1={x} y1={y} x2={tx} y2={ty - 9 * s} stroke="#1b1208" strokeWidth={2 * s} opacity={0.7} /> : null}
                 <text x={tx} y={ty} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontWeight={800} fontSize={fs(30 * s)} fill="#f4ecd8" stroke="#1b1208" strokeWidth={6 * s} paintOrder="stroke">
                   {c.name}
                 </text>
-                {c.today ? (
+                {sub ? (
                   <text x={tx} y={ty + Math.max(28 * s, mt * 0.95)} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontStyle="italic" fontWeight={600} fontSize={fs(20 * s) * (mt ? 0.88 : 1)} fill="#f4ecd8" fillOpacity={ta} stroke="#1b1208" strokeWidth={5 * s} paintOrder="stroke">
-                    today: {c.today}
+                    {sub}
                   </text>
                 ) : null}
               </>

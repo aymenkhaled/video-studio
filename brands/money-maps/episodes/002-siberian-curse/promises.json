@@ -1,0 +1,12 @@
+[
+  {"id": "P1", "promise": "Title 1: Russia built cities where no economy should exist", "setAt": "title/o1", "payoffAt": "c2c–c2j", "payoffLine": "the Soviets built cities of over a million … communist planners put factories, machines and people in the wrong places"},
+  {"id": "P2", "promise": "Title 2: why so big but so empty — follow the money", "setAt": "title/o4", "payoffAt": "c6a", "payoffLine": "Because its land, its people and its money sit in three different places."},
+  {"id": "P3", "promise": "Title 3 / hook Q3: World Bank paid people to leave — why did most stay?", "setAt": "o5", "payoffAt": "c4e–c4j", "payoffLine": "Only about 4,500 did … Because for many of them, it paid."},
+  {"id": "P4", "promise": "Hook Q1: why build cities where no market would?", "setAt": "o5", "payoffAt": "c2a–c2j", "payoffLine": "railway → plan → prison labour → paid free workers"},
+  {"id": "P5", "promise": "Hook Q2: what does it cost every winter?", "setAt": "o5", "payoffAt": "c3a–c3j", "payoffLine": "living costs up to four times higher; wage bonuses; northern delivery; $700 million+ a year fuel"},
+  {"id": "P6", "promise": "Thumbnail 1: why here? (lone light in the dark)", "setAt": "thumb1/o1", "payoffAt": "c6d", "payoffLine": "Those few lights in the dark are not an accident of nature. They were a plan."},
+  {"id": "P7", "promise": "Thumbnail 2: no roads in (Norilsk)", "setAt": "thumb2/o2", "payoffAt": "o2 + c4h + c5a", "payoffLine": "No road and no railway connect it … why people stay … palladium"},
+  {"id": "P8", "promise": "Thumbnail 3: paid to stay", "setAt": "thumb3", "payoffAt": "c3f–c3g", "payoffLine": "a salary can double, or more than double"},
+  {"id": "P9", "promise": "'By the end you will see Russia's map the way an economist does'", "setAt": "o6", "payoffAt": "c6a–c6d", "payoffLine": "land, people and money in three different places; Russia pays twice"},
+  {"id": "P10", "promise": "Chapter loop: is the curse really a curse?", "setAt": "c4r", "payoffAt": "c5a–c5h", "payoffLine": "the curse is also the treasure chest; critics say it is overstated"}
+]

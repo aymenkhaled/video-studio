@@ -290,14 +290,134 @@
    "licence": "CC BY 4.0 (credit: Lomax et al. 2024, PLOS ONE)",
    "credit": "Ichthyotitan severnensis holotype jawbone. D. R. Lomax, P. de la Salle, M. Perillo, J. Reynolds, R. Reynolds, J. F. Waldron (2024), PLOS ONE, CC BY 4.0",
    "depth": false
+  },
+  {
+   "id": "night-russia",
+   "source": "commons",
+   "file": "BlackMarble20161km.jpg",
+   "src": "blackmarble",
+   "crop": [
+    0.5694,
+    0.0667,
+    1.0,
+    0.2778
+   ],
+   "max": 3800,
+   "licence": "Public domain (NASA / USGS, PD-USGov)",
+   "credit": "Earth at Night 2016 (Black Marble), NASA Earth Observatory, public domain",
+   "depth": false
+  },
+  {
+   "id": "night-west",
+   "source": "commons",
+   "file": "BlackMarble20161km.jpg",
+   "src": "blackmarble",
+   "crop": [
+    0.5556,
+    0.1,
+    0.7222,
+    0.2722
+   ],
+   "max": 2600,
+   "licence": "Public domain (NASA / USGS, PD-USGov)",
+   "credit": "Earth at Night 2016 (Black Marble), NASA Earth Observatory, public domain",
+   "depth": false
+  },
+  {
+   "id": "norilsk-sat",
+   "source": "commons",
+   "file": "Norilsk by satellite 2016.jpg",
+   "licence": "Public domain (NASA / USGS, PD-USGov)",
+   "credit": "Norilsk, Landsat 8, August 2016. NASA Earth Observatory (Jesse Allen), public domain",
+   "depth": false
+  },
+  {
+   "id": "lena-delta",
+   "source": "commons",
+   "file": "Lena River Delta - Landsat 2000.jpg",
+   "licence": "Public domain (NASA / USGS, PD-USGov)",
+   "credit": "Lena River Delta, Landsat 7, 2000. NASA / USGS, public domain",
+   "depth": false
+  },
+  {
+   "id": "lena-yakutsk",
+   "source": "commons",
+   "file": "Fires along Lena River near Yakutsk (9628).jpg",
+   "licence": "Public domain (NASA / USGS, PD-USGov)",
+   "credit": "Lena River near Yakutsk, MODIS, 2002. NASA Earth Observatory, public domain",
+   "depth": false
+  },
+  {
+   "id": "okhotsk-ice",
+   "source": "commons",
+   "file": "Sea Ice and Cloud Streets in the Sea of Okhotsk (MODIS 2026-01-07).jpg",
+   "licence": "Public domain (NASA / USGS, PD-USGov)",
+   "credit": "Sea ice in the Sea of Okhotsk, MODIS, January 2026. NASA, public domain",
+   "depth": false
+  },
+  {
+   "id": "pg-bridge",
+   "source": "commons",
+   "file": "Prokudin-Gorskii-25.jpg",
+   "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
+   "credit": "Trans-Siberian Railway bridge over the Kama near Perm, S. M. Prokudin-Gorsky, c. 1910, Library of Congress, public domain",
+   "depth": true
+  },
+  {
+   "id": "pg-zlatoust",
+   "source": "commons",
+   "file": "North-west of Zlatoust by Sergey Prokudin-Gorsky.jpg",
+   "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
+   "credit": "Zlatoust, Urals, S. M. Prokudin-Gorsky, 1910, Library of Congress, public domain",
+   "depth": true
+  },
+  {
+   "id": "pg-workers",
+   "source": "commons",
+   "file": "Sergey Mikhaylovich Prokudin-Gorsky - A.P. Kalganov with son and granddaughter, ca. 1910.jpg",
+   "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
+   "credit": "Zlatoust plant workers A. P. Kalganov with son and granddaughter, S. M. Prokudin-Gorsky, c. 1910, Library of Congress, public domain",
+   "depth": true
+  },
+  {
+   "id": "pg-tyumen",
+   "source": "commons",
+   "file": "Sergei Prokudin-Gorskii, Trinity Monastery for men, Tiumen, 1912.jpg",
+   "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
+   "credit": "Trinity Monastery, Tyumen, S. M. Prokudin-Gorsky, 1912, Library of Congress, public domain",
+   "depth": true
+  },
+  {
+   "id": "pg-tobolsk",
+   "source": "commons",
+   "file": "Sergei Prokudin-Gorskii, Church of the Holy Mother of God, Tobolsk, Russia, 1912.jpg",
+   "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
+   "credit": "Tobolsk, Siberia, S. M. Prokudin-Gorsky, 1912, Library of Congress, public domain",
+   "depth": true
+  },
+  {
+   "id": "pg-chusovaya",
+   "source": "commons",
+   "file": "Maksimovsky rock Chusovaya river.jpg",
+   "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
+   "credit": "Maksimovsky rock, Chusovaya river (Urals), S. M. Prokudin-Gorsky, 1912, Library of Congress, public domain",
+   "depth": true
+  },
+  {
+   "id": "pg-perm-rail",
+   "source": "commons",
+   "file": "Prokudin-Gorsky - Perm. Headquarters of the Ural Railway Administration.jpg",
+   "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
+   "credit": "Perm, headquarters of the Ural Railway Administration, S. M. Prokudin-Gorsky, c. 1910, Library of Congress, public domain",
+   "depth": true
   }
  ],
  "geo": {
   "bbox": [
    -20,
    15,
-   50,
-   56
+   180,
+   82
   ],
   "rivers": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_rivers_lake_centerlines.geojson",
   "relief": [

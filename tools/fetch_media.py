@@ -113,11 +113,15 @@ def main():
             url = a["url"]
         else:
             url = livius_image(a["page"])
-        src = get(url, f"{a['id']}.src", pins)
+        src = get(url, f"{a.get('src', a['id'])}.src", pins)  # "src": share one download between several crops
         img = Image.open(src)
+        if a.get("crop"):  # normalised [x0, y0, x1, y1] window of a huge original (e.g. NASA Black Marble, 43200 px)
+            W, H = img.size
+            x0, y0, x1, y1 = a["crop"]
+            img = img.crop((int(x0 * W), int(y0 * H), int(x1 * W), int(y1 * H)))
         img.load()
         img = img.convert("RGB")
-        img.thumbnail((2000, 2000), Image.LANCZOS)
+        img.thumbnail((a.get("max", 2000), a.get("max", 2000)), Image.LANCZOS)
         img.save(ART / f"{a['id']}.webp", quality=88)
         layers = 0
         if a.get("depth") and session is not None:

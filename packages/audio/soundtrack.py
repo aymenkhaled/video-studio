@@ -116,6 +116,47 @@ def _speak(kokoro, text, vcfg, speed):
     return np.concatenate(pieces[:-1]), sr
 
 
+# ---------- prosody rules (opt-in: voice.prosody = true) ----------
+# Speed multipliers and extra pauses by sentence role (PLAYBOOK 6.1: ±4–8 %, reveal pause 0.8–1.5 s).
+ROLE_SPEED = {"plain": 1.0, "question": 0.96, "reveal": 0.93, "fact": 0.97, "aside": 1.05, "hook": 1.02}
+ROLE_PAUSE = {"plain": 0.0, "question": 0.45, "reveal": 0.35, "fact": 0.1, "aside": 0.0, "hook": 0.1}
+
+
+def line_role(text, prev):
+    """Sentence role from plain-text cues, so scripts stay plain strings (captions, checks, SRT unchanged)."""
+    words = len(text.split())
+    if text.rstrip().endswith("?"):
+        return "question"
+    if prev is not None and (prev.rstrip().endswith("?") or prev.rstrip().endswith(":")) and words <= 14:
+        return "reveal"
+    if text.startswith(("By the way", "In other words", "That is", "Which means")):
+        return "aside"
+    if re.search(r"\d|hundred|thousand|million|billion|percent|degrees|kilomet", text):
+        return "fact"
+    return "plain"
+
+
+def voice_chain(x):
+    """Phone-speaker voice chain (PLAYBOOK 6.2, opt-in voice.chain): HPF 90 Hz, −2.5 dB mud cut near 300 Hz,
+    simple de-esser on 5–9 kHz, 3:1 RMS compressor, light room reflections. Deterministic numpy, no plugins."""
+    x = filt(x, 90, "highpass", 2)
+    mud = filt(filt(x, 220, "highpass", 2), 420, "lowpass", 2)
+    x = x - mud * 0.25  # ≈ −2.5 dB around 300 Hz
+    ess = filt(filt(x, 5000, "highpass", 2), 9000, "lowpass", 2)
+    e_env = np.sqrt(filt(ess ** 2, 60, "lowpass", 1).clip(0) + 1e-12)
+    ref = float(np.quantile(e_env, 0.9)) + 1e-9
+    x = x - ess * np.clip(1 - ref / e_env, 0, 0.6)  # pull back only the loudest sibilants
+    env_ = np.sqrt(filt(x ** 2, 8, "lowpass", 1).clip(0) + 1e-12)
+    thr = float(np.quantile(env_, 0.6)) + 1e-9
+    gain = np.where(env_ > thr, (env_ / thr) ** (1 / 3 - 1), 1.0)  # 3:1 above the threshold
+    x = x * gain
+    room = np.zeros_like(x)
+    for o, g in ((0.019, 0.07), (0.031, 0.05), (0.047, 0.03)):
+        s = round(o * RATE)
+        room[s:] += x[:-s] * g
+    return x + filt(room, 3500)
+
+
 # ---------- voice-first layout (long-form) ----------
 # Timeline with "scenes": each scene lists narration lines; scene lengths follow the generated voice,
 # so nobody hand-times a 30-minute script. Converted here into the fixed schema used below.
@@ -125,17 +166,27 @@ if "scenes" in tl:
     lines, sections, sfx = [], [], list(tl.get("sfx", []))
     t = 0.0
     gap = float(vcfg.get("gap", 0.38))
+    prosody = bool(vcfg.get("prosody"))
     for si, sc in enumerate(tl["scenes"]):
         start = t
         t += float(sc.get("lead", 0.6))
-        for li, text in enumerate(sc.get("lines", [])):
+        scene_lines = sc.get("lines", [])
+        for li, text in enumerate(scene_lines):
             lid = f"{sc['id']}-{li + 1}"
             # per-scene pacing (e.g. slower for sombre beats, a touch faster for action)
-            smp, sr = speak(kokoro, text, vcfg, float(sc.get("speed", vcfg.get("speed", 1.0))))
+            base = float(sc.get("speed", vcfg.get("speed", 1.0)))
+            role, after = "plain", gap
+            if prosody:  # PLAYBOOK 6.1: per-sentence speed by role + rule-based pauses (opt-in, voice.prosody)
+                role = line_role(text, scene_lines[li - 1] if li else None)
+                base *= ROLE_SPEED[role]
+                if role == "reveal":
+                    t += 0.55  # a beat of silence before the reveal (plus the normal gap ≈ 0.9 s)
+                after = gap + ROLE_PAUSE[role]
+            smp, sr = speak(kokoro, text, vcfg, base)
             PRE[lid] = (smp, sr)
             d = len(smp) / sr
-            lines.append({"id": lid, "t": round(t, 3), "until": round(t + d + 0.05, 3), "text": text})
-            t += d + gap
+            lines.append({"id": lid, "t": round(t, 3), "until": round(t + d + 0.05, 3), "text": text, "role": role})
+            t += d + after
         end = max(t - gap + float(sc.get("tail", 0.8)), start + float(sc.get("min", 3.0)))
         t = end
         SCENES.append({"id": sc["id"], "start": round(start, 3), "end": round(end, 3)})
@@ -231,7 +282,10 @@ if vcfg and vcfg.get("lines"):
         smp = resample_poly(smp, RATE, sr)
         smp = filt(smp, 85, "highpass")
         presence = filt(filt(smp, 1600, "highpass", 2), 4200, "lowpass", 2)
-        smp = norm(smp + presence * 0.16, 0.7) * env(len(smp), 0.005, 0.03)
+        smp = smp + presence * 0.16
+        if vcfg.get("chain"):
+            smp = voice_chain(smp)
+        smp = norm(smp, 0.7) * env(len(smp), 0.005, 0.03)
         place(voice, smp, float(line["t"]), 1.0)
         s = round(float(line["t"]) * RATE)
         voice_mask[s: min(N, s + len(smp))] = 1
@@ -520,7 +574,16 @@ for ch, offs in enumerate(((0.085, 0.185, 0.33), (0.11, 0.215, 0.365))):  # smal
     for o, g in zip(offs, (0.12, 0.075, 0.04)):
         s = round(o * RATE)
         foley[s:, ch] += filt(dry[:-s], 4200) * g
-duck = 1 - 0.65 * np.clip(filt(voice_mask, 5, "lowpass", 2), 0, 1)
+# default ≈ −9 dB; PLAYBOOK 6.2 wants 18–24 dB → timeline "mix": {"duck_db": 20} (opt-in, older episodes unchanged)
+duck_db = tl.get("mix", {}).get("duck_db")
+depth = 0.65 if duck_db is None else 1 - 10 ** (-float(duck_db) / 20)
+if duck_db is not None:  # deep ducking must not pump between sentences: bridge voice gaps < 0.9 s
+    on = np.flatnonzero(np.diff(np.concatenate([[0], voice_mask, [0]])))
+    starts, ends = on[::2], on[1::2]
+    for e, s in zip(ends[:-1], starts[1:]):
+        if s - e < 0.9 * RATE:
+            voice_mask[e:s] = 1
+duck = 1 - depth * np.clip(filt(voice_mask, 5 if duck_db is None else 3, "lowpass", 2), 0, 1)
 music *= duck[:, None]
 ambience *= duck[:, None]
 mix = voice * 1.0 + music * 0.85 + ambience * 0.5 + foley * 0.85
