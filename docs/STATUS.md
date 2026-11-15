@@ -83,3 +83,4 @@ Decisions (Claude; Aymen away, "don't ask"):
 - 2026-11-14 Before the next render: audio quick wins (18–24 dB ducking, phone voice chain), then CI TTS benchmark Pocket TTS vs Chatterbox vs Kokoro.
 - 2026-11-14 Licence rejections recorded in the playbook: Unsplash/Pexels/ESA/Google Earth Studio, Pixabay music, MusicGen, Stable Audio Open, BBC RemArc, NC TTS weights; only EOX Sentinel-2 cloudless 2016 (CC BY) for satellite; Depth-Anything-V2 Small only.
 - Waiting on Aymen: Copernicus terms? Unsplash/Pexels? Sonniss GDC? advanced features on all 3 channels (Test & Compare).
+- 2026-11-15 **Aymen: realistic animals required** (silhouettes = "0 interest"). Decision: episode 001 stays as delivered; the next channel-B video must use realistic licensed art cut-outs + real footage + realistic 3D (see `docs/prompts/PROMPT_B_scale-and-science.md`, LESSONS).

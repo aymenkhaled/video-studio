@@ -47,3 +47,9 @@ Ideas that probably suit Scale & Science:
 - A continuous camera that follows the subject (diving down to the seabed, pulling back to reveal size) instead of hard cuts.
 - Living backgrounds (water particles, light rays, fish, clouds) so frames never feel static.
 - End on a question or choice that invites comments.
+
+## MUST for the next video (Aymen, 15 Nov 2026 — decided: apply to next video, episode 001 stays as is)
+- **No flat silhouettes for animals.** Every animal on the scale stage must look real: licensed realistic art (PD NOAA/Smithsonian illustrations, CC BY / CC0 paleoart) cut out (background removed in CI) and placed at exact scale next to the person/bus, with gentle swim/sway motion. Silhouettes only as "?" mystery or tiny legend icons.
+- Real PD photos and NOAA/NASA/USGS footage as b-roll between scale shots; realistic licensed 3D for hero shots (Sketchfab CC BY needs Aymen's login to download — ask him early).
+- Build this as a reusable engine feature first (`ScaleSubject.image` cut-out), test it on stills, then write the episode. Start from `brands/scale-science/episodes/001-biggest-animal/` and read `docs/LESSONS.md` (Scale & Science 001 + Aymen's feedback sections).
+- Phone-thumbnail test on every stage frame: if it looks like an infographic, it fails.
