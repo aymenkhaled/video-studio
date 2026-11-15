@@ -25,7 +25,7 @@ const Design: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
   const index = useArtIndex();
   if (variant === 1) {
     // Tracy Arm stripped slope + the 481 m line + Empire State profile for scale
-    const esbH = 520;
+    const esbH = Math.round((525 * 443) / 481); // the 481 m line is 525 px above the base: ESB (443 m) stays below it
     return (
       <AbsoluteFill style={{background: '#000'}}>
         <Img src={artSrc('ta-runup')} style={{...cover, objectPosition: '55% 40%', filter: 'contrast(1.15) saturate(1.2)'}} />
