@@ -25,24 +25,24 @@ SCRIPT = [
     ("o4", "tension", ["Most people think Russia is empty simply because it is cold.",
                        "The strange part is the opposite. Russia has more large cities in cold places than any other country."], {"sfx": [IMPACT(2.6)]}),  # H9
     ("o5", "epic", ["So why build cities where no market ever would?",
-                    "What does it cost to keep them alive, every winter?",
-                    "And when the World Bank helped pay people to leave, why did most of them stay?"], {"sfx": POP(0.2, 2.6, 5.4)}),  # B3
+                    "What does it cost to keep them alive, every winter?"], {"sfx": POP(0.2, 2.6)}),
+    ("o5b", "epic", ["And when the World Bank helped pay people to leave, why did most of them stay?"], {"sfx": POP(0.3)}),  # B3
     ("o6", "epic", ["By the end, you will see Russia's map the way an economist does.",
                     "And it starts with a name: the Siberian curse."], {"tail": 1.2, "sfx": [IMPACT(3.2)]}),
     # ---------- chapter 1: big, but where do people live? ----------
     ("c1", None, [], {"min": 3.4, "tail": 0.6, "lead": 0.2, "sfx": [W()]}),
     ("c1a", "calm", ["Russia is the largest country on Earth, about seventeen million square kilometres.",  # R1
                      "More than one hundred forty-three million people live there, according to the World Bank."], {}),  # R2
-    ("c1b", "calm", ["Siberia and the Russian Far East make up about two thirds of that land.",  # R3
-                     "But only about one Russian in six lives there."], {"sfx": POP(2.8)}),  # R3
+    ("c1b", "calm", ["Siberia and the Russian Far East make up about two thirds of that land."], {}),  # R3
+    ("c1b2", "calm", ["But only about one Russian in six lives there."], {"sfx": POP(1.2)}),  # R3
     ("c1c", "calm", ["Canada has the same cold north, and a very different map.",
                      "Two in three Canadians live within one hundred kilometres of the United States border, the warmest strip of the country."], {"sfx": [W()]}),  # C1
     ("c1d", "calm", ["Canada's three northern territories hold less than one percent of Canadians."], {}),  # H10
     ("c1e", "tension", ["Russia went the other way.",
                         "Novosibirsk, in Siberia, had about eight thousand people in eighteen ninety-seven.",  # C5
                         "In twenty twenty-one, it had about two hundred times as many."], {"sfx": POP(3.0, 6.2)}),  # C5 CALC
-    ("c1f", "calm", ["In January, Novosibirsk is about as cold as Winnipeg, Canada's coldest big city: around minus seventeen degrees.",  # C3 C4
-                     "The difference is not one cold city. It is how many big cities Russia built in places like this."], {"ambience": COLD}),
+    ("c1f", "calm", ["In January, Novosibirsk is about as cold as Winnipeg, Canada's coldest big city: around minus seventeen degrees."], {"ambience": COLD}),  # C3 C4
+    ("c1g", "calm", ["The difference is not one cold city. It is how many big cities Russia built in places like this."], {}),
     ("c1r", "calm", ["So far: most Russians live in the west, yet Siberia is full of big cities. Why build them there?"], {"tail": 1.0}),
     # ---------- chapter 2: why build there? ----------
     ("c2", None, [], {"min": 3.4, "tail": 0.6, "lead": 0.2, "sfx": [W()]}),
@@ -117,7 +117,8 @@ SCRIPT = [
     ("c5d", "epic", ["In twenty twenty-four, oil and gas brought Russia's federal budget more than eleven trillion rubles.",  # X5
                      "That was about thirty percent of all its revenue."], {"sfx": [COIN(1.4), COIN(4.6)]}),  # X5
     ("c5e", "calm", ["So the curse is also the treasure chest, and some cold cities are growing.",
-                     "Surgut, an oil city, grew from about two hundred eighty-five thousand people in two thousand two to almost four hundred thousand."], {}),  # X7
+                     ], {}),
+    ("c5e2", "calm", ["Surgut, an oil city, grew from about two hundred eighty-five thousand people in two thousand two to almost four hundred thousand."], {}),  # X7
     ("c5f", "calm", ["And Yakutsk, at minus thirty-seven in January, grew by more than half."], {"sfx": POP(2.4)}),  # Y5, Y2
     ("c5g", "calm", ["Not everyone agrees with the curse idea.",
                      "Critics say it is overstated: January temperature is only one way to measure cost, and Canada's people also hug their warm south."], {}),  # H12
@@ -134,7 +135,7 @@ SCRIPT = [
     ("c6d", "epic", ["Look at the night map one last time.",
                      "Those few lights in the dark are not an accident of nature. They were a plan, and the bill still arrives every winter."], {"tail": 1.6, "sfx": [RISER(0.4, 4)]}),
     ("end", "calm", ["Next on Money and Maps: borders that disappeared a hundred years ago, and still decide who is rich.",
-                     "Which cold city would you never leave, even for a bonus? Tell us in the comments."], {"min": 20.0, "tail": 2.0}),
+                     "Which cold city would you never leave, even for a bonus? Tell us in the comments."], {"min": 20.0, "tail": 2.0, "endscreen": True}),
 ]
 
 timeline = {
@@ -153,7 +154,7 @@ for sid, music, lines, extra in SCRIPT:
     sc = {"id": sid, "lead": extra.get("lead", 0.3), "lines": lines}
     if music:
         sc["music"] = music
-    for k in ("tail", "min", "sfx", "ambience", "speed"):
+    for k in ("tail", "min", "sfx", "ambience", "speed", "endscreen"):
         if k in extra:
             sc[k] = extra[k]
     timeline["scenes"].append(sc)

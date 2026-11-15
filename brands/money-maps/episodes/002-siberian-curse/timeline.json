@@ -101,8 +101,7 @@
    "lead": 0.3,
    "lines": [
     "So why build cities where no market ever would?",
-    "What does it cost to keep them alive, every winter?",
-    "And when the World Bank helped pay people to leave, why did most of them stay?"
+    "What does it cost to keep them alive, every winter?"
    ],
    "music": "epic",
    "sfx": [
@@ -117,10 +116,20 @@
      "at": 2.6,
      "duration": 0.3,
      "gain": 0.22
-    },
+    }
+   ]
+  },
+  {
+   "id": "o5b",
+   "lead": 0.3,
+   "lines": [
+    "And when the World Bank helped pay people to leave, why did most of them stay?"
+   ],
+   "music": "epic",
+   "sfx": [
     {
      "type": "pop",
-     "at": 5.4,
+     "at": 0.3,
      "duration": 0.3,
      "gain": 0.22
     }
@@ -172,14 +181,21 @@
    "id": "c1b",
    "lead": 0.3,
    "lines": [
-    "Siberia and the Russian Far East make up about two thirds of that land.",
+    "Siberia and the Russian Far East make up about two thirds of that land."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c1b2",
+   "lead": 0.3,
+   "lines": [
     "But only about one Russian in six lives there."
    ],
    "music": "calm",
    "sfx": [
     {
      "type": "pop",
-     "at": 2.8,
+     "at": 1.2,
      "duration": 0.3,
      "gain": 0.22
     }
@@ -238,14 +254,21 @@
    "id": "c1f",
    "lead": 0.3,
    "lines": [
-    "In January, Novosibirsk is about as cold as Winnipeg, Canada's coldest big city: around minus seventeen degrees.",
-    "The difference is not one cold city. It is how many big cities Russia built in places like this."
+    "In January, Novosibirsk is about as cold as Winnipeg, Canada's coldest big city: around minus seventeen degrees."
    ],
    "music": "calm",
    "ambience": {
     "type": "wind",
     "gain": 0.22
    }
+  },
+  {
+   "id": "c1g",
+   "lead": 0.3,
+   "lines": [
+    "The difference is not one cold city. It is how many big cities Russia built in places like this."
+   ],
+   "music": "calm"
   },
   {
    "id": "c1r",
@@ -847,7 +870,14 @@
    "id": "c5e",
    "lead": 0.3,
    "lines": [
-    "So the curse is also the treasure chest, and some cold cities are growing.",
+    "So the curse is also the treasure chest, and some cold cities are growing."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c5e2",
+   "lead": 0.3,
+   "lines": [
     "Surgut, an oil city, grew from about two hundred eighty-five thousand people in two thousand two to almost four hundred thousand."
    ],
    "music": "calm"
@@ -985,7 +1015,8 @@
    ],
    "music": "calm",
    "tail": 2.0,
-   "min": 20.0
+   "min": 20.0,
+   "endscreen": true
   }
  ]
 }

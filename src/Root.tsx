@@ -13,6 +13,8 @@ import {CarthageThumb} from './history/CarthageThumb';
 import {ChannelAvatar, ChannelBanner} from './channel/ChannelArt';
 import {SwitzerlandEpisode, calculateSwitzerlandEpisode} from './money/Switzerland';
 import {SwitzerlandThumb} from './money/SwitzerlandThumb';
+import {SiberianCurseEpisode, calculateSiberianCurseEpisode} from './money/SiberianCurse';
+import {SiberianCurseThumb} from './money/SiberianCurseThumb';
 import {MoneyAvatar, MoneyBanner} from './channel/MoneyArt';
 import {ScaleChannel1, ScaleChannel2} from './scale/ChannelArt';
 import {BiggestAnimal, BiggestAnimalThumb, calculateBiggestAnimal} from './scale/BiggestAnimal';
@@ -75,6 +77,19 @@ export const Root: React.FC = () => (
     />
     {([1, 2, 3] as const).map((v) => (
       <Composition key={`sw${v}`} id={`SwitzerlandThumb${v}`} component={SwitzerlandThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
+    ))}
+    <Composition
+      id="SiberianCurse"
+      component={SiberianCurseEpisode}
+      durationInFrames={24 * 60 * 13}
+      fps={24}
+      width={1920}
+      height={1080}
+      defaultProps={{scenes: []}}
+      calculateMetadata={calculateSiberianCurseEpisode}
+    />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={`sc${v}`} id={`SiberianCurseThumb${v}`} component={SiberianCurseThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
     ))}
     <Composition id="MoneyAvatar" component={MoneyAvatar} durationInFrames={1} fps={24} width={800} height={800} />
     <Composition id="MoneyBanner" component={MoneyBanner} durationInFrames={1} fps={24} width={2560} height={1440} />

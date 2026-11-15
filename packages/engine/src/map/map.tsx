@@ -123,7 +123,9 @@ export const makeProjection = (kind: MapSpec['projection'], cam: {center: LonLat
   if (kind === 'globe') return geoOrthographic().rotate([-cam.center[0], -cam.center[1]]).scale((h / 2.3) * cam.zoom).translate([w / 2, h / 2]).clipAngle(90);
   if (kind === 'conic')
     return geoConicConformal().parallels([30, 50]).rotate([-cam.center[0], 0]).center([0, cam.center[1]]).scale((w / (2 * Math.PI)) * cam.zoom).translate([w / 2, h / 2]);
-  return geoMercator().center(cam.center).scale((w / (2 * Math.PI)) * cam.zoom).translate([w / 2, h / 2]);
+  // rotate to the camera longitude (same picture as .center([lon, lat])), so the antimeridian seam sits behind the
+  // viewer: Chukotka (east of 180°) stays attached to Russia instead of jumping to the far left of the world.
+  return geoMercator().rotate([-cam.center[0], 0]).center([0, cam.center[1]]).scale((w / (2 * Math.PI)) * cam.zoom).translate([w / 2, h / 2]);
 };
 
 /** Smooth SVG path through points (Catmull-Rom → cubic Bézier). */
@@ -298,7 +300,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
             const lb = y1 - ((y1 - y0) * (k + 1)) / 40;
             const tl = proj([x0, la]);
             const br = proj([x1, lb]);
-            if (!tl || !br || br[1] < -50 || tl[1] > height + 50) return null;
+            if (!tl || !br || br[0] <= tl[0] || br[1] < -50 || tl[1] > height + 50) return null; // seam / wrap guard
             const sy = (relief.h * k) / 40;
             const sh = relief.h / 40;
             return (
