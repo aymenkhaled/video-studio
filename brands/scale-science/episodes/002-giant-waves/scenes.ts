@@ -82,7 +82,7 @@ export const SCENES: Record<string, SceneDef> = {
     {label: 'Tracy Arm 2025', value: 481, color: C.tracy, appear: 0.26},
     {label: '???', note: 'the record', value: 524, color: '#555c63', text: '?', appear: 0.33},
   ]}),
-  h5: map({projection: 'mercator', camera: mapCam([-140, 59.5], 3.2, [-133.6, 58.1], 9), cities: [{...P.juneau, appear: 0.3}, {...P.tracy, appear: 0.5}]}, [gloss('Fjord', 'long, narrow sea inlet between steep mountains', [0.45, 0.98])]),
+  h5: map({projection: 'mercator', camera: mapCam([-140, 59.5], 3.2, [-133.8, 58.1], 11), cities: [{...P.juneau, appear: 0.3, today: undefined}, {...P.tracy, appear: 0.5}]}, [gloss('Fjord', 'long, narrow sea inlet between steep mountains', [0.45, 0.98])]),
 
   // ---------- 1 the empty morning ----------
   c1: art('ta-runup', '', {x: 0.4, y: 0.5, zoom: 1.15}, {x: 0.5, y: 0.45, zoom: 1.25}, [{type: 'chapter', n: 1, title: 'The Empty Morning', sub: 'Tracy Arm, Alaska · 10 August 2025', question: 'How did a mountain fall into the sea?', image: 'ta-runup'}]),
@@ -91,7 +91,7 @@ export const SCENES: Record<string, SceneDef> = {
   c1d: art('ta-scar', 'The slope that failed · USGS photo', {x: 0.5, y: 0.35, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.15}, [gloss('Seismometer', 'instrument that records ground shaking', [0.08, 0.6])]),
   c1d2: art('ta-scar', 'Landslide scar · USGS photo', {x: 0.55, y: 0.5, zoom: 1.2}, {x: 0.45, y: 0.4, zoom: 1.35}),
   c1e: art('ta-wide', 'About 64 million m³ of rock fell into Tracy Arm · USGS photo', {x: 0.45, y: 0.45, zoom: 1.4}, {x: 0.55, y: 0.5, zoom: 1.25}, [src('UAF Geophysical Institute (2026)')]),
-  c1f: stage({subjects: [{...esb(240), appear: 0.05}, {id: 'cube', shape: 'block', size: 400, x: 20, color: '#8a8378', label: 'Fallen rock as one cube', sizeLabel: '~400 m on each side', bracket: false}], camera: cam(330, 1300)}),
+  c1f: stage({subjects: [{...esb(520), appear: 0.05}, {id: 'cube', shape: 'block', size: 400, x: 20, color: '#8a8378', label: 'Fallen rock as one cube', sizeLabel: '~400 m on each side', bracket: false}], camera: cam(380, 1400)}),
   c1g: stage({subjects: [you(100), liberty(140)], water: {height: 100, window: [0.1, 0.55], label: 'First breaking wave · ~100 m · > 240 km/h'}, camera: cam(160, 420, 170, 460)}, [src('UAF GI: model of the first wave')]),
   c1g2: stage({subjects: [liberty(140)], water: {height: 100, from: 100, window: [0, 0.05], label: '~100 m ≈ a 30-storey building'}, camera: cam(170, 460, 200, 520)}),
   c1h: stage({subjects: [liberty(140), you(100)], water: {height: 100, from: 100, window: [0, 0.05], label: 'Taller than the Statue of Liberty (93 m)'}, camera: cam(190, 380)}),
@@ -143,9 +143,9 @@ export const SCENES: Record<string, SceneDef> = {
   c4r: art('lituya-overview', '', {x: 0.5, y: 0.5, zoom: 1.1}, {x: 0.5, y: 0.5, zoom: 1.15}, [{type: 'recap', text: 'The record: Lituya Bay, 524 m. Tracy Arm is second.', next: 'Will there be more?'}], undefined, true),
 
   // ---------- 5 why there will be more ----------
-  c5: art('barry-arm', '', {x: 0.5, y: 0.5, zoom: 1.05}, {x: 0.5, y: 0.5, zoom: 1.15}, [{type: 'chapter', n: 5, title: 'Why There Will Be More', sub: 'shrinking glaciers, unstable slopes', question: 'Could the next one hit a cruise ship?', image: 'barry-arm'}]),
+  c5: art('ta-sat', '', {x: 0.5, y: 0.5, zoom: 1.05}, {x: 0.5, y: 0.5, zoom: 1.15}, [{type: 'chapter', n: 5, title: 'Why There Will Be More', sub: 'shrinking glaciers, unstable slopes', question: 'Could the next one hit a cruise ship?', image: 'ta-sat'}]),
   c5b: art('ta-sat', 'Glaciers retreating in Alaska’s fjords · NASA Landsat', {x: 0.4, y: 0.4, zoom: 1.3}, {x: 0.55, y: 0.5, zoom: 1.05}),
-  c5c: map({projection: 'mercator', camera: mapCam([-137, 58.7], 7, [-136.6, 58.8], 9), cities: [{name: 'Glacier Bay', at: [-136.9, 58.7]}, P.lituya, P.juneau]}, [src('Coe et al. 2018, Landslides: rock avalanches 1984–2016')]),
+  c5c: map({projection: 'mercator', camera: mapCam([-136.8, 58.75], 12, [-136.6, 58.85], 15), cities: [{name: 'Glacier Bay', at: [-136.4, 58.9]}, P.lituya]}, [src('Coe et al. 2018, Landslides: rock avalanches 1984–2016')]),
   c5c2: map({projection: 'globe', camera: mapCam([-35, 68], 1.8, [-28, 72], 2.4), cities: [{name: 'Dickson Fjord', at: [-27.2, 72.85]}]}, [src('GEUS / Svennevig et al. 2024')], [{text: 'GREENLAND', at: [-42, 74]}]),
   c5d: art('barry-arm', 'Barry Arm, Prince William Sound: the moving slope · Alaska DGGS photo (G. Wolken)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.45, zoom: 1.2}, [src('Alaska DGGS: slow movement, monitored')]),
   c5e: map({projection: 'mercator', camera: mapCam([-148.4, 61.0], 10, [-148.4, 60.95], 13), cities: [{...P.barry, appear: 0.1}, {...P.whittier, appear: 0.3}]}, [src('USGS Open-File Report 2021: worst-case model')]),
@@ -153,7 +153,7 @@ export const SCENES: Record<string, SceneDef> = {
   c5r: art('barry-arm', '', {x: 0.5, y: 0.5, zoom: 1.2}, {x: 0.5, y: 0.5, zoom: 1.25}, [{type: 'recap', text: 'Shrinking glaciers mean more falling slopes, and more giant waves.', next: 'Now, every giant side by side…'}]),
 
   // ---------- 6 every giant wave, to scale ----------
-  c6: stage({subjects: [liberty(40), eiffel(220), esb(560), burj(800)], water: {height: 193, window: [0.1, 0.9]}, camera: cam(500, 2200)}, [{type: 'chapter', n: 6, title: 'Every Giant Wave, to Scale', sub: 'measured run-ups since 1958', question: 'How do they all compare?'}]),
+  c6: stage({subjects: [liberty(40), eiffel(220), esb(560), burj(800)], water: {height: 193, window: [0.1, 0.9]}, camera: cam(560, 2900)}, [{type: 'chapter', n: 6, title: 'Every Giant Wave, to Scale', sub: 'measured run-ups since 1958', question: 'How do they all compare?'}]),
   c6b: stage({subjects: [liberty(40), eiffel(220), esb(560)], water: {height: 265, from: 150, window: [0.05, 0.85]}, levels: [{...LV.taan, appear: 0.1}, {...LV.dickson, appear: 0.35}, {...LV.spirit, appear: 0.65}], camera: cam(380, 1500)}),
   c6c: stage({subjects: [liberty(40), eiffel(220), esb(560)], water: {height: 524, from: 265, window: [0.05, 0.8], label: 'The record · 524 m'}, levels: [LV.taan, LV.dickson, LV.spirit, {...LV.tracy, appear: 0.2}, {...LV.lituya, appear: 0.6}], camera: cam(380, 1550)}),
   c6d: compare({title: 'Every giant wave, measured', unit: 'length', max: 560, rows: [
@@ -163,8 +163,8 @@ export const SCENES: Record<string, SceneDef> = {
     {label: 'Greenland 2023', note: 'wave height', value: 200, color: C.dickson, appear: 0.3},
     {label: 'Taan Fiord 2015', note: 'run-up', value: 193, color: C.taan, appear: 0.4},
   ], source: 'Miller 1960; Shugar 2026; USGS CVO; Svennevig 2024; Higman 2018'}),
-  c6e: stage({subjects: [liberty(40), eiffel(220), esb(560), burj(820)], water: {height: 524, from: 524, window: [0, 0.05], label: 'Lituya Bay · 524 m'}, camera: cam(500, 2300, 520, 2500)}),
-  c6e2: stage({subjects: [esb(560), burj(820)], water: {height: 524, from: 524, window: [0, 0.05]}, levels: [{height: 828, label: 'Burj Khalifa · 828 m: no wave has come close', color: C.burj}], camera: cam(700, 2400)}),
+  c6e: stage({subjects: [liberty(40), eiffel(220), esb(560), burj(820)], water: {height: 524, from: 524, window: [0, 0.05], label: 'Lituya Bay · 524 m'}, camera: cam(560, 2900, 580, 3000)}),
+  c6e2: stage({subjects: [esb(560), burj(820)], water: {height: 524, from: 524, window: [0, 0.05]}, levels: [{height: 828, label: 'Burj Khalifa · 828 m: no wave has come close', color: C.burj}], camera: cam(760, 3000)}),
   c6f: art('ta-runup', 'Tracy Arm, August 2025 · USGS photo', {x: 0.5, y: 0.5, zoom: 1.15}, {x: 0.5, y: 0.45, zoom: 1.0}, undefined, [{y: 0.3, label: '481 m', appear: 0.1}]),
   end: art('ta-wide', '', {x: 0.5, y: 0.5, zoom: 1.2}, {x: 0.5, y: 0.5, zoom: 1.3}, [{type: 'endscreen', teaser: 'The biggest living thing on Earth is not a whale'}]),
 };

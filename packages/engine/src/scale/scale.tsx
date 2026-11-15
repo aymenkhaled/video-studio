@@ -275,20 +275,20 @@ const Water: React.FC<{level: number; ground: number; t: number; seed: number; l
     <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
       <defs>
         <linearGradient id="wbody" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#7fc4d8" stopOpacity={0.85} />
-          <stop offset="0.25" stopColor="#2f7d97" stopOpacity={0.82} />
-          <stop offset="1" stopColor="#0d3443" stopOpacity={0.9} />
+          <stop offset="0" stopColor="#8fd0e2" />
+          <stop offset="0.08" stopColor="#3b8eab" />
+          <stop offset="1" stopColor="#0b2c3a" />
         </linearGradient>
       </defs>
       <polygon points={`-20,${ground + 400} ${top.join(' ')} ${W + 20},${ground + 400}`} fill="url(#wbody)" />
-      <polyline points={crest(14).join(' ')} fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth={6} />
+      <polyline points={crest(18).join(' ')} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={5} />
       <polyline points={top.join(' ')} fill="none" stroke="#eef9ff" strokeWidth={7} strokeLinejoin="round" />
       {spray}
       {label && labelA > 0 ? (
         <g opacity={labelA}>
           <line x1={110} x2={W} y1={level - 2} y2={level - 2} stroke="#f2c14e" strokeWidth={4} strokeDasharray="18 12" />
-          <rect x={W - 760} y={level - 76} width={720} height={58} rx={12} fill="rgba(10,14,18,0.85)" />
-          <text x={W - 400} y={level - 35} textAnchor="middle" fontFamily={INTER} fontWeight={900} fontSize={36} fill="#f2c14e">
+          <rect x={W - 760} y={level < 200 ? level + 22 : level - 76} width={720} height={58} rx={12} fill="rgba(10,14,18,0.85)" />
+          <text x={W - 400} y={level < 200 ? level + 63 : level - 35} textAnchor="middle" fontFamily={INTER} fontWeight={900} fontSize={36} fill="#f2c14e">
             {label}
           </text>
         </g>
@@ -495,7 +495,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
               {sub.label}
             </div>
             {sub.sub ? <div style={{fontWeight: 700, fontSize: 30, color: '#d6e4ea', whiteSpace: 'nowrap', marginTop: 4}}>{sub.sub}</div> : null}
-            {shape.measure === 'height' && bA > 0 ? <div style={{fontWeight: 800, fontSize: 30, color: GOLD, whiteSpace: 'nowrap', opacity: bA}}>{lengthLabel(sub.size)}</div> : null}
+            {shape.measure === 'height' && (bA > 0 || sub.sizeLabel) ? <div style={{fontWeight: 800, fontSize: 30, color: GOLD, whiteSpace: 'nowrap'}}>{sub.sizeLabel ?? lengthLabel(sub.size)}</div> : null}
           </div>
         ),
       });
@@ -542,7 +542,6 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       ) : (
         <Land camX={camX} s={s} t={t} ground={ground} seed={seed} />
       )}
-      {spec.heightAxis ? <HeightAxis s={s} ground={ground} /> : null}
       {spec.water
         ? (() => {
             const w = spec.water;
@@ -552,6 +551,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
           })()
         : null}
       <Ruler camX={camX} s={s} ground={ground} env={spec.env} />
+      {spec.heightAxis ? <HeightAxis s={s} ground={ground} /> : null}
       {(spec.levels ?? []).length ? (
         <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
           {(spec.levels ?? []).map((lv, k) => {
