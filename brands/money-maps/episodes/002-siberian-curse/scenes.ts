@@ -56,7 +56,7 @@ export const SCENES: Record<string, SceneDef> = {
   o1: {...art('night-russia', 'RUSSIA at night, from space — NASA Black Marble, 2016', {x: 0.2, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.5, zoom: 1.08}, [
     {type: 'glossary', term: 'Russia', meaning: 'the largest country on Earth, at night', window: [0.03, 0.55]},
   ], 2016), kind: 'art', art: {id: 'night-russia', title: 'RUSSIA at night, from space — NASA Black Marble, 2016', from: {x: 0.2, y: 0.5, zoom: 1.0}, to: {x: 0.55, y: 0.5, zoom: 1.08}, points: [{x: 0.408, y: 0.228, label: 'Norilsk', appear: 0.25, color: '#ffd166'}, {x: 0.675, y: 0.42, label: 'Yakutsk: −37 °C in January', appear: 0.45}]}},
-  o2: map(2021, {camera: fly([60, 58], 2.2, [90, 67.5], 3.6, 0.1), choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.55, {note: '69° north, no road or railway in', dot: {color: RUS, r: 1.4}})], regions: [{text: 'ARCTIC CIRCLE 66.6° N', at: [100, 66.9], appear: 0.6, size: 24}]}, [
+  o2: map(2021, {camera: fly([60, 58], 2.2, [90, 67.5], 3.6, 0.1), choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.55, {note: '69° north, no road or railway in', dot: {color: RUS, r: 1.4}})]}, [
     {type: 'counter', label: 'NORILSK, PEOPLE (2021 CENSUS)', value: 174453, window: [0.35, 0.98], color: '#ff7a68', context: 'citypopulation.de / Rosstat', top: 260}, // D6
   ]),
   o3: art('okhotsk-ice', 'Siberian winter: sea ice off Russia’s Pacific coast, January 2026 — NASA MODIS', {x: 0.35, y: 0.5, zoom: 1.15}, {x: 0.5, y: 0.5, zoom: 1.0}, [
@@ -283,7 +283,7 @@ export const SCENES: Record<string, SceneDef> = {
     city('Moscow', RU.moscow, 0.35, {dot: {color: CB.sky, r: 2.2}, note: 'most people live in the west'}), city('St Petersburg', RU.stpete, 0.38, {dot: {color: CB.sky, r: 1.6}, align: 'left'}),
     city('Khanty-Mansi', [69.0, 61.0], 0.6, {dot: {color: CB.orange, r: 1.8}, note: 'about 40% of the oil'}), city('Yamal', [71.0, 68.5], 0.66, {dot: {color: CB.orange, r: 1.6}, note: 'most of the gas'}),
   ], regions: [{text: 'THE LAND: SIBERIA + FAR EAST ≈ 2/3', at: [125, 64.5], appear: 0.1, size: 34}]}, [
-    {type: 'citation', text: 'Land 66.1% / people 16.8% in Siberia + Far East (Rosstat 2021, our arithmetic) · oil & gas: X3, X4', at: [0.05, 0.95]}, // R3 X3 X4
+    {type: 'citation', text: 'Land 66.1% / people 16.8% in Siberia + Far East (Rosstat 2021, our arithmetic) · oil & gas: regional government, Eurasia Review', at: [0.05, 0.95]}, // R3 X3 X4
   ]),
   c6b: map(2021, {camera: fly(RU.winnipeg, 2.4, [80, 58], 2.0, 0.1), choropleth: RU_CA, territories: [CANADA_BAND]}, [
     {type: 'citation', text: 'Hill & Gaddy (2003): planners pushed people into the cold; markets keep them near the warm edge', at: [0.05, 0.95]},
