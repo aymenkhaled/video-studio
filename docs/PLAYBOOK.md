@@ -29,11 +29,11 @@ _Built 2026-11-14 from 5 parallel research passes (`docs/research/*.md`, ~230 so
 | 5 | Outlier-validated idea bank per brand (`docs/ideas/<brand>.md`, ≥ 5× outlier within 12 months to green-light) + `tools/outliers.py` | Growth/Packaging | H | M | ABC | MISSING | 2.2 |
 | 6 | Repeatable series format per channel with a fixed title frame (distinct storyline each time) | Growth | H | M | ABC | MISSING | 2.3 |
 | 7 | Test & Compare on every long video with 3 *different reasons to click* (winner = watch time) | Packaging | H | S | ABC | PARTIAL | 3.2 |
-| 8 | Music ducking 18–24 dB under voice + phone-speaker voice chain (HPF 90 Hz, −300 Hz mud cut, de-ess, 3:1 comp, light room) | Sound | H | S | ABC | PARTIAL | 6.2 |
+| 8 | Music ducking 18–24 dB under voice + phone-speaker voice chain (HPF 90 Hz, −300 Hz mud cut, de-ess, 3:1 comp, light room) | Sound | H | S | ABC | DOING (opt-in, C002) | 6.2 |
 | 9 | Analytics loop at 48 h / 7 d / 28 d into `docs/analytics/<brand>.md` and LESSONS table | Growth | H | S | ABC | MISSING | 2.6 |
 | 10 | Second hook by 0:30: 2–3 questions + why it matters to *you* + "by the end…" roadmap (ListCard feeds the ledger) | Hooks | H | S | ABC | MISSING | 4.1 |
 | 11 | Misconception-first framing ("most people think X…") as hook twist and chapter engine | Structure | H | S | ABC | MISSING | 4.3 |
-| 12 | Fly-to map camera (d3 `interpolateZoom` zoom-out-then-in arc, bearing/pitch, holds) replacing cuts between places | Visuals | H | S | AC | PARTIAL | 5.1 |
+| 12 | Fly-to map camera (d3 `interpolateZoom` zoom-out-then-in arc, bearing/pitch, holds) replacing cuts between places | Visuals | H | S | AC | DOING (`CamKey.fly`, C002) | 5.1 |
 | 13 | Match cuts / shared-element transitions + fixed transition vocabulary (≤ 4 types per episode) | Visuals | H | M | ABC | MISSING | 5.1 |
 | 14 | Camera inside the chart + staged chart morphs (axis → marks → shape) instead of static panels | Visuals | H | M | C (A,B) | MISSING | 5.3 |
 | 15 | Midpoint reframe + re-engagement peaks at ~3 min and ~6 min + top moment at 60–75 % of runtime | Structure | H | S | ABC | MISSING | 4.3 |
@@ -330,6 +330,19 @@ All DOING via the Clarity Kit — keep them; they are our differentiator: charac
 3. Allow **Sonniss GDC** SFX bundles (royalty-free, custom licence)?
 4. Turn on **advanced features** on all 3 channels (needed for Test & Compare and YPP).
 5. Confirm the **lead-channel rule** at day 42 (60 % of capacity to the best channel).
+
+## 10b. Added from Money & Maps 002 (16 Nov 2026)  [OWN]
+| Rule | Evidence | Imp | Status |
+|---|---|---|---|
+| New narration: `voice.model: "fp32"` (int8 Kokoro returns NaN on the current runner image) | L C002 #1 | H | DOING |
+| `voice.chain` / deep ducking on → also `mix.tp_oversample` (true peak −0.4 → −3.5 dBTP) | L C002 #2 | H | DOING |
+| Ranges on screen as ranges (`valueText`), never midpoints or ticking counters | L C002 #3 | H | DOING |
+| Art date/season must match the narrated line; reviewer checks it | L C002 #4 | M | DOING |
+| ≤ ~10 % of scenes as dimmed text cards; one area definition per chart | L C002 #5–6 | M | DOING |
+| Fly-to camera (`CamKey.fly`) between far places; circled points on photos (`art.points`) | trick #12, L C002 #8 | H | DOING (was PARTIAL) |
+| Phone voice chain + 18–24 dB ducking + per-sentence prosody shipped opt-in (`voice.chain`, `mix.duck_db`, `voice.prosody`) | tricks #8, #16 | H | DOING (not yet heard on a phone) |
+| Thumbnails render at 1920×1080 | PK 3.3 | M | DOING |
+| Always run a second independent review after fixes | L C002 #10 | M | DOING |
 
 ## 11. How to keep this file alive
 - New lesson from an episode → one row in the right section with `[OWN]` + the raw note in `docs/LESSONS.md`.

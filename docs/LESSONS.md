@@ -75,6 +75,18 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 8. Photo Ken Burns ran at ~50 % of runtime before review; keep a count while storyboarding (≤ 30–35 %).
 9. ScienceBase (USGS data releases) sits behind a Cloudflare bot check: don't bypass; ask Aymen for a one-time manual download if the footage is essential.
 
+## From Money & Maps 002 (Siberian curse, 16 Nov 2026)
+1. Kokoro int8 broke on the 16 Nov runner image (inf/NaN → "silent", `overflow encountered in square` in kokoro_onnx.trim); cached lines hide it. Use `voice.model: "fp32"` for any new narration.
+2. Compressed voice + 20 dB ducking pushed true peak to −0.4 dBTP through the −3 dBFS sample limiter + AAC. Use `mix.tp_oversample` (limit at 4× rate) whenever `voice.chain` is on.
+3. Ranges must stay ranges on screen: a share bar of "15–18 %" drawn at 16.5 rounded to "17 % / 84 %" (sums to 101 %, invented midpoint). Use `BarDatum.valueText` ("15–18%") and never a midpoint; counters that tick up must not be used for ranges.
+4. Picture must match the sentence's time and season: a 1910 photo under "under Stalin"/1953, an August wildfire image under "−37 °C in January" — both reviewer findings. Check every art scene's date against the line.
+5. Dimmed list/quote cards over maps add up fast (18 of 71 scenes in round 1). Prefer a chart, a labelled map or a photo; keep text cards for recaps and the one key quote.
+6. Mixed-area charts mislead (land/people for Siberia + Far East vs oil for "Western Siberia", which is mostly the Ural district). One chart = one area definition, or use a map with separate labelled layers.
+7. Text that fades with `fillOpacity` but a full-strength stroke reads as a black smear mid-fade; fade the whole text (`opacity`). Fixed in the engine for city notes.
+8. NASA Black Marble needs a crop of the 43200 px original (`crop`, `max`) and a gamma lift (`gamma: 1.9`) to read on a phone; circle the one light you talk about (`art.points`) or viewers can't find it.
+9. `tools/package_episode.py` takes every `- ` line in sources.md as a description source: keep "do not use" lists as `* ` and end sources.md with a "For the description" list.
+10. Second independent review is worth it: it found 4 new Important issues (counter timing, an illegible promise label, a misleading payoff chart) after the first round was "fixed".
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|

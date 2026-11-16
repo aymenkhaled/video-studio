@@ -166,18 +166,18 @@ Licence checks used the Wikimedia Commons API (`LicenseShortName` field) on 2026
 
 ## Not verified / do not use
 
-- **"23 of the world's 25 coldest cities over 500,000 people are Russian"** (often attributed to Hill & Gaddy): this only appeared in a search-engine summary; we found no source page or book page. Do not use unless someone checks the book's text.
-- **Hill & Gaddy's "cost of cold" as a % of GDP**: we found no figure. The only cost statements we verified are "costs of living as much as four times as high" (H7) and fuel deliveries "at least $700 million" a year (N4).
-- **Exact TPC values (e.g. "Russia −10.x vs Canada −7.x")**: not verified. Use only the chart ranges in H4 and the trend statement in H3.
-- **"Russia is the coldest country in the world"**: we found no exact quote from Hill & Gaddy. Use the H9 quote ("more large cities ... in cold places than any other country") or H8 instead.
-- **"90% of Canadians live within 160 km of the US"**: wrong. 66% live within 100 km (C1); about 76% within 100 miles (C2, hedge).
-- **Vorkutlag "2 million prisoners" and Norillag "400,000 prisoners"**: weakly sourced on Wikipedia. Do not use.
-- **Magadan 1989 = 542,868**: this figure includes Chukotka. For Magadan Oblast alone, use 385,340.
-- **The Far Eastern FD 1989 figure on pre-2018 borders (7,940,679)**: we could not confirm it from a primary source. Use the "about a quarter" framing (D4).
-- **Nornickel's exact global shares (e.g. "nickel 16%", "palladium 40%")**: the report's share figures could not be extracted with labels. Use USGS country data (NO4, NO5).
-- **Yamal "90% of Russian gas"**: secondary, with no year. Say "the large majority" (X4).
-- **Northern delivery total federal subsidy for 2024–25**: we found no consolidated official figure. N3 is the regions' stated need, not spending.
-- **The Prokudin-Gorsky Amur Railway construction photos (1912)**: these exist at LoC, but we could not find exact Commons/LoC file pages (LoC blocked automated queries). Search loc.gov/pictures/collection/prok manually for "Amur" before use.
+* **"23 of the world's 25 coldest cities over 500,000 people are Russian"** (often attributed to Hill & Gaddy): this only appeared in a search-engine summary; we found no source page or book page. Do not use unless someone checks the book's text.
+* **Hill & Gaddy's "cost of cold" as a % of GDP**: we found no figure. The only cost statements we verified are "costs of living as much as four times as high" (H7) and fuel deliveries "at least $700 million" a year (N4).
+* **Exact TPC values (e.g. "Russia −10.x vs Canada −7.x")**: not verified. Use only the chart ranges in H4 and the trend statement in H3.
+* **"Russia is the coldest country in the world"**: we found no exact quote from Hill & Gaddy. Use the H9 quote ("more large cities ... in cold places than any other country") or H8 instead.
+* **"90% of Canadians live within 160 km of the US"**: wrong. 66% live within 100 km (C1); about 76% within 100 miles (C2, hedge).
+* **Vorkutlag "2 million prisoners" and Norillag "400,000 prisoners"**: weakly sourced on Wikipedia. Do not use.
+* **Magadan 1989 = 542,868**: this figure includes Chukotka. For Magadan Oblast alone, use 385,340.
+* **The Far Eastern FD 1989 figure on pre-2018 borders (7,940,679)**: we could not confirm it from a primary source. Use the "about a quarter" framing (D4).
+* **Nornickel's exact global shares (e.g. "nickel 16%", "palladium 40%")**: the report's share figures could not be extracted with labels. Use USGS country data (NO4, NO5).
+* **Yamal "90% of Russian gas"**: secondary, with no year. Say "the large majority" (X4).
+* **Northern delivery total federal subsidy for 2024–25**: we found no consolidated official figure. N3 is the regions' stated need, not spending.
+* **The Prokudin-Gorsky Amur Railway construction photos (1912)**: these exist at LoC, but we could not find exact Commons/LoC file pages (LoC blocked automated queries). Search loc.gov/pictures/collection/prok manually for "Amur" before use.
 
 ## 13. Added while scripting (2026-11-15)
 
@@ -193,3 +193,21 @@ Licence checks used the Wikimedia Commons API (`LicenseShortName` field) on 2026
 | S8 | Vorkuta = coal; Norilsk = nickel and copper; Kolyma = gold (map labels, c2e) | qualitative | — | Britannica "Vorkuta" (coal-mining centre of the Pechora basin) https://www.britannica.com/place/Vorkuta ; Britannica "Norilsk" (nickel, copper, cobalt, platinum) https://www.britannica.com/place/Norilsk ; G5 (Kolyma gold) | OK (encyclopedic). |
 | S9 | Tyumen 510,719 → 847,488; Krasnoyarsk 909,341 → 1,187,771 (2002 → 2021) | census | 2002/2021 | X7 | HEDGE: Tyumen boundary changes may explain part of the growth. |
 | S10 | Norilsk got city status in 1953; Norillag closed 1956 | 1953 / 1956 | — | G3 | OK. |
+
+## For the description
+
+- Fiona Hill & Clifford Gaddy, The Siberian Curse (Brookings, 2003), ch. 1: https://www.brookings.edu/wp-content/uploads/2016/07/siberiancurse_chapter.pdf
+- Gaddy & Hill, Brookings Policy Brief 99 (2002), temperature per capita: https://www.brookings.edu/wp-content/uploads/2016/06/pb99.pdf
+- Fiona Hill, Current History (Oct 2004): https://www.brookings.edu/wp-content/uploads/2016/06/20041013.pdf
+- World Bank WDI, Russia area and population: https://data.worldbank.org/country/RU
+- Rosstat censuses 1989/2002/2021 via citypopulation.de: https://www.citypopulation.de/en/russia/cities/
+- Statistics Canada, Canada and the US by the numbers (2023): https://www.statcan.gc.ca/o1/en/plus/3250-canada-and-united-states-numbers-unique-relationship
+- World Bank IEG review, Russia Northern Restructuring Project (P064238): https://documents.worldbank.org/curated/en/190251475098672694/text/000020051-20140624161420.txt
+- USGS Mineral Commodity Summaries 2025, platinum-group metals: https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-platinum-group.pdf
+- TASS, northern delivery 2024: https://tass.com/economy/1881305
+- Russian oil and gas budget revenue 2024 (The Moscow Times): https://themoscowtimes.com/2025/02/11/russian-oil-and-gas-budget-revenues-up-17-year-on-year-a87951
+- Western Siberia oil share 2023 (Eurasia Review, Rystad data): https://www.eurasiareview.com/03052024-russia-energy-profile-sanctions-shift-trade-to-asia-analysis/
+- Russian Labour Code arts. 316-317, regional coefficients: https://ppt.ru/art/zp/koefficenti-po-regionam
+- Trans-Siberian Railway (Global Railway Review): https://www.globalrailwayreview.com/?p=30216
+- Critique: Pereltsvaig, The Siberian Curse, part 3: https://www.languagesoftheworld.info/russia-ukraine-and-the-caucasus/siberian-curse-whence-siberia-part-3.html
+- Full fact table with every number: sources.md in the project repository
