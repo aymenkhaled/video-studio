@@ -85,7 +85,7 @@ export const SCENES: Record<string, SceneDef> = {
   c1b: map(2021, {camera: RUSSIA, choropleth: ONLY_RU, routes: [URAL_LINE], regions: [
     {text: 'URAL MOUNTAINS', at: [58.5, 63.6], appear: 0.15, size: 22}, {text: 'SIBERIA', at: [92, 62], appear: 0.25, size: 40}, {text: 'FAR EAST', at: [140, 62.5], appear: 0.35, size: 36},
   ]}, [
-    {type: 'glossary', term: 'Siberia', meaning: "Russia's huge Asian part, east of the Ural Mountains", window: [0.05, 0.5]},
+    {type: 'glossary', term: 'Siberia', meaning: 'the huge Asian part of Russia, past the Urals', window: [0.05, 0.5]},
   ]),
   c1b2: chart({
     type: 'bar', title: 'Siberia + Far East: share of Russia', unit: '2021 census, Siberian + Far Eastern federal districts', source: SRC_CENSUS, // R3
@@ -130,7 +130,7 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'quote', text: 'Communist planners put factories, machines, and people in the wrong places.', by: 'Hill & Gaddy, The Siberian Curse (2003)'}, // H1
   ]),
   c2e: art('pg-zlatoust', 'Zlatoust, an Ural factory town — S. M. Prokudin-Gorsky, 1910 (Library of Congress)', {x: 0.45, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.5, zoom: 1.2}, [
-    {type: 'glossary', term: 'Planned economy', meaning: 'the state, not the market, decides what is built where', window: [0.1, 0.6]},
+    {type: 'glossary', term: 'Planned economy', meaning: 'the state, not markets, decides what gets built', window: [0.1, 0.6]},
   ], 1910),
   c2f: map(1950, {camera: RUSSIA, choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.1), city('Vorkuta', RU.vorkuta, 0.15, {align: 'left'}), city('Magadan', RU.magadan, 0.2)], regions: [{text: 'KOLYMA', at: [150, 64.5], appear: 0.25, size: 26}]}, [
     {type: 'glossary', term: 'Gulag', meaning: 'the Soviet system of forced-labour prison camps', window: [0.02, 0.45]},
@@ -174,7 +174,7 @@ export const SCENES: Record<string, SceneDef> = {
     type: 'bar', title: 'Same job, different place', unit: 'Pay with the legal regional coefficient (base salary = 100)', source: 'Russian Labour Code art. 316 · coefficient table (ppt.ru, 2023)', // W1 S6
     howTo: 'longer bar = higher pay for the same work', num: {},
     bars: [{label: 'Base salary', value: 100, color: CB.grey}, {label: 'Magadan region', value: 170, color: CB.sky, note: '+70%'}, {label: 'Norilsk', value: 180, highlight: true, note: '+80%'}],
-  }, [{type: 'glossary', term: 'Coefficient', meaning: 'a multiplier on pay, set by law for each region', window: [0.4, 0.98]}]),
+  }, [{type: 'glossary', term: 'Coefficient', meaning: 'a legal pay multiplier for each region', window: [0.4, 0.98]}]),
   c3g: map(2023, {camera: NORILSK, choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.05)]}, [
     {type: 'list', title: 'Northern pay', items: ['Regional coefficient: up to 2× (Arctic islands)', 'Northern allowance for years worked: up to +100%', 'Together: pay can double, or more'], source: 'Labour Code arts. 316–317'}, // W1 W2
   ]),
@@ -182,7 +182,7 @@ export const SCENES: Record<string, SceneDef> = {
     type: 'share', title: 'The northern delivery, 2024', unit: 'Cargo shipped to remote northern areas before the freeze', source: 'TASS / Ministry for the Development of the Far East and Arctic, Dec 2024', // N1
     total: '3.4 million tonnes',
     segments: [{label: 'Fuel and energy: about 70%', value: 70, color: CB.orange}, {label: 'Food and other goods', value: 30, color: CB.grey}],
-  }, [{type: 'glossary', term: 'Northern delivery', meaning: 'yearly summer shipment of fuel and food to the far north', window: [0.05, 0.6]}]),
+  }, [{type: 'glossary', term: 'Northern delivery', meaning: 'summer shipments of fuel and food northward', window: [0.05, 0.6]}]),
   c3i: art('okhotsk-ice', 'Winter sea ice off Russia’s Pacific coast, January 2026 — NASA MODIS', {x: 0.4, y: 0.5, zoom: 1.2}, {x: 0.55, y: 0.5, zoom: 1.0}, [
     {type: 'counter', label: 'WINTER FUEL FOR THE COLDEST REGIONS', value: 700, suffix: ' million $', window: [0.2, 0.98], color: ICE, context: 'at least, per year, early 2000s (F. Hill, 2004)', top: 260}, // N4
   ]),
