@@ -18,6 +18,8 @@ export type ArtSpec = {
   object?: boolean;
   /** horizontal marks on the image ("water reached here"): y = 0..1 of the image height */
   marks?: {y: number; label: string; appear?: number; color?: string; /** false = label chip only (no line across the photo) */ line?: boolean}[];
+  /** Circled points in normalised image coordinates (0..1), with a label chip (e.g. one city light at night). */
+  points?: {x: number; y: number; label: string; appear?: number; color?: string}[];
 };
 
 export const ArtShot: React.FC<{art: ArtSpec; p: number; width: number; height: number}> = ({art, p, width, height}) => {
@@ -71,6 +73,22 @@ export const ArtShot: React.FC<{art: ArtSpec; p: number; width: number; height: 
       </div>
     );
   });
+  const points = (art.points ?? []).map((pt, i) => {
+    const a = easeInOutCubic(ramp(p, pt.appear ?? 0.3, (pt.appear ?? 0.3) + 0.08));
+    if (a <= 0) return null;
+    const x = left + pt.x * w;
+    const y = top + pt.y * h;
+    if (x < -40 || x > width + 40 || y < -40 || y > height + 40) return null;
+    const c = pt.color ?? '#ff5a45';
+    const r = 46 + 20 * (1 - a);
+    const right = x < width * 0.62;
+    return (
+      <div key={`pt${i}`} style={{position: 'absolute', left: 0, top: 0, opacity: a}}>
+        <div style={{position: 'absolute', left: x - r, top: y - r, width: 2 * r, height: 2 * r, borderRadius: 999, border: `7px solid ${c}`, boxShadow: '0 0 18px rgba(0,0,0,0.9)'}} />
+        <div style={{position: 'absolute', ...(right ? {left: x + r + 14} : {left: x - r - 14, transform: 'translateX(-100%)'}), top: y - 28, background: 'rgba(10,14,18,0.85)', borderRadius: 12, padding: '6px 18px', fontFamily: INTER, fontWeight: 800, fontSize: 36, color: '#fff', whiteSpace: 'nowrap'}}>{pt.label}</div>
+      </div>
+    );
+  });
   const plate = art.title ? easeInOutCubic(ramp(p, 0.04, 0.12)) * (1 - easeInOutCubic(ramp(p, 0.8, 0.9))) : 0;
   return (
     <AbsoluteFill style={{background: art.object ? 'radial-gradient(circle at 50% 45%, #2c2418 0%, #0d0a06 70%)' : '#0d0a06', overflow: 'hidden'}}>
@@ -79,6 +97,7 @@ export const ArtShot: React.FC<{art: ArtSpec; p: number; width: number; height: 
       {meta.layers >= 2 ? layer(2, 2) : null}
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)'}} />
       {marks}
+      {points}
       {plate > 0 ? (
         <div style={{position: 'absolute', right: 48, top: 40, maxWidth: 820, opacity: plate, background: 'rgba(12,9,5,0.78)', borderRight: '5px solid #d8b46a', padding: '12px 20px', fontFamily: INTER, fontWeight: 600, fontSize: 30, lineHeight: 1.3, color: '#f4ecd8', textAlign: 'right'}}>
           {art.title}

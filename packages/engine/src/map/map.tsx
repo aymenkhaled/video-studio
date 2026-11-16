@@ -526,7 +526,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
                   {c.name}
                 </text>
                 {sub ? (
-                  <text x={tx} y={ty + Math.max(28 * s, mt * 0.95)} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontStyle="italic" fontWeight={600} fontSize={fs(20 * s) * (mt ? 0.88 : 1)} fill="#f4ecd8" fillOpacity={ta} stroke="#1b1208" strokeWidth={5 * s} paintOrder="stroke">
+                  <text x={tx} y={ty + Math.max(28 * s, mt * 0.95) + (c.today ? 0 : 6 * s)} textAnchor={right ? 'start' : 'end'} fontFamily={INTER} fontStyle={c.today ? 'italic' : 'normal'} fontWeight={c.today ? 600 : 700} fontSize={c.today ? fs(20 * s) * (mt ? 0.88 : 1) : Math.max(fs(24 * s), mt * 0.9)} fill="#f4ecd8" fillOpacity={ta} stroke="#1b1208" strokeWidth={5 * s} paintOrder="stroke">
                     {sub}
                   </text>
                 ) : null}

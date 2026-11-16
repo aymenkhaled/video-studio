@@ -110,7 +110,7 @@ SCRIPT = [
     # ---------- chapter 5: cold money (top moment ~65 %) ----------
     ("c5", None, [], {"min": 3.4, "tail": 0.6, "lead": 0.2, "sfx": [W()]}),
     ("c5a", "epic", ["Look at Norilsk again.",
-                     "In twenty twenty-four, Russia mined about thirty-nine percent of the world's palladium, a metal used in car exhaust cleaners, much of it from this area."], {"sfx": [COIN(3.0)]}),  # NO4
+                     "In twenty twenty-four, Russia mined about thirty-nine percent of the world's palladium, a metal used in car exhaust cleaners, much of it from around Norilsk."], {"sfx": [COIN(3.0)]}),  # NO4
     ("c5b", "epic", ["Western Siberia produced about eighty-seven percent of Russia's crude oil in twenty twenty-three, according to Rystad Energy data.",  # X2
                      "The Khanty-Mansi region alone pumps about forty percent."], {"sfx": POP(1.0, 4.4)}),  # X3
     ("c5c", "epic", ["And Yamal, in the Arctic, produces the large majority of Russia's natural gas."], {"ambience": COLD}),  # X4
