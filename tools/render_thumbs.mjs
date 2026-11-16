@@ -11,6 +11,8 @@ fs.mkdirSync('out/package', {recursive: true});
 for (let i = 1; i <= Number(count); i++) {
   const composition = await selectComposition({serveUrl, id: `${prefix}${i}`, chromiumOptions});
   const output = `out/package/${name}_${i}.jpg`;
-  await renderStill({composition, serveUrl, frame: 0, output, chromiumOptions, imageFormat: 'jpeg', jpegQuality: 92, timeoutInMilliseconds: 240000});
+  // 1280×720 comps render at 1.5× = 1920×1080 (PLAYBOOK 3.3: ≥ 1920×1080; JPEG stays under YouTube's 2 MB limit)
+  const scale = composition.width === 1280 ? 1.5 : 1;
+  await renderStill({composition, serveUrl, frame: 0, output, chromiumOptions, imageFormat: 'jpeg', jpegQuality: 92, scale, timeoutInMilliseconds: 240000});
   console.log(`thumbnail ${output}`);
 }

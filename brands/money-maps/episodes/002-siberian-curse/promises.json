@@ -1,17 +1,17 @@
 [
  {
   "id": "P1",
-  "promise": "Title 1: Russia built cities where no economy should exist",
-  "setAt": "title/o1",
-  "payoffAt": "c2c–c2j",
-  "payoffLine": "the Soviets built cities of over a million … communist planners put factories, machines and people in the wrong places"
+  "promise": "Title 1 / thumb 1: 174,000 people live in an Arctic city with no road in — why?",
+  "setAt": "title/o2",
+  "payoffAt": "o2, c2g, c4h–c4j, c5a",
+  "payoffLine": "Norilsk: no road or railway; built by Norillag from 1935; few took the money to leave; palladium"
  },
  {
   "id": "P2",
-  "promise": "Title 2: why so big but so empty — follow the money",
+  "promise": "Title 2: Russia built cities where no economy should exist",
   "setAt": "title/o4",
-  "payoffAt": "c6a",
-  "payoffLine": "Because its land, its people and its money sit in three different places."
+  "payoffAt": "c2c–c2j, c6a",
+  "payoffLine": "communist planners put factories, machines and people in the wrong places; land, people and money in three places"
  },
  {
   "id": "P3",
@@ -36,10 +36,10 @@
  },
  {
   "id": "P6",
-  "promise": "Thumbnail 1: why here? (lone light in the dark)",
-  "setAt": "thumb1/o1",
-  "payoffAt": "c6d",
-  "payoffLine": "Those few lights in the dark are not an accident of nature. They were a plan."
+  "promise": "Thumbnail 2: −37 °C, why live here? (Yakutsk)",
+  "setAt": "thumb2/o3",
+  "payoffAt": "c3j, c5f, c6d",
+  "payoffLine": "built on permafrost; Yakutsk grew by more than half; the lights were planned"
  },
  {
   "id": "P7",
@@ -50,7 +50,7 @@
  },
  {
   "id": "P8",
-  "promise": "Thumbnail 3: paid to stay",
+  "promise": "Thumbnail 3: 2× pay",
   "setAt": "thumb3",
   "payoffAt": "c3f–c3g",
   "payoffLine": "a salary can double, or more than double"

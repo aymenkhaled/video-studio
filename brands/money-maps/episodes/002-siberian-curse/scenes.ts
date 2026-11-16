@@ -42,7 +42,7 @@ const art = (id: string, title: string, from: {x: number; y: number; zoom: numbe
 const chart = (c: ChartSpec, overlays?: Overlay[], year?: number): SceneDef => ({kind: 'chart', year, chart: c, overlays});
 const chapter = (n: number, title: string, sub: string, spec: Omit<MapSpec, 'modern' | 'avoidLabels' | 'theme'>, image: string, question: string): SceneDef => ({kind: 'map', map: M(spec), overlays: [{type: 'chapter', n, title, sub, image, question}]});
 const recap = (text: string, spec: Omit<MapSpec, 'modern' | 'avoidLabels' | 'theme'>, next?: string): SceneDef => ({kind: 'map', map: M(spec), overlays: [{type: 'recap', text, next}]});
-const city = (name: string, at: [number, number], appear = 0.05, extra: Partial<City> = {}): City => ({name, at, appear, size: 1.3, ...extra});
+const city = (name: string, at: [number, number], appear = 0.05, extra: Partial<City> = {}): City => ({name, at, appear, size: 1.6, ...extra});
 const cold = (t: number) => (t <= -30 ? '#2b5fa8' : t <= -20 ? '#4f8fd6' : t <= -12 ? '#8fc3ee' : '#d8ecfa'); // January mean, colder = deeper blue
 const tcity = (name: string, at: [number, number], t: string, deg: number, appear = 0.1, extra: Partial<City> = {}): City =>
   city(name, at, appear, {note: `${t} in January`, dot: {color: cold(deg), r: 1.3}, ...extra});
@@ -72,7 +72,7 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'list', title: 'Two questions…', items: ['Why build cities where no market would?', 'What does the cold cost, every winter?']},
   ]),
   o5b: map(2001, {camera: cam([100, 64], 2.0, [104, 64.5], 2.2), choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.1, {dot: {color: ICE, r: 1.4}}), city('Vorkuta', RU.vorkuta, 0.2, {dot: {color: ICE, r: 1.4}, align: 'left'}), city('Susuman', RU.susuman, 0.3, {dot: {color: ICE, r: 1.4}})]}, [
-    {type: 'citation', text: '3. A World Bank loan helped pay people to leave. Why did most stay?', at: [0.05, 0.95]}, // B1 B3
+    {type: 'title', title: 'QUESTION 3', sub: 'PAID TO LEAVE. WHY DID MOST STAY?'}, // B1 B3
   ]),
   o6: art('okhotsk-ice', 'Sea ice, Sea of Okhotsk, January 2026 — NASA MODIS', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.2}, [{type: 'title', title: 'THE SIBERIAN CURSE', sub: 'WHY RUSSIA BUILT CITIES IN THE COLD'}]),
 
@@ -282,7 +282,7 @@ export const SCENES: Record<string, SceneDef> = {
   c6a: chart({
     type: 'bar', title: 'Three different places', unit: 'Share of Russia’s total', source: 'Rosstat 2021 (our arithmetic) · Rystad 2023', // R3 X2
     howTo: 'land in the east, people in the west, oil in western Siberia', num: {suffix: '%', decimals: 1},
-    bars: [{label: 'Land: Siberia + Far East', value: 66.1, color: CB.grey}, {label: 'People: Siberia + Far East', value: 16.8, color: CB.sky}, {label: 'Crude oil: Western Siberia', value: 87, highlight: true, valueText: 'about 87%'}],
+    bars: [{label: 'Land', value: 66.1, color: CB.grey, note: 'Siberia + Far East'}, {label: 'People', value: 16.8, color: CB.sky, note: 'Siberia + Far East'}, {label: 'Crude oil', value: 87, highlight: true, valueText: 'about 87%', note: 'Western Siberia'}],
   }),
   c6b: map(2021, {camera: fly(RU.winnipeg, 2.4, [80, 58], 2.0, 0.1), choropleth: RU_CA, territories: [CANADA_BAND]}, [
     {type: 'citation', text: 'Hill & Gaddy (2003): planners pushed people into the cold; markets keep them near the warm edge', at: [0.05, 0.95]},
