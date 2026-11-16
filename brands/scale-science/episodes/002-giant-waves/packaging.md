@@ -14,13 +14,13 @@ Verdict: proven ≥ 1M demand for "giant wave taller than a building", but the s
 
 ## Titles (3 different reasons to click; each must be paid off — see promises.json)
 1. Every Giant Wave Ever Measured, Shown to Scale  (scale ladder)
-2. The Wave That Was Taller Than the Empire State Building  (single mind-blowing fact; paid off by Tracy Arm 481 m and Lituya 524 m vs ESB 443 m to the tip)
-3. Last Year, a 481-Metre Wave Hit a Fjord Full of Cruise Ships  (recency + near miss; paid off: Science paper title "cruise ship–frequented fjord", 05:26, empty)
+2. The Wave That Climbed Higher Than the Empire State Building  (run-up, not wave height: paid off by Tracy Arm 481 m and Lituya 524 m vs ESB 443 m to the tip)
+3. In 2025, a 481-Metre Wave Hit a Fjord Cruise Ships Visit Every Day  (near miss; paid off: > 20 vessels a day in summer, none there at 05:26)
 
 ## Thumbnails (≤ 3 words, one subject + one tension device, 3840×2160)
-1. Real USGS aerial photo of the stripped Tracy Arm slope + a cut-out Empire State Building standing against it at the 481 m line → "481 m".
-2. Lituya Bay 1958 trimline photo (USGS, PD) with a glowing water line at 524 m → "TALLEST EVER".
+1. Real USGS aerial photo of the stripped Tracy Arm slope → "481 m" + "CLIMBED" (no building pasted into the perspective photo: it would not be to scale).
+2. Lituya Bay 1958 trimline photo (USGS, PD) → "TALLEST EVER".
 3. Ladder: tiny person, Statue of Liberty, Eiffel Tower, Empire State, wave line above all → "TO SCALE".
 
 ## Hook (first 7 s confirms the click)
-Frame 1: real USGS photo of Tracy Arm's stripped mountainside, water line drawn up to 481 m, Empire State Building cut-out next to it. Line: "Last August, a wave in Alaska climbed 481 metres up a mountain. That's taller than the Empire State Building."
+Frame 1: real USGS photo of Tracy Arm's stripped mountainside, water line drawn up to 481 m, Empire State Building cut-out next to it. Line: "In August 2025, a wave in Alaska climbed 481 metres up a mountain. That's taller than the Empire State Building."

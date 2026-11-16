@@ -25,16 +25,11 @@ const Design: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
   const index = useArtIndex();
   if (variant === 1) {
     // Tracy Arm stripped slope + the 481 m line + Empire State profile for scale
-    const esbH = Math.round((525 * 443) / 481); // the 481 m line is 525 px above the base: ESB (443 m) stays below it
     return (
       <AbsoluteFill style={{background: '#000'}}>
         <Img src={artSrc('ta-runup')} style={{...cover, objectPosition: '55% 40%', filter: 'contrast(1.15) saturate(1.2)'}} />
-        <Line y={175} color="#f2c14e" />
-        <svg width={1280} height={720} style={{position: 'absolute', inset: 0}}>
-          <path d={pathFor(SHAPES.esb, {x: 1080, y: 700, len: esbH, t: 0})} fill="#e7e1d2" stroke="#000" strokeWidth={4} />
-        </svg>
         <div style={{position: 'absolute', left: 50, top: 40, fontFamily: INTER, fontWeight: 900, fontSize: 150, color: '#f2c14e', textShadow: stroke}}>481 m</div>
-        <div style={{position: 'absolute', left: 56, top: 205, fontFamily: INTER, fontWeight: 900, fontSize: 64, color: '#fff', textShadow: stroke}}>WAVE</div>
+        <div style={{position: 'absolute', left: 56, top: 205, fontFamily: INTER, fontWeight: 900, fontSize: 64, color: '#fff', textShadow: stroke}}>CLIMBED</div>
       </AbsoluteFill>
     );
   }
@@ -43,7 +38,6 @@ const Design: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
     return (
       <AbsoluteFill style={{background: '#000'}}>
         <Img src={artSrc('lituya-trim')} style={{...cover, filter: 'contrast(1.35) sepia(0.25)'}} />
-        <Line y={250} color="#ef6a5e" />
         <AbsoluteFill style={{background: 'linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 45%)'}} />
         <div style={{position: 'absolute', left: 0, right: 0, bottom: 34, textAlign: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 124, color: '#fff', textShadow: stroke}}>
           TALLEST <span style={{color: '#ef6a5e'}}>EVER</span>

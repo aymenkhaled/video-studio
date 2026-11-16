@@ -23,7 +23,7 @@
   {
    "id": "h1",
    "lines": [
-    "Last August, a wave in Alaska climbed four hundred eighty-one metres up a mountain.",
+    "In August twenty twenty-five, a wave in Alaska climbed four hundred eighty-one metres up a mountain.",
     "That is higher than the Empire State Building."
    ],
    "music": "tension",
@@ -88,7 +88,7 @@
    "id": "h5",
    "lines": [
     "This is Tracy Arm, a fjord in southeast Alaska,",
-    "about one hundred thirty kilometres from the city of Juneau."
+    "south of Juneau, the state capital."
    ],
    "music": "wonder",
    "ambience": {
@@ -274,7 +274,7 @@
   {
    "id": "c1h",
    "lines": [
-    "That first wave alone was taller than the Statue of Liberty."
+    "That first wave alone was about as tall as the Statue of Liberty."
    ],
    "music": "reveal",
    "ambience": {
@@ -503,7 +503,7 @@
    "id": "c2f",
    "lines": [
     "So the tallest waves on Earth don't happen on open ocean coasts.",
-    "They happen in quiet, narrow fjords."
+    "They happen in narrow fjords and mountain lakes."
    ],
    "music": "reveal",
    "ambience": {
@@ -515,7 +515,7 @@
    "id": "c2r",
    "lines": [
     "So far: the tallest waves are splash waves in fjords, not ocean tsunamis.",
-    "And Tracy Arm is not the only one."
+    "But is Tracy Arm the only giant?"
    ],
    "music": "tension",
    "sfx": [
@@ -683,6 +683,29 @@
    ]
   },
   {
+   "id": "c3h2",
+   "lines": [
+    "Nineteen sixty-three. In the Italian Alps, a mountainside slid into the Vajont reservoir."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3h3",
+   "lines": [
+    "The water climbed about two hundred thirty-five metres up the far slope.",
+    "Almost two thousand people in the valley below lost their lives."
+   ],
+   "music": "somber"
+  },
+  {
    "id": "c3i",
    "lines": [
     "All of these are enormous. But none of them reaches the top of the Eiffel Tower.",
@@ -697,7 +720,7 @@
   {
    "id": "c3r",
    "lines": [
-    "So far: Taan Fiord, Greenland and Spirit Lake all passed one hundred ninety metres.",
+    "So far: Taan Fiord, Greenland, Spirit Lake and Vajont all passed one hundred ninety metres.",
     "So which wave holds the record?"
    ],
    "music": "tension",
@@ -793,7 +816,8 @@
   {
    "id": "c4e2",
    "lines": [
-    "Ulrich later estimated that the wave passing his boat was up to thirty metres high, and that was out in the middle of the bay."
+    "Ulrich later estimated the wave at about thirty metres high out in the middle of the bay,",
+    "and fifteen to twenty-three metres when it reached his boat."
    ],
    "music": "tension",
    "ambience": {
@@ -956,7 +980,7 @@
    "id": "c5r",
    "lines": [
     "So far: shrinking glaciers mean more falling slopes, and more giant waves.",
-    "Now, let's put every giant side by side."
+    "So how do they all compare, side by side?"
    ],
    "music": "wonder",
    "sfx": [
@@ -988,7 +1012,7 @@
    "id": "c6b",
    "lines": [
     "Taan Fiord, one hundred ninety-three metres. Greenland, about two hundred.",
-    "Spirit Lake, two hundred sixty-five."
+    "Vajont, about two hundred thirty-five. Spirit Lake, two hundred sixty-five."
    ],
    "music": "build",
    "ambience": {
@@ -1082,7 +1106,7 @@
   {
    "id": "end",
    "lines": [
-    "Next: the biggest living thing on Earth is not a whale. It is a single plant, longer than a hundred kilometres."
+    "Next: is the biggest living thing on Earth really a whale? Or a single plant, longer than a hundred kilometres?"
    ],
    "music": "wonder",
    "ambience": {

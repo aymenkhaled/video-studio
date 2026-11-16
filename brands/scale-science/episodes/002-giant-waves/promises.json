@@ -1,9 +1,9 @@
 {
  "_doc": "PLAYBOOK 4.2: every promise (titles, thumbnails, hook questions, chapter loops) must be paid off; reviewer FAILs unpaid entries or gaps > 6 min without a partial payoff.",
  "promises": [
-  {"id": "t1", "promise": "Title 1: every giant wave ever measured, shown to scale", "setAt": "title", "payoffAt": "c6b–c6d", "payoffLine": "Taan Fiord 193 · Greenland ~200 · Spirit Lake 265 · Tracy Arm 481 · Lituya Bay 524, on the landmark ladder + bar chart"},
-  {"id": "t2", "promise": "Title 2: a wave taller than the Empire State Building", "setAt": "title/h1", "payoffAt": "c1k, c4g", "payoffLine": "Water above the 443 m ESB profile (481 m and 524 m)"},
-  {"id": "t3", "promise": "Title 3: a 481 m wave hit a fjord full of cruise ships", "setAt": "title/h2", "payoffAt": "c1m–c1n, c5d–c5f", "payoffLine": "> 20 vessels a day in summer, none in Tracy Arm that morning; cruise lines changed routes"},
+  {"id": "t1", "promise": "Title 1: every giant wave ever measured, shown to scale", "setAt": "title", "payoffAt": "c6b–c6d", "payoffLine": "Taan Fiord 193 · Greenland ~200 (modelled) · Vajont ~235–270 · Spirit Lake 265 · Tracy Arm 481 · Lituya Bay 524, on the landmark ladder + bar chart"},
+  {"id": "t2", "promise": "Title 2: a wave that climbed higher than the Empire State Building", "setAt": "title/h1", "payoffAt": "c1k, c4g", "payoffLine": "Water above the 443 m ESB profile (481 m and 524 m)"},
+  {"id": "t3", "promise": "Title 3: a 481 m wave hit a fjord cruise ships visit every day", "setAt": "title/h2", "payoffAt": "c1m–c1n, c5d–c5f", "payoffLine": "> 20 vessels a day in summer, none in Tracy Arm that morning; cruise lines changed routes"},
   {"id": "th1", "promise": "Thumbnail 1: 481 m line on the real slope", "setAt": "thumbnail", "payoffAt": "c1j", "payoffLine": "Trimline photo with the 481 m mark"},
   {"id": "th2", "promise": "Thumbnail 2: tallest ever", "setAt": "thumbnail", "payoffAt": "c4f–c4g", "payoffLine": "Lituya Bay 524 m, the record"},
   {"id": "q1", "promise": "Hook: how can water rise higher than a skyscraper?", "setAt": "h3", "payoffAt": "c1e–c1i, c2e–c2e2", "payoffLine": "Mountain falls into a narrow fjord → splash wave → run-up climbs the opposite slope"},

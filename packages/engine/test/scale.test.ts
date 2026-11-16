@@ -45,6 +45,7 @@ test('captions: decimals and small numbers before units become numerals', () => 
   assert.equal(out('in twenty twenty-three, scientists'), 'in 2023, scientists');
   assert.equal(out('in two thousand twenty-three, scientists'), 'in 2023, scientists');
   assert.equal(out('three hundred thousand years'), '300,000 years');
+  assert.equal(out('almost two thousand people died'), 'almost 2,000 people died');
   assert.equal(out('two school buses'), 'two school buses');
 });
 

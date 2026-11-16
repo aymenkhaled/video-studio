@@ -406,6 +406,19 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
         ))}
         {!sub.outline ? <path d={pathFor(shape, pl)} fill={color} stroke="rgba(255,255,255,0.5)" strokeWidth={2} /> : null}
         {!sub.mystery && !sub.outline ? <path d={pathFor(shape, pl)} fill={`url(#${gid})`} opacity={0.55} /> : null}
+        {shape.measure === 'height' && !sub.mystery && !sub.outline && sub.shape !== 'human' ? (
+          <>
+            <defs>
+              <linearGradient id={`${gid}-lit`} x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor="#ffffff" stopOpacity={0.35} />
+                <stop offset="0.5" stopColor="#ffffff" stopOpacity={0} />
+                <stop offset="0.5" stopColor="#000000" stopOpacity={0.12} />
+                <stop offset="1" stopColor="#000000" stopOpacity={0.4} />
+              </linearGradient>
+            </defs>
+            <path d={pathFor(shape, pl)} fill={`url(#${gid}-lit)`} stroke="rgba(255,255,255,0.7)" strokeWidth={1.5} />
+          </>
+        ) : null}
         {!sub.mystery && !sub.outline
           ? (shape.extras ?? []).map((e, k) => {
               if (e.kind === 'eye' || e.kind === 'disc') {
