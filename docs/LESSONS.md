@@ -64,6 +64,17 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 2. Fix (to build): scale stage shows licensed realistic art as cut-outs at exact scale — PD NOAA/Smithsonian illustrations and CC BY / CC0 paleoart (e.g. megalodon: Mary Parrish/Smithsonian PD, O. Demuth CC BY 4.0, H. Salais CC BY 4.0; Argentinosaurus: Nobu Tamura CC BY 3.0; Ichthyotitan: CC0 lateral view) — background removed in CI, gentle swim/sway motion, real photo/footage b-roll (NOAA PD video) between scale shots, realistic 3D (licensed models) for hero shots.
 3. Judge a stage by a phone thumbnail test: would a stranger stop scrolling for this frame? If it looks like an infographic, it fails.
 
+## From Scale & Science 002 (giant waves, 16 Nov 2026)
+1. Realism without animals: real photos of the actual places (USGS/NASA PD) + real CC0 landmark photos cut out by U-2-Net (`"cutout": true` in media.json) + animated water. Check before choosing a cut-out photo that the object stands free to the ground (skyscrapers almost never do → shaded profile instead).
+2. "Last August" in a script dated later is wrong on frame 1: always write the year ("In August 2025").
+3. A run-up is not a wave height: titles/thumbnails must say "climbed", not "a wave taller than". Modelled numbers say "modelled".
+4. "Every X ever" titles invite the one you forgot (Vajont) — list the set in sources.md and check it against Wikipedia's list before writing.
+5. Never draw a measurement line at an arbitrary height on a perspective photo; use a label chip ("trimline, approx.") instead.
+6. Caption year rule: "two thousand people" must stay a count (2,000); year format only after "in/since/by…".
+7. Eyewitness numbers: quote them exactly as the source gives them (Ulrich: ~30 m mid-bay, 15–23 m at his boat).
+8. Photo Ken Burns ran at ~50 % of runtime before review; keep a count while storyboarding (≤ 30–35 %).
+9. ScienceBase (USGS data releases) sits behind a Cloudflare bot check: don't bypass; ask Aymen for a one-time manual download if the footage is essential.
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|
