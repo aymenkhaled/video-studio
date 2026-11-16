@@ -96,16 +96,30 @@ def speak(kokoro, text, vcfg, speed):
 def _speak(kokoro, text, vcfg, speed):
     """Kokoro TTS with silence/NaN guard (the int8 model intermittently returns silence).
     Retries with tiny speed jitter, then falls back to sentence-by-sentence synthesis."""
-    for attempt, jitter in enumerate((1.0, 0.985, 1.015)):
-        smp, sr = _tts(kokoro, text, vcfg, speed * jitter)
-        if smp is not None:
-            return smp, sr
-        print(f"WARN silent TTS output (attempt {attempt + 1}): {text!r}")
-    parts = [p for p in re.split(r"(?<=[.!?,;:])\s+", text) if p.strip()]
+    def variants(t):
+        # same words, different punctuation / speed: the int8 model's silent outputs depend on the exact input
+        core = t.rstrip(" ,;:")
+        out = [t, core if core.endswith((".", "?", "!")) else core + ".", t.replace(",", "")]
+        return list(dict.fromkeys(out))
+
+    attempt = 0
+    for jitter in (1.0, 0.985, 1.015, 0.97, 1.03):
+        for v in variants(text) if jitter != 1.0 else [text]:
+            smp, sr = _tts(kokoro, v, vcfg, speed * jitter)
+            attempt += 1
+            if smp is not None:
+                return smp, sr
+            print(f"WARN silent TTS output (attempt {attempt}): {v!r}")
+    parts = [p for p in re.split(r"(?<=[.!?;:])\s+", text) if p.strip()]  # sentences first (commas only as a last resort)
+    if len(parts) < 2:
+        parts = [p for p in re.split(r"(?<=[,])\s+", text) if p.strip()]
     pieces, sr = [], 24000
     for part in parts:
-        for jitter in (1.0, 0.99, 1.01, 0.98):
-            smp, sr = _tts(kokoro, part, vcfg, speed * jitter)
+        for v in variants(part):
+            for jitter in (1.0, 0.99, 1.01, 0.98, 1.02, 0.96):
+                smp, sr = _tts(kokoro, v, vcfg, speed * jitter)
+                if smp is not None:
+                    break
             if smp is not None:
                 pieces.append(smp)
                 pieces.append(np.zeros(round(0.12 * sr)))
