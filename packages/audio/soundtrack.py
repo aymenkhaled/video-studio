@@ -627,6 +627,11 @@ ln = ("loudnorm=I=-14:TP=-2.5:LRA=9:" f"measured_I={vals['input_i']}:measured_TP
       # brick-wall safety limiter at −3 dBFS: sharp SFX transients (elephant, clash) can survive linear loudnorm;
       # AAC then adds ~0.5–0.8 dB, which keeps the final file under the −1.5 dBTP gate.
       "alimiter=limit=0.708:attack=3:release=60:level=disabled")
+if tl.get("mix", {}).get("tp_oversample"):
+    # true-peak-safe limiter (opt-in): limit at 4x rate so inter-sample peaks are caught before AAC adds its own
+    # (C002: compressed voice + deep ducking reached -0.4 dBTP with the plain -3 dBFS sample limiter)
+    ln = ln.replace("alimiter=limit=0.708:attack=3:release=60:level=disabled",
+                    "aresample=192000,alimiter=limit=0.63:attack=2:release=80:level=disabled,aresample=48000")
 subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(out / "premix.wav"), "-af", ln,
                 "-ar", str(RATE), "-ac", "2", "-c:a", "pcm_s16le", "-map_metadata", "-1", str(out / "soundtrack.wav")], check=True)
 

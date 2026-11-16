@@ -19,7 +19,8 @@
   "tempo": 72
  },
  "mix": {
-  "duck_db": 20
+  "duck_db": 20,
+  "tp_oversample": true
  },
  "ambience": {
   "type": "wind",
