@@ -66,8 +66,8 @@ export const ArtShot: React.FC<{art: ArtSpec; p: number; width: number; height: 
     const y = top + m.y * h;
     const c = m.color ?? '#f2c14e';
     return (
-      <div key={i} style={{position: 'absolute', left: 0, top: y - 3, width: width * a, height: 0, borderTop: m.line === false ? 'none' : `6px dashed ${c}`}}>
-        <div style={{position: 'absolute', left: 60, top: -70, opacity: a, background: 'rgba(10,14,18,0.85)', borderRadius: 12, padding: '6px 18px', fontFamily: INTER, fontWeight: 900, fontSize: 38, color: c, whiteSpace: 'nowrap'}}>{m.label}</div>
+      <div key={i} style={{position: 'absolute', left: 0, top: y - 3, width: m.line === false ? width : width * a, height: 0, borderTop: m.line === false ? 'none' : `6px dashed ${c}`}}>
+        <div style={{position: 'absolute', left: m.line === false ? undefined : 60, right: m.line === false ? 60 : undefined, top: -70, opacity: a, background: 'rgba(10,14,18,0.85)', borderRadius: 12, padding: '6px 18px', fontFamily: INTER, fontWeight: 900, fontSize: 38, color: c, whiteSpace: 'nowrap'}}>{m.label}</div>
       </div>
     );
   });

@@ -576,8 +576,8 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
             return (
               <g key={k} opacity={la}>
                 <line x1={120} x2={120 + (W - 120) * la} y1={y} y2={y} stroke={c} strokeWidth={3} strokeDasharray="10 8" />
-                <rect x={W - 40 - tw} y={y - 46} width={tw} height={40} rx={8} fill="rgba(10,14,18,0.8)" />
-                <text x={W - 40 - tw / 2} y={y - 17} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={30} fill={c}>
+                <rect x={W - 40 - tw - (k % 3) * 400} y={y - 46} width={tw} height={40} rx={8} fill="rgba(10,14,18,0.8)" />
+                <text x={W - 40 - tw / 2 - (k % 3) * 400} y={y - 17} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={30} fill={c}>
                   {lv.label}
                 </text>
               </g>
