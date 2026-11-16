@@ -53,13 +53,13 @@ const SRC_CENSUS = 'Rosstat census 2021 (federal districts), our arithmetic';
 // ---------- the scenes ----------
 export const SCENES: Record<string, SceneDef> = {
   // 0:00 promise: the thumbnail image (Russia at night) in motion on frame 1
-  o1: art('night-russia', 'Russia at night — NASA Black Marble, 2016', {x: 0.2, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.5, zoom: 1.08}, [
-    {type: 'glossary', term: 'Black Marble', meaning: "NASA's satellite map of Earth's lights at night", window: [0.05, 0.5]},
+  o1: art('night-russia', 'RUSSIA at night, from space — NASA Black Marble, 2016', {x: 0.2, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.5, zoom: 1.08}, [
+    {type: 'glossary', term: 'Russia', meaning: 'the largest country on Earth, at night', window: [0.03, 0.55]},
   ], 2016),
-  o2: map(2021, {camera: fly([60, 58], 2.2, [90, 67.5], 3.6, 0.1), choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.55, {note: '69° north, no road or railway in', dot: {color: RUS, r: 1.4}}), city('Moscow', RU.moscow, 0.02)], regions: [{text: 'ARCTIC CIRCLE 66.6° N →', at: [70, 66.9], appear: 0.6, size: 24}]}, [
+  o2: map(2021, {camera: fly([60, 58], 2.2, [90, 67.5], 3.6, 0.1), choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.55, {note: '69° north, no road or railway in', dot: {color: RUS, r: 1.4}})], regions: [{text: 'ARCTIC CIRCLE 66.6° N →', at: [70, 66.9], appear: 0.6, size: 24}]}, [
     {type: 'counter', label: 'NORILSK, PEOPLE (2021 CENSUS)', value: 174453, window: [0.35, 0.98], color: '#ff7a68', context: 'citypopulation.de / Rosstat', top: 260}, // D6
   ]),
-  o3: art('lena-yakutsk', 'The Lena river near Yakutsk, from space — NASA MODIS, 2002', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.47, y: 0.5, zoom: 1.25}, [
+  o3: art('okhotsk-ice', 'Siberian winter: sea ice off Russia’s Pacific coast, January 2026 — NASA MODIS', {x: 0.35, y: 0.5, zoom: 1.15}, {x: 0.5, y: 0.5, zoom: 1.0}, [
     {type: 'counter', label: 'YAKUTSK, AVERAGE JANUARY DAY', value: -37, suffix: ' °C', window: [0.25, 0.98], color: ICE, context: '−36.9 °C, 1991–2020 normal', top: 260}, // Y2
   ]),
   o4: map(2004, {camera: RUSSIA, choropleth: ONLY_RU, cities: [
@@ -72,7 +72,7 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'list', title: 'Two questions…', items: ['Why build cities where no market would?', 'What does the cold cost, every winter?']},
   ]),
   o5b: map(2001, {camera: cam([100, 64], 2.0, [104, 64.5], 2.2), choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.1, {dot: {color: ICE, r: 1.4}}), city('Vorkuta', RU.vorkuta, 0.2, {dot: {color: ICE, r: 1.4}, align: 'left'}), city('Susuman', RU.susuman, 0.3, {dot: {color: ICE, r: 1.4}})]}, [
-    {type: 'list', title: '…and a third', items: ['The World Bank helped pay people to leave. Why did most stay?']}, // B1 B3
+    {type: 'citation', text: '3. A World Bank loan helped pay people to leave. Why did most stay?', at: [0.05, 0.95]}, // B1 B3
   ]),
   o6: art('okhotsk-ice', 'Sea ice, Sea of Okhotsk, January 2026 — NASA MODIS', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.2}, [{type: 'title', title: 'THE SIBERIAN CURSE', sub: 'WHY RUSSIA BUILT CITIES IN THE COLD'}]),
 
@@ -82,7 +82,7 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'counter', label: 'RUSSIA, AREA', value: 17, suffix: ' million km²', window: [0.05, 0.5], color: '#ff7a68', context: 'about 11% of the world’s land', top: 260}, // R1, R5
     {type: 'counter', label: 'PEOPLE (WORLD BANK, 2025)', value: 143513328, window: [0.5, 0.98], color: '#ff7a68', context: 'World Bank WDI', top: 260}, // R2
   ]},
-  c1b: map(2021, {camera: RUSSIA, choropleth: ONLY_RU, routes: [URAL_LINE], regions: [
+  c1b: map(2021, {camera: RUSSIA, choropleth: ONLY_RU, regions: [
     {text: 'URAL MOUNTAINS', at: [58.5, 63.6], appear: 0.15, size: 22}, {text: 'SIBERIA', at: [92, 62], appear: 0.25, size: 40}, {text: 'FAR EAST', at: [140, 62.5], appear: 0.35, size: 36},
   ]}, [
     {type: 'glossary', term: 'Siberia', meaning: 'the huge Asian part of Russia', window: [0.05, 0.5]},
@@ -104,13 +104,13 @@ export const SCENES: Record<string, SceneDef> = {
     bars: [{label: '1897', value: 8000, color: CB.grey}, {label: '2021', value: 1633595, highlight: true, note: '≈ 200 × as many'}],
   }, [{type: 'glossary', term: 'Census', meaning: 'an official count of everyone in a country', window: [0.05, 0.45]}]),
   c1f: {kind: 'map', year: 2020, map: M({projection: 'globe', camera: [
-    {at: 0, center: [-97, 55], zoom: 1.5}, {at: 0.25, center: [-97, 58], zoom: 1.5}, {at: 0.75, center: [83, 60], zoom: 1.5}, {at: 1, center: [83, 57], zoom: 1.55},
+    {at: 0, center: [-97, 42], zoom: 1.5}, {at: 0.25, center: [-97, 46], zoom: 1.5}, {at: 0.75, center: [83, 60], zoom: 1.5}, {at: 1, center: [83, 57], zoom: 1.55},
   ], choropleth: RU_CA, cities: [tcity('Winnipeg', RU.winnipeg, '−16.3 °C', -16.3, 0.05), tcity('Novosibirsk', RU.novosibirsk, '−17.0 °C', -17, 0.6)]}), overlays: [
     {type: 'citation', text: 'January daily mean, 1991–2020 normals: Environment Canada · Pogoda.ru.net', at: [0.05, 0.95]}, // C3 C4
   ]},
   c1g: map(2021, {camera: RUSSIA, choropleth: ONLY_RU, cities: [
     tcity('Novosibirsk', RU.novosibirsk, '−17 °C', -17, 0.05), tcity('Norilsk', RU.norilsk, '−26 °C', -26, 0.15), tcity('Yakutsk', RU.yakutsk, '−37 °C', -37, 0.25),
-    city('Krasnoyarsk', RU.krasnoyarsk, 0.35), city('Yekaterinburg', RU.yekaterinburg, 0.4), city('Magadan', RU.magadan, 0.45), city('Vladivostok', RU.vladivostok, 0.5),
+    city('Krasnoyarsk', RU.krasnoyarsk, 0.35), city('Yekaterinburg', RU.yekaterinburg, 0.4), city('Magadan', RU.magadan, 0.45),
   ]}, [{type: 'citation', text: 'January daily means: Pogoda.ru.net / NOAA normals (via Wikipedia)', at: [0.05, 0.95]}]),
   c1r: recap('Most Russians live in the west, yet Siberia is full of big cities.', {camera: RUSSIA, choropleth: ONLY_RU}, 'Why build them there?'),
 
@@ -120,7 +120,7 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'glossary', term: 'Tsar', meaning: "Russia's emperor before 1917", window: [0.5, 0.98]},
   ], 1910),
   c2b: map(1916, {camera: cam([70, 55], 2.2, [110, 52], 2.2), choropleth: ONLY_RU, routes: [trans], cities: [city('Moscow', RU.moscow, 0.05), city('Novosibirsk', RU.novosibirsk, 0.4), city('Vladivostok', RU.vladivostok, 0.8)]}, [
-    {type: 'counter', label: 'TRANS-SIBERIAN RAILWAY', value: 9289, suffix: ' km', window: [0.3, 0.98], color: '#ff7a68', context: 'Moscow → Vladivostok, built 1891–1916', top: 260}, // T1 T2
+    {type: 'citation', text: 'Trans-Siberian Railway: 9,289 km, Moscow → Vladivostok, built 1891–1916 (Global Railway Review)', at: [0.05, 0.95]}, // T1 T2
   ]),
   c2c: art('pg-tobolsk', 'Tobolsk, Siberia — S. M. Prokudin-Gorsky, 1912 (Library of Congress)', {x: 0.5, y: 0.5, zoom: 1.05}, {x: 0.55, y: 0.45, zoom: 1.25}, [
     {type: 'character', name: 'Fiona Hill & Clifford Gaddy', role: 'Brookings Institution researchers', line: 'Authors of "The Siberian Curse" (2003)', side: 'Russia', window: [0.35, 0.98]}, // H1
@@ -129,27 +129,27 @@ export const SCENES: Record<string, SceneDef> = {
   c2d: map(2003, {camera: RUSSIA, choropleth: ONLY_RU, cities: [city('Novosibirsk', RU.novosibirsk, 0.1), city('Krasnoyarsk', RU.krasnoyarsk, 0.15), city('Yekaterinburg', RU.yekaterinburg, 0.2), city('Norilsk', RU.norilsk, 0.25)]}, [
     {type: 'quote', text: 'Communist planners put factories, machines, and people in the wrong places.', by: 'Hill & Gaddy, The Siberian Curse (2003)'}, // H1
   ]),
-  c2e: art('pg-zlatoust', 'Zlatoust, an Ural factory town — S. M. Prokudin-Gorsky, 1910 (Library of Congress)', {x: 0.45, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.5, zoom: 1.2}, [
-    {type: 'glossary', term: 'Planned economy', meaning: 'the state, not markets, decides what gets built', window: [0.1, 0.6]},
-  ], 1910),
+  c2e: map(1935, {camera: RUSSIA, choropleth: ONLY_RU, cities: [city('Vorkuta', RU.vorkuta, 0.45, {note: 'coal', align: 'left'}), city('Norilsk', RU.norilsk, 0.55, {note: 'nickel and copper'}), city('Magadan', RU.magadan, 0.65, {note: 'gateway to Kolyma gold'})]}, [
+    {type: 'glossary', term: 'Planned economy', meaning: 'the state, not markets, decides what gets built', window: [0.03, 0.42]}, // S8
+  ]),
   c2f: map(1950, {camera: RUSSIA, choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.1), city('Vorkuta', RU.vorkuta, 0.15, {align: 'left'}), city('Magadan', RU.magadan, 0.2)], regions: [{text: 'KOLYMA', at: [150, 64.5], appear: 0.25, size: 26}]}, [
     {type: 'glossary', term: 'Gulag', meaning: 'the Soviet system of forced-labour prison camps', window: [0.02, 0.45]},
-    {type: 'counter', label: 'PASSED THROUGH THE GULAG', value: 18, suffix: '–20 million', window: [0.45, 0.98], color: '#ff7a68', context: 'some 18 to 20 million, 1930s–1950s (Hill & Gaddy)', top: 260}, // G1
+    {type: 'citation', text: 'Some 18–20 million people passed through the Gulag, 1930s–1950s (Hill & Gaddy, Brookings 2003)', at: [0.05, 0.95]}, // G1
   ]),
   c2g: map(1935, {camera: NORILSK, choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.05, {note: 'founded 1935 by the Norillag camp'}), city('Dudinka (port)', RU.dudinka, 0.4, {align: 'left'})], rivers: [{name: 'Yenisey', label: 'Yenisei', at: [86.0, 68.2]}]}, [
     {type: 'citation', text: 'Norillag 1935–1956; peak in the tens of thousands (Krasnoyarsk Memorial / Sibir.Realii)', at: [0.05, 0.95]}, // G3 G4
   ]),
   c2h: map(1952, {camera: FAREAST, choropleth: ONLY_RU, cities: [city('Magadan', RU.magadan, 0.1, {note: 'port built by Dalstroy'}), city('Susuman', RU.susuman, 0.3)], regions: [{text: 'KOLYMA GOLDFIELDS', at: [149, 64.4], appear: 0.2, size: 28}, {text: 'SEA OF OKHOTSK', at: [148, 56.5], appear: 0.3, size: 26}]}, [
-    {type: 'counter', label: 'DALSTROY PRISONERS, 1 JAN 1952', value: 199726, window: [0.4, 0.98], color: '#ff7a68', context: 'nearly 200,000 (Dalstroy records, via Wikipedia)', top: 260}, // G5
+    {type: 'citation', text: 'Dalstroy, 1 Jan 1952: nearly 200,000 prisoners (camp records, via Wikipedia)', at: [0.05, 0.95]}, // G5
   ]),
   c2i: chart({
     type: 'bar', title: 'The camp economy at its peak', unit: 'Share of Russian industrial output, late 1940s–early 1950s', source: 'Hill & Gaddy (2003), estimate', // G2
     howTo: 'an estimate, given as a range', num: {suffix: '%'},
-    bars: [{label: 'Low estimate', value: 15, color: CB.grey}, {label: 'High estimate', value: 18, highlight: true}],
+    bars: [{label: 'Camp economy', value: 18, highlight: true, valueText: '15–18%'}], max: 100,
   }),
-  c2j: art('pg-workers', 'Factory workers in Zlatoust, about 1910 — S. M. Prokudin-Gorsky (Library of Congress)', {x: 0.5, y: 0.4, zoom: 1.0}, {x: 0.5, y: 0.35, zoom: 1.2}, [
-    {type: 'citation', text: 'Norillag closed 1956 · Dalstroy dissolved 1957', at: [0.05, 0.95]}, // S1
-  ], 1953),
+  c2j: map(1956, {camera: NORILSK, choropleth: ONLY_RU, cities: [city('Norilsk', RU.norilsk, 0.1, {note: 'city status 1953 · camp closed 1956'}), city('Dudinka (port)', RU.dudinka, 0.3, {align: 'left'})], rivers: [{name: 'Yenisey', label: 'Yenisei', at: [86.0, 68.2]}]}, [
+    {type: 'citation', text: 'Norillag closed 1956 · Dalstroy dissolved 1957', at: [0.05, 0.95]}, // S1 G3
+  ]),
   c2r: recap('A railway, a plan and prison labour put big cities in the coldest places.', {camera: RUSSIA, choropleth: ONLY_RU}, 'But what does keeping them alive cost?'),
 
   // 3 — The Price of Cold
@@ -157,11 +157,13 @@ export const SCENES: Record<string, SceneDef> = {
   c3a: map(2002, {camera: RUSSIA, choropleth: ONLY_RU, cities: [
     city('Moscow', RU.moscow, 0.1), tcity('Novosibirsk', RU.novosibirsk, '−17 °C', -17, 0.2), tcity('Norilsk', RU.norilsk, '−26 °C', -26, 0.3), tcity('Yakutsk', RU.yakutsk, '−37 °C', -37, 0.4),
   ]}, [
-    {type: 'glossary', term: 'Temperature per capita', meaning: 'the January cold felt by the average resident', window: [0.05, 0.98]}, // H2
+    {type: 'glossary', term: 'Temperature per capita', meaning: 'the January cold felt by the average resident', window: [0.02, 0.3]}, // H2
   ]),
-  c3b: {kind: 'map', year: 1990, map: M({projection: 'globe', camera: cam([30, 72], 1.35, [10, 74], 1.4), choropleth: RU_CA}), overlays: [
-    {type: 'list', title: 'Temperature per capita (January)', items: ['Average Russian: about −11 to −12 °C', 'Average Canadian: about −9 to −10 °C'], source: 'Gaddy & Hill, Brookings Policy Brief 99 (2002), charts 1920–1990'}, // H4
-  ]},
+  c3b: chart({
+    type: 'bar', title: 'Temperature per capita, January', unit: 'Degrees below zero felt by the average resident, 1920–1990', source: 'Gaddy & Hill (2002), charts', // H4
+    howTo: 'longer bar = colder', num: {},
+    bars: [{label: 'Canada', value: 9.5, color: CB.orange, valueText: '−9 to −10 °C'}, {label: 'Russia', value: 11.5, highlight: true, valueText: '−11 to −12 °C'}], max: 13,
+  }),
   c3c: map(1990, {camera: RUSSIA, choropleth: RU_CA}, [
     {type: 'list', title: '1926 → 1990', items: ['Russia: about 1 °C colder per person', 'Canada: warmer, by even more'], source: 'Gaddy & Hill (2002)'}, // H3
   ]),
@@ -175,7 +177,7 @@ export const SCENES: Record<string, SceneDef> = {
     type: 'bar', title: 'Same job, different place', unit: 'Base salary = 100', source: 'Labour Code art. 316 (ppt.ru, 2023)', // W1 S6
     howTo: 'longer bar = higher pay for the same work', num: {},
     bars: [{label: 'Base salary', value: 100, color: CB.grey}, {label: 'Magadan region', value: 170, color: CB.sky, note: '+70%'}, {label: 'Norilsk', value: 180, highlight: true, note: '+80%'}],
-  }, [{type: 'glossary', term: 'Coefficient', meaning: 'a legal pay multiplier for each region', window: [0.4, 0.98]}]),
+  }),
   c3g: chart({
     type: 'bar', title: 'Northern pay, most extreme case', unit: 'Base salary = 100 (our arithmetic)', source: 'Labour Code arts. 316–317', // W1 W2
     howTo: 'coefficient up to 2 ×, plus up to +100% allowance', num: {},
@@ -185,9 +187,9 @@ export const SCENES: Record<string, SceneDef> = {
     type: 'share', title: 'The northern delivery, 2024', unit: 'Cargo shipped north before the freeze', source: 'TASS / Far East & Arctic ministry', // N1
     total: '3.4 million tonnes',
     segments: [{label: 'Fuel and energy: about 70%', value: 70, color: CB.orange}, {label: 'Food and other goods', value: 30, color: CB.grey}],
-  }, [{type: 'glossary', term: 'Northern delivery', meaning: 'summer shipments of fuel and food northward', window: [0.05, 0.6]}]),
+  }, [{type: 'glossary', term: 'Northern delivery', meaning: 'summer shipments of fuel and food northward', window: [0.02, 0.3]}]),
   c3i: art('okhotsk-ice', 'Winter sea ice off Russia’s Pacific coast, January 2026 — NASA MODIS', {x: 0.4, y: 0.5, zoom: 1.2}, {x: 0.55, y: 0.5, zoom: 1.0}, [
-    {type: 'counter', label: 'WINTER FUEL FOR THE COLDEST REGIONS', value: 700, suffix: ' million $', window: [0.2, 0.98], color: ICE, context: 'at least, per year, early 2000s (F. Hill, 2004)', top: 260}, // N4
+    {type: 'counter', label: 'WINTER FUEL FOR THE COLDEST REGIONS', value: 700, suffix: ' million US$', window: [0.2, 0.98], color: ICE, context: 'at least, per year, early 2000s (F. Hill, 2004)', top: 260}, // N4
   ]),
   c3j: map(2021, {camera: cam([129.7, 62.0], 9, [129.75, 62.03], 11), choropleth: ONLY_RU, cities: [tcity('Yakutsk', RU.yakutsk, '−37 °C', -37, 0.05, {note: 'built on permafrost; houses on piles'})], rivers: [{name: 'Lena', label: 'Lena', at: [129.2, 61.6]}]}, [
     {type: 'glossary', term: 'Permafrost', meaning: 'ground that stays frozen all year', window: [0.15, 0.98]}, // Y3
@@ -207,12 +209,12 @@ export const SCENES: Record<string, SceneDef> = {
     howTo: 'longer bar = more people', num: {},
     bars: [{label: '1989', value: 157528, color: CB.grey}, {label: '2021', value: 47490, highlight: true, note: '−70%'}],
   }),
-  c4d: map(2021, {camera: FAREAST, choropleth: ONLY_RU, regions: [{text: 'RUSSIAN FAR EAST', at: [140, 63.5], appear: 0.1, size: 36}], cities: [city('Magadan', RU.magadan, 0.2), city('Yakutsk', RU.yakutsk, 0.25), city('Khabarovsk', RU.khabarovsk, 0.3)]}, [
+  c4d: map(2021, {camera: FAREAST, choropleth: ONLY_RU, regions: [{text: 'RUSSIAN FAR EAST', at: [140, 63.5], appear: 0.1, size: 36}], cities: [city('Magadan', RU.magadan, 0.2)]}, [
     {type: 'counter', label: 'FAR EAST, POPULATION 1989 → 2021', value: -23, suffix: '%', window: [0.35, 0.98], color: '#ff7a68', context: 'about a quarter gone (census, today’s borders)', top: 260}, // D4
   ]),
   c4e: map(2001, {camera: fly([37.6, 55.7], 2.6, [100, 64], 2.0), choropleth: ONLY_RU, cities: [city('Moscow', RU.moscow, 0.02)]}, [
     {type: 'glossary', term: 'World Bank', meaning: 'an international lender owned by governments', window: [0.02, 0.45]},
-    {type: 'counter', label: 'WORLD BANK LOAN, 2001', value: 80, suffix: ' million $', window: [0.4, 0.98], color: ICE, context: 'Northern Restructuring Project', top: 260}, // B1
+    {type: 'counter', label: 'WORLD BANK LOAN, 2001', value: 80, suffix: ' million US$', window: [0.4, 0.98], color: ICE, context: 'Northern Restructuring Project', top: 260}, // B1
   ]),
   c4f: map(2002, {camera: cam([110, 64], 1.9, [112, 64.5], 2.05), choropleth: ONLY_RU, cities: [
     city('Vorkuta', RU.vorkuta, 0.15, {dot: {color: ICE, r: 1.4}, align: 'left'}), city('Norilsk', RU.norilsk, 0.3, {dot: {color: ICE, r: 1.4}}), city('Susuman', RU.susuman, 0.45, {dot: {color: ICE, r: 1.4}}),
@@ -245,8 +247,8 @@ export const SCENES: Record<string, SceneDef> = {
     segments: [{label: 'Russia: about 39%', value: 39, color: RUS}, {label: 'Rest of the world', value: 61, color: CB.grey}],
   }, [{type: 'glossary', term: 'Palladium', meaning: 'a rare metal used in car exhaust cleaners', window: [0.05, 0.6]}]), // S2
   c5b: map(2023, {camera: RUSSIA_W, choropleth: ONLY_RU, regions: [{text: 'WESTERN SIBERIA', at: [75, 60.5], appear: 0.05, size: 34}, {text: 'KHANTY-MANSI', at: [69, 61.6], appear: 0.5, size: 24}], cities: [city('Surgut', RU.surgut, 0.55)]}, [
-    {type: 'counter', label: "RUSSIA'S CRUDE OIL FROM WESTERN SIBERIA", value: 87, suffix: '%', window: [0.1, 0.5], color: '#ff7a68', context: '2023, Rystad Energy data (via Eurasia Review)', top: 260}, // X2
-    {type: 'counter', label: 'KHANTY-MANSI REGION ALONE', value: 40, suffix: '%', window: [0.5, 0.98], color: '#ff7a68', context: 'about 40% (regional government)', top: 260}, // X3
+    {type: 'counter', label: "RUSSIA'S CRUDE OIL FROM WESTERN SIBERIA", value: 87, suffix: '%', window: [0.05, 0.6], color: '#ff7a68', context: '2023, Rystad Energy data (via Eurasia Review)', top: 260}, // X2
+    {type: 'counter', label: 'KHANTY-MANSI REGION ALONE', value: 40, suffix: '%', window: [0.62, 0.98], color: '#ff7a68', context: 'about 40% (regional government)', top: 260}, // X3
   ]),
   c5c: map(2023, {camera: cam([72, 67.5], 4.5, [72.5, 68], 5.2), choropleth: ONLY_RU, regions: [{text: 'YAMAL PENINSULA', at: [70.5, 70.5], appear: 0.1, size: 30}, {text: 'KARA SEA', at: [69, 74], appear: 0.2, size: 26}]}, [
     {type: 'citation', text: 'Yamal: the large majority of Russia’s natural gas (Eurasia Review, 2024)', at: [0.05, 0.95]}, // X4
@@ -255,17 +257,17 @@ export const SCENES: Record<string, SceneDef> = {
     type: 'share', title: "Russia's federal budget, 2024", unit: 'Share of revenue from oil and gas', source: 'Finance Ministry via Moscow Times', // X5
     total: '11.13 trillion rubles from oil and gas',
     segments: [{label: 'Oil and gas: about 30%', value: 30, color: CB.orange}, {label: 'Everything else', value: 70, color: CB.grey}],
-  }, [{type: 'glossary', term: 'Ruble', meaning: "Russia's currency", window: [0.05, 0.45]}, {type: 'glossary', term: 'Federal budget', meaning: "the national government's money for a year", window: [0.5, 0.98]}]),
+  }, [{type: 'glossary', term: 'Ruble', meaning: "Russia's currency", window: [0.55, 0.98]}]),
   c5e: chart({
     type: 'bar', title: 'Some cold cities are growing', unit: 'People, censuses 2002 and 2021', source: 'Rosstat via citypopulation.de', // X7 Y5
     howTo: 'longer bar = more people', num: {},
-    bars: [{label: 'Surgut 2002', value: 285027, color: CB.grey}, {label: 'Surgut 2021', value: 396443, highlight: true}, {label: 'Yakutsk 2002', value: 229951, color: CB.grey}, {label: 'Yakutsk 2021', value: 355443, highlight: true, note: '+55%'}],
+    bars: [{label: 'Tyumen 2002', value: 510719, color: CB.grey}, {label: 'Tyumen 2021', value: 847488, highlight: true}, {label: 'Krasnoyarsk 2002', value: 909341, color: CB.grey}, {label: 'Krasnoyarsk 2021', value: 1187771, highlight: true}],
   }),
   c5e2: map(2021, {camera: RUSSIA_W, choropleth: ONLY_RU, cities: [city('Surgut', RU.surgut, 0.1, {note: 'oil city: 285,027 → 396,443 (2002 → 2021)', dot: {color: CB.orange, r: 1.4}}), city('Tyumen', RU.tyumen, 0.3)], regions: [{text: 'KHANTY-MANSI', at: [69, 61.6], appear: 0.2, size: 24}]}, [
     {type: 'citation', text: 'Rosstat censuses via citypopulation.de', at: [0.05, 0.95]}, // X7
   ]),
-  c5f: art('lena-yakutsk', 'The Lena near Yakutsk — NASA MODIS', {x: 0.45, y: 0.5, zoom: 1.3}, {x: 0.5, y: 0.5, zoom: 1.05}, [
-    {type: 'counter', label: 'YAKUTSK, 2002 → 2021', value: 55, suffix: '%', window: [0.2, 0.98], color: '#ff7a68', context: 'growth (census), at −37 °C in January', top: 260}, // Y5
+  c5f: map(2021, {camera: cam([129.7, 62.0], 5, [129.75, 62.03], 6), choropleth: ONLY_RU, cities: [tcity('Yakutsk', RU.yakutsk, '−37 °C', -37, 0.05, {note: '229,951 → 355,443 people (2002 → 2021)'})], rivers: [{name: 'Lena', label: 'Lena', at: [129.2, 61.6]}]}, [
+    {type: 'citation', text: 'Rosstat censuses via citypopulation.de · January mean 1991–2020', at: [0.05, 0.95]}, // Y5 Y2
   ]),
   c5g: {kind: 'map', year: 2024, map: M({projection: 'globe', camera: cam([-20, 70], 1.3, [10, 72], 1.35), choropleth: RU_CA}), overlays: [
     {type: 'list', title: 'Critics of the "curse"', items: ['January cold is only one way to measure cost', "Canada's people also hug the warm south"], source: 'Pereltsvaig (Languages of the World); Project MUSE (2024)'}, // H12
@@ -277,12 +279,16 @@ export const SCENES: Record<string, SceneDef> = {
 
   // 6 — The Answer + callback to frame 1
   c6: chapter(6, 'The Answer', 'Land, people, money', {camera: RUSSIA, choropleth: ONLY_RU}, 'night-russia', 'So why is Russia so big, but so empty?'),
-  c6a: map(2021, {camera: RUSSIA, choropleth: ONLY_RU, regions: [{text: 'THE LAND: MOSTLY EAST', at: [115, 66], appear: 0.15, size: 30}, {text: 'THE PEOPLE: MOSTLY WEST', at: [45, 53], appear: 0.35, size: 28}, {text: 'THE MONEY: OIL & GAS', at: [76, 61], appear: 0.55, size: 28}]}),
+  c6a: chart({
+    type: 'bar', title: 'Three different places', unit: 'Share of Russia’s total', source: 'Rosstat 2021 (our arithmetic) · Rystad 2023', // R3 X2
+    howTo: 'land in the east, people in the west, oil in western Siberia', num: {suffix: '%', decimals: 1},
+    bars: [{label: 'Land: Siberia + Far East', value: 66.1, color: CB.grey}, {label: 'People: Siberia + Far East', value: 16.8, color: CB.sky}, {label: 'Crude oil: Western Siberia', value: 87, highlight: true, valueText: 'about 87%'}],
+  }),
   c6b: map(2021, {camera: fly(RU.winnipeg, 2.4, [80, 58], 2.0, 0.1), choropleth: RU_CA, territories: [CANADA_BAND]}, [
     {type: 'citation', text: 'Hill & Gaddy (2003): planners pushed people into the cold; markets keep them near the warm edge', at: [0.05, 0.95]},
   ], MODERN_NA.concat(MODERN_RU)),
   c6c: map(2024, {camera: RUSSIA, choropleth: ONLY_RU}, [
-    {type: 'list', title: 'Russia pays twice', items: ['1. To keep people warm in the cold', '2. To pull its riches out of it']},
+    {type: 'list', title: 'Russia pays twice', items: ['To keep people warm in the cold', 'To pull its riches out of it']},
   ]),
   c6d: art('night-russia', 'Russia at night — NASA Black Marble, 2016', {x: 0.8, y: 0.5, zoom: 1.12}, {x: 0.45, y: 0.5, zoom: 1.0}, undefined, 2016),
   end: art('night-russia', '', {x: 0.45, y: 0.5, zoom: 1.0}, {x: 0.3, y: 0.5, zoom: 1.06}, [{type: 'endscreen', teaser: 'Borders that vanished 100 years ago still decide who is rich'}]),

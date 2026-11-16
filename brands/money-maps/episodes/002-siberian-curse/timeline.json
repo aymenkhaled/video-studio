@@ -47,7 +47,7 @@
    "id": "o2",
    "lead": 0.3,
    "lines": [
-    "Like Norilsk: about one hundred seventy-four thousand people, far above the Arctic Circle.",
+    "Like Norilsk: about one hundred seventy-four thousand people, well above the Arctic Circle.",
     "No road and no railway connect it to the rest of Russia."
    ],
    "music": "tension",
@@ -124,7 +124,7 @@
    "id": "o5b",
    "lead": 0.3,
    "lines": [
-    "And when the World Bank helped pay people to leave, why did most of them stay?"
+    "And when a World Bank loan helped pay people to leave, why did most of them stay?"
    ],
    "music": "epic",
    "sfx": [
@@ -399,7 +399,7 @@
    "lead": 0.3,
    "lines": [
     "When the camps were shut down after Stalin's death in nineteen fifty-three, the cities stayed.",
-    "Now the state needed free workers in the cold, and it had to pay them to come."
+    "Now someone had to keep them running, and warm."
    ],
    "music": "tension",
    "sfx": [
@@ -550,7 +550,7 @@
    "lead": 0.3,
    "lines": [
     "Every summer, before the rivers and seas freeze, Russia runs the northern delivery.",
-    "In twenty twenty-four, it shipped more than three million tonnes of cargo north, about seventy percent of it fuel."
+    "In twenty twenty-four, it shipped about three point four million tonnes of cargo north, about seventy percent of it fuel."
    ],
    "music": "tension"
   },
@@ -642,8 +642,8 @@
    "id": "c4c",
    "lead": 0.3,
    "lines": [
-    "Next door, Chukotka fell from more than one hundred fifty-seven thousand people to under fifty thousand.",
-    "Nearly seventy percent of the people left."
+    "Next door, Chukotka fell from more than one hundred fifty-seven thousand people to about forty-seven thousand.",
+    "Its population shrank by nearly seventy percent."
    ],
    "music": "somber"
   },
@@ -879,7 +879,7 @@
    "id": "c5e2",
    "lead": 0.3,
    "lines": [
-    "Surgut, an oil city, grew from about two hundred eighty-five thousand people in two thousand two to almost four hundred thousand."
+    "Surgut, an oil city, grew from about two hundred eighty-five thousand people in two thousand two to about three hundred ninety-six thousand."
    ],
    "music": "calm"
   },
@@ -994,7 +994,7 @@
    "lead": 0.3,
    "lines": [
     "Look at the night map one last time.",
-    "Those few lights in the dark are not an accident of nature. They were a plan, and the bill still arrives every winter."
+    "Many of those lights in the dark are not an accident of nature. They were planned, and the bill still arrives every winter."
    ],
    "music": "epic",
    "tail": 1.6,

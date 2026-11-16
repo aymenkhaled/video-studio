@@ -19,14 +19,14 @@ SCRIPT = [
     # ---------- 0:00–0:50 promise → twist → second hook (PLAYBOOK 4.1) ----------
     ("o1", "calm", ["This is Russia at night, seen from space.",
                     "Most of the lights are in the west. But far out here, in the dark, there are cities."], {"sfx": [RISER()], "lead": 0.4}),
-    ("o2", "tension", ["Like Norilsk: about one hundred seventy-four thousand people, far above the Arctic Circle.",  # D6, NO1
+    ("o2", "tension", ["Like Norilsk: about one hundred seventy-four thousand people, well above the Arctic Circle.",  # D6, NO1
                        "No road and no railway connect it to the rest of Russia."], {"sfx": [W()]}),  # NO2
     ("o3", "tension", ["Or Yakutsk, where the average January day is about minus thirty-seven degrees."], {"sfx": POP(0.8), "ambience": COLD}),  # Y2
     ("o4", "tension", ["Most people think Russia is empty simply because it is cold.",
                        "The strange part is the opposite. Russia has more large cities in cold places than any other country."], {"sfx": [IMPACT(2.6)]}),  # H9
     ("o5", "epic", ["So why build cities where no market ever would?",
                     "What does it cost to keep them alive, every winter?"], {"sfx": POP(0.2, 2.6)}),
-    ("o5b", "epic", ["And when the World Bank helped pay people to leave, why did most of them stay?"], {"sfx": POP(0.3)}),  # B3
+    ("o5b", "epic", ["And when a World Bank loan helped pay people to leave, why did most of them stay?"], {"sfx": POP(0.3)}),  # B3
     ("o6", "epic", ["By the end, you will see Russia's map the way an economist does.",
                     "And it starts with a name: the Siberian curse."], {"tail": 1.2, "sfx": [IMPACT(3.2)]}),
     # ---------- chapter 1: big, but where do people live? ----------
@@ -63,7 +63,7 @@ SCRIPT = [
                        "In nineteen fifty-two, it held nearly two hundred thousand prisoners."], {}),  # G5
     ("c2i", "tension", ["At their height, the camps produced an estimated fifteen to eighteen percent of Russian industrial output."], {}),  # G2
     ("c2j", "tension", ["When the camps were shut down after Stalin's death in nineteen fifty-three, the cities stayed.",
-                        "Now the state needed free workers in the cold, and it had to pay them to come."], {"sfx": [COIN(3.4)]}),
+                        "Now someone had to keep them running, and warm."], {"sfx": [COIN(3.4)]}),
     ("c2r", "calm", ["So far: a railway, a plan and prison labour put big cities in the coldest places. But what does keeping them alive cost?"], {"tail": 1.0}),
     # ---------- chapter 3: the price of cold ----------
     ("c3", None, [], {"min": 3.4, "tail": 0.6, "lead": 0.2, "sfx": [W()]}),
@@ -81,7 +81,7 @@ SCRIPT = [
     ("c3g", "calm", ["Years of service add a northern allowance that can reach another hundred percent.",  # W2
                      "Together, a salary can double, or more than double."], {"sfx": [COIN(1.6)]}),  # W2 CALC
     ("c3h", "tension", ["Every summer, before the rivers and seas freeze, Russia runs the northern delivery.",  # N1
-                        "In twenty twenty-four, it shipped more than three million tonnes of cargo north, about seventy percent of it fuel."], {}),  # N1
+                        "In twenty twenty-four, it shipped about three point four million tonnes of cargo north, about seventy percent of it fuel."], {}),  # N1
     ("c3i", "tension", ["In the early two thousands, winter fuel for the coldest regions cost the state at least seven hundred million dollars a year."], {"sfx": [COIN(3.0)]}),  # N4
     ("c3j", "calm", ["And in Yakutsk, built on frozen ground, many buildings stand on concrete piles, so their heat does not thaw the earth below."], {"ambience": COLD}),  # Y3
     ("c3r", "calm", ["So far: the cold costs Russia every single year, in heat, wages and shipping. So why not just move people out?"], {"tail": 1.0}),
@@ -91,8 +91,8 @@ SCRIPT = [
                        "People began to leave on their own."], {}),
     ("c4b", "somber", ["Magadan region had more than three hundred eighty-five thousand people in nineteen eighty-nine.",  # D1
                        "By twenty twenty-one, only about one hundred thirty-six thousand remained."], {"sfx": POP(2.6, 6.0)}),  # D1
-    ("c4c", "somber", ["Next door, Chukotka fell from more than one hundred fifty-seven thousand people to under fifty thousand.",  # D2
-                       "Nearly seventy percent of the people left."], {}),  # D2 CALC
+    ("c4c", "somber", ["Next door, Chukotka fell from more than one hundred fifty-seven thousand people to about forty-seven thousand.",  # D2
+                       "Its population shrank by nearly seventy percent."], {}),  # D2 CALC
     ("c4d", "somber", ["Across the whole Far East, about a quarter of the people have gone since nineteen eighty-nine."], {}),  # D4
     ("c4e", "tension", ["Then, in two thousand one, the World Bank lent Russia eighty million dollars to test a bold idea:",  # B1
                         "help people move out of the far north."], {"sfx": [COIN(2.0)]}),
@@ -118,7 +118,7 @@ SCRIPT = [
                      "That was about thirty percent of all its revenue."], {"sfx": [COIN(1.4), COIN(4.6)]}),  # X5
     ("c5e", "calm", ["So the curse is also the treasure chest, and some cold cities are growing.",
                      ], {}),
-    ("c5e2", "calm", ["Surgut, an oil city, grew from about two hundred eighty-five thousand people in two thousand two to almost four hundred thousand."], {}),  # X7
+    ("c5e2", "calm", ["Surgut, an oil city, grew from about two hundred eighty-five thousand people in two thousand two to about three hundred ninety-six thousand."], {}),  # X7
     ("c5f", "calm", ["And Yakutsk, at minus thirty-seven in January, grew by more than half."], {"sfx": POP(2.4)}),  # Y5, Y2
     ("c5g", "calm", ["Not everyone agrees with the curse idea.",
                      "Critics say it is overstated: January temperature is only one way to measure cost, and Canada's people also hug their warm south."], {}),  # H12
@@ -133,7 +133,7 @@ SCRIPT = [
                      "Left to markets, Hill and Gaddy argue, most would have stayed closer to the warm west, the way Canadians hug their southern border."], {}),  # H1, C1
     ("c6c", "calm", ["Today Russia pays twice: once to keep people warm in the cold, and once to pull its riches out of it."], {"sfx": [COIN(2.0), COIN(4.4)]}),
     ("c6d", "epic", ["Look at the night map one last time.",
-                     "Those few lights in the dark are not an accident of nature. They were a plan, and the bill still arrives every winter."], {"tail": 1.6, "sfx": [RISER(0.4, 4)]}),
+                     "Many of those lights in the dark are not an accident of nature. They were planned, and the bill still arrives every winter."], {"tail": 1.6, "sfx": [RISER(0.4, 4)]}),
     ("end", "calm", ["Next on Money and Maps: borders that disappeared a hundred years ago, and still decide who is rich.",
                      "Which cold city would you never leave, even for a bonus? Tell us in the comments."], {"min": 20.0, "tail": 2.0, "endscreen": True}),
 ]

@@ -36,10 +36,10 @@ export const SiberianCurseThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) =>
       </AbsoluteFill>
     );
   }
-  // Trans-Siberian bridge (Prokudin-Gorsky colour photo) → "PAID TO STAY"
+  // Trans-Siberian bridge (NASA winter sea ice) → "PAID TO STAY"
   return (
     <AbsoluteFill style={{background: '#000'}}>
-      <Img src={artSrc('pg-bridge')} style={{...cover, objectPosition: '50% 50%', transform: 'scale(1.1)', filter: 'contrast(1.2) saturate(1.15)'}} />
+      <Img src={artSrc('okhotsk-ice')} style={{...cover, objectPosition: '50% 50%', transform: 'scale(1.1)', filter: 'contrast(1.2) saturate(1.15)'}} />
       <AbsoluteFill style={{background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%)'}} />
       <div style={{position: 'absolute', left: 0, right: 0, bottom: 50, textAlign: 'center', fontFamily: INTER, fontWeight: 900, fontSize: 132, color: '#fff', textShadow: stroke}}>
         PAID TO <span style={{color: '#ffd166'}}>STAY</span>

@@ -190,3 +190,6 @@ Licence checks used the Wikimedia Commons API (`LicenseShortName` field) on 2026
 | S5 | Winnipeg and Novosibirsk "around minus 17 degrees" in January | −16.3 °C / −17.0 °C | 1991–2020 | C3, C4 | HEDGE "around". On screen show both values exactly. |
 | S6 | "80 % extra in Norilsk, 70 % in Magadan" | district coefficient 1.8 / 1.7 → +80 % / +70 % of base pay | current | W1 | CALC conversion of the coefficient. |
 | S7 | In Norilsk "about one in seven" planned families left | 623 / 4,599 = 13.5 % | 2009 | B3 | CALC. |
+| S8 | Vorkuta = coal; Norilsk = nickel and copper; Kolyma = gold (map labels, c2e) | qualitative | — | Britannica "Vorkuta" (coal-mining centre of the Pechora basin) https://www.britannica.com/place/Vorkuta ; Britannica "Norilsk" (nickel, copper, cobalt, platinum) https://www.britannica.com/place/Norilsk ; G5 (Kolyma gold) | OK (encyclopedic). |
+| S9 | Tyumen 510,719 → 847,488; Krasnoyarsk 909,341 → 1,187,771 (2002 → 2021) | census | 2002/2021 | X7 | HEDGE: Tyumen boundary changes may explain part of the growth. |
+| S10 | Norilsk got city status in 1953; Norillag closed 1956 | 1953 / 1956 | — | G3 | OK. |

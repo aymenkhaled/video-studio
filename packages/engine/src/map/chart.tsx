@@ -23,7 +23,8 @@ export const CB = {
 
 export type Num = {prefix?: string; suffix?: string; decimals?: number; compact?: boolean};
 
-export type BarDatum = {label: string; value: number; color?: string; highlight?: boolean; note?: string};
+/** valueText: show this instead of the number (ranges like "15–18%" — never a made-up midpoint). */
+export type BarDatum = {label: string; value: number; color?: string; highlight?: boolean; note?: string; valueText?: string};
 export type LineSeries = {name: string; color: string; points: [number, number][]; highlight?: boolean};
 export type ShareSeg = {label: string; value: number; color: string};
 export type AreaDatum = {label: string; value: number; color: string; note?: string};
@@ -157,7 +158,7 @@ const Bars: React.FC<{spec: Extract<ChartSpec, {type: 'bar'}>; p: number}> = ({s
             </text>
             <rect x={x0} y={y} width={bw} height={rowH * 0.7} rx={6} fill={col} stroke={b.highlight ? '#ffffff' : 'none'} strokeWidth={b.highlight ? 3 : 0} />
             <text x={x0 + bw + 18} y={y + rowH * 0.42 + 12} fontFamily={INTER} fontWeight={800} fontSize={b.highlight ? 42 : 36} fill={b.highlight ? '#ffffff' : 'rgba(244,239,228,0.9)'}>
-              {fmtValue(b.value * g, spec.num)}
+              {b.valueText ? (g > 0.98 ? b.valueText : '') : fmtValue(b.value * g, spec.num)}
             </text>
             {b.note ? (
               <text x={x0 + 4} y={y + rowH * 0.7 + 30} fontFamily={INTER} fontWeight={600} fontSize={30} fill="rgba(244,239,228,0.75)" opacity={easeInOutCubic(ramp(p, 0.5, 0.6))}>

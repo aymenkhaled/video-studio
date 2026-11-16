@@ -69,7 +69,7 @@ export const TitleCard: React.FC<{title: string; sub: string; p: number}> = ({ti
   const a = easeInOutCubic(ramp(p, 0.15, 0.4));
   return (
     <div style={{position: 'absolute', inset: 0, background: `rgba(12,9,5,${0.55 * a})`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: 170, letterSpacing: 18, color: '#f4ecd8', opacity: a, transform: `scale(${0.94 + 0.06 * a})`, textShadow: '0 6px 0 #000'}}>{title}</div>
+      <div style={{fontFamily: CINZEL, fontWeight: 700, fontSize: Math.min(170, Math.round(2300 / Math.max(1, title.length))), letterSpacing: 18, whiteSpace: 'nowrap', color: '#f4ecd8', opacity: a, transform: `scale(${0.94 + 0.06 * a})`, textShadow: '0 6px 0 #000'}}>{title}</div>
       <div style={{fontFamily: INTER, fontWeight: 600, fontSize: 38, letterSpacing: 6, color: '#d8b46a', opacity: easeInOutCubic(ramp(p, 0.35, 0.55))}}>{sub}</div>
     </div>
   );
