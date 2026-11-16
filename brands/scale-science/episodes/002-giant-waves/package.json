@@ -1,0 +1,27 @@
+{
+  "titles": [
+    "Every Giant Wave Ever Measured, Shown to Scale",
+    "The Wave That Climbed Higher Than the Empire State Building",
+    "In 2025, a 481-Metre Wave Hit a Fjord Cruise Ships Visit Every Day"
+  ],
+  "hook": "In August 2025 a mountainside fell into Tracy Arm, Alaska, and the water climbed 481 metres up the opposite slope: higher than the Empire State Building. It is only the second tallest wave ever measured. We line up every giant wave on record, Taan Fiord, Greenland, Vajont, Spirit Lake, Tracy Arm and the 1958 Lituya Bay record, next to the Statue of Liberty, the Eiffel Tower and the Empire State Building, using real USGS and NASA photos of the places they hit.",
+  "chapters": {
+    "h1": "A wave that climbed higher than a skyscraper",
+    "c1": "The Empty Morning (Tracy Arm, 2025)",
+    "c2": "Not a Normal Tsunami",
+    "c3": "The Ladder of Giants",
+    "c4": "The Record (Lituya Bay, 1958)",
+    "c5": "Why There Will Be More",
+    "c6": "Every Giant Wave, to Scale"
+  },
+  "credits": [
+    "Photos: U.S. Geological Survey (Landslide Hazards Program, D. J. Miller 1958, P. Haeussler, L. Topinka) and NASA Earth Observatory / Landsat — public domain. Barry Arm: photo Gabe Wolken via USGS Landslide Hazards Program (public domain).",
+    "Photo: \"Big waves\" by Luis Ascenso, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), https://commons.wikimedia.org/wiki/File:Big_waves_(23929226275).jpg",
+    "Cut-outs (background removed): Eiffel Tower by Jebulon (CC0); Statue of Liberty by AskALotl (CC0). Empire State Building and Burj Khalifa profiles: original drawings. Animated water and scale stage: made for this channel.",
+    "Maps: Natural Earth (public domain) via world-atlas. Background removal: U-2-Net (Apache-2.0). 2.5D depth: Depth-Anything-V2-Small (Apache-2.0).",
+    "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT). Sound effects synthesised for this channel.",
+    "Narration: synthetic voice (Kokoro-82M, Apache-2.0). Fonts: Inter (SIL Open Font License)."
+  ],
+  "hashtags": ["#Megatsunami", "#Alaska", "#TracyArm", "#LituyaBay", "#SizeComparison"],
+  "pinned_comment": "Knowing all this, would you still take a cruise into an Alaskan fjord? And which wave surprised you most?"
+}

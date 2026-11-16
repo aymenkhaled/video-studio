@@ -64,6 +64,20 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 2. Fix (to build): scale stage shows licensed realistic art as cut-outs at exact scale — PD NOAA/Smithsonian illustrations and CC BY / CC0 paleoart (e.g. megalodon: Mary Parrish/Smithsonian PD, O. Demuth CC BY 4.0, H. Salais CC BY 4.0; Argentinosaurus: Nobu Tamura CC BY 3.0; Ichthyotitan: CC0 lateral view) — background removed in CI, gentle swim/sway motion, real photo/footage b-roll (NOAA PD video) between scale shots, realistic 3D (licensed models) for hero shots.
 3. Judge a stage by a phone thumbnail test: would a stranger stop scrolling for this frame? If it looks like an infographic, it fails.
 
+## From Scale & Science 002 (giant waves, 16 Nov 2026)
+1. Realism without animals: real photos of the actual places (USGS/NASA PD) + real CC0 landmark photos cut out by U-2-Net (`"cutout": true` in media.json) + animated water. Check before choosing a cut-out photo that the object stands free to the ground (skyscrapers almost never do → shaded profile instead).
+2. "Last August" in a script dated later is wrong on frame 1: always write the year ("In August 2025").
+3. A run-up is not a wave height: titles/thumbnails must say "climbed", not "a wave taller than". Modelled numbers say "modelled".
+4. "Every X ever" titles invite the one you forgot (Vajont) — list the set in sources.md and check it against Wikipedia's list before writing.
+5. Never draw a measurement line at an arbitrary height on a perspective photo; use a label chip ("trimline, approx.") instead.
+6. Caption year rule: "two thousand people" must stay a count (2,000); year format only after "in/since/by…".
+7. Eyewitness numbers: quote them exactly as the source gives them (Ulrich: ~30 m mid-bay, 15–23 m at his boat).
+8. Photo Ken Burns ran at ~50 % of runtime before review; keep a count while storyboarding (≤ 30–35 %).
+9. ScienceBase (USGS data releases) sits behind a Cloudflare bot check: don't bypass; ask Aymen for a one-time manual download if the footage is essential.
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|
+| A001 Hannibal v2 (14 Nov, ~44 h: 1.1K impr., 27 views, +2 subs) | **0.1 %** | **39 %** (AVD 4:35 of 11:44) | not shared yet | 15 browse / 5 suggested / 7 other; 71 % Tunisia | Clarity Kit works for retention (39 % vs B001 10 %); packaging fails: dark, faceless, generic thumbnail + generic title. Design the thumbnail (face/figure, bright, one number) before the script; Test & Compare 3. Details: `docs/analytics/history-maps.md` |
+| B001 biggest animal (14 Nov, ~34 h: 650 impr., 22 views, 0 subs) | **1.5 %** | **10 %** (AVD 1:14 of 12:19) | not shared yet | 14 suggested / 3 browse / 5 other | Flat silhouettes + context-first opening + flat voice lost viewers in the first minute; crowded topic + weak thumbnail → low CTR. Fixed in B002 (real photos/cut-outs, promise in 7 s, less-saturated angle). Details: `docs/analytics/scale-science.md` |
+| C001 Switzerland (14 Nov, ~33 h: 477 impr., 27 views, +2 subs, 2.1 h watch) | **1.7 %** | **39 %** (AVD 4:40 of 11:57) | not shared yet | 19 suggested / 4 direct / 4 other | Retention good for 12 min (same 39 % as A001): charts + money context + clarity work. Packaging is the bottleneck: CTR 1.7 % on a crowded topic. Next: thumbnail with one big surprising number + real image, title with a specific paradox, run Test & Compare. Details: `docs/analytics/money-maps.md` |

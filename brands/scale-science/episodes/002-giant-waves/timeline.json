@@ -1,0 +1,1120 @@
+{
+ "id": "002-giant-waves",
+ "comp": "GiantWaves",
+ "title": "Every Giant Wave Ever Measured, Shown to Scale",
+ "fps": 24,
+ "seed": 202,
+ "voice": {
+  "engine": "kokoro",
+  "voice": "bm_george",
+  "speed": 0.95,
+  "language": "en-gb",
+  "gap": 0.42
+ },
+ "music": {
+  "key": "D",
+  "tempo": 62
+ },
+ "ambience": {
+  "type": "air",
+  "gain": 0.08
+ },
+ "scenes": [
+  {
+   "id": "h1",
+   "lines": [
+    "In August twenty twenty-five, a wave in Alaska climbed four hundred eighty-one metres up a mountain.",
+    "That is higher than the Empire State Building."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ],
+   "lead": 0.3
+  },
+  {
+   "id": "h2",
+   "lines": [
+    "And almost nobody saw it.",
+    "It struck early in the morning, in a fjord where cruise ships carry thousands of people on summer days."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "h3",
+   "lines": [
+    "How can water rise higher than a skyscraper? Was this the tallest wave ever measured?",
+    "And could it happen again, with a ship full of people in the way?"
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.5,
+     "duration": 3.0,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "h4",
+   "lines": [
+    "By the end of this video, you will see every giant wave ever measured, side by side, to scale."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "h5",
+   "lines": [
+    "This is Tracy Arm, a fjord in southeast Alaska,",
+    "south of Juneau, the state capital."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c1",
+   "lines": [
+    "Chapter one. The empty morning."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c1b",
+   "lines": [
+    "At the end of the fjord sits the South Sawyer Glacier.",
+    "For years it had been melting back. And in early August, it suddenly retreated faster."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c1c",
+   "lines": [
+    "That ice had been holding up the mountainside above it, like a wall holding back a pile of sand.",
+    "When the ice pulled away, the slope lost its support."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c1d",
+   "lines": [
+    "The mountain gave warnings. For days, seismometers picked up tiny tremors.",
+    "In the last hours, they came every thirty to sixty seconds."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "tick",
+     "at": 2.0,
+     "duration": 0.2,
+     "gain": 0.35
+    },
+    {
+     "type": "tick",
+     "at": 3.0,
+     "duration": 0.2,
+     "gain": 0.35
+    },
+    {
+     "type": "tick",
+     "at": 4.0,
+     "duration": 0.2,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1d2",
+   "lines": [
+    "About two hours before the collapse, the tremors merged into one continuous vibration.",
+    "The slope was already sliding."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c1e",
+   "lines": [
+    "Then, on the morning of the tenth of August, the slope collapsed.",
+    "About sixty-four million cubic metres of rock fell into the water."
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3.0,
+     "gain": 0.5
+    },
+    {
+     "type": "impact",
+     "at": 2.5,
+     "duration": 1.2,
+     "gain": 0.45
+    }
+   ]
+  },
+  {
+   "id": "c1f",
+   "lines": [
+    "That is a cube of rock about four hundred metres on each side,",
+    "dropped into the fjord like a giant stone thrown into a bathtub."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 1.0,
+     "duration": 1.2,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1g",
+   "lines": [
+    "Computer models show a breaking wave about one hundred metres tall,",
+    "racing at more than two hundred forty kilometres per hour."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    },
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1g2",
+   "lines": [
+    "That is roughly as tall as a thirty-storey building, moving twice as fast as a car on a motorway."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1h",
+   "lines": [
+    "That first wave alone was about as tall as the Statue of Liberty."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c1i",
+   "lines": [
+    "When it hit the far side of the fjord, the water kept climbing up the mountain.",
+    "Scientists call this the run-up: the highest point the water reaches on land."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c1j",
+   "lines": [
+    "Here, it climbed to four hundred eighty-one metres, stripping the forest off the slope.",
+    "You can still see the line where the trees end."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c1k",
+   "lines": [
+    "Put the Statue of Liberty, the Eiffel Tower and the Empire State Building side by side.",
+    "The water went higher than all three."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c1l",
+   "lines": [
+    "Kayakers camping near the mouth of the fjord had their gear swept away.",
+    "Even far away in Juneau, the sea level jumped by thirty-six centimetres."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c1m",
+   "lines": [
+    "On a typical summer day, more than twenty boats, including large cruise ships, sail these fjords.",
+    "That morning, by luck, none was in Tracy Arm."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c1n",
+   "lines": [
+    "Several cruise lines have since changed their routes to avoid the area."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c1r",
+   "lines": [
+    "So far: a melting glacier let a mountain fall into a fjord, and the water climbed four hundred eighty-one metres.",
+    "But why don't ocean tsunamis get this tall?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "lines": [
+    "Chapter two. Not a normal tsunami."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c2b",
+   "lines": [
+    "Most people picture a tsunami as a wave that crosses a whole ocean after an earthquake.",
+    "Those waves are fast and powerful, but much lower."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c2c",
+   "lines": [
+    "For scale, the biggest wave ever surfed was about twenty-six metres, off Nazaré in Portugal."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c2d",
+   "lines": [
+    "The highest run-up of the great tsunami in Japan, in twenty eleven, was about forty metres.",
+    "A huge disaster, but still far below Tracy Arm."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c2d2",
+   "lines": [
+    "Forty metres is less than half the height of the Statue of Liberty."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c2e",
+   "lines": [
+    "Fjord waves are different. They start with one gigantic splash in deep, narrow water.",
+    "The energy has almost nowhere to spread, so the water surges up the opposite wall."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c2e2",
+   "lines": [
+    "Think of dropping a brick into a bathtub. The splash hits the side and climbs the wall.",
+    "Now make the brick a piece of a mountain."
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 0.8,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c2f",
+   "lines": [
+    "So the tallest waves on Earth don't happen on open ocean coasts.",
+    "They happen in narrow fjords and mountain lakes."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c2r",
+   "lines": [
+    "So far: the tallest waves are splash waves in fjords, not ocean tsunamis.",
+    "But is Tracy Arm the only giant?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "lines": [
+    "Chapter three. The ladder of giants."
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c3b",
+   "lines": [
+    "Twenty fifteen. Taan Fiord, Alaska.",
+    "A slope weakened by a shrinking glacier slid into the water, with nobody watching."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3c",
+   "lines": [
+    "Scientists only found out from seismometers and satellite photos.",
+    "The water had climbed one hundred ninety-three metres."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c3d",
+   "lines": [
+    "That is about twice the height of the Statue of Liberty."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3e",
+   "lines": [
+    "Twenty twenty-three. Dickson Fjord, in eastern Greenland.",
+    "Twenty-five million cubic metres of rock and ice crashed into the water."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3f",
+   "lines": [
+    "The wave reached about two hundred metres. Then something stranger happened.",
+    "The water kept sloshing from side to side, like water in a bathtub."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3g",
+   "lines": [
+    "For nine days, seismometers all over the world recorded a strange, regular signal.",
+    "Nobody knew what it was, until scientists traced it to this fjord."
+   ],
+   "music": "wonder",
+   "sfx": [
+    {
+     "type": "tick",
+     "at": 1.0,
+     "duration": 0.2,
+     "gain": 0.3
+    },
+    {
+     "type": "tick",
+     "at": 2.5,
+     "duration": 0.2,
+     "gain": 0.3
+    },
+    {
+     "type": "tick",
+     "at": 4.0,
+     "duration": 0.2,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c3h",
+   "lines": [
+    "Nineteen eighty. When Mount Saint Helens erupted, a huge landslide crashed into Spirit Lake.",
+    "The water surged about two hundred sixty-five metres up the hills."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3h2",
+   "lines": [
+    "Nineteen sixty-three. In the Italian Alps, a mountainside slid into the Vajont reservoir."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3h3",
+   "lines": [
+    "The water climbed about two hundred thirty-five metres up the far slope.",
+    "Almost two thousand people in the valley below lost their lives."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c3i",
+   "lines": [
+    "All of these are enormous. But none of them reaches the top of the Eiffel Tower.",
+    "Only two waves in recorded history have gone higher."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c3r",
+   "lines": [
+    "So far: Taan Fiord, Greenland, Spirit Lake and Vajont all passed one hundred ninety metres.",
+    "So which wave holds the record?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "lines": [
+    "Chapter four. The record."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c4b",
+   "lines": [
+    "Nineteen fifty-eight. Lituya Bay, another narrow bay on the coast of Alaska."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c4c",
+   "lines": [
+    "A powerful earthquake shook loose about thirty million cubic metres of rock,",
+    "which fell from high above the water."
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3.0,
+     "gain": 0.5
+    },
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.2,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "c4d",
+   "lines": [
+    "That evening, Howard Ulrich and his seven-year-old son were anchored in their fishing boat, the Edrie."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c4e",
+   "lines": [
+    "They saw a wall of water rushing toward them. The boat was lifted onto the wave.",
+    "And somehow, both of them survived."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c4e2",
+   "lines": [
+    "Ulrich later estimated the wave at about thirty metres high out in the middle of the bay,",
+    "and fifteen to twenty-three metres when it reached his boat."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c4f",
+   "lines": [
+    "Afterwards, geologist Don Miller measured the line where the forest had been torn away.",
+    "It reached five hundred twenty-four metres."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c4f2",
+   "lines": [
+    "Along that line, trees were ripped out by their roots or stripped of their bark."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c4g",
+   "lines": [
+    "Higher than the Empire State Building. Higher than Tracy Arm.",
+    "It is the tallest wave run-up ever recorded."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    },
+    {
+     "type": "impact",
+     "at": 3.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c4r",
+   "lines": [
+    "So far: the record is Lituya Bay, five hundred twenty-four metres, and Tracy Arm is second.",
+    "So will there be more?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "lines": [
+    "Chapter five. Why there will be more."
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c5b",
+   "lines": [
+    "All these giants share one cause: steep slopes falling into deep water.",
+    "And in Alaska and Greenland, melting glaciers are uncovering more of those slopes."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c5c",
+   "lines": [
+    "A study of Glacier Bay in Alaska found that rock avalanches there have been getting bigger in recent decades."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c5c2",
+   "lines": [
+    "In Greenland, scientists linked the Dickson Fjord slide to a glacier below it that had been thinning for decades."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c5d",
+   "lines": [
+    "Right now, scientists are watching a slope above Barry Arm, in Prince William Sound.",
+    "It is creeping slowly toward the water."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c5e",
+   "lines": [
+    "If it fell all at once, models warn of waves over two hundred metres near the slide,",
+    "reaching the town of Whittier in about twenty minutes."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c5f",
+   "lines": [
+    "The good news: Tracy Arm showed that these mountains can warn us first.",
+    "Scientists say Alaska now needs to watch its slopes the way it already watches earthquakes and volcanoes."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "c5r",
+   "lines": [
+    "So far: shrinking glaciers mean more falling slopes, and more giant waves.",
+    "So how do they all compare, side by side?"
+   ],
+   "music": "wonder",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "lines": [
+    "Chapter six. Every giant wave, to scale."
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c6b",
+   "lines": [
+    "Taan Fiord, one hundred ninety-three metres. Greenland, about two hundred.",
+    "Vajont, about two hundred thirty-five. Spirit Lake, two hundred sixty-five."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c6c",
+   "lines": [
+    "Tracy Arm, four hundred eighty-one.",
+    "And the record, Lituya Bay, five hundred twenty-four metres."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 4.0,
+     "gain": 0.5
+    },
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c6d",
+   "lines": [
+    "For comparison: the Statue of Liberty is ninety-three metres tall.",
+    "The Empire State Building reaches four hundred forty-three to the tip."
+   ],
+   "music": "wonder",
+   "sfx": [
+    {
+     "type": "tick",
+     "at": 1.0,
+     "duration": 0.2,
+     "gain": 0.3
+    },
+    {
+     "type": "tick",
+     "at": 4.0,
+     "duration": 0.2,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c6e",
+   "lines": [
+    "And even the record is less than two thirds of the Burj Khalifa, the tallest building on Earth."
+   ],
+   "music": "wonder"
+  },
+  {
+   "id": "c6e2",
+   "lines": [
+    "So what would it take to send water to the top of the Burj?",
+    "Nobody knows. And let's hope we never find out."
+   ],
+   "music": "wonder"
+  },
+  {
+   "id": "c6f",
+   "lines": [
+    "So here is my question: knowing all this, would you still take a cruise into an Alaskan fjord?",
+    "Tell me in the comments."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   }
+  },
+  {
+   "id": "end",
+   "lines": [
+    "Next: is the biggest living thing on Earth really a whale? Or a single plant, longer than a hundred kilometres?"
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.28
+   },
+   "min": 20,
+   "endscreen": true
+  }
+ ]
+}

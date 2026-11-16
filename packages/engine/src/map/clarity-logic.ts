@@ -155,7 +155,9 @@ export const numeralize = (words: CueWord[]): CueWord[] => {
     if (run.length && (bc || big || year || ten || unit)) {
       const v = teenYear ? UNITS.indexOf(clean[0]) * 100 + second : modernYear ? 2000 + second : numValue(clean);
       // "two thousand twenty-three" is a year (no thousands comma)
-      const thousandYear = !year && clean.includes('thousand') && v >= 1900 && v <= 2100;
+      // only after a date word ("in two thousand twenty-three"), never for counts ("two thousand people")
+      const prevWord = i > 0 ? bare(words[i - 1].w) : '';
+      const thousandYear = !year && clean.includes('thousand') && v >= 1900 && v <= 2100 && ['in', 'since', 'by', 'until', 'from', 'of', 'year'].includes(prevWord);
       const trail = run[run.length - 1].w.replace(/^[A-Za-z-]+/, '');
       if (bc) {
         out.push({w: `${v} BC${words[j + 1].w.replace(/^C/, '')}`, t: run[0].t, end: words[j + 1].end});

@@ -21,3 +21,5 @@
 ## 2026-11-14 — Master playbook (branch research/master-playbook)
 - 5 research subagents in parallel → `docs/research/{hooks-retention,packaging,visuals-motion,voice-sound,channel-growth}.md` (all sources dated 2026-11-14).
 - `docs/PLAYBOOK.md`: every trick/rule by area with evidence, impact, effort, channels, DOING/PARTIAL/MISSING; top-20 missing; LESSONS merged; CLAUDE.md rule added.
+
+- 2026-11-16 Scale & Science 002 giant waves delivered: packaging gate + outlier check, promise ledger, real USGS/NASA photos + CC0 landmark cut-outs, Vajont added after review, QA PASS first full render.

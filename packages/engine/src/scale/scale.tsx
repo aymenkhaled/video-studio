@@ -4,13 +4,14 @@ import {clamp01, easeInOutCubic, mix, ramp} from '../motion';
 import {INTER} from '../overlay';
 import {bottomOf, pathFor, SHAPES, ShapeKey, toPx, topOf, widthOf} from './shapes';
 import {gridStep, lengthLabel, ScaleCam, scaleCamAt} from './units';
+import {artSrc, useArtIndex} from '../map/media';
 
 // Scale & Science "measuring stage" (2D, cheap to render): subjects side by side on a metre grid with a person,
 // a bus and other known references, brackets in metres AND feet, slow eased camera + absolute drift, living
 // backgrounds (ocean: light rays, marine snow, fish, swaying weed; land: clouds, hills, swaying plants).
 // Layout (1920×1080): ground line ≈ y 740; captions own y 780–904; chapter tracker top-left; "to scale" chip top-right.
 
-export type ScaleEnv = 'ocean' | 'land';
+export type ScaleEnv = 'ocean' | 'land' | 'fjord';
 export type ScaleSubject = {
   id: string;
   shape: ShapeKey;
@@ -36,6 +37,8 @@ export type ScaleSubject = {
   speed?: number;
   /** bracket text override, e.g. '~33 m · 110 ft' when the drawn size is 33.5 m */
   sizeLabel?: string;
+  /** real photo cut-out (art id with `cutout: true` in assets/media.json), drawn at exact height `size` */
+  image?: string;
   /** paint the label on the body (buses, courts) instead of above it */
   labelInside?: boolean;
   /** dashed outline only (a reference shape from another scene, e.g. "blue whale length") */
@@ -50,6 +53,12 @@ export type ScaleSpec = {
   /** px y of the ground / seabed line */
   ground?: number;
   title?: string;
+  /** water rising to `height` metres over `window` (run-up / wave height), drawn behind the subjects */
+  water?: {height: number; from?: number; window?: [number, number]; label?: string};
+  /** labelled height lines (other waves' run-ups on a ladder) */
+  levels?: {height: number; label: string; appear?: number; color?: string}[];
+  /** vertical metre axis on the left (height ladders) */
+  heightAxis?: boolean;
   seed?: number;
 };
 
@@ -183,20 +192,125 @@ const Land: React.FC<{camX: number; s: number; t: number; ground: number; seed: 
 };
 
 /** Metre ruler along the ground: ticks every grid step, bold + labelled every 5 steps; faint vertical lines above. */
+const Fjord: React.FC<{camX: number; s: number; t: number; ground: number; seed: number}> = ({camX, s, t, ground, seed}) => {
+  const par = (k: number) => -camX * s * k;
+  const ridge = (k: number, base: number, amp: number, color: string, snow: boolean, key: string) => {
+    const off = par(k);
+    const pts: string[] = [];
+    for (let x = -40; x <= W + 40; x += 30) {
+      const wx = x - off;
+      const y = base - amp * (0.55 + 0.3 * Math.sin(wx / 310 + key.length) + 0.15 * Math.sin(wx / 97 + 1) + 0.08 * Math.sin(wx / 31));
+      pts.push(`${x},${y.toFixed(1)}`);
+    }
+    return (
+      <g key={key}>
+        <polygon points={`-40,${ground} ${pts.join(' ')} ${W + 40},${ground}`} fill={color} />
+        {snow ? <polyline points={pts.join(' ')} fill="none" stroke="rgba(240,246,250,0.75)" strokeWidth={10} strokeLinejoin="round" /> : null}
+      </g>
+    );
+  };
+  const mist = Array.from({length: 40}, (_, i) => {
+    const r = (k: string) => random(`${seed}-mist-${i}-${k}`);
+    const x = (((r('x') * 2400 + t * (4 + 6 * r('v')) + par(0.1)) % 2400) + 2400) % 2400 - 240;
+    return <circle key={i} cx={x} cy={80 + r('y') * (ground - 200)} r={1.5 + 2 * r('z')} fill="rgba(255,255,255,0.25)" />;
+  });
+  return (
+    <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
+      <defs>
+        <linearGradient id="fsky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#6f8ea3" />
+          <stop offset="1" stopColor="#c9d6dc" />
+        </linearGradient>
+        <linearGradient id="fsea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#2f5f6c" />
+          <stop offset="1" stopColor="#11262d" />
+        </linearGradient>
+      </defs>
+      <rect width={W} height={1080} fill="url(#fsky)" />
+      {ridge(0.05, ground - 40, 520, '#7d8f98', true, 'far')}
+      {ridge(0.15, ground, 330, '#4f6560', true, 'mid')}
+      {ridge(0.3, ground + 10, 160, '#344a3f', false, 'near')}
+      {mist}
+      <rect y={ground} width={W} height={1080 - ground} fill="url(#fsea)" />
+    </svg>
+  );
+};
+
+/** Vertical metre axis for height ladders: labelled ticks on the left + faint level lines. */
+const HeightAxis: React.FC<{s: number; ground: number}> = ({s, ground}) => {
+  const step = gridStep(s, 46) * 5;
+  const items: React.ReactNode[] = [];
+  for (let m = step; ground - m * s > 90; m += step) {
+    const y = ground - m * s;
+    items.push(<line key={`h${m}`} x1={110} x2={W} y1={y} y2={y} stroke="rgba(255,255,255,0.13)" strokeWidth={2} />);
+    items.push(
+      <text key={`t${m}`} x={98} y={y + 10} textAnchor="end" fontFamily={INTER} fontWeight={800} fontSize={30} fill="#f6f1e4" stroke="rgba(0,0,0,0.55)" strokeWidth={5} paintOrder="stroke">
+        {m} m
+      </text>,
+    );
+  }
+  return (
+    <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
+      <line x1={110} x2={110} y1={ground} y2={80} stroke="rgba(255,255,255,0.6)" strokeWidth={3} />
+      {items}
+    </svg>
+  );
+};
+
+/** Water climbing to `level` px: layered translucent body, moving crest, foam and spray (frame-derived, no blur). */
+const Water: React.FC<{level: number; ground: number; t: number; seed: number; label?: string; labelA: number}> = ({level, ground, t, seed, label, labelA}) => {
+  const crest = (k: number) => {
+    const pts: string[] = [];
+    for (let x = -20; x <= W + 20; x += 16) pts.push(`${x},${(level + k + 9 * Math.sin(x / 90 + t * 2.1) + 4 * Math.sin(x / 27 - t * 3.3)).toFixed(1)}`);
+    return pts;
+  };
+  const top = crest(0);
+  const spray = Array.from({length: 70}, (_, i) => {
+    const r = (q: string) => random(`${seed}-spray-${i}-${q}`);
+    const x = r('x') * W;
+    const life = (t * (0.6 + r('v')) + r('p')) % 1;
+    return <circle key={i} cx={x} cy={level - 6 - life * 60} r={2 + 3 * r('z')} fill={`rgba(240,250,255,${(0.7 * (1 - life)).toFixed(2)})`} />;
+  });
+  return (
+    <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
+      <defs>
+        <linearGradient id="wbody" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#8fd0e2" />
+          <stop offset="0.08" stopColor="#3b8eab" />
+          <stop offset="1" stopColor="#0b2c3a" />
+        </linearGradient>
+      </defs>
+      <polygon points={`-20,${ground + 400} ${top.join(' ')} ${W + 20},${ground + 400}`} fill="url(#wbody)" />
+      <polyline points={crest(18).join(' ')} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth={5} />
+      <polyline points={top.join(' ')} fill="none" stroke="#eef9ff" strokeWidth={7} strokeLinejoin="round" />
+      {spray}
+      {label && labelA > 0 ? (
+        <g opacity={labelA}>
+          <line x1={110} x2={W} y1={level - 2} y2={level - 2} stroke="#f2c14e" strokeWidth={4} strokeDasharray="18 12" />
+          <rect x={W - 760} y={level < 200 ? level + 22 : level - 76} width={720} height={58} rx={12} fill="rgba(10,14,18,0.85)" />
+          <text x={W - 400} y={level < 200 ? level + 63 : level - 35} textAnchor="middle" fontFamily={INTER} fontWeight={900} fontSize={36} fill="#f2c14e">
+            {label}
+          </text>
+        </g>
+      ) : null}
+    </svg>
+  );
+};
+
 const Ruler: React.FC<{camX: number; s: number; ground: number; env: ScaleEnv}> = ({camX, s, ground, env}) => {
   const step = gridStep(s, 46);
   const left = camX - W / 2 / s;
   const right = camX + W / 2 / s;
   const firstI = Math.floor(left / step);
   const items: React.ReactNode[] = [];
-  const line = env === 'ocean' ? 'rgba(210,240,255,' : 'rgba(40,34,20,';
+  const line = env !== 'land' ? 'rgba(210,240,255,' : 'rgba(40,34,20,';
   for (let i = firstI; i * step <= right + step; i++) {
     const m = Math.round(i * step * 1000) / 1000;
     const x = (m - camX) * s + W / 2;
     const bold = i % 5 === 0;
     items.push(<line key={`v${m}`} x1={x} x2={x} y1={ground - 360} y2={ground} stroke={`${line}${bold ? 0.16 : 0.07})`} strokeWidth={bold ? 2 : 1} />);
     items.push(<line key={`t${m}`} x1={x} x2={x} y1={ground} y2={ground + (bold ? 18 : 9)} stroke={`${line}0.8)`} strokeWidth={bold ? 3 : 2} />);
-    if (bold && m >= 0) items.push(<text key={`l${m}`} x={x + 6} y={ground + 46} fontFamily={INTER} fontWeight={700} fontSize={30} fill={env === 'ocean' ? '#d8eef8' : '#2e2616'}>{m >= 1 || m === 0 ? `${m} m` : `${Math.round(m * 100)} cm`}</text>);
+    if (bold && m >= 0) items.push(<text key={`l${m}`} x={x + 6} y={ground + 46} fontFamily={INTER} fontWeight={700} fontSize={30} fill={env !== 'land' ? '#d8eef8' : '#2e2616'}>{m >= 1 || m === 0 ? `${m} m` : `${Math.round(m * 100)} cm`}</text>);
   }
   return (
     <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
@@ -220,11 +334,48 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
   const X = (m: number) => (m - camX) * s + W / 2;
   const Y = (m: number) => ground - m * s;
 
+  const artIndex = useArtIndex();
   const subs = [...spec.subjects].sort((a, b) => (b.range?.[1] ?? b.size) - (a.range?.[1] ?? a.size));
   const shapes: React.ReactNode[] = [];
   const labels: {node: React.ReactNode; box: Box; prio: number; owner: string; anchor?: {x: number; y: number}; inside?: {x: number; y: number}; fixed?: boolean}[] = [];
   const bodies: {owner: string; box: Box}[] = [];
   subs.forEach((sub, i) => {
+    if (sub.image) {
+      const ai = easeInOutCubic(ramp(p, sub.appear ?? 0, (sub.appear ?? 0) + 0.06)) * (1 - easeInOutCubic(ramp(p, sub.vanish ?? 2, (sub.vanish ?? 2) + 0.05)));
+      if (ai <= 0) return;
+      const meta = artIndex?.[sub.image];
+      const hpx = sub.size * s;
+      const wpx = meta ? (hpx * meta.w) / meta.h : hpx * 0.3;
+      const x0 = X(sub.x + (sub.speed ?? 0) * t);
+      const yb = Y(sub.y ?? 0) + (1 - ai) * 20;
+      shapes.push(
+        <g key={sub.id} opacity={ai}>
+          <ellipse cx={x0 + wpx / 2} cy={yb + 3} rx={wpx * 0.6} ry={Math.max(4, wpx * 0.06)} fill="rgba(0,0,0,0.3)" />
+          {meta ? (
+            <image href={artSrc(sub.image)} x={x0} y={yb - hpx} width={wpx} height={hpx} preserveAspectRatio="none" />
+          ) : (
+            <rect x={x0} y={yb - hpx} width={wpx} height={hpx} fill="#7f8b93" />
+          )}
+        </g>,
+      );
+      bodies.push({owner: sub.id, box: {x: x0, y: yb - hpx, w: wpx, h: hpx}});
+      if (yb - hpx < 110 || x0 > W || x0 + wpx < 0) return;
+      const text = sub.sizeLabel ?? lengthLabel(sub.size);
+      const lw = Math.max((sub.label ?? '').length * 22, text.length * 17) + 40;
+      labels.push({
+        prio: 2,
+        owner: sub.id,
+        anchor: {x: x0 + wpx / 2, y: yb - hpx},
+        box: {x: Math.min(W - 30 - lw, Math.max(120, x0 + wpx / 2 - lw / 2)), y: yb - hpx - 100, w: lw, h: 86},
+        node: (
+          <div style={{opacity: ai, textAlign: 'center', fontFamily: INTER, color: PAPER, background: 'rgba(10,14,18,0.6)', borderRadius: 12, padding: '4px 14px'}}>
+            <div style={{fontWeight: 900, fontSize: 38, lineHeight: 1.05, whiteSpace: 'nowrap'}}>{sub.label}</div>
+            <div style={{fontWeight: 800, fontSize: 30, color: GOLD, whiteSpace: 'nowrap'}}>{text}</div>
+          </div>
+        ),
+      });
+      return;
+    }
     const shape = SHAPES[sub.shape];
     const a = easeInOutCubic(ramp(p, sub.appear ?? 0, (sub.appear ?? 0) + 0.06)) * (1 - easeInOutCubic(ramp(p, sub.vanish ?? 2, (sub.vanish ?? 2) + 0.05)));
     if (a <= 0) return;
@@ -255,6 +406,19 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
         ))}
         {!sub.outline ? <path d={pathFor(shape, pl)} fill={color} stroke="rgba(255,255,255,0.5)" strokeWidth={2} /> : null}
         {!sub.mystery && !sub.outline ? <path d={pathFor(shape, pl)} fill={`url(#${gid})`} opacity={0.55} /> : null}
+        {shape.measure === 'height' && !sub.mystery && !sub.outline && sub.shape !== 'human' ? (
+          <>
+            <defs>
+              <linearGradient id={`${gid}-lit`} x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor="#ffffff" stopOpacity={0.35} />
+                <stop offset="0.5" stopColor="#ffffff" stopOpacity={0} />
+                <stop offset="0.5" stopColor="#000000" stopOpacity={0.12} />
+                <stop offset="1" stopColor="#000000" stopOpacity={0.4} />
+              </linearGradient>
+            </defs>
+            <path d={pathFor(shape, pl)} fill={`url(#${gid}-lit)`} stroke="rgba(255,255,255,0.7)" strokeWidth={1.5} />
+          </>
+        ) : null}
         {!sub.mystery && !sub.outline
           ? (shape.extras ?? []).map((e, k) => {
               if (e.kind === 'eye' || e.kind === 'disc') {
@@ -344,7 +508,7 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
               {sub.label}
             </div>
             {sub.sub ? <div style={{fontWeight: 700, fontSize: 30, color: '#d6e4ea', whiteSpace: 'nowrap', marginTop: 4}}>{sub.sub}</div> : null}
-            {shape.measure === 'height' && bA > 0 ? <div style={{fontWeight: 800, fontSize: 30, color: GOLD, whiteSpace: 'nowrap', opacity: bA}}>{lengthLabel(sub.size)}</div> : null}
+            {shape.measure === 'height' && (bA > 0 || sub.sizeLabel) ? <div style={{fontWeight: 800, fontSize: 30, color: GOLD, whiteSpace: 'nowrap'}}>{sub.sizeLabel ?? lengthLabel(sub.size)}</div> : null}
           </div>
         ),
       });
@@ -384,8 +548,43 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
   const titleA = spec.title ? easeInOutCubic(ramp(p, 0.02, 0.1)) : 0;
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
-      {spec.env === 'ocean' ? <Ocean camX={camX} s={s} t={t} ground={ground} seed={seed} /> : <Land camX={camX} s={s} t={t} ground={ground} seed={seed} />}
+      {spec.env === 'ocean' ? (
+        <Ocean camX={camX} s={s} t={t} ground={ground} seed={seed} />
+      ) : spec.env === 'fjord' ? (
+        <Fjord camX={camX} s={s} t={t} ground={ground} seed={seed} />
+      ) : (
+        <Land camX={camX} s={s} t={t} ground={ground} seed={seed} />
+      )}
+      {spec.water
+        ? (() => {
+            const w = spec.water;
+            const [w0, w1] = w.window ?? [0.1, 0.6];
+            const lvl = mix(w.from ?? 0, w.height, easeInOutCubic(ramp(p, w0, w1)));
+            return <Water level={ground - lvl * s} ground={ground} t={t} seed={seed} label={w.label} labelA={easeInOutCubic(ramp(p, w1, w1 + 0.06))} />;
+          })()
+        : null}
       <Ruler camX={camX} s={s} ground={ground} env={spec.env} />
+      {spec.heightAxis ? <HeightAxis s={s} ground={ground} /> : null}
+      {(spec.levels ?? []).length ? (
+        <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
+          {(spec.levels ?? []).map((lv, k) => {
+            const la = easeInOutCubic(ramp(p, lv.appear ?? 0.05, (lv.appear ?? 0.05) + 0.06));
+            const y = ground - lv.height * s;
+            if (la <= 0 || y < 80) return null;
+            const c = lv.color ?? '#9fe0f0';
+            const tw = lv.label.length * 17 + 30;
+            return (
+              <g key={k} opacity={la}>
+                <line x1={120} x2={120 + (W - 120) * la} y1={y} y2={y} stroke={c} strokeWidth={3} strokeDasharray="10 8" />
+                <rect x={W - 40 - tw - (k % 3) * 400} y={y - 46} width={tw} height={40} rx={8} fill="rgba(10,14,18,0.8)" />
+                <text x={W - 40 - tw / 2 - (k % 3) * 400} y={y - 17} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={30} fill={c}>
+                  {lv.label}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+      ) : null}
       <svg width={W} height={1080} style={{position: 'absolute', inset: 0}}>
         {shapes}
         {leaders}

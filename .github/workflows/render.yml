@@ -14,7 +14,7 @@ on:
       mode:
         description: stills = storyboard frames only; full = video + QA
         type: choice
-        options: [full, stills, media]
+        options: [full, stills, media, survey]
         default: full
       props:
         description: Optional input-props JSON path in the repo
@@ -56,8 +56,23 @@ env:
   NODE_VERSION: 22
 
 jobs:
+  survey:
+    # mode=survey: list + contact-sheet every video in a big public archive (URL in `props`), choose clips later
+    if: inputs.mode == 'survey'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - run: df -h . && python3 tools/survey_videos.py "${{ inputs.props }}" out/survey
+      - uses: actions/upload-artifact@v4
+        with:
+          name: survey
+          path: out/survey/
+          retention-days: 14
+
   plan:
-    if: inputs.mode != 'media'
+    if: inputs.mode != 'media' && inputs.mode != 'survey'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     outputs:

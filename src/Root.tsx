@@ -17,6 +17,7 @@ import {SiberianCurseEpisode, calculateSiberianCurseEpisode} from './money/Siber
 import {SiberianCurseThumb} from './money/SiberianCurseThumb';
 import {MoneyAvatar, MoneyBanner} from './channel/MoneyArt';
 import {ScaleChannel1, ScaleChannel2} from './scale/ChannelArt';
+import {GiantWaves, GiantWavesThumb, calculateGiantWaves} from './scale/GiantWaves';
 import {BiggestAnimal, BiggestAnimalThumb, calculateBiggestAnimal} from './scale/BiggestAnimal';
 
 // Every brand registers its compositions here. Ids are stable: CI renders by id.
@@ -110,5 +111,18 @@ export const Root: React.FC = () => (
     ))}
     <Composition id="BiggestAnimalChannel1" component={ScaleChannel1} durationInFrames={1} fps={24} width={800} height={800} />
     <Composition id="BiggestAnimalChannel2" component={ScaleChannel2} durationInFrames={1} fps={24} width={2560} height={1440} />
+    <Composition
+      id="GiantWaves"
+      component={GiantWaves}
+      durationInFrames={24 * 60 * 12}
+      fps={24}
+      width={1920}
+      height={1080}
+      defaultProps={{scenes: []}}
+      calculateMetadata={calculateGiantWaves}
+    />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={`gw${v}`} id={`GiantWavesThumb${v}`} component={GiantWavesThumb} durationInFrames={1} fps={24} width={3840} height={2160} defaultProps={{variant: v}} />
+    ))}
   </>
 );

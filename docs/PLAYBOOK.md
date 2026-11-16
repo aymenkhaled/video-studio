@@ -95,6 +95,7 @@ Runners-up: "follow-up to your best video" within 2–4 weeks of a ≥ 3× hit (
 ### 2.6 Analytics loop (template in CG §6)
 | Rule | Evidence | Imp | Eff | Ch | Status |
 |---|---|---|---|---|---|
+| First data point (B001, 34 h): CTR 1.5 %, AVD 10 % — retention is the first thing to fix: real imagery from frame 1, promise in 7 s, no slow context opening; log every upload in `docs/analytics/<brand>.md` and ask Aymen for the 0:30 retention number | [OWN] B001 analytics | H | S | ABC | DOING |
 | 48 h: impressions, CTR vs our own median, 30-s intro %, Test & Compare leader. 7 d: AVD, % viewed, key-moment dips vs predicted dips, traffic sources. 28 d: returning viewers, subs/1k views, run-rate vs 8,000 h | CG §6, HR T21 | H | S | ABC | MISSING |
 | Compare CTR only against our own videos (official: half of channels sit at 2–10 %) | PK P14 [E] | M | S | ABC | MISSING |
 | Before upload, write predicted dip points; after 7 d compare with the retention graph and log the lesson | HR T21 | H | S | ABC | MISSING |
@@ -318,6 +319,8 @@ All DOING via the Clarity Kit — keep them; they are our differentiator: charac
 | Demand check without Semrush: web search + competing videos' outlier ratios; don't block on API units | L B001 #12 [OWN] | M | DOING |
 | Big patch edits via a Python script file, not shell heredocs | L B001 #13 [OWN] | L | DOING |
 | Work fast, report early, short answers | L Aymen #9 [OWN] | M | DOING |
+| Anything blocked for automation (bot-checked sites, logins, big archives — e.g. the USGS ScienceBase CC0 video zip): **ping Aymen with the exact link, file name, size and where to save it** instead of skipping it; never bypass bot checks | Aymen 16 Nov 2026 [OWN] | M | DOING |
+| Realism: no flat silhouettes for animals/subjects; real PD/CC0/CC BY photos, cut-outs at exact scale (`cutout: true`), real footage when available | Aymen 15 Nov 2026, B001 analytics [OWN] | H | DOING |
 
 ---
 

@@ -16,6 +16,8 @@ export type ArtSpec = {
   title?: string;
   /** Frame the image inside the shot instead of cover (coins, small objects). */
   object?: boolean;
+  /** horizontal marks on the image ("water reached here"): y = 0..1 of the image height */
+  marks?: {y: number; label: string; appear?: number; color?: string; /** false = label chip only (no line across the photo) */ line?: boolean}[];
 };
 
 export const ArtShot: React.FC<{art: ArtSpec; p: number; width: number; height: number}> = ({art, p, width, height}) => {
@@ -58,6 +60,17 @@ export const ArtShot: React.FC<{art: ArtSpec; p: number; width: number; height: 
       />
     );
   };
+  const marks = (art.marks ?? []).map((m, i) => {
+    const a = easeInOutCubic(ramp(p, m.appear ?? 0.2, (m.appear ?? 0.2) + 0.08));
+    if (a <= 0) return null;
+    const y = top + m.y * h;
+    const c = m.color ?? '#f2c14e';
+    return (
+      <div key={i} style={{position: 'absolute', left: 0, top: y - 3, width: m.line === false ? width : width * a, height: 0, borderTop: m.line === false ? 'none' : `6px dashed ${c}`}}>
+        <div style={{position: 'absolute', left: m.line === false ? undefined : 60, right: m.line === false ? 60 : undefined, top: -70, opacity: a, background: 'rgba(10,14,18,0.85)', borderRadius: 12, padding: '6px 18px', fontFamily: INTER, fontWeight: 900, fontSize: 38, color: c, whiteSpace: 'nowrap'}}>{m.label}</div>
+      </div>
+    );
+  });
   const plate = art.title ? easeInOutCubic(ramp(p, 0.04, 0.12)) * (1 - easeInOutCubic(ramp(p, 0.8, 0.9))) : 0;
   return (
     <AbsoluteFill style={{background: art.object ? 'radial-gradient(circle at 50% 45%, #2c2418 0%, #0d0a06 70%)' : '#0d0a06', overflow: 'hidden'}}>
@@ -65,6 +78,7 @@ export const ArtShot: React.FC<{art: ArtSpec; p: number; width: number; height: 
       {meta.layers >= 1 ? layer(1, 1) : null}
       {meta.layers >= 2 ? layer(2, 2) : null}
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)'}} />
+      {marks}
       {plate > 0 ? (
         <div style={{position: 'absolute', right: 48, top: 40, maxWidth: 820, opacity: plate, background: 'rgba(12,9,5,0.78)', borderRight: '5px solid #d8b46a', padding: '12px 20px', fontFamily: INTER, fontWeight: 600, fontSize: 30, lineHeight: 1.3, color: '#f4ecd8', textAlign: 'right'}}>
           {art.title}
