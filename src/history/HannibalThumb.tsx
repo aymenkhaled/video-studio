@@ -14,7 +14,7 @@ export const HannibalThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) => {
     // Cannae battle painting, zoomed on the fighting horsemen + the death toll
     return (
       <AbsoluteFill style={{background: '#000'}}>
-        <Img src={artSrc('trumbull-cannae')} style={{...cover, objectPosition: '55% 35%', transform: 'scale(1.35)', filter: bright}} />
+        <Img src={artSrc('trumbull-cannae')} style={{...cover, objectPosition: '55% 85%', transform: 'scale(1.5)', transformOrigin: '55% 80%', filter: bright}} />
         <AbsoluteFill style={{background: 'linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 45%)'}} />
         <div style={{position: 'absolute', left: 40, bottom: 120, fontFamily: INTER, fontWeight: 900, fontSize: 190, lineHeight: 1, color: '#ffd23f', textShadow: outline}}>70,000</div>
         <div style={{position: 'absolute', left: 48, bottom: 40, fontFamily: INTER, fontWeight: 900, fontSize: 84, color: '#fff', textShadow: outline}}>IN ONE DAY</div>
