@@ -11,7 +11,8 @@
   "language": "en-us",
   "gap": 0.4,
   "prosody": true,
-  "chain": true
+  "chain": true,
+  "model": "fp32"
  },
  "music": {
   "key": "D",

@@ -144,7 +144,7 @@ timeline = {
     "title": "Russia Built Cities Where No Economy Should Exist",
     "fps": 24,
     "seed": 643,
-    "voice": {"engine": "kokoro", "voice": "af_heart", "speed": 0.96, "language": "en-us", "gap": 0.4, "prosody": True, "chain": True},
+    "voice": {"engine": "kokoro", "voice": "af_heart", "speed": 0.96, "language": "en-us", "gap": 0.4, "prosody": True, "chain": True, "model": "fp32"},
     "music": {"key": "D", "tempo": 72},
     "mix": {"duck_db": 20},
     "ambience": {"type": "wind", "gain": 0.06},

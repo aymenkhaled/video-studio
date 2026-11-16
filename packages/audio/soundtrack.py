@@ -31,6 +31,10 @@ RATE = 48000
 KOKORO = {
     "model": ("https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.int8.onnx",
               92361271, "6e742170d309016e5891a994e1ce1559c702a2ccd0075e67ef7157974f6406cb"),
+    # fp32 weights (same Apache-2.0 release): the int8 model started returning inf/NaN audio on the Nov 2026
+    # runner image ("overflow encountered in square" in kokoro_onnx.trim). Opt-in per timeline: voice.model = "fp32".
+    "model_fp32": ("https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx",
+                   325532387, None),
     "voices": ("https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin",
                28214398, "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"),
 }
@@ -53,7 +57,10 @@ def _download(url, target, size, sha):
             with target.open("wb") as f:
                 for chunk in r.iter_content(1 << 20):
                     f.write(chunk)
-    if hashlib.sha256(target.read_bytes()).hexdigest() != sha:
+    got = hashlib.sha256(target.read_bytes()).hexdigest()
+    if sha is None:
+        print(f"PIN {target.name} sha256 {got} (pin it in KOKORO)")
+    elif got != sha:
         raise RuntimeError(f"checksum mismatch: {target}")
 
 
@@ -61,8 +68,9 @@ def kokoro_engine():
     from kokoro_onnx import Kokoro
 
     cache = ROOT / ".cache" / "kokoro-v1.0"
-    mpath, vpath = cache / "kokoro-v1.0.int8.onnx", cache / "voices-v1.0.bin"
-    _download(KOKORO["model"][0], mpath, KOKORO["model"][1], KOKORO["model"][2])
+    key = "model_fp32" if (tl.get("voice") or {}).get("model") == "fp32" else "model"
+    mpath, vpath = cache / KOKORO[key][0].rsplit("/", 1)[1], cache / "voices-v1.0.bin"
+    _download(KOKORO[key][0], mpath, KOKORO[key][1], KOKORO[key][2])
     _download(KOKORO["voices"][0], vpath, KOKORO["voices"][1], KOKORO["voices"][2])
     return Kokoro(str(mpath), str(vpath))
 
@@ -82,7 +90,8 @@ TTS_CACHE = ROOT / ".cache" / "tts"
 def speak(kokoro, text, vcfg, speed):
     """Cached TTS: identical (text, voice, speed, lang) lines are never synthesised twice across runs
     (CI restores .cache/tts). Saves most of the ~1.7 s-per-second-of-audio Kokoro cost on re-renders."""
-    key = hashlib.sha1(f"v1|{text}|{vcfg.get('voice', 'am_michael')}|{speed:.4f}|{vcfg.get('language', 'en-us')}".encode()).hexdigest()
+    model = "|fp32" if vcfg.get("model") == "fp32" else ""
+    key = hashlib.sha1(f"v1{model}|{text}|{vcfg.get('voice', 'am_michael')}|{speed:.4f}|{vcfg.get('language', 'en-us')}".encode()).hexdigest()
     f = TTS_CACHE / f"{key}.npz"
     if f.exists():
         z = np.load(f)
