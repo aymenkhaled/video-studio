@@ -85,7 +85,7 @@ export const SCENES: Record<string, SceneDef> = {
   c1b: map(2021, {camera: RUSSIA, choropleth: ONLY_RU, routes: [URAL_LINE], regions: [
     {text: 'URAL MOUNTAINS', at: [58.5, 63.6], appear: 0.15, size: 22}, {text: 'SIBERIA', at: [92, 62], appear: 0.25, size: 40}, {text: 'FAR EAST', at: [140, 62.5], appear: 0.35, size: 36},
   ]}, [
-    {type: 'glossary', term: 'Siberia', meaning: 'the huge Asian part of Russia, past the Urals', window: [0.05, 0.5]},
+    {type: 'glossary', term: 'Siberia', meaning: 'the huge Asian part of Russia', window: [0.05, 0.5]},
   ]),
   c1b2: chart({
     type: 'bar', title: 'Siberia + Far East: share of Russia', unit: '2021 census, Siberian + Far Eastern federal districts', source: SRC_CENSUS, // R3
