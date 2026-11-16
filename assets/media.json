@@ -305,7 +305,8 @@
    "max": 3800,
    "licence": "Public domain (NASA / USGS, PD-USGov)",
    "credit": "Earth at Night 2016 (Black Marble), NASA Earth Observatory, public domain",
-   "depth": false
+   "depth": false,
+   "gamma": 1.9
   },
   {
    "id": "night-west",
@@ -321,7 +322,8 @@
    "max": 2600,
    "licence": "Public domain (NASA / USGS, PD-USGov)",
    "credit": "Earth at Night 2016 (Black Marble), NASA Earth Observatory, public domain",
-   "depth": false
+   "depth": false,
+   "gamma": 1.9
   },
   {
    "id": "norilsk-sat",

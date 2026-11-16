@@ -122,6 +122,9 @@ def main():
         img.load()
         img = img.convert("RGB")
         img.thumbnail((a.get("max", 2000), a.get("max", 2000)), Image.LANCZOS)
+        if a.get("gamma"):  # lift very dark sources (NASA night lights) so they read on a phone: out = in ** (1 / gamma)
+            arr = np.asarray(img, dtype=np.float32) / 255.0
+            img = Image.fromarray((np.clip(arr ** (1.0 / float(a["gamma"])), 0, 1) * 255).astype(np.uint8))
         img.save(ART / f"{a['id']}.webp", quality=88)
         layers = 0
         if a.get("depth") and session is not None:
