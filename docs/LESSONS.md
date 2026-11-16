@@ -78,3 +78,4 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|
+| B001 biggest animal (14 Nov, ~34 h: 650 impr., 22 views, 0 subs) | **1.5 %** | **10 %** (AVD 1:14 of 12:19) | not shared yet | 14 suggested / 3 browse / 5 other | Flat silhouettes + context-first opening + flat voice lost viewers in the first minute; crowded topic + weak thumbnail → low CTR. Fixed in B002 (real photos/cut-outs, promise in 7 s, less-saturated angle). Details: `docs/analytics/scale-science.md` |
