@@ -28,3 +28,19 @@ Snapshot 16 Nov 2026 07:20 (~34 h after upload, "since published"):
 
 ### Targets for B002 (first 48 h)
 - CTR ≥ 3 % · AVD ≥ 25 % · ≥ 50 % still watching at 0:30. If retention is still < 15 %, the problem is the voice/pacing → move the PLAYBOOK §6 voice items to the top.
+
+## B002 "Every Giant Wave Ever Measured, Shown to Scale" — uploaded 16 Nov 2026 ~07:14
+Snapshot 17 Nov 2026 22:10 (~39 h, "since published"):
+
+| Metric | B002 | B001 | Reading |
+|---|---|---|---|
+| Impressions | 809 | 650 | YouTube's first test pool, similar size |
+| CTR | **1.5 %** | 1.5 % | unchanged: packaging (thumbnail + title) is now the bottleneck |
+| Views | 32 | 22 | 22–23 suggested, 7 browse, 2–3 other |
+| Watch time | 1.6 h | 0.4 h | ×4 |
+| Average view duration | **3:55 of 11:14 (34 %)** | 1:14 (10 %) | ×3.4, above the 25 % target: the realism + promise-first opening worked |
+| Subscribers | 0 | 0 | |
+
+### Diagnosis
+- Retention is fixed enough to stop being the bottleneck. Views stopped after ~800 impressions because CTR stayed at 1.5 %: YouTube didn't widen the test.
+- Next lever = packaging: thumbnails that show the size contrast at phone size (wave wall vs a known building, not a landscape photo), titles with a sharper tension, Test & Compare (needs advanced features on the channel).
