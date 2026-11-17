@@ -1,7 +1,7 @@
 """Cut vertical Shorts (1080×1920) out of finished long videos (CI only).
 
 Usage: python tools/make_shorts.py <spec.json>
-spec: {"shorts": [{"id", "source": "<path to final.mp4>", "start": s, "end": s, "hook": "line1\\nline2", "footer": "..."}]}
+spec: {"channel": "<name on the Short>", "shorts": [{"id", "source": "<path to final.mp4>", "start": s, "end": s, "hook": "line1\\nline2", "footer": "..."}]}
 Layout: blurred, darkened full-frame copy as background; the 16:9 clip scaled to 1440×810 and centre-cropped to
 1080×810 (burned-in captions stay readable); a hook headline on top and a footer pointing to the full video.
 Writes out/shorts/<id>.mp4 (H.264 + AAC 48 kHz, short audio fades).
@@ -35,7 +35,7 @@ def main():
             "borderw=6:bordercolor=black:x=(w-text_w)/2:y=190,"
             f"drawtext=fontfile={FONT}:textfile={foot}:fontsize=52:fontcolor=0xFFD23F:"
             "borderw=5:bordercolor=black:x=(w-text_w)/2:y=1460,"
-            f"drawtext=fontfile={FONT}:text='History in Maps':fontsize=40:fontcolor=white@0.85:"
+            f"drawtext=fontfile={FONT}:text='{s.get('channel', spec.get('channel', 'History in Maps'))}':fontsize=40:fontcolor=white@0.85:"
             "borderw=4:bordercolor=black:x=(w-text_w)/2:y=1560[v]"
         )
         af = f"afade=t=in:st=0:d=0.3,afade=t=out:st={dur - 0.5:.2f}:d=0.5"

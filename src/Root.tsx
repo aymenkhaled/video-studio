@@ -18,6 +18,7 @@ import {SiberianCurseThumb} from './money/SiberianCurseThumb';
 import {MoneyAvatar, MoneyBanner} from './channel/MoneyArt';
 import {ScaleChannel1, ScaleChannel2} from './scale/ChannelArt';
 import {GiantWaves, GiantWavesThumb, calculateGiantWaves} from './scale/GiantWaves';
+import {GiantWavesThumbsV2} from './scale/GiantWavesThumbsV2';
 import {BiggestAnimal, BiggestAnimalThumb, calculateBiggestAnimal} from './scale/BiggestAnimal';
 
 // Every brand registers its compositions here. Ids are stable: CI renders by id.
@@ -124,5 +125,6 @@ export const Root: React.FC = () => (
     {([1, 2, 3] as const).map((v) => (
       <Composition key={`gw${v}`} id={`GiantWavesThumb${v}`} component={GiantWavesThumb} durationInFrames={1} fps={24} width={3840} height={2160} defaultProps={{variant: v}} />
     ))}
+    <Composition id="GiantWavesThumbsV2" component={GiantWavesThumbsV2} durationInFrames={3} fps={24} width={3840} height={2160} />
   </>
 );
