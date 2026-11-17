@@ -1,0 +1,17 @@
+{
+  "_doc": "Shorts cut from finished long videos. 'run' = GitHub Actions run whose artifact final-<comp> holds the source (7-day retention).",
+  "sources": [
+    {"run": 43567713229, "artifact": "final-Hannibal", "dir": "src/hannibal"},
+    {"run": 43566364600, "artifact": "final-Carthage", "dir": "src/carthage"}
+  ],
+  "shorts": [
+    {"id": "hannibal-elephants-alps", "source": "src/hannibal/final.mp4", "start": 164.0, "end": 222.5,
+     "hook": "He marched 37 ELEPHANTS\nover the ALPS", "footer": "Full story: tap the linked video"},
+    {"id": "hannibal-cannae-trap", "source": "src/hannibal/final.mp4", "start": 373.0, "end": 426.5,
+     "hook": "Outnumbered 2 to 1.\nHe SURROUNDED them.", "footer": "Full story: tap the linked video"},
+    {"id": "carthage-fig", "source": "src/carthage/final.mp4", "start": 168.3, "end": 215.5,
+     "hook": "A FIG started\nthe end of Carthage", "footer": "Full story: tap the linked video"},
+    {"id": "carthage-salt-myth", "source": "src/carthage/final.mp4", "start": 557.7, "end": 605.0,
+     "hook": "Did Rome really\nSALT the earth?", "footer": "Full story: tap the linked video"}
+  ]
+}
