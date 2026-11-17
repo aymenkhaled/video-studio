@@ -11,26 +11,29 @@ import {pathFor, SHAPES} from '../../packages/engine/src/scale/shapes';
 const stroke = '0 6px 0 #000, 0 0 30px rgba(0,0,0,0.8)';
 const GROUND = 690;
 
-/** water wall up to `h` px above the ground, with a curling crest and foam (static, frame-free). */
+/** A towering wave face: steep front at x0 curling over at the crest (h px above the ground), body to x1. Static. */
 const WaterWall: React.FC<{h: number; x0?: number; x1?: number}> = ({h, x0 = 0, x1 = 1280}) => {
   const top = GROUND - h;
-  const pts: string[] = [];
-  for (let x = x0; x <= x1; x += 20) pts.push(`${x},${(top + 10 * Math.sin(x / 60) + 6 * Math.sin(x / 23)).toFixed(1)}`);
+  const crest: string[] = [];
+  for (let x = x0 + 40; x <= x1; x += 20) crest.push(`${x},${(top + 8 * Math.sin(x / 55) + 5 * Math.sin(x / 21)).toFixed(1)}`);
+  const face = `${x0 + 150},${GROUND + 40} ${x0 + 120},${GROUND - h * 0.35} ${x0 + 80},${GROUND - h * 0.7} ${x0 + 30},${top + h * 0.12} ${x0 - 30},${top + h * 0.06} ${x0 - 10},${top - 4} ${x0 + 40},${top - 10}`;
   return (
     <svg width={1280} height={720} style={{position: 'absolute', inset: 0}}>
       <defs>
-        <linearGradient id="ww" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#bfeaf5" />
-          <stop offset="0.06" stopColor="#3e9cbc" />
-          <stop offset="0.55" stopColor="#14506a" />
+        <linearGradient id="ww" x1="0" y1="0" x2="1" y2="0.6">
+          <stop offset="0" stopColor="#d9f3fa" />
+          <stop offset="0.12" stopColor="#4fb0cf" />
+          <stop offset="0.6" stopColor="#17607d" />
           <stop offset="1" stopColor="#082634" />
         </linearGradient>
       </defs>
-      <polygon points={`${x0},${GROUND + 40} ${pts.join(' ')} ${x1},${GROUND + 40}`} fill="url(#ww)" />
-      <polyline points={pts.join(' ')} fill="none" stroke="#ffffff" strokeWidth={9} strokeLinejoin="round" />
-      {Array.from({length: 60}, (_, i) => (
-        <circle key={i} cx={x0 + ((i * 97) % (x1 - x0))} cy={top - 8 - ((i * 37) % 40)} r={2 + (i % 4)} fill="rgba(255,255,255,0.8)" />
+      <polygon points={`${face} ${crest.join(' ')} ${x1},${GROUND + 40}`} fill="url(#ww)" />
+      <polyline points={`${x0 - 30},${top + h * 0.06} ${x0 - 10},${top - 4} ${x0 + 40},${top - 10} ${crest.join(' ')}`} fill="none" stroke="#ffffff" strokeWidth={9} strokeLinejoin="round" />
+      <polyline points={`${x0 + 120},${GROUND - h * 0.35} ${x0 + 80},${GROUND - h * 0.7} ${x0 + 30},${top + h * 0.12}`} fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth={6} />
+      {Array.from({length: 70}, (_, i) => (
+        <circle key={i} cx={x0 - 40 + ((i * 53) % 160)} cy={top - 10 + ((i * 37) % Math.max(40, h * 0.5))} r={2 + (i % 4)} fill="rgba(255,255,255,0.85)" />
       ))}
+      <rect x={0} y={GROUND} width={1280} height={30} fill="#2a3a33" />
     </svg>
   );
 };
@@ -62,11 +65,11 @@ const V1: React.FC = () => {
   return (
     <AbsoluteFill>
       <Sky />
-      <WaterWall h={481 * s} x0={0} x1={1280} />
-      <Building shape="esb" x={720} h={443 * s} />
-      <Person x={690} h={16} />
-      <div style={{position: 'absolute', left: 40, top: 30, fontFamily: INTER, fontWeight: 900, fontSize: 170, lineHeight: 0.95, color: '#ffd166', textShadow: stroke}}>481 m</div>
-      <div style={{position: 'absolute', left: 48, top: 205, fontFamily: INTER, fontWeight: 900, fontSize: 70, color: '#fff', textShadow: stroke}}>OF WATER</div>
+      <Building shape="esb" x={480} h={443 * s} />
+      <Person x={440} h={16} />
+      <WaterWall h={481 * s} x0={680} x1={1280} />
+      <div style={{position: 'absolute', left: 30, top: 18, fontFamily: INTER, fontWeight: 900, fontSize: 150, lineHeight: 0.95, color: '#ffd166', textShadow: stroke}}>481 m</div>
+      <div style={{position: 'absolute', left: 36, top: 170, fontFamily: INTER, fontWeight: 900, fontSize: 70, color: '#fff', textShadow: stroke}}>OF WATER</div>
     </AbsoluteFill>
   );
 };
@@ -80,9 +83,9 @@ const V2: React.FC = () => {
       <div style={{position: 'absolute', left: 760, top: 0, width: 520, height: 720, overflow: 'hidden'}}>
         <div style={{position: 'absolute', left: -760, top: 0, width: 1280, height: 720}}>
           <Sky />
-          <WaterWall h={481 * s} x0={760} x1={1280} />
-          <Building shape="esb" x={990} h={443 * s} />
-          <Person x={930} h={14} />
+          <Building shape="esb" x={800} h={443 * s} />
+          <Person x={780} h={14} />
+          <WaterWall h={481 * s} x0={960} x1={1280} />
         </div>
       </div>
       <div style={{position: 'absolute', left: 760, top: 0, width: 8, height: 720, background: '#ffd166'}} />
@@ -102,11 +105,11 @@ const V3: React.FC = () => {
   return (
     <AbsoluteFill>
       <Sky />
-      <WaterWall h={524 * s} />
       {lib ? <Img src={artSrc('liberty-cut')} style={{position: 'absolute', left: 180, top: GROUND - 93 * s, height: 93 * s, width: (93 * s * lib.w) / lib.h}} /> : null}
       {eif ? <Img src={artSrc('eiffel-cut')} style={{position: 'absolute', left: 330, top: GROUND - 330 * s, height: 330 * s, width: (330 * s * eif.w) / eif.h}} /> : null}
-      <Building shape="esb" x={640} h={443 * s} />
-      <div style={{position: 'absolute', right: 40, top: 40, textAlign: 'right', fontFamily: INTER, fontWeight: 900, fontSize: 120, lineHeight: 1, color: '#fff', textShadow: stroke}}>
+      <Building shape="esb" x={600} h={443 * s} />
+      <WaterWall h={524 * s} x0={820} x1={1280} />
+      <div style={{position: 'absolute', left: 40, top: 40, textAlign: 'left', fontFamily: INTER, fontWeight: 900, fontSize: 120, lineHeight: 1, color: '#fff', textShadow: stroke}}>
         TALLEST
         <br />
         <span style={{color: '#ff6b5e'}}>EVER</span>
