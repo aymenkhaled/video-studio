@@ -14,7 +14,7 @@ on:
       mode:
         description: stills = storyboard frames only; full = video + QA
         type: choice
-        options: [full, stills, media, survey]
+        options: [full, stills, media, survey, shorts]
         default: full
       props:
         description: Optional input-props JSON path in the repo
@@ -72,7 +72,7 @@ jobs:
           retention-days: 14
 
   plan:
-    if: inputs.mode != 'media' && inputs.mode != 'survey'
+    if: inputs.mode != 'media' && inputs.mode != 'survey' && inputs.mode != 'shorts'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     outputs:
@@ -327,3 +327,28 @@ jobs:
           ls -la media.zip
           gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "$TAG" --notes "Licensed art (PD / CC0 / CC BY, see docs/LICENSES.md), Natural Earth relief + rivers (PD), derived depth layers. Built by render.yml mode=media from assets/media.json."
           gh release upload "$TAG" media.zip --clobber
+
+  shorts:
+    # Vertical Shorts cut from finished long videos (spec = inputs.props, e.g. brands/history-maps/shorts/shorts-001.json)
+    if: inputs.mode == 'shorts'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - name: Download source videos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - "${{ inputs.props }}" <<'PY'
+          import json, subprocess, sys
+          spec = json.load(open(sys.argv[1], encoding="utf-8"))
+          for src in spec["sources"]:
+              subprocess.run(["gh", "run", "download", str(src["run"]), "-n", src["artifact"], "-D", src["dir"]], check=True)
+          PY
+      - run: python3 tools/make_shorts.py "${{ inputs.props }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shorts
+          path: out/shorts/*.mp4
+          retention-days: 14
