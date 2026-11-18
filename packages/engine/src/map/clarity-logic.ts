@@ -195,3 +195,10 @@ export const niceScale = (pxPerKm: number, maxPx: number): {km: number; px: numb
     }
   return best;
 };
+
+/** Journey HUD (A003): km value at scene progress p, eased over `window`, rounded to `step` (no false precision). */
+export const journeyKm = (km: [number, number], p: number, window: [number, number] = [0.05, 0.9], step = 1000): number => {
+  const q = Math.min(1, Math.max(0, (p - window[0]) / Math.max(1e-6, window[1] - window[0])));
+  const e = q < 0.5 ? 4 * q * q * q : 1 - (-2 * q + 2) ** 3 / 2;
+  return Math.round((km[0] + (km[1] - km[0]) * e) / step) * step;
+};

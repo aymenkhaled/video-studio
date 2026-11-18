@@ -11,6 +11,8 @@ import {HannibalEpisode, calculateHannibalEpisode} from './history/Hannibal';
 import {HannibalThumb} from './history/HannibalThumb';
 import {CarthageEpisode, calculateCarthageEpisode} from './history/Carthage';
 import {CarthageThumb} from './history/CarthageThumb';
+import {IbnBattutaEpisode, calculateIbnBattutaEpisode} from './history/IbnBattuta';
+import {IbnBattutaThumb} from './history/IbnBattutaThumb';
 import {ChannelAvatar, ChannelBanner} from './channel/ChannelArt';
 import {SwitzerlandEpisode, calculateSwitzerlandEpisode} from './money/Switzerland';
 import {SwitzerlandThumb} from './money/SwitzerlandThumb';
@@ -67,6 +69,19 @@ export const Root: React.FC = () => (
     />
     {([1, 2, 3] as const).map((v) => (
       <Composition key={v} id={`CarthageThumb${v}`} component={CarthageThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
+    ))}
+    <Composition
+      id="IbnBattuta"
+      component={IbnBattutaEpisode}
+      durationInFrames={24 * 60 * 13}
+      fps={24}
+      width={1920}
+      height={1080}
+      defaultProps={{scenes: []}}
+      calculateMetadata={calculateIbnBattutaEpisode}
+    />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={v} id={`IbnBattutaThumb${v}`} component={IbnBattutaThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
     ))}
     <Composition
       id="Switzerland"

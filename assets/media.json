@@ -542,6 +542,48 @@
    "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
    "credit": "Perm, headquarters of the Ural Railway Administration, S. M. Prokudin-Gorsky, c. 1910, Library of Congress, public domain",
    "depth": true
+  },
+  {
+   "id": "catalan-atlas",
+   "source": "commons",
+   "file": "1375_Atlas_Catalan_Abraham_Cresques.jpg",
+   "licence": "Public domain (PD-Art, 1375)",
+   "credit": "Abraham Cresques (attr.), Catalan Atlas, 1375, Bibliothèque nationale de France (public domain)",
+   "depth": false,
+   "max": 4000
+  },
+  {
+   "id": "catalan-mansa-musa",
+   "source": "commons",
+   "file": "Catalan_Atlas_BNF_Sheet_6_Mansa_Musa.jpg",
+   "licence": "Public domain (PD-Art, 1375)",
+   "credit": "Catalan Atlas, sheet 6 (Mansa Musa), 1375, BnF (public domain)",
+   "depth": false,
+   "max": 3000
+  },
+  {
+   "id": "wasiti-hajj",
+   "source": "commons",
+   "file": "Yahyâ_ibn_Mahmûd_al-Wâsitî_005.jpg",
+   "licence": "Public domain (PD-Art, 1237)",
+   "credit": "Yahya ibn Mahmud al-Wasiti, Maqamat of al-Hariri, 1237, BnF (public domain)",
+   "depth": false
+  },
+  {
+   "id": "benett-ibn-battuta",
+   "source": "commons",
+   "file": "Découverte_de_la_Terre_023.jpg",
+   "licence": "Public domain (artist d. 1917)",
+   "credit": "Léon Benett, engraving for Jules Verne, Découverte de la Terre, 1878 (public domain)",
+   "depth": false
+  },
+  {
+   "id": "tughlaq-court",
+   "source": "commons",
+   "file": "Muhammad_bin_Tughlaq_on_the_throne_-_Indian_Museum,_Kolkata.jpg",
+   "licence": "Public domain (PD-Art-100)",
+   "credit": "Muhammad bin Tughluq on the throne, painting, Indian Museum, Kolkata (public domain)",
+   "depth": false
   }
  ],
  "geo": {

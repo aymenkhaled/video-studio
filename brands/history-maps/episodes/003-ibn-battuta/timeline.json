@@ -1,0 +1,1065 @@
+{
+ "id": "003-ibn-battuta",
+ "comp": "IbnBattuta",
+ "title": "He Traveled 5× Farther Than Marco Polo",
+ "fps": 24,
+ "seed": 1325,
+ "voice": {
+  "engine": "kokoro",
+  "voice": "am_michael",
+  "speed": 0.95,
+  "language": "en-us",
+  "gap": 0.42,
+  "prosody": true,
+  "chain": true,
+  "model": "fp32"
+ },
+ "music": {
+  "key": "D",
+  "tempo": 70
+ },
+ "mix": {
+  "duck_db": 20,
+  "tp_oversample": true
+ },
+ "ambience": {
+  "type": "wind",
+  "gain": 0.08
+ },
+ "scenes": [
+  {
+   "id": "c0a",
+   "music": "epic",
+   "lead": 0.2,
+   "lines": [
+    "You were taught that Marco Polo was the great traveller of the Middle Ages.",
+    "This man went almost five times farther."
+   ],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    },
+    {
+     "type": "impact",
+     "at": 3.6,
+     "duration": 1.4,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "c0b",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "About one hundred seventeen thousand kilometres, by the best estimate. Yet most people have never heard his name."
+   ]
+  },
+  {
+   "id": "c0c",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "His name was Ibn Battuta. He left Tangier, in Morocco, for one pilgrimage, and came back twenty-four years later."
+   ]
+  },
+  {
+   "id": "c0d",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "So, three questions. How did a man with almost no money pay for a journey like that? What nearly killed him, again and again?"
+   ]
+  },
+  {
+   "id": "c0e",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "And if he went that far, why did Europe forget him for almost five hundred years? By the end, you will see his whole route on one map."
+   ]
+  },
+  {
+   "id": "c0f",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "This is the journey of Ibn Battuta."
+   ],
+   "tail": 1.4,
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 0.3,
+     "duration": 1.4,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1a",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "First, where are we? Tangier sits at the very tip of North Africa, where the Mediterranean meets the Atlantic."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.25
+   }
+  },
+  {
+   "id": "c1b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He was born here in thirteen hundred four, into a family of Muslim judges, and he studied Islamic law."
+   ]
+  },
+  {
+   "id": "c1c",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "On the fourteenth of June, thirteen twenty-five, aged about twenty-one, he set out alone. No caravan, no companion."
+   ]
+  },
+  {
+   "id": "c1d",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "His goal was Mecca, for the Hajj, the pilgrimage every Muslim should make once. The trip there and back usually took about sixteen months."
+   ]
+  },
+  {
+   "id": "c1e",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He later wrote that leaving his parents felt like a bird leaving its nest. He would not see Morocco again for twenty-four years."
+   ]
+  },
+  {
+   "id": "c1f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He followed the coast east, through Tlemcen and Bejaia, in today's Algeria, to Tunis, in today's Tunisia."
+   ],
+   "sfx": [
+    {
+     "type": "footstep",
+     "at": 0.5,
+     "duration": 6,
+     "gain": 0.15
+    }
+   ]
+  },
+  {
+   "id": "c1g",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "So far, a young scholar has left home alone. But how does a man with almost nothing pay his way across a continent?"
+   ]
+  },
+  {
+   "id": "c2",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c2a",
+   "music": "march",
+   "lead": 0.3,
+   "lines": [
+    "Along the way he joined caravans, long lines of travellers and camels moving together, because alone, a traveller was easy prey for robbers."
+   ],
+   "sfx": [
+    {
+     "type": "hooves",
+     "at": 0.5,
+     "duration": 6,
+     "gain": 0.12
+    }
+   ]
+  },
+  {
+   "id": "c2b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "But he had a secret weapon. He was trained in Islamic law, and in his world, a learned man was welcome almost anywhere Muslims ruled."
+   ]
+  },
+  {
+   "id": "c2c",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "From Morocco to India, rulers and scholars gave guests like him food, a bed, gifts, and sometimes a job."
+   ]
+  },
+  {
+   "id": "c2d",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "So for much of his journey, Ibn Battuta did not pay his own way. He travelled on hospitality, from one city to the next."
+   ],
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 2.5,
+     "duration": 0.6,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c2e",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "After more than three thousand five hundred kilometres he reached Alexandria, then Cairo, the capital of the Mamluk sultans who ruled Egypt and Syria."
+   ]
+  },
+  {
+   "id": "c2f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "From there he went north to Jerusalem and Damascus, in today's Syria, and joined the great pilgrim caravan heading south across the desert."
+   ]
+  },
+  {
+   "id": "c2g",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "About thirteen hundred kilometres later he reached Medina, and then Mecca. It was November, thirteen twenty-six. His first Hajj was done."
+   ]
+  },
+  {
+   "id": "c2h",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Any other pilgrim would now go home. Ibn Battuta did not."
+   ],
+   "tail": 1.2
+  },
+  {
+   "id": "c2i",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "So far, his learning paid his way, and Mecca was only the first stop. Next, he turned toward Iraq and Persia."
+   ]
+  },
+  {
+   "id": "c3",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c3a",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He crossed the desert to Najaf and Basra, in today's Iraq, then went east into Persia, to Isfahan and Shiraz, in today's Iran."
+   ]
+  },
+  {
+   "id": "c3b",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "In Baghdad he found a city still partly in ruins, almost seventy years after the Mongols had sacked it."
+   ]
+  },
+  {
+   "id": "c3c",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He went back to Mecca and stayed there for a while to study. Then he chose the sea."
+   ]
+  },
+  {
+   "id": "c3d",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "From Jeddah he sailed down the Red Sea to Aden, in Yemen, and on along the coast of East Africa."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.5,
+     "duration": 6,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c3e",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Mogadishu, in today's Somalia. Mombasa, in Kenya. And then Kilwa, in Tanzania, a port that grew rich on the gold trade."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c3f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He called Kilwa one of the finest and most beautifully built towns he had seen."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.25
+   }
+  },
+  {
+   "id": "c3g",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "And here is a strange thought. By our rough estimate, somewhere on these seas he had already travelled as far as Marco Polo's entire journey."
+   ],
+   "sfx": [
+    {
+     "type": "counter",
+     "at": 1.5,
+     "duration": 2.0,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c3h",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "He was about twenty-five years old. And he was only getting started."
+   ],
+   "tail": 1.0
+  },
+  {
+   "id": "c3i",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "So far: Iraq, Persia, and Africa's east coast. Now he wanted to work for the richest ruler he had heard of: the Sultan of Delhi."
+   ]
+  },
+  {
+   "id": "c4",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c4a",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "But he did not take the short way. He went through Anatolia, today's Türkiye, and crossed the Black Sea from Sinop."
+   ]
+  },
+  {
+   "id": "c4b",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "On the other side lay the Golden Horde, a Mongol state that ruled the steppe, the endless grassland north of the Black Sea."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.2
+   }
+  },
+  {
+   "id": "c4c",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He joined the moving camp of its khan, Özbeg, a whole city of tents and wagons rolling across the grass."
+   ],
+   "ambience": {
+    "type": "camp",
+    "gain": 0.2
+   }
+  },
+  {
+   "id": "c4d",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "He also says he went north up the Volga, to a town called Bulgar. Many historians doubt that trip ever happened."
+   ]
+  },
+  {
+   "id": "c4e",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "Then came a surprise. One of the khan's wives, Bayalun, was a Byzantine princess. She was pregnant, and wanted to give birth at home, in Constantinople."
+   ]
+  },
+  {
+   "id": "c4f",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "Ibn Battuta went with her. A Muslim judge from Morocco walked through the Christian capital, today's Istanbul, and visited the great church of Hagia Sophia."
+   ]
+  },
+  {
+   "id": "c4g",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Then he turned east, across today's Kazakhstan and Uzbekistan, to the great cities of Bukhara and Samarkand."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.2
+   }
+  },
+  {
+   "id": "c4h",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "He crossed the Hindu Kush mountains, and in thirteen thirty-three he reached the Indus River, the gateway to India."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c5",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c5a",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Delhi was ruled by Sultan Muhammad bin Tughluq. He was clever, very generous, and one of the most frightening men of his age."
+   ]
+  },
+  {
+   "id": "c5b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He gave Ibn Battuta a big salary and a job as a qadi, a judge, in Delhi."
+   ],
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 1.5,
+     "duration": 0.6,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c5c",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "But the sultan was also brutally violent. He punished fast and killed easily, and no one at his court ever felt safe."
+   ]
+  },
+  {
+   "id": "c5d",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Ibn Battuta stayed about seven years. Then he visited a holy man the sultan distrusted."
+   ]
+  },
+  {
+   "id": "c5e",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "That was enough. He was put under guard for nine days, and he believed he would be executed."
+   ],
+   "tail": 1.2,
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c5f",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "He survived. He gave away what he owned and lived for five months as a hermit outside Delhi."
+   ]
+  },
+  {
+   "id": "c5g",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "Then the sultan called him back, and offered him a job most men would kill for: ambassador to the Emperor of China."
+   ]
+  },
+  {
+   "id": "c5h",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "So far: Delhi made him rich, and nearly got him killed. And the trip to China would go wrong even faster."
+   ]
+  },
+  {
+   "id": "c6",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c6a",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "In thirteen forty-one the embassy set out with gifts for China. On the way to the coast, rebels attacked. He was robbed, captured, and barely escaped."
+   ],
+   "sfx": [
+    {
+     "type": "clash",
+     "at": 3.5,
+     "duration": 1.2,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c6b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He caught up with the others and travelled to Calicut, today's Kozhikode, on India's west coast, where the ships for China waited."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c6c",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "Then a storm hit the harbour. He was still on shore when one of the ships was smashed, and many people on board drowned."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.5
+   },
+   "sfx": [
+    {
+     "type": "waves",
+     "at": 0.2,
+     "duration": 8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c6d",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "The other ship sailed away with his belongings. In one night he lost the embassy, the gifts, and his job."
+   ],
+   "tail": 1.2
+  },
+  {
+   "id": "c6e",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He was afraid to face the sultan. So he sailed to the Maldives, a chain of tiny islands in the Indian Ocean."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c6f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "There, a man who had lost everything became chief judge again. He married several times, and into the royal family."
+   ]
+  },
+  {
+   "id": "c6g",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "He visited Ceylon, today's Sri Lanka, and climbed its holy mountain. But on the next voyage, pirates took almost everything he had left."
+   ]
+  },
+  {
+   "id": "c6h",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "So far: robbed twice, nearly drowned, and nothing left. Any sensible man would go home. Instead, he sailed for China."
+   ]
+  },
+  {
+   "id": "c7",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c7a",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "From Chittagong, in today's Bangladesh, he sailed to Sumatra, in Indonesia, and on to Quanzhou, a huge port on the coast of China."
+   ],
+   "ambience": {
+    "type": "sea",
+    "gain": 0.3
+   }
+  },
+  {
+   "id": "c7b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He describes Chinese silk and porcelain, paper money instead of coins, and Muslim merchants with their own mosques."
+   ]
+  },
+  {
+   "id": "c7c",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "But here, historians start to doubt him. His China is vaguer than the rest of the book, and he gets some things wrong."
+   ]
+  },
+  {
+   "id": "c7d",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "He says he reached Beijing, the Mongol capital. Many scholars think he never got that far, and borrowed some details from other writers."
+   ]
+  },
+  {
+   "id": "c7e",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Remember, he told this story from memory, years later, without notes. So treat the China part with care. Much of the rest fits other sources."
+   ]
+  },
+  {
+   "id": "c7f",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "So far: China is the shakiest part of his story. And on the way home, he sailed straight into the Black Death."
+   ]
+  },
+  {
+   "id": "c8",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c8a",
+   "music": "tension",
+   "lead": 0.3,
+   "lines": [
+    "He sailed back west, past India and Arabia. In Syria he learned that his father had died fifteen years earlier."
+   ]
+  },
+  {
+   "id": "c8b",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "Then, in thirteen forty-eight, the Black Death reached the cities he was passing through, a plague that killed people within days."
+   ]
+  },
+  {
+   "id": "c8c",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "In Damascus, his book says, about two thousand four hundred people were dying every day. Cairo was hit just as hard."
+   ],
+   "sfx": [
+    {
+     "type": "rumble",
+     "at": 0.3,
+     "duration": 3,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "c8d",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He kept going. He made one last Hajj in Mecca, then took the long road west, toward home."
+   ]
+  },
+  {
+   "id": "c8e",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "In thirteen forty-nine he reached Morocco. Only then did he learn that his mother had died, just months before he arrived."
+   ],
+   "tail": 1.4
+  },
+  {
+   "id": "c8f",
+   "music": "somber",
+   "lead": 0.3,
+   "lines": [
+    "He visited her grave in Tangier. Then he settled in Fez, the sultan's capital. He was about forty-five years old."
+   ]
+  },
+  {
+   "id": "c8g",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "So far: twenty-four years on the road, and he was still not done. One great Muslim kingdom was missing from his list."
+   ]
+  },
+  {
+   "id": "c9",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c9a",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "South of Morocco lies the Sahara. Beyond it was the Empire of Mali, famous all over the world for its gold."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.25
+   }
+  },
+  {
+   "id": "c9b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "This map was drawn in Spain around thirteen seventy-five. It shows a king of Mali on his throne, holding a huge piece of gold."
+   ]
+  },
+  {
+   "id": "c9c",
+   "music": "march",
+   "lead": 0.3,
+   "lines": [
+    "In thirteen fifty-two he crossed the Sahara with a camel caravan. At Taghaza, even the houses were built from slabs of salt."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.3
+   },
+   "sfx": [
+    {
+     "type": "hooves",
+     "at": 0.5,
+     "duration": 5,
+     "gain": 0.1
+    }
+   ]
+  },
+  {
+   "id": "c9d",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He reached the capital of Mali and met its king, Mansa Sulayman, the brother of the famous Mansa Musa."
+   ]
+  },
+  {
+   "id": "c9e",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He was not impressed. The king's welcome gift, he complained, was three loaves of bread, some fried beef, and a gourd of yogurt."
+   ]
+  },
+  {
+   "id": "c9f",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "He also saw Timbuktu, on the Niger River. Then he crossed the desert north again, and was home by early thirteen fifty-four."
+   ],
+   "ambience": {
+    "type": "wind",
+    "gain": 0.25
+   }
+  },
+  {
+   "id": "c9g",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "So far: his travelling days were over. But his story still had to make its own journey."
+   ]
+  },
+  {
+   "id": "c10",
+   "lead": 0.2,
+   "tail": 0.6,
+   "min": 3.4,
+   "lines": [],
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.7,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c10a",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "In Fez, Sultan Abu Inan asked him to tell his story to a young court writer, Ibn Juzayy."
+   ],
+   "sfx": [
+    {
+     "type": "page",
+     "at": 1.0,
+     "duration": 0.5,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c10b",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Ibn Battuta talked, and Ibn Juzayy wrote and polished. Around thirteen fifty-five the book was finished: the Rihla, which simply means the journey."
+   ]
+  },
+  {
+   "id": "c10c",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "So why did Europe forget him? Because Europe never really knew him. The book was in Arabic, and its copies stayed in the Muslim world."
+   ]
+  },
+  {
+   "id": "c10d",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Marco Polo's book spread across Europe in many languages, and it inspired Christopher Columbus."
+   ]
+  },
+  {
+   "id": "c10e",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Europeans only discovered Ibn Battuta in the eighteen hundreds. The full text with a French translation came out between eighteen fifty-three and eighteen fifty-eight."
+   ]
+  },
+  {
+   "id": "c10f",
+   "music": "build",
+   "lead": 0.3,
+   "lines": [
+    "So, the answers. He paid his way with his learning and other people's hospitality. He survived bandits, a tyrant, a shipwreck, pirates and the plague."
+   ]
+  },
+  {
+   "id": "c10g",
+   "music": "epic",
+   "lead": 0.3,
+   "lines": [
+    "Here is Marco Polo's journey. And here is Ibn Battuta's: about one hundred seventeen thousand kilometres, and at least forty of today's countries."
+   ],
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.2,
+     "duration": 3,
+     "gain": 0.3
+    },
+    {
+     "type": "impact",
+     "at": 3.5,
+     "duration": 1.4,
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "c10h",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "Historians still argue about some of his stops. But even the parts they trust make him one of the greatest travellers who ever lived."
+   ]
+  },
+  {
+   "id": "c10i",
+   "music": "calm",
+   "lead": 0.3,
+   "lines": [
+    "So who should we really call the great traveller of the Middle Ages? Tell me in the comments."
+   ],
+   "tail": 2.0
+  },
+  {
+   "id": "c10j",
+   "music": "calm",
+   "lead": 0.4,
+   "lines": [
+    "On his very first road, he passed Tunis, right next to the ruins of ancient Carthage. Why Rome destroyed it is right here on screen.",
+    "Thanks for watching."
+   ],
+   "tail": 6,
+   "min": 20,
+   "endscreen": true
+  }
+ ]
+}

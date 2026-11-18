@@ -1,0 +1,38 @@
+{
+  "titles": [
+    "He Traveled 5× Farther Than Marco Polo. Nobody Taught You His Name.",
+    "117,000 km Before Columbus: The Greatest Journey of the Middle Ages",
+    "The Man From Tangier Who Saw the Whole Medieval World"
+  ],
+  "hook": "You were taught that Marco Polo was the great traveller of the Middle Ages. Ibn Battuta, a young scholar from Tangier in Morocco, went almost five times farther: about 117,000 km by the usual estimate, across at least forty of today's countries. How did he pay for it, what nearly killed him, and why did Europe forget him? Told with animated maps, modern borders, a live distance counter, and the sources on screen. Distances and some stops (parts of China, the Volga trip) are estimates or doubted by historians, and we say so on screen.",
+  "chapters": {
+    "c0a": "5× farther than Marco Polo",
+    "c1": "Tangier, 1325",
+    "c2": "The Road to Mecca (how he paid)",
+    "c3": "Persia and the Swahili Coast",
+    "c4": "The Steppe and Constantinople",
+    "c5": "The Sultan of Delhi",
+    "c6": "Shipwreck",
+    "c7": "China? Where historians doubt him",
+    "c8": "The Black Death",
+    "c9": "Across the Sahara to Mali",
+    "c10": "The Book Europe Forgot"
+  },
+  "credits": [
+    "Map data: Natural Earth (public domain) via world-atlas. Modern borders shown for orientation. The route is an approximate reconstruction joining the places named in the Rihla, not a GPS track; the km counter shares the estimated total (about 117,000 km) along the drawn route.",
+    "Art: Catalan Atlas, 1375, Bibliothèque nationale de France (public domain); al-Wasiti, Maqamat of al-Hariri, 1237, BnF (public domain); Léon Benett, engraving for Jules Verne's Découverte de la Terre, 1878 (public domain; Ibn Battuta's face is imagined); Muhammad bin Tughluq on the throne, Indian Museum, Kolkata (public domain).",
+    "Shaded relief and rivers: Natural Earth (public domain).",
+    "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT).",
+    "Narration: synthetic voice (Kokoro-82M, Apache-2.0).",
+    "Fonts: Cinzel and Inter (SIL Open Font License).",
+    "Main sources: the Rihla (H. A. R. Gibb translation, Hakluyt Society); Ross E. Dunn, The Adventures of Ibn Battuta, via UC Berkeley ORIAS; Wikipedia; The Conversation (2025); Encyclopaedia Britannica."
+  ],
+  "hashtags": [
+    "#IbnBattuta",
+    "#MarcoPolo",
+    "#History",
+    "#Morocco",
+    "#HistoryMaps"
+  ],
+  "pinned_comment": "Marco Polo or Ibn Battuta: who should we remember as the great traveller of the Middle Ages? And which stop on his route surprised you most?"
+}

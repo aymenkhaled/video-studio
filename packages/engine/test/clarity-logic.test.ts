@@ -90,3 +90,11 @@ test('labels with maxShift never wander to another dot; they stay put instead', 
   assert.ok(Math.hypot(c.dx, c.dy) <= 60, `moved ${c.dx},${c.dy}`);
   assert.equal(c.hidden, false);
 });
+
+test('journey km: eased, rounded, clamped to the window', async () => {
+  const {journeyKm} = await import('../src/map/clarity-logic.ts');
+  assert.equal(journeyKm([2287, 8936], 0), 2000);
+  assert.equal(journeyKm([2287, 8936], 1), 9000);
+  assert.equal(journeyKm([0, 117000], 0.475), 59000);
+  assert.ok(journeyKm([0, 117000], 0.3) <= journeyKm([0, 117000], 0.31));
+});

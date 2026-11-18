@@ -99,3 +99,13 @@ Sounds (Freesound.org): "Pas de dinosaure" by ComputerHotline (CC BY 4.0) · "Di
 | pg-tobolsk — Tobolsk, Siberia, S. M. Prokudin-Gorsky, 1912, Library of Congress, public domain | Wikimedia Commons | Public domain (LoC, no known restrictions) | Money & Maps 002 | https://commons.wikimedia.org/wiki/File:Sergei_Prokudin-Gorskii,_Church_of_the_Holy_Mother_of_God,_Tobolsk,_Russia,_1912.jpg |
 | pg-chusovaya — Maksimovsky rock, Chusovaya river (Urals), S. M. Prokudin-Gorsky, 1912, Library of Congress, public domain | Wikimedia Commons | Public domain (LoC, no known restrictions) | Money & Maps 002 | https://commons.wikimedia.org/wiki/File:Maksimovsky_rock_Chusovaya_river.jpg |
 | pg-perm-rail — Perm, headquarters of the Ural Railway Administration, S. M. Prokudin-Gorsky, c. 1910, Library of Congress, public domain | Wikimedia Commons | Public domain (LoC, no known restrictions) | Money & Maps 002 | https://commons.wikimedia.org/wiki/File:Prokudin-Gorsky_-_Perm._Headquarters_of_the_Ural_Railway_Administration.jpg |
+
+### History in Maps 003 (Ibn Battuta)
+
+| Asset | Source | Licence | Used in | URL |
+|---|---|---|---|---|
+| catalan-atlas — Catalan Atlas, 1375 (Abraham Cresques, attr.), BnF | Wikimedia Commons | Public domain (PD-Art) | History in Maps 003 | https://commons.wikimedia.org/wiki/File:1375_Atlas_Catalan_Abraham_Cresques.jpg |
+| catalan-mansa-musa — Catalan Atlas sheet 6 (Mansa Musa), 1375, BnF | Wikimedia Commons | Public domain (PD-Art) | History in Maps 003 | https://commons.wikimedia.org/wiki/File:Catalan_Atlas_BNF_Sheet_6_Mansa_Musa.jpg |
+| wasiti-hajj — al-Wasiti, Maqamat miniature (pilgrim caravan), 1237, BnF | Wikimedia Commons | Public domain (PD-Art) | History in Maps 003 | https://commons.wikimedia.org/wiki/File:Yahy%C3%A2_ibn_Mahm%C3%BBd_al-W%C3%A2sit%C3%AE_005.jpg |
+| benett-ibn-battuta — Léon Benett engraving (Ibn Battuta, imagined), 1878 | Wikimedia Commons | Public domain (artist d. 1917) | History in Maps 003 | https://commons.wikimedia.org/wiki/File:D%C3%A9couverte_de_la_Terre_023.jpg |
+| tughlaq-court — Muhammad bin Tughluq on the throne, Indian Museum, Kolkata | Wikimedia Commons | Public domain (PD-Art-100) | History in Maps 003 | https://commons.wikimedia.org/wiki/File:Muhammad_bin_Tughlaq_on_the_throne_-_Indian_Museum,_Kolkata.jpg |

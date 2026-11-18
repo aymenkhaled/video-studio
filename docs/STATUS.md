@@ -51,6 +51,11 @@ _Updated 14 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
 4. Pilot episodes: A (10–15 min) → C → B.
 5. Aymen: YouTube API key, create 3 channels, advanced features.
 
+## History in Maps 003 "Ibn Battuta" — branch `ep/003-ibn-battuta` (worktree `D:\studio-003`), 18 Nov 2026
+- Built: sources.md (46 rows, 7 brief corrections), `data/battuta.ts` (route by chapter + Polo), timeline (95 scenes, 1,781 words), scenes.ts (map-first, 8/95 art), thumbnails x3 (map-led), engine `journey` overlay (≈ km counter + Marco Polo bar).
+- Decisions: HUD shows the sourced ≈117,000 km estimate shared along the drawn line (line itself ≈76,000 km), labelled EST. · Delhi "about seven years" (sources 6–7) · mother's death learned in Morocco 1349, not Damascus · Benett engraving only on a card (482 px) · Timbuktu "caravan" image dropped (unclear date) · an OpenCode draft written into this worktree was reviewed and rewritten (unsourced lines removed).
+- Next: media rebuild → cloud stills → Aymen OK → full render, QA, independent review, UPLOAD.md.
+
 ## Episode 002 "Why Rome Destroyed Carthage" — branch `ep/002-carthage` (worktree `D:\studio-002`)
 Spec `docs/superpowers/specs/2026-11-13-002-carthage-design.md` · plan `docs/superpowers/plans/2026-11-13-002-carthage.md` · standard `docs/CLARITY_STANDARD.md` + Aymen's `docs/VIEWER_CLARITY_FEEDBACK.md` (main).
 
