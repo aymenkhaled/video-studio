@@ -21,8 +21,8 @@ CHANNEL = {"history-maps": "History in Maps", "scale-science": "Scale & Science"
 MUSIC = {"history-maps": {"key": "D", "tempo": 84}, "scale-science": {"key": "E", "tempo": 84}, "money-maps": {"key": "D", "tempo": 84}}
 
 LONG = {
-    "A001": ("Hannibal: The Man Who Nearly Destroyed Rome", "uploaded 14 Nov 2026"),
-    "A002": ("Why Rome Destroyed Carthage", "NOT uploaded yet: post these Shorts only after the long video is live"),
+    "A001": ("Hannibal: The Man Who Nearly Destroyed Rome", "uploaded 14 Nov 2026, https://youtu.be/DQ783JjY98Q"),
+    "A002": ("Why Rome Destroyed Carthage", "uploaded, https://youtu.be/v7h91oBTKSc"),
     "B001": ("How Big Was the Biggest Animal Ever? (Blue Whale vs Megalodon vs Dinosaurs)", "uploaded 14 Nov 2026"),
     "B002": ("Every Giant Wave Ever Measured, Shown to Scale", "uploaded 16 Nov 2026"),
     "C001": ("Why Is Switzerland So Rich? (No Sea, No Oil, Mostly Mountains)", "uploaded 14 Nov 2026, https://youtu.be/WXPLXCk0KyM"),
@@ -242,7 +242,7 @@ SHORTS = [
 # posting plan: 1 Short per channel per day, from 19 Nov 2026, at the channel's usual upload hour; Carthage Shorts wait for its long video
 SCHEDULE = {
     "a001-short-1-cannae": "Thu 19 Nov 2026", "a001-short-2-alps": "Fri 20 Nov 2026",
-    "a002-short-1-fig": "day after the Carthage long video goes live", "a002-short-2-salt": "2 days after the Carthage long video goes live",
+    "a002-short-1-fig": "Sat 21 Nov 2026", "a002-short-2-salt": "Sun 22 Nov 2026",
     "b001-short-1-megalodon": "Thu 19 Nov 2026", "b002-short-1-tracy-arm": "Fri 20 Nov 2026",
     "b001-short-2-alive-now": "Sat 21 Nov 2026", "b002-short-2-lituya": "Sun 22 Nov 2026",
     "c002-short-1-norilsk": "Thu 19 Nov 2026", "c001-short-1-watches": "Fri 20 Nov 2026",

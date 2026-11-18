@@ -25,7 +25,7 @@ Sources:
 #shorts #history #hannibal #alps #maps
 
 ## Related video (set in Studio)
-YouTube Studio → upload → Details → **Related video** → pick: **Hannibal: The Man Who Nearly Destroyed Rome** (uploaded 14 Nov 2026).
+YouTube Studio → upload → Details → **Related video** → pick: **Hannibal: The Man Who Nearly Destroyed Rome** (uploaded 14 Nov 2026, https://youtu.be/DQ783JjY98Q).
 This puts a tappable link to the long video under the Short. Also pin a comment: "Full story here 👉 <long-video URL>".
 
 ## Schedule

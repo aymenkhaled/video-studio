@@ -25,11 +25,11 @@ Sources:
 #shorts #history #carthage #ancientrome #maps
 
 ## Related video (set in Studio)
-YouTube Studio → upload → Details → **Related video** → pick: **Why Rome Destroyed Carthage** (NOT uploaded yet: post these Shorts only after the long video is live).
+YouTube Studio → upload → Details → **Related video** → pick: **Why Rome Destroyed Carthage** (uploaded, https://youtu.be/v7h91oBTKSc).
 This puts a tappable link to the long video under the Short. Also pin a comment: "Full story here 👉 <long-video URL>".
 
 ## Schedule
-Post: **day after the Carthage long video goes live** (1 Short per channel per day; same hour as the channel's long uploads). Do not post two Shorts for the same long video on the same day.
+Post: **Sat 21 Nov 2026** (1 Short per channel per day; same hour as the channel's long uploads). Do not post two Shorts for the same long video on the same day.
 
 ## Notes
 - Made for YouTube only (no other platforms). Altered/synthetic content: AI voice narration only, no realistic people → answer "No" unless YouTube's form changes.
