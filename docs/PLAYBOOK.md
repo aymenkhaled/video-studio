@@ -319,6 +319,7 @@ All DOING via the Clarity Kit — keep them; they are our differentiator: charac
 | Parallel sessions: merge `origin/main` into your branch inside your own worktree, typecheck + test, then push; never a conflicting merge in the shared `D:\studio` checkout | L B001 #10 [OWN] | M | DOING |
 | Demand check without Semrush: web search + competing videos' outlier ratios; don't block on API units | L B001 #12 [OWN] | M | DOING |
 | Big patch edits via a Python script file, not shell heredocs | L B001 #13 [OWN] | L | DOING |
+| After `git merge origin/main`, if `git diff --name-only --diff-filter=U` lists anything, STOP: resolve, `grep` for `<<<<<<<`, typecheck + test, only then commit/push (a marker-filled make_shorts.py reached main once) | B Shorts 18 Nov [OWN] | H | DOING |
 | Work fast, report early, short answers | L Aymen #9 [OWN] | M | DOING |
 | Anything blocked for automation (bot-checked sites, logins, big archives — e.g. the USGS ScienceBase CC0 video zip): **ping Aymen with the exact link, file name, size and where to save it** instead of skipping it; never bypass bot checks | Aymen 16 Nov 2026 [OWN] | M | DOING |
 | Realism: no flat silhouettes for animals/subjects; real PD/CC0/CC BY photos, cut-outs at exact scale (`cutout: true`), real footage when available | Aymen 15 Nov 2026, B001 analytics [OWN] | H | DOING |
