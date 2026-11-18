@@ -9,6 +9,10 @@ Decisions (Claude; Aymen away, "don't ask"):
 - 2026-11-18 Posting: 1 Short per channel per day from Thu 19 Nov; Related video = its long video; Carthage Shorts wait until the Carthage long video is live. Titles number-led paradox (C002 lesson).
 - Files: engine `packages/engine/src/shorts/short.tsx`, shots `src/shorts/defs.tsx`, scripts + packaging `tools/build_shorts.py` → `brands/<brand>/shorts/<slug>/{timeline.json,UPLOAD.md}`. Render: `render.yml mode=full comp=Short… timeline=…/timeline.json media_release=<episode release>`.
 - 2 stills rounds (round 2 fixes: hook size, crop band, art cover, battle zoom, charts as vertical bars, Alps first frame).
+- 2026-11-18 **Delivered: 12 Shorts, all QA PASS** (45.5–54.3 s, −14.2…−14.7 LUFS, −3.0…−3.9 dBTP, black/freeze/silence clean) in `D:\deep-time-fables\shorts\<channel>-<episode>-short-<n>\` (final.mp4, cover.jpg, contact_sheet.jpg, qa.json, UPLOAD.md). The parent session's 4 quick cuts moved to `shorts\_superseded-quick-cuts\` (do not upload).
+  Renders: A001 44285775019 / 44293673495 · A002 44285789879 / 44285796288 · B001 44285802290 / 44285808879 · B002 44293678777 / 44293811503 · C001 44285829762 / 44285837953 · C002 44285843167 / 44290522298. Two full-render fixes: vertical bars froze (no living camera) → fixed; Lituya 59 s → narration trimmed to 53.8 s.
+  Honest score: 7/10 overall (Money & Maps bar Shorts 7.5, paintings/maps 7, scale-stage crops 6.5). Weaknesses: (1) 16:9 scale stages cropped to 9:16 still cut edge labels ("Great whi…", "Mi…"); a vertical-native scale stage is the next engine step. (2) Nobody has phone-listened (voice at speed 1.0 + 20 dB ducking). (3) No measured Shorts→long click data yet: check "Related video" clicks after 7 days before making more.
+- Waiting on Aymen: upload per UPLOAD.md (set Related video in Studio, schedule from Thu 19 Nov, Carthage Shorts only after the Carthage long video is live).
 
 _Updated 14 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
 
