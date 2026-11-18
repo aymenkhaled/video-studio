@@ -74,7 +74,7 @@ jobs:
   plan:
     if: inputs.mode != 'media' && inputs.mode != 'survey' && inputs.mode != 'shorts'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40  # fp32 Kokoro on a TTS cache miss can exceed 20 min
     outputs:
       matrix: ${{ steps.plan.outputs.matrix }}
       frames: ${{ steps.plan.outputs.frames }}
