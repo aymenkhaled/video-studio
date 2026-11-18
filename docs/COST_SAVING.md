@@ -59,3 +59,10 @@ tools/gpt.sh heavy docs/research/topic-scout-2026-11-20.md "Find 12 rare, high-d
 Claude then reads only the result file, checks the most important facts, and does script, scenes, code and the final review.
 
 Note: the output file must be inside the repo (e.g. `docs/research/…`); OpenCode refuses to write outside `D:\studio`. Tested end to end 18 Nov: `free` tier wrote the file and returned one status line.
+
+## Plugins and connectors to switch off (Aymen does this in the Claude app, 18 Nov 2026)
+The plugins are delivered by the Claude desktop app (they are not in a `settings.json` file), so they are switched off in the app's settings, not from a chat.
+- **Keep:** `superpowers` (one planning/skills pack is enough), the web search connector (Parallel), and optionally Exa.
+- **Switch off (not used for video work):** beads-superpowers and research-superpowers (they duplicate superpowers and inject long start-up text into every chat), agentone-token-compression, agent-protocols, agentforce-adlc, agent-memory, browser-use, career-compass, desktop-commander, expo, pdf-viewer, search-visibility-kit, searchatlas, searchoclock, signalwire, videorecompress-studio, and the skill packs for Shopify/small-business, Zoom, bio-research, sales, finance, legal, HR, marketing, Unity, Wix, Figma, Tableau, DataRobot, cold-email, Hunter, Lusha, QuickBooks, Arcads, CineFlo, Evermuse, brand-voice.
+- **Connectors (claude.ai → Settings → Connectors) to switch off:** Gmail, job search, TinyFish, Vercel, Upwork, VideoDB, Cloudflare, Shopify, SearchAtlas. Semrush only if keyword research is not needed.
+Expected saving: roughly 40–50k tokens on every message in every chat.
