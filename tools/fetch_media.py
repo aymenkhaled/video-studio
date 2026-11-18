@@ -49,7 +49,7 @@ def get(url, name, pins):
                 wait = max(15, int(e.headers.get("Retry-After") or 0), 10 * 2 ** attempt)
                 print(f"  {e.code} on {name}, retry in {min(wait, 120)} s")
                 time.sleep(min(wait, 120))
-        time.sleep(4)  # pace requests
+        time.sleep(0.3 if name.endswith('.tile') else 4)  # pace requests (map tiles are small and served by a CDN)
     sha = hashlib.sha256(path.read_bytes()).hexdigest()
     if name in pins and pins[name] != sha:
         raise SystemExit(f"sha256 mismatch for {name}: {sha} != pinned {pins[name]}")
@@ -108,6 +108,34 @@ def cutout(img, session):
     return rgba.crop((int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1))
 
 
+def tile_mosaic(a, pins):
+    """Stitch a Web-Mercator XYZ tile grid (licence-checked imagery, e.g. Sentinel-2 cloudless 2016) centred on
+    `center` [lon, lat] at zoom `z`, `grid` [cols, rows] tiles of 256 px. Returns (image, metres per pixel at centre).
+    Scale & Science satellite zooms place footprints in metres on top of it (SatZoom)."""
+    import math
+    lon, lat = a["center"]
+    z = int(a["z"])
+    n = 2 ** z
+    fx = (lon + 180) / 360 * n
+    fy = (1 - math.asinh(math.tan(math.radians(lat))) / math.pi) / 2 * n
+    cols, rows = a["grid"]
+    tx0, ty0 = int(fx - cols / 2), int(fy - rows / 2)
+    ts = a.get("tile", 256)
+    img = Image.new("RGB", (cols * ts, rows * ts))
+    for j in range(rows):
+        for i in range(cols):
+            x, y = (tx0 + i) % n, ty0 + j
+            url = a["template"].format(z=z, x=x, y=y)
+            path = get(url, f"{a['id']}_{z}_{x}_{y}.tile", pins)
+            img.paste(Image.open(path).convert("RGB").resize((ts, ts)), (i * ts, j * ts))
+    # crop so the requested centre is the image centre
+    cx, cy = (fx - tx0) * ts, (fy - ty0) * ts
+    half_w, half_h = min(cx, cols * ts - cx), min(cy, rows * ts - cy)
+    img = img.crop((int(cx - half_w), int(cy - half_h), int(cx + half_w), int(cy + half_h)))
+    mpp = 156543.03392 * math.cos(math.radians(lat)) / n * (256 / ts)
+    return img, mpp
+
+
 def main():
     manifest = json.loads((ROOT / (sys.argv[1] if len(sys.argv) > 1 else "assets/media.json")).read_text(encoding="utf-8"))
     pins = manifest.get("sha256", {})
@@ -133,6 +161,15 @@ def main():
             req = urllib.request.Request(f"https://api.artic.edu/api/v1/artworks/{a['artwork']}?fields=image_id", headers=UA)
             image_id = json.loads(urllib.request.urlopen(req, timeout=60).read())["data"]["image_id"]
             url = f"https://www.artic.edu/iiif/2/{image_id}/full/843,/0/default.jpg"
+        elif a["source"] == "tiles":
+            img, mpp = tile_mosaic(a, pins)
+            big = max(img.size)
+            img.thumbnail((a.get("max", 2400), a.get("max", 2400)), Image.LANCZOS)
+            mpp *= big / max(img.size)
+            img.save(ART / f"{a['id']}.webp", quality=90)
+            index[a["id"]] = {"w": img.width, "h": img.height, "layers": 0, "credit": a["credit"], "mpp": round(mpp, 4), "center": a["center"]}
+            print(f"SAT {a['id']} {img.width}x{img.height} {mpp:.2f} m/px")
+            continue
         elif a["source"] == "url":
             url = a["url"]
         else:
@@ -149,6 +186,8 @@ def main():
         if a.get("gamma"):  # lift very dark sources (NASA night lights) so they read on a phone: out = in ** (1 / gamma)
             arr = np.asarray(img, dtype=np.float32) / 255.0
             img = Image.fromarray((np.clip(arr ** (1.0 / float(a["gamma"])), 0, 1) * 255).astype(np.uint8))
+        if a.get("rotate"):  # degrees counter-clockwise (e.g. a diagonal top-view whale made horizontal before the cut-out)
+            img = img.rotate(float(a["rotate"]), resample=Image.BICUBIC, expand=True, fillcolor=tuple(a.get("fill", [0, 0, 0])))
         if a.get("cutout"):
             img = cutout(img, cut_session)
             img.save(ART / f"{a['id']}.webp", quality=90)  # RGBA, cropped to the object

@@ -1,0 +1,1090 @@
+{
+ "id": "003-biggest-living-thing",
+ "comp": "BiggestLivingThing",
+ "title": "The Biggest Living Thing Isn't a Whale",
+ "fps": 24,
+ "seed": 303,
+ "voice": {
+  "engine": "kokoro",
+  "voice": "bm_george",
+  "speed": 0.96,
+  "language": "en-gb",
+  "gap": 0.4,
+  "prosody": true,
+  "chain": true,
+  "model": "fp32"
+ },
+ "music": {
+  "key": "E",
+  "tempo": 64
+ },
+ "mix": {
+  "duck_db": 20,
+  "tp_oversample": true
+ },
+ "ambience": {
+  "type": "air",
+  "gain": 0.07
+ },
+ "scenes": [
+  {
+   "id": "h1",
+   "lines": [
+    "This is one single plant.",
+    "Its meadows stretch across more than one hundred eighty kilometres of seabed in Western Australia."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.4,
+     "duration": 3.0,
+     "gain": 0.22
+    }
+   ],
+   "lead": 0.3
+  },
+  {
+   "id": "h2",
+   "lines": [
+    "And this is a blue whale, the biggest animal that has ever lived, at the same scale.",
+    "You can barely see it."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "h3",
+   "lines": [
+    "Most people think the biggest living thing on Earth is a whale, or a giant tree.",
+    "It isn't even close."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "h4",
+   "lines": [
+    "So how can one plant cover an area about twice the size of Paris?",
+    "Is it really one living thing? And what else out there is bigger than a whale?"
+   ],
+   "music": "build",
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.5,
+     "duration": 3.0,
+     "gain": 0.2
+    }
+   ]
+  },
+  {
+   "id": "h5",
+   "lines": [
+    "By the end of this video, you will see the biggest living things on Earth side by side, on real satellite images, to scale."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1",
+   "lines": [
+    "Chapter one. The biggest animal."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c1b",
+   "lines": [
+    "Let's start with the champion everyone knows.",
+    "An adult blue whale is usually twenty to thirty metres long."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c1c",
+   "lines": [
+    "The biggest are longer than two city buses parked end to end.",
+    "The heaviest one ever recorded was estimated at about one hundred ninety tonnes."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c1d",
+   "lines": [
+    "In our first video, we lined it up against megalodon and the giant dinosaurs.",
+    "The whale still won."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c1e",
+   "lines": [
+    "But it is not the longest animal."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.2,
+     "duration": 2.0,
+     "gain": 0.18
+    }
+   ]
+  },
+  {
+   "id": "c1f",
+   "lines": [
+    "In April twenty twenty, off Ningaloo in Western Australia, researchers filmed a siphonophore coiled in a giant spiral,",
+    "deep below the surface."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c1g",
+   "lines": [
+    "Its outer ring was estimated at about forty-seven metres.",
+    "Longer than the blue whale."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c1h",
+   "lines": [
+    "And it isn't one animal in the usual sense.",
+    "It's a colony of many small bodies, joined together, each with its own job: catching food, swimming, or reproducing."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c1i",
+   "lines": [
+    "So what counts as one living thing?",
+    "Keep that question in mind. It's going to matter."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c1r",
+   "lines": [
+    "So far: the blue whale is the heaviest animal, but a colony animal can be longer.",
+    "Can anything alive get much bigger?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "lines": [
+    "Chapter two. The giant trees."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c2b",
+   "lines": [
+    "On land, the giants are trees.",
+    "Hyperion, a coast redwood in California, was measured at about one hundred sixteen metres tall."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c2c",
+   "lines": [
+    "Stand a thirty-metre whale on its tail next to it,",
+    "and the tree is almost four times taller."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c2d",
+   "lines": [
+    "But height isn't everything.",
+    "The biggest single tree by volume is General Sherman, a giant sequoia, also in California."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c2e",
+   "lines": [
+    "Its trunk alone is estimated to hold almost fifteen hundred cubic metres of wood.",
+    "That's about eight times the volume of the heaviest blue whale ever recorded."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c2f",
+   "lines": [
+    "Yet even these are single trees.",
+    "What if one living thing could be a whole forest?"
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c2r",
+   "lines": [
+    "So far: trees beat the whale on height and on volume.",
+    "But could one living thing be a whole forest?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "lines": [
+    "Chapter three. The forest that is one tree."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c3b",
+   "lines": [
+    "In the mountains of Utah stands Pando, a grove of quaking aspen.",
+    "From the air, it looks like an ordinary forest."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c3c",
+   "lines": [
+    "But every trunk grew from the same roots.",
+    "Genetically, its forty-seven thousand or so stems are copies of one single individual."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c3d",
+   "lines": [
+    "Scientists call each trunk a ramet, and the whole clone a genet:",
+    "one individual, many bodies."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c3e",
+   "lines": [
+    "Pando covers about forty-three hectares.",
+    "That's around sixty football pitches."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c3e2",
+   "lines": [
+    "At its widest, the clone is about two kilometres across.",
+    "Walking from one side to the other would take you around twenty-five minutes, and every tree you pass is the same individual."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c3f",
+   "lines": [
+    "Its total weight has been estimated at about six thousand tonnes.",
+    "More than thirty of the heaviest blue whales."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c3g",
+   "lines": [
+    "And it may be ancient. A study published in twenty twenty-six estimates Pando is at least twelve thousand years old.",
+    "Other scientists say that evidence is still incomplete."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c3h",
+   "lines": [
+    "Today, Pando is struggling: deer and cattle eat the young shoots",
+    "before they can replace the old trunks."
+   ],
+   "music": "somber",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c3r",
+   "lines": [
+    "So far: a whole forest can be one living thing.",
+    "But what if most of a giant is hidden underground?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "lines": [
+    "Chapter four. The humongous fungus."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c4b",
+   "lines": [
+    "In the Blue Mountains of Oregon, in the Malheur National Forest,",
+    "trees were dying in patches."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c4c",
+   "lines": [
+    "The killer was a honey fungus.",
+    "In autumn, you can see its golden mushrooms at the foot of the trees."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c4d",
+   "lines": [
+    "But the mushrooms are only the fruit.",
+    "The fungus itself is a web of dark, root-like strands, under the bark and in the soil."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c4d2",
+   "lines": [
+    "Those strands are called rhizomorphs. They creep through the soil from root to root,",
+    "and the fungus slowly feeds on the trees it infects."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c4e",
+   "lines": [
+    "Scientists sampled it across the forest and tested its DNA.",
+    "One single individual had spread across about nine hundred sixty-five hectares."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    },
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c4f",
+   "lines": [
+    "That's almost ten square kilometres.",
+    "More than twenty times the size of Pando."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c4g",
+   "lines": [
+    "From how fast it spreads, they estimated it is at least nineteen hundred years old,",
+    "and possibly more than eight thousand."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c4h",
+   "lines": [
+    "For years, it was called the largest organism on Earth."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "wind",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c4i",
+   "lines": [
+    "Notice the pattern. At every step, the giant got harder to see.",
+    "And the biggest one of all is hiding underwater."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "riser",
+     "at": 0.5,
+     "duration": 3.0,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c4r",
+   "lines": [
+    "So far: a single fungus covers almost ten square kilometres.",
+    "So what could be bigger, under the sea?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "lines": [
+    "Chapter five. One plant, one hundred eighty kilometres."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c5b",
+   "lines": [
+    "Shark Bay, on the coast of Western Australia.",
+    "A shallow, sheltered bay at the edge of the desert, full of underwater meadows."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5c",
+   "lines": [
+    "These meadows are seagrass. Not seaweed:",
+    "a flowering plant, with roots, leaves and flowers, that lives under the sea."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5d",
+   "lines": [
+    "One species here is called Poseidon's ribbon weed.",
+    "Scientists sampled ten of its meadows across the bay, to see how genetically different they were."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5e",
+   "lines": [
+    "They expected many different plants.",
+    "Instead, all but one of those meadows turned out to be the same plant. One clone."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    },
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c5f",
+   "lines": [
+    "From one end to the other, it spans at least one hundred eighty kilometres.",
+    "The researchers called it the most widespread known clone on Earth."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c5f2",
+   "lines": [
+    "To picture that distance: driving it on a motorway would take you almost two hours."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5g",
+   "lines": [
+    "Its meadows were estimated to cover about two hundred square kilometres.",
+    "That's roughly twice the size of Paris."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c5h",
+   "lines": [
+    "And it is old. From how fast this seagrass grows,",
+    "the researchers estimated it took up to about four thousand five hundred years to spread this far."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5i",
+   "lines": [
+    "If that's right, it started growing around the time the first great pyramids were built in Egypt."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5j",
+   "lines": [
+    "How did it get so big? Its cells carry four sets of chromosomes instead of two.",
+    "Forty, where its relatives have twenty."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5k",
+   "lines": [
+    "The researchers think it began when two kinds of seagrass crossed,",
+    "and that the doubled genome helped it cope with the bay's salty, hot water."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5l",
+   "lines": [
+    "It seems to set little or no seed. Instead, it grows sideways,",
+    "between fifteen and thirty-five centimetres a year, shoot by shoot, for thousands of years."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c5m",
+   "lines": [
+    "Now let's put them all on one map, to scale.",
+    "A blue whale. A football pitch. Pando."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    },
+    {
+     "type": "riser",
+     "at": 2.0,
+     "duration": 4.0,
+     "gain": 0.2
+    }
+   ],
+   "min": 9
+  },
+  {
+   "id": "c5m2",
+   "lines": [
+    "The honey fungus.",
+    "And the Shark Bay seagrass, spanning more than one hundred eighty kilometres."
+   ],
+   "music": "reveal",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    },
+    {
+     "type": "impact",
+     "at": 2.0,
+     "duration": 1.0,
+     "gain": 0.3
+    }
+   ],
+   "min": 9
+  },
+  {
+   "id": "c5r",
+   "lines": [
+    "So far: one seagrass clone spans at least one hundred eighty kilometres.",
+    "So is it the biggest living thing on Earth?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "lines": [
+    "Chapter six. So which is the biggest?"
+   ],
+   "music": "tension",
+   "sfx": [
+    {
+     "type": "page",
+     "at": 0.2,
+     "duration": 0.4,
+     "gain": 0.5
+    }
+   ],
+   "min": 4.5
+  },
+  {
+   "id": "c6b",
+   "lines": [
+    "Here's the twist. In the Baltic Sea, in Northern Europe,",
+    "scientists found one seaweed clone at six sites spread along more than six hundred kilometres of coastline."
+   ],
+   "music": "tension",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.1,
+     "duration": 0.8,
+     "gain": 0.35
+    }
+   ]
+  },
+  {
+   "id": "c6c",
+   "lines": [
+    "That's a longer spread than the seagrass.",
+    "But nobody has measured how much area it covers. Spread is not the same as size."
+   ],
+   "music": "build",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c6d",
+   "lines": [
+    "So the answer depends on how you measure.",
+    "Tallest: a redwood. Heaviest animal: the blue whale. Largest known area: the Shark Bay seagrass."
+   ],
+   "music": "reveal",
+   "sfx": [
+    {
+     "type": "tick",
+     "at": 2.5,
+     "duration": 0.2,
+     "gain": 0.3
+    },
+    {
+     "type": "tick",
+     "at": 4.5,
+     "duration": 0.2,
+     "gain": 0.3
+    },
+    {
+     "type": "tick",
+     "at": 7.0,
+     "duration": 0.2,
+     "gain": 0.3
+    }
+   ]
+  },
+  {
+   "id": "c6c2",
+   "lines": [
+    "Remember the question from chapter one: what counts as one living thing?",
+    "Biologists say: everything that grew from one first seed is one individual, even in separate pieces."
+   ],
+   "music": "wonder"
+  },
+  {
+   "id": "c6e",
+   "lines": [
+    "And none of these giants is safe.",
+    "After a marine heatwave in early twenty eleven, more than a thousand square kilometres of seagrass disappeared from Shark Bay."
+   ],
+   "music": "somber",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c6e2",
+   "lines": [
+    "The giant clone was hit too.",
+    "Some of its meadows have since grown back, but nobody knows how many more heatwaves it can survive."
+   ],
+   "music": "somber",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "c6f",
+   "lines": [
+    "So here's my question: is a clone, spread over one hundred eighty kilometres, really one living thing?",
+    "Tell me in the comments."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   }
+  },
+  {
+   "id": "end",
+   "lines": [
+    "Want to see the blue whale against every giant that ever lived? Watch this next."
+   ],
+   "music": "wonder",
+   "ambience": {
+    "type": "sea",
+    "gain": 0.26
+   },
+   "min": 20,
+   "endscreen": true
+  }
+ ]
+}
