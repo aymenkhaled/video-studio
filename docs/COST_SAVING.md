@@ -30,3 +30,16 @@ Handoff format: each step writes one file (`docs/research/...md`, `sources.md`, 
 
 ## Target per video
 Fresh chat per video, research done by OpenCode first, plugins trimmed, 2 stills rounds, 1 Claude review on a lean input: expected **~40–60 % less Claude usage** per video than C001/C002 (estimate, not yet measured — measure the next video with `/context` at the end and record it here).
+
+## How Claude Code and OpenCode connect (tested 18 Nov 2026)
+No editor link is needed: both work in the same folder (`D:\studio`) and the same git repo, and Claude can run OpenCode directly from its shell:
+```
+opencode run -m <provider/model> "task… write the result to docs/research/<file>.md"
+```
+OpenCode (GPT) does the work, writes the file, and Claude reads only that file. OpenCode 1.19.5 is installed at `C:\Users\khale\AppData\Roaming\npm\opencode`.
+
+Test result: the bridge works, but **no GPT account is usable right now**:
+- `opencode/gpt-*` (OpenCode Models, pay-as-you-go): "Insufficient balance" — needs credits.
+- `opencode-go/*` (incl. `gpt-6-luna`): "An active OpenCode Go subscription is required".
+- `agentrouter-openai/gpt-5.6-sol`: "invalid token" — the AgentRouter key has expired or is wrong.
+Fix one of these (Aymen), then re-run the one-line test above.
