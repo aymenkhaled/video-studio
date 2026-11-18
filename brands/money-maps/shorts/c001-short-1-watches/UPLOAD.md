@@ -11,7 +11,7 @@ Alternatives (swap if views stall after 48 h): How Switzerland Earns More From 1
 ```
 China exports almost forty times more watches than Switzerland. Switzerland earns more than ten times as much money from them.
 
-Full story: [LINK TO LONG VIDEO: "Why Is Switzerland So Rich? (No Sea, No Oil, Mostly Mountains)"]
+Full story: https://youtu.be/WXPLXCk0KyM
 
 Sources:
 - Federation of the Swiss Watch Industry, World watchmaking industry 2024: https://www.fhs.swiss/documents/statistics/eng/world-watchmaking-2024.pdf

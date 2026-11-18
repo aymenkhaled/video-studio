@@ -11,7 +11,7 @@ Alternatives (swap if views stall after 48 h): $80 Million to Move People Out. O
 ```
 The World Bank lent Russia eighty million dollars to help people leave the frozen north. Most of them stayed.
 
-Full story: [LINK TO LONG VIDEO: "174,000 People Live in This Arctic City. No Road Leads There"]
+Full story: https://youtu.be/L-RbnEd-oR8
 
 Sources:
 - World Bank IEG review, Russia Northern Restructuring Project (P064238): https://documents.worldbank.org/curated/en/190251475098672694/text/000020051-20140624161420.txt

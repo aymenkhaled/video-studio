@@ -11,7 +11,7 @@ Alternatives (swap if views stall after 48 h): 37 War Elephants Over the Alps. W
 ```
 Hannibal marched an army, and thirty-seven war elephants, from Spain to Italy. Over the Alps.
 
-Full story: [LINK TO LONG VIDEO: "Hannibal: The Man Who Nearly Destroyed Rome"]
+Full story: https://youtu.be/DQ783JjY98Q
 
 Sources:
 - Polybius 3.35 (setting out), 3.46 (rafts), 3.56 (Hannibal's inscription): https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/3*.html

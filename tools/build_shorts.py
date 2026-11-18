@@ -262,10 +262,11 @@ def timeline(s):
 def upload_md(s):
     long_title, long_state = LONG[s["ep"]]
     first = s["scenes"][0]["lines"][0]
+    url = next((w for w in long_state.split() if w.startswith("https://youtu.be/")), "")
     desc = "\n".join([
         first,
         "",
-        f"Full story: [LINK TO LONG VIDEO: \"{long_title}\"]",
+        f"Full story: {url}" if url else f"Full story: [LINK TO LONG VIDEO: \"{long_title}\"]",
         "",
         "Sources:",
         *[f"- {x}" for x in s["sources"]],

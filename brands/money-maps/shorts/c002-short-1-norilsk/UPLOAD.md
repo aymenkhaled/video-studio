@@ -11,7 +11,7 @@ Alternatives (swap if views stall after 48 h): Russia Pays People 80% Extra to L
 ```
 About one hundred seventy-four thousand people live in this Arctic city. And no road leads there.
 
-Full story: [LINK TO LONG VIDEO: "174,000 People Live in This Arctic City. No Road Leads There"]
+Full story: https://youtu.be/L-RbnEd-oR8
 
 Sources:
 - Rosstat 2021 census via citypopulation.de (Norilsk 174,453): https://www.citypopulation.de/en/russia/cities/

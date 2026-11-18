@@ -11,7 +11,7 @@ Alternatives (swap if views stall after 48 h): One Fig, One Senator, and the End
 ```
 In one hundred forty-six B C, Rome burned Carthage to the ground. And the story starts with a fig.
 
-Full story: [LINK TO LONG VIDEO: "Why Rome Destroyed Carthage"]
+Full story: https://youtu.be/v7h91oBTKSc
 
 Sources:
 - Plutarch, Life of Cato the Elder 27: https://cts.perseids.org/read/greekLit/tlg0007/tlg025/perseus-eng2/27.1-27.5

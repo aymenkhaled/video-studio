@@ -11,7 +11,7 @@ Alternatives (swap if views stall after 48 h): The Salt Myth Everyone Believes A
 ```
 You've probably heard it. After Rome destroyed Carthage, it covered the ground with salt, so nothing would ever grow there again.
 
-Full story: [LINK TO LONG VIDEO: "Why Rome Destroyed Carthage"]
+Full story: https://youtu.be/v7h91oBTKSc
 
 Sources:
 - R. T. Ridley, To Be Taken with a Pinch of Salt, Classical Philology 81 (1986): https://www.journals.uchicago.edu/doi/10.1086/366973

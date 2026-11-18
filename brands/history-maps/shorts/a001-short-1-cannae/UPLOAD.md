@@ -11,7 +11,7 @@ Alternatives (swap if views stall after 48 h): How 40,000 Men Surrounded 80,000 
 ```
 In two hundred sixteen B C, one man surrounded an army almost twice the size of his own.
 
-Full story: [LINK TO LONG VIDEO: "Hannibal: The Man Who Nearly Destroyed Rome"]
+Full story: https://youtu.be/DQ783JjY98Q
 
 Sources:
 - Polybius, Histories 3.113–117 (Loeb, LacusCurtius): https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/3*.html

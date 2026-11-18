@@ -11,7 +11,7 @@ Alternatives (swap if views stall after 48 h): Banks Are Only 9% of the Swiss Ec
 ```
 Everyone thinks Switzerland got rich from its banks. Its biggest export is something you swallow.
 
-Full story: [LINK TO LONG VIDEO: "Why Is Switzerland So Rich? (No Sea, No Oil, Mostly Mountains)"]
+Full story: https://youtu.be/WXPLXCk0KyM
 
 Sources:
 - State Secretariat for International Finance (SIF), key figures 2026: https://www.sif.admin.ch/dam/en/sd-web/iwKtRqzjc946/kennzahlen-sif-2026-en.pdf
