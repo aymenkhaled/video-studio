@@ -22,8 +22,10 @@ def main():
         dur = float(s["end"]) - float(s["start"])
         if not 10 <= dur <= 60:
             raise SystemExit(f"{s['id']}: duration {dur:.1f}s outside 10–60 s")
-        hook = OUT / f"{s['id']}_hook.txt"
-        hook.write_text(s["hook"], encoding="utf-8")
+        # one drawtext per hook line: a literal newline inside a drawtext textfile renders as a box glyph
+        hook_lines = [ln.strip() for ln in s["hook"].splitlines() if ln.strip()]
+        for k, ln in enumerate(hook_lines):
+            (OUT / f"{s['id']}_hook{k}.txt").write_text(ln, encoding="utf-8")
         foot = OUT / f"{s['id']}_foot.txt"
         foot.write_text(s.get("footer", "Full story: tap the linked video"), encoding="utf-8")
         fc = (
@@ -31,8 +33,13 @@ def main():
             "[a]scale=-2:1920,crop=1080:1920,boxblur=24:2,eq=brightness=-0.28[bg];"
             "[b]scale=1440:810,crop=1080:810[fg];"
             "[bg][fg]overlay=0:520[v1];"
-            f"[v1]drawtext=fontfile={FONT}:textfile={hook}:fontsize=78:fontcolor=white:line_spacing=14:"
-            "borderw=6:bordercolor=black:x=(w-text_w)/2:y=190,"
+            "[v1]"
+            + "".join(
+                f"drawtext=fontfile={FONT}:textfile={OUT / (s['id'] + '_hook' + str(k) + '.txt')}:fontsize=78:fontcolor=white:"
+                f"borderw=6:bordercolor=black:x=(w-text_w)/2:y={190 + k * 100},"
+                for k in range(len(hook_lines))
+            )
+            +
             f"drawtext=fontfile={FONT}:textfile={foot}:fontsize=52:fontcolor=0xFFD23F:"
             "borderw=5:bordercolor=black:x=(w-text_w)/2:y=1460,"
             f"drawtext=fontfile={FONT}:text='{s.get('channel', spec.get('channel', 'History in Maps'))}':fontsize=40:fontcolor=white@0.85:"

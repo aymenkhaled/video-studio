@@ -7,12 +7,12 @@
   ],
   "shorts": [
     {"id": "b001-blue-whale-biggest-ever", "source": "src/b001/final.mp4", "start": 0.0, "end": 47.6,
-     "hook": "Is the BLUE WHALE\nthe biggest EVER?", "footer": "Full answer: tap the linked video"},
+     "hook": "Is the BLUE WHALE\nthe biggest EVER?", "footer": "Full video: tap the link"},
     {"id": "b001-megalodon-real-size", "source": "src/b001/final.mp4", "start": 251.0, "end": 302.9,
-     "hook": "How big was\nMEGALODON really?", "footer": "Full answer: tap the linked video"},
+     "hook": "How big was\nMEGALODON really?", "footer": "Full video: tap the link"},
     {"id": "b002-481m-wave", "source": "src/b002/final.mp4", "start": 0.0, "end": 41.6,
-     "hook": "Water climbed\n481 METRES", "footer": "Every giant wave: tap the linked video"},
+     "hook": "Water climbed\n481 METRES", "footer": "Full video: tap the link"},
     {"id": "b002-survived-record-wave", "source": "src/b002/final.mp4", "start": 446.3, "end": 501.4,
-     "hook": "They SURVIVED\nthe record wave", "footer": "Every giant wave: tap the linked video"}
+     "hook": "They SURVIVED\nthe record wave", "footer": "Full video: tap the link"}
   ]
 }
