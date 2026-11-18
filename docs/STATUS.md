@@ -1,5 +1,10 @@
 # STUDIO STATUS
 
+## Scale & Science 003 "The Biggest Living Thing" — branch `b003-biggest-living-thing` (worktree `D:\studio-b003`), 18 Nov 2026
+- 2026-11-18 Aymen approved the topic: the biggest living thing isn't a whale (Shark Bay seagrass 180 km, Pando, honey fungus). Pays off B002's end-screen tease.
+- Cost rule: bulk research via `tools/gpt.sh` (facts heavy, images mid, demand heavy, satellite licences mid) → `docs/research/B003-*.md`. Claude: script, scenes, code, review.
+- Goal "better videos": packaging gate first (CTR is the bottleneck at 1.5 %), new hero shot = real satellite zoom-out (pitch → 180 km), voice chain + prosody + 20 dB ducking (C002 settings), second independent review.
+
 ## Promo Shorts — branch `shorts/promo-v1` (worktree `D:\studio-shorts`), 18 Nov 2026
 - 2026-11-17 **Aymen reversed "long-form only": make promo Shorts (2 per finished long video) to pull viewers to the long videos.**
 Decisions (Claude; Aymen away, "don't ask"):
@@ -114,3 +119,8 @@ Decisions (Claude; Aymen away, "don't ask"):
 - 2026-11-16 Kokoro **int8** returns inf/NaN on the current runner image (new lines only; cache unaffected) → `voice.model: "fp32"` (opt-in). First final failed true peak (−0.4 dBTP: compressed voice + deep ducking) → `mix.tp_oversample` (4× oversampled limiter, opt-in). Packager takes every `- ` line of sources.md as a description source → keep "do not use" lists as `* ` and add a "For the description" list.
 - Waiting on Aymen: phone-speaker listen (new voice chain + 20 dB ducking), upload with UPLOAD.md + Test & Compare (3 thumbnails). Next Money & Maps video: phantom borders (teased in the end screen).
 - 2026-11-18 Scale & Science: 3 new B002 thumbnails (v3, size contrast; `GiantWavesThumbsV2`, render mode=stills stills=3) and 4 Shorts (2 per B001/B002, `brands/scale-science/shorts/shorts-001.json`) delivered to `D:\deep-time-fables\scale-science-episode-00{1,2}\`. make_shorts.py fixed (box glyph after line 1; channel name option). Shorts are now ON (Aymen 17 Nov).
+
+## Scale & Science B003 — fact-check research (OpenCode, 18 Nov 2026)
+- In progress: primary-source measurement audit for the whale → clonal seagrass size ladder; deliverable `docs/research/B003-facts.md`.
+- Decision: distinguish length, height, trunk volume, biomass, occupied area and clone span; qualify the title's record by area and the genet definition.
+- Source-access note: Google returned JavaScript-only pages on two searches; use other search/index endpoints. Royal Society's article page returned HTTP 403; seek the open-access manuscript and bibliographic metadata.
