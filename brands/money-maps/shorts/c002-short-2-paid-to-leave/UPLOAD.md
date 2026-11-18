@@ -9,7 +9,7 @@ Alternatives (swap if views stall after 48 h): $80 Million to Move People Out. O
 
 ## Description
 ```
-The World Bank lent Russia eighty million dollars to help people leave the frozen north. Most of them stayed.
+The World Bank lent Russia $80 million to help people leave the frozen north. Most of them stayed. Here's why.
 
 Full story: https://youtu.be/L-RbnEd-oR8
 

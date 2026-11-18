@@ -9,7 +9,7 @@ Alternatives (swap if views stall after 48 h): Banks Are Only 9% of the Swiss Ec
 
 ## Description
 ```
-Everyone thinks Switzerland got rich from its banks. Its biggest export is something you swallow.
+Everyone thinks Switzerland got rich from its banks. Banks are only ~9% of its economy. Its biggest export is something you swallow.
 
 Full story: https://youtu.be/WXPLXCk0KyM
 

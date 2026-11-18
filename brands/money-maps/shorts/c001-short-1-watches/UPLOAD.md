@@ -9,7 +9,7 @@ Alternatives (swap if views stall after 48 h): How Switzerland Earns More From 1
 
 ## Description
 ```
-China exports almost forty times more watches than Switzerland. Switzerland earns more than ten times as much money from them.
+China exports almost 40× more watches than Switzerland. Switzerland earns more than 10× as much money from them. Here's the trick.
 
 Full story: https://youtu.be/WXPLXCk0KyM
 

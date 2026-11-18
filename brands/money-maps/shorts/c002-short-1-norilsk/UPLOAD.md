@@ -9,7 +9,7 @@ Alternatives (swap if views stall after 48 h): Russia Pays People 80% Extra to L
 
 ## Description
 ```
-About one hundred seventy-four thousand people live in this Arctic city. And no road leads there.
+About 174,000 people live in Norilsk, far above the Arctic Circle. No road or railway leads there. So why does Russia keep it alive?
 
 Full story: https://youtu.be/L-RbnEd-oR8
 
