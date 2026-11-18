@@ -153,8 +153,18 @@ def main():
         import onnxruntime as ort
         cut_session = ort.InferenceSession(str(get(U2NET_URL, "u2net.onnx", pins)), providers=["CPUExecutionProvider"])
 
+    # Incremental build: CI seeds public/ from the newest media release, so only new ids are downloaded
+    # (re-fetching ~90 Wikimedia originals from one runner IP gets HTTP 429). MEDIA_FULL=1 forces a full rebuild.
+    import os
+    old = {}
+    if (ART / "index.json").exists() and os.environ.get("MEDIA_FULL") != "1":
+        old = json.loads((ART / "index.json").read_text(encoding="utf-8"))
     index = {}
     for a in manifest["art"]:
+        if a["id"] in old and (ART / f"{a['id']}.webp").exists():
+            index[a["id"]] = old[a["id"]]
+            print(f"KEEP {a['id']}")
+            continue
         if a["source"] == "commons":
             url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"])  # original file: arbitrary-width thumbnails are throttled
         elif a["source"] == "artic":  # Art Institute of Chicago open access (CC0): API -> IIIF image

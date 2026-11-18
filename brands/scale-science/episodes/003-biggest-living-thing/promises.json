@@ -1,0 +1,20 @@
+{
+ "_doc": "PLAYBOOK 4.2: every promise (titles, thumbnails, hook questions, chapter loops) must be paid off; reviewer FAILs unpaid entries or gaps > 6 min without a partial payoff.",
+ "promises": [
+  {"id": "t1", "promise": "Title 1: the biggest living thing isn't a whale", "setAt": "title/h2-h3", "payoffAt": "c3f, c4e-c4f, c5e-c5g, c6d", "payoffLine": "Pando ~6,000 t (> 30 whales), fungus 9.65 km², seagrass clone ≥ 180 km / ~200 km²; 'it depends on the ruler' list"},
+  {"id": "t2", "promise": "Title 2: one plant spans 180 km", "setAt": "title/h1", "payoffAt": "c5e-c5f2, c5m2", "payoffLine": "9 of 10 sampled meadows = one clone; ≥ 180 km span ruler on satellite; ≈ 1 h 48 min drive"},
+  {"id": "t3", "promise": "Title 3: a single plant twice the size of Paris, shown to scale", "setAt": "title/h4", "payoffAt": "c5g, c5m2", "payoffLine": "~200 km² meadows vs Paris 105.4 km², equal-area circles on the real satellite image"},
+  {"id": "th1", "promise": "Thumbnail: satellite + 180 km + '1 PLANT'", "setAt": "thumbnail", "payoffAt": "h1, c5f", "payoffLine": "Same satellite view with the clone pins and the ruler"},
+  {"id": "th2", "promise": "Thumbnail: tiny whale vs the clone", "setAt": "thumbnail", "payoffAt": "h2, c5m-c5m2", "payoffLine": "Real top-view whale cut-out at 30 m on the satellite, pulled back to 260 km"},
+  {"id": "q1", "promise": "Hook: how can one plant cover twice the size of Paris?", "setAt": "h4", "payoffAt": "c5j-c5l", "payoffLine": "Clone grows sideways by rhizomes 15-35 cm/yr for up to ~4,500 years; polyploid helped it cope"},
+  {"id": "q2", "promise": "Hook: is it really one living thing?", "setAt": "h4", "payoffAt": "c3d, c6c2", "payoffLine": "Genet = everything grown from one first seed, even in separate pieces"},
+  {"id": "q3", "promise": "Hook: what else is bigger than a whale?", "setAt": "h4", "payoffAt": "c1g, c2b-c2e, c3e-c3f, c4e-c4f", "payoffLine": "Siphonophore 47 m, Hyperion 116 m, Sherman 1,486.6 m³, Pando, honey fungus"},
+  {"id": "q4", "promise": "Hook: see them side by side on real satellite images, to scale", "setAt": "h5", "payoffAt": "c5m-c5m2", "payoffLine": "Whale, pitch, Pando, fungus, clone on one EOxCloudless map"},
+  {"id": "l1", "promise": "Loop: what counts as one living thing? (keep in mind)", "setAt": "c1i", "payoffAt": "c3d, c6c2", "payoffLine": "Ramet/genet; one first seed = one individual"},
+  {"id": "l2", "promise": "Loop: can anything alive get much bigger?", "setAt": "c1r", "payoffAt": "c2b-c2e", "payoffLine": "Trees beat the whale on height (×3.9) and volume (≈ 8×)"},
+  {"id": "l3", "promise": "Loop: could one living thing be a whole forest?", "setAt": "c2f/c2r", "payoffAt": "c3c", "payoffLine": "Pando: ~47,000 stems, one genet"},
+  {"id": "l4", "promise": "Loop: what if most of a giant is underground?", "setAt": "c3r", "payoffAt": "c4d-c4e", "payoffLine": "Honey fungus rhizomorphs, 965 ha"},
+  {"id": "l5", "promise": "Loop: the biggest one is hiding underwater", "setAt": "c4i/c4r", "payoffAt": "c5c-c5g", "payoffLine": "Shark Bay seagrass clone"},
+  {"id": "l6", "promise": "Loop: so is it the biggest living thing on Earth?", "setAt": "c5r", "payoffAt": "c6b-c6d", "payoffLine": "Largest known area yes; Baltic Fucus spread longer (> 600 km) but area unmeasured; depends on the ruler"}
+ ]
+}

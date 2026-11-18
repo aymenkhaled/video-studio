@@ -21,6 +21,7 @@ import {ScaleChannel1, ScaleChannel2} from './scale/ChannelArt';
 import {GiantWaves, GiantWavesThumb, calculateGiantWaves} from './scale/GiantWaves';
 import {GiantWavesThumbsV2} from './scale/GiantWavesThumbsV2';
 import {BiggestLivingThing, calculateBiggestLivingThing} from './scale/BiggestLivingThing';
+import {BiggestLivingThingThumb} from './scale/BiggestLivingThingThumbs';
 import {BiggestAnimal, BiggestAnimalThumb, calculateBiggestAnimal} from './scale/BiggestAnimal';
 
 // Every brand registers its compositions here. Ids are stable: CI renders by id.
@@ -141,5 +142,8 @@ export const Root: React.FC = () => (
       defaultProps={{scenes: []}}
       calculateMetadata={calculateBiggestLivingThing}
     />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={`blt${v}`} id={`BiggestLivingThingThumb${v}`} component={BiggestLivingThingThumb} durationInFrames={1} fps={24} width={3840} height={2160} defaultProps={{variant: v}} />
+    ))}
   </>
 );

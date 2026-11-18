@@ -319,6 +319,13 @@ jobs:
           key: media-src-${{ hashFiles('assets/media.json') }}
           restore-keys: media-src-
       - run: pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
+      - name: Seed from the newest media release (fetch_media.py then downloads only new ids)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          seed=$(gh release list -L 30 --json tagName,createdAt -q '[.[] | select(.tagName | startswith("media-"))] | sort_by(.createdAt) | last | .tagName')
+          echo "seed release: $seed"
+          if [ -n "$seed" ]; then gh release download "$seed" -p media.zip -D .seed && mkdir -p public && unzip -qo .seed/media.zip -d public || echo "no seed"; fi
       - run: python3 tools/fetch_media.py
       - name: Publish <media_release>/media.zip
         env:
