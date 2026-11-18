@@ -116,7 +116,12 @@ const ShotView: React.FC<{shot: ShortShot; p: number; elapsed: number; uid: stri
   const dx = 6 * Math.sin(elapsed / 2.7);
   const dy = 5 * Math.cos(elapsed / 3.3);
   const live = {transform: `translate(${dx}px, ${dy}px) scale(${push})`, transformOrigin: '50% 45%'};
-  if (shot.vbars) return <VBars spec={shot.vbars} p={p} elapsed={elapsed} accent={accent} />;
+  if (shot.vbars)
+    return (
+      <AbsoluteFill style={{...live, transform: `${live.transform} scale(1.02)`}}>
+        <VBars spec={shot.vbars} p={p} elapsed={elapsed} accent={accent} />
+      </AbsoluteFill>
+    );
   const def = shot.scene;
   if (!def) return null;
   const crop = shot.frame ? shot.frame === 'crop' : CROP_KINDS.has(def.kind);

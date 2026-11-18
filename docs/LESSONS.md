@@ -87,6 +87,15 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 9. `tools/package_episode.py` takes every `- ` line in sources.md as a description source: keep "do not use" lists as `* ` and end sources.md with a "For the description" list.
 10. Second independent review is worth it: it found 4 new Important issues (counter timing, an illegible promise label, a misleading payoff chart) after the first round was "fixed".
 
+## From promo Shorts (18 Nov 2026, 12 Shorts from 6 long videos)
+1. Don't cut 16:9 into 9:16 with a blurred band (the first quick attempt): re-narrate 30–55 s with the same voice and re-frame the same SceneDefs natively at 1080×1920.
+2. 16:9 bar/compare charts cropped to vertical are unreadable (bars and labels cut): use vertical-native bars. Size stages survive a crop + pan, but edge labels still get cut — the weak spot of the template.
+3. Small 'object' photos leave empty bands in a tall frame: cover the frame instead. Dark paintings (Turner snowstorm) fail the frame-1 test: open on the most readable image (Leutemann elephants).
+4. Hook box at 86 px wrapped "2 to / 1." — 74 px max on a 900 px column.
+5. `ocean` is an ambience type, not an SFX (soundtrack.py raises): only use SFX kinds from soundtrack.py.
+6. fp32 Kokoro on a TTS cache miss can pass 20 min when 12 runs start at once → plan job timeout 40 min.
+7. Never patch TS with Python string replacements containing `\n` inside a bash heredoc: write the fix script to a file (LESSONS B001 #13 again).
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|

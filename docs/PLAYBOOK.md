@@ -90,7 +90,7 @@ Runners-up: "follow-up to your best video" within 2–4 weeks of a ≥ 3× hit (
 | Auto-dubbing / multi-language audio after ~28 days; check Arabic numbers by ear | YouTube: >25 % of watch time from other languages for adopters [E] (CG T14) | M | S | ABC | MISSING |
 | Translated titles + descriptions (appear in other-language search) | PK P13 [E] | M | S | ABC | MISSING |
 | Cross-post the *original* map/chart (not a link) to subreddits that allow OC, disclose authorship | CG T15 [O] | M | M | ABC | MISSING |
-| Shorts: off by decision; re-decide at day 60 with data (Shorts views don't count toward watch hours) | CG T18 [E] | — | — | ABC | decision |
+| Shorts: **promo Shorts ON (Aymen, 17 Nov 2026)**: 2 per finished long video, re-narrated (not cut), Related video set to the long one, 1 Short/channel/day; measure Shorts→long clicks before scaling (Shorts views don't count toward watch hours) | CG T18 [E] · Aymen | M | S | ABC | DOING |
 
 ### 2.6 Analytics loop (template in CG §6)
 | Rule | Evidence | Imp | Eff | Ch | Status |
@@ -242,7 +242,7 @@ Runners-up: "follow-up to your best video" within 2–4 weeks of a ≥ 3× hit (
 | Never put two number words next to each other ("one twenty-four" became "25"); run `tools/caption_numbers.mjs <timeline.json>` before every render and read every line against sources.md | L B001 #8 [OWN] | H | S | ABC | DOING |
 | Signaling: highlight the few key words/numbers | Mayer, d ≈ 0.69 [E] (HR T24) | M | S | ABC | DOING |
 | Later A/B: full captions vs keyword captions (redundancy principle) once data exists | HR T25 [E mixed] | M | S | ABC | MISSING (deliberately deferred) |
-| Shorts safe zone if Shorts ever return: nothing key in bottom 420 px / right 120 px | CLAUDE.md | — | — | — | n/a |
+| Shorts template `ShortEpisode` (`packages/engine/src/shorts/short.tsx`): hook = payoff on frame 1 (no fade-in), 62 px captions at y 1262–1450, sources in-frame, nothing key below y 1500 / right of x 960; art covers the tall frame, maps zoom ×1.5, battles ×1.3, 16:9 stages crop k 1.96 with a slow pan, **bar charts as vertical `vbars` (cropped 16:9 charts are unreadable)**; last shot = first shot (loop) + 'Full story' pointer. Scripts + packaging in `tools/build_shorts.py` | [OWN] 18 Nov | H | S | ABC | DOING |
 
 ---
 

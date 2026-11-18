@@ -1,5 +1,15 @@
 # STUDIO STATUS
 
+## Promo Shorts — branch `shorts/promo-v1` (worktree `D:\studio-shorts`), 18 Nov 2026
+- 2026-11-17 **Aymen reversed "long-form only": make promo Shorts (2 per finished long video) to pull viewers to the long videos.**
+Decisions (Claude; Aymen away, "don't ask"):
+- 2026-11-18 The quick ffmpeg cut on main (`tools/make_shorts.py`, render.yml `mode=shorts`, 4 files in `D:\deep-time-fables\shorts\*.mp4`) letterboxes the 16:9 video over a blurred copy — breaks LESSONS old-Shorts #3 (fill 9:16). Superseded by re-narrated Remotion Shorts; the old tool stays for emergencies, its 4 files are not to be uploaded.
+- 2026-11-18 12 Shorts, 2 per long video: A001 Cannae / Alps, A002 fig / salt myth, B001 megalodon / alive-now, B002 Tracy Arm / Lituya, C001 watches / not-banks, C002 Norilsk / paid-to-leave. Only lines and numbers already reviewed for the long videos (same sources.md rows); no new claims.
+- 2026-11-18 Same channel voices at speed 1.0, fp32 Kokoro, voice chain + prosody, 20 dB ducking, 4× true-peak limiter (C002 settings). 30 fps.
+- 2026-11-18 Posting: 1 Short per channel per day from Thu 19 Nov; Related video = its long video; Carthage Shorts wait until the Carthage long video is live. Titles number-led paradox (C002 lesson).
+- Files: engine `packages/engine/src/shorts/short.tsx`, shots `src/shorts/defs.tsx`, scripts + packaging `tools/build_shorts.py` → `brands/<brand>/shorts/<slug>/{timeline.json,UPLOAD.md}`. Render: `render.yml mode=full comp=Short… timeline=…/timeline.json media_release=<episode release>`.
+- 2 stills rounds (round 2 fixes: hook size, crop band, art cover, battle zoom, charts as vertical bars, Alps first frame).
+
 _Updated 14 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
 
 ## Done

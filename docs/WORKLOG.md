@@ -23,4 +23,5 @@
 - `docs/PLAYBOOK.md`: every trick/rule by area with evidence, impact, effort, channels, DOING/PARTIAL/MISSING; top-20 missing; LESSONS merged; CLAUDE.md rule added.
 
 - 2026-11-16 Scale & Science 002 giant waves delivered: packaging gate + outlier check, promise ledger, real USGS/NASA photos + CC0 landmark cut-outs, Vajont added after review, QA PASS first full render.
+- 2026-11-18 Promo Shorts: vertical ShortEpisode template + 12 re-narrated Shorts (2 per long video), 2 stills rounds, full renders with QA; delivered to `D:\deep-time-fables\shorts\<channel>-<episode>-short-<n>\`.
 - 2026-11-16 Money & Maps 002 Siberian curse delivered: topic scout (14 candidates, 3 parallel scouts), packaging gate + promise ledger, sources ~75 rows, NASA night lights + Prokudin-Gorsky + Landsat, fly-to camera, circled lights, range bars, phone voice chain / 20 dB ducking / prosody, fp32 Kokoro, true-peak-safe limiter; 2 independent reviews; QA PASS (render 43825916074).
