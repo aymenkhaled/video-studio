@@ -36,7 +36,7 @@ def main():
             "[b]scale=1440:810,crop=1080:810[fg];"
             "[bg][fg]overlay=0:520[v1];"
             "[v1]" + "".join(
-                f"drawtext=fontfile={FONT}:textfile={h}:fontsize=78:fontcolor=white:"
+                f"drawtext=fontfile={FONT}:textfile={h}:fontsize={min(78, int(1000 / (0.62 * max(1, len(lines[k])))))}:fontcolor=white:"
                 f"borderw=6:bordercolor=black:x=(w-text_w)/2:y={190 + 100 * k},"
                 for k, h in enumerate(hooks)
             ) +
