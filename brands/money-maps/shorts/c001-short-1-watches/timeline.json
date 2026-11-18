@@ -1,0 +1,159 @@
+{
+  "id": "c001-short-1-watches",
+  "comp": "ShortC001Watches",
+  "title": "China Sells 40x More Watches. Switzerland Earns 10x More",
+  "fps": 30,
+  "seed": 1041,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0,
+    "language": "en-us",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "D",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "China exports almost forty times more watches than Switzerland. Switzerland earns more than ten times as much money from them."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "In twenty twenty-four, China exported about five hundred ninety-five million watches. Switzerland, about fifteen million."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        },
+        {
+          "type": "tick",
+          "at": 0.5,
+          "duration": 2.0,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "But the average Chinese watch was exported for about four dollars. The average Swiss watch, for about eighteen hundred dollars."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 2.6,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "Add it up, and Swiss watches earned more than ten times as much."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "coin",
+          "at": 1.0,
+          "duration": 0.6,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "It started in Geneva, in the fifteen hundreds. A strict Protestant city frowned on jewellery, so goldsmiths turned to watches."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "That's the trick. If your country is hard to reach, sell things that are small, light, and expensive. Then transport costs barely matter."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "It's one of the reasons Switzerland got so rich. The full story is linked below."
+      ],
+      "music": "calm",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "id": "a001-short-2-alps",
+  "comp": "ShortA001Alps",
+  "title": "Hannibal Lost Half His Army Before the First Battle",
+  "fps": 30,
+  "seed": 1021,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.0,
+    "language": "en-us",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "D",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "Hannibal marched an army, and thirty-seven war elephants, from Spain to Italy. Over the Alps."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "Polybius says he set out with about ninety thousand infantry, and twelve thousand cavalry. Historians think that is inflated."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        },
+        {
+          "type": "pop",
+          "at": 1.2,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "At the river Rhone, his men floated the elephants across on rafts covered with earth."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        },
+        {
+          "type": "elephant",
+          "at": 1.5,
+          "duration": 1.5,
+          "gain": 0.16
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "Then came the Alps, late in the year. Snow on the passes. Ambushes from mountain tribes. Men and animals slid off icy paths."
+      ],
+      "music": "somber",
+      "sfx": [
+        {
+          "type": "wind",
+          "at": 0.0,
+          "duration": 6.0,
+          "gain": 0.2
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "Polybius quotes Hannibal's own inscription for what was left: twenty thousand infantry, and six thousand cavalry."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 1.0,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "More than half his army was gone, before a single major battle in Italy. And still, he beat Rome three times in a row."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "How he did it, and how Rome finally won, is in the full story linked below."
+      ],
+      "music": "somber",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

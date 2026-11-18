@@ -1,0 +1,159 @@
+{
+  "id": "b001-short-1-megalodon",
+  "comp": "ShortB001Megalodon",
+  "title": "Megalodon Was Smaller Than an Animal Alive Today",
+  "fps": 30,
+  "seed": 1055,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "bm_george",
+    "speed": 1.0,
+    "language": "en-gb",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "E",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "Megalodon, the biggest shark that ever lived, was still smaller than an animal alive today."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "We know megalodon mostly from its teeth. The largest are about eighteen centimetres long, roughly the length of a hand."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "Here is a great white shark, about six metres. Now, megalodon."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        },
+        {
+          "type": "pop",
+          "at": 1.6,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "Estimates range from about sixteen metres to as much as twenty-four. Scientists still argue, because only teeth and a few backbones survive."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "ocean",
+          "at": 0.0,
+          "duration": 6.0,
+          "gain": 0.14
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "Now the blue whale. The largest ones reach about thirty-three metres."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "whale",
+          "at": 0.8,
+          "duration": 2.0,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "And on the scale, a sixteen-metre megalodon may have weighed about sixty tonnes. The biggest blue whales: about one hundred fifty."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 1.2,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "The biggest animal ever is alive right now. The full line-up, dinosaurs included, is linked below."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

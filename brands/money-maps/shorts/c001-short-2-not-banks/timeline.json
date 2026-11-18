@@ -1,0 +1,159 @@
+{
+  "id": "c001-short-2-not-banks",
+  "comp": "ShortC001NotBanks",
+  "title": "Switzerland's Biggest Export Isn't Banking. It's Medicine",
+  "fps": 30,
+  "seed": 1056,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0,
+    "language": "en-us",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "D",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "Everyone thinks Switzerland got rich from its banks. Its biggest export is something you swallow."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "Banks and insurance together make only about nine percent of the Swiss economy."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        },
+        {
+          "type": "pop",
+          "at": 1.4,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "The real champion is chemicals and medicines: about one hundred forty-nine billion francs of exports in twenty twenty-four."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "coin",
+          "at": 1.6,
+          "duration": 0.6,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "That's about fifty-three percent of everything Switzerland exports."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 0.8,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "It started in Basel, where factories made dyes for cloth. Until nineteen hundred seven, Swiss patents did not protect chemical inventions, so Basel firms could legally copy dyes invented abroad."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "The chemists who made colours learned to make medicines. Today, Basel is home to Roche and Novartis."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "Small, light, valuable: the same trick as Swiss watches. The full story is linked below."
+      ],
+      "music": "calm",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

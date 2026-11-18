@@ -1,0 +1,153 @@
+{
+  "id": "c002-short-2-paid-to-leave",
+  "comp": "ShortC002PaidToLeave",
+  "title": "World Bank Paid Russians to Leave the Arctic. Most Stayed",
+  "fps": 30,
+  "seed": 1084,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0,
+    "language": "en-us",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "D",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "The World Bank lent Russia eighty million dollars to help people leave the frozen north. Most of them stayed."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "In two thousand one, the loan paid for a test: move families out of three Arctic places. Norilsk, Vorkuta, and Susuman."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "Planners expected about ten thousand four hundred households to leave. Only about four thousand five hundred did."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 2.4,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "In Norilsk, only about one in seven of the planned families went."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 1.0,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "More than half the loan was never spent. About forty-five million dollars was cancelled."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "coin",
+          "at": 1.2,
+          "duration": 0.6,
+          "gain": 0.2
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "Why stay somewhere that cold, and that expensive? For many, it paid. In Norilsk, living standards were relatively high."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "Russia still pays every winter to keep these cities alive. The full story is linked below."
+      ],
+      "music": "calm",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

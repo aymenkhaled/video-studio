@@ -1,0 +1,165 @@
+{
+  "id": "b001-short-2-alive-now",
+  "comp": "ShortB001AliveNow",
+  "title": "The Biggest Animal Ever Is Alive Right Now",
+  "fps": 30,
+  "seed": 1056,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "bm_george",
+    "speed": 1.0,
+    "language": "en-gb",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "E",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "The biggest animal that has ever lived is not a dinosaur. It's alive right now."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "The blue whale. The largest reach about thirty-three metres. That's about nineteen people, lying head to toe."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        },
+        {
+          "type": "whale",
+          "at": 1.2,
+          "duration": 2.0,
+          "gain": 0.16
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "And up to about one hundred fifty tonnes, roughly as heavy as twenty-five adult male elephants."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 1.0,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "Some dinosaurs, like Argentinosaurus, may have matched it for length. But most estimates put them between fifty and eighty-three tonnes."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        },
+        {
+          "type": "footstep",
+          "at": 0.8,
+          "duration": 1.0,
+          "gain": 0.2
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "In twenty twenty-three, a fossil whale from Peru was called a contender. A year later, a new estimate put it below the biggest blue whales."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "Why now? Water carries its weight, and krill swarms feed it. Whales became giants only in the last few million years."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "bubbles",
+          "at": 0.4,
+          "duration": 2.0,
+          "gain": 0.16
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "You live at the same time as the biggest animal ever. The full line-up is linked below."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

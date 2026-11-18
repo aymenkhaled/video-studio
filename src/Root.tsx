@@ -1,6 +1,7 @@
 import React from 'react';
 import {Composition} from 'remotion';
 import {Smoke} from './Smoke';
+import {SHORTS, shortComponent, shortMetadata} from './shorts/defs';
 import {Bench2D} from './bench/Bench2D';
 import {Bench3D} from './bench/Bench3D';
 import {Bench25D} from './bench/Bench25D';
@@ -123,6 +124,9 @@ export const Root: React.FC = () => (
     />
     {([1, 2, 3] as const).map((v) => (
       <Composition key={`gw${v}`} id={`GiantWavesThumb${v}`} component={GiantWavesThumb} durationInFrames={1} fps={24} width={3840} height={2160} defaultProps={{variant: v}} />
+    ))}
+      {SHORTS.map((d) => (
+      <Composition key={d.id} id={d.id} component={shortComponent(d)} durationInFrames={30 * 50} fps={30} width={1080} height={1920} defaultProps={{scenes: []}} calculateMetadata={shortMetadata(d)} />
     ))}
   </>
 );

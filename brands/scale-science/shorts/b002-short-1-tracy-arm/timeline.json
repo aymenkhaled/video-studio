@@ -1,0 +1,159 @@
+{
+  "id": "b002-short-1-tracy-arm",
+  "comp": "ShortB002TracyArm",
+  "title": "This Wave Climbed 481 Metres. Higher Than the Empire State",
+  "fps": 30,
+  "seed": 1055,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "bm_george",
+    "speed": 1.0,
+    "language": "en-gb",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "E",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "In August twenty twenty-five, a wave in Alaska climbed four hundred eighty-one metres up a mountain."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "A melting glacier had been holding up this slope. When the ice pulled back, about sixty-four million cubic metres of rock fell into the fjord."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "rumble",
+          "at": 1.5,
+          "duration": 3.0,
+          "gain": 0.24
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "Computer models show a breaking wave about one hundred metres tall, racing at more than two hundred forty kilometres per hour."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "waves",
+          "at": 0.2,
+          "duration": 4.0,
+          "gain": 0.2
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "When it hit the far side, the water kept climbing. You can still see where the trees end."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "Higher than the Statue of Liberty, the Eiffel Tower, and the Empire State Building."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 0.6,
+          "duration": 0.3,
+          "gain": 0.22
+        },
+        {
+          "type": "pop",
+          "at": 1.6,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "On summer days, cruise ships carry thousands of people into these fjords. That morning, by luck, none was in Tracy Arm."
+      ],
+      "music": "somber",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "And it's only the second-tallest ever measured. Every giant wave, to scale, is linked below."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

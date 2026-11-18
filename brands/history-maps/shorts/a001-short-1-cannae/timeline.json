@@ -1,0 +1,159 @@
+{
+  "id": "a001-short-1-cannae",
+  "comp": "ShortA001Cannae",
+  "title": "Outnumbered 2 to 1, Hannibal Surrounded Rome's Army",
+  "fps": 30,
+  "seed": 1034,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.0,
+    "language": "en-us",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "D",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "In two hundred sixteen B C, one man surrounded an army almost twice the size of his own."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "Polybius counts eighty thousand Roman infantry at Cannae. Hannibal had around forty thousand."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        },
+        {
+          "type": "pop",
+          "at": 1.5,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "So he did something strange. He pushed his center forward in a curve, and put his best troops at the ends of the line."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "The Romans smashed into the curve. It bent backward, step by step, exactly as planned."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "clash",
+          "at": 0.4,
+          "duration": 1.2,
+          "gain": 0.2
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "Then the veterans turned inward, and his cavalry hit the Romans from behind. They were packed so tightly that many could not raise their weapons."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "hooves",
+          "at": 0.6,
+          "duration": 2.0,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "Polybius says around seventy thousand Romans died. Hannibal lost under six thousand."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 0.8,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "Military schools still study this battle today. The full story of the man who nearly destroyed Rome is linked below."
+      ],
+      "music": "somber",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

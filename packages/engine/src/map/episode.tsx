@@ -112,7 +112,7 @@ const renderOverlay = (o: Overlay, p: number, i: number, clarity?: ClarityConfig
   }
 };
 
-const Scene: React.FC<{def: SceneDef; p: number; uid: string; width: number; height: number; elapsed: number; clarity: boolean}> = ({def, p, uid, width, height, elapsed, clarity}) =>
+export const Scene: React.FC<{def: SceneDef; p: number; uid: string; width: number; height: number; elapsed: number; clarity: boolean}> = ({def, p, uid, width, height, elapsed, clarity}) =>
   def.kind === 'scale' ? (
     <ScaleShot spec={def.scale} p={p} elapsed={elapsed} width={width} height={height} />
   ) : def.kind === 'compare' ? (

@@ -1,0 +1,153 @@
+{
+  "id": "a002-short-2-salt",
+  "comp": "ShortA002Salt",
+  "title": "Rome Never Salted Carthage. Here's Where the Myth Came From",
+  "fps": 30,
+  "seed": 1021,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.0,
+    "language": "en-us",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "D",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "You've probably heard it. After Rome destroyed Carthage, it covered the ground with salt, so nothing would ever grow there again."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "It's a great story. But no ancient writer tells it. Not Polybius, who was there and watched the city burn. Not Appian. Nobody."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "fire",
+          "at": 0.2,
+          "duration": 3.0,
+          "gain": 0.16
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "Historians traced the salt story to modern history books, from the early twentieth century."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 0.8,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "It probably got mixed up with salt curses in other ancient stories."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "page",
+          "at": 0.3,
+          "duration": 0.6,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "What Rome really did is simpler. The land became a Roman province, called Africa. And according to Appian, Scipio cursed anyone who would rebuild the city."
+      ],
+      "music": "somber",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "The curse failed. About a hundred years later, Rome built a new city on the very same spot."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "So why did Rome destroy Carthage at all? The full story is linked below."
+      ],
+      "music": "somber",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}

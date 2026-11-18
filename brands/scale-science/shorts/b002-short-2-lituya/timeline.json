@@ -1,0 +1,153 @@
+{
+  "id": "b002-short-2-lituya",
+  "comp": "ShortB002Lituya",
+  "title": "A Father and Son Survived the Tallest Wave Ever Recorded",
+  "fps": 30,
+  "seed": 1035,
+  "voice": {
+    "engine": "kokoro",
+    "voice": "bm_george",
+    "speed": 1.0,
+    "language": "en-gb",
+    "gap": 0.28,
+    "prosody": true,
+    "chain": true,
+    "model": "fp32"
+  },
+  "music": {
+    "key": "E",
+    "tempo": 84
+  },
+  "mix": {
+    "duck_db": 20,
+    "tp_oversample": true
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        "July nineteen fifty-eight, Lituya Bay, Alaska. Water rose higher than anywhere ever recorded. Two people rode it out."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "riser",
+          "at": 0.0,
+          "duration": 2.5,
+          "gain": 0.18
+        }
+      ],
+      "lead": 0.1,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s2",
+      "lines": [
+        "A powerful earthquake shook loose about thirty million cubic metres of rock, which fell from high above the water."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "rumble",
+          "at": 0.6,
+          "duration": 3.0,
+          "gain": 0.24
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s3",
+      "lines": [
+        "That evening, Howard Ulrich and his seven-year-old son were anchored in their fishing boat. They saw a wall of water rushing toward them."
+      ],
+      "music": "tension",
+      "sfx": [
+        {
+          "type": "waves",
+          "at": 1.0,
+          "duration": 4.0,
+          "gain": 0.2
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s4",
+      "lines": [
+        "The boat was lifted onto the wave. Ulrich later estimated it at fifteen to twenty-three metres when it reached them. Somehow, both survived."
+      ],
+      "music": "build",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s5",
+      "lines": [
+        "Afterwards, geologist Don Miller found where the forest had been torn away. It reached five hundred twenty-four metres up the mountain."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "pop",
+          "at": 2.0,
+          "duration": 0.3,
+          "gain": 0.22
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s6",
+      "lines": [
+        "Higher than the Empire State Building. It's still the tallest wave run-up ever recorded."
+      ],
+      "music": "reveal",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    },
+    {
+      "id": "s7",
+      "lines": [
+        "And in twenty twenty-five, Alaska came close to beating it. Every giant wave, to scale, is linked below."
+      ],
+      "music": "wonder",
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0.05,
+          "duration": 0.6,
+          "gain": 0.25
+        }
+      ],
+      "lead": 0.15,
+      "tail": 0.35,
+      "min": 3.0
+    }
+  ]
+}
