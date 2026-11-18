@@ -12,6 +12,8 @@ Faceless YouTube studio for Aymen (Tunisia). Goal: views → YPP. Brand A "Scale
 - Update `docs/STATUS.md` after every step; append milestones to `docs/WORKLOG.md`. Read `docs/LESSONS.md` before every new script.
 - **Read `docs/PLAYBOOK.md` before every new script, video or packaging job** — the single source of truth (all research + lessons, top-20 missing tricks). Add new lessons there as rows.
 
+- Save Claude usage (docs/COST_SAVING.md): one fresh chat per video; send bulk research, source collection, image/licence search and CI waiting to GPT with `tools/gpt.sh <heavy|mid|free> <file> "task"`, then read only the result file. Claude does script, scenes, code and final review.
+
 ## Repo rules (public repo)
 - Never commit secrets, videos, `.env`, Mixamo files, or anything under `_import/`.
 - Big assets live in the `assets-v1` GitHub Release, listed with SHA256 + licence in `assets/manifest.json`; CI fetches them.

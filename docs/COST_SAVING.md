@@ -43,3 +43,17 @@ Test result: the bridge works, but **no GPT account is usable right now**:
 - `opencode-go/*` (incl. `gpt-6-luna`): "An active OpenCode Go subscription is required".
 - `agentrouter-openai/gpt-5.6-sol`: "invalid token" — the AgentRouter key has expired or is wrong.
 Fix one of these (Aymen), then re-run the one-line test above.
+
+## Working models (tested 18 Nov 2026) and the helper
+All three answered the one-line test from Claude's shell:
+| Tier | Model | Use for |
+|---|---|---|
+| heavy | `agentrouter-responses/gpt-6.1-sol` | deep topic research, sources table drafts, first-pass review |
+| mid | `agentrouter/gpt-5.6-sol` | image/licence search (Commons, Met, LoC), collecting view counts, packaging text |
+| free | `opencode/big-pickle` | quick lookups, summaries, CI waiting/downloading, simple file edits |
+
+Helper: `tools/gpt.sh <heavy|mid|free> <output-file> "task"` — runs OpenCode with that model (falls back down the chain on failure), the model writes its result to the file, and only one status line comes back to Claude. Example:
+```
+tools/gpt.sh heavy docs/research/topic-scout-2026-11-20.md "Find 12 rare, high-demand topics for Money & Maps… score them…"
+```
+Claude then reads only the result file, checks the most important facts, and does script, scenes, code and the final review.
