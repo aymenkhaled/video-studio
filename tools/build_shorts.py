@@ -110,7 +110,7 @@ SHORTS = [
              S("Megalodon, the biggest shark that ever lived, was still smaller than an animal alive today.", "build", [RISER], lead=0.1),
              S("We know megalodon mostly from its teeth. The largest are about eighteen centimetres long, roughly the length of a hand.", "tension", [W()]),
              S("Here is a great white shark, about six metres. Now, megalodon.", "tension", [W(), POP(1.6)]),
-             S("Estimates range from about sixteen metres to as much as twenty-four. Scientists still argue, because only teeth and a few backbones survive.", "build", [{"type": "ocean", "at": 0.0, "duration": 6.0, "gain": 0.14}]),
+             S("Estimates range from about sixteen metres to as much as twenty-four. Scientists still argue, because only teeth and a few backbones survive.", "build", [{"type": "underwater", "at": 0.0, "duration": 6.0, "gain": 0.14}]),
              S("Now the blue whale. The largest ones reach about thirty-three metres.", "reveal", [{"type": "whale", "at": 0.8, "duration": 2.0, "gain": 0.18}]),
              S("And on the scale, a sixteen-metre megalodon may have weighed about sixty tonnes. The biggest blue whales: about one hundred fifty.", "reveal", [POP(1.2)]),
              S("The biggest animal ever is alive right now. The full line-up, dinosaurs included, is linked below.", "wonder", [W()]),

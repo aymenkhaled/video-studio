@@ -91,7 +91,7 @@
       "music": "build",
       "sfx": [
         {
-          "type": "ocean",
+          "type": "underwater",
           "at": 0.0,
           "duration": 6.0,
           "gain": 0.14

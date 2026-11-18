@@ -56,8 +56,8 @@ const VBars: React.FC<{spec: VBarsSpec; p: number; elapsed: number; accent: stri
   const max = spec.max ?? Math.max(...spec.bars.map((b) => b.value));
   const L = 90;
   const R = 930;
-  const base = 1090;
-  const topY = 640;
+  const base = 1110;
+  const topY = 560;
   const slot = (R - L) / n;
   const bw = Math.min(230, slot * 0.62);
   return (
@@ -122,18 +122,22 @@ const ShotView: React.FC<{shot: ShortShot; p: number; elapsed: number; uid: stri
   const crop = shot.frame ? shot.frame === 'crop' : CROP_KINDS.has(def.kind);
   if (!crop) {
     const z = shot.zoom ?? 1.5;
-    const d: SceneDef = def.kind === 'map' ? {...def, map: {...def.map, camera: def.map.camera.map((c) => ({...c, zoom: c.zoom * z}))}} : def;
+    // maps: zoom the camera; art: always cover the tall frame (small 'object' photos left empty bands); battles: CSS zoom
+    const d: SceneDef =
+      def.kind === 'map' ? {...def, map: {...def.map, camera: def.map.camera.map((c) => ({...c, zoom: c.zoom * z}))}} : def.kind === 'art' ? {...def, art: {...def.art, object: false}} : def;
+    const css = def.kind === 'battle' ? (shot.zoom ?? 1.3) : 1;
     return (
-      <AbsoluteFill style={live}>
+      <AbsoluteFill style={{...live, transform: `${live.transform} scale(${css})`}}>
         <Scene def={d} p={p} uid={uid} width={1080} height={1920} elapsed={elapsed} clarity />
       </AbsoluteFill>
     );
   }
-  const k = shot.k ?? 1920 / 1080;
+  // k 1.96 + top offset: the stage's own top band (titles, 'to scale' chip) sits above the frame
+  const k = shot.k ?? 1.96;
   const [f0, f1] = shot.pan ?? [0.5, 0.5];
   const fx = f0 + (f1 - f0) * easeInOutCubic(p);
   const left = Math.min(0, Math.max(1080 - 1920 * k, 540 - fx * 1920 * k));
-  const top = (1920 - 1080 * k) / 2;
+  const top = Math.max(1920 - 1080 * k, -100 * k);
   return (
     <AbsoluteFill style={{...live, background: '#101b26', overflow: 'hidden'}}>
       <div style={{position: 'absolute', left, top, width: 1920, height: 1080, transform: `scale(${k})`, transformOrigin: '0 0'}}>
@@ -145,7 +149,7 @@ const ShotView: React.FC<{shot: ShortShot; p: number; elapsed: number; uid: stri
 
 const Hook: React.FC<{text: string; big: number; accent: string}> = ({text, big, accent}) => {
   // big = 1 on the first shot (readable on frame 1, no fade-in), then it shrinks to a topic chip
-  const fs = 40 + 46 * big;
+  const fs = 40 + 34 * big;
   return (
     <div style={{position: 'absolute', left: 60, width: 900, top: 170, display: 'flex', justifyContent: 'center'}}>
       <div
