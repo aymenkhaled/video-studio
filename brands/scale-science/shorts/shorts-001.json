@@ -1,0 +1,18 @@
+{
+  "_doc": "Scale & Science Shorts cut from finished long videos (render.yml mode=shorts, props = this file). 'run' = Actions run whose artifact holds final.mp4 (B001 expires 2026-11-21).",
+  "channel": "Scale & Science",
+  "sources": [
+    {"run": 43622289974, "artifact": "final-BiggestAnimal", "dir": "src/b001"},
+    {"run": 43812381258, "artifact": "final-GiantWaves", "dir": "src/b002"}
+  ],
+  "shorts": [
+    {"id": "b001-blue-whale-biggest-ever", "source": "src/b001/final.mp4", "start": 0.0, "end": 47.6,
+     "hook": "Is the BLUE WHALE\nthe biggest EVER?", "footer": "Full video: tap the link"},
+    {"id": "b001-megalodon-real-size", "source": "src/b001/final.mp4", "start": 251.0, "end": 302.9,
+     "hook": "How big was\nMEGALODON really?", "footer": "Full video: tap the link"},
+    {"id": "b002-481m-wave", "source": "src/b002/final.mp4", "start": 0.0, "end": 41.6,
+     "hook": "Water climbed\n481 METRES", "footer": "Full video: tap the link"},
+    {"id": "b002-survived-record-wave", "source": "src/b002/final.mp4", "start": 446.3, "end": 501.4,
+     "hook": "They SURVIVED\nthe record wave", "footer": "Full video: tap the link"}
+  ]
+}

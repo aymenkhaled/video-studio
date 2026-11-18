@@ -74,6 +74,8 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 7. Eyewitness numbers: quote them exactly as the source gives them (Ulrich: ~30 m mid-bay, 15–23 m at his boat).
 8. Photo Ken Burns ran at ~50 % of runtime before review; keep a count while storyboarding (≤ 30–35 %).
 9. ScienceBase (USGS data releases) sits behind a Cloudflare bot check: don't bypass; ask Aymen for a one-time manual download if the footage is essential.
+10. Shorts tool: a newline inside a drawtext textfile renders as a box glyph — draw one line per drawtext; keep footers ≤ 26 characters (1080 px wide).
+11. Thumbnails: a wall of water reads as "underwater"; the honest, readable image of a run-up is water surging up a real (photo-textured) slope next to a known building at the same scale.
 
 ## From Money & Maps 002 (Siberian curse, 16 Nov 2026)
 1. Kokoro int8 broke on the 16 Nov runner image (inf/NaN → "silent", `overflow encountered in square` in kokoro_onnx.trim); cached lines hide it. Use `voice.model: "fp32"` for any new narration.

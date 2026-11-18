@@ -28,7 +28,8 @@ _Built 2026-11-14 from 5 parallel research passes (`docs/research/*.md`, ~230 so
 | 4 | Plan for the 8,000-h YPP bar: 6-week discovery on all 3, then pick a lead channel (60 % capacity) | Growth | H | S | ABC | MISSING | 2.1 |
 | 5 | Outlier-validated idea bank per brand (`docs/ideas/<brand>.md`, ≥ 5× outlier within 12 months to green-light) + `tools/outliers.py` | Growth/Packaging | H | M | ABC | MISSING | 2.2 |
 | 6 | Repeatable series format per channel with a fixed title frame (distinct storyline each time) | Growth | H | M | ABC | MISSING | 2.3 |
-| 7 | Test & Compare on every long video with 3 *different reasons to click* (winner = watch time) | Packaging | H | S | ABC | PARTIAL | 3.2 |
+| 7 | Thumbnails must show the size/stakes contrast itself at phone size (B002 v3: water surging up a photo-textured mountain past landmarks to scale), never a plain landscape photo; honest to the claim (run-up = water climbing a slope) | B001/B002 CTR 1.5 % [OWN] | H | S | ABC | DOING |
+| Test & Compare on every long video with 3 *different reasons to click* (winner = watch time) | Packaging | H | S | ABC | PARTIAL | 3.2 |
 | 8 | Music ducking 18–24 dB under voice + phone-speaker voice chain (HPF 90 Hz, −300 Hz mud cut, de-ess, 3:1 comp, light room) | Sound | H | S | ABC | DOING (opt-in, C002) | 6.2 |
 | 9 | Analytics loop at 48 h / 7 d / 28 d into `docs/analytics/<brand>.md` and LESSONS table | Growth | H | S | ABC | MISSING | 2.6 |
 | 10 | Second hook by 0:30: 2–3 questions + why it matters to *you* + "by the end…" roadmap (ListCard feeds the ledger) | Hooks | H | S | ABC | MISSING | 4.1 |
@@ -90,7 +91,7 @@ Runners-up: "follow-up to your best video" within 2–4 weeks of a ≥ 3× hit (
 | Auto-dubbing / multi-language audio after ~28 days; check Arabic numbers by ear | YouTube: >25 % of watch time from other languages for adopters [E] (CG T14) | M | S | ABC | MISSING |
 | Translated titles + descriptions (appear in other-language search) | PK P13 [E] | M | S | ABC | MISSING |
 | Cross-post the *original* map/chart (not a link) to subreddits that allow OC, disclose authorship | CG T15 [O] | M | M | ABC | MISSING |
-| Shorts: **promo Shorts ON (Aymen, 17 Nov 2026)**: 2 per finished long video, re-narrated (not cut), Related video set to the long one, 1 Short/channel/day; measure Shorts→long clicks before scaling (Shorts views don't count toward watch hours) | CG T18 [E] · Aymen | M | S | ABC | DOING |
+| Shorts: **promo Shorts ON (Aymen, 17 Nov 2026)**: 2 per finished long video, re-narrated (not cut), Related video set to the long one, 1 Short/channel/day; fallback = quick cut `tools/make_shorts.py` (render.yml mode=shorts; letterboxed, avoid); measure Shorts→long clicks before scaling (Shorts views don't count toward watch hours) | CG T18 [E] · Aymen | M | S | ABC | DOING |
 
 ### 2.6 Analytics loop (template in CG §6)
 | Rule | Evidence | Imp | Eff | Ch | Status |
@@ -318,6 +319,7 @@ All DOING via the Clarity Kit — keep them; they are our differentiator: charac
 | Parallel sessions: merge `origin/main` into your branch inside your own worktree, typecheck + test, then push; never a conflicting merge in the shared `D:\studio` checkout | L B001 #10 [OWN] | M | DOING |
 | Demand check without Semrush: web search + competing videos' outlier ratios; don't block on API units | L B001 #12 [OWN] | M | DOING |
 | Big patch edits via a Python script file, not shell heredocs | L B001 #13 [OWN] | L | DOING |
+| After `git merge origin/main`, if `git diff --name-only --diff-filter=U` lists anything, STOP: resolve, `grep` for `<<<<<<<`, typecheck + test, only then commit/push (a marker-filled make_shorts.py reached main once) | B Shorts 18 Nov [OWN] | H | DOING |
 | Work fast, report early, short answers | L Aymen #9 [OWN] | M | DOING |
 | Anything blocked for automation (bot-checked sites, logins, big archives — e.g. the USGS ScienceBase CC0 video zip): **ping Aymen with the exact link, file name, size and where to save it** instead of skipping it; never bypass bot checks | Aymen 16 Nov 2026 [OWN] | M | DOING |
 | Realism: no flat silhouettes for animals/subjects; real PD/CC0/CC BY photos, cut-outs at exact scale (`cutout: true`), real footage when available | Aymen 15 Nov 2026, B001 analytics [OWN] | H | DOING |
