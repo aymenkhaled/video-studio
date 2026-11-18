@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Delegate a bulk task (research, source collection, image search, CI babysitting) to a GPT model via OpenCode.
-# Usage: tools/gpt.sh <heavy|mid|free> <output-file> "task text"
+# Usage: tools/gpt.sh <heavy|mid|free> <output-file inside the repo> "task text"  (OpenCode refuses paths outside D:studio)
 # The model must WRITE its result to <output-file>; only a short status line is printed, so the calling
 # Claude chat reads a small file instead of long tool output. Falls back down the chain if a model fails.
 set -u

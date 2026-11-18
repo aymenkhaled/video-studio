@@ -57,3 +57,5 @@ Helper: `tools/gpt.sh <heavy|mid|free> <output-file> "task"` — runs OpenCode w
 tools/gpt.sh heavy docs/research/topic-scout-2026-11-20.md "Find 12 rare, high-demand topics for Money & Maps… score them…"
 ```
 Claude then reads only the result file, checks the most important facts, and does script, scenes, code and the final review.
+
+Note: the output file must be inside the repo (e.g. `docs/research/…`); OpenCode refuses to write outside `D:\studio`. Tested end to end 18 Nov: `free` tier wrote the file and returned one status line.
