@@ -37,7 +37,7 @@ on:
         required: false
         default: ''
       media_base:
-        description: Media mode only - earlier release whose media.zip art is reused (e.g. media-c002)
+        description: Media mode only - comma-separated earlier releases whose media.zip art is reused
         required: false
         default: ''
       media_release:
@@ -328,8 +328,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release download "${{ inputs.media_base }}" -p media.zip -D .cache --clobber
-          mkdir -p public && cd public && unzip -qo ../.cache/media.zip "art/*" && cd ..
+          mkdir -p public
+          for rel in $(echo "${{ inputs.media_base }}" | tr ',' ' '); do
+            gh release download "$rel" -p media.zip -O ".cache/base-$rel.zip" --clobber
+            unzip -qo ".cache/base-$rel.zip" "art/*" -d public -x "art/index.json"
+            unzip -p ".cache/base-$rel.zip" art/index.json > ".cache/index-$rel.json" || echo '{}' > ".cache/index-$rel.json"
+          done
+          python3 -c "import json,glob; d={}; [d.update(json.load(open(f))) for f in sorted(glob.glob('.cache/index-*.json'))]; json.dump(d,open('public/art/index.json','w'))"
           ls public/art | wc -l
       - run: python3 tools/fetch_media.py
       - name: Publish <media_release>/media.zip
