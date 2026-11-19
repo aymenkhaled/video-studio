@@ -56,6 +56,8 @@ export type MapSpec = {
   rivers?: {name: string; label?: string; at?: LonLat}[];
   /** Clarity Kit: minimum on-screen text size in px (phone readability). */
   minText?: number;
+  /** Clarity Kit: extra screen areas (px) that labels must avoid, e.g. a HUD or card drawn over the map. */
+  reserve?: {x: number; y: number; w: number; h: number}[];
   /** Money & Maps: countries coloured by a sourced value (Natural Earth ids = ISO 3166-1 numeric), legend bottom-left. */
   choropleth?: Choropleth;
 };
@@ -220,6 +222,7 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
       boxes.push({id: 'o:cap', x: 170, y: height - 360, w: width - 340, h: 200, priority: 9});
       boxes.push({id: 'o:time', x: 0, y: height - 150, w: width, h: 150, priority: 9});
       if (spec.choropleth?.legend) boxes.push({id: 'o:choro', x: 0, y: height - 640, w: 430, h: 300, priority: 9});
+      (spec.reserve ?? []).forEach((r, k) => boxes.push({id: `o:res${k}`, ...r, priority: 9}));
     }
     (spec.choropleth?.labels ?? []).forEach((l) => {
       const [x, y] = px(l.at);

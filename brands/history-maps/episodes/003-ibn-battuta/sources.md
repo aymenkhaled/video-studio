@@ -60,6 +60,14 @@ Status key: VERIFIED (two or more sources agree) · HEDGE (say "about", "sources
 | 44 | Catalan Atlas 1375 shows a king of Mali (usually identified as Mansa Musa) holding gold. | VERIFIED (identification hedged) | [Commons file page](https://commons.wikimedia.org/wiki/File:Catalan_Atlas_BNF_Sheet_6_Mansa_Musa.jpg) | 2026-11-18 |
 | 45 | Dictated to Ibn Juzayy, a scholar he had met before; "Rihla" = journey/travel account. | VERIFIED | [Wikipedia: Ibn Battuta](https://en.wikipedia.org/wiki/Ibn_Battuta) | 2026-11-18 |
 | 46 | Marco Polo's book spread widely in Europe and inspired Christopher Columbus. | VERIFIED | [Wikipedia: Marco Polo](https://en.wikipedia.org/wiki/Marco_Polo) | 2026-11-18 |
+| 47 | Card dates: Ibn Battuta 24 Feb 1304 – 1368/69 (card "c. 1369"). | VERIFIED | [Wikipedia: Ibn Battuta](https://en.wikipedia.org/wiki/Ibn_Battuta) | 2026-11-19 |
+| 48 | Muhammad bin Tughluq reigned 1325–1351. | VERIFIED | [Wikipedia: Muhammad bin Tughluq](https://en.wikipedia.org/wiki/Muhammad_bin_Tughluq) | 2026-11-19 |
+| 49 | Özbeg (Uzbeg) Khan reigned 1313–1341. | VERIFIED | [Wikipedia: Uzbeg Khan](https://en.wikipedia.org/wiki/Uzbeg_Khan) | 2026-11-19 |
+| 50 | Abu Inan Faris reigned 1348–1358. | VERIFIED | [Wikipedia: Abu Inan Faris](https://en.wikipedia.org/wiki/Abu_Inan_Faris) | 2026-11-19 |
+| 51 | Black Death 1346–1353. | VERIFIED | [Wikipedia: Black Death](https://en.wikipedia.org/wiki/Black_Death) | 2026-11-19 |
+| 52 | Marco Polo 1254–1324; Columbus 1451–1506, read Polo, sailed west in 1492. | VERIFIED | [Wikipedia: Marco Polo](https://en.wikipedia.org/wiki/Marco_Polo); [Wikipedia: Christopher Columbus](https://en.wikipedia.org/wiki/Christopher_Columbus) | 2026-11-19 |
+| 53 | Mansa Musa died c. 1337; famous gold-rich pilgrimage to Mecca, 1324. | VERIFIED | [Wikipedia: Mansa Musa](https://en.wikipedia.org/wiki/Mansa_Musa) | 2026-11-19 |
+| 54 | Calicut: he was ASHORE when the storm sank the ship — script says "a storm that sank his ship"/"his ship lost", never "shipwrecked"/"nearly drowned" (review fix 19 Nov). | VERIFIED (wording corrected) | [Wikipedia: Ibn Battuta](https://en.wikipedia.org/wiki/Ibn_Battuta) | 2026-11-19 |
 
 ## Art licence checks (file pages fetched 2026-11-18)
 

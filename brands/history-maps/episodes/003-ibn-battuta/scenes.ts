@@ -14,7 +14,7 @@ export const CLARITY: ClarityConfig = {
   ],
   chapters: {
     c1: 'Tangier', c2: 'The Road to Mecca', c3: 'Persia and Africa', c4: 'The Steppe', c5: 'The Sultan',
-    c6: 'Shipwreck', c7: 'China?', c8: 'The Black Death', c9: 'Mali', c10: 'The Book',
+    c6: 'The Lost Ship', c7: 'China?', c8: 'The Black Death', c9: 'Mali', c10: 'The Book',
   },
   highlight: {'Ibn Battuta': COL4.gold, Battuta: COL4.gold, 'Marco Polo': '#c9ced3', Polo: '#c9ced3'},
   now: 2026,
@@ -23,7 +23,7 @@ export const CLARITY: ClarityConfig = {
 // ---------- helpers ----------
 const cam = (a: LonLat, za: number, b: LonLat, zb: number, fly = false): CamKey[] => [{at: 0, center: a, zoom: za}, {at: 1, center: b, zoom: zb, fly}];
 const hold = (c: LonLat, z: number) => cam(c, z, c, z * 1.08);
-const M = (spec: Omit<MapSpec, 'modern' | 'avoidLabels'>): MapSpec => ({modern: {labels: MODERN_W}, avoidLabels: true, relief: true, minText: 30, ...spec});
+const M = (spec: Omit<MapSpec, 'avoidLabels'>): MapSpec => ({modern: {labels: MODERN_W}, avoidLabels: true, relief: true, minText: 30, ...spec});
 const at = (c: City, appear: number, size?: number): City => ({...c, appear, size});
 const pts = (ps: Place[]): LonLat[] => ps.map((k) => P[k] as LonLat);
 
@@ -44,13 +44,17 @@ const past = (upTo: string): Route[] => {
 const polo = (draw: [number, number] = [0, 0.001]): Route => ({id: 'polo', points: POLO_POINTS, color: COL4.polo, draw, width: 5});
 
 type Scene = {year?: number; camera: CamKey[]; routes?: Route[]; cities?: City[]; regions?: MapSpec['regions']; projection?: MapSpec['projection']; choropleth?: MapSpec['choropleth']};
+const reserveFor = (overlays: Overlay[]) => [
+  ...(overlays.some((o) => o.type === 'journey') ? [{x: 0, y: 560, w: 560, h: 190}] : []),
+  ...(overlays.some((o) => o.type === 'character') ? [{x: 0, y: 230, w: 620, h: 260}] : []),
+];
 const map = (s: Scene, overlays: Overlay[] = []): SceneDef => ({
   kind: 'map', year: s.year,
-  map: M({camera: s.camera, routes: s.routes, cities: s.cities, regions: s.regions, projection: s.projection, choropleth: s.choropleth}),
+  map: M({camera: s.camera, routes: s.routes, cities: s.cities, regions: s.regions, projection: s.projection, choropleth: s.choropleth, reserve: reserveFor(overlays)}),
   overlays,
 });
-const chapter = (n: number, title: string, sub: string, s: Scene, question: string, image?: string): SceneDef => ({kind: 'map', map: M({camera: s.camera, routes: s.routes, cities: s.cities}), overlays: [{type: 'chapter', n, title, sub, image, question}]});
-const recap = (text: string, s: Scene, next?: string): SceneDef => ({kind: 'map', map: M({camera: s.camera, routes: s.routes, cities: s.cities}), overlays: [{type: 'recap', text, next}]});
+const chapter = (n: number, title: string, sub: string, s: Scene, question: string, image?: string): SceneDef => ({kind: 'map', map: M({camera: s.camera, routes: s.routes, modern: {labels: []}}), overlays: [{type: 'chapter', n, title, sub, image, question}]});
+const recap = (text: string, s: Scene, next?: string): SceneDef => ({kind: 'map', map: M({camera: s.camera, routes: s.routes, modern: {labels: []}}), overlays: [{type: 'recap', text, next}]});
 const art = (id: string, title: string, from: {x: number; y: number; zoom: number}, to: {x: number; y: number; zoom: number}, overlays?: Overlay[], object = false): SceneDef => ({kind: 'art', art: {id, title, from, to, object}, overlays});
 
 // ---------- cameras (visible width ≈ 360 / zoom degrees) ----------
@@ -71,11 +75,11 @@ const ALL_GOLD: Route = {id: 'all', points: ALL_POINTS, color: COL4.gold, draw: 
 // ---------- the scenes ----------
 export const SCENES: Record<string, SceneDef> = {
   // c0 — hook: Polo's grey line draws, then the gold loop explodes over it (thumbnail map at frame 1)
-  c0a: map({year: 1325, camera: cam(WORLD, 2.3, WORLD, 2.45), routes: [polo([-0.12, 0.3]), {...ALL_GOLD, draw: [0.32, 0.96], width: 7}],
-    regions: [{text: 'MARCO POLO', at: [70, 47], appear: 0, size: 34}, {text: 'IBN BATTUTA', at: [20, 5], appear: 0.5, size: 40}]}),
-  c0b: map({year: 1325, camera: cam(WORLD, 2.45, WORLD, 2.6), routes: [polo(), ALL_GOLD]}, [J([0, TOTAL_EST_KM]), {type: 'citation', text: 'Estimate: R. Dunn; Wikipedia. Polo ≈ 24,000 km', at: [0.1, 0.98]}]),
+  c0a: map({year: 1325, camera: cam(WORLD, 2.3, WORLD, 2.45), routes: [{...polo(), width: 6}, {...ALL_GOLD, draw: [0.1, 0.9], width: 8}],
+    regions: [{text: 'MARCO POLO ≈ 24,000 KM', at: [72, 48], appear: 0, size: 40}, {text: 'IBN BATTUTA ≈ 117,000 KM', at: [22, 4], appear: 0.55, size: 44}]}),
+  c0b: map({year: 1325, camera: cam(WORLD, 2.45, WORLD, 2.6), routes: [polo(), ALL_GOLD]}, [J([0, TOTAL_EST_KM]), {type: 'character', name: 'Marco Polo', role: 'Venetian merchant, 1254–1324', line: 'Famous for his travels to China. Route here is schematic.', side: 'Marco Polo', window: [0.02, 0.98]}, {type: 'citation', text: 'Estimates: R. Dunn; Wikipedia. Routes schematic', at: [0.1, 0.98]}]),
   c0c: map({year: 1325, camera: cam([-5.8, 35.7], 14, [-5.8, 35.7], 18, true), cities: [CITY.tangier]}, [
-    {type: 'character', name: 'Ibn Battuta', role: 'Scholar and traveller, 1304 – c. 1368', line: 'Born in Tangier. Left at about 21. (Engraving imagined, 1800s.)', image: 'benett-ibn-battuta', side: 'Ibn Battuta'},
+    {type: 'character', name: 'Ibn Battuta', role: 'Scholar and traveller, 1304 – c. 1369', line: 'Born in Tangier. Left at about 21. (Engraving imagined, 1800s.)', image: 'benett-ibn-battuta', side: 'Ibn Battuta'},
   ]),
   c0d: {kind: 'map', map: M({camera: hold(WORLD, 2.5), routes: [polo(), ALL_GOLD]}), overlays: [{type: 'list', title: 'Three questions', items: ['How did he pay for it?', 'What nearly killed him?', 'Why did Europe forget him?']}]},
   c0e: map({year: 1355, camera: cam(WORLD, 2.6, [30, 30], 3.2), routes: [polo(), ALL_GOLD]}),
@@ -190,7 +194,7 @@ export const SCENES: Record<string, SceneDef> = {
   c5h: recap('Delhi made him rich, and nearly got him killed. Now he leads an embassy to China.', {camera: INDIA, routes: past('c6')}, 'What could go wrong?'),
 
   // c6 — shipwreck (peak ~7:30: loses everything)
-  c6: chapter(6, 'Shipwreck', '1341 – 1345', {camera: cam([76, 16], 6, [76, 14], 6.6), routes: past('c6')}, 'How fast can you lose everything?'),
+  c6: chapter(6, 'The Lost Ship', '1341 – 1345', {camera: cam([76, 16], 6, [76, 14], 6.6), routes: past('c6')}, 'How fast can you lose everything?'),
   c6a: map({year: 1341, camera: hold([77.6, 28.2], 12), cities: [CITY.delhiPlain], routes: [...past('c6'), gold('r', ['delhi', 'koil'], [0.1, 0.5])], regions: [{text: 'ROBBED BY REBELS', at: [79.6, 26.4], appear: 0.5, size: 30}]}, [
     J(KK('c6', 0, 0.08)),
     {type: 'glossary', term: 'Embassy', meaning: 'an official mission sent to a foreign ruler', window: [0.05, 0.45]},
@@ -204,8 +208,8 @@ export const SCENES: Record<string, SceneDef> = {
   c6f: map({year: 1343, camera: hold([73.51, 4.18], 22), cities: [{...CITY.male, size: 1.4, note: 'chief judge'}], routes: past('c6')}, [
     {type: 'citation', text: 'Time in the Maldives: 9 months – 1.5 years (sources differ)', at: [0.3, 0.98]},
   ]),
-  c6g: map({year: 1344, camera: cam([74, 5], 10, [81, 8], 9), cities: [CITY.male, at({...CITY.ceylon, note: "Adam's Peak"}, 0.35)], routes: [...past('c6'), gold('r', ['male', 'ceylon'], [0.05, 0.4], true)], regions: [{text: 'PIRATES', at: [83.5, 11], appear: 0.65, size: 34}]}, [J(KK('c6', 0.5, 0.65))]),
-  c6h: recap('Robbed twice, shipwrecked, nothing left. He still sails for China.', {camera: BAY, routes: past('c7')}, 'Did he really get there?'),
+  c6g: map({year: 1344, camera: cam([74, 5], 10, [81, 8], 9), cities: [CITY.male, at({...CITY.ceylon, note: "Adam's Peak · then pirates"}, 0.35)], routes: [...past('c6'), gold('r', ['male', 'ceylon'], [0.05, 0.4], true)]}, [J(KK('c6', 0.5, 0.65))]),
+  c6h: recap('Robbed twice, his ship lost, nothing left. He still sails for China.', {camera: BAY, routes: past('c7')}, 'Did he really get there?'),
 
   // c7 — China (hedged)
   c7: chapter(7, 'China?', '1345 – 1346', {camera: CHINA, routes: past('c7')}, 'Did he really go to China?'),
@@ -238,7 +242,9 @@ export const SCENES: Record<string, SceneDef> = {
   // c9 — Mali
   c9: chapter(9, 'Mali', '1351 – 1354', {camera: SAHARA, routes: past('c9')}, 'What lies on the other side of the Sahara?', 'catalan-mansa-musa'),
   c9a: map({year: 1351, camera: cam([-5, 30], 7, [-5, 20], 5.5), cities: [CITY.fezPlain, at(CITY.timbuktu, 0.6)], routes: past('c9'), regions: [{text: 'SAHARA', at: [2, 25], appear: 0.1, size: 44}, {text: 'EMPIRE OF MALI', at: [-6, 14], appear: 0.55, size: 36}]}),
-  c9b: art('catalan-mansa-musa', 'Catalan Atlas, 1375 (BnF): a king of Mali, usually identified as Mansa Musa', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.55, zoom: 1.35}),
+  c9b: art('catalan-mansa-musa', 'Catalan Atlas, 1375 (BnF): a king of Mali, usually identified as Mansa Musa', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.55, zoom: 1.35}, [
+    {type: 'character', name: 'Mansa Musa', role: 'King of Mali, died c. 1337', line: 'Famed for his gold-rich pilgrimage to Mecca in 1324.', window: [0.4, 0.98]},
+  ]),
   c9c: map({year: 1352, camera: SAHARA, cities: [CITY.fezPlain, at(CITY.sijilmasa, 0.2), at({...CITY.taghaza, note: 'houses built of salt'}, 0.6)], routes: [...past('c9'), gold('r', ['fez', 'sijilmasa', 'taghaza', 'walata'], [0.05, 0.85])]}, [J(KK('c9', 0, 0.45))]),
   c9d: map({year: 1352, camera: cam([-7, 16], 9, [-8, 13], 11), cities: [CITY.walata, at(CITY.mali, 0.5, 1.3)], routes: [...past('c9'), gold('r0', ['fez', 'sijilmasa', 'taghaza', 'walata'], [0, 0.001]), gold('r', ['walata', 'mali'], [0.05, 0.5])]}, [
     J(KK('c9', 0.45, 0.58)),
@@ -260,12 +266,13 @@ export const SCENES: Record<string, SceneDef> = {
   ]),
   c10c: map({camera: cam([20, 35], 4, [20, 38], 4.4), routes: [ALL_GOLD], regions: [{text: 'ARABIC COPIES', at: [28, 28], appear: 0.4, size: 32}, {text: 'EUROPE: UNKNOWN', at: [8, 48], appear: 0.6, size: 32}]}),
   c10d: art('catalan-atlas', 'Catalan Atlas, 1375 (BnF) — European maps drew on Marco Polo', {x: 0.75, y: 0.5, zoom: 1.5}, {x: 0.85, y: 0.5, zoom: 1.3}, [
+    {type: 'character', name: 'Christopher Columbus', role: 'Genoese explorer, 1451–1506', line: 'Read Marco Polo; sailed west for Asia in 1492.', window: [0.4, 0.98]},
     {type: 'citation', text: 'Wikipedia: Marco Polo (influence on Columbus)', at: [0.3, 0.98]},
   ]),
   c10e: map({camera: cam([2, 46], 7, [2.3, 48.8], 9), routes: [], cities: [{name: 'Paris', at: [2.35, 48.86], today: 'France', note: 'Arabic text + French, 1853–58'}]}, [
     {type: 'citation', text: 'Defrémery & Sanguinetti, 4 vols, 1853–1858', at: [0.3, 0.98]},
   ]),
-  c10f: {kind: 'map', map: M({camera: hold(WORLD, 2.5), routes: [polo(), ALL_GOLD]}), overlays: [{type: 'list', title: 'The answers', items: ['Paid by learning + hospitality', 'Survived bandits, a tyrant, a wreck, pirates, plague', 'Europe never had his book until the 1800s']}]},
+  c10f: {kind: 'map', map: M({camera: hold(WORLD, 2.5), routes: [polo(), ALL_GOLD]}), overlays: [{type: 'list', title: 'The answers', items: ['Paid by learning + hospitality', 'Survived bandits, a tyrant, a storm, pirates, plague', 'Europe never had his book until the 1800s']}]},
   c10g: map({camera: cam(WORLD, 2.2, WORLD, 2.4), routes: [polo([0, 0.25]), {...ALL_GOLD, draw: [0.25, 0.85], width: 7}],
     choropleth: {values: Object.fromEntries(ROUTE_COUNTRIES.map((id) => [id, 1])), breaks: [0.5], colors: ['rgba(0,0,0,0)', 'rgba(242,182,50,0.42)'], appear: [0.7, 0.95]}}, [
     J([0, TOTAL_EST_KM]),
