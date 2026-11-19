@@ -4,6 +4,11 @@
 - 2026-11-18 Aymen approved the topic: the biggest living thing isn't a whale (Shark Bay seagrass 180 km, Pando, honey fungus). Pays off B002's end-screen tease.
 - Cost rule: bulk research via `tools/gpt.sh` (facts heavy, images mid, demand heavy, satellite licences mid) → `docs/research/B003-*.md`. Claude: script, scenes, code, review.
 - Goal "better videos": packaging gate first (CTR is the bottleneck at 1.5 %), new hero shot = real satellite zoom-out (pitch → 180 km), voice chain + prosody + 20 dB ducking (C002 settings), second independent review.
+- 2026-11-19 **Delivered B003: QA PASS** (11:14, -14.3 LUFS, -3.6 dBTP, no black/freeze/silence) render 44464149947, release `render-BiggestLivingThing-44464149947`; files in `D:\deep-time-fables\scale-science-episode-003\` (final.mp4, thumbs 1-3, UPLOAD.md, captions.srt, contact_sheet, sources, promises, review).
+- Media release `media-b003` (+ `src.zip` of Commons originals downloaded locally: Wikimedia 429-blocks the runner). Media mode now seeds from ALL media-* releases and fetches only new ids.
+- Independent review FAIL 7/10 (0 critical, 7 major, 10 minor) -> all fixed. 2 stills rounds, 2 full renders (1st failed freezedetect: static camera in c1c).
+- Honest score 7.5/10. Weaknesses: (1) thumb_1 lacks the 180 km ruler line (thumbnail code kept the old off-frame ruler y); (2) satellite close-ups over open water are soft (Sentinel-2 10 m/px upscaled); (3) voice/ducking never heard on a phone.
+- Waiting on Aymen: phone listen + upload per UPLOAD.md; approve merging branch `b003-biggest-living-thing` into main (push to main was blocked by the permission classifier).
 - 2026-11-18 Satellite licence research complete: `docs/research/B003-satellite.md`. Use EOX 2016 `s2cloudless_3857` (CC BY 4.0, z0–14, credit burned in); 2018+ EOX and Esri World Imagery rejected; NASA EO/GIBS + USDA NAIP (PD) as wide/close-up sources. No local rendering; read-only tile probes only.
 
 ## Promo Shorts — branch `shorts/promo-v1` (worktree `D:\studio-shorts`), 18 Nov 2026

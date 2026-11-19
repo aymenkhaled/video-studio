@@ -98,6 +98,14 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 6. fp32 Kokoro on a TTS cache miss can pass 20 min when 12 runs start at once → plan job timeout 40 min.
 7. Never patch TS with Python string replacements containing `\n` inside a bash heredoc: write the fix script to a file (LESSONS B001 #13 again).
 
+## From Scale & Science 003 (biggest living thing, 19 Nov 2026)
+1. Wikimedia 429-blocks GitHub runners: media mode seeds from all media-* releases and fetches only new ids; new Commons originals are downloaded locally with curl and uploaded as `<media_release>/src.zip`.
+2. The free OpenCode model invents Commons file names: verify titles + licences via the Commons API before adding them to media.json.
+3. SatZoom: Sentinel-2 cloudless 2016 is 10 m/px, never start a zoom below ~600 m width; equal-area circles say "position & shape illustrative"; keep shapes inside the frame (a ruler at y -112 km sat below it).
+4. Every scale camera needs a move (a static `cam(x, w)` froze 2 s -> QA FAIL).
+5. Glossary meanings <= 8 words (the stills job throws).
+6. The packager copies bullet lines from sources.md into the description: keep "excluded" notes as prose, not bullets.
+
 ## From published videos (fill after 48 h per upload)
 | Video | CTR | Avg % viewed | 30-s drop | Viewed vs swiped | Lesson |
 |---|---|---|---|---|---|

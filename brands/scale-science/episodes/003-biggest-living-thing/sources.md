@@ -43,4 +43,4 @@ Checked 18–19 Nov 2026. Fact pack with full audit: `docs/research/B003-facts.m
 | 33 | Sampled-site pins: Sandy Point (Dirk Hartog I.), Middle Bluff, Fowlers Camp, Nanga Bay, Herald Bight, Monkey Mia, Faure Island/Sill — positions from OpenStreetMap Nominatim (place names, approx.) | pins (approx.) | Edgeloe 2022 Fig. 1 names; OpenStreetMap contributors (ODbL) geocoding, used for place positions only |
 
 ## Excluded on purpose
-- 119 m siphonophore "total length" (unconfirmed estimate); 55 m bootlace worm (1864, unverified); "35,000 tons" fungus mass (unit/moisture undefined); Pando 80,000 years (superseded 2024 headline); "a 180 km long plant/blade" (the clone is fragmented meadows).
+Not used (unverified or superseded): 119 m siphonophore total length; 55 m bootlace worm (1864); "35,000 tons" fungus mass; Pando 80,000 years; "a 180 km long plant/blade".
