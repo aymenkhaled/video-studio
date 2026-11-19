@@ -16,6 +16,8 @@ import {SwitzerlandEpisode, calculateSwitzerlandEpisode} from './money/Switzerla
 import {SwitzerlandThumb} from './money/SwitzerlandThumb';
 import {SiberianCurseEpisode, calculateSiberianCurseEpisode} from './money/SiberianCurse';
 import {SiberianCurseThumb} from './money/SiberianCurseThumb';
+import {PhantomBordersEpisode, calculatePhantomBordersEpisode} from './money/PhantomBorders';
+import {PhantomBordersThumb} from './money/PhantomBordersThumb';
 import {MoneyAvatar, MoneyBanner} from './channel/MoneyArt';
 import {ScaleChannel1, ScaleChannel2} from './scale/ChannelArt';
 import {GiantWaves, GiantWavesThumb, calculateGiantWaves} from './scale/GiantWaves';
@@ -93,6 +95,19 @@ export const Root: React.FC = () => (
     />
     {([1, 2, 3] as const).map((v) => (
       <Composition key={`sc${v}`} id={`SiberianCurseThumb${v}`} component={SiberianCurseThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
+    ))}
+    <Composition
+      id="PhantomBorders"
+      component={PhantomBordersEpisode}
+      durationInFrames={24 * 60 * 12}
+      fps={24}
+      width={1920}
+      height={1080}
+      defaultProps={{scenes: []}}
+      calculateMetadata={calculatePhantomBordersEpisode}
+    />
+    {([1, 2, 3] as const).map((v) => (
+      <Composition key={`pb${v}`} id={`PhantomBordersThumb${v}`} component={PhantomBordersThumb} durationInFrames={1} fps={24} width={1280} height={720} defaultProps={{variant: v}} />
     ))}
     <Composition id="MoneyAvatar" component={MoneyAvatar} durationInFrames={1} fps={24} width={800} height={800} />
     <Composition id="MoneyBanner" component={MoneyBanner} durationInFrames={1} fps={24} width={2560} height={1440} />

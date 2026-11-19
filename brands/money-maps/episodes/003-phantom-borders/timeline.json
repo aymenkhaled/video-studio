@@ -61,26 +61,42 @@
    "id": "o3",
    "lead": 0.3,
    "lines": [
-    "Germany is not alone. All over the world, borders that vanished long ago still show up in today's money.",
-    "Some are a hundred years old. One was built by Rome. And one is a coastline from the age of dinosaurs, that you can still see from space."
+    "Germany is not alone. All over the world, borders that vanished long ago still show up in today's money."
    ],
    "music": "epic",
    "sfx": [
     {
      "type": "pop",
-     "at": 2.4,
+     "at": 1.2,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "o3b",
+   "lead": 0.3,
+   "lines": [
+    "Some are a hundred years old. One was built by Rome.",
+    "And one is a coastline from the age of dinosaurs, that you can still see from space."
+   ],
+   "music": "epic",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 0.4,
      "duration": 0.3,
      "gain": 0.22
     },
     {
      "type": "pop",
-     "at": 4.6,
+     "at": 2.0,
      "duration": 0.3,
      "gain": 0.22
     },
     {
      "type": "pop",
-     "at": 6.4,
+     "at": 3.8,
      "duration": 0.3,
      "gain": 0.22
     }
@@ -123,10 +139,25 @@
    "id": "c1a",
    "lead": 0.3,
    "lines": [
-    "For forty years, this line split Germany in two: a market economy in the west, a communist one in the east.",
-    "In nineteen eighty-nine the wall fell. A year later the country was one again."
+    "For forty years, this fortified line split Germany in two: a market economy in the west, a communist one in the east."
    ],
    "music": "somber"
+  },
+  {
+   "id": "c1a2",
+   "lead": 0.3,
+   "lines": [
+    "In nineteen eighty-nine the Berlin Wall fell. A year later, the country was one again."
+   ],
+   "music": "somber",
+   "sfx": [
+    {
+     "type": "impact",
+     "at": 1.4,
+     "duration": 1.4,
+     "gain": 0.32
+    }
+   ]
   },
   {
    "id": "c1b",
@@ -177,11 +208,85 @@
    ]
   },
   {
+   "id": "c1e2",
+   "lead": 0.3,
+   "lines": [
+    "In twenty twenty-five, the typical full-time worker in the east earned about forty-six thousand euros a year.",
+    "In the west, about fifty-five thousand."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 1.0,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
    "id": "c1f",
    "lead": 0.3,
    "lines": [
-    "Why so slow? Economists point to what the east lost in nineteen ninety: most big company headquarters stayed in the west, and millions of young people moved there.",
-    "Productivity in the east has climbed from about a third of the western level to about eighty-five percent. Close, but not equal."
+    "Why so slow? Start with the head offices.",
+    "When the east opened up, almost no big company moved its headquarters there."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c1g",
+   "lead": 0.3,
+   "lines": [
+    "Today, not one company in Germany's top stock index is based in the five eastern states.",
+    "Only about sixteen of the country's five hundred largest firms are."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.6,
+     "duration": 0.3,
+     "gain": 0.22
+    },
+    {
+     "type": "pop",
+     "at": 4.4,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c1h",
+   "lead": 0.3,
+   "lines": [
+    "Head offices mean research jobs and high salaries. So young people followed them.",
+    "Since then, well over a million more people have moved from east to west than the other way."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c1i",
+   "lead": 0.3,
+   "lines": [
+    "Saxony-Anhalt has lost about a quarter of its people since nineteen ninety."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.4,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
+  },
+  {
+   "id": "c1j",
+   "lead": 0.3,
+   "lines": [
+    "Output per worker in the east has climbed from about a third of the western level to about eighty-five percent.",
+    "Close, but not equal."
    ],
    "music": "calm"
   },
@@ -222,7 +327,8 @@
    "id": "c2b",
    "lead": 0.3,
    "lines": [
-    "Prussia built factories and railways. Russia, in its part, built far fewer."
+    "Each empire ran its part differently. Prussia built factories and a dense web of railways.",
+    "Russia, in its part, built far fewer."
    ],
    "music": "calm",
    "sfx": [
@@ -233,6 +339,14 @@
      "gain": 0.18
     }
    ]
+  },
+  {
+   "id": "c2b2",
+   "lead": 0.3,
+   "lines": [
+    "Russia also pressed hard on the Catholic Church. Austria, by contrast, let Poles run much of their own local government."
+   ],
+   "music": "calm"
   },
   {
    "id": "c2c",
@@ -247,14 +361,21 @@
    "id": "c2d",
    "lead": 0.3,
    "lines": [
-    "Here is the surprise. Economists Irena Grosfeld and Ekaterina Zhuravskaya checked, village by village, on both sides of the old lines.",
-    "Differences in income, education and corruption have disappeared."
+    "Economists Irena Grosfeld and Ekaterina Zhuravskaya checked, village by village, on both sides of the old lines."
+   ],
+   "music": "epic"
+  },
+  {
+   "id": "c2d2",
+   "lead": 0.3,
+   "lines": [
+    "Here is the surprise. Differences in income, education and corruption have disappeared."
    ],
    "music": "epic",
    "sfx": [
     {
      "type": "impact",
-     "at": 4.4,
+     "at": 1.2,
      "duration": 1.4,
      "gain": 0.32
     }
@@ -265,7 +386,23 @@
    "lead": 0.3,
    "lines": [
     "What did not disappear were things built into the ground and into families.",
-    "The railways the empires laid are still denser on the old Prussian side. And people on the old Russian side still go to church less, after Russia's long pressure on the Catholic Church."
+    "The railways the empires laid are still denser on the old Prussian side."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "train",
+     "at": 0.6,
+     "duration": 4,
+     "gain": 0.18
+    }
+   ]
+  },
+  {
+   "id": "c2e2",
+   "lead": 0.3,
+   "lines": [
+    "And people on the old Russian side still go to church less, a trace of Russia's long pressure on the Church."
    ],
    "music": "calm"
   },
@@ -273,8 +410,15 @@
    "id": "c2f",
    "lead": 0.3,
    "lines": [
-    "You may have seen viral maps where Polish elections follow the old border perfectly.",
-    "Careful: the researchers found much of that split is a smooth slope across the country, not a sudden jump at the line."
+    "You may have seen viral maps where Polish elections follow the old border perfectly."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c2f2",
+   "lead": 0.3,
+   "lines": [
+    "Careful: the researchers found that much of that split is a smooth slope across the country, not a sudden jump at the line."
    ],
    "music": "calm"
   },
@@ -307,7 +451,7 @@
    "lead": 0.3,
    "lines": [
     "The same year another empire died: the Habsburgs of Austria-Hungary.",
-    "Its old eastern edge now cuts through five countries, including Poland, Ukraine and Romania."
+    "Its old eastern edge now cuts through five countries: Poland, Ukraine, Romania, Serbia and Montenegro."
    ],
    "music": "calm"
   },
@@ -315,7 +459,7 @@
    "id": "c3b",
    "lead": 0.3,
    "lines": [
-    "The Habsburgs were known for a slow but fairly honest bureaucracy: courts, police and paperwork that followed rules."
+    "The Habsburgs were known for a slow but fairly honest bureaucracy: courts, police and paperwork that followed written rules."
    ],
    "music": "calm"
   },
@@ -331,17 +475,34 @@
    "id": "c3d",
    "lead": 0.3,
    "lines": [
-    "On the old Habsburg side, people trust courts and police more, and they are more likely to say they never pay bribes, by roughly five to seven percentage points."
+    "On the old Habsburg side, people trust courts and police more.",
+    "And they are more likely to say they never pay bribes, by roughly five to seven percentage points."
    ],
    "music": "epic",
    "sfx": [
     {
      "type": "coin",
-     "at": 5.0,
+     "at": 4.0,
      "duration": 0.4,
      "gain": 0.25
     }
    ]
+  },
+  {
+   "id": "c3c2",
+   "lead": 0.3,
+   "lines": [
+    "The survey was taken in two thousand six, almost ninety years after the empire fell."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c3d2",
+   "lead": 0.3,
+   "lines": [
+    "Business owners in a separate survey said the same: on the old Habsburg side, courts seem fairer."
+   ],
+   "music": "calm"
   },
   {
    "id": "c3e",
@@ -387,23 +548,46 @@
    "id": "c4a",
    "lead": 0.3,
    "lines": [
-    "This is the Limes, the frontier of the Roman Empire across Germany: about five hundred fifty kilometres of wall, ditches and watchtowers.",
-    "Rome gave it up more than seventeen hundred years ago."
+    "This is the Limes, the frontier of the Roman Empire across Germany: about five hundred fifty kilometres of wall, ditches and watchtowers."
    ],
    "music": "calm"
+  },
+  {
+   "id": "c4a2",
+   "lead": 0.3,
+   "lines": [
+    "Rome gave it up more than seventeen hundred years ago.",
+    "That makes it by far the oldest human border in this story."
+   ],
+   "music": "calm",
+   "sfx": [
+    {
+     "type": "whoosh",
+     "at": 0.2,
+     "duration": 0.7,
+     "gain": 0.28
+    }
+   ]
   },
   {
    "id": "c4b",
    "lead": 0.3,
    "lines": [
-    "Economist Fabian Wahl looked at Germany from space at night.",
+    "Economist Fabian Wahl looked at Germany from space at night, and compared both sides of that line."
+   ],
+   "music": "tension"
+  },
+  {
+   "id": "c4b2",
+   "lead": 0.3,
+   "lines": [
     "On the old Roman side, the lights are brighter: about five percent by the strictest method, and twenty percent or more by others."
    ],
    "music": "tension",
    "sfx": [
     {
      "type": "pop",
-     "at": 4.8,
+     "at": 1.0,
      "duration": 0.3,
      "gain": 0.22
     }
@@ -433,6 +617,14 @@
      "gain": 0.28
     }
    ]
+  },
+  {
+   "id": "c4e",
+   "lead": 0.3,
+   "lines": [
+    "Roman towns like Mainz and Trier never stopped being important. Their bishops and markets kept them alive after Rome fell."
+   ],
+   "music": "calm"
   },
   {
    "id": "c4r",
@@ -471,8 +663,16 @@
    "id": "c5b",
    "lead": 0.3,
    "lines": [
-    "In the age of dinosaurs, more than sixty-six million years ago, the sea reached all the way up here.",
-    "Tiny plankton shells piled up on the sea floor and became chalk. That chalk weathered into some of the richest soil in the South."
+    "In the age of dinosaurs, more than sixty-six million years ago, the sea reached all the way up here."
+   ],
+   "music": "somber"
+  },
+  {
+   "id": "c5b2",
+   "lead": 0.3,
+   "lines": [
+    "Tiny plankton shells piled up on the sea floor and became chalk.",
+    "That chalk weathered into some of the richest soil in the South."
    ],
    "music": "somber"
   },
@@ -480,7 +680,23 @@
    "id": "c5c",
    "lead": 0.3,
    "lines": [
-    "In the nineteenth century that soil made cotton, and cotton was grown by enslaved people.",
+    "In the nineteenth century that soil made cotton, and cotton made Alabama one of the ten richest states.",
+    "That wealth was made by enslaved people."
+   ],
+   "music": "somber",
+   "sfx": [
+    {
+     "type": "coin",
+     "at": 3.2,
+     "duration": 0.4,
+     "gain": 0.25
+    }
+   ]
+  },
+  {
+   "id": "c5c2",
+   "lead": 0.3,
+   "lines": [
     "By eighteen sixty, almost half of everyone in Alabama was enslaved, most of them on these black soils."
    ],
    "music": "somber"
@@ -489,10 +705,25 @@
    "id": "c5d",
    "lead": 0.3,
    "lines": [
-    "Slavery ended. But the land stayed with the plantation owners, and the soil wore out.",
-    "Today, nineteen of the twenty-four Black Belt counties are still in what the Census calls persistent poverty."
+    "Slavery ended. But the land stayed with the plantation owners, and the soil wore out."
    ],
    "music": "somber"
+  },
+  {
+   "id": "c5d2",
+   "lead": 0.3,
+   "lines": [
+    "Today, nineteen of the twenty-four Black Belt counties are still in what the Census calls persistent poverty."
+   ],
+   "music": "somber",
+   "sfx": [
+    {
+     "type": "pop",
+     "at": 1.2,
+     "duration": 0.3,
+     "gain": 0.22
+    }
+   ]
   },
   {
    "id": "c5e",
@@ -509,6 +740,22 @@
      "gain": 0.22
     }
    ]
+  },
+  {
+   "id": "c5e2",
+   "lead": 0.3,
+   "lines": [
+    "And only about half of adults there have a job or are looking for one, against nearly two in three across the United States."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c5e3",
+   "lead": 0.3,
+   "lines": [
+    "These are the same counties the civil rights marchers crossed, from Selma to Montgomery."
+   ],
+   "music": "somber"
   },
   {
    "id": "c5f",
@@ -547,8 +794,7 @@
    "id": "c6a",
    "lead": 0.3,
    "lines": [
-    "Look at what lasted. Railways in Poland. Roads in Germany. Trust in the Habsburg lands. Land and poverty in Alabama.",
-    "Things that are built into the ground, or passed down in families, stay."
+    "Look at what lasted. Railways in Poland. Roads in Germany. Trust in the Habsburg lands. Land and poverty in Alabama."
    ],
    "music": "epic",
    "sfx": [
@@ -561,11 +807,19 @@
    ]
   },
   {
+   "id": "c6a2",
+   "lead": 0.3,
+   "lines": [
+    "Things that are built into the ground, or passed down in families, stay."
+   ],
+   "music": "epic"
+  },
+  {
    "id": "c6b",
    "lead": 0.3,
    "lines": [
-    "Things that money can move, like wages and schools, slowly level out. That is what happened to Poland's income gap.",
-    "Germany is still in the middle of it."
+    "Things that money can move, like wages and schools, slowly level out.",
+    "That is what happened to Poland's income gap. Germany is still in the middle of it."
    ],
    "music": "calm"
   },
@@ -573,7 +827,14 @@
    "id": "c6c",
    "lead": 0.3,
    "lines": [
-    "None of this is destiny. These are averages, and the researchers test them carefully, with fake borders that show nothing.",
+    "None of this is destiny. These are averages, and the researchers test them with fake borders that show nothing."
+   ],
+   "music": "calm"
+  },
+  {
+   "id": "c6c2",
+   "lead": 0.3,
+   "lines": [
     "But next time you see a strange line on a money map, ask what used to be there."
    ],
    "music": "calm"

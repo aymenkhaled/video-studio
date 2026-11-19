@@ -14,6 +14,9 @@ Legend: **OK** = verified on a primary or strong source during research. **HEDGE
 | G5 | Full-time workers in the East earn about a fifth less (2024 average monthly gross 3,973 vs 4,810 €). | West 21 % higher | 2024 | Destatis press release N053, 1 Oct 2025 https://www.destatis.de/DE/Presse/Pressemitteilungen/2025/10/PD25_N053_13_62.html | OK. 1991: 924 vs 1,987 € (more than double). |
 | G6 | Median full-time pay 2025: 46,013 € East (excl. Berlin) vs 55,435 € West. | gap 9,422 € | 2025 | Destatis press release 113, 1 Apr 2026 (via publicnow) https://ebs.publicnow.com/view/44E2E600C8D26BBF9CF0DA0A705B6D3F8E44088C | OK. |
 | G7 | Productivity (GDP per worker) East ≈ 85 % of West in 2025, was 34.5 % in 1991. | 85 % / 34.5 % | 2025/1991 | ifo Wettbewerbsreport Ostdeutschland 2026 via ms-aktuell 3 Oct 2026 https://ms-aktuell.de/welt/ostdeutsche-wirtschaft-iw-03-10-2026 | HEDGE (secondary report of ifo). |
+| G9 | Not one DAX company has its headquarters in the eastern states (Berlin aside); ifo's Joachim Ragnitz: head offices stayed in the West after 1990. | 0 of 40 | 2024 | tagesschau.de, 3 Oct 2024 https://www.tagesschau.de/wirtschaft/boerse/dax-konzerne-ostdeutschland-wende-wiedervereinigung-100.html | OK. |
+| G10 | Only 16 of Germany's 500 largest companies are based in the five eastern states (Berlin excluded). | 16 / 500 | 2019 | manager magazin 3 Oct 2019 (Die Welt top-500 ranking) https://www.manager-magazin.de/unternehmen/industrie/brandenburg-und-sachsen-das-sind-die-groessten-unternehmen-a-1283922.html ; IWH 2014: 34 incl. 20 in Berlin (2013) | HEDGE: "only about sixteen". |
+| G11 | Eastern states' population fell 16 % 1990–2024 (to 12.4 m); 1.2 million more people moved East→West than the other way (1991–2024); Saxony-Anhalt −26 %. | −16 % / 1.2 m | 2024 | Destatis press release N047, 2 Sep 2025 https://www.destatis.de/DE/Presse/Pressemitteilungen/2025/08/PD25_N047_12.html | OK. |
 | G8 | Thüringen's real GDP per person grew 163 % 1991–2024 (strongest catch-up). | +163 % | 1991–2024 | Destatis N053 (G5) | OK. |
 
 ## 2. Poland — borders gone since 1918
@@ -58,6 +61,8 @@ Legend: **OK** = verified on a primary or strong source during research. **HEDGE
 | B6 | 2023: 19 of 24 Black Belt counties still in "persistent poverty"; average poverty 24 % vs 15 % in the other 43 counties. | 19/24; 24 % vs 15 % | UA Education Policy Center, Feb 2025 https://bpb-us-e2.wpmucdn.com/sites.ua.edu/dist/c/104/files/2025/02/2025_02_25_UA-EPC_BB25-Persistent-Poverty-1.pdf | OK. |
 | B7 | Highest county poverty in Alabama (ACS 2020–24): Greene 40.1 %, Bullock 33.3 %, Perry 31.4 %, Dallas 31.0 %, Lowndes 29.9 %, Wilcox 28.2 % — all Black Belt; lowest Shelby 7.2 %. | — | USAFacts from Census ACS https://usafacts.org/answers/what-is-the-us-poverty-rate/state/alabama | OK. |
 | B8 | Today the soil in many places is depleted/dense clay; land use shifted to timber. | — | Encyclopedia of Alabama "Black Belt Region"; ASCE 2024 | OK (optional). |
+| B9 | Cotton made Alabama one of the ten wealthiest US states before the Civil War — wealth made possible by enslaved labour. | — | 1850s | Encyclopedia of Alabama "Cotton" https://encyclopediaofalabama.org/article/cotton | OK. |
+| B10 | Black Belt labour-force participation 52 % vs 57 % (Alabama) and 63 % (US), 2023. | 52/57/63 % | 2023 | UA Education Policy Center Black Belt 2025 series https://edpolicycenter.ua.edu/wp-content/uploads/sites/36/2026/09/Black-Belt-2025-Series-FINAL.pdf | OK. |
 
 ## 6. Balance / caveats (spoken)
 - Correlation ≠ destiny: the authors use border comparisons and placebo borders (H4) to argue cause; physical geography is "not destiny" (Turner 1914 via Gustavus geography blog). The Black Belt link runs through slavery and its aftermath, not soil alone (B5–B6).
