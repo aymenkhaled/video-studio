@@ -327,6 +327,8 @@ jobs:
           gh release download media-v1 -p media.zip -D .cache/seed --clobber
           mkdir -p public && unzip -qo .cache/seed/media.zip -d public
           echo "MEDIA_SEED=1" >> "$GITHUB_ENV"
+          # media mode: inputs.props = comma-separated art ids to fetch (the rest must come from the seed)
+          echo "MEDIA_ONLY=${{ inputs.props }}" >> "$GITHUB_ENV"
       - run: python3 tools/fetch_media.py
       - name: Publish <media_release>/media.zip
         env:

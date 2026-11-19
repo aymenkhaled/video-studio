@@ -130,11 +130,15 @@ def main():
     # asset that is already built and only download the new ones (Wikimedia rate-limits runners that refetch all).
     seed = os.environ.get("MEDIA_SEED") == "1"
     old_index = json.loads((ART / "index.json").read_text(encoding="utf-8")) if seed and (ART / "index.json").exists() else {}
+    only = {x.strip() for x in os.environ.get("MEDIA_ONLY", "").split(",") if x.strip()}
     index = {}
     for a in manifest["art"]:
         if a["id"] in old_index and (ART / f"{a['id']}.webp").exists():
             index[a["id"]] = {**old_index[a["id"]], "credit": a["credit"]}
             print(f"KEEP {a['id']}")
+            continue
+        if seed and only and a["id"] not in only:
+            print(f"SKIP {a['id']} (not in MEDIA_ONLY, not in seed)")
             continue
         if a["source"] == "commons":
             url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"])  # original file: arbitrary-width thumbnails are throttled
