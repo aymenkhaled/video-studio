@@ -15,6 +15,7 @@ import time
 import urllib.error
 import io
 import json
+import os
 import re
 import sys
 import urllib.parse
@@ -125,8 +126,16 @@ def main():
         import onnxruntime as ort
         cut_session = ort.InferenceSession(str(get(U2NET_URL, "u2net.onnx", pins)), providers=["CPUExecutionProvider"])
 
+    # MEDIA_SEED=1: public/ already holds a previous media.zip (render.yml seeds it from the release). Reuse every
+    # asset that is already built and only download the new ones (Wikimedia rate-limits runners that refetch all).
+    seed = os.environ.get("MEDIA_SEED") == "1"
+    old_index = json.loads((ART / "index.json").read_text(encoding="utf-8")) if seed and (ART / "index.json").exists() else {}
     index = {}
     for a in manifest["art"]:
+        if a["id"] in old_index and (ART / f"{a['id']}.webp").exists():
+            index[a["id"]] = {**old_index[a["id"]], "credit": a["credit"]}
+            print(f"KEEP {a['id']}")
+            continue
         if a["source"] == "commons":
             url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"])  # original file: arbitrary-width thumbnails are throttled
         elif a["source"] == "artic":  # Art Institute of Chicago open access (CC0): API -> IIIF image
@@ -165,6 +174,9 @@ def main():
         print(f"ART {a['id']} {img.width}x{img.height} layers={layers}")
     (ART / "index.json").write_text(json.dumps(index, indent=1), encoding="utf-8")
 
+    if seed and (GEO / "relief.json").exists():
+        print("KEEP geo (seeded)")
+        return
     g = manifest["geo"]
     x0, y0, x1, y1 = g["bbox"]
     rivers = json.loads(get(g["rivers"], "ne_50m_rivers.geojson", pins).read_text(encoding="utf-8"))
