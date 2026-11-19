@@ -71,7 +71,7 @@ const ALL_GOLD: Route = {id: 'all', points: ALL_POINTS, color: COL4.gold, draw: 
 // ---------- the scenes ----------
 export const SCENES: Record<string, SceneDef> = {
   // c0 — hook: Polo's grey line draws, then the gold loop explodes over it (thumbnail map at frame 1)
-  c0a: map({year: 1325, camera: cam(WORLD, 2.3, WORLD, 2.45), routes: [polo([0, 0.35]), {...ALL_GOLD, draw: [0.4, 0.98], width: 7}],
+  c0a: map({year: 1325, camera: cam(WORLD, 2.3, WORLD, 2.45), routes: [polo([-0.12, 0.3]), {...ALL_GOLD, draw: [0.32, 0.96], width: 7}],
     regions: [{text: 'MARCO POLO', at: [70, 47], appear: 0, size: 34}, {text: 'IBN BATTUTA', at: [20, 5], appear: 0.5, size: 40}]}),
   c0b: map({year: 1325, camera: cam(WORLD, 2.45, WORLD, 2.6), routes: [polo(), ALL_GOLD]}, [J([0, TOTAL_EST_KM]), {type: 'citation', text: 'Estimate: R. Dunn; Wikipedia. Polo ≈ 24,000 km', at: [0.1, 0.98]}]),
   c0c: map({year: 1325, camera: cam([-5.8, 35.7], 14, [-5.8, 35.7], 18, true), cities: [CITY.tangier]}, [

@@ -293,15 +293,13 @@ export const FamilyTree: React.FC<{title: string; parent: FamilyPerson; children
 
 /** Journey HUD (A003 signature): running km + comparison bar against a reference traveller (e.g. Marco Polo). Left, under the cards. */
 export const JourneyHud: React.FC<{km: number; total: number; label: string; compare?: {label: string; km: number}; color?: string; top?: number}> = ({km, total, label, compare, color = '#f2b632', top = 580}) => {
-  const W = 430;
+  const W = 440;
   const w = (v: number) => Math.max(4, Math.min(1, v / total) * W);
   const passed = compare ? km >= compare.km : false;
   return (
     <div style={{position: 'absolute', left: 40, top, width: W + 40, background: INK, borderRadius: 14, padding: '12px 20px 14px', fontFamily: INTER, color: PAPER}}>
-      <div style={{display: 'flex', alignItems: 'baseline', justifyContent: 'space-between'}}>
-        <span style={{fontWeight: 800, fontSize: MIN_TEXT, letterSpacing: 1, color}}>{label}</span>
-        <span style={{fontWeight: 900, fontSize: 44, fontVariantNumeric: 'tabular-nums'}}>≈ {km.toLocaleString('en-US')} km</span>
-      </div>
+      <div style={{fontWeight: 800, fontSize: MIN_TEXT - 4, letterSpacing: 1, color, whiteSpace: 'nowrap'}}>{label}</div>
+      <div style={{fontWeight: 900, fontSize: 46, lineHeight: 1.1, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap'}}>≈ {km.toLocaleString('en-US')} km</div>
       <div style={{position: 'relative', height: 16, marginTop: 6, background: 'rgba(244,236,216,0.12)', borderRadius: 8}}>
         <div style={{position: 'absolute', left: 0, top: 0, height: 16, width: w(km), background: color, borderRadius: 8, boxShadow: `0 0 14px ${color}`}} />
       </div>
@@ -310,7 +308,7 @@ export const JourneyHud: React.FC<{km: number; total: number; label: string; com
           <div style={{position: 'relative', height: 10, marginTop: 8, background: 'rgba(244,236,216,0.12)', borderRadius: 5}}>
             <div style={{position: 'absolute', left: 0, top: 0, height: 10, width: w(compare.km), background: '#9aa3ab', borderRadius: 5}} />
           </div>
-          <div style={{marginTop: 4, fontWeight: 700, fontSize: MIN_TEXT - 2, color: passed ? color : '#c9ced3'}}>
+          <div style={{marginTop: 4, fontWeight: 700, fontSize: MIN_TEXT - 4, whiteSpace: 'nowrap', color: passed ? color : '#c9ced3'}}>
             {compare.label} ≈ {compare.km.toLocaleString('en-US')} km{passed ? ` · passed (${(km / compare.km).toFixed(1)}×)` : ''}
           </div>
         </>
