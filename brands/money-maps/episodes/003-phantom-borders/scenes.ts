@@ -226,7 +226,9 @@ export const SCENES: Record<string, SceneDef> = {
     {type: 'citation', text: 'Limes line approximate (our tracing via fort sites) · about 550 km', at: [0.1, 0.95]}, // R1
   ]),
   c4a2: art('limes-tower', 'A modern reconstruction of a Limes watchtower, Mainhardt — Matthias Süßen (CC BY 3.0)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.42, zoom: 1.15}),
-  c4b: art('europe-night', 'Germany at night — NASA Suomi NPP, 2012', {x: 0.36, y: 0.55, zoom: 2.2}, {x: 0.37, y: 0.58, zoom: 2.6}, undefined, 2012),
+  c4b: map(2009, MOD_LIM, {camera: LIM, ghosts: [on(LIMES_G)], regions: [{text: 'night lights compared on both sides', at: [9.4, 50.45], appear: 0.25, size: 26}]}, [
+    {type: 'citation', text: 'Wahl, Journal of Economic Growth 2017 · DMSP night-lights 2009', at: [0.1, 0.95]}, // R2
+  ]),
   c4b2: chart({
     type: 'bar', title: 'How much brighter is the old Roman side at night?', unit: 'night-time light, Roman vs non-Roman side near the Limes', source: 'Wahl, J. Economic Growth 2017 (discussion paper 2015)', // R2
     howTo: 'each bar = one way of measuring', num: {suffix: '%'},
@@ -262,9 +264,9 @@ export const SCENES: Record<string, SceneDef> = {
   c5c: art('cotton-field', 'A cotton field in bloom, Alabama, 2016 — Alabama Extension (CC0)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.55, zoom: 1.12}, [
     {type: 'citation', text: 'By 1859 Alabama grew about 23% of all US cotton · Encyclopedia of Alabama', at: [0.3, 0.95]}, // B4
   ]),
-  c5c2: art('cotton-family', 'Black cotton farmers in the US, about 1890s (public domain)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.45, zoom: 1.12}, [
+  c5c2: art('cotton-family', 'Black cotton farmers in the US, about 1890s (public domain)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.06}, [
     {type: 'counter', label: 'ENSLAVED, SHARE OF ALABAMA (1860)', value: 45, suffix: '%', window: [0.4, 0.98], color: '#ffd166', context: 'US Census 1860', top: 260}, // B5
-  ], 1860),
+  ], 1860, {object: true}),
   c5d: map(1870, MOD_US, {camera: AL, choropleth: BLACK_BELT(false), cities: AL_CITIES}),
   c5d2: map(2023, MOD_US, {camera: AL, choropleth: BLACK_BELT(false), cities: AL_CITIES}, [
     {type: 'counter', label: 'BLACK BELT COUNTIES IN PERSISTENT POVERTY', value: 19, suffix: ' of 24', window: [0.3, 0.98], color: '#ffd166', context: 'Univ. of Alabama EPC, 2025', top: 260}, // B6

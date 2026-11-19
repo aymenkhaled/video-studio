@@ -336,6 +336,13 @@ jobs:
           done
           python3 -c "import json,glob; d={}; [d.update(json.load(open(f))) for f in sorted(glob.glob('.cache/index-*.json'))]; json.dump(d,open('public/art/index.json','w'))"
           ls public/art | wc -l
+      - name: Pre-seed hand-fetched sources (<media_release>-src), if that release exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .cache/media
+          gh release download "${{ inputs.media_release }}-src" -D .cache/media --clobber || echo "no -src release"
+          ls .cache/media | wc -l
       - run: python3 tools/fetch_media.py
       - name: Publish <media_release>/media.zip
         env:
