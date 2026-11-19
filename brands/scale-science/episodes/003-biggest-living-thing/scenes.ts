@@ -116,19 +116,19 @@ export const SCENES: Record<string, SceneDef> = {
   c1b: stage('ocean', {subjects: [whale(4), you(1)], camera: cam(17, 40, 19, 46)}, [src('Guinness World Records: adults 20–30 m')]),
   c1c: stage('ocean', {subjects: [whale(4, {y: 9}), bus('bus1', 4, {appear: 0.05, y: 0}), bus('bus2', 16, {appear: 0.15, y: 0})], camera: cam(19, 44)}, [{type: 'counter', label: 'Heaviest on record (estimated)', value: 190, window: [0.45, 0.8], suffix: ' t', context: '27.6 m female, 1947'}]),
   c1d: art('bw-aerial', 'Blue whale from the air · NOAA Photo Library (public domain)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.45, y: 0.5, zoom: 1.2}, [src('Our first video: blue whale vs megalodon vs the giant dinosaurs')]),
-  c1e: art('siph2', 'An Apolemia siphonophore · NOAA Ocean Exploration (public domain)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.5, zoom: 1.25}),
+  c1e: art('siph', 'A siphonophore, deep sea · NOAA Ocean Exploration (public domain)', {x: 0.3, y: 0.5, zoom: 1.0}, {x: 0.45, y: 0.5, zoom: 1.2}),
   c1f: map({projection: 'mercator', camera: mapCam([134, -26], 2.4, [113.5, -22.5], 6.5), cities: [{name: 'Ningaloo (April 2020)', at: [113.6, -22.4], appear: 0.35}, {name: 'Perth', at: [115.86, -31.95]}]}, [src('Schmidt Ocean Institute expedition, Ningaloo Canyons · ScienceAlert 2020')]),
   c1g: compare({title: 'Longest animals', unit: 'length', max: 50, rows: [
     {label: 'Blue whale', note: 'body length', range: [20, 30], color: C.whale},
     {label: 'Ningaloo siphonophore', note: 'outer ring of its spiral, estimated', value: 47, text: '~47 m', color: '#b9a6f0', appear: 0.2},
   ], source: 'Guinness; ScienceAlert 2020 (Schmidt Ocean Institute)'}),
-  c1h: art('siph', 'One colony, many specialised parts · NOAA Ocean Exploration (public domain)', {x: 0.4, y: 0.5, zoom: 1.2}, {x: 0.6, y: 0.5, zoom: 1.4}, [gloss('Zooid', 'one unit of a colony animal; each has a job', [0.3, 0.95])]),
-  c1i: art('siph2', '', {x: 0.5, y: 0.5, zoom: 1.3}, {x: 0.5, y: 0.5, zoom: 1.15}, [{type: 'quote', text: 'What counts as one living thing?', by: 'keep this question in mind'}]),
+  c1h: art('siph', 'A siphonophore: one colony, many specialised parts · NOAA Ocean Exploration (public domain)', {x: 0.4, y: 0.5, zoom: 1.2}, {x: 0.6, y: 0.5, zoom: 1.4}, [gloss('Zooid', 'one unit of a colony animal; each has a job', [0.3, 0.95])]),
+  c1i: art('siph', '', {x: 0.7, y: 0.5, zoom: 1.5}, {x: 0.6, y: 0.5, zoom: 1.3}, [{type: 'quote', text: 'What counts as one living thing?', by: 'keep this question in mind'}]),
   c1r: art('bw-pair', '', {x: 0.5, y: 0.5, zoom: 1.25}, {x: 0.5, y: 0.5, zoom: 1.3}, [{type: 'recap', text: 'The blue whale is the heaviest animal; a colony animal can be longer.', next: 'Can anything alive get much bigger?'}]),
 
   // ---------- 2 the giant trees ----------
   c2: art('redwoods', '', {x: 0.5, y: 0.6, zoom: 1.1}, {x: 0.5, y: 0.4, zoom: 1.2}, [{type: 'chapter', n: 2, title: 'The Giant Trees', sub: 'California', question: 'Can a tree beat the whale?', image: 'redwoods'}]),
-  c2b: art('redwoods-tall', 'Coast redwoods · NPS (public domain). Hyperion’s exact location is kept secret to protect it.', {x: 0.5, y: 0.85, zoom: 1.6}, {x: 0.5, y: 0.2, zoom: 1.3}, [src('Hyperion: 116.07 m (2019 measurement, Guinness)')]),
+  c2b: art('redwoods', 'Coast redwoods · NPS (public domain). Hyperion’s exact location is kept secret to protect it.', {x: 0.3, y: 0.8, zoom: 1.7}, {x: 0.3, y: 0.25, zoom: 1.4}, [src('Hyperion: 116.07 m (2019 measurement, Guinness)')]),
   c2c: stage('land', {subjects: [whaleUp(40), you(34)], levels: [{height: 116.07, label: 'Hyperion, coast redwood · 116.07 m (2019)', color: C.tree, appear: 0.1}], heightAxis: true, camera: cam(52, 150, 55, 170)}),
   c2d: art('sherman', 'General Sherman, Sequoia National Park · Daniel G. Rego (CC0)', {x: 0.5, y: 0.8, zoom: 1.5}, {x: 0.5, y: 0.35, zoom: 1.15}, [src('NPS: largest single tree by trunk volume')]),
   c2e: compare({title: 'Volume', unit: 'mass', max: 1600, rows: [
@@ -155,7 +155,7 @@ export const SCENES: Record<string, SceneDef> = {
 
   // ---------- 4 the humongous fungus ----------
   c4: art('armillaria', '', {x: 0.5, y: 0.5, zoom: 1.1}, {x: 0.5, y: 0.5, zoom: 1.2}, [{type: 'chapter', n: 4, title: 'The Humongous Fungus', sub: 'Oregon', question: 'How big can something hidden get?', image: 'armillaria'}]),
-  c4b: art('malheur', 'Ponderosa pines, Malheur National Forest, Oregon · USDA Forest Service (public domain)', {x: 0.5, y: 0.6, zoom: 1.1}, {x: 0.5, y: 0.4, zoom: 1.25}),
+  c4b: art('malheur', 'Malheur National Forest, Oregon, 1942 · Russell Lee, Library of Congress (public domain)', {x: 0.5, y: 0.6, zoom: 1.1}, {x: 0.5, y: 0.4, zoom: 1.25}),
   c4c: art('armillaria', 'Armillaria ostoyae, a honey fungus · George Chernilevsky (public domain)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.45, y: 0.55, zoom: 1.3}),
   c4d: art('arm-lesion', 'The fungus under the bark of a dying tree · USDA Forest Service (public domain)', {x: 0.5, y: 0.5, zoom: 1.05}, {x: 0.5, y: 0.5, zoom: 1.3}, [gloss('Rhizomorph', 'dark, root-like fungus strand', [0.4, 0.95])]),
   c4d2: art('arm-lesion', '', {x: 0.45, y: 0.5, zoom: 1.35}, {x: 0.55, y: 0.5, zoom: 1.15}, [src('Ferguson et al. 2003: the fungus spreads from root to root')]),

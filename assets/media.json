@@ -721,17 +721,9 @@
   {
    "id": "siph",
    "source": "commons",
-   "file": "Deep-sea siphonophore - NOAA Ocean Exploration.jpg",
+   "file": "Physonect siphonophore Puerto Rico April 2015.png",
    "licence": "Public domain (NOAA)",
-   "credit": "Apolemia siphonophore. NOAA Ocean Exploration (public domain)",
-   "depth": false
-  },
-  {
-   "id": "siph2",
-   "source": "commons",
-   "file": "Deep-sea siphonophore - NOAA Ocean Exploration (2).jpg",
-   "licence": "Public domain (NOAA)",
-   "credit": "Apolemia siphonophore. NOAA Ocean Exploration (public domain)",
+   "credit": "A physonect siphonophore, Puerto Rico 2015. NOAA Office of Ocean Exploration and Research (public domain)",
    "depth": false
   },
   {
@@ -740,14 +732,6 @@
    "file": "Redwoods at Tall Trees Grove.jpg",
    "licence": "Public domain (NPS)",
    "credit": "Coast redwoods, Tall Trees Grove. NPS / Redwood National and State Parks (public domain)",
-   "depth": true
-  },
-  {
-   "id": "redwoods-tall",
-   "source": "commons",
-   "file": "Giant Redwoods (38007765961).jpg",
-   "licence": "Public domain (NPS)",
-   "credit": "Giant redwoods. U.S. National Park Service (public domain)",
    "depth": true
   },
   {
@@ -801,9 +785,9 @@
   {
    "id": "malheur",
    "source": "commons",
-   "file": "Malheur National Forest, stand of virgin ponderosa pine (4906921721).jpg",
-   "licence": "Public domain (USDA Forest Service / Library of Congress)",
-   "credit": "Ponderosa pine, Malheur National Forest. USDA Forest Service Region 6 (public domain)",
+   "file": "Stand of virgin ponderosa pine, Malheur National Forest, Grant County, Oregon LCCN2017877599.jpg",
+   "licence": "Public domain (Russell Lee, FSA 1942, Library of Congress)",
+   "credit": "Stand of virgin ponderosa pine, Malheur National Forest, Oregon. Russell Lee, 1942, Library of Congress (public domain)",
    "depth": true
   },
   {
@@ -817,9 +801,9 @@
   {
    "id": "seagrass-diver",
    "source": "commons",
-   "file": "Scuba Diver in Seagrass.jpg",
-   "licence": "CC BY 2.0 (Symbiosis / ocean.si.edu)",
-   "credit": "Diver in a seagrass meadow. Symbiosis / ocean.si.edu, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/)",
+   "file": "Scuba Diver in Seagrass - 53006413135.jpg",
+   "licence": "CC BY 2.0 (Symbiosis)",
+   "credit": "Scuba diver in seagrass. Symbiosis, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/)",
    "depth": true
   },
   {

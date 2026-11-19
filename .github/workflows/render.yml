@@ -319,13 +319,23 @@ jobs:
           key: media-src-${{ hashFiles('assets/media.json') }}
           restore-keys: media-src-
       - run: pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
-      - name: Seed from the newest media release (fetch_media.py then downloads only new ids)
+      - name: Seed from all media releases + pre-downloaded sources (fetch_media.py then downloads only new ids)
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.media_release || 'media-v1' }}
         run: |
-          seed=$(gh release list -L 30 --json tagName,createdAt -q '[.[] | select(.tagName | startswith("media-"))] | sort_by(.createdAt) | last | .tagName')
-          echo "seed release: $seed"
-          if [ -n "$seed" ]; then gh release download "$seed" -p media.zip -D .seed && mkdir -p public && unzip -qo .seed/media.zip -d public || echo "no seed"; fi
+          mkdir -p public/art .seed .cache/media
+          echo '{}' > .seed/index.json
+          for rel in $(gh release list -L 50 --json tagName,createdAt -q '[.[] | select(.tagName | startswith("media-"))] | sort_by(.createdAt) | .[].tagName'); do
+            rm -rf .seed/x && mkdir -p .seed/x
+            gh release download "$rel" -p media.zip -D .seed/x 2>/dev/null || continue
+            unzip -qo .seed/x/media.zip -d .seed/x/u && cp -rn .seed/x/u/* public/ 2>/dev/null || true
+            python3 -c "import json,sys; a=json.load(open('.seed/index.json')); b=json.load(open('.seed/x/u/art/index.json')); b.update(a); json.dump(b,open('.seed/index.json','w'))"
+            echo "seeded from $rel"
+          done
+          cp .seed/index.json public/art/index.json
+          # originals downloaded outside CI when Wikimedia rate-limits the runner (names = <id>.src as in fetch_media.py)
+          gh release download "$TAG" -p src.zip -D .seed 2>/dev/null && unzip -qo .seed/src.zip -d .cache/media && echo "sources from $TAG/src.zip" || echo "no src.zip"
       - run: python3 tools/fetch_media.py
       - name: Publish <media_release>/media.zip
         env:
