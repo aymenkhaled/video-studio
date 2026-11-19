@@ -125,8 +125,16 @@ def main():
         import onnxruntime as ort
         cut_session = ort.InferenceSession(str(get(U2NET_URL, "u2net.onnx", pins)), providers=["CPUExecutionProvider"])
 
+    # Reuse art already built in a previous media release (CI unzips it into public/ first): only new items are fetched,
+    # so a new episode never re-downloads the whole Commons set (Wikimedia answers 429 to bulk downloads).
+    prev = {}
+    if (ART / "index.json").exists():
+        prev = json.loads((ART / "index.json").read_text(encoding="utf-8"))
     index = {}
     for a in manifest["art"]:
+        if a["id"] in prev and (ART / f"{a['id']}.webp").exists():
+            index[a["id"]] = prev[a["id"]]
+            continue
         if a["source"] == "commons":
             url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"])  # original file: arbitrary-width thumbnails are throttled
         elif a["source"] == "artic":  # Art Institute of Chicago open access (CC0): API -> IIIF image

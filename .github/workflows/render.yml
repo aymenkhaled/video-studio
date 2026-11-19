@@ -36,6 +36,10 @@ on:
         description: Browser tabs per render job (empty = CPU count; use 2 for 3D scenes)
         required: false
         default: ''
+      media_base:
+        description: Media mode only - earlier release whose media.zip art is reused (e.g. media-c002)
+        required: false
+        default: ''
       media_release:
         description: Release holding media.zip (media mode publishes to it; renders download it)
         required: false
@@ -319,6 +323,14 @@ jobs:
           key: media-src-${{ hashFiles('assets/media.json') }}
           restore-keys: media-src-
       - run: pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
+      - name: Start from the previous media release (only new art is downloaded)
+        if: inputs.media_base != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "${{ inputs.media_base }}" -p media.zip -D .cache --clobber
+          mkdir -p public && cd public && unzip -qo ../.cache/media.zip "art/*" && cd ..
+          ls public/art | wc -l
       - run: python3 tools/fetch_media.py
       - name: Publish <media_release>/media.zip
         env:
