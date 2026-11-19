@@ -122,7 +122,7 @@ export const SCENES: Record<string, SceneDef> = {
     {label: 'Blue whale', note: 'body length', range: [20, 30], color: C.whale},
     {label: 'Ningaloo siphonophore', note: 'outer ring of its spiral, estimated', value: 47, text: '~47 m', color: '#b9a6f0', appear: 0.2},
   ], source: 'Guinness; ScienceAlert 2020 (Schmidt Ocean Institute)'}),
-  c1h: art('siph', 'A siphonophore: one colony, many specialised parts · NOAA Ocean Exploration (public domain)', {x: 0.4, y: 0.5, zoom: 1.2}, {x: 0.6, y: 0.5, zoom: 1.4}, [gloss('Zooid', 'one unit of a colony, with its own job', [0.3, 0.95])]),
+  c1h: art('siph', 'A siphonophore: one colony, many specialised parts · NOAA Ocean Exploration (public domain)', {x: 0.4, y: 0.5, zoom: 1.2}, {x: 0.6, y: 0.5, zoom: 1.4}, [gloss('Zooid', 'a colony unit with its own job', [0.3, 0.95])]),
   c1i: art('siph', '', {x: 0.7, y: 0.5, zoom: 1.5}, {x: 0.6, y: 0.5, zoom: 1.3}, [{type: 'quote', text: 'What counts as one living thing?', by: 'keep this question in mind'}]),
   c1r: art('bw-pair', '', {x: 0.5, y: 0.5, zoom: 1.25}, {x: 0.5, y: 0.5, zoom: 1.3}, [{type: 'recap', text: 'The blue whale is the heaviest animal; a colony animal can be longer.', next: 'Can anything alive get much bigger?'}]),
 
