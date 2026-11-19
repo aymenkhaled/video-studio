@@ -51,7 +51,7 @@
   {
    "id": "h2",
    "lines": [
-    "And this is a blue whale, the biggest animal that has ever lived, at the same scale.",
+    "And this is a blue whale, the heaviest animal known to science, at the same scale.",
     "You can barely see it."
    ],
    "music": "reveal",
@@ -624,7 +624,7 @@
    "id": "c4f",
    "lines": [
     "That's almost ten square kilometres.",
-    "More than twenty times the size of Pando."
+    "More than twenty times the size of Pando. And the giant in our next chapter covers twenty times more again."
    ],
    "music": "reveal",
    "ambience": {
@@ -659,7 +659,7 @@
    "id": "c4i",
    "lines": [
     "Notice the pattern. At every step, the giant got harder to see.",
-    "And the biggest one of all is hiding underwater."
+    "And the biggest of them all, by area, is hiding underwater."
    ],
    "music": "build",
    "ambience": {
@@ -694,7 +694,7 @@
   {
    "id": "c5",
    "lines": [
-    "Chapter five. One plant, one hundred eighty kilometres."
+    "Chapter five. One plant, spanning one hundred eighty kilometres."
    ],
    "music": "wonder",
    "ambience": {
@@ -739,7 +739,7 @@
    "id": "c5d",
    "lines": [
     "One species here is called Poseidon's ribbon weed.",
-    "Scientists sampled ten of its meadows across the bay, to see how genetically different they were."
+    "Scientists sampled ten seagrass meadows across the bay, to see how genetically different they were."
    ],
    "music": "build",
    "ambience": {
@@ -1041,7 +1041,7 @@
    "id": "c6e",
    "lines": [
     "And none of these giants is safe.",
-    "After a marine heatwave in early twenty eleven, more than a thousand square kilometres of seagrass disappeared from Shark Bay."
+    "After a marine heatwave in early twenty eleven, more than a thousand square kilometres of seagrass, of all kinds, disappeared from Shark Bay."
    ],
    "music": "somber",
    "ambience": {

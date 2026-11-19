@@ -15,6 +15,8 @@ Checked 18–19 Nov 2026. Fact pack with full audit: `docs/research/B003-facts.m
 | 9 | General Sherman, largest single tree by trunk volume, ~1,486.6 m³ (NPS estimate) | 1,486.6 m³ | NPS Sequoia & Kings Canyon https://www.nps.gov/seki/learn/nature/sherman.htm (updated 2025-11-25) |
 | 9b | "About 8× the volume of the heaviest blue whale": 190 t ÷ ~1.03 t/m³ ≈ 184 m³; 1,486.6 / 184 ≈ 8.1 (whale body density ≈ seawater, an approximation) | ≈ 8× | derived rows 2, 9 |
 | 10 | Pando, quaking aspen clone, Fishlake NF, Utah: 42.6 ha, ~47,000 stems, one genet | 42.6 ha · ~47,000 stems | Pineau et al. 2026, eLife Reviewed Preprint doi:10.7554/eLife.110244.1 (2026-03-20); DeWoody et al. 2008 doi:10.3398/1527-0904-68.4.493; Rogers & McAvoy 2018 PLOS ONE doi:10.1371/journal.pone.0203619 |
+| 10b | Pando spans roughly 2 km at its widest point (long, narrow clone; the on-screen circle shows area only) | ~2 km | Pineau et al. 2026, eLife Reviewed Preprint doi:10.7554/eLife.110244.1, discussion |
+| 10c | "Around 25 minutes on foot": 2 km at ~5 km/h = 24 min | ~25 min | derived row 10b (average walking speed ~5 km/h, reference) |
 | 11 | "Around 60 football pitches": 42.6 ha ÷ 0.714 ha (105 × 68 m) = 59.7 | ~60 pitches | FIFA recommended pitch 105 × 68 m (FIFA Stadium Guidelines); derived |
 | 12 | Pando ~6,000 t (historical estimate) | ~6,000 t (est.) | Grant 1993, Discover https://www.discovermagazine.com/the-trembling-giant-40013 ; Scientific American 2007-10-04 https://www.scientificamerican.com/article/strange-but-true-largest-organism-is-fungus/ |
 | 13 | "More than 30 of the heaviest blue whales": 6,000 / 190 = 31.6 | > 30 | derived rows 2, 12 |
@@ -23,6 +25,7 @@ Checked 18–19 Nov 2026. Fact pack with full audit: `docs/research/B003-facts.m
 | 16 | Humongous fungus *Armillaria ostoyae*, Malheur NF, Blue Mountains, Oregon: one genet across ~965 ha (9.65 km²), killing trees in patches; mushrooms = fruiting bodies, body = mycelium + rhizomorphs | 965 ha · 9.65 km² | Ferguson et al. 2003, Can. J. For. Res. doi:10.1139/x03-065 |
 | 17 | Fungus age: spread-rate scenarios 1,900–8,650 years | 1,900–8,650 yr (model) | Ferguson et al. 2003 (row 16) |
 | 18 | "More than 20 times Pando": 965 / 42.6 = 22.7 | > 20× | derived rows 10, 16 |
+| 18b | "The giant in our next chapter covers twenty times more again": 200 km² / 9.65 km² = 20.7 | ~20× | derived rows 16, 23 |
 | 19 | Fungus long called "the largest organism on Earth" | text | Scientific American 2007 (row 12) |
 | 20 | Seagrass is a flowering plant (roots, leaves, flowers), not seaweed; *Posidonia australis* "Poseidon's ribbon weed" | text | Edgeloe et al. 2022, Proc. R. Soc. B 289:20220538, doi:10.1098/rspb.2022.0538 (PMC9156900) |
 | 21 | 10 meadows sampled across Shark Bay; 9 = one polyploid clone; 1 (Guischenault Point) diploid, different | 10 sampled · 9 one clone | Edgeloe 2022 (row 20), Table 1, Fig. 1 |
