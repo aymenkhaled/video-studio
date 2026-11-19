@@ -122,7 +122,7 @@ export const SCENES: Record<string, SceneDef> = {
     {label: 'Blue whale', note: 'body length', range: [20, 30], color: C.whale},
     {label: 'Ningaloo siphonophore', note: 'outer ring of its spiral, estimated', value: 47, text: '~47 m', color: '#b9a6f0', appear: 0.2},
   ], source: 'Guinness; ScienceAlert 2020 (Schmidt Ocean Institute)'}),
-  c1h: art('siph', 'A siphonophore: one colony, many specialised parts · NOAA Ocean Exploration (public domain)', {x: 0.4, y: 0.5, zoom: 1.2}, {x: 0.6, y: 0.5, zoom: 1.4}, [gloss('Zooid', 'one unit of a colony animal; each has a job', [0.3, 0.95])]),
+  c1h: art('siph', 'A siphonophore: one colony, many specialised parts · NOAA Ocean Exploration (public domain)', {x: 0.4, y: 0.5, zoom: 1.2}, {x: 0.6, y: 0.5, zoom: 1.4}, [gloss('Zooid', 'one unit of a colony, with its own job', [0.3, 0.95])]),
   c1i: art('siph', '', {x: 0.7, y: 0.5, zoom: 1.5}, {x: 0.6, y: 0.5, zoom: 1.3}, [{type: 'quote', text: 'What counts as one living thing?', by: 'keep this question in mind'}]),
   c1r: art('bw-pair', '', {x: 0.5, y: 0.5, zoom: 1.25}, {x: 0.5, y: 0.5, zoom: 1.3}, [{type: 'recap', text: 'The blue whale is the heaviest animal; a colony animal can be longer.', next: 'Can anything alive get much bigger?'}]),
 
@@ -168,7 +168,7 @@ export const SCENES: Record<string, SceneDef> = {
 
   // ---------- 5 the plant that spans 180 km ----------
   c5: art('sb-nasa', '', {x: 0.5, y: 0.5, zoom: 1.2}, {x: 0.5, y: 0.5, zoom: 1.3}, [{type: 'chapter', n: 5, title: 'One Plant, 180 km', sub: 'Shark Bay, Western Australia', question: 'Is this the biggest living thing on Earth?', image: 'sb-nasa'}]),
-  c5b: map({projection: 'mercator', camera: mapCam([128, -27], 2.6, [113.8, -26.0], 8.5), cities: [{name: 'Shark Bay', at: [113.75, -25.9], appear: 0.4}, {name: 'Perth', at: [115.86, -31.95]}, {name: 'Ningaloo', at: [113.6, -22.4]}]}, [gloss('Shark Bay', 'UNESCO World Heritage Site; Gathaagudu to the Malgana people', [0.45, 0.98])]),
+  c5b: map({projection: 'mercator', camera: mapCam([128, -27], 2.6, [113.8, -26.0], 8.5), cities: [{name: 'Shark Bay', at: [113.75, -25.9], appear: 0.4}, {name: 'Perth', at: [115.86, -31.95]}, {name: 'Ningaloo', at: [113.6, -22.4]}]}, [gloss('Shark Bay', 'World Heritage Site; Gathaagudu to the Malgana', [0.45, 0.98])]),
   c5c: art('seagrass', 'A seagrass meadow (Posidonia oceanica, a Mediterranean relative) · Karim saari, CC BY 4.0', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.45, zoom: 1.25}, [gloss('Seagrass', 'a flowering plant that lives under the sea', [0.1, 0.9])]),
   c5d: art('seagrass-diver', 'A diver in a seagrass meadow · Symbiosis / ocean.si.edu, CC BY 2.0', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.45, y: 0.5, zoom: 1.2}, [src('Edgeloe et al. 2022: 10 Posidonia australis meadows sampled')]),
   c5e: sat({layers: SBL, origin: SB, camera: sbCam([0, 200000, 0, -5000], [1, 180000, 0, -8000]), credit: EOX, shapes: pins(0.15, 0.06)}, [{type: 'character', name: 'Same DNA', role: 'Edgeloe et al. 2022', line: '9 of 10 sampled meadows = one clone · 1 meadow was a different plant', side: 'none', window: [0.55, 0.98]}]),
@@ -211,7 +211,7 @@ export const SCENES: Record<string, SceneDef> = {
     {label: 'Shark Bay seagrass', note: 'span · area ≈ 200 km²', value: 180, text: '≥ 180 km', color: C.clone},
     {label: 'Baltic seaweed (Fucus)', note: 'along the coast · area not measured', value: 600, text: '> 600 km', color: C.fucus, appear: 0.2},
   ], source: 'Edgeloe 2022; Pereyra et al. 2022 (bioRxiv) / 2023 (Mol. Ecol.)'}),
-  c6c2: art('pando-enter', '', {x: 0.5, y: 0.5, zoom: 1.1}, {x: 0.5, y: 0.45, zoom: 1.25}, [gloss('Genet', 'all the parts grown from one first seed: one individual', [0.35, 0.98])]),
+  c6c2: art('pando-enter', '', {x: 0.5, y: 0.5, zoom: 1.1}, {x: 0.5, y: 0.45, zoom: 1.25}, [gloss('Genet', 'everything grown from one first seed', [0.35, 0.98])]),
   c6d: art('sb-nasa', '', {x: 0.5, y: 0.5, zoom: 1.15}, {x: 0.5, y: 0.5, zoom: 1.3}, [{type: 'list', title: 'It depends on the ruler', items: ['Tallest: Hyperion, 116.07 m', 'Heaviest animal: blue whale, ~190 t', 'Largest known area: Shark Bay clone, ~200 km²', 'Longest spread: Baltic seaweed, > 600 km'], source: 'see description for sources'}]),
   c6e: art('seagrass-diver', 'Seagrass meadow · Symbiosis / ocean.si.edu, CC BY 2.0', {x: 0.5, y: 0.5, zoom: 1.2}, {x: 0.5, y: 0.5, zoom: 1.05}, [src('Edgeloe 2022 (citing Strydom 2020): ~1,310 km² of dense seagrass lost 2010–14')]),
   c6e2: art('seagrass', '', {x: 0.5, y: 0.5, zoom: 1.25}, {x: 0.45, y: 0.55, zoom: 1.1}, [src('Edgeloe 2022: some clone meadows recovered after the heatwave')]),
