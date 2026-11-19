@@ -55,7 +55,14 @@ _Updated 14 Nov 2026. Any session (Claude Code / OpenCode) continues from here._
 - Built: sources.md (46 rows, 7 brief corrections), `data/battuta.ts` (route by chapter + Polo), timeline (95 scenes, 1,781 words), scenes.ts (map-first, 8/95 art), thumbnails x3 (map-led), engine `journey` overlay (≈ km counter + Marco Polo bar).
 - Decisions: HUD shows the sourced ≈117,000 km estimate shared along the drawn line (line itself ≈76,000 km), labelled EST. · Delhi "about seven years" (sources 6–7) · mother's death learned in Morocco 1349, not Damascus · Benett engraving only on a card (482 px) · Timbuktu "caravan" image dropped (unclear date) · an OpenCode draft written into this worktree was reviewed and rewritten (unsourced lines removed).
 - BLOCKER (19 Nov): Wikimedia answers HTTP 429 to GitHub runners — 4 media builds failed (Special:FilePath x2, seeded, direct upload.wikimedia.org). Stopped retrying. Aymen downloads the 5 paintings by hand into `D:\studio-003\_import\ep003\`; Claude uploads them to release `media-003` and points media.json at the release URLs. Added `MEDIA_SEED`/`MEDIA_ONLY` incremental media builds (render.yml + fetch_media.py).
-- Next: media rebuild → cloud stills → Aymen OK → full render, QA, independent review, UPLOAD.md.
+- 19 Nov: UNBLOCKED — Aymen hand-downloaded the 5 paintings; uploaded to release `media-003` (ep003-*.jpg), media.json points there; media build OK (run 44463738718). Stills round 1 OK (run 44463936592, 24 stills, real voice timing: **~14.3 min**, 20,600 frames) + thumbs 1–3 (runs 44463940630/5026/9176).
+- Stills round 1 findings (fix these, then FULL render — Aymen already said "continue full video"):
+  1. Journey HUD wraps ("≈ 2,000" / "km" on 2 lines; "≈ / 112,000 km" on Mali): restructure `JourneyHud` (clarity.tsx) to label row + value row, whiteSpace nowrap, width ~480.
+  2. Frame 1 (c0a) shows the map with no route yet: start Polo draw at [-0.1, 0.3] so a grey line is visible at frame 1; gold [0.3, 0.95].
+  3. Caption "18 hundreds" (c10e): change the line to "in the nineteenth century".
+  4. Thumbs look good (5× MARCO POLO / WHY WAS HE ERASED? / 117,000 KM). Thumb 1: gold loop in East Africa runs through the text, acceptable. Polo grey line also has a straight diagonal (Venice→Acre wrap) — fine.
+  5. Runtime 14.3 min vs brief ~12: accepted; note in review.md.
+- Then: full render `gh workflow run render.yml --ref ep/003-ibn-battuta -f comp=IbnBattuta -f mode=full -f chunks=20 -f timeline=brands/history-maps/episodes/003-ibn-battuta/timeline.json -f episode=brands/history-maps/episodes/003-ibn-battuta -f media_release=media-003` → QA → independent reviewer subagent → review.md → copy to `D:\deep-time-fables\ibn-battuta-episode-003\` → WORKLOG. → Aymen OK → full render, QA, independent review, UPLOAD.md.
 
 ## Episode 002 "Why Rome Destroyed Carthage" — branch `ep/002-carthage` (worktree `D:\studio-002`)
 Spec `docs/superpowers/specs/2026-11-13-002-carthage-design.md` · plan `docs/superpowers/plans/2026-11-13-002-carthage.md` · standard `docs/CLARITY_STANDARD.md` + Aymen's `docs/VIEWER_CLARITY_FEEDBACK.md` (main).
