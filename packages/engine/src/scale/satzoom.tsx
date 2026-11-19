@@ -11,7 +11,7 @@ import {artSrc, useArtIndex} from '../map/media';
 
 type LonLat = [number, number];
 export type SatCam = {at: number; width: number; x?: number; y?: number};
-type Common = {label?: string; sub?: string; color?: string; appear?: number; vanish?: number; /** place by longitude/latitude instead of x/y metres */ at?: LonLat};
+type Common = {label?: string; sub?: string; color?: string; appear?: number; vanish?: number; /** hide only the label after this progress (zoom-outs) */ labelVanish?: number; /** place by longitude/latitude instead of x/y metres */ at?: LonLat};
 export type SatShape =
   | ({type: 'rect'; w: number; h: number; x?: number; y?: number; rot?: number; fill?: boolean} & Common)
   /** `minPx` keeps a marker ring visible (and labelled) when the true size is too small to see */
@@ -192,7 +192,7 @@ export const SatZoomShot: React.FC<{spec: SatZoomSpec; p: number; elapsed: numbe
       })}
       {shapes.map((sh, i) => {
         if (!sh.label) return null;
-        const o = vis(sh, p);
+        const o = vis(sh, p) * (sh.labelVanish === undefined ? 1 : clamp((sh.labelVanish - p) / 0.04));
         if (o <= 0) return null;
         // label sits above the shape's top edge; hidden while the shape is too small to see
         let x = 0;
