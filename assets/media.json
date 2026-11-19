@@ -545,45 +545,50 @@
   },
   {
    "id": "catalan-atlas",
-   "source": "commons",
+   "source": "url",
    "file": "1375_Atlas_Catalan_Abraham_Cresques.jpg",
    "licence": "Public domain (PD-Art, 1375)",
    "credit": "Abraham Cresques (attr.), Catalan Atlas, 1375, Bibliothèque nationale de France (public domain)",
    "depth": false,
-   "max": 4000
+   "max": 4000,
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/1375_Atlas_Catalan_Abraham_Cresques.jpg/3840px-1375_Atlas_Catalan_Abraham_Cresques.jpg"
   },
   {
    "id": "catalan-mansa-musa",
-   "source": "commons",
+   "source": "url",
    "file": "Catalan_Atlas_BNF_Sheet_6_Mansa_Musa.jpg",
    "licence": "Public domain (PD-Art, 1375)",
    "credit": "Catalan Atlas, sheet 6 (Mansa Musa), 1375, BnF (public domain)",
    "depth": false,
-   "max": 3000
+   "max": 3000,
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Catalan_Atlas_BNF_Sheet_6_Mansa_Musa.jpg"
   },
   {
    "id": "wasiti-hajj",
-   "source": "commons",
+   "source": "url",
    "file": "Yahyâ_ibn_Mahmûd_al-Wâsitî_005.jpg",
    "licence": "Public domain (PD-Art, 1237)",
    "credit": "Yahya ibn Mahmud al-Wasiti, Maqamat of al-Hariri, 1237, BnF (public domain)",
-   "depth": false
+   "depth": false,
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Yahy%C3%A2_ibn_Mahm%C3%BBd_al-W%C3%A2sit%C3%AE_005.jpg"
   },
   {
    "id": "benett-ibn-battuta",
-   "source": "commons",
+   "source": "url",
    "file": "Découverte_de_la_Terre_023.jpg",
    "licence": "Public domain (artist d. 1917)",
    "credit": "Léon Benett, engraving for Jules Verne, Découverte de la Terre, 1878 (public domain)",
-   "depth": false
+   "depth": false,
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/D%C3%A9couverte_de_la_Terre_023.jpg"
   },
   {
    "id": "tughlaq-court",
-   "source": "commons",
+   "source": "url",
    "file": "Muhammad_bin_Tughlaq_on_the_throne_-_Indian_Museum,_Kolkata.jpg",
    "licence": "Public domain (PD-Art-100)",
    "credit": "Muhammad bin Tughluq on the throne, painting, Indian Museum, Kolkata (public domain)",
-   "depth": false
+   "depth": false,
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Muhammad_bin_Tughlaq_on_the_throne_-_Indian_Museum%2C_Kolkata.jpg"
   }
  ],
  "geo": {
