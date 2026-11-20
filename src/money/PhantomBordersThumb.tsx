@@ -23,7 +23,7 @@ export const PhantomBordersThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) =
     const spec = mapOf('o2');
     return (
       <AbsoluteFill style={{background: '#13212e'}}>
-        {spec ? <div style={{position: 'absolute', left: 260, top: -40, width: 1280, height: 800}}><MapShot spec={{...spec, choropleth: spec.choropleth ? {...spec.choropleth, labels: undefined, legend: undefined} : undefined, modern: undefined, camera: [{at: 0, center: [10.6, 51.3], zoom: 7.4}]}} p={1} width={1280} height={800} uid="t1" /></div> : null}
+        {spec ? <div style={{position: 'absolute', left: 260, top: -40, width: 1280, height: 800}}><MapShot spec={{...spec, choropleth: spec.choropleth ? {...spec.choropleth, labels: undefined, legend: undefined} : undefined, modern: undefined, camera: [{at: 0, center: [10.5, 51.2], zoom: 17}]}} p={1} width={1280} height={800} uid="t1" /></div> : null}
         <div style={{position: 'absolute', left: 40, top: 70, fontFamily: INTER, fontWeight: 900, lineHeight: 0.95, color: '#fff', textShadow: stroke}}>
           <div style={{fontSize: 120}}>GONE</div>
           <div style={{fontSize: 120, color: GOLD}}>1990</div>
@@ -36,7 +36,7 @@ export const PhantomBordersThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) =
     // The Black Belt crescent from space (NASA, PD): an ancient coastline (B1, B3)
     return (
       <AbsoluteFill style={{background: '#000'}}>
-        <Img src={artSrc('blackbelt-space')} style={{...cover, objectPosition: '50% 50%', transform: 'scale(1.15)', filter: 'brightness(1.1) contrast(1.25) saturate(1.2)'}} />
+        <Img src={artSrc('blackbelt-space')} style={{...cover, objectPosition: '62% 42%', transform: 'scale(1.6)', filter: 'brightness(1.1) contrast(1.25) saturate(1.2)'}} />
         <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.65) 100%)'}} />
         <div style={{position: 'absolute', left: 50, top: 40, fontFamily: INTER, fontWeight: 900, fontSize: 104, lineHeight: 1, color: GOLD, textShadow: stroke}}>DINOSAUR COAST</div>
         <div style={{position: 'absolute', right: 50, bottom: 46, fontFamily: INTER, fontWeight: 900, fontSize: 96, lineHeight: 1, color: '#fff', textShadow: stroke}}>STILL POOR</div>
@@ -47,7 +47,7 @@ export const PhantomBordersThumb: React.FC<{variant: 1 | 2 | 3}> = ({variant}) =
   const spec = mapOf('c4a');
   return (
     <AbsoluteFill style={{background: '#13212e'}}>
-      {spec ? <MapShot spec={{...spec, regions: undefined, cities: undefined, modern: undefined, ghosts: spec.ghosts?.map((g) => ({...g, label: undefined, width: 10})), camera: [{at: 0, center: [9.6, 49.5], zoom: 10.5}]}} p={1} width={1280} height={720} uid="t3" /> : null}
+      {spec ? <MapShot spec={{...spec, regions: undefined, cities: undefined, modern: undefined, ghosts: spec.ghosts?.map((g) => ({...g, label: undefined, width: 10})), camera: [{at: 0, center: [9.55, 49.6], zoom: 21}]}} p={1} width={1280} height={720} uid="t3" /> : null}
       <div style={{position: 'absolute', left: 40, top: 40, fontFamily: INTER, fontWeight: 900, fontSize: 112, lineHeight: 1, color: '#fff', textShadow: stroke}}>ROME&apos;S LINE</div>
       <div style={{position: 'absolute', right: 40, bottom: 40, fontFamily: INTER, fontWeight: 900, fontSize: 96, lineHeight: 1, color: GOLD, textShadow: stroke}}>STILL GLOWS</div>
     </AbsoluteFill>
