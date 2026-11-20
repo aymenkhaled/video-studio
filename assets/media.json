@@ -542,11 +542,98 @@
    "licence": "Public domain (Prokudin-Gorsky collection, Library of Congress, no known restrictions)",
    "credit": "Perm, headquarters of the Ural Railway Administration, S. M. Prokudin-Gorsky, c. 1910, Library of Congress, public domain",
    "depth": true
+  },
+  {
+   "id": "ddr-border-tower",
+   "source": "commons",
+   "file": "DDR steel watch tower cropped.jpg",
+   "licence": "Public domain (US Army)",
+   "credit": "SPC5 Vincent Kitts, East German guards in a steel tower on the inner German border, 15 Aug 1984 (public domain)"
+  },
+  {
+   "id": "checkpoint-1977",
+   "source": "commons",
+   "file": "Checkpoint Charlie 1977.jpg",
+   "licence": "Public domain (US Government)",
+   "credit": "Helga T. H. Mellmann, Checkpoint Charlie, 1 May 1977 (public domain)"
+  },
+  {
+   "id": "wall-1989",
+   "source": "commons",
+   "file": "0594 1989 Berlin Mauer (28 dec) (14121954819).jpg",
+   "licence": "CC BY 2.0",
+   "credit": "Aad van der Drift, watchtower at the Berlin Wall, 28 Dec 1989 (CC BY 2.0)"
+  },
+  {
+   "id": "faden-1799",
+   "source": "commons",
+   "file": "Map of the partition of the Kingdom of Poland and the Grand Duchy of Lithuania from 1799.jpg",
+   "licence": "Public domain",
+   "credit": "William Faden, map of Poland divided by its partitions, 1799 (public domain)"
+  },
+  {
+   "id": "flemming-1914",
+   "source": "commons",
+   "file": "07-Das Österreich-Russische Grenzgebiet (1914).png",
+   "licence": "Public domain",
+   "credit": "Carl Flemming war map no. 7, the Austrian-Russian borderland, 1914 (public domain)"
+  },
+  {
+   "id": "andree-habsburg",
+   "source": "commons",
+   "file": "Austria-Hungary (ethnic 1890, with red 1914 and blue 1920 borders).jpg",
+   "licence": "Public domain",
+   "credit": "Richard Andree, Austria-Hungary (1890 base, 1914 borders in red), Times Atlas 1895 (public domain)"
+  },
+  {
+   "id": "limes-tower",
+   "source": "commons",
+   "file": "Roemturmmainhard5.jpg",
+   "licence": "CC BY 3.0",
+   "credit": "Matthias Süßen, modern reconstruction of a Limes watchtower at Mainhardt, 2010 (CC BY 3.0)",
+   "depth": true
+  },
+  {
+   "id": "europe-night",
+   "source": "commons",
+   "file": "Image of Europe at night, a composite assembled from data acquired by the Suomi NPP satellite in April and October 2012.jpg",
+   "licence": "Public domain (NASA)",
+   "credit": "NASA Goddard, Europe at night, Suomi NPP VIIRS, 2012 (public domain)",
+   "gamma": 1.6
+  },
+  {
+   "id": "blackbelt-space",
+   "source": "url",
+   "url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/92000/92321/blackbelt_tmo_2015-2018_lrg.jpg",
+   "licence": "Public domain (NASA)",
+   "credit": "NASA Earth Observatory / Joshua Stevens, Black Belt Prairie, MODIS mosaic 2015–2018 (public domain)"
+  },
+  {
+   "id": "cotton-field",
+   "source": "commons",
+   "file": "Irrigation in Cotton Field - 51488231980.jpg",
+   "licence": "CC0 1.0",
+   "credit": "Alabama Extension / Katie Wendland Nichols, cotton field in bloom, Alabama, 2016 (CC0)",
+   "depth": true
+  },
+  {
+   "id": "cotton-family",
+   "source": "commons",
+   "file": "Black cotton farming family.jpg",
+   "licence": "Public domain",
+   "credit": "Unknown photographer, Black cotton farmers in the US, about 1890s (public domain)"
+  },
+  {
+   "id": "cretaceous-1907",
+   "source": "commons",
+   "file": "Map showing the distribution of the Cretaceous formation in North America – Geology (1907) (14589719039).jpg",
+   "licence": "Public domain",
+   "credit": "Chamberlin & Salisbury, distribution of the Cretaceous formation in North America, Geology, 1907 (public domain)"
   }
  ],
  "geo": {
   "bbox": [
-   -20,
+   -95,
    15,
    180,
    82
@@ -557,7 +644,41 @@
    "https://naciscdn.org/naturalearth/50m/raster/GRAY_50M_SR_W.zip"
   ],
   "licence": "Natural Earth — public domain",
-  "credit": "Rivers and shaded relief: Natural Earth (public domain)"
+  "credit": "Rivers and shaded relief: Natural Earth (public domain)",
+  "admin1": {
+   "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_1_states_provinces.geojson",
+   "countries": [
+    "DEU",
+    "POL",
+    "ROU",
+    "UKR"
+   ],
+   "round": 3,
+   "borders": [
+    {
+     "name": "inner_german",
+     "a": [
+      "DE-SH",
+      "DE-NI",
+      "DE-HE",
+      "DE-BY"
+     ],
+     "b": [
+      "DE-MV",
+      "DE-BB",
+      "DE-ST",
+      "DE-TH",
+      "DE-SN"
+     ]
+    }
+   ]
+  },
+  "extra": [
+   {
+    "name": "us-counties.json",
+    "url": "https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/counties-10m.json"
+   }
+  ]
  },
  "depth_model": {
   "url": "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model.onnx",

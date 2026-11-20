@@ -125,8 +125,16 @@ def main():
         import onnxruntime as ort
         cut_session = ort.InferenceSession(str(get(U2NET_URL, "u2net.onnx", pins)), providers=["CPUExecutionProvider"])
 
+    # Reuse art already built in a previous media release (CI unzips it into public/ first): only new items are fetched,
+    # so a new episode never re-downloads the whole Commons set (Wikimedia answers 429 to bulk downloads).
+    prev = {}
+    if (ART / "index.json").exists():
+        prev = json.loads((ART / "index.json").read_text(encoding="utf-8"))
     index = {}
     for a in manifest["art"]:
+        if a["id"] in prev and (ART / f"{a['id']}.webp").exists():
+            index[a["id"]] = prev[a["id"]]
+            continue
         if a["source"] == "commons":
             url = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(a["file"])  # original file: arbitrary-width thumbnails are throttled
         elif a["source"] == "artic":  # Art Institute of Chicago open access (CC0): API -> IIIF image
@@ -181,6 +189,68 @@ def main():
             feats.append({"type": "Feature", "properties": {"name": f["properties"].get("name") or ""}, "geometry": {"type": "MultiLineString", "coordinates": lines}})
     (GEO / "rivers.json").write_text(json.dumps({"type": "FeatureCollection", "features": feats}), encoding="utf-8")
     print(f"GEO rivers {len(feats)}: " + ", ".join(sorted({f["properties"]["name"] for f in feats if f["properties"]["name"]})))
+
+    # Money & Maps 003: admin-1 regions (Natural Earth 10m, public domain) for regional choropleths -> public/geo/admin1.json
+    if g.get("admin1"):
+        a1 = g["admin1"]
+        src = json.loads(get(a1["url"], "ne_10m_admin1.geojson", pins).read_text(encoding="utf-8"))
+        keep, nd = set(a1["countries"]), a1.get("round", 3)
+
+        def rnd(c):
+            if isinstance(c[0], (int, float)):
+                return [round(c[0], nd), round(c[1], nd)]
+            out = [rnd(x) for x in c]
+            if out and isinstance(out[0][0], (int, float)):  # a ring: drop repeated points after rounding
+                out = [pt for i, pt in enumerate(out) if i == 0 or pt != out[i - 1]]
+            return out
+
+        feats = [{"type": "Feature", "properties": {"id": f["properties"].get("iso_3166_2"), "name": f["properties"].get("name"), "adm0": f["properties"].get("adm0_a3")},
+                  "geometry": {"type": f["geometry"]["type"], "coordinates": rnd(f["geometry"]["coordinates"])}}
+                 for f in src["features"] if f["properties"].get("adm0_a3") in keep and f.get("geometry")]
+        (GEO / "admin1.json").write_text(json.dumps({"type": "FeatureCollection", "features": feats}, separators=(",", ":")), encoding="utf-8")
+        print(f"GEO admin1 {len(feats)} regions: " + ", ".join(sorted(keep)))
+        # exact shared boundaries between two groups of regions (e.g. the former inner German border = old/new Länder edge)
+        lines = {}
+        def rings(f):
+            gm = f["geometry"]
+            polys = [gm["coordinates"]] if gm["type"] == "Polygon" else gm["coordinates"]
+            return [r for poly in polys for r in poly]
+        def edges(ids):
+            out = set()
+            for f in feats:
+                if f["properties"]["id"] in ids:
+                    for r in rings(f):
+                        for i in range(len(r) - 1):
+                            out.add((tuple(r[i]), tuple(r[i + 1])))
+            return out
+        for b in a1.get("borders", []):
+            ea, eb = edges(set(b["a"])), edges(set(b["b"]))
+            seg = [e for e in ea if e in eb or (e[1], e[0]) in eb]
+            nxt = {}
+            for u, v in seg:
+                nxt.setdefault(u, []).append(v)
+                nxt.setdefault(v, []).append(u)
+            used, chains = set(), []
+            starts = [n for n, vs in nxt.items() if len(vs) == 1] + list(nxt)
+            for st in starts:
+                for v0 in nxt[st]:
+                    if (st, v0) in used:
+                        continue
+                    ch, u, v = [st], st, v0
+                    while True:
+                        used.add((u, v)); used.add((v, u)); ch.append(v)
+                        cand = [w for w in nxt[v] if (v, w) not in used]
+                        if len(nxt[v]) != 2 or not cand:
+                            break
+                        u, v = v, cand[0]
+                    chains.append([list(c) for c in ch])
+            lines[b["name"]] = [c for c in chains if len(c) > 2]
+            print(f"GEO border {b['name']}: {len(seg)} segments -> {len(lines[b['name']])} lines")
+        (GEO / "lines.json").write_text(json.dumps(lines, separators=(",", ":")), encoding="utf-8")
+    # extra geo files copied as-is (e.g. us-atlas counties TopoJSON, ISC package of US Census public-domain data)
+    for x in g.get("extra", []):
+        (GEO / x["name"]).write_bytes(get(x["url"], x["name"], pins).read_bytes())
+        print(f"GEO extra {x['name']}")
 
     relief = None
     for i, url in enumerate(g["relief"]):

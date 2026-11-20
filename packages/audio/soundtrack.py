@@ -215,6 +215,8 @@ if "scenes" in tl:
         SCENES.append({"id": sc["id"], "start": round(start, 3), "end": round(end, 3)})
         if sc.get("music"):
             sections.append({"start": start, "end": end, "mood": sc["music"]})
+        elif sections and abs(sections[-1]["end"] - start) < 1e-6:
+            sections[-1]["end"] = end  # no mood (e.g. chapter card): keep the previous mood playing, never a silent gap (C003 QA)
         for ev in sc.get("sfx", []):
             sfx.append({**ev, "t": start + float(ev.get("at", 0))})
         if sc.get("ambience"):

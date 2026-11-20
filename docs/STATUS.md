@@ -1,5 +1,21 @@
 # STUDIO STATUS
 
+## Money & Maps C003 phantom-border sources — 18 Nov 2026
+- In progress: primary-source figures, paper effect sizes, map instructions, and caveats for `docs/research/c003-sources-draft.md`; requested order escalates from the former inner-German border to the geological Black Belt.
+- Decision: this handoff is a facts-only research draft; all derived percentages will show their inputs and formula, and inaccessible or unverified claims will be marked explicitly.
+- Access notes: Google returned a JavaScript redirect twice; Bing results were unusable; switched to official-site navigation and bibliographic APIs. The 2026 Ostbeauftragte PDF download timed out twice, so stopped that download route; its publication/date are confirmed on the official HTML page, and current economic figures are being checked directly with Destatis/VGRdL.
+- Access blocker: seven parallel research subagents were rejected before execution by the shared quota service; stopped retrying that route and switched to direct official/publisher retrieval plus the repository's documented GPT research bridge.
+- 2026-11-18 Map-data licence research complete in `docs/research/c003-map-data-licences-2026-11-18.md`: use Natural Earth admin-1 (PD) for the four-country view and Census 2025 county boundaries (PD), with Dallas County as the Selma-area county proxy; use geoBoundaries only for ROU ADM2 (CC BY 4.0) and USA ADM2 (PD). Reject POL ODbL, DEU dl-de/by-2-0 outside the strict allowlist, and gbAuthoritative noncommercial data.
+- 2026-11-18 C003 licence-safe geometry + imagery handoff written to `docs/research/c003-media-geo.md`: Natural Earth/Census/geoBoundaries subset commands, no safe historic-border dataset (hand-digitised waypoints from PD scans instead), 14 verified PD/CC0/CC BY image entries and paste-ready `art`/`geo` JSON. All 5 JSON blocks parse. Not used in a render yet; add `docs/LICENSES.md` art rows when adopted.
+
+## History in Maps outlier research — 18 Nov 2026
+- In progress: `docs/research/history-outliers-2026-11-18.md`; requested window 2025-05-18–2026-11-18, channels below 200K subscribers, at least 5× subscribers or a documented median.
+- Access blocker: Google Search returned a JavaScript redirect on two attempts; stopped retrying that route and switched to public statistics mirrors and other search indexes. Existing scout figures are leads, pending fresh verification.
+- Milestone: 25 qualifying videos recorded in the research file (24 long-form, one Short), with publication dates, dated counts, and calculated subscriber ratios. Candidate competition scans are underway. Map Pack fails the size gate at 444K subscribers; the previous scout's 35.9K denominator is stale.
+- Access blocker: DuckDuckGo served CAPTCHA pages on two research queries; stopped that search route. Public YouTube search/watch text is accessible through Jina Reader; thumbnails remain accessible directly. All 25 selected thumbnail concepts are now visually verified.
+- Decision: choose the Vinland butternut/southern-route mystery for the next History in Maps story (33/35 editorial score): recent English long-form outlier, botanical map surprise, primary archaeology and single-year dating. Report includes 15 candidate comparisons and the title/thumbnail/hook/chapter/source package; document verification is in progress.
+- Access blockers: Britannica requests were blocked (403); stopped that publisher route. YouTube's Xenophon page exposed only “2y ago” on both reader attempts; stopped retrying and explicitly marked the competition date as est. Public-domain museum objects and institutional/scholarship sources remain accessible.
+
 ## Promo Shorts — branch `shorts/promo-v1` (worktree `D:\studio-shorts`), 18 Nov 2026
 - 2026-11-17 **Aymen reversed "long-form only": make promo Shorts (2 per finished long video) to pull viewers to the long videos.**
 Decisions (Claude; Aymen away, "don't ask"):
@@ -114,3 +130,7 @@ Decisions (Claude; Aymen away, "don't ask"):
 - 2026-11-16 Kokoro **int8** returns inf/NaN on the current runner image (new lines only; cache unaffected) → `voice.model: "fp32"` (opt-in). First final failed true peak (−0.4 dBTP: compressed voice + deep ducking) → `mix.tp_oversample` (4× oversampled limiter, opt-in). Packager takes every `- ` line of sources.md as a description source → keep "do not use" lists as `* ` and add a "For the description" list.
 - Waiting on Aymen: phone-speaker listen (new voice chain + 20 dB ducking), upload with UPLOAD.md + Test & Compare (3 thumbnails). Next Money & Maps video: phantom borders (teased in the end screen).
 - 2026-11-18 Scale & Science: 3 new B002 thumbnails (v3, size contrast; `GiantWavesThumbsV2`, render mode=stills stills=3) and 4 Shorts (2 per B001/B002, `brands/scale-science/shorts/shorts-001.json`) delivered to `D:\deep-time-fables\scale-science-episode-00{1,2}\`. make_shorts.py fixed (box glyph after line 1; channel name option). Shorts are now ON (Aymen 17 Nov).
+
+## C003 phantom borders — DELIVERED 2026-11-20
+QA PASS (9:23, −14.8 LUFS, −3.5 dBTP). Files: `D:\deep-time-fables\money-maps-episode-003\`. Review: `brands/money-maps/episodes/003-phantom-borders/review.md` (7.7/10).
+Branch `ep/c003-phantom-borders` pushed, NOT merged to main yet. Waiting on Aymen: phone-speaker listen, upload with UPLOAD.md + Test & Compare (3 thumbnails).

@@ -1,0 +1,44 @@
+[
+ {
+  "id": "P1",
+  "promise": "Title 1 / thumb 1: Germany reunited, but its money map still shows the old border",
+  "setAt": "title/o1–o2",
+  "payoffAt": "o2, c1d–c1f, c6d",
+  "payoffLine": "Not one of the five eastern states… ~70 % per person; a fifth less pay"
+ },
+ {
+  "id": "P2",
+  "promise": "Title 2: vanished borders still decide who's rich",
+  "setAt": "title/o3",
+  "payoffAt": "c1–c5, c6a",
+  "payoffLine": "five borders; what lasted"
+ },
+ {
+  "id": "P3",
+  "promise": "Title 3 / thumb 2: a dinosaur-age coastline shapes who is poor",
+  "setAt": "title/o3",
+  "payoffAt": "c5a–c5f",
+  "payoffLine": "chalk soil → cotton → slavery → persistent poverty 19 of 24"
+ },
+ {
+  "id": "P4",
+  "promise": "Thumb 3: Rome's line still glows",
+  "setAt": "thumb/o3",
+  "payoffAt": "c4b–c4b2",
+  "payoffLine": "lights brighter on the Roman side, 5–20 %+"
+ },
+ {
+  "id": "P5",
+  "promise": "Hook Q: why do some dead borders keep deciding who is rich while others fade?",
+  "setAt": "o4",
+  "payoffAt": "c2d (partial), c6a–c6b",
+  "payoffLine": "built into the ground / passed down in families stays; what money can move levels out"
+ },
+ {
+  "id": "P6",
+  "promise": "Chapter 2 question: is the old Prussian side still richer?",
+  "setAt": "c2c",
+  "payoffAt": "c2d–c2e",
+  "payoffLine": "income differences disappeared; railways stayed"
+ }
+]

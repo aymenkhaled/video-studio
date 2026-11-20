@@ -58,10 +58,18 @@ export type MapSpec = {
   minText?: number;
   /** Money & Maps: countries coloured by a sourced value (Natural Earth ids = ISO 3166-1 numeric), legend bottom-left. */
   choropleth?: Choropleth;
+  /** Money & Maps 003: borders that no longer exist, drawn as glowing "ghost" lines over today's data. */
+  ghosts?: Ghost[];
 };
 
+/** A vanished border (our own approximate waypoints from public-domain maps). Layered strokes, no blur filter. */
+export type Ghost = {id: string; lines?: LonLat[][]; /** name in public/geo/lines.json (exact shared region edge from fetch_media.py) */ file?: string; draw: [number, number]; color?: string; width?: number; label?: string; labelAt?: LonLat; fadeOut?: [number, number]};
+
 export type Choropleth = {
-  /** ISO 3166-1 numeric id ("756" = Switzerland) → value */
+  /** optional public GeoJSON/TopoJSON (from fetch_media.py, e.g. 'geo/admin1.json'); feature id = `key` property (default: feature.id). Default: world countries. */
+  file?: string;
+  key?: string;
+  /** ISO 3166-1 numeric id ("756" = Switzerland), or the file's feature id → value */
   values: Record<string, number>;
   /** ascending class breaks; colors.length = breaks.length + 1 (sequential, colour-blind safe) */
   breaks: number[];
@@ -95,6 +103,14 @@ const COUNTRIES = (() => {
   const fc = feature(topo, topo.objects.countries) as unknown as {features: {id?: string; geometry: unknown}[]};
   return fc.features.filter((f) => f.id !== undefined);
 })();
+
+/** Features of a fetched GeoJSON FeatureCollection or TopoJSON topology, keyed by `key` (property) or feature.id. */
+const fileFeatures = (j: unknown, key?: string): {id?: string; geometry: unknown}[] => {
+  if (!j) return [];
+  const o = j as {type: string; objects?: Record<string, GeometryCollection>; features?: {id?: string | number; properties?: Record<string, unknown>; geometry: unknown}[]};
+  const fc = o.type === 'Topology' ? (feature(o as unknown as Topology, Object.values(o.objects!)[0]) as unknown as {features: NonNullable<typeof o.features>}) : {features: o.features ?? []};
+  return fc.features.map((f) => ({id: String(key ? f.properties?.[key] ?? '' : f.id ?? ''), geometry: f.geometry})).filter((f) => f.id !== '');
+};
 
 /** d3 treats ring winding as meaningful: a ring with area > hemisphere means "everything but"; fix it. */
 const polygon = (rings: LonLat[][]) => {
@@ -206,6 +222,9 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
   const relief = usePublicJson<{bounds: [number, number, number, number]; w: number; h: number}>('geo/relief.json', !!spec.relief);
   const riversGeo = usePublicJson<{features: {properties: {name: string}; geometry: {type: 'MultiLineString'; coordinates: LonLat[][]}}[]}>('geo/rivers.json', !!spec.rivers?.length);
   const modernA = spec.modern ? spec.modern.opacity ?? 1 : 0;
+  const choroFile = usePublicJson<unknown>(spec.choropleth?.file ?? 'geo/none.json', !!spec.choropleth?.file);
+  const ghostFile = usePublicJson<Record<string, LonLat[][]>>('geo/lines.json', !!spec.ghosts?.some((g) => g.file));
+  const choroFeats = useMemo(() => (spec.choropleth?.file ? fileFeatures(choroFile, spec.choropleth.key) : COUNTRIES), [choroFile, spec.choropleth?.file, spec.choropleth?.key]);
 
   // Label avoidance (opt-in): estimate boxes deterministically from text length, place greedily.
   const shift = new Map<string, {dx: number; dy: number; hidden: boolean}>();
@@ -354,17 +373,54 @@ export const MapShot: React.FC<{spec: MapSpec; p: number; width: number; height:
         const a = c.appear ? easeInOutCubic(ramp(p, c.appear[0], c.appear[1])) : 1;
         return (
           <g clipPath={`url(#${uid}-land)`}>
-            {COUNTRIES.map((f) => {
+            {choroFeats.map((f) => {
               const v = c.values[f.id!];
               if (v === undefined) return null;
               return <path key={f.id} d={path(f.geometry as never) ?? ''} fill={c.colors[classify(v, c.breaks)]} fillOpacity={0.9 * a} stroke="rgba(20,30,40,0.55)" strokeWidth={1.2} />;
             })}
-            {COUNTRIES.filter((f) => c.highlight?.includes(f.id!)).map((f) => (
+            {choroFeats.filter((f) => c.highlight?.includes(f.id!)).map((f) => (
               <path key={`h${f.id}`} d={path(f.geometry as never) ?? ''} fill="none" stroke="#ffffff" strokeWidth={5 * zoomS} strokeLinejoin="round" opacity={a} />
             ))}
           </g>
         );
       })() : null}
+
+      {/* ghost borders (Money & Maps 003): dark under-stroke, wide soft glow, bright core; drawn on with the scene */}
+      {(spec.ghosts ?? []).map((g) => {
+        const pr = easeInOutCubic(ramp(p, g.draw[0], g.draw[1]));
+        const out = g.fadeOut ? 1 - easeInOutCubic(ramp(p, g.fadeOut[0], g.fadeOut[1])) : 1;
+        if (pr <= 0 || out <= 0) return null;
+        const col = g.color ?? '#ffd166';
+        const w = (g.width ?? 7) * zoomS;
+        const pulse = 0.85 + 0.15 * Math.sin(p * Math.PI * 6);
+        return (
+          <g key={g.id} opacity={out}>
+            {[...(g.lines ?? []), ...(g.file ? ghostFile?.[g.file] ?? [] : [])].map((ln, k) => {
+              const d = smoothPath(ln.map((ll) => px(ll) as [number, number]));
+              const ev = evolvePath(pr, d);
+              const dash = {strokeDasharray: ev.strokeDasharray, strokeDashoffset: ev.strokeDashoffset};
+              return (
+                <g key={k} fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path d={d} stroke="rgba(10,6,2,0.55)" strokeWidth={w + 8} {...dash} />
+                  <path d={d} stroke={col} strokeOpacity={0.22 * pulse} strokeWidth={w * 4.5} {...dash} />
+                  <path d={d} stroke={col} strokeOpacity={0.4 * pulse} strokeWidth={w * 2.2} {...dash} />
+                  <path d={d} stroke={col} strokeWidth={w} {...dash} />
+                  <path d={d} stroke="#fff8e6" strokeOpacity={0.85} strokeWidth={Math.max(1.5, w * 0.3)} {...dash} />
+                </g>
+              );
+            })}
+            {g.label && g.labelAt ? (() => {
+              const [x, y] = px(g.labelAt);
+              const la = easeInOutCubic(ramp(p, g.draw[1] - 0.05, g.draw[1] + 0.08));
+              return (
+                <text x={x} y={y} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={fs(30 * Math.min(1.3, zoomS))} fill={col} stroke="#101820" strokeWidth={7} paintOrder="stroke" opacity={la}>
+                  {g.label}
+                </text>
+              );
+            })() : null}
+          </g>
+        );
+      })}
 
       {/* rivers (Clarity Kit) */}
       {riversGeo && spec.rivers?.length ? (

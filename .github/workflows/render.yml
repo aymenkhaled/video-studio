@@ -36,6 +36,10 @@ on:
         description: Browser tabs per render job (empty = CPU count; use 2 for 3D scenes)
         required: false
         default: ''
+      media_base:
+        description: Media mode only - comma-separated earlier releases whose media.zip art is reused
+        required: false
+        default: ''
       media_release:
         description: Release holding media.zip (media mode publishes to it; renders download it)
         required: false
@@ -74,7 +78,7 @@ jobs:
   plan:
     if: inputs.mode != 'media' && inputs.mode != 'survey' && inputs.mode != 'shorts'
     runs-on: ubuntu-latest
-    timeout-minutes: 40  # fp32 Kokoro on a TTS cache miss can exceed 20 min
+    timeout-minutes: 90  # fp32 Kokoro on a TTS cache miss: ~10 min of narration took > 40 min (C003)
     outputs:
       matrix: ${{ steps.plan.outputs.matrix }}
       frames: ${{ steps.plan.outputs.frames }}
@@ -319,6 +323,26 @@ jobs:
           key: media-src-${{ hashFiles('assets/media.json') }}
           restore-keys: media-src-
       - run: pip install -q numpy==2.2.6 pillow==11.3.0 onnxruntime==1.23.2
+      - name: Start from the previous media release (only new art is downloaded)
+        if: inputs.media_base != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p public
+          for rel in $(echo "${{ inputs.media_base }}" | tr ',' ' '); do
+            gh release download "$rel" -p media.zip -O ".cache/base-$rel.zip" --clobber
+            unzip -qo ".cache/base-$rel.zip" "art/*" -d public -x "art/index.json"
+            unzip -p ".cache/base-$rel.zip" art/index.json > ".cache/index-$rel.json" || echo '{}' > ".cache/index-$rel.json"
+          done
+          python3 -c "import json,glob; d={}; [d.update(json.load(open(f))) for f in sorted(glob.glob('.cache/index-*.json'))]; json.dump(d,open('public/art/index.json','w'))"
+          ls public/art | wc -l
+      - name: Pre-seed hand-fetched sources (<media_release>-src), if that release exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .cache/media
+          gh release download "${{ inputs.media_release }}-src" -D .cache/media --clobber || echo "no -src release"
+          ls .cache/media | wc -l
       - run: python3 tools/fetch_media.py
       - name: Publish <media_release>/media.zip
         env:
