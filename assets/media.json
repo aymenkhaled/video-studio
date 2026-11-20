@@ -544,6 +544,278 @@
    "depth": true
   },
   {
+   "id": "sb-z8",
+   "source": "tiles",
+   "template": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg",
+   "center": [
+    113.7,
+    -25.95
+   ],
+   "z": 8,
+   "grid": [
+    5,
+    5
+   ],
+   "credit": "EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016), CC BY 4.0",
+   "licence": "CC BY 4.0 (EOxCloudless 2016 vintage only; 2018+ layers are NC and not used)",
+   "max": 2400,
+   "depth": false
+  },
+  {
+   "id": "sb-z10",
+   "source": "tiles",
+   "template": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg",
+   "center": [
+    113.65,
+    -25.95
+   ],
+   "z": 10,
+   "grid": [
+    7,
+    7
+   ],
+   "credit": "EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016), CC BY 4.0",
+   "licence": "CC BY 4.0 (EOxCloudless 2016 vintage only; 2018+ layers are NC and not used)",
+   "max": 3000,
+   "depth": false
+  },
+  {
+   "id": "sb-z12",
+   "source": "tiles",
+   "template": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg",
+   "center": [
+    113.78,
+    -25.84
+   ],
+   "z": 12,
+   "grid": [
+    6,
+    6
+   ],
+   "credit": "EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016), CC BY 4.0",
+   "licence": "CC BY 4.0 (EOxCloudless 2016 vintage only; 2018+ layers are NC and not used)",
+   "max": 2400,
+   "depth": false
+  },
+  {
+   "id": "sb-z14",
+   "source": "tiles",
+   "template": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg",
+   "center": [
+    113.76,
+    -25.8
+   ],
+   "z": 14,
+   "grid": [
+    5,
+    5
+   ],
+   "credit": "EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016), CC BY 4.0",
+   "licence": "CC BY 4.0 (EOxCloudless 2016 vintage only; 2018+ layers are NC and not used)",
+   "max": 2400,
+   "depth": false
+  },
+  {
+   "id": "pando-z12",
+   "source": "tiles",
+   "template": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg",
+   "center": [
+    -111.72,
+    38.53
+   ],
+   "z": 12,
+   "grid": [
+    6,
+    6
+   ],
+   "credit": "EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016), CC BY 4.0",
+   "licence": "CC BY 4.0 (EOxCloudless 2016 vintage only; 2018+ layers are NC and not used)",
+   "max": 2400,
+   "depth": false
+  },
+  {
+   "id": "pando-z16",
+   "source": "tiles",
+   "template": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}",
+   "center": [
+    -111.75,
+    38.525
+   ],
+   "z": 16,
+   "grid": [
+    7,
+    7
+   ],
+   "credit": "Imagery: USDA NAIP via USGS The National Map (public domain). Map services and data available from U.S. Geological Survey, National Geospatial Program.",
+   "licence": "Public domain (USDA NAIP / USGS The National Map)",
+   "max": 3000,
+   "depth": false
+  },
+  {
+   "id": "malheur-z11",
+   "source": "tiles",
+   "template": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg",
+   "center": [
+    -118.6,
+    44.45
+   ],
+   "z": 11,
+   "grid": [
+    6,
+    6
+   ],
+   "credit": "EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016), CC BY 4.0",
+   "licence": "CC BY 4.0 (EOxCloudless 2016 vintage only; 2018+ layers are NC and not used)",
+   "max": 2400,
+   "depth": false
+  },
+  {
+   "id": "malheur-z13",
+   "source": "tiles",
+   "template": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg",
+   "center": [
+    -118.6,
+    44.45
+   ],
+   "z": 13,
+   "grid": [
+    6,
+    6
+   ],
+   "credit": "EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016), CC BY 4.0",
+   "licence": "CC BY 4.0 (EOxCloudless 2016 vintage only; 2018+ layers are NC and not used)",
+   "max": 2400,
+   "depth": false
+  },
+  {
+   "id": "bw-top",
+   "source": "commons",
+   "file": "Blue Whale 001 body bw.jpg",
+   "licence": "Public domain (NOAA Fisheries)",
+   "credit": "Blue whale from above. NOAA Fisheries, SWFSC (public domain; background removed)",
+   "depth": false,
+   "cutout": true,
+   "rotate": -62.85,
+   "max": 2400
+  },
+  {
+   "id": "bw-up",
+   "source": "commons",
+   "file": "Blue Whale 001 body bw.jpg",
+   "licence": "Public domain (NOAA Fisheries)",
+   "credit": "Blue whale from above. NOAA Fisheries, SWFSC (public domain; background removed)",
+   "depth": false,
+   "cutout": true,
+   "rotate": 27.15,
+   "max": 2400,
+   "src": "bw-top"
+  },
+  {
+   "id": "bw-pair",
+   "source": "commons",
+   "file": "CINMS - Two Blue Whales Aerial Photo (27877575362).jpg",
+   "licence": "Public domain (NOAA)",
+   "credit": "Two blue whales, Channel Islands. NOAA National Marine Sanctuaries (public domain)",
+   "depth": true
+  },
+  {
+   "id": "siph",
+   "source": "commons",
+   "file": "Physonect siphonophore Puerto Rico April 2015.png",
+   "licence": "Public domain (NOAA)",
+   "credit": "A physonect siphonophore, Puerto Rico 2015. NOAA Office of Ocean Exploration and Research (public domain)",
+   "depth": false
+  },
+  {
+   "id": "redwoods",
+   "source": "commons",
+   "file": "Redwoods at Tall Trees Grove.jpg",
+   "licence": "Public domain (NPS)",
+   "credit": "Coast redwoods, Tall Trees Grove. NPS / Redwood National and State Parks (public domain)",
+   "depth": true
+  },
+  {
+   "id": "sherman",
+   "source": "commons",
+   "file": "General Sherman Sequoia Tree.jpg",
+   "licence": "CC0 1.0 (Daniel G. Rego)",
+   "credit": "General Sherman. Daniel G. Rego, CC0",
+   "depth": true
+  },
+  {
+   "id": "pando-fall",
+   "source": "commons",
+   "file": "Pando in the Fall (11937950814).jpg",
+   "licence": "Public domain (USDA Forest Service)",
+   "credit": "Pando in autumn. USDA Forest Service, Intermountain Region (public domain)",
+   "depth": true
+  },
+  {
+   "id": "pando-enter",
+   "source": "commons",
+   "file": "Entering the Pando aspen clone.png",
+   "licence": "Public domain (USFS)",
+   "credit": "Entering the Pando aspen clone. U.S. Forest Service (public domain)",
+   "depth": true
+  },
+  {
+   "id": "armillaria",
+   "source": "commons",
+   "file": "Armillaria ostoyaea 2011 G2.jpg",
+   "licence": "Public domain (George Chernilevsky)",
+   "credit": "Armillaria ostoyae. George Chernilevsky (public domain)",
+   "depth": true
+  },
+  {
+   "id": "armillaria2",
+   "source": "commons",
+   "file": "Armillaria ostoyaea 2011 G3.jpg",
+   "licence": "Public domain (George Chernilevsky)",
+   "credit": "Armillaria ostoyae. George Chernilevsky (public domain)",
+   "depth": true
+  },
+  {
+   "id": "arm-lesion",
+   "source": "commons",
+   "file": "2010. Armillaria ostoyae lesions on Douglas-fir. Presentation by Mike Cruikshank. 58th Annual Western International Forest Disease Work Conference, held October 4-8, 2010 in Valemount, BC. (38723510095).jpg",
+   "licence": "Public domain (USDA Forest Service)",
+   "credit": "Armillaria ostoyae under the bark of a Douglas-fir. USDA Forest Service, Forest Health Protection (public domain)",
+   "depth": false
+  },
+  {
+   "id": "malheur",
+   "source": "commons",
+   "file": "Stand of virgin ponderosa pine, Malheur National Forest, Grant County, Oregon LCCN2017877599.jpg",
+   "licence": "Public domain (Russell Lee, FSA 1942, Library of Congress)",
+   "credit": "Stand of virgin ponderosa pine, Malheur National Forest, Oregon. Russell Lee, 1942, Library of Congress (public domain)",
+   "depth": true
+  },
+  {
+   "id": "seagrass",
+   "source": "commons",
+   "file": "Posidonia oceanica meadow - Underwater observation and exploration - Calanque de Sormiou - 2022.jpg",
+   "licence": "CC BY 4.0 (Karim saari)",
+   "credit": "Posidonia oceanica seagrass meadow (Mediterranean relative). Karim saari, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+   "depth": true
+  },
+  {
+   "id": "seagrass-diver",
+   "source": "commons",
+   "file": "Scuba Diver in Seagrass - 53006413135.jpg",
+   "licence": "CC BY 2.0 (Symbiosis)",
+   "credit": "Scuba diver in seagrass. Symbiosis, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/)",
+   "depth": true
+  },
+  {
+   "id": "sb-nasa",
+   "source": "url",
+   "url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/147000/147395/sharkbay_amo_2020274_lrg.jpg",
+   "licence": "Public domain (NASA Earth Observatory)",
+   "credit": "Shark Bay. NASA Earth Observatory image by Lauren Dauphin, using MODIS data from NASA EOSDIS/LANCE and GIBS/Worldview (public domain)",
+   "depth": false,
+   "max": 2600
+  },
+  {
    "id": "ddr-border-tower",
    "source": "commons",
    "file": "DDR steel watch tower cropped.jpg",

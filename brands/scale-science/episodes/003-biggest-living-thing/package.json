@@ -1,0 +1,29 @@
+{
+  "titles": [
+    "The Biggest Living Thing on Earth Isn't a Whale",
+    "This One Plant Spans 180 km",
+    "A Single Plant Twice the Size of Paris (Shown to Scale)"
+  ],
+  "hook": "One seagrass plant in Shark Bay, Western Australia, has been found in meadows spanning at least 180 km, covering an estimated 200 km², about twice the size of Paris. We line up the biggest living things on Earth on real satellite images, to scale: the blue whale, a siphonophore whose outer ring was ~47 m (estimated), the Hyperion redwood, General Sherman, Pando (a forest that is one tree), the humongous honey fungus of Oregon, and the Shark Bay seagrass clone. Then the twist: a Baltic seaweed clone spread along more than 600 km of coast. So what counts as one living thing?",
+  "chapters": {
+    "h1": "One plant, 180 km",
+    "c1": "The Biggest Animal (and a longer one)",
+    "c2": "The Giant Trees",
+    "c3": "The Forest That Is One Tree (Pando)",
+    "c4": "The Humongous Fungus",
+    "c5": "One Plant, 180 km (Shark Bay)",
+    "c5m": "All of them, to scale",
+    "c6": "So Which Is the Biggest?"
+  },
+  "credits": [
+    "Satellite imagery: EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Pando aerial imagery: USDA NAIP via USGS The National Map (public domain); map services and data available from U.S. Geological Survey, National Geospatial Program.",
+    "Shark Bay from space: NASA Earth Observatory image by Lauren Dauphin, using MODIS data from NASA EOSDIS/LANCE and GIBS/Worldview (public domain).",
+    "Photos (public domain): NOAA Fisheries SWFSC (blue whale from above, background removed), NOAA Photo Library and NOAA National Marine Sanctuaries (blue whales), NOAA Ocean Exploration (siphonophore), NPS Redwood National and State Parks (redwoods), USDA Forest Service (Pando), Russell Lee / Library of Congress (Malheur National Forest, 1942), George Chernilevsky (Armillaria ostoyae).",
+    "Photos (CC0 / CC BY): General Sherman by Daniel G. Rego (CC0); Posidonia oceanica meadow by Karim saari, CC BY 4.0; diver in seagrass by Symbiosis / ocean.si.edu, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/).",
+    "Maps: Natural Earth (public domain). Place positions: OpenStreetMap contributors (ODbL). Background removal: U-2-Net (Apache-2.0). 2.5D depth: Depth-Anything-V2-Small (Apache-2.0).",
+    "Music: original score generated for this channel (FluidR3 GM SoundFont, MIT). Sound effects synthesised for this channel.",
+    "Narration: synthetic voice (Kokoro-82M, Apache-2.0). Fonts: Inter (SIL Open Font License)."
+  ],
+  "hashtags": ["#BiggestLivingThing", "#SharkBay", "#Pando", "#Seagrass", "#SizeComparison"],
+  "pinned_comment": "Is a clone spread over 180 km really ONE living thing? Or is each meadow its own plant? Tell me what you think."
+}

@@ -39,6 +39,8 @@ export type ScaleSubject = {
   sizeLabel?: string;
   /** real photo cut-out (art id with `cutout: true` in assets/media.json), drawn at exact height `size` */
   image?: string;
+  /** image cut-outs: `size` is the drawn height (landmarks, default) or the drawn length (whales, trees lying down) */
+  fit?: 'height' | 'length';
   /** paint the label on the body (buses, courts) instead of above it */
   labelInside?: boolean;
   /** dashed outline only (a reference shape from another scene, e.g. "blue whale length") */
@@ -344,8 +346,9 @@ export const ScaleShot: React.FC<{spec: ScaleSpec; p: number; elapsed: number; w
       const ai = easeInOutCubic(ramp(p, sub.appear ?? 0, (sub.appear ?? 0) + 0.06)) * (1 - easeInOutCubic(ramp(p, sub.vanish ?? 2, (sub.vanish ?? 2) + 0.05)));
       if (ai <= 0) return;
       const meta = artIndex?.[sub.image];
-      const hpx = sub.size * s;
-      const wpx = meta ? (hpx * meta.w) / meta.h : hpx * 0.3;
+      const byLen = sub.fit === 'length' && meta;
+      const hpx = byLen ? (sub.size * s * meta.h) / meta.w : sub.size * s;
+      const wpx = byLen ? sub.size * s : meta ? (hpx * meta.w) / meta.h : hpx * 0.3;
       const x0 = X(sub.x + (sub.speed ?? 0) * t);
       const yb = Y(sub.y ?? 0) + (1 - ai) * 20;
       shapes.push(

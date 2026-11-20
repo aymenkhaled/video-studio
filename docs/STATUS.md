@@ -1,5 +1,15 @@
 # STUDIO STATUS
 
+## Scale & Science 003 "The Biggest Living Thing" — branch `b003-biggest-living-thing` (worktree `D:\studio-b003`), 18 Nov 2026
+- 2026-11-18 Aymen approved the topic: the biggest living thing isn't a whale (Shark Bay seagrass 180 km, Pando, honey fungus). Pays off B002's end-screen tease.
+- Cost rule: bulk research via `tools/gpt.sh` (facts heavy, images mid, demand heavy, satellite licences mid) → `docs/research/B003-*.md`. Claude: script, scenes, code, review.
+- Goal "better videos": packaging gate first (CTR is the bottleneck at 1.5 %), new hero shot = real satellite zoom-out (pitch → 180 km), voice chain + prosody + 20 dB ducking (C002 settings), second independent review.
+- 2026-11-19 **Delivered B003: QA PASS** (11:14, -14.3 LUFS, -3.6 dBTP, no black/freeze/silence) render 44464149947, release `render-BiggestLivingThing-44464149947`; files in `D:\deep-time-fables\scale-science-episode-003\` (final.mp4, thumbs 1-3, UPLOAD.md, captions.srt, contact_sheet, sources, promises, review).
+- Media release `media-b003` (+ `src.zip` of Commons originals downloaded locally: Wikimedia 429-blocks the runner). Media mode now seeds from ALL media-* releases and fetches only new ids.
+- Independent review FAIL 7/10 (0 critical, 7 major, 10 minor) -> all fixed. 2 stills rounds, 2 full renders (1st failed freezedetect: static camera in c1c).
+- Honest score 7.5/10. Weaknesses: (1) thumb_1 lacks the 180 km ruler line (thumbnail code kept the old off-frame ruler y); (2) satellite close-ups over open water are soft (Sentinel-2 10 m/px upscaled); (3) voice/ducking never heard on a phone.
+- Waiting on Aymen: phone listen + upload per UPLOAD.md; approve merging branch `b003-biggest-living-thing` into main (push to main was blocked by the permission classifier).
+- 2026-11-18 Satellite licence research complete: `docs/research/B003-satellite.md`. Use EOX 2016 `s2cloudless_3857` (CC BY 4.0, z0–14, credit burned in); 2018+ EOX and Esri World Imagery rejected; NASA EO/GIBS + USDA NAIP (PD) as wide/close-up sources. No local rendering; read-only tile probes only.
 ## Money & Maps C003 phantom-border sources — 18 Nov 2026
 - In progress: primary-source figures, paper effect sizes, map instructions, and caveats for `docs/research/c003-sources-draft.md`; requested order escalates from the former inner-German border to the geological Black Belt.
 - Decision: this handoff is a facts-only research draft; all derived percentages will show their inputs and formula, and inaccessible or unverified claims will be marked explicitly.
@@ -131,6 +141,16 @@ Decisions (Claude; Aymen away, "don't ask"):
 - Waiting on Aymen: phone-speaker listen (new voice chain + 20 dB ducking), upload with UPLOAD.md + Test & Compare (3 thumbnails). Next Money & Maps video: phantom borders (teased in the end screen).
 - 2026-11-18 Scale & Science: 3 new B002 thumbnails (v3, size contrast; `GiantWavesThumbsV2`, render mode=stills stills=3) and 4 Shorts (2 per B001/B002, `brands/scale-science/shorts/shorts-001.json`) delivered to `D:\deep-time-fables\scale-science-episode-00{1,2}\`. make_shorts.py fixed (box glyph after line 1; channel name option). Shorts are now ON (Aymen 17 Nov).
 
+## Scale & Science B003 — fact-check research (OpenCode, 18 Nov 2026)
+- In progress: primary-source measurement audit for the whale → clonal seagrass size ladder; deliverable `docs/research/B003-facts.md`.
+- Decision: distinguish length, height, trunk volume, biomass, occupied area and clone span; qualify the title's record by area and the genet definition.
+- Source-access note: Google returned JavaScript-only pages on two searches; use other search/index endpoints. Royal Society's article page returned HTTP 403; seek the open-access manuscript and bibliographic metadata.
+- Primary-source pass: Edgeloe 2022 full text verified through PMC; the 180 km figure is clone span, the 200 km² estimate uses pre-2010/11 meadow area, and 4500 years is a model-derived maximum. Ferguson 2003 gives 1900–8650 years, distinct from the popular 2400-year lower bound. NPS/GWR and the 2026 Hyperion field report verified.
+- Newer-study lead: Pando's 2024 age headline is superseded by a March 2026 eLife Reviewed Preprint (~12,000–37,000 years), whose public assessment calls the age evidence incomplete. Baltic Fucus clones reported across >600 km of coastline challenge an unrestricted “most widespread clone” claim.
+- Access blockers recorded: DuckDuckGo produced two CAPTCHA pages; USDA/Forest Service and Wiley full-text endpoints returned repeated HTTP 403; guessed GWR record routes returned 404. Stop those routes; use verified article metadata, accessible author manuscripts, and clearly labelled secondary estimates.
+- Challenger pass complete: checked recent Posidonia genomics, the 2024 somatic clock, 2023/2025 Bahamas studies, 2026 global seagrass mapping and global fungal biomass. Regional meadows and global fungal totals are not single genets. The 2022 Pando charcoal paper explicitly does not identify the ancient Pando genotype; it cannot prove a 9000-year minimum age for this individual.
+- Writing the complete pack with primary/secondary provenance, dated numbers, uncertainty, phone-readable wording, hooks and misconception corrections.
+- 2026-11-18 Image licence research complete: `docs/research/B003-images.md` — 2–4 verified real/satellite image options per subject (blue whale, siphonophore, redwoods, General Sherman, Pando, Armillaria, Posidonia/Shark Bay, scale refs), with creator, exact licence, credit lines, resolution, fit note and dated file-page URLs. CC BY-SA options marked `SA-FLAG`; NC/ND/unknown, EOX 2018+, Esri and Unsplash/Pexels-derived assets rejected. Wiki policy conflict noted for Aymen.
 ## C003 phantom borders — DELIVERED 2026-11-20
 QA PASS (9:23, −14.8 LUFS, −3.5 dBTP). Files: `D:\deep-time-fables\money-maps-episode-003\`. Review: `brands/money-maps/episodes/003-phantom-borders/review.md` (7.7/10).
 Branch `ep/c003-phantom-borders` pushed, NOT merged to main yet. Waiting on Aymen: phone-speaker listen, upload with UPLOAD.md + Test & Compare (3 thumbnails).
