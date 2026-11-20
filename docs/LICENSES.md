@@ -3,6 +3,34 @@
 Every external asset used in any video gets a row here before use. Rejected: NC, ND, personal-use, unknown.
 Binary assets are in the `assets-v1` Release; SHA256 per file in `assets/manifest.json`.
 
+## Research-cleared visual candidates — History in Maps, 18 Nov 2026
+
+Asset-level rights checked through Commons image metadata or the museum object page on 2026-11-18. These are proposed visual sources for `docs/research/history-outliers-2026-11-18.md`; episode allocation and media manifests follow story selection. Existing Natural Earth entries below cover the map base.
+
+| Asset | Author | Licence | Source URL | Credit needed |
+|---|---|---|---|---|
+| Selected Vinland art: *Leiv Eirikson discovering America* (1893); later imaginative depiction | Christian Krohg (d. 1925) | Public domain (PD-old-80-expired) | https://commons.wikimedia.org/wiki/File:Christian-krohg-leiv-eriksson.jpg | Courtesy: artist, title, date, National Gallery of Norway |
+
+## Research-cleared map data — Money & Maps C003, 18 Nov 2026
+
+Licence fields checked on 2026-11-18. Full URL/verdict table: `docs/research/c003-map-data-licences-2026-11-18.md`.
+
+| Asset | Author / source | Licence | Source URL | Credit needed |
+|---|---|---|---|---|
+| Natural Earth 10m admin-1 states/provinces | Natural Earth | Public domain | https://www.naturalearthdata.com/about/terms-of-use/ | No (courtesy in on-screen source note) |
+| Census 2025 cartographic counties (`cb_2025_us_county_500k.zip`) | U.S. Census Bureau | Public domain (US federal work) | https://www2.census.gov/geo/tiger/GENZ2025/shp/cb_2025_us_county_500k.zip | No (source note recommended) |
+| geoBoundaries ROU ADM2 municipalities | geoBoundaries / data.gov.ro | CC BY 4.0 | https://www.geoboundaries.org/api/current/gbOpen/ROU/ADM2/ | **Yes: geoBoundaries (CC BY 4.0)** |
+| geoBoundaries USA ADM2 counties | geoBoundaries / U.S. Census Bureau | Public domain | https://www.geoboundaries.org/api/current/gbOpen/USA/ADM2/ | No (source note recommended) |
+
+Not cleared for C003: geoBoundaries POL ADM2/ADM1 (ODbL 1.0), DEU ADM2/ADM1 (Data license Germany – Attribution – Version 2.0, outside strict allowlist), all `gbAuthoritative` data (noncommercial), and Natural Earth NACIS GeoJSON (403).
+| Selected Vinland manuscript facsimiles and translations: *The Finding of Wineland the Good* (1890 edition) | Arthur Middleton Reeves (1856–1891); medieval manuscript authors | Public domain (1890 edition; author dead more than 100 years) | https://archive.org/details/findingofwinelan00reev | Courtesy: Reeves, edition, source archive; identify later saga tradition |
+| Ibn Battuta illustration, *Découverte de la Terre*, plate 023 (1878 edition) | Léon Benett (1839–1916) | Public domain | https://commons.wikimedia.org/wiki/File:D%C3%A9couverte_de_la_Terre_023.jpg | Courtesy: Benett / Jules Verne, 1878; not a contemporary portrait |
+| Later painting of a giraffe and attendant (Qing dynasty); illustrates a tribute tradition | Chen Zhang | Public domain (per Commons item metadata) | https://commons.wikimedia.org/wiki/File:Chen_Zhang%27s_painting_of_a_giraffe_and_its_attendant.jpg | Courtesy: artist, Qing date, National Museum of China; do not label it an original 1414 painting |
+| *Catalan Atlas*, sheet 6, Mansa Musa detail (1375) | Attributed to Abraham Cresques | Public domain (PD-Art) | https://commons.wikimedia.org/wiki/File:Catalan_Atlas_BNF_Sheet_6_Mansa_Musa.jpg | Courtesy: Bibliothèque nationale de France / Gallica, 1375 |
+| Siege of Ragusa (Dubrovnik) in May–June 1806; engraving c. 1870 | Henri Félix Emmanuel Philippoteaux (1815–1884) | Public domain | https://commons.wikimedia.org/wiki/File:Siege_of_Ragusa_(Dubrovnik)_in_May_and_June_1806_(F._Philippoteaux).jpg | Courtesy: artist/date; use for the Napoleonic chapter, not as a 1699 event |
+| Safe Conduct Pass (Paiza), late 13th century; Met object 1993.256 | China, Yuan dynasty | Public domain image / Met Open Access CC0 | https://www.metmuseum.org/art/collection/search/39624 | Courtesy: The Metropolitan Museum of Art, object 1993.256 |
+| *Insula Creta hodie Candia*, historical Crete map | Johann Baptist Homann (1664–1724) | Public domain (per Commons item metadata) | https://commons.wikimedia.org/wiki/File:Johann_Baptist_Homann,_Insula_Creta_hodie_Candia_(FL35072640_2533506).jpg | Courtesy: Homann / Eran Laor Cartographic Collection, National Library of Israel; map date to accompany any episode use |
+
 ## Assets
 | Asset | Author | Licence | Source URL | Credit needed |
 |---|---|---|---|---|
@@ -121,3 +149,22 @@ Sounds (Freesound.org): "Pas de dinosaure" by ComputerHotline (CC BY 4.0) · "Di
 | seagrass-diver — Scuba diver in seagrass. Symbiosis, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/) | Wikimedia Commons | CC BY 2.0 (Symbiosis) | Scale & Science 003 | https://commons.wikimedia.org/wiki/File:Scuba_Diver_in_Seagrass_-_53006413135.jpg |
 | sb-nasa — Shark Bay. NASA Earth Observatory image by Lauren Dauphin, using MODIS data from NASA EOSDIS/LANCE and GIBS/Worldview (public domain) | NASA Earth Observatory | Public domain (NASA Earth Observatory) | Scale & Science 003 | https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/147000/147395/sharkbay_amo_2020274_lrg.jpg |
 | OpenStreetMap geocoding — approximate coordinates of 7 Shark Bay place names (sampling-site pins), facts only, insubstantial extract | Nominatim (OpenStreetMap contributors) | ODbL 1.0 (facts-only use, attributed in the description) | Scale & Science 003 | https://www.openstreetmap.org/copyright |
+
+## Money & Maps C003 phantom borders — art used in the video (20 Nov 2026)
+
+| Asset (media id) | Author | Licence | Source URL | Credit needed |
+|---|---|---|---|---|
+| ddr-border-tower: DDR steel watch tower (1984) | SPC5 Vincent Kitts, US Army | Public domain (US Government) | https://commons.wikimedia.org/wiki/File:DDR_steel_watch_tower_cropped.jpg | Courtesy credit |
+| checkpoint-1977: Checkpoint Charlie 1977 | Helga T. H. Mellmann | Public domain (US Government) | https://commons.wikimedia.org/wiki/File:Checkpoint_Charlie_1977.jpg | Courtesy credit |
+| wall-1989: Berlin Wall watchtower, 28 Dec 1989 | Aad van der Drift | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:0594_1989_Berlin_Mauer_(28_dec)_(14121954819).jpg | Yes (on screen + description) |
+| faden-1799: partition map of Poland (1799) | William Faden | Public domain | https://commons.wikimedia.org/wiki/File:Map_of_the_partition_of_the_Kingdom_of_Poland_and_the_Grand_Duchy_of_Lithuania_from_1799.jpg | Courtesy credit |
+| flemming-1914: Austrian–Russian borderland war map (1914) | Carl Flemming | Public domain | https://commons.wikimedia.org/wiki/File:07-Das_%C3%96sterreich-Russische_Grenzgebiet_(1914).png | Courtesy credit |
+| andree-habsburg: Austria-Hungary with 1914 borders | Richard Andree | Public domain | https://commons.wikimedia.org/wiki/File:Austria-Hungary_(ethnic_1890,_with_red_1914_and_blue_1920_borders).jpg | Courtesy credit |
+| limes-tower: reconstructed Limes watchtower, Mainhardt (+ depth layers) | Matthias Süßen | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Roemturmmainhard5.jpg | Yes (on screen + description) |
+| europe-night: Europe at night, Suomi NPP 2012 | NASA Goddard | Public domain (NASA) | https://commons.wikimedia.org/wiki/File:Image_of_Europe_at_night,_a_composite_assembled_from_data_acquired_by_the_Suomi_NPP_satellite_in_April_and_October_2012.jpg | Courtesy credit |
+| blackbelt-space: Black Belt Prairie, MODIS 2015–2018 | NASA Earth Observatory / Joshua Stevens | Public domain (NASA) | https://science.nasa.gov/earth/earth-observatory/black-belt-prairie-92321/ | Courtesy credit |
+| cotton-field: cotton field in bloom, Alabama 2016 (+ depth layers) | Alabama Extension / Katie Wendland Nichols | CC0 1.0 | https://commons.wikimedia.org/wiki/File:Irrigation_in_Cotton_Field_-_51488231980.jpg | No |
+| cotton-family: Black cotton farmers, c. 1890s | Unknown | Public domain | https://commons.wikimedia.org/wiki/File:Black_cotton_farming_family.jpg | Courtesy credit |
+| cretaceous-1907: Cretaceous formation map (1907) | Chamberlin & Salisbury | Public domain | https://commons.wikimedia.org/wiki/File:Map_showing_the_distribution_of_the_Cretaceous_formation_in_North_America_%E2%80%93_Geology_(1907)_(14589719039).jpg | Courtesy credit |
+| us-counties.json (us-atlas 3.0.1) | Mike Bostock, from US Census Bureau data | ISC (code) / public domain (data) | https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/counties-10m.json | No |
+| Historic border polylines (1914 borders, Limes) | Our own approximate tracing | — (own work) | brands/money-maps/data/phantom.ts | No |
