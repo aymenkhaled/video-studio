@@ -96,7 +96,7 @@ const SRC_GDP = 'AK VGR der Länder, Ausgabe 2026 (2025, current prices)';
 export const SCENES: Record<string, SceneDef> = {
   // 0:00 promise: the thumbnail map (Germany's money map) in motion on frame 1, then the ghost line lands on the colour edge
   o1: map(2025, MOD_DE, {camera: DE, choropleth: GDP_MAP(false, [0, 0.08]), ghosts: [{...INNER, draw: [0.55, 0.95]}]}, [
-    {type: 'glossary', term: 'GDP per person', meaning: 'everything a state produces in a year, divided by its people', window: [0.04, 0.5]},
+    {type: 'glossary', term: 'GDP per person', meaning: 'what a state produces per person, per year', window: [0.04, 0.5]},
   ]),
   o2: map(2025, MOD_DE, {camera: DE_IN, choropleth: GDP_MAP(true, [0, 0.02]), ghosts: [INNER_ON]}, [
     {type: 'citation', text: 'Five eastern states vs the poorest western state (Saarland) · AK VGR der Länder 2026', at: [0.1, 0.95]}, // G3
@@ -112,7 +112,7 @@ export const SCENES: Record<string, SceneDef> = {
   // ---------- chapter 1: Germany, 1990 ----------
   c1: chapter(1, 'Germany, 1990', 'erased 36 years ago', MOD_DE, {camera: DE, ghosts: [INNER_ON]}, 'ddr-border-tower', 'Did reunification erase the border?'),
   c1a: art('ddr-border-tower', 'East German guards on the inner German border, 1984 — US Army photo (public domain)', {x: 0.5, y: 0.45, zoom: 1.0}, {x: 0.5, y: 0.4, zoom: 1.12}, [
-    {type: 'glossary', term: 'inner German border', meaning: 'the fortified line between East and West Germany, 1949–1990', window: [0.05, 0.5]},
+    {type: 'glossary', term: 'inner German border', meaning: 'fortified line between East and West Germany', window: [0.05, 0.5]},
   ], 1984),
   c1a2: art('wall-1989', 'A watchtower at the Berlin Wall, 28 December 1989 — Aad van der Drift (CC BY 2.0)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.52, y: 0.45, zoom: 1.12}, undefined, 1989),
   c1b: chart({
@@ -172,7 +172,7 @@ export const SCENES: Record<string, SceneDef> = {
   // ---------- chapter 2: Poland, 1918 ----------
   c2: chapter(2, 'Poland, 1918', 'three empires, one country', MOD_PL, {camera: PL, ghosts: [on(PRU_RU), on(AUT_RU)]}, 'faden-1799', 'Is the old Prussian side still richer?'),
   c2a: art('faden-1799', 'Poland divided by its neighbours — William Faden, 1799 (public domain)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.45, y: 0.5, zoom: 1.15}, [
-    {type: 'glossary', term: 'partitions of Poland', meaning: 'Russia, Prussia and Austria split Poland; it was gone from the map until 1918', window: [0.05, 0.6]},
+    {type: 'glossary', term: 'partitions of Poland', meaning: 'Russia, Prussia and Austria split Poland until 1918', window: [0.05, 0.6]},
   ], 1799),
   c2b: map(1914, MOD_PL, {camera: PL, ghosts: [PRU_RU, AUT_RU], regions: [{text: 'PRUSSIAN PART', at: [16.6, 52.6], appear: 0.25, size: 24}, {text: 'RUSSIAN PART', at: [21.4, 52.0], appear: 0.45, size: 24}, {text: 'AUSTRIAN PART', at: [21.6, 49.75], appear: 0.7, size: 22}]}, [
     {type: 'citation', text: 'Borders of 1914, approximate (our tracing of public-domain maps)', at: [0.1, 0.95]},
@@ -256,7 +256,7 @@ export const SCENES: Record<string, SceneDef> = {
   c5: chapter(5, 'A Dinosaur-Age Coast', 'Alabama’s Black Belt', MOD_US, {camera: AL_WIDE, choropleth: BLACK_BELT(false)}, 'blackbelt-space', 'How can an old coastline shape poverty?'),
   c5a: art('blackbelt-space', 'The Black Belt from space — NASA Earth Observatory, MODIS 2015–2018 (public domain)', {x: 0.5, y: 0.5, zoom: 1.0}, {x: 0.55, y: 0.55, zoom: 1.12}, undefined, 2018), // B1
   c5b: art('cretaceous-1907', 'Where Cretaceous rocks reach the surface — Chamberlin & Salisbury, Geology, 1907 (public domain)', {x: 0.62, y: 0.6, zoom: 1.4}, {x: 0.66, y: 0.68, zoom: 1.9}, [
-    {type: 'glossary', term: 'Cretaceous', meaning: 'the last age of the dinosaurs, 145 to 66 million years ago', window: [0.05, 0.55]}, // B3
+    {type: 'glossary', term: 'Cretaceous', meaning: 'last dinosaur age: 145–66 million years ago', window: [0.05, 0.55]}, // B3
   ]),
   c5b2: map(undefined, MOD_US, {camera: AL_WIDE, choropleth: BLACK_BELT(false), regions: [{text: 'chalk → dark, fertile soil', at: [-87.4, 31.6], appear: 0.3, size: 26}]}, [
     {type: 'citation', text: 'NASA Earth Observatory, "Black Belt Prairie", 2018', at: [0.1, 0.95]}, // B2
