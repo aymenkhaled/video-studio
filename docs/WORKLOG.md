@@ -1,5 +1,10 @@
 # WORKLOG
 
+- 2026-11-18 Money & Maps C003 map-data licence research: wrote `docs/research/c003-map-data-licences-2026-11-18.md` with URL/verdict table, verbatim geoBoundaries licence metadata, Natural Earth/Census caveats, and GDAL subsetting commands. Selected public-domain Natural Earth admin-1 + Census 2025 county boundaries; geoBoundaries restricted to ROU ADM2 CC BY 4.0 and USA ADM2 public domain.
+- 2026-11-18 Money & Maps C003 media+geometry research: wrote `docs/research/c003-media-geo.md` (324 lines) with licence-verified geometry URLs, subsetting commands, verdicts for MPIDR/DARE/Pleiades/AWMC/OSM historic borders, hand-digitised PD-map waypoint arrays, 14 verified Commons assets, and paste-ready JSON; all JSON blocks validated.
+- 2026-11-18 History in Maps research: recorded 25 recent below-200K-channel outliers in `docs/research/history-outliers-2026-11-18.md`; public vidIQ snapshots and YouTube pages supplied dates/counts, and competitor thumbnails were inspected. Candidate selection in progress.
+- 2026-11-18 History in Maps selection: Vinland's missing southern route wins at 33/35; added 15 story comparisons, a 12:30 beat outline, three titles/thumbnails, misconception hook and eight scholarly/institutional sources. Replaced one generic prehistory example with the verified Aksum outlier (French-origin, explicitly labelled).
+
 - 2026-11-13 Phase 0: environment check, inventory of `D:\deep-time-fables` (+ zips), 8 videos probed and reviewed, REUSE_PLAN written.
 - 2026-11-13 Phase 1: created `D:\studio` (public monorepo), copied docs, extracted old 3D backup into `_import/` (gitignored), skeleton + CLAUDE.md + skills + CI.
 - 2026-11-13 Phase 1 verified (check green, 4-chunk Smoke render + QA PASS), assets-v1 Release (6 zips incl. Gobkit CC0). Phase 2 benchmark: 2D 24.1 / 3D-simple 6.2 / 2.5D-displaced 2.0 fps per 4-vCPU job.
@@ -25,3 +30,5 @@
 - 2026-11-16 Scale & Science 002 giant waves delivered: packaging gate + outlier check, promise ledger, real USGS/NASA photos + CC0 landmark cut-outs, Vajont added after review, QA PASS first full render.
 - 2026-11-18 Promo Shorts: vertical ShortEpisode template + 12 re-narrated Shorts (2 per long video), 2 stills rounds, full renders with QA; delivered to `D:\deep-time-fables\shorts\<channel>-<episode>-short-<n>\`.
 - 2026-11-16 Money & Maps 002 Siberian curse delivered: topic scout (14 candidates, 3 parallel scouts), packaging gate + promise ledger, sources ~75 rows, NASA night lights + Prokudin-Gorsky + Landsat, fly-to camera, circled lights, range bars, phone voice chain / 20 dB ducking / prosody, fp32 Kokoro, true-peak-safe limiter; 2 independent reviews; QA PASS (render 43825916074).
+
+- 2026-11-20 C003 phantom borders delivered (render 44740760073, QA PASS, 7.7/10). Engine: regional choropleth + ghost borders + shared-edge extraction; media build reuses earlier packs (`media_base`) + `<release>-src` hand-fetched sources; plan timeout 90 min (fp32 TTS); soundtrack carries music through mood-less scenes.

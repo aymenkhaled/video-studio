@@ -106,3 +106,12 @@ Read with `docs/VIEWER_CLARITY_FEEDBACK.md` (owner checklist) and `docs/CLARITY_
 | B002 giant waves (16 Nov, ~39 h: 809 impr., 32 views, 0 subs) | **1.5 %** | **34 %** (AVD 3:55 of 11:14) | not shared | 22 suggested / 7 browse / 3 other | Real photos + promise in 7 s tripled retention (10 → 34 %). CTR unchanged → thumbnails/titles are now the bottleneck: show the size contrast itself, test 3 variants. |
 | C001 Switzerland (14 Nov, ~33 h: 477 impr., 27 views, +2 subs, 2.1 h watch) | **1.7 %** | **39 %** (AVD 4:40 of 11:57) | not shared yet | 19 suggested / 4 direct / 4 other | Retention good for 12 min (same 39 % as A001): charts + money context + clarity work. Packaging is the bottleneck: CTR 1.7 % on a crowded topic. Next: thumbnail with one big surprising number + real image, title with a specific paradox, run Test & Compare. Details: `docs/analytics/money-maps.md` |
 | C002 Russia Arctic city (16 Nov, ~25 h: 712 impr., 73 views, 0 subs, 2.0 h watch) | **2.0 %** | **36 %** (AVD 3:53 of 10:41) | not enough data yet | 41 browse / 27 suggested / 5 other | Number-led paradox title + bright number thumbnails: CTR 1.7 → 2.0 % and 2.7× the views of C001 in less time; Browse (home page) now the top source, so YouTube is testing it with new viewers. Retention held (36 %). Still below 4 % CTR target. Details: `docs/analytics/money-maps.md` |
+
+## From Money & Maps 003 (20 Nov 2026)
+1. Map zoom: horizontal span ≈ 210/zoom degrees at mid-latitudes — a country needs zoom 15–20, a region 30–45. Our first stills were 2–4× too far out.
+2. Wikimedia answers 429 to GitHub runners and to non-standard thumbnail widths: use standard widths (960/1280/1920/3840) and pre-seed `<media_release>-src`; reuse earlier media packs with `media_base`.
+3. NASA Earth Observatory images moved to assets.science.nasa.gov (eoimages.gsfc.nasa.gov unreachable).
+4. Glossary meanings ≤ 8 words (render_stills fails otherwise) — check_episode does not catch it yet.
+5. Scenes without `music` (chapter cards) used to be silent → silencedetect FAIL; fixed in soundtrack.py.
+6. fp32 Kokoro for ~10 min narration needs > 40 min on a TTS cache miss (plan timeout now 90).
+7. package_episode.py copies the last bullet list of sources.md as "Sources" — keep a plain source list at the end of sources.md or fix the UPLOAD.md by hand.
