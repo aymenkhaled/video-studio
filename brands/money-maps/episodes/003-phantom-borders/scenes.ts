@@ -29,11 +29,11 @@ const fly = (a: [number, number], za: number, b: [number, number], zb: number, h
 
 // ---------- cameras ----------
 const DE = cam([10.3, 51.2], 15.0, [10.5, 51.15], 16.5);
-const DE_IN = cam([11.2, 51.5], 18.0, [11.6, 51.6], 20.0);
+const DE_IN = cam([10.6, 51.3], 16.0, [10.8, 51.35], 17.5);
 const EUROPE = cam([16, 50.5], 6.5, [17, 50], 7.2);
-const PL = cam([20.0, 52.4], 12.0, [20.3, 52.2], 13.0);
-const HAB = cam([24.2, 47.6], 14.0, [24.5, 47.5], 15.5);
-const LIM = cam([9.5, 49.6], 28.0, [9.7, 49.6], 31.0);
+const PL = cam([20.4, 52.2], 10.0, [20.6, 52.1], 11.0);
+const HAB = cam([24.4, 47.6], 10.0, [24.6, 47.5], 11.0);
+const LIM = cam([9.5, 49.55], 17.0, [9.7, 49.55], 18.5);
 const AL = cam([-86.8, 32.6], 30.0, [-86.8, 32.5], 33.0);
 const AL_WIDE = cam([-87.2, 32.8], 18.0, [-87.0, 32.7], 21.0);
 
@@ -120,7 +120,7 @@ export const SCENES: Record<string, SceneDef> = {
     howTo: 'longer bar = higher pay', num: {prefix: '€'},
     bars: [{label: 'West', value: 1987, color: CB.blue}, {label: 'East', value: 924, highlight: true, color: EAST, note: 'less than half'}],
   }, undefined, 1991),
-  c1c: map(2024, MOD_DE, {camera: DE_IN, choropleth: GDP_MAP(false), ghosts: [INNER_ON], cities: [{name: 'Erfurt', at: [11.03, 50.98], appear: 0.15, size: 1.3, note: 'Thuringia: +163% since 1991 (real, per person)', dot: {color: GHOST, r: 1.2}}]}), // G8
+  c1c: map(2024, MOD_DE, {camera: DE_IN, choropleth: GDP_MAP(false), ghosts: [INNER_ON], cities: [{name: 'Erfurt', at: [11.03, 50.98], appear: 0.15, size: 1.3, note: 'Thuringia: +163% since 1991', dot: {color: GHOST, r: 1.2}}]}), // G8
   c1d: chart({
     type: 'bar', title: 'GDP per person, 2025', unit: 'euros, current prices · East ≈ 72% of West overall (IW)', source: SRC_GDP, // G2, G3
     num: {prefix: '€'},
@@ -142,7 +142,7 @@ export const SCENES: Record<string, SceneDef> = {
   }, undefined, 2025),
   c1f: map(2024, MOD_DE, {camera: DE, choropleth: GDP_MAP(false, [0, 0.02]), ghosts: [INNER_ON], cities: [
     {name: 'Munich', at: [11.58, 48.14], appear: 0.35, size: 1.2, dot: {color: CB.blue, r: 1.1}}, {name: 'Frankfurt', at: [8.68, 50.11], appear: 0.42, size: 1.2, dot: {color: CB.blue, r: 1.1}},
-    {name: 'Stuttgart', at: [9.18, 48.78], appear: 0.49, size: 1.2, align: 'left', dot: {color: CB.blue, r: 1.1}}, {name: 'Düsseldorf', at: [6.78, 51.23], appear: 0.56, size: 1.2, align: 'left', dot: {color: CB.blue, r: 1.1}},
+    {name: 'Stuttgart', at: [9.18, 48.78], appear: 0.49, size: 1.2, align: 'left', dot: {color: CB.blue, r: 1.1}}, {name: 'Hamburg', at: [9.99, 53.55], appear: 0.56, size: 1.2, dot: {color: CB.blue, r: 1.1}},
   ]}, [{type: 'citation', text: 'Big head offices stayed in the West after 1990 (ifo Dresden, via tagesschau 2024) · cities shown as examples', at: [0.3, 0.95]}]), // G9
   c1g: chart({
     type: 'bar', title: "Germany's 500 largest firms: head offices", unit: 'Die Welt top-500 ranking; Berlin counted with the West', source: 'manager magazin 2019 · DAX: tagesschau.de 2024', // G9, G10 HEDGE
@@ -179,7 +179,7 @@ export const SCENES: Record<string, SceneDef> = {
   ]),
   c2b2: art('flemming-1914', 'The Austrian–Russian borderland — Carl Flemming war map, 1914 (public domain)', {x: 0.45, y: 0.5, zoom: 1.0}, {x: 0.5, y: 0.45, zoom: 1.2}, undefined, 1914),
   c2c: map(1918, MOD_PL, {camera: PL, ghosts: [{...PRU_RU, draw: [0, 0.05], fadeOut: [0.25, 0.6]}, {...AUT_RU, draw: [0, 0.05], fadeOut: [0.25, 0.6]}], regions: [{text: 'POLAND, 1918', at: [19.4, 52.4], appear: 0.4, size: 30}]}),
-  c2d: map(2015, MOD_PL, {camera: cam([18.3, 52.2], 28.0, [18.4, 52.0], 31.0), ghosts: [on(PRU_RU)], regions: [{text: 'compare villages on both sides', at: [18.2, 52.9], appear: 0.3, size: 24}]}, [
+  c2d: map(2015, MOD_PL, {camera: cam([18.6, 52.2], 18.0, [18.7, 52.0], 20.0), ghosts: [on(PRU_RU)], regions: [{text: 'compare villages on both sides', at: [18.2, 52.9], appear: 0.3, size: 24}]}, [
     {type: 'citation', text: 'Grosfeld & Zhuravskaya, Journal of Comparative Economics, 2015', at: [0.1, 0.95]}, // P1
   ]),
   c2d2: map(2015, MOD_PL, {camera: PL, ghosts: [on(PRU_RU), on(AUT_RU)]}, [
@@ -202,7 +202,7 @@ export const SCENES: Record<string, SceneDef> = {
   c3c: map(2006, MOD_HAB, {camera: HAB, ghosts: [on(HABS)], regions: [{text: '200 km band on both sides', at: [24.3, 48.9], appear: 0.3, size: 22}]}, [
     {type: 'citation', text: 'Becker, Boeckh, Hainz & Woessmann, Economic Journal 2016 · EBRD Life in Transition Survey 2006', at: [0.1, 0.95]}, // H1, H2
   ]),
-  c3c2: map(2006, MOD_HAB, {camera: cam([24.5, 47.8], 15.0, [24.8, 47.7], 16.5), ghosts: [on(HABS)], regions: [{text: 'survey 2006 — 88 years after 1918', at: [26.6, 49.6], appear: 0.3, size: 24}]}, [
+  c3c2: map(2006, MOD_HAB, {camera: cam([24.5, 47.7], 11.0, [24.7, 47.6], 12.0), ghosts: [on(HABS)], regions: [{text: 'survey 2006 — 88 years after 1918', at: [26.6, 49.6], appear: 0.3, size: 24}]}, [
     {type: 'citation', text: 'EBRD Life in Transition Survey, 2006', at: [0.1, 0.95]}, // H1
   ]),
   c3d: chart({
@@ -246,7 +246,7 @@ export const SCENES: Record<string, SceneDef> = {
     {id: 'rr1', points: [[8.27, 50.0], [8.68, 49.4], [9.0, 48.8], [9.4, 48.4]], color: '#8a6d3b', draw: [0.1, 0.5], width: 6}, // illustrative Roman roads (schematic)
     {id: 'rr2', points: [[7.6, 48.6], [8.4, 48.0], [9.6, 47.9], [10.9, 48.37]], color: '#8a6d3b', draw: [0.2, 0.6], width: 6},
   ]}, [{type: 'citation', text: 'Roads schematic, for illustration — Wahl: Roman roads persisted as today\'s road network', at: [0.1, 0.95]}]), // R4
-  c4e: map(undefined, MOD_LIM, {camera: cam([7.6, 49.8], 30.0, [7.8, 49.8], 33.0), ghosts: [on(LIMES_G)], cities: [
+  c4e: map(undefined, MOD_LIM, {camera: cam([7.8, 49.8], 20.0, [8.0, 49.8], 22.0), ghosts: [on(LIMES_G)], cities: [
     {name: 'Mainz', at: [8.27, 50.0], appear: 0.15, size: 1.3, note: 'Roman Mogontiacum', dot: {color: GHOST, r: 1.2}},
     {name: 'Trier', at: [6.64, 49.75], appear: 0.35, size: 1.3, align: 'left', note: 'Roman Augusta Treverorum', dot: {color: GHOST, r: 1.2}},
   ]}),
@@ -281,8 +281,8 @@ export const SCENES: Record<string, SceneDef> = {
     num: {suffix: '%'},
     bars: [{label: 'Black Belt', value: 52, color: GHOST, highlight: true}, {label: 'Alabama', value: 57, color: CB.grey}, {label: 'United States', value: 63, color: CB.blue}],
   }, undefined, 2023),
-  c5e3: map(1965, MOD_US, {camera: cam([-86.66, 32.38], 70, [-86.64, 32.37], 80), choropleth: BLACK_BELT(false), cities: AL_CITIES, routes: [
-    {id: 'march', points: [[-87.02, 32.41], [-86.75, 32.33], [-86.55, 32.3], [-86.3, 32.37]], color: GHOST, draw: [0.15, 0.85], width: 7, dashed: true},
+  c5e3: map(1965, MOD_US, {camera: cam([-86.66, 32.45], 42, [-86.64, 32.43], 47), choropleth: BLACK_BELT(false), cities: AL_CITIES, routes: [
+    {id: 'march', points: [[-87.02, 32.41], [-86.75, 32.33], [-86.55, 32.3], [-86.3, 32.37]], color: GHOST, draw: [0.15, 0.85], width: 7},
   ]}, [{type: 'citation', text: 'Selma → Montgomery march, 1965 (route schematic)', at: [0.1, 0.95]}]),
   c5f: map(2024, MOD_US, {camera: AL, choropleth: BLACK_BELT(true), cities: AL_CITIES}),
   c5r: recap('An ancient coast made rich soil; slavery and its aftermath made the poverty.', MOD_US, {camera: AL_WIDE, choropleth: BLACK_BELT(false)}, 'So why do some borders fade?'),
